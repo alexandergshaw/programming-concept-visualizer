@@ -16,10 +16,10 @@ export default function Sidebar({ title, items, onSelect }: SidebarProps) {
         {items.map((item, index) => (
           <li
             key={index}
-            className="js-nav-item"
+            className="js-nav-item hoverable"
             onClick={() => onSelect?.(item)}
           >
-            {item}
+            <span className="js-nav-text">{item}</span>
           </li>
         ))}
       </ul>

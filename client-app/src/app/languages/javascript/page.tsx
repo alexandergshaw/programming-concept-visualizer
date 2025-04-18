@@ -1,70 +1,50 @@
 'use client';
 
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import Sidebar from '../../../../components/Sidebar'
-import ArrayConcept from '../../../../components/concepts/Array.concept'
-import '../../../../styles/javascript.css';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import '../../../../styles/landing.css'
 
-const allNavItems = ["Arrays", "Objects", "Loops", "Functions", "Conditionals"];
+const languages = ["Python", "JavaScript", "TypeScript", "Java", "PHP"];
 
-export default function JavaScriptPage() {
-  const searchParams = useSearchParams();
-  const router = useRouter();
+export default function LandingPage() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedConcept, setSelectedConcept] = useState<string | null>(null);
+  const router = useRouter();
 
-  useEffect(() => {
-    const conceptParam = searchParams.get('concept');
-    if (conceptParam) {
-      setSelectedConcept(conceptParam);
-    }
-  }, [searchParams]);
-
-  const handleSelectConcept = (concept: string) => {
-    router.push(`/languages/javascript?concept=${encodeURIComponent(concept.toLowerCase())}`);
-    setSelectedConcept(concept);
-  };
-
-  const filteredItems = allNavItems.filter(item =>
-    item.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredLanguages = languages.filter((lang) =>
+    lang.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const renderContent = (concept: string | null) => {
-    if (!concept) return null;
-    switch (concept.toLowerCase()) {
-      case 'arrays':
-        return <ArrayConcept />;
-      case 'loops':
-        return <p className="concept-block">JavaScript loops like <code>for</code>, <code>while</code>, and <code>forEach</code> allow you to repeat operations.</p>;
-      case 'objects':
-        return <p className="concept-block">Objects store key-value pairs. You can access properties using dot or bracket notation.</p>;
-      case 'functions':
-        return <p className="concept-block">Functions encapsulate logic and can be reused. JavaScript supports named and arrow functions.</p>;
-      case 'conditionals':
-        return <p className="concept-block">Use <code>if</code>, <code>else</code>, and <code>switch</code> to execute code conditionally.</p>;
-      default:
-        return null;
-    }
+  const handleClick = (language: string) => {
+    const slug = language.toLowerCase();
+    router.push(`/languages/${slug}`);
   };
 
   return (
-    <main className="js-layout">
-      <Sidebar title="JavaScript" items={filteredItems} onSelect={handleSelectConcept} />
-      <section className="js-content">
-        <h1 className="js-page-title">JavaScript Visualizer</h1>
-        <p className="js-page-subtitle">
-          Visualize arrays, loops, functions, and more in JavaScript.
+    <main className="landing-wrapper">
+      <section className="landing-container">
+        <h1 className="landing-title">Coding Languages Visualizer</h1>
+        <p className="landing-subtitle">
+          Select a language to explore how its data structures and operations work.
         </p>
+
         <input
           type="text"
-          placeholder="Search concepts..."
+          placeholder="Search languages..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="search-input"
+          className="landing-search"
         />
-        <div style={{ marginTop: '40px' }}>
-          {renderContent(selectedConcept)}
+
+        <div className="language-grid">
+          {filteredLanguages.map((language) => (
+            <div
+              key={language}
+              className="language-card"
+              onClick={() => handleClick(language)}
+            >
+              {language}
+            </div>
+          ))}
         </div>
       </section>
     </main>
