@@ -6,6 +6,14 @@
   overflow: hidden;
 }
 
+.link {
+  color: rgb(0, 0, 255)
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
 .js-sidebar {
   width: 240px;
   min-height: 100vh;

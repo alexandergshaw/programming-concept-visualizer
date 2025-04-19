@@ -15,11 +15,12 @@ const OPERATIONS = [
   'indexOf',
   'lastIndexOf',
   'includes',
+  'update / modify',
 ];
 
 export default function ArrayConcept() {
   const [arr, setArr] = useState<number[]>([1, 2, 3]);
-  const [operation, setOperation] = useState<string | null>('push');
+  const [operation, setOperation] = useState('push');
   const [inputValue, setInputValue] = useState('');
   const [indexValue, setIndexValue] = useState('');
   const [output, setOutput] = useState<string | null>(null);
@@ -28,6 +29,7 @@ export default function ArrayConcept() {
 
   const runOperation = () => {
     resetOutput();
+
     const numInput = parseInt(inputValue);
     const numIndex = parseInt(indexValue);
 
@@ -72,10 +74,22 @@ export default function ArrayConcept() {
           setOutput(`includes(${numInput}) → ${exists}`);
         }
         break;
+      case 'update':
+        if (!isNaN(numIndex) && !isNaN(numInput)) {
+          if (numIndex >= 0 && numIndex < arr.length) {
+            const copy = [...arr];
+            copy[numIndex] = numInput;
+            setArr(copy);
+            setOutput(`Updated index ${numIndex} to ${numInput}`);
+          } else {
+            setOutput(`Index ${numIndex} is out of bounds`);
+          }
+        }
+        break;
     }
   };
 
-  const getDescription = (op: string | null): string => {
+  const getDescription = (op: string): string => {
     switch (op) {
       case 'push': return 'Adds a value to the end of the array.';
       case 'pop': return 'Removes the last item from the array.';
@@ -85,48 +99,32 @@ export default function ArrayConcept() {
       case 'indexOf': return 'Finds the first index of a value.';
       case 'lastIndexOf': return 'Finds the last index of a value.';
       case 'includes': return 'Checks if a value exists in the array.';
+      case 'update / modify': return 'Changes the value at a specific index.';
       default: return '';
     }
   };
 
   return (
     <div className="array-container">
-      <h2 className="array-title">JavaScript Array</h2>
+      <h2 className="array-title">JavaScript Arrays</h2>
       <p className="array-description">
-        Arrays are ordered lists that store values in a numbered sequence.
+        Select an array operation and see how it affects the structure.
       </p>
       <p className="array-description-secondary">{getDescription(operation)}</p>
 
       <div className="array-controls">
         <Autocomplete
+          options={OPERATIONS}
           value={operation}
           onChange={(e, newVal) => {
-            setOperation(newVal);
+            setOperation(newVal ?? 'push');
             resetOutput();
           }}
-          options={OPERATIONS}
-          renderInput={(params) => (
-            <TextField {...params} label="Choose operation" size="small" />
-          )}
+          renderInput={(params) => <TextField {...params} label="Choose operation" size="small" />}
           sx={{ minWidth: 200 }}
         />
 
-        {(operation === 'push' ||
-          operation === 'unshift' ||
-          operation === 'indexOf' ||
-          operation === 'lastIndexOf' ||
-          operation === 'includes' ||
-          operation === 'splice') && (
-            <TextField
-              label="Value"
-              type="number"
-              size="small"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-            />
-          )}
-
-        {(operation === 'splice' || operation === 'slice') && (
+        {['splice', 'slice', 'update / modify'].includes(operation) && (
           <TextField
             label="Index"
             type="number"
@@ -136,11 +134,19 @@ export default function ArrayConcept() {
           />
         )}
 
-        <Button variant="contained" onClick={runOperation}>
-          Run
-        </Button>
+        {['push', 'unshift', 'indexOf', 'lastIndexOf', 'includes', 'splice', 'update / modify'].includes(operation) && (
+          <TextField
+            label="Value"
+            type="number"
+            size="small"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+          />
+        )}
 
-        {/* <Button
+        <Button variant="contained" onClick={runOperation}>Run</Button>
+
+        <Button
           variant="outlined"
           color="secondary"
           onClick={() => {
@@ -151,7 +157,7 @@ export default function ArrayConcept() {
           }}
         >
           Reset Array
-        </Button> */}
+        </Button>
       </div>
 
       <div className="array-box">

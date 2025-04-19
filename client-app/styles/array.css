@@ -3,7 +3,7 @@
   background: #ffffff;
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   max-width: 900px;
 }
 
@@ -54,7 +54,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .array-index {
@@ -73,5 +73,4 @@
   font-size: 16px;
   font-weight: 500;
   color: #334155;
-  margin-top: 20px;
 }

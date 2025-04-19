@@ -6,6 +6,8 @@ import Sidebar from '../../../../components/Sidebar';
 import ArrayConcept from '../../../../components/concepts/ArrayConcept';
 import SetConcept from '../../../../components/concepts/SetConcept';
 import MapConcept from '../../../../components/concepts/MapConcept';
+import { Alert } from '@mui/material';
+import Link from 'next/link';
 
 const allNavItems = ["Arrays", "Sets", "Maps"];
 
@@ -38,9 +40,9 @@ export default function JavaScriptPage() {
       case 'arrays':
         return <ArrayConcept />;
       case 'maps':
-        return <MapConcept/>;
+        return <MapConcept />;
       case 'sets':
-        return <SetConcept/>;
+        return <SetConcept />;
       case 'conditionals':
         return <p className="concept-block">Use <code>if</code>, <code>else</code>, and <code>switch</code> to control flow based on logic.</p>;
       default:
@@ -55,25 +57,29 @@ export default function JavaScriptPage() {
         items={filteredItems}
         onSelect={handleSelectConcept}
       />
+      <div>
+        <Alert severity="info" className="feedback-banner" sx={{ mb: 3 }}>
+          Have ideas to improve this page?{' '}
+          <Link
+            href="https://your-feedback-form-link.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link"
+          >
+              Submit feedback here.
+          </Link>
+        </Alert>
+        <section className="js-content">
+          <h1 className="js-page-title">JavaScript Visualizer</h1>
+          <p className="js-page-subtitle">
+            Visualize how core JavaScript programming concepts behave.
+          </p>
+          <div style={{ marginTop: '40px' }}>
+            {renderContent(selectedConcept)}
+          </div>
+        </section>
+      </div>
 
-      <section className="js-content">
-        <h1 className="js-page-title">JavaScript Visualizer</h1>
-        <p className="js-page-subtitle">
-          Visualize how core JavaScript programming concepts behave.
-        </p>
-
-        {/* <input
-          type="text"
-          placeholder="Search concepts..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="search-input"
-        /> */}
-
-        <div style={{ marginTop: '40px' }}>
-          {renderContent(selectedConcept)}
-        </div>
-      </section>
     </main>
   );
 }
