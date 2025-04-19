@@ -85,30 +85,24 @@ export default function SetConcept() {
 
             {output && <p className="set-output">{output}</p>}
 
+
             <Snackbar
                 open={showDuplicateWarning}
                 autoHideDuration={4000}
                 onClose={() => setShowDuplicateWarning(false)}
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
             >
-                <Snackbar
-                    open={showDuplicateWarning}
-                    autoHideDuration={4000}
+                <Alert
+                    severity="warning"
+                    variant="filled"
                     onClose={() => setShowDuplicateWarning(false)}
-                    anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                 >
-                    <Alert
-                        severity="warning"
-                        variant="filled"
-                        onClose={() => setShowDuplicateWarning(false)}
-                    >
-                        {duplicateValue !== null
-                            ? `The value ${duplicateValue} already exists in the Set and was not added.`
-                            : 'This value already exists in the Set.'}
-                    </Alert>
-                </Snackbar>
-
+                    {duplicateValue !== null
+                        ? `The value ${duplicateValue} already exists in the set and was not added.`
+                        : 'This value already exists in the set.'}
+                </Alert>
             </Snackbar>
+
         </div>
     );
 }
