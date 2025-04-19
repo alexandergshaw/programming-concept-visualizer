@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import Sidebar from '../../../../components/Sidebar';
 import ArrayConcept from '../../../../components/concepts/ArrayConcept';
 
-const allNavItems = ["Arrays", "Objects", "Loops", "Functions", "Conditionals"];
+const allNavItems = ["Arrays"];
 
 export default function JavaScriptPage() {
   const router = useRouter();
@@ -35,9 +35,9 @@ export default function JavaScriptPage() {
     switch (concept.toLowerCase()) {
       case 'arrays':
         return <ArrayConcept />;
-      case 'objects':
+      case 'maps':
         return <p className="concept-block">JavaScript objects store key-value pairs and represent structured data.</p>;
-      case 'loops':
+      case 'sets':
         return <p className="concept-block">Loops include <code>for</code>, <code>while</code>, and <code>forEach</code> for repeating operations.</p>;
       case 'conditionals':
         return <p className="concept-block">Use <code>if</code>, <code>else</code>, and <code>switch</code> to control flow based on logic.</p>;
