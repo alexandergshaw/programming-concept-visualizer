@@ -140,7 +140,7 @@ export default function ArrayConcept() {
           Run
         </Button>
 
-        <Button
+        {/* <Button
           variant="outlined"
           color="secondary"
           onClick={() => {
@@ -151,7 +151,7 @@ export default function ArrayConcept() {
           }}
         >
           Reset Array
-        </Button>
+        </Button> */}
       </div>
 
       <div className="array-box">

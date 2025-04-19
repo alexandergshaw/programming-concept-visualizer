@@ -5,8 +5,9 @@ import { useEffect, useState } from 'react';
 import Sidebar from '../../../../components/Sidebar';
 import ArrayConcept from '../../../../components/concepts/ArrayConcept';
 import SetConcept from '../../../../components/concepts/SetConcept';
+import MapConcept from '../../../../components/concepts/MapConcept';
 
-const allNavItems = ["Arrays", "Sets"];
+const allNavItems = ["Arrays", "Sets", "Maps"];
 
 export default function JavaScriptPage() {
   const router = useRouter();
@@ -37,7 +38,7 @@ export default function JavaScriptPage() {
       case 'arrays':
         return <ArrayConcept />;
       case 'maps':
-        return <p className="concept-block">JavaScript objects store key-value pairs and represent structured data.</p>;
+        return <MapConcept/>;
       case 'sets':
         return <SetConcept/>;
       case 'conditionals':
@@ -50,7 +51,7 @@ export default function JavaScriptPage() {
   return (
     <main className="js-layout">
       <Sidebar
-        title="JavaScript"
+        title="Topics"
         items={filteredItems}
         onSelect={handleSelectConcept}
       />

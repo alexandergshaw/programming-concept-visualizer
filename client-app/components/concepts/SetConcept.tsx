@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import Tooltip from '@mui/material/Tooltip';
 import '../../styles/set.css';
 
 export default function SetConcept() {
@@ -68,11 +69,21 @@ export default function SetConcept() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                 />
+                <Tooltip title="Add a value to the Set (duplicates not allowed)">
+                    <Button variant="contained" onClick={handleAdd}>Add</Button>
+                </Tooltip>
 
-                <Button variant="contained" onClick={handleAdd}>Add</Button>
-                <Button variant="outlined" onClick={handleDelete}>Delete</Button>
-                <Button variant="outlined" onClick={handleHas}>Has</Button>
-                <Button variant="outlined" color="error" onClick={handleClear}>Clear</Button>
+                <Tooltip title="Remove a value from the Set">
+                    <Button variant="outlined" onClick={handleDelete}>Delete</Button>
+                </Tooltip>
+
+                <Tooltip title="Check if a value exists in the Set">
+                    <Button variant="outlined" onClick={handleHas}>Has</Button>
+                </Tooltip>
+
+                <Tooltip title="Remove all values from the Set">
+                    <Button variant="outlined" color="error" onClick={handleClear}>Clear</Button>
+                </Tooltip>
             </div>
 
             <div className="set-box">
