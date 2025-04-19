@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import '../../styles/array.css';
 
 const OPERATIONS = [
   'push',
@@ -91,12 +93,11 @@ export default function ArrayConcept() {
     <div className="array-container">
       <h2 className="array-title">JavaScript Arrays</h2>
       <p className="array-description">
-        Select an array operation and see how it affects the data structure.
+        Select an array operation and see how it affects the structure.
       </p>
-
       <p className="array-description-secondary">{getDescription(operation)}</p>
 
-      <div className="array-controls" style={{ flexWrap: 'wrap' }}>
+      <div className="array-controls">
         <Autocomplete
           value={operation}
           onChange={(e, newVal) => {
@@ -116,24 +117,41 @@ export default function ArrayConcept() {
           operation === 'lastIndexOf' ||
           operation === 'includes' ||
           operation === 'splice') && (
-          <input
+          <TextField
+            label="Value"
             type="number"
-            placeholder="Value"
+            size="small"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
           />
         )}
 
         {(operation === 'splice' || operation === 'slice') && (
-          <input
+          <TextField
+            label="Index"
             type="number"
-            placeholder="Index"
+            size="small"
             value={indexValue}
             onChange={(e) => setIndexValue(e.target.value)}
           />
         )}
 
-        <button onClick={runOperation}>Run</button>
+        <Button variant="contained" onClick={runOperation}>
+          Run
+        </Button>
+
+        <Button
+          variant="outlined"
+          color="secondary"
+          onClick={() => {
+            setArr([1, 2, 3]);
+            setOutput(null);
+            setInputValue('');
+            setIndexValue('');
+          }}
+        >
+          Reset Array
+        </Button>
       </div>
 
       <div className="array-box">
