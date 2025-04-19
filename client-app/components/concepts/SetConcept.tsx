@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Tooltip from '@mui/material/Tooltip';
@@ -11,9 +11,20 @@ export default function SetConcept({
 }: {
   onCodeChange?: (code: string) => void;
 }) {
+  const [rawInput, setRawInput] = useState('1, 2, 3');
   const [setValues, setSetValues] = useState<Set<number>>(new Set([1, 2, 3]));
   const [input, setInput] = useState('');
   const [output, setOutput] = useState<string | null>(null);
+
+  useEffect(() => {
+    const parsed = rawInput
+      .split(',')
+      .map((s) => parseInt(s.trim()))
+      .filter((n) => !isNaN(n));
+    const newSet = new Set(parsed);
+    setSetValues(newSet);
+    onCodeChange?.(`let set = new Set([${[...newSet].join(', ')}]);`);
+  }, [rawInput]);
 
   const updateCodePreview = (actionCode: string) => {
     const values = [...setValues];
@@ -64,6 +75,7 @@ export default function SetConcept({
 
   const handleReset = () => {
     const base = new Set([1, 2, 3]);
+    setRawInput('1, 2, 3');
     setSetValues(base);
     setInput('');
     setOutput(null);
@@ -76,6 +88,16 @@ export default function SetConcept({
       <p className="set-description">
         A <code>Set</code> stores unique values. You can add, remove, or check for existence.
       </p>
+
+      <TextField
+        label="Define your set (comma-separated)"
+        variant="outlined"
+        size="small"
+        fullWidth
+        value={rawInput}
+        onChange={(e) => setRawInput(e.target.value)}
+        sx={{ marginBottom: 2 }}
+      />
 
       <div className="set-controls">
         <TextField
