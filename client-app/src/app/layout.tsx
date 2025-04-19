@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Concept Visualizer",
+  title: "Visualizer",
 };
 
 export default function RootLayout({

@@ -15,10 +15,14 @@ const OPERATIONS = [
   'indexOf',
   'lastIndexOf',
   'includes',
-  'update / modify',
+  'update',
 ];
 
-export default function ArrayConcept() {
+export default function ArrayConcept({
+  onCodeChange,
+}: {
+  onCodeChange?: (code: string) => void;
+}) {
   const [arr, setArr] = useState<number[]>([1, 2, 3]);
   const [operation, setOperation] = useState('push');
   const [inputValue, setInputValue] = useState('');
@@ -32,55 +36,79 @@ export default function ArrayConcept() {
 
     const numInput = parseInt(inputValue);
     const numIndex = parseInt(indexValue);
+    const original = [...arr]
+    let copy = [...arr];
 
     switch (operation) {
       case 'push':
-        if (!isNaN(numInput)) setArr([...arr, numInput]);
+        if (!isNaN(numInput)) {
+          copy.push(numInput);
+          setArr(copy);
+          onCodeChange?.(`let array = [${original.join(', ')}];\narray.push(${numInput});`);
+        }
         break;
+
       case 'pop':
-        setArr(arr.slice(0, -1));
+        copy.pop();
+        setArr(copy);
+        onCodeChange?.(`let array = [${original.join(', ')}];\narray.pop();`);
         break;
+
       case 'unshift':
-        if (!isNaN(numInput)) setArr([numInput, ...arr]);
+        if (!isNaN(numInput)) {
+          copy = [numInput, ...copy];
+          setArr(copy);
+          onCodeChange?.(`let array = [${original.join(', ')}];\narray.unshift(${numInput});`);
+        }
         break;
+
       case 'splice':
         if (!isNaN(numIndex) && !isNaN(numInput)) {
-          const copy = [...arr];
           copy.splice(numIndex, 0, numInput);
           setArr(copy);
+          onCodeChange?.(`let array = [${original.join(', ')}];\narray.splice(${numIndex}, 0, ${numInput});`);
         }
         break;
+
       case 'slice':
         if (!isNaN(numIndex)) {
-          const sliced = arr.slice(0, numIndex);
+          const sliced = copy.slice(0, numIndex);
           setOutput(`Sliced: [${sliced.join(', ')}]`);
+          onCodeChange?.(`let array = [${original.join(', ')}];\narray.slice(0, ${numIndex});`);
         }
         break;
+
       case 'indexOf':
         if (!isNaN(numInput)) {
-          const idx = arr.indexOf(numInput);
+          const idx = copy.indexOf(numInput);
           setOutput(`indexOf(${numInput}) → ${idx}`);
+          onCodeChange?.(`let array = [${original.join(', ')}];\narray.indexOf(${numInput});`);
         }
         break;
+
       case 'lastIndexOf':
         if (!isNaN(numInput)) {
-          const idx = arr.lastIndexOf(numInput);
+          const idx = copy.lastIndexOf(numInput);
           setOutput(`lastIndexOf(${numInput}) → ${idx}`);
+          onCodeChange?.(`let array = [${original.join(', ')}];\narray.lastIndexOf(${numInput});`);
         }
         break;
+
       case 'includes':
         if (!isNaN(numInput)) {
-          const exists = arr.includes(numInput);
+          const exists = copy.includes(numInput);
           setOutput(`includes(${numInput}) → ${exists}`);
+          onCodeChange?.(`let array = [${original.join(', ')}];\narray.includes(${numInput});`);
         }
         break;
+
       case 'update':
         if (!isNaN(numIndex) && !isNaN(numInput)) {
-          if (numIndex >= 0 && numIndex < arr.length) {
-            const copy = [...arr];
+          if (numIndex >= 0 && numIndex < copy.length) {
             copy[numIndex] = numInput;
             setArr(copy);
             setOutput(`Updated index ${numIndex} to ${numInput}`);
+            onCodeChange?.(`let array = [${original.join(', ')}];\narray[${numIndex}] = ${numInput};`);
           } else {
             setOutput(`Index ${numIndex} is out of bounds`);
           }
@@ -99,7 +127,7 @@ export default function ArrayConcept() {
       case 'indexOf': return 'Finds the first index of a value.';
       case 'lastIndexOf': return 'Finds the last index of a value.';
       case 'includes': return 'Checks if a value exists in the array.';
-      case 'update / modify': return 'Changes the value at a specific index.';
+      case 'update': return 'Changes the value at a specific index.';
       default: return '';
     }
   };
@@ -124,7 +152,7 @@ export default function ArrayConcept() {
           sx={{ minWidth: 200 }}
         />
 
-        {['splice', 'slice', 'update / modify'].includes(operation) && (
+        {['splice', 'slice', 'update'].includes(operation) && (
           <TextField
             label="Index"
             type="number"
@@ -134,7 +162,7 @@ export default function ArrayConcept() {
           />
         )}
 
-        {['push', 'unshift', 'indexOf', 'lastIndexOf', 'includes', 'splice', 'update / modify'].includes(operation) && (
+        {['push', 'unshift', 'indexOf', 'lastIndexOf', 'includes', 'splice', 'update'].includes(operation) && (
           <TextField
             label="Value"
             type="number"
@@ -150,10 +178,12 @@ export default function ArrayConcept() {
           variant="outlined"
           color="secondary"
           onClick={() => {
-            setArr([1, 2, 3]);
+            const base = [1, 2, 3];
+            setArr(base);
             setOutput(null);
             setInputValue('');
             setIndexValue('');
+            onCodeChange?.(`let array = [${base.join(', ')}];`);
           }}
         >
           Reset Array

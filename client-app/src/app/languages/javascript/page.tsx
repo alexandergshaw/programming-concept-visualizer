@@ -9,13 +9,24 @@ import MapConcept from '../../../../components/concepts/MapConcept';
 import { Alert } from '@mui/material';
 import Link from 'next/link';
 
-const allNavItems = ["Arrays", "Sets", "Maps"];
+const navItems = [
+  {
+    label: 'Collections',
+    value: 'collections',
+    children: [
+      { label: 'Arrays', value: 'arrays' },
+      { label: 'Sets', value: 'sets' },
+      { label: 'Maps', value: 'maps' },
+    ],
+  },
+];
 
 export default function JavaScriptPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [searchTerm, setSearchTerm] = useState('');
   const [selectedConcept, setSelectedConcept] = useState<string | null>(null);
+  const [codeSnippet, setCodeSnippet] = useState<string | null>(null);
+
 
   useEffect(() => {
     const conceptFromUrl = searchParams.get('concept');
@@ -24,25 +35,20 @@ export default function JavaScriptPage() {
     }
   }, [searchParams]);
 
-  const handleSelectConcept = (concept: string) => {
-    router.push(`/languages/javascript?concept=${encodeURIComponent(concept.toLowerCase())}`);
-    setSelectedConcept(concept);
-  };
-
-  const filteredItems = allNavItems.filter(item =>
-    item.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  useEffect(() => {
+    setCodeSnippet('')
+  }, [selectedConcept])
 
   const renderContent = (concept: string | null) => {
     if (!concept) return null;
 
     switch (concept.toLowerCase()) {
       case 'arrays':
-        return <ArrayConcept />;
+        return <ArrayConcept onCodeChange={setCodeSnippet} />;
       case 'maps':
-        return <MapConcept />;
+        return <MapConcept  onCodeChange={setCodeSnippet} />;
       case 'sets':
-        return <SetConcept />;
+        return <SetConcept onCodeChange={setCodeSnippet} />;
       case 'conditionals':
         return <p className="concept-block">Use <code>if</code>, <code>else</code>, and <code>switch</code> to control flow based on logic.</p>;
       default:
@@ -50,13 +56,14 @@ export default function JavaScriptPage() {
     }
   };
 
+  const handleSelect = (value: string) => {
+    router.push(`/languages/javascript?concept=${value}`);
+    setSelectedConcept(value);
+  };
+
   return (
     <main className="js-layout">
-      <Sidebar
-        title="Topics"
-        items={filteredItems}
-        onSelect={handleSelectConcept}
-      />
+      <Sidebar title="Topics" items={navItems} onSelect={handleSelect} />
       <div className="js-page-body">
         <Alert severity="info" className="feedback-banner" sx={{ mb: 3 }}>
           Have ideas to improve this page?{' '}
@@ -66,17 +73,24 @@ export default function JavaScriptPage() {
             rel="noopener noreferrer"
             className="link"
           >
-              Submit feedback here.
+            Submit feedback here.
           </Link>
         </Alert>
         <section className="js-content">
           <h1 className="js-page-title">JavaScript Visualizer</h1>
-          <p className="js-page-subtitle">
-            Visualize how core JavaScript programming concepts behave.
-          </p>
           <div style={{ marginTop: '40px' }}>
             {renderContent(selectedConcept)}
           </div>
+          {codeSnippet && (
+            <div className="js-code-preview">
+              <div className="code-preview-header">
+                <h3>JavaScript Code</h3>
+              </div>
+              <pre>
+                <code>{codeSnippet}</code>
+              </pre>
+            </div>
+          )}
         </section>
       </div>
 

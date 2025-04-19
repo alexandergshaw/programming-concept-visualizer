@@ -1,11 +1,18 @@
-// components/Sidebar.tsx
-import React from "react";
-import "../styles/javascript.css";
+'use client';
+
+import React from 'react';
+import '../styles/javascript.css';
+
+interface SidebarItem {
+  label: string;
+  value: string;
+  children?: SidebarItem[];
+}
 
 interface SidebarProps {
   title: string;
-  items: string[];
-  onSelect?: (item: string) => void;
+  items: SidebarItem[];
+  onSelect?: (value: string) => void;
 }
 
 export default function Sidebar({ title, items, onSelect }: SidebarProps) {
@@ -14,12 +21,26 @@ export default function Sidebar({ title, items, onSelect }: SidebarProps) {
       <h2 className="js-sidebar-title">{title}</h2>
       <ul className="js-nav-list">
         {items.map((item, index) => (
-          <li
-            key={index}
-            className="js-nav-item hoverable"
-            onClick={() => onSelect?.(item)}
-          >
-            <span className="js-nav-text">{item}</span>
+          <li key={index}>
+            <div
+              className="js-nav-item hoverable"
+            >
+              <span className="js-nav-text">{item.label}</span>
+            </div>
+
+            {item.children && (
+              <ul className="js-sublist">
+                {item.children.map((subItem, subIndex) => (
+                  <li
+                    key={subIndex}
+                    className="js-nav-subitem hoverable"
+                    onClick={() => onSelect?.(subItem.value)}
+                  >
+                    <span className="js-nav-text">{subItem.label}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
           </li>
         ))}
       </ul>
