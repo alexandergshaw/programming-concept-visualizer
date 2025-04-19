@@ -6,6 +6,10 @@
   overflow: hidden;
 }
 
+.js-page-body {
+  width: 100%;
+}
+
 .link {
   color: rgb(0, 0, 255)
 }
