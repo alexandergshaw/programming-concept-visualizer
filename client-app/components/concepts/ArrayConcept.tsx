@@ -91,7 +91,7 @@ export default function ArrayConcept() {
 
   return (
     <div className="array-container">
-      <h2 className="array-title">JavaScript Arrays</h2>
+      <h2 className="array-title">JavaScript Array</h2>
       <p className="array-description">
         Select an array operation and see how it affects the structure.
       </p>

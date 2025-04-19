@@ -4,8 +4,9 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Sidebar from '../../../../components/Sidebar';
 import ArrayConcept from '../../../../components/concepts/ArrayConcept';
+import SetConcept from '../../../../components/concepts/SetConcept';
 
-const allNavItems = ["Arrays"];
+const allNavItems = ["Arrays", "Sets"];
 
 export default function JavaScriptPage() {
   const router = useRouter();
@@ -38,7 +39,7 @@ export default function JavaScriptPage() {
       case 'maps':
         return <p className="concept-block">JavaScript objects store key-value pairs and represent structured data.</p>;
       case 'sets':
-        return <p className="concept-block">Loops include <code>for</code>, <code>while</code>, and <code>forEach</code> for repeating operations.</p>;
+        return <SetConcept/>;
       case 'conditionals':
         return <p className="concept-block">Use <code>if</code>, <code>else</code>, and <code>switch</code> to control flow based on logic.</p>;
       default:
@@ -60,13 +61,13 @@ export default function JavaScriptPage() {
           Visualize how core JavaScript programming concepts behave.
         </p>
 
-        <input
+        {/* <input
           type="text"
           placeholder="Search concepts..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="search-input"
-        />
+        /> */}
 
         <div style={{ marginTop: '40px' }}>
           {renderContent(selectedConcept)}
