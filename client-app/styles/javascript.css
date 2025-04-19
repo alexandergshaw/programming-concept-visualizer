@@ -27,7 +27,7 @@
 
 .js-content {
   flex-grow: 1;
-  padding: 60px;
+  padding: 0 60px;
   overflow-x: hidden;
 }
 
