@@ -145,9 +145,9 @@ export default function ArrayConcept({
 
   return (
     <div className="array-container">
-      <h2 className="array-title">JavaScript Arrays</h2>
+      <h2 className="array-title">Array</h2>
       <p className="map-description">
-        <code>Arrays</code> are ordered lists that store values in a numbered sequence.
+        An <code>array</code> is an ordered lists that store values in a numbered sequence.
       </p>
 
       <TextField
@@ -172,15 +172,6 @@ export default function ArrayConcept({
           sx={{ minWidth: 200 }}
         />
 
-        <TextField
-          label="Operation Description"
-          value={getDescription(operation)}
-          size="small"
-          fullWidth
-          disabled
-          sx={{ marginTop: 1, marginBottom: 2 }}
-        />
-
         {['splice', 'slice', 'update'].includes(operation) && (
           <TextField
             label="Index"
@@ -200,6 +191,17 @@ export default function ArrayConcept({
             onChange={(e) => setInputValue(e.target.value)}
           />
         )}
+
+        <TextField
+          label="Operation Description"
+          value={getDescription(operation)}
+          size="small"
+          fullWidth
+          disabled
+          sx={{ marginTop: 1, marginBottom: 2 }}
+        />
+
+
 
         <Button variant="contained" onClick={runOperation}>Run</Button>
       </div>

@@ -118,7 +118,7 @@ export default function MapConcept({
 
   return (
     <div className="map-container">
-      <h2 className="map-title">JavaScript Map</h2>
+      <h2 className="map-title">Map</h2>
       <p className="map-description">
         A <code>Map</code> stores key-value pairs. Keys can be any type.
       </p>
@@ -142,15 +142,6 @@ export default function MapConcept({
           sx={{ minWidth: 200 }}
         />
 
-        <TextField
-          label="Operation Description"
-          value={getDescription(selectedOp)}
-          size="small"
-          fullWidth
-          sx={{ marginTop: 1, marginBottom: 2 }}
-          disabled
-        />
-
         {selectedOp !== 'clear' && (
           <TextField
             label="Key"
@@ -168,6 +159,15 @@ export default function MapConcept({
             onChange={(e) => setValueInput(e.target.value)}
           />
         )}
+
+        <TextField
+          label="Operation Description"
+          value={getDescription(selectedOp)}
+          size="small"
+          fullWidth
+          sx={{ marginTop: 1, marginBottom: 2 }}
+          disabled
+        />
 
         <Tooltip title={`Execute the ${selectedOp} operation`}>
           <Button variant="contained" onClick={runOperation}>

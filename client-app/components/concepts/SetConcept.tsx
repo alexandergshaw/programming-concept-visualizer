@@ -115,7 +115,7 @@ export default function SetConcept({
 
   return (
     <div className="set-container">
-      <h2 className="set-title">JavaScript Set</h2>
+      <h2 className="set-title">Set</h2>
       <p className="set-description">
         A <code>Set</code> stores unique values. You can add, remove, or check for existence.
       </p>
@@ -127,7 +127,7 @@ export default function SetConcept({
         fullWidth
         value={rawInput}
         onChange={(e) => setRawInput(e.target.value)}
-        sx={{ marginBottom: 1 }}
+        sx={{ marginBottom: 2 }}
       />
 
       {duplicateWarning && (
@@ -148,15 +148,6 @@ export default function SetConcept({
           sx={{ minWidth: 200 }}
         />
 
-        <TextField
-          label="Operation Description"
-          value={getDescription(operation)}
-          size="small"
-          fullWidth
-          disabled
-          sx={{ marginTop: 1, marginBottom: 2 }}
-        />
-
         {operation !== 'clear' && (
           <TextField
             label="Value"
@@ -166,6 +157,15 @@ export default function SetConcept({
             onChange={(e) => setInput(e.target.value)}
           />
         )}
+
+        <TextField
+          label="Operation Description"
+          value={getDescription(operation)}
+          size="small"
+          fullWidth
+          disabled
+          sx={{ marginTop: 1, marginBottom: 2 }}
+        />
 
         <Tooltip title={`Execute the ${operation} operation`}>
           <Button variant="contained" onClick={runOperation}>
