@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -23,11 +23,22 @@ export default function ArrayConcept({
 }: {
   onCodeChange?: (code: string) => void;
 }) {
+  const [rawInput, setRawInput] = useState('1, 2, 3');
   const [arr, setArr] = useState<number[]>([1, 2, 3]);
   const [operation, setOperation] = useState('push');
   const [inputValue, setInputValue] = useState('');
   const [indexValue, setIndexValue] = useState('');
   const [output, setOutput] = useState<string | null>(null);
+
+  // Parse and apply custom array input live
+  useEffect(() => {
+    const parsed = rawInput
+      .split(',')
+      .map((s) => parseInt(s.trim()))
+      .filter((n) => !isNaN(n));
+    setArr(parsed);
+    onCodeChange?.(`let array = [${parsed.join(', ')}];`);
+  }, [rawInput]);
 
   const resetOutput = () => setOutput(null);
 
@@ -36,7 +47,7 @@ export default function ArrayConcept({
 
     const numInput = parseInt(inputValue);
     const numIndex = parseInt(indexValue);
-    const original = [...arr]
+    const original = [...arr];
     let copy = [...arr];
 
     switch (operation) {
@@ -135,10 +146,15 @@ export default function ArrayConcept({
   return (
     <div className="array-container">
       <h2 className="array-title">JavaScript Arrays</h2>
-      <p className="array-description">
-        Select an array operation and see how it affects the structure.
-      </p>
-      <p className="array-description-secondary">{getDescription(operation)}</p>
+      <TextField
+        label="Define your array (comma-separated)"
+        variant="outlined"
+        size="small"
+        fullWidth
+        value={rawInput}
+        onChange={(e) => setRawInput(e.target.value)}
+        sx={{ marginBottom: 2 }}
+      />
 
       <div className="array-controls">
         <Autocomplete
@@ -151,6 +167,7 @@ export default function ArrayConcept({
           renderInput={(params) => <TextField {...params} label="Choose operation" size="small" />}
           sx={{ minWidth: 200 }}
         />
+        {/* <p className="array-description-secondary">{getDescription(operation)}</p> */}
 
         {['splice', 'slice', 'update'].includes(operation) && (
           <TextField
@@ -179,11 +196,10 @@ export default function ArrayConcept({
           color="secondary"
           onClick={() => {
             const base = [1, 2, 3];
-            setArr(base);
+            setRawInput(base.join(', '));
             setOutput(null);
             setInputValue('');
             setIndexValue('');
-            onCodeChange?.(`let array = [${base.join(', ')}];`);
           }}
         >
           Reset Array

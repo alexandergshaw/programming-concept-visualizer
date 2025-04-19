@@ -61,6 +61,19 @@ export default function JavaScriptPage() {
     setSelectedConcept(value);
   };
 
+  const renderCodePreview = () => {
+    return (
+      <div className="js-code-preview">
+        <div className="code-preview-header">
+          <h3>JavaScript Code</h3>
+        </div>
+        <pre>
+          <code>{codeSnippet}</code>
+        </pre>
+      </div>
+    )
+  }
+
   return (
     <main className="js-layout">
       <Sidebar title="Topics" items={navItems} onSelect={handleSelect} />
@@ -80,17 +93,8 @@ export default function JavaScriptPage() {
           <h1 className="js-page-title">JavaScript Visualizer</h1>
           <div style={{ marginTop: '40px' }}>
             {renderContent(selectedConcept)}
+            {codeSnippet && renderCodePreview()}
           </div>
-          {codeSnippet && (
-            <div className="js-code-preview">
-              <div className="code-preview-header">
-                <h3>JavaScript Code</h3>
-              </div>
-              <pre>
-                <code>{codeSnippet}</code>
-              </pre>
-            </div>
-          )}
         </section>
       </div>
 
