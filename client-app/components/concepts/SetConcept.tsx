@@ -58,7 +58,7 @@ export default function SetConcept() {
         <div className="set-container">
             <h2 className="set-title">JavaScript Set</h2>
             <p className="set-description">
-                A <code>Set</code> stores unique values. You can add, remove, or check for existence.
+                Sets store unique values with no duplicates. They maintain insertion order but don’t use indexes like arrays.
             </p>
 
             <div className="set-controls">

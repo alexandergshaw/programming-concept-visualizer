@@ -93,7 +93,7 @@ export default function ArrayConcept() {
     <div className="array-container">
       <h2 className="array-title">JavaScript Array</h2>
       <p className="array-description">
-        Select an array operation and see how it affects the structure.
+        Arrays are ordered lists that store values in a numbered sequence.
       </p>
       <p className="array-description-secondary">{getDescription(operation)}</p>
 
@@ -117,14 +117,14 @@ export default function ArrayConcept() {
           operation === 'lastIndexOf' ||
           operation === 'includes' ||
           operation === 'splice') && (
-          <TextField
-            label="Value"
-            type="number"
-            size="small"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-          />
-        )}
+            <TextField
+              label="Value"
+              type="number"
+              size="small"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+            />
+          )}
 
         {(operation === 'splice' || operation === 'slice') && (
           <TextField
