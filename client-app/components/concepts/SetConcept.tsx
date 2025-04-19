@@ -4,7 +4,10 @@ import { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Tooltip from '@mui/material/Tooltip';
+import Autocomplete from '@mui/material/Autocomplete';
 import '../../styles/set.css';
+
+const OPERATIONS = ['add', 'delete', 'has', 'clear'];
 
 export default function SetConcept({
   onCodeChange,
@@ -14,13 +17,31 @@ export default function SetConcept({
   const [rawInput, setRawInput] = useState('1, 2, 3');
   const [setValues, setSetValues] = useState<Set<number>>(new Set([1, 2, 3]));
   const [input, setInput] = useState('');
+  const [operation, setOperation] = useState('add');
   const [output, setOutput] = useState<string | null>(null);
+  const [duplicateWarning, setDuplicateWarning] = useState<string | null>(null);
 
   useEffect(() => {
     const parsed = rawInput
       .split(',')
       .map((s) => parseInt(s.trim()))
       .filter((n) => !isNaN(n));
+
+    const seen = new Set<number>();
+    const duplicates = parsed.filter((n) => {
+      if (seen.has(n)) return true;
+      seen.add(n);
+      return false;
+    });
+
+    if (duplicates.length > 0) {
+      setDuplicateWarning(
+        `Warning: Duplicate value${duplicates.length > 1 ? 's' : ''} detected: ${[...new Set(duplicates)].join(', ')}`
+      );
+    } else {
+      setDuplicateWarning(null);
+    }
+
     const newSet = new Set(parsed);
     setSetValues(newSet);
     onCodeChange?.(`let set = new Set([${[...newSet].join(', ')}]);`);
@@ -32,45 +53,43 @@ export default function SetConcept({
     onCodeChange?.(`let set = ${setLiteral};\n${actionCode}`);
   };
 
-  const handleAdd = () => {
+  const runOperation = () => {
     const val = parseInt(input);
-    if (!isNaN(val)) {
-      if (setValues.has(val)) {
-        setOutput(`The value ${val} already exists in the Set and was not added.`);
-        return;
-      }
-      const newSet = new Set(setValues);
-      newSet.add(val);
-      setSetValues(newSet);
-      setOutput(null);
-      updateCodePreview(`set.add(${val});`);
-    }
-  };
+    if (isNaN(val) && operation !== 'clear') return;
 
-  const handleDelete = () => {
-    const val = parseInt(input);
-    if (!isNaN(val)) {
-      const newSet = new Set(setValues);
-      const result = newSet.delete(val);
-      setSetValues(newSet);
-      setOutput(`delete(${val}) → ${result}`);
-      updateCodePreview(`set.delete(${val});`);
-    }
-  };
+    switch (operation) {
+      case 'add':
+        if (setValues.has(val)) {
+          setOutput(`The value ${val} already exists in the Set and was not added.`);
+          return;
+        }
+        const addSet = new Set(setValues);
+        addSet.add(val);
+        setSetValues(addSet);
+        setOutput(null);
+        updateCodePreview(`set.add(${val});`);
+        break;
 
-  const handleHas = () => {
-    const val = parseInt(input);
-    if (!isNaN(val)) {
-      const result = setValues.has(val);
-      setOutput(`has(${val}) → ${result}`);
-      updateCodePreview(`set.has(${val});`);
-    }
-  };
+      case 'delete':
+        const delSet = new Set(setValues);
+        const deleted = delSet.delete(val);
+        setSetValues(delSet);
+        setOutput(`delete(${val}) → ${deleted}`);
+        updateCodePreview(`set.delete(${val});`);
+        break;
 
-  const handleClear = () => {
-    setSetValues(new Set());
-    setOutput('Set cleared');
-    updateCodePreview(`set.clear();`);
+      case 'has':
+        const exists = setValues.has(val);
+        setOutput(`has(${val}) → ${exists}`);
+        updateCodePreview(`set.has(${val});`);
+        break;
+
+      case 'clear':
+        setSetValues(new Set());
+        setOutput('Set cleared');
+        updateCodePreview(`set.clear();`);
+        break;
+    }
   };
 
   const handleReset = () => {
@@ -79,7 +98,19 @@ export default function SetConcept({
     setSetValues(base);
     setInput('');
     setOutput(null);
+    setOperation('add');
+    setDuplicateWarning(null);
     updateCodePreview(`let set = new Set([1, 2, 3]);`);
+  };
+
+  const getDescription = (op: string): string => {
+    switch (op) {
+      case 'add': return 'Adds a value to the set (if it is not already present).';
+      case 'delete': return 'Removes a specific value from the set.';
+      case 'has': return 'Checks whether a value exists in the set.';
+      case 'clear': return 'Removes all values from the set.';
+      default: return '';
+    }
   };
 
   return (
@@ -96,35 +127,55 @@ export default function SetConcept({
         fullWidth
         value={rawInput}
         onChange={(e) => setRawInput(e.target.value)}
-        sx={{ marginBottom: 2 }}
+        sx={{ marginBottom: 1 }}
       />
 
+      {duplicateWarning && (
+        <p style={{ color: '#d32f2f', fontSize: '0.875rem', marginTop: 0, marginBottom: '1rem' }}>
+          {duplicateWarning}
+        </p>
+      )}
+
       <div className="set-controls">
-        <TextField
-          label="Value"
-          type="number"
-          size="small"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
+        <Autocomplete
+          options={OPERATIONS}
+          value={operation}
+          onChange={(e, newVal) => {
+            setOperation(newVal ?? 'add');
+            setOutput(null);
+          }}
+          renderInput={(params) => <TextField {...params} label="Choose operation" size="small" />}
+          sx={{ minWidth: 200 }}
         />
 
-        <Tooltip title="Add a value to the Set (duplicates not allowed)">
-          <Button variant="contained" onClick={handleAdd}>Add</Button>
+        <TextField
+          label="Operation Description"
+          value={getDescription(operation)}
+          size="small"
+          fullWidth
+          disabled
+          sx={{ marginTop: 1, marginBottom: 2 }}
+        />
+
+        {operation !== 'clear' && (
+          <TextField
+            label="Value"
+            type="number"
+            size="small"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+        )}
+
+        <Tooltip title={`Execute the ${operation} operation`}>
+          <Button variant="contained" onClick={runOperation}>
+            Run
+          </Button>
         </Tooltip>
 
-        <Tooltip title="Remove a value from the Set">
-          <Button variant="outlined" onClick={handleDelete}>Delete</Button>
-        </Tooltip>
-
-        <Tooltip title="Check if a value exists in the Set">
-          <Button variant="outlined" onClick={handleHas}>Has</Button>
-        </Tooltip>
-
-        <Tooltip title="Remove all values from the Set">
-          <Button variant="outlined" color="error" onClick={handleClear}>Clear</Button>
-        </Tooltip>
-
-        <Button variant="text" onClick={handleReset}>Reset</Button>
+        <Button variant="text" onClick={handleReset}>
+          Reset
+        </Button>
       </div>
 
       <div className="set-box">

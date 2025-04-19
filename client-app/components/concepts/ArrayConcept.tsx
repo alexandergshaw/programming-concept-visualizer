@@ -30,7 +30,7 @@ export default function ArrayConcept({
   const [indexValue, setIndexValue] = useState('');
   const [output, setOutput] = useState<string | null>(null);
 
-  // Parse and apply custom array input live
+  // Live-parse and apply array from raw input
   useEffect(() => {
     const parsed = rawInput
       .split(',')
@@ -146,6 +146,10 @@ export default function ArrayConcept({
   return (
     <div className="array-container">
       <h2 className="array-title">JavaScript Arrays</h2>
+      <p className="map-description">
+        <code>Arrays</code> are ordered lists that store values in a numbered sequence.
+      </p>
+
       <TextField
         label="Define your array (comma-separated)"
         variant="outlined"
@@ -167,7 +171,15 @@ export default function ArrayConcept({
           renderInput={(params) => <TextField {...params} label="Choose operation" size="small" />}
           sx={{ minWidth: 200 }}
         />
-        {/* <p className="array-description-secondary">{getDescription(operation)}</p> */}
+
+        <TextField
+          label="Operation Description"
+          value={getDescription(operation)}
+          size="small"
+          fullWidth
+          disabled
+          sx={{ marginTop: 1, marginBottom: 2 }}
+        />
 
         {['splice', 'slice', 'update'].includes(operation) && (
           <TextField
@@ -190,20 +202,6 @@ export default function ArrayConcept({
         )}
 
         <Button variant="contained" onClick={runOperation}>Run</Button>
-
-        <Button
-          variant="outlined"
-          color="secondary"
-          onClick={() => {
-            const base = [1, 2, 3];
-            setRawInput(base.join(', '));
-            setOutput(null);
-            setInputValue('');
-            setIndexValue('');
-          }}
-        >
-          Reset Array
-        </Button>
       </div>
 
       <div className="array-box">

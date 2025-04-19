@@ -21,7 +21,6 @@ export default function MapConcept({
   const [selectedOp, setSelectedOp] = useState('set');
   const [output, setOutput] = useState<string | null>(null);
 
-  // Parse raw input into map on change
   useEffect(() => {
     const entries = rawInput
       .split(',')
@@ -106,6 +105,17 @@ export default function MapConcept({
     }
   };
 
+  const getDescription = (op: string): string => {
+    switch (op) {
+      case 'set': return 'Adds or updates a key-value pair in the map.';
+      case 'get': return 'Retrieves the value associated with a key.';
+      case 'has': return 'Checks if a key exists in the map.';
+      case 'delete': return 'Removes a key and its value.';
+      case 'clear': return 'Removes all key-value pairs.';
+      default: return '';
+    }
+  };
+
   return (
     <div className="map-container">
       <h2 className="map-title">JavaScript Map</h2>
@@ -130,6 +140,15 @@ export default function MapConcept({
           onChange={(e, value) => setSelectedOp(value ?? 'set')}
           renderInput={(params) => <TextField {...params} label="Choose operation" size="small" />}
           sx={{ minWidth: 200 }}
+        />
+
+        <TextField
+          label="Operation Description"
+          value={getDescription(selectedOp)}
+          size="small"
+          fullWidth
+          sx={{ marginTop: 1, marginBottom: 2 }}
+          disabled
         />
 
         {selectedOp !== 'clear' && (
