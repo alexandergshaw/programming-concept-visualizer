@@ -147,7 +147,7 @@ export default function ArrayConcept({
     <div className="array-container">
       <h2 className="array-title">Array</h2>
       <p className="map-description">
-        An <code>array</code> is an ordered lists that store values in a numbered sequence.
+        An <code>array</code> is an ordered list that store values in a numbered sequence.
       </p>
 
       <TextField
