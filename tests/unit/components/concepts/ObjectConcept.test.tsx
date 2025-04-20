@@ -1,4 +1,63 @@
-import { generateObjectPreviewLines } from "../../../../components/concepts/ObjectConcept";
+import ObjectConcept, { generateObjectPreviewLines } from "../../../../components/concepts/ObjectConcept";
+import React from 'react';
+import { render, screen, fireEvent, within } from '@testing-library/react';
+import '@testing-library/jest-dom';
+
+// Helper: adds a new key-value pair
+const addObjectEntry = (label: string, value: string) => {
+  const keyInput = screen.getAllByLabelText('Key')[0];
+  const valueInput = screen.getAllByLabelText('Value (JS Expression)')[0];
+  fireEvent.change(keyInput, { target: { value: label } });
+  fireEvent.change(valueInput, { target: { value } });
+};
+
+describe('ObjectConcept component', () => {
+  it('renders all main sections', () => {
+    render(<ObjectConcept />);
+    expect(screen.getByText('What is an Object?')).toBeInTheDocument();
+    expect(screen.getByText('Using Object Properties')).toBeInTheDocument();
+    expect(screen.getByText('Object Destructuring')).toBeInTheDocument();
+  });
+
+  it('updates the preview section with entered properties', () => {
+    render(<ObjectConcept />);
+    addObjectEntry('age', '27');
+
+    expect(screen.getByText(/Object Preview:/)).toBeInTheDocument();
+    expect(screen.getAllByText(/age: 27/)).toBeTruthy();
+  });
+
+  it('includes all keys and values in access and destructure sections', () => {
+    render(<ObjectConcept />);
+    addObjectEntry('color', '"blue"');
+
+    const accessLines = screen.getByText(/console\.log\(obj\.color\)/);
+    const destructureLines = screen.getByText(/console\.log\(color\)/);
+
+    expect(accessLines).toBeInTheDocument();
+    expect(destructureLines).toBeInTheDocument();
+  });
+
+  it('adds a new property when "Add Property" is clicked', () => {
+    render(<ObjectConcept />);
+    const addButton = screen.getByRole('button', { name: 'Add Property' });
+    fireEvent.click(addButton);
+
+    const inputs = screen.getAllByLabelText('Key');
+    expect(inputs.length).toBeGreaterThan(1);
+  });
+
+  it('shows error message for invalid JS input', () => {
+    render(<ObjectConcept />);
+    const keyInput = screen.getAllByLabelText('Key')[0];
+    const valueInput = screen.getAllByLabelText('Value (JS Expression)')[0];
+    fireEvent.change(keyInput, { target: { value: 'bad' } });
+    fireEvent.change(valueInput, { target: { value: 'not-valid-js' } });
+
+    expect(screen.getByText(/Live object update failed/)).toBeInTheDocument();
+  });
+});
+
 
 describe('generateObjectPreviewLines', () => {
   const testObject = {
