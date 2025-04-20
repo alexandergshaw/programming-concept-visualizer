@@ -1,60 +1,195 @@
 'use client';
 
-import React, { useState } from 'react';
-import '../../styles/object.css';
+import { useState, useEffect } from 'react';
+import {
+  Box,
+  Typography,
+  Paper,
+  Button,
+  TextField,
+  Card,
+  CardContent,
+} from '@mui/material';
 
 export default function ObjectConcept() {
-  const [obj, setObj] = useState<{ [key: string]: string }>({
-    name: 'Alex',
-    role: 'Student',
-    language: 'JavaScript',
-  });
+  const [message, setMessage] = useState('');
+  const [playgroundObject, setPlaygroundObject] = useState<Record<string, any>>({});
+  const [destructuredOutput, setDestructuredOutput] = useState<string>('');
 
-  const [key, setKey] = useState('');
-  const [value, setValue] = useState('');
+  useEffect(() => {
+    if (!playgroundObject || Object.keys(playgroundObject).length === 0) {
+      setDestructuredOutput('No object defined.');
+      return;
+    }
 
-  const handleAdd = () => {
-    if (!key) return;
-    setObj(prev => ({ ...prev, [key]: value }));
-    setKey('');
-    setValue('');
+    const keys = Object.keys(playgroundObject);
+
+    const objLines = [
+      `// Declare an object with the following properties`,
+      `const obj = {`,
+      ...keys.map(k => {
+        const val = typeof playgroundObject[k] === 'function' ? '[Function]' : JSON.stringify(playgroundObject[k]);
+        return `  ${k}: ${val}, // ${typeof playgroundObject[k]}`;
+      }),
+      `};`,
+      ``,
+      `// Destructure values from the object`,
+      `const { ${keys.join(', ')} } = obj;`,
+      ``,
+      `// Log each destructured variable`,
+      ...keys.map(k => {
+        const val = typeof playgroundObject[k] === 'function' ? '[Function]' : JSON.stringify(playgroundObject[k]);
+        return `console.log(${k}); // ${val}`;
+      }),
+    ];
+
+    setDestructuredOutput(objLines.join('\n'));
+  }, [playgroundObject]);
+
+
+  class Animal {
+    name: string;
+    constructor(name: string) {
+      this.name = name;
+    }
+    speak() {
+      return `${this.name} makes a noise.`;
+    }
+  }
+
+  class Dog extends Animal {
+    speak() {
+      return `${this.name} barks.`;
+    }
+  }
+
+  const moveBehavior = {
+    move: () => 'Moving forward...',
+  };
+
+  const dogWithBehavior = {
+    name: 'ComposedDog',
+    ...moveBehavior,
   };
 
   return (
-    <div className="concept-container">
-      <h2>JavaScript Objects</h2>
-      <p>
-        An object is a collection of <strong>key-value pairs</strong>. Keys are strings (or Symbols),
-        and values can be anything.
-      </p>
+    <Box sx={{ maxWidth: 1100, mx: 'auto', p: 4 }}>
+      <Typography variant="h4" gutterBottom>
+        JavaScript Object Concepts
+      </Typography>
 
-      <div className="object-display">
-        <pre>{JSON.stringify(obj, null, 2)}</pre>
-      </div>
+      {/* Section: What is an Object? */}
+      <Paper sx={{ p: 3, mb: 4 }}>
+        <Typography variant="h6">What is an Object?</Typography>
+        <Typography sx={{ mb: 2 }}>
+          In JavaScript, an <strong>object</strong> is a collection of key-value pairs used to
+          store and structure data. Keys are called <em>properties</em>, and they can hold
+          values of any type — including functions (which become <em>methods</em>).
+        </Typography>
 
-      <div className="input-area">
-        <input
-          placeholder="key"
-          value={key}
-          onChange={e => setKey(e.target.value)}
-        />
-        <input
-          placeholder="value"
-          value={value}
-          onChange={e => setValue(e.target.value)}
-        />
-        <button onClick={handleAdd}>Add / Update</button>
-      </div>
+        <Typography sx={{ mb: 2 }}>
+          Try adding keys and values below. The object and destructuring code will update live.
+        </Typography>
 
-      <div className="object-visual">
-        {Object.entries(obj).map(([k, v]) => (
-          <div key={k} className="object-pair">
-            <div className="object-key">{k}</div>
-            <div className="object-arrow">→</div>
-            <div className="object-value">{v}</div>
-          </div>
-        ))}
-      </div>
-    </div>
+        <ObjectPlayground onObjectChange={setPlaygroundObject} />
+      </Paper>
+
+      {/* Section: Destructuring */}
+      <Paper sx={{ p: 3, mb: 4 }}>
+        <Typography variant="h6">Object Destructuring</Typography>
+        <Typography sx={{ mb: 2 }}>
+          This shows destructuring of the object above.
+        </Typography>
+
+        <Box
+          sx={{
+            mt: 2,
+            p: 2,
+            backgroundColor: '#f6f6f6',
+            fontFamily: 'monospace',
+            borderRadius: 1,
+            overflowX: 'auto',
+          }}
+        >
+          <pre>{destructuredOutput}</pre>
+        </Box>
+      </Paper>
+    </Box>
+  );
+}
+
+function ObjectPlayground({
+  onObjectChange,
+}: {
+  onObjectChange?: (obj: Record<string, any>) => void;
+}) {
+  const [entries, setEntries] = useState([{ key: 'name', value: '"Alex"' }]);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const result: Record<string, any> = {};
+    try {
+      for (const { key, value } of entries) {
+        if (!key.trim()) continue;
+        const val = eval(`(${value})`);
+        result[key] = val;
+      }
+      setError(null);
+      onObjectChange?.(result);
+    } catch {
+      setError('Live object update failed — check your syntax.');
+      onObjectChange?.({});
+    }
+  }, [entries]);
+
+  const handleKeyChange = (index: number, value: string) => {
+    const updated = [...entries];
+    updated[index].key = value;
+    setEntries(updated);
+  };
+
+  const handleValueChange = (index: number, value: string) => {
+    const updated = [...entries];
+    updated[index].value = value;
+    setEntries(updated);
+  };
+
+  const addEntry = () => {
+    setEntries([...entries, { key: '', value: '' }]);
+  };
+
+  return (
+    <Box>
+      {entries.map((entry, idx) => (
+        <Box key={idx} sx={{ display: 'flex', gap: 1, mb: 1 }}>
+          <TextField
+            label="Key"
+            value={entry.key}
+            onChange={(e) => handleKeyChange(idx, e.target.value)}
+            size="small"
+            sx={{ flex: 1 }}
+          />
+          <TextField
+            label="Value (JS Expression)"
+            value={entry.value}
+            onChange={(e) => handleValueChange(idx, e.target.value)}
+            size="small"
+            sx={{ flex: 2 }}
+          />
+        </Box>
+      ))}
+
+      <Box sx={{ display: 'flex', gap: 2, mt: 1 }}>
+        <Button variant="outlined" onClick={addEntry}>
+          Add Property
+        </Button>
+      </Box>
+
+      {error && (
+        <Typography color="error" sx={{ mt: 2 }}>
+          {error}
+        </Typography>
+      )}
+    </Box>
   );
 }
