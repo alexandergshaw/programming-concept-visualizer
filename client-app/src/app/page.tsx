@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-const languages = ["Python", "JavaScript", "TypeScript", "Java", "PHP"];
+const languages = ["JavaScript", "Python", "TypeScript", "SQL", "PHP", "HTML"];
 
 export default function LandingPage() {
   const [searchTerm, setSearchTerm] = useState('');
