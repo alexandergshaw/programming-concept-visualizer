@@ -2,10 +2,10 @@ name: Auto Merge Approved PRs
 
 on:
   schedule:
-    # Runs at 5:00 AM Central Time every Monday
-    # Central Time = UTC -5 (or -6 depending on DST)
-    # Adjust cron to UTC equivalent (11 AM UTC = 5 AM CT during DST)
-    - cron: '0 11 * * 1'
+    # Runs at 4:00 AM Central Time every day
+    # Central Time = UTC -4 (or -5 depending on DST)
+    # Adjust cron to UTC equivalent (10 AM UTC = 4 AM CT during DST)
+    - cron: '0 10 * * *'
   workflow_dispatch: # Allows manual run if needed
 
 jobs:
