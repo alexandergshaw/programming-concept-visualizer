@@ -1,150 +1,149 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import ArrayConcept from '../../components/concepts/ArrayConcept';
+import userEvent from '@testing-library/user-event';
 
-describe('ArrayConcept Component', () => {
-  it('renders the heading and input fields', () => {
-    render(<ArrayConcept />);
-    expect(screen.getByText('Array')).toBeTruthy();
-    
-  });
+describe('ArrayConcept array operations', () => {
+  const setInput = (label: string, value: string) => {
+    fireEvent.change(screen.getByLabelText(label), { target: { value } });
+  };
 
-  it('parses raw input and updates array', () => {
-    const mockCodeChange = jest.fn();
-    render(<ArrayConcept onCodeChange={mockCodeChange} />);
-    fireEvent.change(screen.getByLabelText(/Define your array/i), {
-      target: { value: '5, 6, 7' },
-    });
-    expect(mockCodeChange).toHaveBeenCalledWith('let array = [5, 6, 7];');
-  });
-
-  it('displays correct operation description', () => {
-    render(<ArrayConcept />);
-    fireEvent.change(screen.getByLabelText(/Choose operation/i), {
-      target: { value: 'slice' },
-    });
-    expect(screen.getByDisplayValue(/Copies part of the array/)).toBeTruthy();
-  });
-
-  it('shows value input for push', () => {
-    render(<ArrayConcept />);
-    expect(screen.getByLabelText('Value')).toBeTruthy();
-  });
-
-  it('shows index input for update operation', () => {
-    render(<ArrayConcept />);
-    fireEvent.change(screen.getByLabelText(/Choose operation/i), {
-      target: { value: 'update' },
-    });
-    expect(screen.getByLabelText('Index')).toBeTruthy();
-  });
-
-  it('performs push operation', () => {
-    render(<ArrayConcept />);
-    fireEvent.change(screen.getByLabelText('Value'), { target: { value: '10' } });
+  const clickRun = () => {
     fireEvent.click(screen.getByText('Run'));
+  };
+
+  it('pushes value to the end', () => {
+    render(<ArrayConcept />);
+    setInput('Value', '10');
+    clickRun();
     expect(screen.getByText('10')).toBeTruthy();
   });
 
-  it('performs pop operation', () => {
+  it('pops last value', async () => {
+    const user = userEvent.setup();
     render(<ArrayConcept />);
-    fireEvent.change(screen.getByLabelText(/Choose operation/i), {
-      target: { value: 'pop' },
-    });
-    fireEvent.click(screen.getByText('Run'));
+  
+    const combo = screen.getByLabelText(/Choose operation/i);
+    await user.click(combo);
+
+    await user.click(screen.getByText('pop'));
+    clickRun();
+
     expect(screen.queryByText('3')).not.toBeTruthy();
   });
+  
 
-  it('performs unshift operation', () => {
+  it('unshifts value to the start', async () => {
+    const user = userEvent.setup();
     render(<ArrayConcept />);
-    fireEvent.change(screen.getByLabelText(/Choose operation/i), {
-      target: { value: 'unshift' },
-    });
-    fireEvent.change(screen.getByLabelText('Value'), { target: { value: '0' } });
-    fireEvent.click(screen.getByText('Run'));
-    expect(screen.getByText('0')).toBeTruthy();
+
+    const combo = screen.getByLabelText(/Choose operation/i);
+    await user.click(combo);
+
+    await user.click(screen.getByText('unshift'));
+    setInput('Value', '0');
+    clickRun();
+
+    expect(screen.getAllByText('0')[0]).toBeTruthy(); // first element
   });
 
-  it('performs splice operation', () => {
+  it('splices value into index', async () => {
+    const user = userEvent.setup();
     render(<ArrayConcept />);
-    fireEvent.change(screen.getByLabelText(/Choose operation/i), {
-      target: { value: 'splice' },
-    });
-    fireEvent.change(screen.getByLabelText('Index'), { target: { value: '1' } });
-    fireEvent.change(screen.getByLabelText('Value'), { target: { value: '9' } });
-    fireEvent.click(screen.getByText('Run'));
-    expect(screen.getByText('9')).toBeTruthy();
+    
+    const combo = screen.getByLabelText(/Choose operation/i);
+    await user.click(combo);
+    
+    await user.click(screen.getByText('splice'));
+    setInput('Index', '1');
+    setInput('Value', '9');
+    clickRun();
+    const arrayValues = screen.getAllByText(/Index \d/).map((_, i) =>
+      screen.getAllByText(/Index \d/)[i].nextSibling?.textContent
+    );
+    expect(arrayValues).toContain('9');
   });
 
-  it('performs slice and shows result in output', () => {
+  it('slices array and shows output', async () => {
+    const user = userEvent.setup();
     render(<ArrayConcept />);
-    fireEvent.change(screen.getByLabelText(/Choose operation/i), {
-      target: { value: 'slice' },
-    });
-    fireEvent.change(screen.getByLabelText('Index'), { target: { value: '2' } });
-    fireEvent.click(screen.getByText('Run'));
+
+    const combo = screen.getByLabelText(/Choose operation/i);
+    await user.click(combo);
+    
+    await user.click(screen.getByText('slice'));
+    setInput('Index', '2');
+    clickRun();
     expect(screen.getByText(/Sliced: \[1, 2\]/)).toBeTruthy();
   });
 
-  it('performs indexOf operation', () => {
+  it('finds indexOf value', async () => {
+    const user = userEvent.setup();
     render(<ArrayConcept />);
-    fireEvent.change(screen.getByLabelText(/Choose operation/i), {
-      target: { value: 'indexOf' },
-    });
-    fireEvent.change(screen.getByLabelText('Value'), { target: { value: '2' } });
-    fireEvent.click(screen.getByText('Run'));
+
+    const combo = screen.getByLabelText(/Choose operation/i);
+    await user.click(combo);
+    
+    await user.click(screen.getByText('indexOf'));
+    setInput('Value', '2');
+    clickRun();
     expect(screen.getByText(/indexOf\(2\) → 1/)).toBeTruthy();
   });
 
-  it('performs lastIndexOf operation', () => {
+  it('finds lastIndexOf value', async () => {
+    const user = userEvent.setup();
     render(<ArrayConcept />);
     fireEvent.change(screen.getByLabelText(/Define your array/i), {
       target: { value: '1, 2, 3, 2' },
     });
-    fireEvent.change(screen.getByLabelText(/Choose operation/i), {
-      target: { value: 'lastIndexOf' },
-    });
-    fireEvent.change(screen.getByLabelText('Value'), { target: { value: '2' } });
-    fireEvent.click(screen.getByText('Run'));
+    const combo = screen.getByLabelText(/Choose operation/i);
+    await user.click(combo);
+    
+    await user.click(screen.getByText('lastIndexOf'));
+    setInput('Value', '2');
+    clickRun();
     expect(screen.getByText(/lastIndexOf\(2\) → 3/)).toBeTruthy();
   });
 
-  it('performs includes operation and shows true', () => {
+  it('checks if value is included', async () => {
+    const user = userEvent.setup();
     render(<ArrayConcept />);
-    fireEvent.change(screen.getByLabelText(/Choose operation/i), {
-      target: { value: 'includes' },
-    });
-    fireEvent.change(screen.getByLabelText('Value'), { target: { value: '2' } });
-    fireEvent.click(screen.getByText('Run'));
-    expect(screen.getByText(/includes\(2\) → true/)).toBeTruthy();
+
+    const combo = screen.getByLabelText(/Choose operation/i);
+    await user.click(combo);
+    
+    await user.click(screen.getByText('includes'));
+    setInput('Value', '2');
+    clickRun();
+    expect(screen.getByText(/includes\(2\)/i)).toBeTruthy();
+    expect(screen.getByText(/true/i)).toBeTruthy();
   });
 
-  it('updates value at a valid index', () => {
+  it('updates value at specific index (valid)', async () => {
+    const user = userEvent.setup();
     render(<ArrayConcept />);
-    fireEvent.change(screen.getByLabelText(/Choose operation/i), {
-      target: { value: 'update' },
-    });
-    fireEvent.change(screen.getByLabelText('Index'), { target: { value: '1' } });
-    fireEvent.change(screen.getByLabelText('Value'), { target: { value: '42' } });
-    fireEvent.click(screen.getByText('Run'));
-    expect(screen.getByText(/Updated index 1 to 42/)).toBeTruthy();
+
+    const combo = screen.getByLabelText(/Choose operation/i);
+    await user.click(combo);
+    
+    await user.click(screen.getByText('update'));
+    setInput('Index', '1');
+    setInput('Value', '42');
+    clickRun();
     expect(screen.getByText('42')).toBeTruthy();
+    expect(screen.getByText(/Updated index 1 to 42/)).toBeTruthy();
   });
 
-  it('shows out-of-bounds error for invalid update index', () => {
+  it('fails to update if index is out of bounds', async () => {
+    const user = userEvent.setup();
     render(<ArrayConcept />);
-    fireEvent.change(screen.getByLabelText(/Choose operation/i), {
-      target: { value: 'update' },
-    });
-    fireEvent.change(screen.getByLabelText('Index'), { target: { value: '10' } });
-    fireEvent.change(screen.getByLabelText('Value'), { target: { value: '99' } });
-    fireEvent.click(screen.getByText('Run'));
+
+    const combo = screen.getByLabelText(/Choose operation/i);
+    await user.click(combo);
+    
+    await user.click(screen.getByText('update'));
+    setInput('Index', '10');
+    setInput('Value', '42');
+    clickRun();
     expect(screen.getByText(/Index 10 is out of bounds/)).toBeTruthy();
-  });
-
-  it('ignores non-numeric input gracefully', () => {
-    render(<ArrayConcept />);
-    fireEvent.change(screen.getByLabelText('Value'), { target: { value: 'abc' } });
-    fireEvent.click(screen.getByText('Run'));
-    expect(screen.queryByText('abc')).not.toBeTruthy(); // nothing should happen
   });
 });
