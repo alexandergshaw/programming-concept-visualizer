@@ -76,7 +76,7 @@ export default function JavaScriptPage() {
 
   return (
     <main className="js-layout">
-      <Sidebar title="Topics" items={navItems} onSelect={handleSelect} />
+      <Sidebar title="Topics" items={navItems} defaultOpen={['collections']} onSelect={handleSelect} />
       <div className="js-page-body">
         <Alert severity="info" className="feedback-banner" sx={{ mb: 3 }}>
           Have ideas to improve this page?{' '}
