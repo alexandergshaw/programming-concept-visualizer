@@ -64,4 +64,17 @@ describe('JavaScriptPage concept loading', () => {
     await user.click(screen.getByText('Arrays'));
     expect(mockPush).toHaveBeenCalledWith('/languages/javascript?concept=arrays');
   });
+
+  it('does not show the Objects concept in the sidebar when excluded from navItems', () => {
+    setSearchParamsMock(null);
+    render(<JavaScriptPage />);
+
+    // Confirm visible sidebar topics
+    expect(screen.getByText('Arrays')).toBeTruthy();
+    expect(screen.getByText('Sets')).toBeTruthy();
+    expect(screen.getByText('Maps')).toBeTruthy();
+
+    // Confirm excluded concept is not rendered
+    expect(screen.queryByText('Objects')).not.toBeTruthy();
+  });
 });
