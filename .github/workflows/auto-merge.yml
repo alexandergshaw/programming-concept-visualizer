@@ -1,0 +1,28 @@
+name: Auto Merge Approved PRs
+
+on:
+  schedule:
+    # Runs at 5:00 AM Central Time every Monday
+    # Central Time = UTC -5 (or -6 depending on DST)
+    # Adjust cron to UTC equivalent (11 AM UTC = 5 AM CT during DST)
+    - cron: '0 11 * * 1'
+  workflow_dispatch: # Allows manual run if needed
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+
+    steps:
+      - name: Auto-merge pull requests
+        uses: ahmadnassri/action-auto-merge@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          merge-method: squash
+          # Only PRs with this label will be considered
+          labels: auto-merge
+          # Ensures all required checks and approvals are met
+          require-status-checks: true
+          require-approval: true
