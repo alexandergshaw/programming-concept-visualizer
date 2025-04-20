@@ -14,7 +14,7 @@ export default function MapConcept({
 }: {
   onCodeChange?: (code: string) => void;
 }) {
-  const [rawInput, setRawInput] = useState('name:Alex, role:developer');
+  const [rawInput, setRawInput] = useState('name:Alex, role:instructor');
   const [map, setMap] = useState<Map<string, string>>(new Map());
   const [keyInput, setKeyInput] = useState('');
   const [valueInput, setValueInput] = useState('');
