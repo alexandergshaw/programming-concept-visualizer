@@ -170,3 +170,8 @@
 .chevron.rotate {
   transform: rotate(90deg);
 }
+
+.empty-page-prompt {
+  font-size: '1.25rem';
+  color: '#555';
+}

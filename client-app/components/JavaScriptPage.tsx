@@ -55,11 +55,11 @@ export default function JavaScriptPage() {
       case 'arrays':
         return <ArrayConcept onCodeChange={setCodeSnippet} />;
       case 'maps':
-        return <MapConcept  onCodeChange={setCodeSnippet} />;
+        return <MapConcept onCodeChange={setCodeSnippet} />;
       case 'sets':
         return <SetConcept onCodeChange={setCodeSnippet} />;
       case 'objects':
-        return <ObjectConcept/>
+        return <ObjectConcept />
       default:
         return null;
     }
@@ -101,8 +101,16 @@ export default function JavaScriptPage() {
         <section className="js-content">
           <h1 className="js-page-title">JavaScript Visualizer</h1>
           <div style={{ marginTop: '40px' }}>
-            {renderContent(selectedConcept)}
-            {codeSnippet && renderCodePreview()}
+            {selectedConcept ? (
+              <>
+                {renderContent(selectedConcept)}
+                {codeSnippet && renderCodePreview()}
+              </>
+            ) : (
+              <div className="empty-page-prompt">
+                Please select a topic from the sidebar to get started.
+              </div>
+            )}
           </div>
         </section>
       </div>
