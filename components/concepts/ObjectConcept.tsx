@@ -7,70 +7,41 @@ import {
   Paper,
   Button,
   TextField,
-  Card,
-  CardContent,
 } from '@mui/material';
 
 export default function ObjectConcept() {
-  const [message, setMessage] = useState('');
   const [playgroundObject, setPlaygroundObject] = useState<Record<string, any>>({});
-  const [destructuredOutput, setDestructuredOutput] = useState<string>('');
+  const [destructuredLines, setDestructuredLines] = useState<string[]>([]);
 
   useEffect(() => {
     if (!playgroundObject || Object.keys(playgroundObject).length === 0) {
-      setDestructuredOutput('No object defined.');
+      setDestructuredLines(['// No object defined.']);
       return;
     }
 
     const keys = Object.keys(playgroundObject);
 
-    const objLines = [
-      `// Declare an object with the following properties`,
-      `const obj = {`,
+    const lines = [
+      '// Declare an object with the following properties',
+      'const obj = {',
       ...keys.map(k => {
         const val = typeof playgroundObject[k] === 'function' ? '[Function]' : JSON.stringify(playgroundObject[k]);
         return `  ${k}: ${val}, // ${typeof playgroundObject[k]}`;
       }),
-      `};`,
-      ``,
-      `// Destructure values from the object`,
+      '};',
+      '',
+      '// Destructure values from the object',
       `const { ${keys.join(', ')} } = obj;`,
-      ``,
-      `// Log each destructured variable`,
+      '',
+      '// Log each destructured variable',
       ...keys.map(k => {
         const val = typeof playgroundObject[k] === 'function' ? '[Function]' : JSON.stringify(playgroundObject[k]);
         return `console.log(${k}); // ${val}`;
       }),
     ];
 
-    setDestructuredOutput(objLines.join('\n'));
+    setDestructuredLines(lines);
   }, [playgroundObject]);
-
-
-  class Animal {
-    name: string;
-    constructor(name: string) {
-      this.name = name;
-    }
-    speak() {
-      return `${this.name} makes a noise.`;
-    }
-  }
-
-  class Dog extends Animal {
-    speak() {
-      return `${this.name} barks.`;
-    }
-  }
-
-  const moveBehavior = {
-    move: () => 'Moving forward...',
-  };
-
-  const dogWithBehavior = {
-    name: 'ComposedDog',
-    ...moveBehavior,
-  };
 
   return (
     <Box sx={{ maxWidth: 1100, mx: 'auto', p: 4 }}>
@@ -78,7 +49,7 @@ export default function ObjectConcept() {
         JavaScript Object Concepts
       </Typography>
 
-      {/* Section: What is an Object? */}
+      {/* Object Playground */}
       <Paper sx={{ p: 3, mb: 4 }}>
         <Typography variant="h6">What is an Object?</Typography>
         <Typography sx={{ mb: 2 }}>
@@ -86,21 +57,76 @@ export default function ObjectConcept() {
           store and structure data. Keys are called <em>properties</em>, and they can hold
           values of any type — including functions (which become <em>methods</em>).
         </Typography>
-
         <Typography sx={{ mb: 2 }}>
           Try adding keys and values below. The object and destructuring code will update live.
         </Typography>
-
         <ObjectPlayground onObjectChange={setPlaygroundObject} />
       </Paper>
 
-      {/* Section: Destructuring */}
+      {/* Using Object Properties */}
+      <Paper sx={{ p: 3, mb: 4 }}>
+        <Typography variant="h6">Using Object Properties</Typography>
+        <Typography sx={{ mb: 2 }}>
+          This example shows how to access and use the values stored in your object.
+        </Typography>
+
+        <Box
+          sx={{
+            mt: 2,
+            p: 2,
+            backgroundColor: '#f4f4f4',
+            fontFamily: 'monospace',
+            borderRadius: 1,
+            overflowX: 'auto',
+            whiteSpace: 'pre',
+          }}
+        >
+          {Object.entries(playgroundObject).length === 0 ? (
+            <Box sx={{ color: '#999' }}>// No object defined.</Box>
+          ) : (
+            <>
+              <Box sx={{ color: '#999' }}>{'// Create an object using key-value pairs'}</Box>
+              <Box>{'const obj = {'}</Box>
+              {Object.entries(playgroundObject).map(([k, v], i) => (
+                <Box key={i}>
+                  <Box component="span">
+                    {'  ' + k + ': ' + (typeof v === 'function' ? '[Function]' : JSON.stringify(v)) + ','}
+                  </Box>
+                  <Box component="span" sx={{ color: '#999' }}>
+                    {' // ' + typeof v}
+                  </Box>
+                </Box>
+              ))}
+              <Box>{'};'}</Box>
+              <Box sx={{ mt: 1, color: '#999' }}>
+                {'// Access and use the properties of the object using dot notation'}
+              </Box>
+              {Object.entries(playgroundObject).map(([k, v], i) => {
+                const isFunc = typeof v === 'function';
+                const call = isFunc ? `${k}()` : `${k}`;
+                const comment = isFunc
+                  ? `// calls the ${k} method and prints its return value`
+                  : `// prints the value of '${k}', which is ${JSON.stringify(v)}`;
+                return (
+                  <Box key={i}>
+                    <Box component="span">{`console.log(obj.${call});`}</Box>
+                    <Box component="span" sx={{ color: '#999' }}>
+                      {' ' + comment}
+                    </Box>
+                  </Box>
+                );
+              })}
+            </>
+          )}
+        </Box>
+      </Paper>
+
+      {/* Destructuring */}
       <Paper sx={{ p: 3, mb: 4 }}>
         <Typography variant="h6">Object Destructuring</Typography>
         <Typography sx={{ mb: 2 }}>
           This shows destructuring of the object above.
         </Typography>
-
         <Box
           sx={{
             mt: 2,
@@ -109,9 +135,21 @@ export default function ObjectConcept() {
             fontFamily: 'monospace',
             borderRadius: 1,
             overflowX: 'auto',
+            whiteSpace: 'pre',
           }}
         >
-          <pre>{destructuredOutput}</pre>
+          {destructuredLines.map((line, idx) =>
+            line.includes('//') ? (
+              <Box key={idx}>
+                <Box component="span">{line.split('//')[0]}</Box>
+                <Box component="span" sx={{ color: '#999' }}>
+                  {'//' + line.split('//')[1]}
+                </Box>
+              </Box>
+            ) : (
+              <Box key={idx}>{line}</Box>
+            )
+          )}
         </Box>
       </Paper>
     </Box>
