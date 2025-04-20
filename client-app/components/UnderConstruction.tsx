@@ -24,11 +24,11 @@ export default function UnderConstruction() {
         to support student learning across multiple programming courses.
       </Typography>
       <Typography variant="body2" sx={{ mb: 2 }}>
-        This isn’t a commercial product — it’s a teaching tool that I'm expanding gradually, focusing
-        on 1–2 classes at a time and improving it based on student feedback.
+        This is not a commercial product — it is a teaching tool that I'm expanding gradually, focusing
+        on 1 to 2 classes at a time and improving it based on student feedback.
       </Typography>
       <Alert severity="info">
-        If you’re a student and want to help improve this project,{' '}
+        If you are a student and want to help improve this project,{' '}
         <a
           href="https://docs.google.com/forms/d/e/1FAIpQLSf73dDuwy0mZUuApiG2kEGlcCp93pN-l1eOtFOTBA2BTf0Bqw/viewform?usp=sharing"
           target="_blank"
