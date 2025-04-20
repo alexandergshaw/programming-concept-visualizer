@@ -9,38 +9,87 @@ import {
   TextField,
 } from '@mui/material';
 
+// Shared utility to generate formatted preview lines
+export function generateObjectPreviewLines(
+  obj: Record<string, any>,
+  mode: 'preview' | 'access' | 'destructure'
+): string[] {
+  const keys = Object.keys(obj);
+  if (keys.length === 0) return ['// No object defined.'];
+
+  const lines: string[] = [];
+
+  if (mode === 'preview') {
+    lines.push('{');
+    lines.push(
+      ...keys.map((k) => {
+        const val = typeof obj[k] === 'function' ? '[Function]' : JSON.stringify(obj[k]);
+        return `  ${k}: ${val},`;
+      })
+    );
+    lines.push('}');
+  }
+
+  else if (mode === 'access') {
+    lines.push('// Create an object using key-value pairs');
+    lines.push('const obj = {');
+    lines.push(
+      ...keys.map((k) => {
+        const val = typeof obj[k] === 'function' ? '[Function]' : JSON.stringify(obj[k]);
+        return `  ${k}: ${val}, // the key is ${k}, the value is ${val}`;
+      })
+    );
+    lines.push('};');
+    lines.push('');
+    lines.push('// Access and use the properties of the object using dot notation');
+    lines.push(
+      ...keys.map((k) => {
+        const isFunc = typeof obj[k] === 'function';
+        const call = isFunc ? `${k}()` : `${k}`;
+        const comment = isFunc
+          ? `// calls the ${k} method and prints its return value`
+          : `// prints the value of '${k}', which is ${JSON.stringify(obj[k])}`;
+        return `console.log(obj.${call}); ${comment}`;
+      })
+    );
+  }
+
+  else if (mode === 'destructure') {
+    lines.push('// Declare an object with the following properties');
+    lines.push('const obj = {');
+    lines.push(
+      ...keys.map((k) => {
+        const val = typeof obj[k] === 'function' ? '[Function]' : JSON.stringify(obj[k]);
+        return `  ${k}: ${val}, // the key is ${k}, the value is ${val}`;
+      })
+    );
+    lines.push('};');
+    lines.push('');
+    lines.push('// Destructure values from the object');
+    lines.push(`const { ${keys.join(', ')} } = obj;`);
+    lines.push('');
+    lines.push('// Log each destructured variable');
+    lines.push(
+      ...keys.map((k) => {
+        const val = typeof obj[k] === 'function' ? '[Function]' : JSON.stringify(obj[k]);
+        return `console.log(${k}); // ${val}`;
+      })
+    );
+  }
+
+  return lines;
+}
+
 export default function ObjectConcept() {
   const [playgroundObject, setPlaygroundObject] = useState<Record<string, any>>({});
+  const [accessLines, setAccessLines] = useState<string[]>([]);
   const [destructuredLines, setDestructuredLines] = useState<string[]>([]);
+  const [previewLines, setPreviewLines] = useState<string[]>([]);
 
   useEffect(() => {
-    if (!playgroundObject || Object.keys(playgroundObject).length === 0) {
-      setDestructuredLines(['// No object defined.']);
-      return;
-    }
-
-    const keys = Object.keys(playgroundObject);
-
-    const lines = [
-      '// Declare an object with the following properties',
-      'const obj = {',
-      ...keys.map(k => {
-        const val = typeof playgroundObject[k] === 'function' ? '[Function]' : JSON.stringify(playgroundObject[k]);
-        return `  ${k}: ${val}, // the key is ${k}, the value is ${val}`;
-      }),
-      '};',
-      '',
-      '// Destructure values from the object',
-      `const { ${keys.join(', ')} } = obj;`,
-      '',
-      '// Log each destructured variable',
-      ...keys.map(k => {
-        const val = typeof playgroundObject[k] === 'function' ? '[Function]' : JSON.stringify(playgroundObject[k]);
-        return `console.log(${k}); // ${val}`;
-      }),
-    ];
-
-    setDestructuredLines(lines);
+    setPreviewLines(generateObjectPreviewLines(playgroundObject, 'preview'));
+    setAccessLines(generateObjectPreviewLines(playgroundObject, 'access'));
+    setDestructuredLines(generateObjectPreviewLines(playgroundObject, 'destructure'));
   }, [playgroundObject]);
 
   return (
@@ -61,6 +110,27 @@ export default function ObjectConcept() {
           Try adding keys and values below. The examples on this page will update as you go.
         </Typography>
         <ObjectPlayground onObjectChange={setPlaygroundObject} />
+
+        {previewLines.length > 0 && (
+          <Box
+            sx={{
+              mt: 2,
+              p: 2,
+              backgroundColor: '#f4f4f4',
+              fontFamily: 'monospace',
+              borderRadius: 1,
+              overflowX: 'auto',
+              whiteSpace: 'pre-wrap',
+            }}
+          >
+            <Typography variant="subtitle2" sx={{ mb: 1 }}>
+              Object Preview:
+            </Typography>
+            {previewLines.map((line, idx) => (
+              <Box key={idx}>{line}</Box>
+            ))}
+          </Box>
+        )}
       </Paper>
 
       {/* Using Object Properties */}
@@ -69,7 +139,6 @@ export default function ObjectConcept() {
         <Typography sx={{ mb: 2 }}>
           This example shows how to access and use the values stored in your object.
         </Typography>
-
         <Box
           sx={{
             mt: 2,
@@ -81,42 +150,17 @@ export default function ObjectConcept() {
             whiteSpace: 'pre',
           }}
         >
-          {Object.entries(playgroundObject).length === 0 ? (
-            <Box sx={{ color: '#999' }}>// No object defined.</Box>
-          ) : (
-            <>
-              <Box sx={{ color: '#999' }}>{'// Create an object using key-value pairs'}</Box>
-              <Box>{'const obj = {'}</Box>
-              {Object.entries(playgroundObject).map(([k, v], i) => (
-                <Box key={i}>
-                  <Box component="span">
-                    {'  ' + k + ': ' + (typeof v === 'function' ? '[Function]' : JSON.stringify(v)) + ','}
-                  </Box>
-                  <Box component="span" sx={{ color: '#999' }}>
-                    {` // the key is ${k}, the value is ${v}`}
-                  </Box>
+          {accessLines.map((line, idx) =>
+            line.includes('//') ? (
+              <Box key={idx}>
+                <Box component="span">{line.split('//')[0]}</Box>
+                <Box component="span" sx={{ color: '#999' }}>
+                  {'//' + line.split('//')[1]}
                 </Box>
-              ))}
-              <Box>{'};'}</Box>
-              <Box sx={{ mt: 1, color: '#999' }}>
-                {'// Access and use the properties of the object using dot notation'}
               </Box>
-              {Object.entries(playgroundObject).map(([k, v], i) => {
-                const isFunc = typeof v === 'function';
-                const call = isFunc ? `${k}()` : `${k}`;
-                const comment = isFunc
-                  ? `// calls the ${k} method and prints its return value`
-                  : `// prints the value of '${k}', which is ${JSON.stringify(v)}`;
-                return (
-                  <Box key={i}>
-                    <Box component="span">{`console.log(obj.${call});`}</Box>
-                    <Box component="span" sx={{ color: '#999' }}>
-                      {' ' + comment}
-                    </Box>
-                  </Box>
-                );
-              })}
-            </>
+            ) : (
+              <Box key={idx}>{line}</Box>
+            )
           )}
         </Box>
       </Paper>
@@ -230,39 +274,6 @@ function ObjectPlayground({
         <Typography color="error" sx={{ mt: 2 }}>
           {error}
         </Typography>
-      )}
-
-      {/* Live preview of the object */}
-      {Object.keys(entries.filter(e => e.key.trim()).reduce((acc, { key, value }) => {
-        try {
-          acc[key] = eval(`(${value})`);
-        } catch {}
-        return acc;
-      }, {} as Record<string, any>)).length > 0 && (
-        <Box
-          sx={{
-            mt: 2,
-            p: 2,
-            backgroundColor: '#f0f0f0',
-            fontFamily: 'monospace',
-            borderRadius: 1,
-            whiteSpace: 'pre-wrap',
-          }}
-        >
-          <Typography variant="subtitle2" sx={{ mb: 1 }}>
-            Object Preview:
-          </Typography>
-          <pre>{JSON.stringify(
-            entries.reduce((acc, { key, value }) => {
-              try {
-                if (key.trim()) acc[key] = eval(`(${value})`);
-              } catch {}
-              return acc;
-            }, {} as Record<string, any>),
-            null,
-            2
-          )}</pre>
-        </Box>
       )}
     </Box>
   );
