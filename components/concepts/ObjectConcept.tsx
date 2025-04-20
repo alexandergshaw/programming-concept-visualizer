@@ -11,6 +11,7 @@ import {
 
 // Shared utility to generate formatted preview lines
 export function generateObjectPreviewLines(
+  /* eslint-disable  @typescript-eslint/no-explicit-any */
   obj: Record<string, any>,
   mode: 'preview' | 'access' | 'destructure'
 ): string[] {
@@ -81,6 +82,7 @@ export function generateObjectPreviewLines(
 }
 
 export default function ObjectConcept() {
+  /* eslint-disable  @typescript-eslint/no-explicit-any */
   const [playgroundObject, setPlaygroundObject] = useState<Record<string, any>>({});
   const [accessLines, setAccessLines] = useState<string[]>([]);
   const [destructuredLines, setDestructuredLines] = useState<string[]>([]);
@@ -206,12 +208,14 @@ export default function ObjectConcept() {
 function ObjectPlayground({
   onObjectChange,
 }: {
+  /* eslint-disable  @typescript-eslint/no-explicit-any */
   onObjectChange?: (obj: Record<string, any>) => void;
 }) {
   const [entries, setEntries] = useState([{ key: 'name', value: '"Alex"' }]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
     const result: Record<string, any> = {};
     try {
       for (const { key, value } of entries) {
