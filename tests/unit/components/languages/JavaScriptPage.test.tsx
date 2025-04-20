@@ -77,4 +77,17 @@ describe('JavaScriptPage concept loading', () => {
     // Confirm excluded concept is not rendered
     expect(screen.queryByText('Objects')).not.toBeTruthy();
   });
+
+  it('does not show the Classes concept in the sidebar when excluded from navItems', () => {
+    setSearchParamsMock(null);
+    render(<JavaScriptPage />);
+
+    // Confirm visible sidebar topics
+    expect(screen.getByText('Arrays')).toBeTruthy();
+    expect(screen.getByText('Sets')).toBeTruthy();
+    expect(screen.getByText('Maps')).toBeTruthy();
+
+    // Confirm excluded concept is not rendered
+    expect(screen.queryByText('Classes')).not.toBeTruthy();
+  });
 });
