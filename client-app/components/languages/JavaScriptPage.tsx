@@ -4,11 +4,11 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Alert } from '@mui/material';
 import Link from 'next/link';
-import ArrayConcept from './concepts/ArrayConcept';
-import MapConcept from './concepts/MapConcept';
-import SetConcept from './concepts/SetConcept';
-import Sidebar from './Sidebar';
-import ObjectConcept from './concepts/ObjectConcept';
+import ArrayConcept from '../concepts/ArrayConcept';
+import MapConcept from '../concepts/MapConcept';
+import SetConcept from '../concepts/SetConcept';
+import Sidebar from '../Sidebar';
+import ObjectConcept from '../concepts/ObjectConcept';
 
 const navItems = [
   {

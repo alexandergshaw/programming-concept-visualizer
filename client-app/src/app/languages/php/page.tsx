@@ -1,12 +1,10 @@
-// app/languages/javascript/page.tsx or .jsx
-
 import { Suspense } from 'react';
-import JavaScriptPage from '../../../../components/languages/JavaScriptPage';
+import PhpPage from '../../../../components/languages/PhpPage';
 
 export default function Page() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <JavaScriptPage />
+      <PhpPage />
     </Suspense>
   );
 }
