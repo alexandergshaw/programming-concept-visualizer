@@ -8,6 +8,7 @@ import ArrayConcept from './concepts/ArrayConcept';
 import MapConcept from './concepts/MapConcept';
 import SetConcept from './concepts/SetConcept';
 import Sidebar from './Sidebar';
+import ObjectConcept from './concepts/ObjectConcept';
 
 const navItems = [
   {
@@ -17,6 +18,14 @@ const navItems = [
       { label: 'Arrays', value: 'arrays' },
       { label: 'Sets', value: 'sets' },
       { label: 'Maps', value: 'maps' },
+    ],
+  },
+  {
+    label: 'Object Oriented Programming',
+    value: 'object oriented programming',
+    children: [
+      { label: 'Objects', value: 'objects' },
+      { label: 'Classes', value: 'classes' },
     ],
   },
 ];
@@ -49,8 +58,8 @@ export default function JavaScriptPage() {
         return <MapConcept  onCodeChange={setCodeSnippet} />;
       case 'sets':
         return <SetConcept onCodeChange={setCodeSnippet} />;
-      case 'conditionals':
-        return <p className="concept-block">Use <code>if</code>, <code>else</code>, and <code>switch</code> to control flow based on logic.</p>;
+      case 'objects':
+        return <ObjectConcept/>
       default:
         return null;
     }
