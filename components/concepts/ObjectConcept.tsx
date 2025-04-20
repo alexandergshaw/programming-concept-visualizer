@@ -26,7 +26,7 @@ export default function ObjectConcept() {
       'const obj = {',
       ...keys.map(k => {
         const val = typeof playgroundObject[k] === 'function' ? '[Function]' : JSON.stringify(playgroundObject[k]);
-        return `  ${k}: ${val}, // ${typeof playgroundObject[k]}`;
+        return `  ${k}: ${val}, // the key is ${k}, the value is ${val}`;
       }),
       '};',
       '',
@@ -58,7 +58,7 @@ export default function ObjectConcept() {
           values of any type — including functions (which become <em>methods</em>).
         </Typography>
         <Typography sx={{ mb: 2 }}>
-          Try adding keys and values below. The object and destructuring code will update live.
+          Try adding keys and values below. The examples on this page will update as you go.
         </Typography>
         <ObjectPlayground onObjectChange={setPlaygroundObject} />
       </Paper>
@@ -93,7 +93,7 @@ export default function ObjectConcept() {
                     {'  ' + k + ': ' + (typeof v === 'function' ? '[Function]' : JSON.stringify(v)) + ','}
                   </Box>
                   <Box component="span" sx={{ color: '#999' }}>
-                    {' // ' + typeof v}
+                    {` // the key is ${k}, the value is ${v}`}
                   </Box>
                 </Box>
               ))}
@@ -125,7 +125,10 @@ export default function ObjectConcept() {
       <Paper sx={{ p: 3, mb: 4 }}>
         <Typography variant="h6">Object Destructuring</Typography>
         <Typography sx={{ mb: 2 }}>
-          This shows destructuring of the object above.
+          Destructuring is a JavaScript feature that lets you extract values from an object (or array) and assign them to variables.
+        </Typography>
+        <Typography sx={{ mb: 2 }}>
+          This is how you would destructure the object from earlier:
         </Typography>
         <Box
           sx={{
@@ -227,6 +230,39 @@ function ObjectPlayground({
         <Typography color="error" sx={{ mt: 2 }}>
           {error}
         </Typography>
+      )}
+
+      {/* Live preview of the object */}
+      {Object.keys(entries.filter(e => e.key.trim()).reduce((acc, { key, value }) => {
+        try {
+          acc[key] = eval(`(${value})`);
+        } catch {}
+        return acc;
+      }, {} as Record<string, any>)).length > 0 && (
+        <Box
+          sx={{
+            mt: 2,
+            p: 2,
+            backgroundColor: '#f0f0f0',
+            fontFamily: 'monospace',
+            borderRadius: 1,
+            whiteSpace: 'pre-wrap',
+          }}
+        >
+          <Typography variant="subtitle2" sx={{ mb: 1 }}>
+            Object Preview:
+          </Typography>
+          <pre>{JSON.stringify(
+            entries.reduce((acc, { key, value }) => {
+              try {
+                if (key.trim()) acc[key] = eval(`(${value})`);
+              } catch {}
+              return acc;
+            }, {} as Record<string, any>),
+            null,
+            2
+          )}</pre>
+        </Box>
       )}
     </Box>
   );
