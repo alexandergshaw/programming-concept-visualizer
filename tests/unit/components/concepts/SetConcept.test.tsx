@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import SetConcept from '../../../../components/languages/JavaScript/SetConcept';
+import SetConcept from '../../../../components/pageComponents/JavaScript/SetConcept';
 
 const SET_DESCRIPTIONS: Record<string, string> = {
   add: 'Adds a value to the set (if it is not already present).',

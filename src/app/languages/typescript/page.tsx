@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import TypeScriptPage from '../../../../components/languages/TypeScriptPage';
+import TypeScriptPage from '../../../../components/pageComponents/TypeScriptPage';
 
 export default function Page() {
   return (
