@@ -1,17 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import {
-  Box,
-  Typography,
-  Paper,
-  Button,
-  TextField,
-} from '@mui/material';
+import { Box, Typography, TextField, Button, Divider } from '@mui/material';
+import ConceptWrapper from '../common/ConceptWrapper';
+import "../../styles/object.css"
+import Section from '../common/Section'
+import CodePreview from '../common/CodePreview';
 
 // Shared utility to generate formatted preview lines
 export function generateObjectPreviewLines(
-  /* eslint-disable  @typescript-eslint/no-explicit-any */
   obj: Record<string, any>,
   mode: 'preview' | 'access' | 'destructure'
 ): string[] {
@@ -29,9 +26,7 @@ export function generateObjectPreviewLines(
       })
     );
     lines.push('}');
-  }
-
-  else if (mode === 'access') {
+  } else if (mode === 'access') {
     lines.push('// Create an object using key-value pairs');
     lines.push('const obj = {');
     lines.push(
@@ -53,9 +48,7 @@ export function generateObjectPreviewLines(
         return `console.log(obj.${call}); ${comment}`;
       })
     );
-  }
-
-  else if (mode === 'destructure') {
+  } else if (mode === 'destructure') {
     lines.push('// Declare an object with the following properties');
     lines.push('const obj = {');
     lines.push(
@@ -82,7 +75,6 @@ export function generateObjectPreviewLines(
 }
 
 export default function ObjectConcept() {
-  /* eslint-disable  @typescript-eslint/no-explicit-any */
   const [playgroundObject, setPlaygroundObject] = useState<Record<string, any>>({});
   const [accessLines, setAccessLines] = useState<string[]>([]);
   const [destructuredLines, setDestructuredLines] = useState<string[]>([]);
@@ -95,127 +87,34 @@ export default function ObjectConcept() {
   }, [playgroundObject]);
 
   return (
-    <Box sx={{ maxWidth: 1100, mx: 'auto', p: 4 }}>
-      <Typography variant="h4" gutterBottom>
-        JavaScript Object Concepts
+    <ConceptWrapper title="Object" description="An object is a key-value pair structure that stores data. Keys are called properties.">
+      <Typography className="map-description" sx={{ mb: 2 }}>
+        Try adding keys and values below. The examples on this page will update as you go.
       </Typography>
 
-      {/* Object Playground */}
-      <Paper sx={{ p: 3, mb: 4 }}>
-        <Typography variant="h6">What is an Object?</Typography>
-        <Typography sx={{ mb: 2 }}>
-          In JavaScript, an <strong>object</strong> is a collection of key-value pairs used to
-          store and structure data. Keys are called <em>properties</em>, and they can hold
-          values of any type — including functions (which become <em>methods</em>).
-        </Typography>
-        <Typography sx={{ mb: 2 }}>
-          Try adding keys and values below. The examples on this page will update as you go.
-        </Typography>
-        <ObjectPlayground onObjectChange={setPlaygroundObject} />
+      <ObjectPlayground onObjectChange={setPlaygroundObject} />
 
-        {previewLines.length > 0 && (
-          <Box
-            sx={{
-              mt: 2,
-              p: 2,
-              backgroundColor: '#f4f4f4',
-              fontFamily: 'monospace',
-              borderRadius: 1,
-              overflowX: 'auto',
-              whiteSpace: 'pre-wrap',
-            }}
-          >
-            <Typography variant="subtitle2" sx={{ mb: 1 }}>
-              Object Preview:
-            </Typography>
-            {previewLines.map((line, idx) => (
-              <Box key={idx}>{line}</Box>
-            ))}
-          </Box>
-        )}
-      </Paper>
-
-      {/* Using Object Properties */}
-      <Paper sx={{ p: 3, mb: 4 }}>
-        <Typography variant="h6">Using Object Properties</Typography>
-        <Typography sx={{ mb: 2 }}>
-          This example shows how to access and use the values stored in your object.
-        </Typography>
-        <Box
-          sx={{
-            mt: 2,
-            p: 2,
-            backgroundColor: '#f4f4f4',
-            fontFamily: 'monospace',
-            borderRadius: 1,
-            overflowX: 'auto',
-            whiteSpace: 'pre',
-          }}
-        >
-          {accessLines.map((line, idx) =>
-            line.includes('//') ? (
-              <Box key={idx}>
-                <Box component="span">{line.split('//')[0]}</Box>
-                <Box component="span" sx={{ color: '#999' }}>
-                  {'//' + line.split('//')[1]}
-                </Box>
-              </Box>
-            ) : (
-              <Box key={idx}>{line}</Box>
-            )
-          )}
-        </Box>
-      </Paper>
-
-      {/* Destructuring */}
-      <Paper sx={{ p: 3, mb: 4 }}>
-        <Typography variant="h6">Object Destructuring</Typography>
-        <Typography sx={{ mb: 2 }}>
-          Destructuring is a JavaScript feature that lets you extract values from an object (or array) and assign them to variables.
-        </Typography>
-        <Typography sx={{ mb: 2 }}>
-          This is how you would destructure the object from earlier:
-        </Typography>
-        <Box
-          sx={{
-            mt: 2,
-            p: 2,
-            backgroundColor: '#f6f6f6',
-            fontFamily: 'monospace',
-            borderRadius: 1,
-            overflowX: 'auto',
-            whiteSpace: 'pre',
-          }}
-        >
-          {destructuredLines.map((line, idx) =>
-            line.includes('//') ? (
-              <Box key={idx}>
-                <Box component="span">{line.split('//')[0]}</Box>
-                <Box component="span" sx={{ color: '#999' }}>
-                  {'//' + line.split('//')[1]}
-                </Box>
-              </Box>
-            ) : (
-              <Box key={idx}>{line}</Box>
-            )
-          )}
-        </Box>
-      </Paper>
-    </Box>
+      <CodePreview title={"JavaScript Code"} code={previewLines} />
+      <Section title="Using Object Properties"><CodePreview title={"JavaScript Code"} code={accessLines} /></Section>
+      <Section
+        title="Object Destructuring"
+        subtitle="Destructuring is a JavaScript feature that lets you extract values from an object (or array) and assign them to variables."
+      >
+        <CodePreview title={"JavaScript Code"} code={destructuredLines} />
+      </Section>
+    </ConceptWrapper>
   );
 }
 
 function ObjectPlayground({
   onObjectChange,
 }: {
-  /* eslint-disable  @typescript-eslint/no-explicit-any */
   onObjectChange?: (obj: Record<string, any>) => void;
 }) {
   const [entries, setEntries] = useState([{ key: 'name', value: '"Alex"' }]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    /* eslint-disable  @typescript-eslint/no-explicit-any */
     const result: Record<string, any> = {};
     try {
       for (const { key, value } of entries) {
@@ -231,15 +130,9 @@ function ObjectPlayground({
     }
   }, [entries]);
 
-  const handleKeyChange = (index: number, value: string) => {
+  const updateEntry = (index: number, field: 'key' | 'value', newValue: string) => {
     const updated = [...entries];
-    updated[index].key = value;
-    setEntries(updated);
-  };
-
-  const handleValueChange = (index: number, value: string) => {
-    const updated = [...entries];
-    updated[index].value = value;
+    updated[index][field] = newValue;
     setEntries(updated);
   };
 
@@ -254,14 +147,14 @@ function ObjectPlayground({
           <TextField
             label="Key"
             value={entry.key}
-            onChange={(e) => handleKeyChange(idx, e.target.value)}
+            onChange={(e) => updateEntry(idx, 'key', e.target.value)}
             size="small"
             sx={{ flex: 1 }}
           />
           <TextField
             label="Value (JS Expression)"
             value={entry.value}
-            onChange={(e) => handleValueChange(idx, e.target.value)}
+            onChange={(e) => updateEntry(idx, 'value', e.target.value)}
             size="small"
             sx={{ flex: 2 }}
           />

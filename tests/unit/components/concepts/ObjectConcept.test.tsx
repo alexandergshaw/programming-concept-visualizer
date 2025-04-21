@@ -23,7 +23,7 @@ describe('ObjectConcept component', () => {
     render(<ObjectConcept />);
     addObjectEntry('age', '27');
 
-    expect(screen.getByText(/Object Preview:/)).toBeInTheDocument();
+    expect(screen.getByText(/JavaScript Code/)).toBeInTheDocument();
     expect(screen.getAllByText(/age: 27/)).toBeTruthy();
   });
 

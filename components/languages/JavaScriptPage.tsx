@@ -7,7 +7,7 @@ import Link from 'next/link';
 import ArrayConcept from '../concepts/ArrayConcept';
 import MapConcept from '../concepts/MapConcept';
 import SetConcept from '../concepts/SetConcept';
-import Sidebar from '../Sidebar';
+import Sidebar from '../common/Sidebar';
 import ObjectConcept from '../concepts/ObjectConcept';
 
 const navItems = [
@@ -20,14 +20,14 @@ const navItems = [
       { label: 'Maps', value: 'maps' },
     ],
   },
-  // {
-  //   label: 'Object Oriented Programming',
-  //   value: 'object oriented programming',
-  //   children: [
-  //     { label: 'Objects', value: 'objects' },
-  //     { label: 'Classes', value: 'classes' },
-  //   ],
-  // },
+  {
+    label: 'Object Oriented Programming',
+    value: 'object oriented programming',
+    children: [
+      { label: 'Objects', value: 'objects' },
+      { label: 'Classes', value: 'classes' },
+    ],
+  },
 ];
 
 export default function JavaScriptPage() {
