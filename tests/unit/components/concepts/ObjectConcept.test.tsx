@@ -1,6 +1,6 @@
-import ObjectConcept, { generateObjectPreviewLines } from "../../../../components/concepts/ObjectConcept";
+import ObjectConcept, { generateObjectPreviewLines } from "../../../../components/languages/JavaScript/ObjectConcept";
 import React from 'react';
-import { render, screen, fireEvent, within } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 // Helper: adds a new key-value pair
@@ -12,18 +12,16 @@ const addObjectEntry = (label: string, value: string) => {
 };
 
 describe('ObjectConcept component', () => {
-  it('renders all main sections', () => {
+  it('renders all definitions', () => {
     render(<ObjectConcept />);
-    expect(screen.getByText('What is an Object?')).toBeInTheDocument();
-    expect(screen.getByText('Using Object Properties')).toBeInTheDocument();
-    expect(screen.getByText('Object Destructuring')).toBeInTheDocument();
+    expect(screen.getByText('An object is a key-value pair structure that stores data. Keys are called properties.')).toBeInTheDocument();
+    expect(screen.getByText('We can access the values corresponding to keys with dot notation. An example of this is below.')).toBeInTheDocument();
+    expect(screen.getByText('Destructuring is a JavaScript feature that lets us extract values from an object (or array) and assign them to variables.')).toBeInTheDocument();
   });
 
   it('updates the preview section with entered properties', () => {
     render(<ObjectConcept />);
     addObjectEntry('age', '27');
-
-    expect(screen.getByText(/Object Preview:/)).toBeInTheDocument();
     expect(screen.getAllByText(/age: 27/)).toBeTruthy();
   });
 

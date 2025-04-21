@@ -4,11 +4,11 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Alert } from '@mui/material';
 import Link from 'next/link';
-import ArrayConcept from '../concepts/ArrayConcept';
-import MapConcept from '../concepts/MapConcept';
-import SetConcept from '../concepts/SetConcept';
-import Sidebar from '../Sidebar';
-import ObjectConcept from '../concepts/ObjectConcept';
+import ArrayConcept from './ArrayConcept';
+import MapConcept from './MapConcept';
+import SetConcept from './SetConcept';
+import Sidebar from '../../common/Sidebar';
+import ObjectConcept from './ObjectConcept';
 
 const navItems = [
   {
@@ -85,7 +85,7 @@ export default function JavaScriptPage() {
 
   return (
     <main className="js-layout">
-      <Sidebar title="Topics" items={navItems} defaultOpen={['collections']} onSelect={handleSelect} />
+      <Sidebar title="Topics" items={navItems} defaultOpen={['collections', 'object oriented programming']} onSelect={handleSelect} />
       <div className="js-page-body">
         <Alert severity="info" className="feedback-banner" sx={{ mb: 3 }}>
           Have ideas to improve this page?{' '}

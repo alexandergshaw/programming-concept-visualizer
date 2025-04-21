@@ -1,8 +1,41 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import ArrayConcept from '../../../../components/concepts/ArrayConcept';
+import ArrayConcept from '../../../../components/languages/JavaScript/ArrayConcept';
 import userEvent from '@testing-library/user-event';
 
-describe('ArrayConcept array operations', () => {
+describe('ArrayConcept definitions', () => {
+  const OPERATION_DESCRIPTIONS: Record<string, string> = {
+    push: 'Adds a value to the end of the array.',
+    pop: 'Removes the last item from the array.',
+    unshift: 'Adds a value to the beginning of the array.',
+    splice: 'Inserts a value at a specific index.',
+    slice: 'Copies part of the array (non-destructive).',
+    indexOf: 'Finds the first index of a value.',
+    lastIndexOf: 'Finds the last index of a value.',
+    includes: 'Checks if a value exists in the array.',
+    update: 'Changes the value at a specific index.',
+  };
+
+  it('contains definition(s)', () => {
+    render(<ArrayConcept />);
+    expect(screen.getByText('A data structure that is an ordered list. Stores values in a numbered sequence.')).toBeTruthy();
+  })
+
+  it.each(Object.entries(OPERATION_DESCRIPTIONS))(
+    'displays correct description for %s operation',
+    async (operation, expectedDescription) => {
+      render(<ArrayConcept />);
+      const user = userEvent.setup();
+
+      const combo = screen.getByRole('combobox', { name: /choose operation/i });
+      await user.click(combo);
+      await user.click(screen.getByText(operation));
+
+      expect(screen.getByDisplayValue(expectedDescription)).toBeTruthy();
+    }
+  );
+});
+
+describe('ArrayConcept operations', () => {
   const setInput = (label: string, value: string) => {
     fireEvent.change(screen.getByLabelText(label), { target: { value } });
   };

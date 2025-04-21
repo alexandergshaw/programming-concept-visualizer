@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import '../styles/javascript.css';
+import '../../styles/javascript.css';
 
 interface SidebarItem {
   label: string;
