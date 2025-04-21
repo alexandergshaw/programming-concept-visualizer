@@ -3,13 +3,14 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import PageWrapper from '../../common/PageWrapper';
+import UserAcceptanceTestingConcept from './UserAcceptanceTestingConcept';
 
 const navItems = [
   {
-    label: 'User Acceptance Testing',
-    value: 'user acceptance testing',
+    label: 'Types of Testing',
+    value: 'types of testing',
     children: [
-      { label: 'Demo', value: 'demo' },
+      { label: 'User Acceptance Testing', value: 'user-acceptance-testing' },
     ],
   },
 ];
@@ -31,8 +32,8 @@ export default function JavaScriptPage() {
     if (!concept) return null;
 
     switch (concept.toLowerCase()) {
-      case 'user acceptance testing':
-        return <>test</>;
+      case 'user-acceptance-testing':
+        return <UserAcceptanceTestingConcept/>;
       default:
         return null;
     }
@@ -44,7 +45,7 @@ export default function JavaScriptPage() {
   };
 
   return (
-    <PageWrapper pageTitle={'Software Testing'} navItems={navItems} defaultOpen={["user acceptance testing"]} handleSelect={handleSelect}>
+    <PageWrapper pageTitle={"Software Testing Topics"} navItems={navItems} defaultOpen={["types of testing"]} handleSelect={handleSelect}>
       {selectedConcept ? (
         <>
           {renderContent(selectedConcept)}

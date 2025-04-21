@@ -15,7 +15,7 @@ export interface PageWrapperProps {
 export default function PageWrapper(props: PageWrapperProps) {
   return (
     <main className="js-layout">
-      <Sidebar title="Topics" items={props.navItems} defaultOpen={props.defaultOpen} onSelect={props.handleSelect} />
+      <Sidebar title={props.pageTitle} items={props.navItems} defaultOpen={props.defaultOpen} onSelect={props.handleSelect} />
       <div className="js-page-body">
         <Alert severity="info" className="feedback-banner" sx={{ mb: 3 }}>
           Have ideas to improve this page?{' '}
@@ -29,7 +29,6 @@ export default function PageWrapper(props: PageWrapperProps) {
           </Link>
         </Alert>
         <section className="js-content">
-          <h1 className="js-page-title">{props.pageTitle}</h1>
           <div style={{ marginTop: '40px' }}>
             {props.children}
           </div>
