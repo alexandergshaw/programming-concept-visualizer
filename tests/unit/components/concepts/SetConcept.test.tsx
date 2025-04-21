@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import SetConcept from '../../../../components/concepts/SetConcept';
+import SetConcept from '../../../../components/languages/JavaScript/SetConcept';
 
 describe('SetConcept operations', () => {
   const user = userEvent.setup();

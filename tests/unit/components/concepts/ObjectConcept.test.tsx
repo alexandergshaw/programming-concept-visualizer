@@ -1,4 +1,4 @@
-import ObjectConcept, { generateObjectPreviewLines } from "../../../../components/concepts/ObjectConcept";
+import ObjectConcept, { generateObjectPreviewLines } from "../../../../components/languages/JavaScript/ObjectConcept";
 import React from 'react';
 import { render, screen, fireEvent, within } from '@testing-library/react';
 import '@testing-library/jest-dom';

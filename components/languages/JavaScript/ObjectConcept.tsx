@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import { Box, Typography, TextField, Button } from '@mui/material';
-import ConceptWrapper from '../common/ConceptWrapper';
-import "../../styles/object.css"
-import Section from '../common/Section'
-import CodePreview from '../common/CodePreview';
+import ConceptWrapper from '../../common/ConceptWrapper';
+import "../../../styles/object.css"
+import Section from '../../common/Section'
+import CodePreview from '../../common/CodePreview';
 
 // Shared utility to generate formatted preview lines
 export function generateObjectPreviewLines(
@@ -94,13 +94,13 @@ export default function ObjectConcept() {
 
       <ObjectPlayground onObjectChange={setPlaygroundObject} />
 
-      <CodePreview title={"JavaScript Code"} code={previewLines} />
-      <Section title="Using Object Properties"><CodePreview title={"JavaScript Code"} code={accessLines} /></Section>
+      <CodePreview code={previewLines} />
+      <Section title="Using Object Properties"><CodePreview code={accessLines} /></Section>
       <Section
         title="Object Destructuring"
         subtitle="Destructuring is a JavaScript feature that lets you extract values from an object (or array) and assign them to variables."
       >
-        <CodePreview title={"JavaScript Code"} code={destructuredLines} />
+        <CodePreview code={destructuredLines} />
       </Section>
     </ConceptWrapper>
   );
@@ -128,7 +128,7 @@ function ObjectPlayground({
       setError('Live object update failed — check your syntax.');
       onObjectChange?.({});
     }
-  }, [entries]);
+  }, [entries, onObjectChange]);
 
   const updateEntry = (index: number, field: 'key' | 'value', newValue: string) => {
     const updated = [...entries];

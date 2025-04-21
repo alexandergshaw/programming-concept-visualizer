@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Tooltip from '@mui/material/Tooltip';
 import Autocomplete from '@mui/material/Autocomplete';
-import '../../styles/set.css';
+import '../../../styles/set.css';
 
 const OPERATIONS = ['add', 'delete', 'has', 'clear'];
 
@@ -45,7 +45,7 @@ export default function SetConcept({
     const newSet = new Set(parsed);
     setSetValues(newSet);
     onCodeChange?.(`let set = new Set([${[...newSet].join(', ')}]);`);
-  }, [rawInput]);
+  }, [rawInput, onCodeChange]);
 
   const updateCodePreview = (actionCode: string) => {
     const values = [...setValues];

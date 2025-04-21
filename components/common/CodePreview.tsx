@@ -4,7 +4,7 @@ import { Box, IconButton, Tooltip } from '@mui/material';
 import { useState } from 'react';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
-export default function CodePreview({ title, code }: { title: string; code: string[] }) {
+export default function CodePreview({ title, code }: { title?: string; code: string[] }) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {

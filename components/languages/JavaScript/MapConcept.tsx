@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Tooltip from '@mui/material/Tooltip';
-import '../../styles/map.css';
+import '../../../styles/map.css';
 
 const OPERATIONS = ['set', 'get', 'has', 'delete', 'clear'];
 
@@ -31,7 +31,7 @@ export default function MapConcept({
     onCodeChange?.(`let map = new Map([${[...newMap.entries()]
       .map(([k, v]) => `["${k}", "${v}"]`)
       .join(', ')}]);`);
-  }, [rawInput]);
+  }, [rawInput, onCodeChange]);
 
   const updateCodePreview = (actionCode: string) => {
     const entries = [...map.entries()]

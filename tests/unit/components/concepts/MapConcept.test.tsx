@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import MapConcept from '../../../../components/concepts/MapConcept';
+import MapConcept from '../../../../components/languages/JavaScript/MapConcept';
 
 describe('MapConcept operations', () => {
   const user = userEvent.setup();

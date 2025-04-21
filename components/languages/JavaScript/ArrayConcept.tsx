@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import '../../styles/array.css';
+import '../../../styles/array.css';
 
 const OPERATIONS = [
   'push',
@@ -38,7 +38,7 @@ export default function ArrayConcept({
       .filter((n) => !isNaN(n));
     setArr(parsed);
     onCodeChange?.(`let array = [${parsed.join(', ')}];`);
-  }, [rawInput]);
+  }, [rawInput, onCodeChange]);
 
   const resetOutput = () => setOutput(null);
 
