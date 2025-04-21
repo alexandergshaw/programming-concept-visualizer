@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Box, Typography, TextField, Button, Divider } from '@mui/material';
+import { Box, Typography, TextField, Button } from '@mui/material';
 import ConceptWrapper from '../common/ConceptWrapper';
 import "../../styles/object.css"
 import Section from '../common/Section'
@@ -75,7 +75,7 @@ export function generateObjectPreviewLines(
 }
 
 export default function ObjectConcept() {
-  const [playgroundObject, setPlaygroundObject] = useState<Record<string, any>>({});
+  const [playgroundObject, setPlaygroundObject] = useState<Record<string, unknown>>({});
   const [accessLines, setAccessLines] = useState<string[]>([]);
   const [destructuredLines, setDestructuredLines] = useState<string[]>([]);
   const [previewLines, setPreviewLines] = useState<string[]>([]);
