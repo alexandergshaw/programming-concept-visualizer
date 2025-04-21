@@ -9,7 +9,7 @@ import CodePreview from '../common/CodePreview';
 
 // Shared utility to generate formatted preview lines
 export function generateObjectPreviewLines(
-  obj: Record<string, any>,
+  obj: Record<string, unknown>,
   mode: 'preview' | 'access' | 'destructure'
 ): string[] {
   const keys = Object.keys(obj);
@@ -109,13 +109,13 @@ export default function ObjectConcept() {
 function ObjectPlayground({
   onObjectChange,
 }: {
-  onObjectChange?: (obj: Record<string, any>) => void;
+  onObjectChange?: (obj: Record<string, unknown>) => void;
 }) {
   const [entries, setEntries] = useState([{ key: 'name', value: '"Alex"' }]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const result: Record<string, any> = {};
+    const result: Record<string, unknown> = {};
     try {
       for (const { key, value } of entries) {
         if (!key.trim()) continue;
