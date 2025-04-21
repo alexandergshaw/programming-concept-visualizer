@@ -1,7 +1,7 @@
 'use client';
 
 import { Box, Typography } from '@mui/material';
-import '../../styles/array.css'; // Still use array.css for layout, border, spacing, etc.
+import '../../styles/array.css';
 
 interface ConceptWrapperProps {
     title: string;

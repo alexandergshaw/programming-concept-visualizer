@@ -5,6 +5,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import '../../../styles/array.css';
+import ConceptWrapper from '../../common/ConceptWrapper';
 
 const OPERATIONS = [
   'push',
@@ -144,12 +145,7 @@ export default function ArrayConcept({
   };
 
   return (
-    <div className="array-container">
-      <h2 className="array-title">Array</h2>
-      <p className="map-description">
-        An <code>array</code> is an ordered list that store values in a numbered sequence.
-      </p>
-
+    <ConceptWrapper title="Array" description="An array is an ordered list that store values in a numbered sequence.">
       <TextField
         label="Define your array (comma-separated)"
         variant="outlined"
@@ -216,6 +212,6 @@ export default function ArrayConcept({
       </div>
 
       {output && <p className="array-output">{output}</p>}
-    </div>
+    </ConceptWrapper>
   );
 }
