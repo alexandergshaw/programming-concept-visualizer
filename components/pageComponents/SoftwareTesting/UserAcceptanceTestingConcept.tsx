@@ -7,6 +7,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ConceptWrapper from '../../common/ConceptWrapper';
 import Timeline, { TimelineStep } from '../../common/Timeline';
 import Section from '../../common/Section';
+import PhoneFrame from '../../common/PhoneFrame';
 
 const timelineSteps: TimelineStep[] = [
     {
@@ -66,7 +67,7 @@ export default function UserAcceptanceTestingConcept() {
                 </Section>
             </ConceptWrapper>
             <ConceptWrapper title={"Demo"} description={"The final check to make sure an application works for real users in the real world. It’s like taking a car for a test drive before buying—if everything runs smoothly and meets expectations, it's ready to launch."}>
-                <></>
+                <PhoneFrame>test</PhoneFrame>
             </ConceptWrapper>
         </>
 
