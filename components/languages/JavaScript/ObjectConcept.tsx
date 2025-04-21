@@ -95,10 +95,10 @@ export default function ObjectConcept() {
       <ObjectPlayground onObjectChange={setPlaygroundObject} />
 
       <CodePreview code={previewLines} />
-      <Section title="Using Object Properties"><CodePreview code={accessLines} /></Section>
+      <Section title="Using Object Properties" subtitle="We can access the values corresponding to keys with dot notation. An example of this is below."><CodePreview code={accessLines} /></Section>
       <Section
         title="Object Destructuring"
-        subtitle="Destructuring is a JavaScript feature that lets you extract values from an object (or array) and assign them to variables."
+        subtitle="Destructuring is a JavaScript feature that lets us extract values from an object (or array) and assign them to variables."
       >
         <CodePreview code={destructuredLines} />
       </Section>
