@@ -6,6 +6,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Tooltip from '@mui/material/Tooltip';
 import '../../../styles/map.css';
+import ConceptWrapper from '../../common/ConceptWrapper';
 
 const OPERATIONS = ['set', 'get', 'has', 'delete', 'clear'];
 
@@ -117,12 +118,7 @@ export default function MapConcept({
   };
 
   return (
-    <div className="map-container">
-      <h2 className="map-title">Map</h2>
-      <p className="map-description">
-        A <code>Map</code> stores key-value pairs. Keys can be any type.
-      </p>
-
+    <ConceptWrapper title='Map' description="A data structure that stores key-value pairs. Keys can be any type.">
       <TextField
         label="Define your map (key:value, comma-separated)"
         variant="outlined"
@@ -190,6 +186,6 @@ export default function MapConcept({
       </div>
 
       {output && <p className="map-output">{output}</p>}
-    </div>
+    </ConceptWrapper>
   );
 }

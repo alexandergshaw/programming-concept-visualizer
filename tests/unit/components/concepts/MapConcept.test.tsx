@@ -2,6 +2,35 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import MapConcept from '../../../../components/languages/JavaScript/MapConcept';
 
+const MAP_DESCRIPTIONS: Record<string, string> = {
+  set: 'Adds or updates a key-value pair in the map.',
+  get: 'Retrieves the value associated with a key.',
+  has: 'Checks if a key exists in the map.',
+  delete: 'Removes a key and its value.',
+  clear: 'Removes all key-value pairs.',
+};
+
+describe('MapConcept Component definitions', () => {
+  it('contains definition(s)', () => {
+    render(<MapConcept />);
+    expect(screen.getByText('A data structure that stores key-value pairs. Keys can be any type.')).toBeTruthy();
+  })
+
+  it.each(Object.entries(MAP_DESCRIPTIONS))(
+    'displays correct description for %s operation',
+    async (operation, expectedDescription) => {
+      render(<MapConcept />);
+      const user = userEvent.setup();
+
+      const combo = screen.getByRole('combobox', { name: /choose operation/i });
+      await user.click(combo);
+      await user.click(screen.getByText(operation));
+
+      expect(screen.getByDisplayValue(expectedDescription)).toBeTruthy();
+    }
+  );
+});
+
 describe('MapConcept operations', () => {
   const user = userEvent.setup();
 

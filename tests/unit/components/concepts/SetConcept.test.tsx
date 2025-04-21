@@ -2,6 +2,34 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import SetConcept from '../../../../components/languages/JavaScript/SetConcept';
 
+const SET_DESCRIPTIONS: Record<string, string> = {
+  add: 'Adds a value to the set (if it is not already present).',
+  delete: 'Removes a specific value from the set.',
+  has: 'Checks whether a value exists in the set.',
+  clear: 'Removes all values from the set.',
+};
+
+describe('SetConcept Component Descriptions', () => {
+  it("contains correct definitions", () => {
+    render(<SetConcept />);
+    expect(screen.getByText('A data structure that stores unique values. You can add, remove, or check for existence.')).toBeTruthy();
+  })
+
+  it.each(Object.entries(SET_DESCRIPTIONS))(
+    'displays correct description for %s operation',
+    async (operation, expectedDescription) => {
+      render(<SetConcept />);
+      const user = userEvent.setup();
+
+      const combo = screen.getByRole('combobox', { name: /choose operation/i });
+      await user.click(combo);
+      await user.click(screen.getByText(operation));
+
+      expect(screen.getByDisplayValue(expectedDescription)).toBeTruthy();
+    }
+  );
+});
+
 describe('SetConcept operations', () => {
   const user = userEvent.setup();
 

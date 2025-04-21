@@ -17,7 +17,7 @@ describe('ArrayConcept definitions', () => {
 
   it('contains definition(s)', () => {
     render(<ArrayConcept />);
-    expect(screen.getByText('An array is an ordered list that store values in a numbered sequence.')).toBeTruthy();
+    expect(screen.getByText('A data structure that is an ordered list. Stores values in a numbered sequence.')).toBeTruthy();
   })
 
   it.each(Object.entries(OPERATION_DESCRIPTIONS))(
@@ -43,11 +43,6 @@ describe('ArrayConcept operations', () => {
   const clickRun = () => {
     fireEvent.click(screen.getByText('Run'));
   };
-
-  it('contains definition(s)', () => {
-    render(<ArrayConcept />);
-    expect(screen.getByText('An array is an ordered list that store values in a numbered sequence.')).toBeTruthy();
-  })
 
   it('pushes value to the end', () => {
     render(<ArrayConcept />);

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react'; 
+import { useEffect, useState } from 'react';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -145,7 +145,7 @@ export default function ArrayConcept({
   };
 
   return (
-    <ConceptWrapper title="Array" description="An array is an ordered list that store values in a numbered sequence.">
+    <ConceptWrapper title="Array" description="A data structure that is an ordered list. Stores values in a numbered sequence.">
       <TextField
         label="Define your array (comma-separated)"
         variant="outlined"
@@ -155,7 +155,6 @@ export default function ArrayConcept({
         onChange={(e) => setRawInput(e.target.value)}
         sx={{ marginBottom: 2 }}
       />
-
       <div className="array-controls">
         <Autocomplete
           options={OPERATIONS}
