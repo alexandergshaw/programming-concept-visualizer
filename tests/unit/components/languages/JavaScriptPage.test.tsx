@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as nextNavigation from 'next/navigation';
-import JavaScriptPage from '../../../../components/pageComponents/JavaScript/JavaScriptPage';
+import JavaScriptPage from '../../../../components/pageComponents/javaScript/JavaScriptPage';
 
 // Mock concept components
 jest.mock('../../../../components/pageComponents/JavaScript/ArrayConcept', () => () => <div>ArrayComponentMock</div>);

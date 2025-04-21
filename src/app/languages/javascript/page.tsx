@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import JavaScriptPage from '../../../../components/pageComponents/JavaScript/JavaScriptPage';
+import JavaScriptPage from '../../../../components/pageComponents/javaScript/JavaScriptPage';
 
 export default function Page() {
   return (

@@ -2,14 +2,11 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Alert } from '@mui/material';
-import Link from 'next/link';
-import Sidebar from '../../common/Sidebar';
+import PageWrapper from '../../common/PageWrapper';
 import ArrayConcept from './ArrayConcept';
 import MapConcept from './MapConcept';
 import ObjectConcept from './ObjectConcept';
 import SetConcept from './SetConcept';
-import PageWrapper from '../../common/PageWrapper';
 
 const navItems = [
   {
