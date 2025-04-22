@@ -1,24 +1,25 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 
-export default function Section({
-    title,
-    subtitle,
-    children,
-}: {
-    title: string;
-    subtitle?: string;
+export interface SectionProps {
+    title: string
+    subtitle?: string
+    className?: string
     children?: React.ReactNode
-}) {
+}
+
+export default function Section(props: SectionProps) {
     return (
         <Box sx={{ mt: 4 }}>
-            <Typography variant="h6">{title}</Typography>
-            {subtitle && (
+            <Typography variant="h6">{props.title}</Typography>
+            {props.subtitle && (
                 <Typography sx={{ mb: 2 }} className="map-description">
-                    {subtitle}
+                    {props.subtitle}
                 </Typography>
             )}
-            {children}
+            <div className={props.className}>
+                {props.children}
+            </div>
         </Box>
     );
 }

@@ -1,0 +1,135 @@
+{
+    "uatWorkflows": [
+      {
+        "category": "Core",
+        "id": 1,
+        "title": "Add a Task",
+        "goal": "Ensure the user can add a new task with a priority.",
+        "steps": [
+          "Type a task description in the input.",
+          "Select a priority (e.g., 'High').",
+          "Click 'Add'."
+        ],
+        "expectedResult": "The task appears in the list with the correct text and priority label."
+      },
+      {
+        "category": "Core",
+        "id": 2,
+        "title": "Mark a Task as Complete",
+        "goal": "Verify that tasks can be marked done.",
+        "steps": [
+          "Add a task.",
+          "Click its checkbox."
+        ],
+        "expectedResult": "The task text has a line-through and the color fades to indicate completion."
+      },
+      {
+        "category": "Core",
+        "id": 3,
+        "title": "Edit a Task",
+        "goal": "Allow users to change the task text.",
+        "steps": [
+          "Click the edit icon.",
+          "Modify the text in the input.",
+          "Click the save icon."
+        ],
+        "expectedResult": "The updated task text is reflected in the list."
+      },
+      {
+        "category": "Core",
+        "id": 4,
+        "title": "Filter Tasks",
+        "goal": "View tasks based on their status.",
+        "steps": [
+          "Add multiple tasks.",
+          "Mark some as done.",
+          "Click 'Active' and 'Completed' filters."
+        ],
+        "expectedResult": "The filtered list updates accordingly."
+      },
+      {
+        "category": "Core",
+        "id": 5,
+        "title": "Clear Completed",
+        "goal": "Remove all completed tasks in one action.",
+        "steps": [
+          "Mark some tasks as complete.",
+          "Click 'Clear Completed'."
+        ],
+        "expectedResult": "Only incomplete tasks remain."
+      },
+      {
+        "category": "Edge",
+        "id": 6,
+        "title": "Add Long Task Descriptions",
+        "goal": "Check layout and text wrapping.",
+        "steps": [
+          "Add a task with a very long description."
+        ],
+        "expectedResult": "Text wraps cleanly, layout does not break."
+      },
+      {
+        "category": "Edge",
+        "id": 7,
+        "title": "Add Tasks with Identical Text",
+        "goal": "Ensure app accepts tasks with duplicate text but unique IDs.",
+        "steps": [
+          "Add the same task twice."
+        ],
+        "expectedResult": "Both appear in the list with different timestamps."
+      },
+      {
+        "category": "Edge",
+        "id": 8,
+        "title": "Switch Priorities Frequently",
+        "goal": "Ensure dropdown works correctly.",
+        "steps": [
+          "Switch priorities back and forth before adding the task."
+        ],
+        "expectedResult": "Task uses the most recent selection."
+      },
+      {
+        "category": "Negative",
+        "id": 9,
+        "title": "Add Empty Task",
+        "goal": "Prevent empty submissions.",
+        "steps": [
+          "Leave input blank and click 'Add'."
+        ],
+        "expectedResult": "Task is not added."
+      },
+      {
+        "category": "Negative",
+        "id": 10,
+        "title": "Edit and Save Empty Task",
+        "goal": "Prevent saving an empty task description.",
+        "steps": [
+          "Edit a task.",
+          "Delete all text.",
+          "Click save."
+        ],
+        "expectedResult": "App should disallow or revert the change."
+      },
+      {
+        "category": "Exploratory",
+        "id": 11,
+        "title": "Test Responsiveness",
+        "goal": "Verify layout responsiveness at different screen sizes.",
+        "steps": [
+          "Resize the browser or use dev tools to simulate tablet and mobile viewports."
+        ],
+        "expectedResult": "Layout adjusts properly with no overlaps or cut-off elements."
+      },
+      {
+        "category": "Exploratory",
+        "id": 12,
+        "title": "Bulk Task Completion",
+        "goal": "Ensure performance when toggling many tasks.",
+        "steps": [
+          "Add 5+ tasks and mark them all as done."
+        ],
+        "expectedResult": "UI remains performant and correct."
+      }
+    ]
+  }
+  

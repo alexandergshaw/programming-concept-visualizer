@@ -4,10 +4,13 @@ import ChecklistIcon from '@mui/icons-material/Checklist';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import FeedbackIcon from '@mui/icons-material/Feedback';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import ConceptWrapper from '../../common/ConceptWrapper';
-import Timeline, { TimelineStep } from '../../common/Timeline';
-import Section from '../../common/Section';
-import PhoneFrame from '../../common/PhoneFrame';
+import ConceptWrapper from '../../../common/ConceptWrapper';
+import Timeline, { TimelineStep } from '../../../common/Timeline';
+import Section from '../../../common/Section';
+import PhoneFrame from '../../../common/PhoneFrame';
+import MockTestingApp from '../../../common/MockTestingApp';
+import UserAcceptanceTestingCheckList from './UserAcceptanceTestingCheckList';
+import "../../../../styles/common.css"
 
 const timelineSteps: TimelineStep[] = [
     {
@@ -67,9 +70,11 @@ export default function UserAcceptanceTestingConcept() {
                 </Section>
             </ConceptWrapper>
             <ConceptWrapper title={"Demo"} description={"The final check to make sure an application works for real users in the real world. It’s like taking a car for a test drive before buying—if everything runs smoothly and meets expectations, it's ready to launch."}>
-                <PhoneFrame>test</PhoneFrame>
+                <Section title={"Mock App"} subtitle={"Proceed"} className="double-column">
+                    <PhoneFrame><MockTestingApp/></PhoneFrame>\
+                    <UserAcceptanceTestingCheckList/>
+                </Section>
             </ConceptWrapper>
         </>
-
     )
 }

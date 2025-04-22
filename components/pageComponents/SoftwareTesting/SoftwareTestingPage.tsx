@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import PageWrapper from '../../common/PageWrapper';
-import UserAcceptanceTestingConcept from './UserAcceptanceTestingConcept';
+import UserAcceptanceTestingConcept from './userAcceptanceTesting/UserAcceptanceTestingConcept';
 
 const navItems = [
   {
