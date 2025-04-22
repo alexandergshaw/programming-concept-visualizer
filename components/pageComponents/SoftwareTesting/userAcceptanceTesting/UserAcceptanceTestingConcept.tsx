@@ -73,9 +73,9 @@ export default function UserAcceptanceTestingConcept() {
 
       <ConceptWrapper
         title={"Example Scenario"}
-        description={"Your Agile team has just about finished an app, and is nearly ready to deploy it out to the public. This is a simple task management app designed to help users organize and prioritize their to-dos."}
+        description={"Your Agile team has just about finished coding and testing an app, and is nearly ready to deploy it out to the public. One of the last things you all need to do is to put it through user acceptance testing."}
       >
-        <Section title={"The App"} subtitle={"Take a second to familiarize yourself with the app."}>
+        <Section title={"The App"} subtitle={"This is a simple task management app designed to help users organize and prioritize their to-dos. Take a second to familiarize yourself with it."}>
           <PhoneFrame><MockTestingApp /></PhoneFrame>
         </Section>
 
@@ -87,7 +87,7 @@ export default function UserAcceptanceTestingConcept() {
         <Section
           title={"Role 1: Test-Writer"}
           className={"double-column"}
-          subtitle={"For the first task, imagine you're a person writing the user acceptance tests. Your job is to take each user story and write simple, testable scenarios that confirm the app behaves the way a real person would expect."}
+          subtitle={"For the first role, imagine you're a person writing the user acceptance tests. Your job is to take each user story and write simple, testable scenarios that confirm the app behaves the way a real person would expect."}
         >
           <ScrumBoard className={"half-width"} visibleColumn={"Done"} userStories={userStories.userStories} />
           <UserAcceptanceTestCreator onTestsChange={setUatTests} />
@@ -104,7 +104,7 @@ export default function UserAcceptanceTestingConcept() {
 
         <Section
           title={"Role 3: Feedback-Taker"}
-          subtitle={"For this task, imagine you're the person collecting feedback from testers. Your role is to review their notes and look for patterns—common issues, repeated confusion points, or missing features. Focus on identifying trends that could guide meaningful improvements to the app's usability and functionality."}
+          subtitle={"For this role, imagine you're the person collecting feedback from testers. Your role is to review their notes and look for patterns—common issues, repeated confusion points, or missing features. Focus on identifying trends that could guide meaningful improvements to the app's usability and functionality."}
           className="double-column"
         >
           <PhoneFrame><MockTestingApp /></PhoneFrame>

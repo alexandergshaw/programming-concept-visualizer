@@ -161,9 +161,9 @@ export default function UserAcceptanceTestCreator({ onTestsChange }: Props) {
             ))}
           </Stack>
 
-          <Button variant="outlined" sx={{ mt: 3 }} onClick={handleExport}>
+          {/* <Button variant="outlined" sx={{ mt: 3 }} onClick={handleExport}>
             Export All Tests as .txt
-          </Button>
+          </Button> */}
         </Box>
       )}
     </Box>

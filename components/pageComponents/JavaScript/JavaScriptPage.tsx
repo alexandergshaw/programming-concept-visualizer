@@ -18,14 +18,14 @@ const navItems = [
       { label: 'Maps', value: 'maps' },
     ],
   },
-  {
-    label: 'Object Oriented Programming',
-    value: 'object oriented programming',
-    children: [
-      { label: 'Objects', value: 'objects' },
-      { label: 'Classes', value: 'classes' },
-    ],
-  },
+  // {
+  //   label: 'Object Oriented Programming',
+  //   value: 'object oriented programming',
+  //   children: [
+  //     { label: 'Objects', value: 'objects' },
+  //     { label: 'Classes', value: 'classes' },
+  //   ],
+  // },
 ];
 
 export default function JavaScriptPage() {
