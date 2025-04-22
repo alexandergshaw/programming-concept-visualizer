@@ -13,7 +13,7 @@ export default function Section(props: SectionProps) {
         <Box sx={{ mt: 4 }}>
             <Typography variant="h6">{props.title}</Typography>
             {props.subtitle && (
-                <Typography sx={{ mb: 2 }} className="map-description">
+                <Typography sx={{ mb: 2 }}>
                     {props.subtitle}
                 </Typography>
             )}

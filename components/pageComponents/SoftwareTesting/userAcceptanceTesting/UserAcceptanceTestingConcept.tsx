@@ -64,14 +64,14 @@ const timelineSteps: TimelineStep[] = [
 export default function UserAcceptanceTestingConcept() {
     return (
         <>
-            <ConceptWrapper title={"User Acceptance Testing (UAT)"} description={"The final check to make sure an application works for real users in the real world. It’s like taking a car for a test drive before buying—if everything runs smoothly and meets expectations, it's ready to launch."}>
+            <ConceptWrapper title={"User Acceptance Testing (UAT)"} description={"The final check to make sure an application works for real users in the real world. It's like taking a car for a test drive before buying—if everything runs smoothly and meets expectations, it's ready to launch."}>
                 <Section title={'Steps in UAT'}>
                     <Timeline steps={timelineSteps} />
                 </Section>
             </ConceptWrapper>
-            <ConceptWrapper title={"Demo"} description={"The final check to make sure an application works for real users in the real world. It’s like taking a car for a test drive before buying—if everything runs smoothly and meets expectations, it's ready to launch."}>
+            <ConceptWrapper title={"Demo"} description={"The final check to make sure an application works for real users in the real world. It's like taking a car for a test drive before buying—if everything runs smoothly and meets expectations, it's ready to launch."}>
                 <Section title={"Mock App"} subtitle={"Proceed"} className="double-column">
-                    <PhoneFrame><MockTestingApp/></PhoneFrame>\
+                    <PhoneFrame className={"stickyHeader"}><MockTestingApp/></PhoneFrame>
                     <UserAcceptanceTestingCheckList/>
                 </Section>
             </ConceptWrapper>

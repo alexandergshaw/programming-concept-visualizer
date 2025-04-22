@@ -2,7 +2,12 @@
 
 import { Box } from '@mui/material';
 
-export default function PhoneFrame({ children }: { children: React.ReactNode }) {
+export interface PhoneFrameProps { 
+    children: React.ReactNode
+    className?: string
+}
+
+export default function PhoneFrame(props: PhoneFrameProps) {
   return (
     <Box
       sx={{
@@ -46,7 +51,7 @@ export default function PhoneFrame({ children }: { children: React.ReactNode }) 
           zIndex: 1,
         }}
       >
-        {children}
+        {props.children}
       </Box>
     </Box>
   );

@@ -67,68 +67,6 @@
           "Add a task with a very long description."
         ],
         "expectedResult": "Text wraps cleanly, layout does not break."
-      },
-      {
-        "category": "Edge",
-        "id": 7,
-        "title": "Add Tasks with Identical Text",
-        "goal": "Ensure app accepts tasks with duplicate text but unique IDs.",
-        "steps": [
-          "Add the same task twice."
-        ],
-        "expectedResult": "Both appear in the list with different timestamps."
-      },
-      {
-        "category": "Edge",
-        "id": 8,
-        "title": "Switch Priorities Frequently",
-        "goal": "Ensure dropdown works correctly.",
-        "steps": [
-          "Switch priorities back and forth before adding the task."
-        ],
-        "expectedResult": "Task uses the most recent selection."
-      },
-      {
-        "category": "Negative",
-        "id": 9,
-        "title": "Add Empty Task",
-        "goal": "Prevent empty submissions.",
-        "steps": [
-          "Leave input blank and click 'Add'."
-        ],
-        "expectedResult": "Task is not added."
-      },
-      {
-        "category": "Negative",
-        "id": 10,
-        "title": "Edit and Save Empty Task",
-        "goal": "Prevent saving an empty task description.",
-        "steps": [
-          "Edit a task.",
-          "Delete all text.",
-          "Click save."
-        ],
-        "expectedResult": "App should disallow or revert the change."
-      },
-      {
-        "category": "Exploratory",
-        "id": 11,
-        "title": "Test Responsiveness",
-        "goal": "Verify layout responsiveness at different screen sizes.",
-        "steps": [
-          "Resize the browser or use dev tools to simulate tablet and mobile viewports."
-        ],
-        "expectedResult": "Layout adjusts properly with no overlaps or cut-off elements."
-      },
-      {
-        "category": "Exploratory",
-        "id": 12,
-        "title": "Bulk Task Completion",
-        "goal": "Ensure performance when toggling many tasks.",
-        "steps": [
-          "Add 5+ tasks and mark them all as done."
-        ],
-        "expectedResult": "UI remains performant and correct."
       }
     ]
   }
