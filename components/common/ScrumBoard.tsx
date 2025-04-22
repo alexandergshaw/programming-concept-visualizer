@@ -14,8 +14,8 @@ interface UserStory {
 interface ScrumBoardProps {
   userStories: UserStory[];
   visibleColumn?: 'To Do' | 'In Progress' | 'Done';
-  showLabels?: boolean
-  className?: string
+  showLabels?: boolean;
+  className?: string;
 }
 
 const allColumns: ('To Do' | 'In Progress' | 'Done')[] = ['To Do', 'In Progress', 'Done'];
@@ -28,13 +28,26 @@ export default function ScrumBoard(props: ScrumBoardProps) {
 
   return (
     <Box className={props.className} sx={{ px: 4, py: 2, height: '100%', background: boardBackground }}>
-      {props.showLabels && <Typography variant="h4" sx={{ mb: 3, fontWeight: 'bold' }}>
-        Scrum Board
-      </Typography>}
+      {props.showLabels && (
+        <Typography variant="h4" sx={{ mb: 3, fontWeight: 'bold' }}>
+          Scrum Board
+        </Typography>
+      )}
 
       <Grid container spacing={2}>
         {columns.map((column) => (
-          <Grid item xs={12} md={props.visibleColumn ? 12 : 4} key={column}>
+          <Box
+            key={column}
+            sx={{
+              width: '100%',
+              flexBasis: props.visibleColumn ? '100%' : {
+                xs: '100%',
+                md: '33.333%',
+              },
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
             <Paper
               elevation={0}
               sx={{
@@ -46,9 +59,11 @@ export default function ScrumBoard(props: ScrumBoardProps) {
                 flexDirection: 'column',
               }}
             >
-              {props.showLabels && <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2 }}>
-                {column}
-              </Typography>}
+              {props.showLabels && (
+                <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2 }}>
+                  {column}
+                </Typography>
+              )}
 
               <Stack spacing={2} sx={{ flexGrow: 1 }}>
                 {props.userStories
@@ -83,7 +98,7 @@ export default function ScrumBoard(props: ScrumBoardProps) {
                   ))}
               </Stack>
             </Paper>
-          </Grid>
+          </Box>
         ))}
       </Grid>
     </Box>

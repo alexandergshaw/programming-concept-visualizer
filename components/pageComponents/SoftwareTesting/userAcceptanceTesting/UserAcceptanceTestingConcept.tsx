@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { Typography } from '@mui/material';
-import DescriptionIcon from '@mui/icons-material/Description';
 import ChecklistIcon from '@mui/icons-material/Checklist';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import FeedbackIcon from '@mui/icons-material/Feedback';

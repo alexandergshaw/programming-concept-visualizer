@@ -66,26 +66,6 @@ export default function UserAcceptanceTestCreator({ onTestsChange }: Props) {
     });
   };
 
-  const handleExport = () => {
-    const allTests = [...tests];
-    if (form.title && form.goal && form.steps.length && form.expectedResult) {
-      allTests.push(form);
-    }
-
-    const header = ['ID', 'Title', 'Goal', 'Steps', 'Expected Result', 'Category'];
-    const lines = allTests.map(t =>
-      `"${t.id}","${t.title}","${t.goal}","${t.steps.join(' | ')}","${t.expectedResult}","${t.category}"`
-    );
-    const csvContent = [header.join(','), ...lines].join('\n');
-
-    const blob = new Blob([csvContent], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'uat_tests.txt';
-    link.click();
-  };
-
   const displayedTests = form.title || form.goal || form.steps.length || form.expectedResult
     ? [...tests, form]
     : tests;

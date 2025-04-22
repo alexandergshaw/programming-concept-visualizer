@@ -77,7 +77,7 @@ export default function TodoApp() {
     );
   };
 
-  const handleFilterChange = (_: any, value: 'all' | 'active' | 'completed') => {
+  const handleFilterChange = (_: unknown, value: 'all' | 'active' | 'completed') => {
     if (value) setFilter(value);
   };
 
@@ -92,12 +92,12 @@ export default function TodoApp() {
   });
 
   return (
-    <Paper elevation={3} sx={{ maxWidth: 800, mx: 'auto', mt: 5, p: 3, borderRadius: 3 }}>
+    <Paper elevation={3} sx={{ maxWidth: '100%', mx: 'auto', mt: 5, p: 3, borderRadius: 3 }}>
       <Typography variant="h5" gutterBottom>To-Do List</Typography>
 
       {/* Input Area */}
       <Grid container spacing={2} alignItems="center" mb={2}>
-        <Grid item xs={12} md={6}>
+        <Box sx={{ flex: 1, minWidth: 240 }}>
           <TextField
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -106,8 +106,8 @@ export default function TodoApp() {
             size="small"
             onKeyDown={(e) => e.key === 'Enter' && handleAdd()}
           />
-        </Grid>
-        <Grid item xs={6} sm={3} md={2}>
+        </Box>
+        <Box sx={{ minWidth: 140 }}>
           <FormControl size="small" fullWidth>
             <InputLabel>Priority</InputLabel>
             <Select
@@ -120,15 +120,15 @@ export default function TodoApp() {
               <MenuItem value="High">High</MenuItem>
             </Select>
           </FormControl>
-        </Grid>
-        <Grid item xs={6} sm={3} md={2}>
+        </Box>
+        <Box sx={{ minWidth: 100 }}>
           <Button fullWidth variant="contained" onClick={handleAdd}>Add</Button>
-        </Grid>
+        </Box>
       </Grid>
 
       {/* Filter + Clear */}
       <Grid container justifyContent="space-between" alignItems="center" mb={2}>
-        <Grid item>
+        <Box>
           <ToggleButtonGroup
             value={filter}
             exclusive
@@ -139,12 +139,12 @@ export default function TodoApp() {
             <ToggleButton value="active">Active</ToggleButton>
             <ToggleButton value="completed">Completed</ToggleButton>
           </ToggleButtonGroup>
-        </Grid>
-        <Grid item>
+        </Box>
+        <Box>
           <Button color="secondary" onClick={handleClearCompleted}>
             Clear Completed
           </Button>
-        </Grid>
+        </Box>
       </Grid>
 
       <Divider sx={{ mb: 2 }} />
