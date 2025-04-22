@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import workflowsData from './UserAcceptanceWorkflows.json';
+import { useState, useMemo } from 'react';
+import workflowsData from './data/UserAcceptanceWorkflows.json';
 import {
   Box,
   Typography,
@@ -14,23 +14,20 @@ import {
   Button
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { UATTest } from './UserAcceptanceTestCreator';
 
-interface Workflow {
-  id: number;
-  title: string;
-  goal: string;
-  steps: string[];
-  expectedResult: string;
-  category: string;
+interface Props {
+  workflows?: UATTest[];
 }
 
-export default function UserAcceptanceTestingCheckList() {
-  const workflows: Workflow[] = workflowsData.uatWorkflows;
-  const [checked, setChecked] = useState<boolean[]>(Array(workflows.length).fill(false));
-  const [notes, setNotes] = useState<string[]>(Array(workflows.length).fill(''));
+export default function UserAcceptanceTestingCheckList({ workflows }: Props) {
+  const activeWorkflows = useMemo(() => workflows ?? workflowsData.uatWorkflows, [workflows]);
+
+  const [checked, setChecked] = useState<boolean[]>(Array(activeWorkflows.length).fill(false));
+  const [notes, setNotes] = useState<string[]>(Array(activeWorkflows.length).fill(''));
 
   const handleToggle = (index: number) => {
-    setChecked(prev => {
+    setChecked((prev) => {
       const updated = [...prev];
       updated[index] = !updated[index];
       return updated;
@@ -38,7 +35,7 @@ export default function UserAcceptanceTestingCheckList() {
   };
 
   const handleNoteChange = (index: number, value: string) => {
-    setNotes(prev => {
+    setNotes((prev) => {
       const updated = [...prev];
       updated[index] = value;
       return updated;
@@ -46,34 +43,28 @@ export default function UserAcceptanceTestingCheckList() {
   };
 
   const handleExport = () => {
-    const headers = ['ID', 'Title', 'Category', 'Completed', 'Note'];
-    const rows = workflows.map((wf, index) => [
-      wf.id,
-      `"${wf.title.replace(/"/g, '""')}"`,
-      wf.category,
-      checked[index] ? 'Yes' : 'No',
-      `"${notes[index].replace(/"/g, '""')}"`
-    ]);
+    const result = activeWorkflows.map((wf, index) => ({
+      title: wf.title,
+      category: wf.category,
+      completed: checked[index],
+      note: notes[index]
+    }));
 
-    const csvContent = [headers, ...rows]
-      .map(row => row.join(','))
-      .join('\n');
-
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const blob = new Blob([JSON.stringify(result, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.setAttribute('download', 'uat_results.csv');
-    document.body.appendChild(link);
+    link.download = 'uat_results.json';
     link.click();
-    document.body.removeChild(link);
   };
 
   return (
-    <Stack spacing={2} style={{ marginTop: "20px", width: "40%" }}>
-      <Button variant="outlined" onClick={handleExport}>Export Results</Button>
+    <Stack spacing={2} sx={{ mt: 3, maxWidth: 900, mx: 'auto' }}>
+      <Button variant="outlined" onClick={handleExport}>
+        Export Results
+      </Button>
 
-      {workflows.map((wf, index) => (
+      {activeWorkflows.map((wf, index) => (
         <Accordion key={wf.id}>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -90,7 +81,7 @@ export default function UserAcceptanceTestingCheckList() {
             </Typography>
             <Typography gutterBottom>{wf.goal}</Typography>
 
-            <Typography variant="subtitle2" gutterBottom color="text.primary" style={{ marginTop: "20px" }}>
+            <Typography variant="subtitle2" gutterBottom color="text.primary" sx={{ mt: 2 }}>
               Steps:
             </Typography>
             <ol>
@@ -101,12 +92,12 @@ export default function UserAcceptanceTestingCheckList() {
               ))}
             </ol>
 
-            <Typography variant="subtitle2" gutterBottom color="text.primary" style={{ marginTop: "20px" }}>
+            <Typography variant="subtitle2" gutterBottom color="text.primary" sx={{ mt: 2 }}>
               Expected Result:
             </Typography>
             <Typography gutterBottom>{wf.expectedResult}</Typography>
 
-            <Typography variant="subtitle2" gutterBottom color="text.primary" style={{ marginTop: "20px" }}>
+            <Typography variant="subtitle2" gutterBottom color="text.primary" sx={{ mt: 2 }}>
               Notes:
             </Typography>
             <TextField
