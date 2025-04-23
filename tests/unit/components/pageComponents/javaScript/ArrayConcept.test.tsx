@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import ArrayConcept from '../../../../components/pageComponents/javaScript/ArrayConcept';
+import ArrayConcept from '../../../../../components/pageComponents/javaScript/ArrayConcept';
 import userEvent from '@testing-library/user-event';
 
 describe('ArrayConcept definitions', () => {

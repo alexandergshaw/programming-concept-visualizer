@@ -1,13 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as nextNavigation from 'next/navigation';
-import JavaScriptPage from '../../../../components/pageComponents/javaScript/JavaScriptPage';
+import JavaScriptPage from '../../../../../components/pageComponents/javaScript/JavaScriptPage';
 
 // Mock concept components
-jest.mock('../../../../components/pageComponents/javaScript/ArrayConcept', () => () => <div>ArrayComponentMock</div>);
-jest.mock('../../../../components/pageComponents/javaScript/MapConcept', () => () => <div>MapComponentMock</div>);
-jest.mock('../../../../components/pageComponents/javaScript/SetConcept', () => () => <div>SetComponentMock</div>);
-jest.mock('../../../../components/pageComponents/javaScript/ObjectConcept', () => () => <div>ObjectComponentMock</div>);
+jest.mock('../../../../../components/pageComponents/javaScript/ArrayConcept', () => () => <div>ArrayComponentMock</div>);
+jest.mock('../../../../../components/pageComponents/javaScript/MapConcept', () => () => <div>MapComponentMock</div>);
+jest.mock('../../../../../components/pageComponents/javaScript/SetConcept', () => () => <div>SetComponentMock</div>);
+jest.mock('../../../../../components/pageComponents/javaScript/ObjectConcept', () => () => <div>ObjectComponentMock</div>);
 
 // Global mock for useRouter and useSearchParams
 const mockPush = jest.fn();
