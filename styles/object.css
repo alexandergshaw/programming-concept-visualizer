@@ -17,6 +17,10 @@
     font-size: 0.9rem;
     white-space: pre-wrap;
   }
+
+  .divider-line {
+    margin-top: 2rem;
+  }
   
   .input-area {
     display: flex;

@@ -5,7 +5,8 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Tooltip from '@mui/material/Tooltip';
 import Autocomplete from '@mui/material/Autocomplete';
-import '../../styles/set.css';
+import '../../../styles/set.css';
+import ConceptWrapper from '../../common/ConceptWrapper';
 
 const OPERATIONS = ['add', 'delete', 'has', 'clear'];
 
@@ -45,7 +46,7 @@ export default function SetConcept({
     const newSet = new Set(parsed);
     setSetValues(newSet);
     onCodeChange?.(`let set = new Set([${[...newSet].join(', ')}]);`);
-  }, [rawInput]);
+  }, [rawInput, onCodeChange]);
 
   const updateCodePreview = (actionCode: string) => {
     const values = [...setValues];
@@ -114,12 +115,7 @@ export default function SetConcept({
   };
 
   return (
-    <div className="set-container">
-      <h2 className="set-title">Set</h2>
-      <p className="set-description">
-        A <code>Set</code> stores unique values. You can add, remove, or check for existence.
-      </p>
-
+    <ConceptWrapper title="Set" description="A data structure that stores unique values. You can add, remove, or check for existence.">
       <TextField
         label="Define your set (comma-separated)"
         variant="outlined"
@@ -187,6 +183,6 @@ export default function SetConcept({
       </div>
 
       {output && <p className="set-output">{output}</p>}
-    </div>
+    </ConceptWrapper>
   );
 }
