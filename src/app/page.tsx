@@ -26,7 +26,7 @@ export default function LandingPage() {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
-  const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
+  const [selectedSkills] = useState<string[]>([]);
 
   const toggleFilter = (filter: string, list: string[], setList: (val: string[]) => void) => {
     setList(list.includes(filter) ? list.filter((item) => item !== filter) : [...list, filter]);

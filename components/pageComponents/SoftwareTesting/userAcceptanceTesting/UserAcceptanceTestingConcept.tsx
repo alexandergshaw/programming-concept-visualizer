@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { TextField, Typography } from '@mui/material';
+import { TextField } from '@mui/material';
 import ChecklistIcon from '@mui/icons-material/Checklist';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import FeedbackIcon from '@mui/icons-material/Feedback';
