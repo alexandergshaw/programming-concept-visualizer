@@ -4,10 +4,10 @@ import userEvent from '@testing-library/user-event';
 import * as nextNavigation from 'next/navigation';
 
 // Mock concept components
-jest.mock('@/components/pageComponents/javaScript/ArrayConcept', () => () => <div>ArrayComponentMock</div>);
-jest.mock('@/components/pageComponents/javaScript/MapConcept', () => () => <div>MapComponentMock</div>);
-jest.mock('@/components/pageComponents/javaScript/SetConcept', () => () => <div>SetComponentMock</div>);
-jest.mock('@/components/pageComponents/javaScript/ObjectConcept', () => () => <div>ObjectComponentMock</div>);
+jest.mock('@/components/pageComponents/JavaScript/ArrayConcept', () => () => <div>ArrayComponentMock</div>);
+jest.mock('@/components/pageComponents/JavaScript/MapConcept', () => () => <div>MapComponentMock</div>);
+jest.mock('@/components/pageComponents/JavaScript/SetConcept', () => () => <div>SetComponentMock</div>);
+jest.mock('@/components/pageComponents/JavaScript/ObjectConcept', () => () => <div>ObjectComponentMock</div>);
 
 // Global mock for useRouter and useSearchParams
 const mockPush = jest.fn();
