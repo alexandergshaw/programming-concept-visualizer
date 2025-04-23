@@ -1,61 +1,131 @@
 'use client';
 
-import { Box, Button, Container, Typography, Grid, Paper } from '@mui/material';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import {
+  Box,
+  Typography,
+  TextField,
+  Chip,
+  Grid,
+  Paper,
+} from '@mui/material';
 
-export default function InstructorLandingPage() {
+const languages = [
+  { name: 'JavaScript', type: 'Frontend', skill: 'Intermediate' },
+  { name: 'Python', type: 'Backend', skill: 'Beginner' },
+  { name: 'TypeScript', type: 'Frontend', skill: 'Advanced' },
+  { name: 'SQL', type: 'Database', skill: 'Intermediate' },
+  { name: 'PHP', type: 'Backend', skill: 'Beginner' },
+  { name: 'HTML', type: 'Frontend', skill: 'Beginner' },
+];
+
+const typeFilters = ['Frontend', 'Backend', 'Database'];
+
+export default function LandingPage() {
   const router = useRouter();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+  const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
+
+  const toggleFilter = (filter: string, list: string[], setList: (val: string[]) => void) => {
+    setList(list.includes(filter) ? list.filter((item) => item !== filter) : [...list, filter]);
+  };
+
+  const filteredLanguages = languages.filter((lang) => {
+    const matchesSearch = lang.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesType = selectedTypes.length === 0 || selectedTypes.includes(lang.type);
+    const matchesSkill = selectedSkills.length === 0 || selectedSkills.includes(lang.skill);
+    return matchesSearch && matchesType && matchesSkill;
+  });
+
+  const handleClick = (language: string) => {
+    router.push(`/languages/${language.toLowerCase()}`);
+  };
 
   return (
-    <Box sx={{ bgcolor: '#f7f9fb', minHeight: '100vh', py: 6 }}>
-      <Container maxWidth="md">
-        {/* Hero Section */}
-        <Paper elevation={3} sx={{ p: 4, mb: 6, bgcolor: '#e8f5e9', borderLeft: '8px solid #2e7d32' }}>
-          <Typography variant="h3" gutterBottom fontWeight="bold">
-            Hi, I'm Alex Shaw
-          </Typography>
-          <Typography variant="h6" gutterBottom>
-            Instructor • Developer • Mentor
-          </Typography>
-          <Typography variant="body1" sx={{ mb: 2 }}>
-            Welcome to my teaching portal. Here you can find everything related to your course,
-            including lecture notes, assignments, portfolio inspiration, and how to reach me.
-          </Typography>
-          <Button variant="contained" color="success" onClick={() => router.push('/courses')}>
-            View My Courses
-          </Button>
-        </Paper>
+    <Box sx={{ px: 4, py: 6, maxWidth: 1000, mx: 'auto', textAlign: 'center', backgroundColor: '#f7fafd' }}>
+      <Typography variant="h4" fontWeight="medium" gutterBottom>
+        Coding Languages Visualizer
+      </Typography>
+      <Typography variant="body2" color="text.secondary" mb={4}>
+        A clean way to explore how different languages handle data structures.
+      </Typography>
 
-        {/* Navigation Cards */}
-        <Grid container spacing={4}>
-          {[
-            { title: 'Courses', desc: 'Lecture notes, assignments, and resources.', path: '/courses' },
-            { title: 'Portfolio', desc: 'Sample projects, student work, and demos.', path: '/portfolio' },
-            { title: 'Office Hours', desc: 'Schedule or drop in for help and feedback.', path: '/office-hours' },
-            { title: 'Contact', desc: 'Get in touch via email or messaging.', path: '/contact' },
-          ].map(({ title, desc, path }) => (
-            <Grid item xs={12} sm={6} key={title}>
+      <TextField
+        variant="outlined"
+        placeholder="Search languages..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        fullWidth
+        sx={{ maxWidth: 360, mb: 3, backgroundColor: 'white', borderRadius: 1 }}
+      />
+
+      <Box mb={2}>
+        {typeFilters.map((type) => (
+          <Chip
+            key={type}
+            label={type}
+            onClick={() => toggleFilter(type, selectedTypes, setSelectedTypes)}
+            variant={selectedTypes.includes(type) ? 'filled' : 'outlined'}
+            color="primary"
+            sx={{
+              m: 0.5,
+              bgcolor: selectedTypes.includes(type) ? '#0077b6' : 'transparent',
+              color: selectedTypes.includes(type) ? 'white' : 'inherit',
+              borderRadius: '999px',
+              px: 1.5,
+              fontSize: '0.8rem',
+              borderColor: '#0077b6',
+            }}
+          />
+        ))}
+      </Box>
+
+      <Grid container justifyContent="center">
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            gap: 2,
+            width: '100%',
+          }}
+        >
+          {filteredLanguages.map((lang) => (
+            <Box
+              key={lang.name}
+              sx={{
+                width: { xs: '100%', sm: '45%', md: '28%' },
+              }}
+            >
               <Paper
-                elevation={2}
+                onClick={() => handleClick(lang.name)}
                 sx={{
-                  p: 3,
-                  height: '100%',
+                  p: 2,
+                  textAlign: 'left',
                   cursor: 'pointer',
-                  transition: 'all 0.3s',
-                  borderLeft: '6px solid #81c784',
-                  '&:hover': { bgcolor: '#f1f8e9' },
+                  borderRadius: 2,
+                  border: '1px solid #e0e0e0',
+                  backgroundColor: '#ffffff',
+                  transition: 'border-color 0.2s ease, background-color 0.2s ease',
+                  '&:hover': {
+                    borderColor: '#0077b6',
+                    backgroundColor: '#f1fbff',
+                  },
                 }}
-                onClick={() => router.push(path)}
               >
-                <Typography variant="h6" fontWeight="bold" gutterBottom>
-                  {title}
+                <Typography variant="subtitle1" fontWeight="medium" sx={{ mb: 0.5 }}>
+                  {lang.name}
                 </Typography>
-                <Typography variant="body2">{desc}</Typography>
+                <Typography variant="caption" color="text.secondary">
+                  {lang.type} • {lang.skill}
+                </Typography>
               </Paper>
-            </Grid>
+            </Box>
           ))}
-        </Grid>
-      </Container>
+        </Box>
+      </Grid>
     </Box>
   );
 }

@@ -11,7 +11,7 @@ import {
   AccordionSummary,
   AccordionDetails,
   Stack,
-  Button
+  Button,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { UATTest } from './UserAcceptanceTestCreator';
@@ -46,20 +46,26 @@ export default function UserAcceptanceTestingCheckList({ workflows }: Props) {
     const result = activeWorkflows.map((wf, index) => ({
       title: wf.title,
       category: wf.category,
-      completed: checked[index],
-      note: notes[index]
+      completed: checked[index] ? 'Yes' : 'No',
+      note: notes[index]?.replace(/\n/g, ' '), // flatten multiline
     }));
 
-    const blob = new Blob([JSON.stringify(result, null, 2)], { type: 'application/json' });
+    const headers = ['Title', 'Category', 'Completed', 'Notes'];
+    const rows = result.map((row) =>
+      [row.title, row.category, row.completed, `"${row.note?.replace(/"/g, '""')}"`].join(',')
+    );
+
+    const csvContent = [headers.join(','), ...rows].join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'uat_results.json';
+    link.download = 'uat_results.csv';
     link.click();
   };
 
   return (
-    <Stack spacing={2} sx={{ mt: 3, maxWidth: 900, mx: 'auto' }}>
+    <Stack spacing={2} sx={{ mt: 3, maxWidth: 900, mx: 'auto', width: '50%' }}>
       <Button variant="outlined" onClick={handleExport}>
         Export Results
       </Button>

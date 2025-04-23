@@ -92,12 +92,12 @@ export default function TodoApp() {
   });
 
   return (
-    <Paper elevation={3} sx={{ maxWidth: '100%', mx: 'auto', mt: 5, p: 3, borderRadius: 3 }}>
+    <Paper elevation={3} sx={{ maxWidth: "100%", mx: 'auto', mt: 5, p: 3, borderRadius: 3 }}>
       <Typography variant="h5" gutterBottom>To-Do List</Typography>
 
       {/* Input Area */}
       <Grid container spacing={2} alignItems="center" mb={2}>
-        <Box sx={{ flex: 1, minWidth: 240 }}>
+        <Box sx={{ flex: 1, minWidth: "50%" }}>
           <TextField
             value={input}
             onChange={(e) => setInput(e.target.value)}
