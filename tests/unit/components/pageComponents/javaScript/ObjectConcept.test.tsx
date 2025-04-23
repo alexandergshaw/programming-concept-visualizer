@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import ObjectConcept, { generateObjectPreviewLines } from '../../../../../components/pageComponents/javaScript/ObjectConcept';
+import ObjectConcept, { generateObjectPreviewLines } from '@/components/pageComponents/javaScript/ObjectConcept';
 
 // Helper: adds a new key-value pair
 const addObjectEntry = (label: string, value: string) => {
