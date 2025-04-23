@@ -1,5 +1,5 @@
+import SoftwareTestingPage from '@/components/pageComponents/SoftwareTesting/SoftwareTestingPage';
 import { Suspense } from 'react';
-import SoftwareTestingPage from '../../../../components/pageComponents/softwareTesting/SoftwareTestingPage';
 
 export default function Page() {
   return (
