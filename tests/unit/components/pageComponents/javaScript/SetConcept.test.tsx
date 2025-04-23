@@ -1,4 +1,4 @@
-import SetConcept from '@/components/pageComponents/javaScript/SetConcept';
+import SetConcept from '@/components/pageComponents/JavaScript/SetConcept';
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 

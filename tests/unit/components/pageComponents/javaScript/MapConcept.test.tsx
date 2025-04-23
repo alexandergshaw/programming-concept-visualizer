@@ -1,4 +1,4 @@
-import MapConcept from '@/components/pageComponents/javaScript/MapConcept';
+import MapConcept from '@/components/pageComponents/JavaScript/MapConcept';
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 

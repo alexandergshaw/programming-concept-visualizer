@@ -1,4 +1,4 @@
-import ArrayConcept from '@/components/pageComponents/javaScript/ArrayConcept';
+import ArrayConcept from '@/components/pageComponents/JavaScript/ArrayConcept';
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
