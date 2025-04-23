@@ -2,13 +2,11 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Alert } from '@mui/material';
-import Link from 'next/link';
+import PageWrapper from '../../common/PageWrapper';
 import ArrayConcept from './ArrayConcept';
 import MapConcept from './MapConcept';
-import SetConcept from './SetConcept';
-import Sidebar from '../../common/Sidebar';
 import ObjectConcept from './ObjectConcept';
+import SetConcept from './SetConcept';
 
 const navItems = [
   {
@@ -84,37 +82,17 @@ export default function JavaScriptPage() {
   }
 
   return (
-    <main className="js-layout">
-      <Sidebar title="Topics" items={navItems} defaultOpen={['collections', 'object oriented programming']} onSelect={handleSelect} />
-      <div className="js-page-body">
-        <Alert severity="info" className="feedback-banner" sx={{ mb: 3 }}>
-          Have ideas to improve this page?{' '}
-          <Link
-            href="https://docs.google.com/forms/d/e/1FAIpQLSf73dDuwy0mZUuApiG2kEGlcCp93pN-l1eOtFOTBA2BTf0Bqw/viewform?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link"
-          >
-            Submit feedback here.
-          </Link>
-        </Alert>
-        <section className="js-content">
-          <h1 className="js-page-title">JavaScript Visualizer</h1>
-          <div style={{ marginTop: '40px' }}>
-            {selectedConcept ? (
-              <>
-                {renderContent(selectedConcept)}
-                {codeSnippet && renderCodePreview()}
-              </>
-            ) : (
-              <div className="empty-page-prompt">
-                Please select a topic from the sidebar to get started.
-              </div>
-            )}
-          </div>
-        </section>
-      </div>
-
-    </main>
+    <PageWrapper pageTitle={'JavaScript Visualizer'} navItems={navItems} defaultOpen={["collections"]} handleSelect={handleSelect}>
+      {selectedConcept ? (
+        <>
+          {renderContent(selectedConcept)}
+          {codeSnippet && renderCodePreview()}
+        </>
+      ) : (
+        <div className="empty-page-prompt">
+          Please select a topic from the sidebar to get started.
+        </div>
+      )}
+    </PageWrapper>
   );
 }
