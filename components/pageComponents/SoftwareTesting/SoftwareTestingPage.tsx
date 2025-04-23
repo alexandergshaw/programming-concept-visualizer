@@ -17,7 +17,7 @@ const navItems = [
   },
 ];
 
-export default function JavaScriptPage() {
+export default function SoftwareTestingPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [selectedConcept, setSelectedConcept] = useState<string | null>(null);
