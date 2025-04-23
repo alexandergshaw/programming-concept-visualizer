@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/javascript.css';
 
-interface SidebarItem {
+export interface SidebarItem {
   label: string;
   value: string;
   children?: SidebarItem[];

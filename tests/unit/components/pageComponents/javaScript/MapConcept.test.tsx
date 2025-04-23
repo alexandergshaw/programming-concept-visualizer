@@ -1,6 +1,6 @@
+import MapConcept from '@/components/pageComponents/JavaScript/MapConcept';
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import MapConcept from '../../../../components/languages/JavaScript/MapConcept';
 
 const MAP_DESCRIPTIONS: Record<string, string> = {
   set: 'Adds or updates a key-value pair in the map.',
