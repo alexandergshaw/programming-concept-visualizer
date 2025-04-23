@@ -1,74 +1,61 @@
 'use client';
 
+import { Box, Button, Container, Typography, Grid, Paper } from '@mui/material';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 
-const languages = ["JavaScript", "Python", "TypeScript", "SQL", "PHP", "HTML"];
-
-export default function LandingPage() {
-  const [searchTerm, setSearchTerm] = useState('');
+export default function InstructorLandingPage() {
   const router = useRouter();
 
-  const filteredLanguages = languages.filter((lang) =>
-    lang.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const handleClick = (language: string) => {
-    const slug = language.toLowerCase();
-    router.push(`/languages/${slug}`);
-  };
-
   return (
-    <main style={{ padding: '60px 20px', fontFamily: 'sans-serif' }}>
-      <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
-        <h1 style={{ fontSize: '36px', fontWeight: 'bold' }}>Coding Languages Visualizer</h1>
-        <p style={{ fontSize: '18px', color: '#666', marginBottom: '30px' }}>
-          Select a language to explore how its data structures work.
-        </p>
+    <Box sx={{ bgcolor: '#f7f9fb', minHeight: '100vh', py: 6 }}>
+      <Container maxWidth="md">
+        {/* Hero Section */}
+        <Paper elevation={3} sx={{ p: 4, mb: 6, bgcolor: '#e8f5e9', borderLeft: '8px solid #2e7d32' }}>
+          <Typography variant="h3" gutterBottom fontWeight="bold">
+            Hi, I'm Alex Shaw
+          </Typography>
+          <Typography variant="h6" gutterBottom>
+            Instructor • Developer • Mentor
+          </Typography>
+          <Typography variant="body1" sx={{ mb: 2 }}>
+            Welcome to my teaching portal. Here you can find everything related to your course,
+            including lecture notes, assignments, portfolio inspiration, and how to reach me.
+          </Typography>
+          <Button variant="contained" color="success" onClick={() => router.push('/courses')}>
+            View My Courses
+          </Button>
+        </Paper>
 
-        <input
-          type="text"
-          placeholder="Search languages..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          style={{
-            padding: '12px 20px',
-            fontSize: '16px',
-            width: '100%',
-            maxWidth: '400px',
-            border: '1px solid #ccc',
-            borderRadius: '8px',
-            marginBottom: '30px'
-          }}
-        />
-
-        <div style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-          gap: '16px'
-        }}>
-          {filteredLanguages.map((language) => (
-            <div
-              key={language}
-              onClick={() => handleClick(language)}
-              style={{
-                padding: '20px 30px',
-                background: '#fff',
-                border: '1px solid #ddd',
-                borderRadius: '10px',
-                cursor: 'pointer',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
-                transition: 'transform 0.2s ease',
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.transform = 'translateY(-3px)')}
-              onMouseLeave={(e) => (e.currentTarget.style.transform = 'none')}
-            >
-              {language}
-            </div>
+        {/* Navigation Cards */}
+        <Grid container spacing={4}>
+          {[
+            { title: 'Courses', desc: 'Lecture notes, assignments, and resources.', path: '/courses' },
+            { title: 'Portfolio', desc: 'Sample projects, student work, and demos.', path: '/portfolio' },
+            { title: 'Office Hours', desc: 'Schedule or drop in for help and feedback.', path: '/office-hours' },
+            { title: 'Contact', desc: 'Get in touch via email or messaging.', path: '/contact' },
+          ].map(({ title, desc, path }) => (
+            <Grid item xs={12} sm={6} key={title}>
+              <Paper
+                elevation={2}
+                sx={{
+                  p: 3,
+                  height: '100%',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s',
+                  borderLeft: '6px solid #81c784',
+                  '&:hover': { bgcolor: '#f1f8e9' },
+                }}
+                onClick={() => router.push(path)}
+              >
+                <Typography variant="h6" fontWeight="bold" gutterBottom>
+                  {title}
+                </Typography>
+                <Typography variant="body2">{desc}</Typography>
+              </Paper>
+            </Grid>
           ))}
-        </div>
-      </div>
-    </main>
+        </Grid>
+      </Container>
+    </Box>
   );
 }

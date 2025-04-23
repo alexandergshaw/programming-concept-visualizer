@@ -1,14 +1,23 @@
 'use client';
 
 import { motion, useAnimation, useInView } from 'framer-motion';
-import { Box, useTheme } from '@mui/material';
+import { Box, Typography, useTheme } from '@mui/material';
 import { useEffect, useRef } from 'react';
 
 export interface TimelineStep {
     icon: React.ReactNode;
-    content: React.ReactNode;
-    loopToIndex?: number;
+    title: string;
+    summary: string;
+    status?: 'pass' | 'fail' | 'in-progress';
+    testType?: 'Dev' | 'Functional QA' | 'Staging' | 'Operational' | 'Release';
+    issues?: {
+        title: string;
+        description: string;
+        resolved: boolean;
+        type: 'Performance' | 'Recovery' | 'Monitoring' | 'Configuration';
+    }[];
 }
+
 
 export interface TimelineProps {
     steps: TimelineStep[];
@@ -71,86 +80,83 @@ export default function Timeline({ steps }: TimelineProps) {
                 </defs>
             </svg>
 
-            {steps.map(({ icon, content, loopToIndex }, i) => {
-                const loopBackOffset = loopToIndex !== undefined ? (i - loopToIndex) * 60 : 0;
-
-                return (
-                    <motion.div
-                        key={i}
-                        custom={i}
-                        initial="hidden"
-                        animate={controls}
-                        variants={timelineVariants}
-                        whileHover={{
-                            scale: 1.025,
-                            boxShadow: `0px 6px 24px ${theme.palette.primary.main}33`,
-                            transition: {
-                                type: 'spring',
-                                stiffness: 120,
-                                damping: 18,
-                            },
-                        }}
-                        style={{
-                            position: 'relative',
-                            marginBottom: '60px',
-                            borderRadius: '10px',
-                            background: theme.palette.mode === 'light' ? '#fff' : theme.palette.background.paper,
-                            padding: '16px',
-                            cursor: 'pointer',
+            {steps.map((step, i) => (
+                <motion.div
+                    key={i}
+                    custom={i}
+                    initial="hidden"
+                    animate={controls}
+                    variants={timelineVariants}
+                    whileHover={{
+                        scale: 1.025,
+                        boxShadow: `0px 6px 24px ${theme.palette.primary.main}33`,
+                        transition: {
+                            type: 'spring',
+                            stiffness: 120,
+                            damping: 18,
+                        },
+                    }}
+                    style={{
+                        position: 'relative',
+                        marginBottom: '60px',
+                        borderRadius: '10px',
+                        background: theme.palette.mode === 'light' ? '#fff' : theme.palette.background.paper,
+                        padding: '16px',
+                        cursor: 'pointer',
+                        borderLeft: step.status === 'fail'
+                            ? '6px solid #e53935'
+                            : step.status === 'pass'
+                                ? '6px solid #43a047'
+                                : '',
+                    }}
+                >
+                    {/* Icon */}
+                    <Box
+                        sx={{
+                            position: 'absolute',
+                            top: '50%',
+                            transform: 'translateY(-50%)',
+                            width: '24px',
+                            height: '24px',
+                            borderRadius: '50%',
+                            backgroundColor: theme.palette.primary.main,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: '#fff',
+                            zIndex: 1,
+                            fontSize: '16px',
                         }}
                     >
-                        {/* Loop line */}
-                        {loopToIndex !== undefined && (
-                            <svg
-                                width="80"
-                                height={loopBackOffset}
-                                viewBox={`0 0 80 ${loopBackOffset}`}
-                                style={{
-                                    position: 'absolute',
-                                    left: '-66px',
-                                    top: '24px',
-                                    zIndex: 0,
-                                }}
-                            >
-                                <path
-                                    d={`
-                    M 78 0
-                    C 20 0, 20 ${loopBackOffset - 10}, 78 ${loopBackOffset - 10}
-                  `}
-                                    stroke={theme.palette.secondary.main}
-                                    strokeWidth="2"
-                                    fill="none"
-                                    markerEnd="url(#arrowhead)"
-                                />
-                            </svg>
+                        {step.icon}
+                    </Box>
+                    {/* Step content */}
+                    <Box sx={{ ml: 5 }}>
+                        <Typography variant="h6" sx={{ mb: 1 }}>
+                            {step.title}
+                        </Typography>
+                        <Typography variant="body2" sx={{ mb: 1 }}>
+                            {step.summary}
+                        </Typography>
+
+                        {step.issues && step.issues.length > 0 && (
+                            <Box component="ul" sx={{ pl: 2, mb: 1 }}>
+                                {step.issues.map((issue, idx) => (
+                                    <Box key={idx} component="li" sx={{ color: issue.resolved ? 'text.secondary' : 'error.main' }}>
+                                        <strong>{issue.title}</strong>: {issue.description}
+                                    </Box>
+                                ))}
+                            </Box>
                         )}
 
-                        {/* Icon */}
-                        <Box
-                            sx={{
-                                position: 'absolute',
-                                top: '50%',
-                                transform: 'translateY(-50%)', // This centers the icon vertically
-                                width: '24px',
-                                height: '24px',
-                                borderRadius: '50%',
-                                backgroundColor: theme.palette.primary.main,
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                color: '#fff',
-                                zIndex: 1,
-                                fontSize: '16px',
-                            }}
-                        >
-                            {icon}
-                        </Box>
-
-                        {/* Content */}
-                        <Box sx={{ ml: 5 }}>{content}</Box>
-                    </motion.div>
-                );
-            })}
+                        {step.testType && (
+                            <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+                                Test Type: {step.testType}
+                            </Typography>
+                        )}
+                    </Box>
+                </motion.div>
+            ))}
         </Box>
     );
 }

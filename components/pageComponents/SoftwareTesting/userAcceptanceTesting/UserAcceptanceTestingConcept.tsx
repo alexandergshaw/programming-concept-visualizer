@@ -20,41 +20,26 @@ import UserAcceptanceTestCreator, { UATTest } from './UserAcceptanceTestCreator'
 const timelineSteps: TimelineStep[] = [
   {
     icon: <ChecklistIcon fontSize="small" />,
-    content: (
-      <>
-        <Typography variant="h6">Create Test Cases</Typography>
-        <Typography>Each user story becomes testable with expected outcomes.</Typography>
-      </>
-    ),
+    title: 'Create Test Cases',
+    summary: 'Each user story is translated into a testable scenario with clear, expected outcomes.',
   },
   {
     icon: <PlayCircleIcon fontSize="small" />,
-    content: (
-      <>
-        <Typography variant="h6">Execute Tests</Typography>
-        <Typography>Real users simulate real-world use of the system.</Typography>
-      </>
-    ),
+    title: 'Execute Tests',
+    summary: 'Real users simulate real-world use of the system, walking through the tests as if they were actual users.',
   },
   {
     icon: <FeedbackIcon fontSize="small" />,
-    content: (
-      <>
-        <Typography variant="h6">Collect Feedback</Typography>
-        <Typography>If bugs are found, fix them and cycle back to test again.</Typography>
-      </>
-    ),
+    title: 'Collect Feedback',
+    summary: 'Testers report issues, confusion points, and usability concerns. Developers fix the bugs, then tests are rerun.',
   },
   {
     icon: <CheckCircleIcon fontSize="small" />,
-    content: (
-      <>
-        <Typography variant="h6">Sign Off</Typography>
-        <Typography>Finalize approval and move to production.</Typography>
-      </>
-    ),
+    title: 'Sign Off',
+    summary: 'After all test cases pass and feedback is addressed, the product owner signs off for production release.',
   },
 ];
+
 
 export default function UserAcceptanceTestingConcept() {
   const [uatTests, setUatTests] = useState<UATTest[]>([]);

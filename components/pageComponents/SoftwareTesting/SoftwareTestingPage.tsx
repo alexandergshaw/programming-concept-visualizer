@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import PageWrapper from '../../common/PageWrapper';
 import UserAcceptanceTestingConcept from './userAcceptanceTesting/UserAcceptanceTestingConcept';
+import OperationTestingConcept from './operationTesting/OperationTestingConcept';
 
 const navItems = [
   {
@@ -11,6 +12,7 @@ const navItems = [
     value: 'types of testing',
     children: [
       { label: 'User Acceptance Testing', value: 'user-acceptance-testing' },
+      { label: 'Operation Testing', value: 'operation-testing' },
     ],
   },
 ];
@@ -34,6 +36,8 @@ export default function JavaScriptPage() {
     switch (concept.toLowerCase()) {
       case 'user-acceptance-testing':
         return <UserAcceptanceTestingConcept/>;
+      case 'operation-testing':
+        return <OperationTestingConcept/>;
       default:
         return null;
     }
