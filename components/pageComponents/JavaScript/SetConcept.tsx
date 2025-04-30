@@ -7,6 +7,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Autocomplete from '@mui/material/Autocomplete';
 import '../../../styles/set.css';
 import ConceptWrapper from '../../common/ConceptWrapper';
+import Typography from '@mui/material/Typography';
 
 const OPERATIONS = ['add', 'delete', 'has', 'clear'];
 
@@ -154,14 +155,9 @@ export default function SetConcept({
           />
         )}
 
-        <TextField
-          label="Operation Description"
-          value={getDescription(operation)}
-          size="small"
-          fullWidth
-          disabled
-          sx={{ marginTop: 1, marginBottom: 2 }}
-        />
+        <Typography variant="body2" sx={{ mt: 2, mb: 1, color: '#444' }}>
+          <strong>Operation Description:</strong> {getDescription(operation)}
+        </Typography>
 
         <Tooltip title={`Execute the ${operation} operation`}>
           <Button variant="contained" onClick={runOperation}>
