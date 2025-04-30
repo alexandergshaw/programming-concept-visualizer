@@ -7,8 +7,18 @@ import ArrayConcept from './ArrayConcept';
 import MapConcept from './MapConcept';
 import ObjectConcept from './ObjectConcept';
 import SetConcept from './SetConcept';
+import VariableConcept from './VariableConcept';
 
 const navItems = [
+  {
+    label: 'Basics',
+    value: 'basics',
+    children: [
+      { label: 'Variables', value: 'variables' },
+      { label: 'Functions', value: 'functions' },
+      { label: 'Testing', value: 'testing' },
+    ],
+  },
   {
     label: 'Collections',
     value: 'collections',
@@ -18,14 +28,30 @@ const navItems = [
       { label: 'Maps', value: 'maps' },
     ],
   },
-  // {
-  //   label: 'Object Oriented Programming',
-  //   value: 'object oriented programming',
-  //   children: [
-  //     { label: 'Objects', value: 'objects' },
-  //     { label: 'Classes', value: 'classes' },
-  //   ],
-  // },
+  {
+    label: 'Object Oriented Programming',
+    value: 'object oriented programming',
+    children: [
+      { label: 'Objects', value: 'objects' },
+      { label: 'Classes', value: 'classes' },
+    ],
+  },
+  {
+    label: 'jQuery',
+    value: 'jquery',
+    children: [
+      { label: 'Selectors', value: 'selectors' },
+      { label: 'Events', value: 'events' },
+    ],
+  },
+  {
+    label: 'Advanced Topics',
+    value: 'advanced topics',
+    children: [
+      { label: 'Asynchronous JavaScript', value: 'asynchronous' },
+      { label: 'Promises', value: 'promises' },
+    ],
+  },
 ];
 
 export default function JavaScriptPage() {
@@ -57,7 +83,9 @@ export default function JavaScriptPage() {
       case 'sets':
         return <SetConcept onCodeChange={setCodeSnippet} />;
       case 'objects':
-        return <ObjectConcept />
+        return <ObjectConcept />;
+      case 'variables': // Added case for Variables
+        return <VariableConcept onCodeChange={setCodeSnippet} />;
       default:
         return null;
     }
