@@ -6,23 +6,22 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import '../../../styles/variable.css';
+import Section from '@/components/common/Section';
+import CodeSnippet from '@/components/common/CodeSnippet';
+import OrderedList from '@/components/common/OrderedList';
 
 interface VariableConceptProps {
     onCodeChange: (code: string) => void;
 }
 
-interface VariableConceptState {
-    name: string;
-    value: any;
-    initialValue: any;
-}
-
 export default function VariableConcept(props: VariableConceptProps) {
-    const [variables, setVariables] = useState<VariableConceptState[]>([]);
+    const [variables, setVariables] = useState<{ name: string; value: any; initialValue: any }[]>([]);
     const [variableName, setVariableName] = useState('');
     const [variableValue, setVariableValue] = useState('');
+    const [firstNum, setFirstNum] = useState(5); // Default value for firstNum
+    const [secondNum, setSecondNum] = useState(5); // Default value for secondNum
 
-    const generateCodeForMemory = (memory: VariableConceptState[]) => {
+    const generateCodeForMemory = (memory: { name: string; value: any; initialValue: any }[]) => {
         if (memory.length === 0) {
             return '// No variables are currently stored in memory.';
         }
@@ -70,98 +69,104 @@ export default function VariableConcept(props: VariableConceptProps) {
     // Reassign the value of the variable "${name}"
     ${name} = ${JSON.stringify(newValue)};
     `;
-        const updatedCode = `${generateCodeForMemory(variables)}\n${code}`;
+        const updatedCode = `${props.onCodeChange.toString()}\n${code}`;
         props.onCodeChange(updatedCode);
-    };
-
-    const clearMemory = () => {
-        setVariables([]);
-        props.onCodeChange('// All variables have been cleared from memory.');
     };
 
     return (
         <ConceptWrapper
             title="Variables in JavaScript"
-            description="Learn how variables work as containers for values."
+            description="We can think of a variable as a box that we can put a value in."
         >
-            {/* Memory Visualization */}
-            <Typography variant="h6" sx={{ mb: 2 }}>
-                Memory Visualization
-            </Typography>
-            <div className="memory-grid">
-                {variables.map((entry, index) => (
-                    <div key={index} className="memory-box">
-                        <div className="memory-body"><b>Variable Name:</b> {entry.name}</div>
-                        <div className="memory-body"><b>Variable Value:</b> {entry.value}</div>
-                        <div className="memory-body"><b>Variable Type:</b> {typeof entry.value}</div>
+            <Section title="Declaring Variables" subtitle="When we declare a variable, we are creating a box that we can put things in. The name of the variable is the label on the box, and the value is what is inside the box." />
+            <Section title="Example" subtitle='In this code snippet, we declare three variables (firstNum, secondNum, and result). Each of these holds a value.'>
+                <TextField
+                    label="First Number"
+                    size="small"
+                    type="number"
+                    value={firstNum}
+                    onChange={(e) => setFirstNum(Number(e.target.value))}
+                    sx={{ mr: 2 }}
+                />
+                <TextField
+                    label="Second Number"
+                    size="small"
+                    type="number"
+                    value={secondNum}
+                    onChange={(e) => setSecondNum(Number(e.target.value))}
+                    sx={{ mr: 2 }}
+                />
+
+                <CodeSnippet
+                    lines={[
+                        { code: `let firstNum = ${firstNum};`, comment: `declare the first variable - its name is firstNum, and its value is ${firstNum}` },
+                        { code: `let secondNum = ${secondNum};`, comment: `declare the second variable - its name is secondNum, and its value is ${secondNum}` },
+                        { code: `let result = firstNum - secondNum;`, comment: `declare the variable that will hold the difference - its name is result and its value is ${firstNum - secondNum}` },
+                        { code: `console.log(result);`, comment: `the variable result holds the value ${firstNum - secondNum}` }
+                    ]}
+                />
+            </Section>
+
+            <Section title="How do we declare a variable?" subtitle='Every single time we declare a variable in JavaScript, we follow these steps:'>
+                <OrderedList
+                    items={[
+                        'We use the keyword let.',
+                        'We give the variable a name.',
+                        'We can give it a value using the assignment operator (=). This step is optional. We can also declare a variable without assigning it a value.',
+                    ]}
+                />
+                <CodeSnippet
+                    lines={[
+                        { code: `let variableName = "value";`, comment: `declare a variable using 'let', give it a name, and assign it a value` },
+                        { code: `let uninitializedVariable;`, comment: `declare a variable without assigning a value (it will be 'undefined')` },
+                    ].concat(variables.map((variable) => ({
+                        code: `let ${variable.name} = ${JSON.stringify(variable.value)};`,
+                        comment: `declare a variable named '${variable.name}' with the value ${JSON.stringify(variable.value)}`,
+                    })))}
+                />
+                <Section title="Interactive Variable Declaration" subtitle="Enter the name and value of a variable to see how it is declared in code:">
+                    <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
+                        <TextField
+                            label="Variable Name"
+                            size="small"
+                            value={variableName}
+                            onChange={(e) => setVariableName(e.target.value)}
+                            sx={{ mr: 2 }}
+                        />
+                        <TextField
+                            label="Variable Value"
+                            size="small"
+                            value={variableValue}
+                            onChange={(e) => setVariableValue(e.target.value)}
+                            sx={{ mr: 2 }}
+                        />
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={addVariable}
+                            disabled={!variableName}
+                        >
+                            Add Variable
+                        </Button>
                     </div>
-                ))}
-            </div>
-            <Button variant="outlined" onClick={clearMemory} sx={{ mt: 2 }}>
-                Clear Memory
-            </Button>
 
-            {/* Add Variable */}
-            <Typography variant="h6" sx={{ mt: 4, mb: 2 }}>
-                Add a Variable
-            </Typography>
-            <TextField
-                label="Variable Name"
-                size="small"
-                value={variableName}
-                onChange={(e) => setVariableName(e.target.value)}
-                sx={{ mr: 2 }}
-            />
-            <TextField
-                label="Variable Value"
-                size="small"
-                value={variableValue}
-                onChange={(e) => setVariableValue(e.target.value)}
-                sx={{ mr: 2 }}
-            />
-            <Button variant="contained" onClick={addVariable} sx={{ ml: 2 }}>
-                Add
-            </Button>
-
-            {/* Reassign Variable */}
-            {variables.length > 0 &&
-                (<>
-                    <Typography variant="h6" sx={{ mt: 4, mb: 2 }}>
-                        Reassign a Variable
-                    </Typography>
-                    <TextField
-                        label="Select Variable"
-                        size="small"
-                        select
-                        value={variableName}
-                        onChange={(e) => setVariableName(e.target.value)}
-                        sx={{ mr: 2 }}
-                        SelectProps={{
-                            native: true,
-                        }}
-                    >
-                        <option value="">-- Select a Variable --</option>
-                        {variables.map((entry) => (
-                            <option key={entry.name} value={entry.name}>
-                                {entry.name}
-                            </option>
-                        ))}
-                    </TextField>
-                    <TextField
-                        label="New Value"
-                        size="small"
-                        value={variableValue}
-                        onChange={(e) => setVariableValue(e.target.value)}
-                        sx={{ mr: 2 }}
-                    />
-                    <Button
-                        variant="contained"
-                        onClick={() => reassignVariable(variableName, variableValue)}
-                        sx={{ ml: 2 }}
-                    >
-                        Reassign Variable
-                    </Button>
-                </>)}
+                </Section>
+            </Section>
+            <Section title="How do we reassign a variable?" subtitle='We can change the value of a variable at any time. To do this, we follow these steps:'>
+                <OrderedList
+                    items={[
+                        'We use the name of the variable.',
+                        'We use the assignment operator (=).',
+                        'We give it a new value.',
+                    ]}
+                />
+                <CodeSnippet
+                    lines={[
+                        { code: `let variableName = "value";`, comment: `declare a variable using 'let', give it a name, and assign it a value` },
+                        { code: `variableName = "newValue";`, comment: `reassign the variable to hold a new value` },
+                    ]}
+                />
+            </Section>
         </ConceptWrapper>
     );
 }
