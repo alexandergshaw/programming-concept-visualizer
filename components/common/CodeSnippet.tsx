@@ -60,12 +60,15 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({ lines, enableRun = false, edi
 
         // Listen for messages from the Web Worker
         worker.onmessage = (e) => {
-            const { type, result, error } = e.data;
+            const { type, result, error, logs } = e.data;
 
             if (type === 'success') {
-                setOutput(result !== undefined ? String(result) : 'Code executed successfully.');
+                const outputLogs = logs.join('\n');
+                const finalOutput = result !== undefined ? `${outputLogs}\nResult: ${String(result)}` : outputLogs;
+                setOutput(finalOutput || 'Code executed successfully.');
             } else if (type === 'error') {
-                setOutput(`Error: ${error}`);
+                const outputLogs = logs.join('\n');
+                setOutput(`${outputLogs}\nError: ${error}`);
             }
         };
     };
@@ -126,6 +129,7 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({ lines, enableRun = false, edi
                         minHeight: '50px',
                         whiteSpace: 'pre-wrap',
                         marginTop: '16px',
+                        fontFamily: 'monospace',
                     }}
                 >
                     {output}
