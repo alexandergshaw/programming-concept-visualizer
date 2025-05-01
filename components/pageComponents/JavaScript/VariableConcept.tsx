@@ -9,10 +9,18 @@ import '../../../styles/variable.css';
 import Section from '@/components/common/Section';
 import CodeSnippet from '@/components/common/CodeSnippet';
 import OrderedList from '@/components/common/OrderedList';
+import JsRunner from '@/components/common/JsRunner';
 
 interface VariableConceptProps {
     onCodeChange: (code: string) => void;
 }
+
+const reservedKeywords = [
+    'break', 'case', 'catch', 'class', 'const', 'continue', 'debugger', 'default', 'delete', 'do', 'else', 'enum',
+    'export', 'extends', 'false', 'finally', 'for', 'function', 'if', 'import', 'in', 'instanceof', 'new', 'null',
+    'return', 'super', 'switch', 'this', 'throw', 'true', 'try', 'typeof', 'var', 'void', 'while', 'with', 'yield',
+    'let', 'static', 'implements', 'interface', 'package', 'private', 'protected', 'public'
+];
 
 export default function VariableConcept(props: VariableConceptProps) {
     const [variables, setVariables] = useState<{ name: string; value: any; initialValue: any }[]>([]);
@@ -20,6 +28,26 @@ export default function VariableConcept(props: VariableConceptProps) {
     const [variableValue, setVariableValue] = useState('');
     const [firstNum, setFirstNum] = useState(5); // Default value for firstNum
     const [secondNum, setSecondNum] = useState(5); // Default value for secondNum
+    const [variableNameError, setVariableNameError] = useState<string>('');
+
+    const handleVariableNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const name = e.target.value;
+
+        // Check for specific errors
+        if (name === '') {
+            setVariableNameError('Variable name cannot be empty.');
+        } else if (/^[0-9]/.test(name)) {
+            setVariableNameError('Variable name cannot start with a digit.');
+        } else if (!/^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(name)) {
+            setVariableNameError('Variable name contains invalid characters.');
+        } else if (reservedKeywords.includes(name)) {
+            setVariableNameError(`"${name}" is a reserved keyword and cannot be used as a variable name.`);
+        } else {
+            setVariableNameError(''); // No error
+        }
+
+        setVariableName(name);
+    };
 
     const generateCodeForMemory = (memory: { name: string; value: any; initialValue: any }[]) => {
         if (memory.length === 0) {
@@ -44,42 +72,12 @@ export default function VariableConcept(props: VariableConceptProps) {
             .join('\n');
     };
 
-    const addVariable = () => {
-        if (!variableName) return;
-
-        const newVariable = { name: variableName, value: variableValue, initialValue: variableValue };
-        const updatedMemory = [...variables, newVariable];
-        setVariables(updatedMemory);
-
-        const code = generateCodeForMemory(updatedMemory);
-        props.onCodeChange(code);
-
-        setVariableName('');
-        setVariableValue('');
-    };
-
-    const reassignVariable = (name: string, newValue: any) => {
-        const updatedMemory = variables.map((entry) =>
-            entry.name === name ? { ...entry, value: newValue } : entry
-        );
-        setVariables(updatedMemory);
-
-        // Append the reassignment code to the existing block
-        const code = `
-    // Reassign the value of the variable "${name}"
-    ${name} = ${JSON.stringify(newValue)};
-    `;
-        const updatedCode = `${props.onCodeChange.toString()}\n${code}`;
-        props.onCodeChange(updatedCode);
-    };
-
     return (
         <ConceptWrapper
             title="Variables in JavaScript"
-            description="We can think of a variable as a box that we can put a value in."
+            description="We can think of a variable as a box that we can put a value in. When we need to access a variable's value, we type its name."
         >
-            <Section title="Declaring Variables" subtitle="When we declare a variable, we are creating a box that we can put things in. The name of the variable is the label on the box, and the value is what is inside the box." />
-            <Section title="Example" subtitle='In this code snippet, we declare three variables (firstNum, secondNum, and result). Each of these holds a value.'>
+            <Section title="Accessing a Variable's Value" subtitle='In this code snippet, we declare (aka create) three variables (firstNum, secondNum, and result). We assign each of these a value using the assignment operator (=). When we need to access their values, we use their names.'>
                 <TextField
                     label="First Number"
                     size="small"
@@ -98,74 +96,66 @@ export default function VariableConcept(props: VariableConceptProps) {
                 />
 
                 <CodeSnippet
+                    enableRun
                     lines={[
                         { code: `let firstNum = ${firstNum};`, comment: `declare the first variable - its name is firstNum, and its value is ${firstNum}` },
+                        { code: "" },
                         { code: `let secondNum = ${secondNum};`, comment: `declare the second variable - its name is secondNum, and its value is ${secondNum}` },
-                        { code: `let result = firstNum - secondNum;`, comment: `declare the variable that will hold the difference - its name is result and its value is ${firstNum - secondNum}` },
-                        { code: `console.log(result);`, comment: `the variable result holds the value ${firstNum - secondNum}` }
+                        { code: "" },
+                        { code: `let result = firstNum - secondNum;`, comment: `this is the variable's name is result and its value is ${firstNum - secondNum} - notice that we're accessing the value of the other variables by using their names` },
+                        { code: "" },
+                        { code: `console.log(result);`, comment: `here, we access the value of result by using its name` }
                     ]}
                 />
             </Section>
 
-            <Section title="How do we declare a variable?" subtitle='Every single time we declare a variable in JavaScript, we follow these steps:'>
+            <Section title="Declaring a Variable" subtitle='Every single time we create a variable in JavaScript, we follow these steps:'>
                 <OrderedList
                     items={[
-                        'We use the keyword let.',
+                        'We use the keyword let. This tells JavaScript that we are making a variable.',
                         'We give the variable a name.',
-                        'We can give it a value using the assignment operator (=). This step is optional. We can also declare a variable without assigning it a value.',
+                        '(Optional) We can give it a value using the assignment operator (=). However, we can also declare a variable without assigning it a value.',
                     ]}
                 />
                 <CodeSnippet
+                    enableRun
                     lines={[
                         { code: `let variableName = "value";`, comment: `declare a variable using 'let', give it a name, and assign it a value` },
+                        { code: "" },
                         { code: `let uninitializedVariable;`, comment: `declare a variable without assigning a value (it will be 'undefined')` },
-                    ].concat(variables.map((variable) => ({
-                        code: `let ${variable.name} = ${JSON.stringify(variable.value)};`,
-                        comment: `declare a variable named '${variable.name}' with the value ${JSON.stringify(variable.value)}`,
-                    })))}
-                />
-                <Section title="Interactive Variable Declaration" subtitle="Enter the name and value of a variable to see how it is declared in code:">
-                    <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
-                        <TextField
-                            label="Variable Name"
-                            size="small"
-                            value={variableName}
-                            onChange={(e) => setVariableName(e.target.value)}
-                            sx={{ mr: 2 }}
-                        />
-                        <TextField
-                            label="Variable Value"
-                            size="small"
-                            value={variableValue}
-                            onChange={(e) => setVariableValue(e.target.value)}
-                            sx={{ mr: 2 }}
-                        />
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            onClick={addVariable}
-                            disabled={!variableName}
-                        >
-                            Add Variable
-                        </Button>
-                    </div>
+                        { code: "" },
+                        { code: `console.log("value of variableName: ", variableName);`, comment: `output the value of the variable that we assigned a value` },
+                        { code: "" },
+                        { code: `console.log("value of uninitializedVariable: ", uninitializedVariable);`, comment: `output the value of the variable that didn't assign a value (we call these variables "unitialized")` },
 
+                    ]}
+                />
+                <Section title="Naming Variables" subtitle="There are a few rules we need to follow when naming variables:">
+                    <OrderedList
+                        items={[
+                            'Variable names can only contain letters, numbers, underscores (_), and dollar signs ($).',
+                            'Variable names cannot start with a number.',
+                            'Variable names cannot be the same as JavaScript keywords (like let, const, var, etc.).',
+                        ]}
+                    />
+                    <Section title="Examples of Valid and Invalid Variable Names" subtitle="Here are some examples of valid and invalid variable names. You can try running it to see the errors that the invalid variables cause, and then try entering edit mode to correct these." />
+                    <CodeSnippet
+                        enableRun
+                        editable
+                        allowCopy={false}
+                        lines={[
+                            { code: `let 1stVariable = 5;`, comment: `invalid variable name - cannot start with a number` },
+                            { code: `let let = 5;`, comment: `invalid variable name - 'let' is a reserved keyword` },
+                            { code: `let my-variable = 5;`, comment: `invalid variable name - cannot contain hyphens` },
+                            { code: `let my variable = 5;`, comment: `invalid variable name - cannot contain spaces` },
+                            { code: `let myVariable = 5;`, comment: `valid variable name` },
+                            { code: `let my_variable = 5;`, comment: `valid variable name - contains an underscore` },
+                            { code: `let $myVariable = 5;`, comment: `valid variable name - starts with a dollar sign` },
+                            { code: `let _myVariable = 5;`, comment: `valid variable name - starts with an underscore` },
+                            { code: `let myVariable$ = 5;`, comment: `valid variable name - ends with a dollar sign` },
+                        ]}
+                    />
                 </Section>
-            </Section>
-            <Section title="How do we reassign a variable?" subtitle='We can change the value of a variable at any time. To do this, we follow these steps:'>
-                <OrderedList
-                    items={[
-                        'We use the name of the variable.',
-                        'We use the assignment operator (=).',
-                        'We give it a new value.',
-                    ]}
-                />
-                <CodeSnippet
-                    lines={[
-                        { code: `let variableName = "value";`, comment: `declare a variable using 'let', give it a name, and assign it a value` },
-                        { code: `variableName = "newValue";`, comment: `reassign the variable to hold a new value` },
-                    ]}
-                />
             </Section>
         </ConceptWrapper>
     );

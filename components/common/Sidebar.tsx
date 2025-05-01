@@ -62,7 +62,20 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [] }: Si
   };
 
   return (
-    <aside className="js-sidebar">
+    <aside
+      className="js-sidebar"
+      style={{
+        position: 'fixed', // Fix the sidebar in place
+        top: '0', // Stick to the top of the viewport
+        left: '0', // Align it to the left of the viewport
+        width: '250px', // Set a fixed width for the sidebar
+        height: '100vh', // Make it span the full height of the viewport
+        zIndex: 1000, // Ensure it stays above other content
+        backgroundColor: '#333', // Optional: Ensure the background is visible
+        overflowY: 'auto', // Allow scrolling if the content overflows
+        padding: '16px', // Add some padding for better spacing
+      }}
+    >
       <h2 className="js-sidebar-title">{title}</h2>
       {/* Search Box */}
       <TextField
@@ -73,25 +86,25 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [] }: Si
         variant="outlined"
         sx={{
           marginBottom: '16px',
-          backgroundColor: 'transparent', // Transparent background
-          color: 'white', // White text
-          borderRadius: '4px', // Optional: Add rounded corners
+          backgroundColor: 'transparent',
+          color: 'white',
+          borderRadius: '4px',
           '& .MuiOutlinedInput-root': {
             '& fieldset': {
-              borderColor: 'white', // White outline
+              borderColor: 'white',
             },
             '&:hover fieldset': {
-              borderColor: 'white', // White outline on hover
+              borderColor: 'white',
             },
             '&.Mui-focused fieldset': {
-              borderColor: 'white', // White outline when focused
+              borderColor: 'white',
             },
           },
           '& .MuiInputBase-input': {
-            color: 'white', // White text inside the input
+            color: 'white',
           },
           '& .MuiInputLabel-root': {
-            color: 'white', // White placeholder text
+            color: 'white',
           },
         }}
       />

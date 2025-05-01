@@ -17,7 +17,18 @@ export default function PageWrapper(props: PageWrapperProps) {
     <main className="js-layout">
       <Sidebar title={props.pageTitle} items={props.navItems} defaultOpen={props.defaultOpen} onSelect={props.handleSelect} />
       <div className="js-page-body">
-        <Alert severity="info" className="feedback-banner" sx={{ mb: 3 }}>
+        <Alert
+          severity="info"
+          className="feedback-banner"
+          sx={{
+            position: 'fixed', // Make it fixed
+            top: 0, // Stick to the top of the viewport
+            left: '250px', // Offset to account for the sidebar
+            width: 'calc(100% - 250px)', // Adjust width to fit the remaining space
+            zIndex: 1100, // Ensure it stays above other content
+            mb: 3,
+          }}
+        >
           Have ideas to improve this page?{' '}
           <Link
             href="https://docs.google.com/forms/d/e/1FAIpQLSf73dDuwy0mZUuApiG2kEGlcCp93pN-l1eOtFOTBA2BTf0Bqw/viewform?usp=sharing"
