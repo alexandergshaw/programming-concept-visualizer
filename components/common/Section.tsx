@@ -10,7 +10,7 @@ export interface SectionProps {
 
 export default function Section(props: SectionProps) {
     return (
-        <Box sx={{ mt: 4 }}>
+        <Box sx={{ mt: 4 }} id={props.title.replace(/\s+/g, '-').toLowerCase()}>
             <Typography variant="h6">{props.title}</Typography>
             {props.subtitle && (
                 <Typography sx={{ mb: 2 }}>

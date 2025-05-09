@@ -11,7 +11,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 interface CodeSnippetProps {
-    lines: { code: string; comment?: string }[];
+    lines: { code: string; comment?: string; audio?: string }[];
     enableRun?: boolean;
     editable?: boolean;
     allowCopy?: boolean;
@@ -115,7 +115,7 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({ lines, enableRun = false, edi
                 <pre style={{ margin: 0, whiteSpace: 'pre-wrap', wordBreak: 'break-word', fontFamily: 'monospace', color: '#333' }}>
                     {lines.map((line, index) => (
                         <div key={index} style={{ marginBottom: '8px' }}>
-                            {line.code && line.code} {line.comment && <span style={{ color: '#888' }}>{`// ${line.comment}`}</span>}
+                            {line.code} {line.comment && <span style={{ color: '#888' }}>{`// ${line.comment}`}</span>}
                         </div>
                     ))}
                 </pre>

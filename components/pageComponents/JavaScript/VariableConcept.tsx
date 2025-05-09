@@ -2,18 +2,13 @@
 
 import { useState } from 'react';
 import ConceptWrapper from '../../common/ConceptWrapper';
-import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
 import '../../../styles/variable.css';
 import Section from '@/components/common/Section';
 import CodeSnippet from '@/components/common/CodeSnippet';
 import OrderedList from '@/components/common/OrderedList';
-import JsRunner from '@/components/common/JsRunner';
-
-interface VariableConceptProps {
-    onCodeChange: (code: string) => void;
-}
+import VideoPlayer from '@/components/common/VideoPlayer';
+import TableOfContents from '@/components/common/TableOfContents';
 
 const reservedKeywords = [
     'break', 'case', 'catch', 'class', 'const', 'continue', 'debugger', 'default', 'delete', 'do', 'else', 'enum',
@@ -22,61 +17,39 @@ const reservedKeywords = [
     'let', 'static', 'implements', 'interface', 'package', 'private', 'protected', 'public'
 ];
 
-export default function VariableConcept(props: VariableConceptProps) {
-    const [variables, setVariables] = useState<{ name: string; value: any; initialValue: any }[]>([]);
-    const [variableName, setVariableName] = useState('');
-    const [variableValue, setVariableValue] = useState('');
+export default function VariableConcept() {
     const [firstNum, setFirstNum] = useState(5); // Default value for firstNum
     const [secondNum, setSecondNum] = useState(5); // Default value for secondNum
-    const [variableNameError, setVariableNameError] = useState<string>('');
+    const [variableName, setVariableName] = useState('');
+    const [variableNameError, setVariableNameError] = useState(''); // State for variable name error
+    const [helperText, setHelperText] = useState('Enter a valid variable name.');
 
     const handleVariableNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const name = e.target.value;
+        setHelperText(''); // Reset helper text
+        setVariableNameError(''); // Reset error message
 
         // Check for specific errors
-        if (name === '') {
-            setVariableNameError('Variable name cannot be empty.');
-        } else if (/^[0-9]/.test(name)) {
+        if (/^[0-9]/.test(name)) {
             setVariableNameError('Variable name cannot start with a digit.');
         } else if (!/^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(name)) {
             setVariableNameError('Variable name contains invalid characters.');
         } else if (reservedKeywords.includes(name)) {
             setVariableNameError(`"${name}" is a reserved keyword and cannot be used as a variable name.`);
         } else {
-            setVariableNameError(''); // No error
+            setHelperText('That is a valid variable name!');
         }
 
         setVariableName(name);
     };
 
-    const generateCodeForMemory = (memory: { name: string; value: any; initialValue: any }[]) => {
-        if (memory.length === 0) {
-            return '// No variables are currently stored in memory.';
-        }
-
-        return memory
-            .map((entry) => {
-                const initialization = `
-        // Declare a variable named "${entry.name}"
-        let ${entry.name} = ${JSON.stringify(entry.initialValue)};
-        `;
-                const reassignment =
-                    entry.value !== entry.initialValue
-                        ? `
-        // Reassign the value of the variable "${entry.name}"
-        ${entry.name} = ${JSON.stringify(entry.value)};
-        `
-                        : '';
-                return initialization + reassignment;
-            })
-            .join('\n');
-    };
-
     return (
         <ConceptWrapper
             title="Variables in JavaScript"
-            description="We can think of a variable as a box that we can put a value in. When we need to access a variable's value, we type its name."
+            description="We can think of a variable as a box that we put a value in. The box has a label (the variable name) that we can use to access the value inside. In professional terms, we call this storing data. We can store all kinds of data in a variable, like numbers, text, or even more complex things like lists and objects."
         >
+            <TableOfContents>
+            <VideoPlayer src="https://www.youtube.com/embed/9QbIDVcRnc8?si=MdHHGk2C7Tesrc6D" />
             <Section title="Accessing a Variable's Value" subtitle='In this code snippet, we declare (aka create) three variables (firstNum, secondNum, and result). We assign each of these a value using the assignment operator (=). When we need to access their values, we use their names.'>
                 <TextField
                     label="First Number"
@@ -102,7 +75,7 @@ export default function VariableConcept(props: VariableConceptProps) {
                         { code: "" },
                         { code: `let secondNum = ${secondNum};`, comment: `declare the second variable - its name is secondNum, and its value is ${secondNum}` },
                         { code: "" },
-                        { code: `let result = firstNum - secondNum;`, comment: `this is the variable's name is result and its value is ${firstNum - secondNum} - notice that we're accessing the value of the other variables by using their names` },
+                        { code: `let result = firstNum - secondNum;`, comment: `the variable's name is result and its value is ${firstNum - secondNum} - notice that we're accessing the value of the other variables by using their names` },
                         { code: "" },
                         { code: `console.log(result);`, comment: `here, we access the value of result by using its name` }
                     ]}
@@ -130,7 +103,8 @@ export default function VariableConcept(props: VariableConceptProps) {
 
                     ]}
                 />
-                <Section title="Naming Variables" subtitle="There are a few rules we need to follow when naming variables:">
+            </Section>
+            <Section title="Naming Variables" subtitle="There are a few rules we need to follow when naming variables:">
                     <OrderedList
                         items={[
                             'Variable names can only contain letters, numbers, underscores (_), and dollar signs ($).',
@@ -138,25 +112,36 @@ export default function VariableConcept(props: VariableConceptProps) {
                             'Variable names cannot be the same as JavaScript keywords (like let, const, var, etc.).',
                         ]}
                     />
-                    <Section title="Examples of Valid and Invalid Variable Names" subtitle="Here are some examples of valid and invalid variable names. You can try running it to see the errors that the invalid variables cause, and then try entering edit mode to correct these." />
-                    <CodeSnippet
-                        enableRun
-                        editable
-                        allowCopy={false}
-                        lines={[
-                            { code: `let 1stVariable = 5;`, comment: `invalid variable name - cannot start with a number` },
-                            { code: `let let = 5;`, comment: `invalid variable name - 'let' is a reserved keyword` },
-                            { code: `let my-variable = 5;`, comment: `invalid variable name - cannot contain hyphens` },
-                            { code: `let my variable = 5;`, comment: `invalid variable name - cannot contain spaces` },
-                            { code: `let myVariable = 5;`, comment: `valid variable name` },
-                            { code: `let my_variable = 5;`, comment: `valid variable name - contains an underscore` },
-                            { code: `let $myVariable = 5;`, comment: `valid variable name - starts with a dollar sign` },
-                            { code: `let _myVariable = 5;`, comment: `valid variable name - starts with an underscore` },
-                            { code: `let myVariable$ = 5;`, comment: `valid variable name - ends with a dollar sign` },
-                        ]}
-                    />
+                    <Section title="Examples of Valid and Invalid Variable Names" subtitle="Here are some examples of valid and invalid variable names. Keep in mind that we typically want our variable names to be descriptive.">
+                        <CodeSnippet
+                            lines={[
+                                { code: `let 1stVariable = 5;`, comment: `invalid variable name - cannot start with a number` },
+                                { code: `let let = 5;`, comment: `invalid variable name - 'let' is a reserved keyword` },
+                                { code: `let my-variable = 5;`, comment: `invalid variable name - cannot contain hyphens` },
+                                { code: `let my variable = 5;`, comment: `invalid variable name - cannot contain spaces` },
+                                { code: `let myVariable = 5;`, comment: `valid variable name` },
+                                { code: `let my_variable = 5;`, comment: `valid variable name - contains an underscore` },
+                                { code: `let $myVariable = 5;`, comment: `valid variable name - starts with a dollar sign` },
+                                { code: `let _myVariable = 5;`, comment: `valid variable name - starts with an underscore` },
+                                { code: `let myVariable$ = 5;`, comment: `valid variable name - ends with a dollar sign` },
+                            ]}
+                        />
+                    </Section>
+
+                    <Section title="Try It Yourself!" subtitle="This textbox will provide instant feedback on any variable name you type.">
+                        <TextField
+                            label="Variable Name"
+                            size="small"
+                            value={variableName}
+                            onChange={handleVariableNameChange}
+                            error={!!variableNameError}
+                            helperText={variableNameError || helperText}
+                            sx={{ mb: 2 }}
+                        />
+                    </Section>
                 </Section>
-            </Section>
+            </TableOfContents>
+
         </ConceptWrapper>
     );
 }

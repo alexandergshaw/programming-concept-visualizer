@@ -40,7 +40,7 @@ export default function PageWrapper(props: PageWrapperProps) {
           </Link>
         </Alert>
         <section className="js-content">
-          <div style={{ marginTop: '40px' }}>
+          <div style={{ marginTop: '100px' }}>
             {props.children}
           </div>
         </section>

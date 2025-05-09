@@ -15,8 +15,12 @@ const navItems = [
     value: 'basics',
     children: [
       { label: 'Variables', value: 'variables' },
+      { label: 'Constants', value: 'constants' },
+      { label: 'Data Types', value: 'data types' },
+      { label: 'Operators', value: 'operators' },
+      { label: 'Control Flow', value: 'control flow' },
+      { label: 'Loops', value: 'loops' },
       { label: 'Functions', value: 'functions' },
-      { label: 'Testing', value: 'testing' },
     ],
   },
   {
@@ -84,8 +88,8 @@ export default function JavaScriptPage() {
         return <SetConcept onCodeChange={setCodeSnippet} />;
       case 'objects':
         return <ObjectConcept />;
-      case 'variables': // Added case for Variables
-        return <VariableConcept onCodeChange={setCodeSnippet} />;
+      case 'variables': 
+        return <VariableConcept />;
       default:
         return null;
     }
