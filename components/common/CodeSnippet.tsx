@@ -132,6 +132,7 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({ lines, enableRun = false, edi
                         fontFamily: 'monospace',
                     }}
                 >
+                    <div style={{ fontWeight: 'bold', marginBottom: '4px', color: '#444' }}>Output</div>
                     {output}
                 </Box>
             )}

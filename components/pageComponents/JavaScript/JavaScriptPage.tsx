@@ -11,16 +11,32 @@ import VariableConcept from './VariableConcept';
 
 const navItems = [
   {
-    label: 'Basics',
-    value: 'basics',
+    label: 'Variables',
+    value: 'variables',
     children: [
       { label: 'Variables', value: 'variables' },
-      { label: 'Constants', value: 'constants' },
       { label: 'Data Types', value: 'data types' },
+      { label: 'Constants', value: 'constants' },
+    ],
+  },
+  {
+    label: 'Control Flow',
+    value: 'control flow',
+    children: [
       { label: 'Operators', value: 'operators' },
       { label: 'Control Flow', value: 'control flow' },
       { label: 'Loops', value: 'loops' },
-      { label: 'Functions', value: 'functions' },
+      { label: 'Conditionals', value: 'conditionals' },
+    ],
+  },
+  {
+    label: 'Functions',
+    value: 'functions',
+    children: [
+      { label: 'Function Declaration', value: 'function declaration' },
+      { label: 'Function Expression', value: 'function expression' },
+      { label: 'Arrow Functions', value: 'arrow functions' },
+      { label: 'Higher Order Functions', value: 'higher order functions' },
     ],
   },
   {
