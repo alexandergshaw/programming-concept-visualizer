@@ -50,7 +50,7 @@ export default function VariableConcept() {
         >
             <TableOfContents>
                 <VideoPlayer src="https://www.youtube.com/embed/9QbIDVcRnc8?si=MdHHGk2C7Tesrc6D" />
-                <Section title="Accessing a Variable's Value" subtitle='In this code snippet, we declare (aka create) three variables (firstNum, secondNum, and result). We assign each of these a value using the assignment operator (=). When we need to access their values, we use their names.'>
+                <Section title="1. Accessing a Variable's Value" subtitle='In this code snippet, we declare (aka create) three variables (firstNum, secondNum, and result). We assign each of these a value using the assignment operator (=). When we need to access their values, we use their names.'>
                     <TextField
                         label="First Number"
                         size="small"
@@ -82,7 +82,7 @@ export default function VariableConcept() {
                     />
                 </Section>
 
-                <Section title="Declaring a Variable" subtitle='Every single time we create a variable in JavaScript, we follow these steps:'>
+                <Section title="2. Declaring a Variable" subtitle='Every single time we create a variable in JavaScript, we follow these steps:'>
                     <OrderedList
                         items={[
                             'We use the keyword let. This tells JavaScript that we are making a variable.',
@@ -104,7 +104,7 @@ export default function VariableConcept() {
                         ]}
                     />
                 </Section>
-                <Section title="Naming Variables" subtitle="There are a few rules we need to follow when naming variables:">
+                <Section title="3. Naming Variables" subtitle="There are a few rules we need to follow when naming variables:">
                     <OrderedList
                         items={[
                             'Variable names can only contain letters, numbers, underscores (_), and dollar signs ($).',
@@ -112,7 +112,7 @@ export default function VariableConcept() {
                             'Variable names cannot be the same as JavaScript keywords (like let, const, var, etc.).',
                         ]}
                     />
-                    <Section title="Examples of Valid and Invalid Variable Names" subtitle="Here are some examples of valid and invalid variable names. Keep in mind that we typically want our variable names to be descriptive.">
+                    <Section title="3a. Examples of Valid and Invalid Variable Names" subtitle="Here are some examples of valid and invalid variable names. Keep in mind that we typically want our variable names to be descriptive.">
                         <CodeSnippet
                             lines={[
                                 { code: `let 1stVariable = 5;`, comment: `invalid variable name - cannot start with a number` },
@@ -128,7 +128,7 @@ export default function VariableConcept() {
                         />
                     </Section>
 
-                    <Section title="Try It Yourself!" subtitle="This textbox will provide instant feedback on any variable name you type.">
+                    <Section title="3b. Try It Yourself!" subtitle="This textbox will provide instant feedback on any variable name you type.">
                         <TextField
                             label="Variable Name"
                             size="small"

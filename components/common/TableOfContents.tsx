@@ -4,9 +4,10 @@ import Section from './Section';
 interface TableOfContentsProps {
     children: ReactNode; // The child components, expected to include Section components
     scrollOffset?: number; // Optional scroll offset in pixels
+    numbered?: boolean; // Optional prop to turn numbering on/off
 }
 
-const TableOfContents: React.FC<TableOfContentsProps> = ({ children, scrollOffset = 50 }) => {
+const TableOfContents: React.FC<TableOfContentsProps> = ({ children, scrollOffset = 50, numbered }) => {
     // Recursive function to extract sections, including nested ones
     const extractSections = (nodes: ReactNode): { title: string; id: string; element: ReactElement; children: any[] }[] => {
         return React.Children.toArray(nodes)
@@ -37,7 +38,12 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ children, scrollOffse
 
     // Recursive function to render the table of contents
     const renderTableOfContents = (sections: any[], level: number = 0) => {
-        const listStyleType = level === 0 ? 'decimal' : 'lower-alpha'; // Use numbers for top-level, letters for nested
+        let listStyleType: React.CSSProperties['listStyleType'];
+        if (!numbered) {
+            listStyleType = 'none';
+        } else {
+            listStyleType = level === 0 ? 'decimal' : 'lower-alpha';
+        }
         return (
             <ol style={{ ...styles.list, listStyleType, marginLeft: `${level * 20}px` }}>
                 {sections.map(({ title, id, children }, index) => (
@@ -53,10 +59,10 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ children, scrollOffse
     };
 
     return (
-        <Section title="Table of Contents">
-            <div style={styles.container}>
+        <Section title="Table of Contents" subtitle="Click on a section to jump to it:">
+            <>
                 {renderTableOfContents(sections)}
-            </div>
+            </>
 
             <div style={styles.content}>
                 {sections.map(({ id, element }) =>
@@ -68,10 +74,6 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ children, scrollOffse
 };
 
 const styles = {
-    container: {
-        padding: '20px',
-        marginBottom: '20px',
-    },
     list: {
         padding: 0,
         margin: 0,
