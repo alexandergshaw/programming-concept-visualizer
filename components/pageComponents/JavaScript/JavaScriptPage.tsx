@@ -9,6 +9,7 @@ import ObjectConcept from './ObjectConcept';
 import SetConcept from './SetConcept';
 import VariableConcept from './VariableConcept';
 import ConstantConcept from './ConstantConcept';
+import DataTypesConcept from './DataTypesConcept';
 
 const navItems = [
   {
@@ -19,6 +20,7 @@ const navItems = [
       { label: 'Constants', value: 'constants' },
       { label: 'Data Types', value: 'data types' },
     ],
+
   },
   // {
   //   label: 'Control Flow',
@@ -109,6 +111,8 @@ export default function JavaScriptPage() {
         return <VariableConcept />;
       case 'constants':
         return <ConstantConcept />;
+      case 'data types':
+        return <DataTypesConcept/>;
       default:
         return null;
     }
@@ -133,7 +137,7 @@ export default function JavaScriptPage() {
   }
 
   return (
-    <PageWrapper pageTitle={'JavaScript Visualizer'} navItems={navItems} defaultOpen={["collections"]} handleSelect={handleSelect}>
+    <PageWrapper pageTitle={'JavaScript Visualizer'} navItems={navItems} defaultOpen={["storing data"]} handleSelect={handleSelect}>
       {selectedConcept ? (
         <>
           {renderContent(selectedConcept)}

@@ -37,14 +37,42 @@ export default function ConstantConcept() {
             title="Constants in JavaScript"
             description="A constant is a variable whose value cannot be changed once it is set. In JavaScript, we use the keyword 'const' to declare a constant. Constants help us write safer code by preventing accidental changes to values that should stay the same."
         >
+
             <TableOfContents>
-                <VideoPlayer src="https://www.youtube.com/embed/9QbIDVcRnc8?si=MdHHGk2C7Tesrc6D" />
-                <Section title="1. Creating a Constant" subtitle="To create a constant, use the 'const' keyword, give it a name, and assign it a value.">
+                <Section
+                    title="1. When should I use a constant instead of a variable?"
+                    subtitle=""
+                >
                     <OrderedList
+                        listStyleType='lower-alpha'
                         items={[
-                            "Use the keyword 'const'.",
-                            "Give the constant a name (by convention, all uppercase with underscores).",
-                            "Assign it a value (required).",
+                            {
+                                text: "Use constants when you have a value that should not change throughout your program:",
+                                children: [
+                                    { text: "Mathematical constants (like PI)" },
+                                    { text: "Configuration values (like API endpoints)" },
+                                    { text: "Fixed settings (like default user roles)" }
+                                ]
+                            },
+                            {
+                                text: "Use normal variables for all other values."
+                            }
+                        ]}
+                    />
+                </Section>
+                <Section title="2. Creating a Constant" subtitle="To create a constant, use the 'const' keyword, give it a name, and assign it a value.">
+                    <OrderedList
+                        listStyleType='lower-alpha'
+                        items={[
+                            {
+                                text: "Use the keyword 'const'."
+                            },
+                            {
+                                text: "Give the constant a name (by convention, all uppercase with underscores)."
+                            },
+                            {
+                                text: "Assign it a value (required)."
+                            }
                         ]}
                     />
                     <CodeSnippet
@@ -55,7 +83,7 @@ export default function ConstantConcept() {
                         ]}
                     />
                 </Section>
-                <Section title="2. Naming Constants" subtitle="Constants are usually named using all uppercase letters and underscores.">
+                <Section title="3. Naming Constants" subtitle="Constants are usually named using all uppercase letters and underscores.">
                     <OrderedList
                         items={[
                             "Constant names can only contain uppercase letters, numbers, and underscores (_).",
@@ -63,7 +91,7 @@ export default function ConstantConcept() {
                             "Constant names are typically written in SCREAMING_SNAKE_CASE.",
                         ]}
                     />
-                    <Section title="2a. Examples of Valid and Invalid Constant Names">
+                    <Section title="3a. Examples of Valid and Invalid Constant Names">
                         <CodeSnippet
                             lines={[
                                 { code: `const 1ST_CONST = 5;`, comment: `invalid - cannot start with a number` },
@@ -75,7 +103,7 @@ export default function ConstantConcept() {
                             ]}
                         />
                     </Section>
-                    <Section title="2b. Try It Yourself!" subtitle="Type a constant name to see if it's valid.">
+                    <Section title="3b. Try It Yourself!" subtitle="Type a constant name to see if it's valid.">
                         <TextField
                             label="Constant Name"
                             size="small"
@@ -87,7 +115,7 @@ export default function ConstantConcept() {
                         />
                     </Section>
                 </Section>
-                <Section title="3. Assigning and Using Constants" subtitle="Constants must be assigned a value when declared, and their value cannot be changed later.">
+                <Section title="4. Assigning and Using Constants" subtitle="Constants must be assigned a value when declared, and their value cannot be changed later.">
                     <TextField
                         label="Constant Value"
                         size="small"
@@ -104,7 +132,7 @@ export default function ConstantConcept() {
                         ]}
                     />
                 </Section>
-                <Section title="4. Trying to Change a Constant" subtitle="If you try to change (reassign) a constant, JavaScript will throw an error.">
+                <Section title="5. Trying to Change a Constant" subtitle="If you try to change (reassign) a constant, JavaScript will throw an error.">
                     <TextField
                         label="Try to reassign the constant to:"
                         size="small"
