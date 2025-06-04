@@ -7,6 +7,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Autocomplete from '@mui/material/Autocomplete';
 import '../../../styles/set.css';
 import ConceptWrapper from '../../common/ConceptWrapper';
+import Typography from '@mui/material/Typography';
 
 const OPERATIONS = ['add', 'delete', 'has', 'clear'];
 
@@ -60,37 +61,34 @@ export default function SetConcept({
 
     switch (operation) {
       case 'add':
-        if (setValues.has(val)) {
-          setOutput(`The value ${val} already exists in the Set and was not added.`);
-          return;
-        }
+        const hasValue = setValues.has(val)
         const addSet = new Set(setValues);
         addSet.add(val);
         setSetValues(addSet);
-        setOutput(null);
-        updateCodePreview(`set.add(${val});`);
+        updateCodePreview(`\nset.add(${val}); // adds ${val} to the set, if ${val} isn't already in the set\n\n// ${hasValue ? `${val} was already in the set` : `${val} was not already in the set`}\n\n// updated set: ${hasValue ? "same as before" : displaySet(addSet)}`);
         break;
 
       case 'delete':
         const delSet = new Set(setValues);
         const deleted = delSet.delete(val);
         setSetValues(delSet);
-        setOutput(`delete(${val}) → ${deleted}`);
-        updateCodePreview(`set.delete(${val});`);
+        updateCodePreview(`\nset.delete(${val}); // removes ${val} from the set, if ${val} exists in the set\n\n// ${deleted ? `${val} was removed from the set` : `${val} was not found in the set`}\n\n// updated set: ${deleted ? displaySet(delSet) : "same as before"}`);
         break;
 
       case 'has':
         const exists = setValues.has(val);
-        setOutput(`has(${val}) → ${exists}`);
-        updateCodePreview(`set.has(${val});`);
+        updateCodePreview(`\nset.has(${val}); // checks if ${val} exists in the set\n\n// set.has(${val}) returns ${exists} because ${val} ${exists ? "exists in the set" : "doesn't exist in the set"}\n\n// set is unchanged`);
         break;
 
       case 'clear':
         setSetValues(new Set());
-        setOutput('Set cleared');
-        updateCodePreview(`set.clear();`);
+        updateCodePreview(`\nset.clear(); // removes all values from the set\n\n// updated set: ${displaySet(new Set())}`);
         break;
     }
+  };
+
+  const displaySet = (set: Set<number>): string => {
+    return `{ ${[...set].join(', ')} }`;
   };
 
   const handleReset = () => {
@@ -154,14 +152,9 @@ export default function SetConcept({
           />
         )}
 
-        <TextField
-          label="Operation Description"
-          value={getDescription(operation)}
-          size="small"
-          fullWidth
-          disabled
-          sx={{ marginTop: 1, marginBottom: 2 }}
-        />
+        <Typography variant="body2" sx={{ mt: 2, mb: 1, color: '#444' }}>
+          <strong>Operation Description:</strong> {getDescription(operation)}
+        </Typography>
 
         <Tooltip title={`Execute the ${operation} operation`}>
           <Button variant="contained" onClick={runOperation}>

@@ -7,6 +7,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import Tooltip from '@mui/material/Tooltip';
 import '../../../styles/map.css';
 import ConceptWrapper from '../../common/ConceptWrapper';
+import Typography from '@mui/material/Typography';
 
 const OPERATIONS = ['set', 'get', 'has', 'delete', 'clear'];
 
@@ -38,7 +39,7 @@ export default function MapConcept({
     const entries = [...map.entries()]
       .map(([k, v]) => `["${k}", "${v}"]`)
       .join(', ');
-    onCodeChange?.(`let map = new Map([${entries}]);\n${actionCode}`);
+    onCodeChange?.(`let map = new Map([${entries}]); // create the map\n${actionCode}`);
   };
 
   const handleSet = () => {
@@ -46,35 +47,40 @@ export default function MapConcept({
       const newMap = new Map(map);
       newMap.set(keyInput, valueInput);
       setMap(newMap);
-      setOutput(`set("${keyInput}", "${valueInput}")`);
-      updateCodePreview(`map.set("${keyInput}", "${valueInput}");`);
+      updateCodePreview(`\nmap.set("${keyInput}", "${valueInput}");\n\n// updated map: ${displayMap(newMap)} `);
     }
   };
 
+  const displayMap = (map: Map<string, string>): string => {
+    return `{${[...map.entries()]
+      .map(([k, v]) => `${k}: ${v}`)
+      .join(', ')}}`;
+  }
+
   const handleGet = () => {
     const result = map.get(keyInput);
-    setOutput(`get("${keyInput}") → ${result !== undefined ? `"${result}"` : 'undefined'}`);
-    updateCodePreview(`map.get("${keyInput}");`);
+    const present: boolean = result !== undefined
+    updateCodePreview(`\nmap.get(${keyInput});\n\n// map is unchanged \n\n// map.get(${keyInput}) returns ${present ? `${result}` : 'undefined'} because the key ${keyInput} is ${present ? `associated with the value ${result}` : "not present in the map"}`);
   };
 
   const handleDelete = () => {
     const newMap = new Map(map);
-    const result = newMap.delete(keyInput);
+    const value = newMap.get(keyInput)
+    const keyWasDeleted = newMap.delete(keyInput);
     setMap(newMap);
-    setOutput(`delete("${keyInput}") → ${result}`);
-    updateCodePreview(`map.delete("${keyInput}");`);
+    updateCodePreview(`\nmap.delete("${keyInput}"); // try to delete the key "${keyInput}" and its value, if the key exists in the map \n\n// ${keyWasDeleted ? `the key "${keyInput}" and the value "${value}" were removed from the map` : `the key "${keyInput}" doesn't exist in the map\n\n// map.delete(${keyInput}) returns ${keyWasDeleted ? "true" : "false"}`}`);
   };
 
   const handleHas = () => {
     const result = map.has(keyInput);
-    setOutput(`has("${keyInput}") → ${result}`);
-    updateCodePreview(`map.has("${keyInput}");`);
+    updateCodePreview(`\nmap.has("${keyInput}"); // check if the map contains the key "${keyInput}"\n\n// map.has("${keyInput}") returns ${result} because the key "${keyInput}" ${result ? "exists in the map" : "doesn't exist in the map"}\n\n// map is unchanged`);
   };
 
   const handleClear = () => {
+    const map = new Map<string, string>()
+    map.clear()
     setMap(new Map());
-    setOutput('Map cleared');
-    updateCodePreview(`map.clear();`);
+    updateCodePreview(`\nmap.clear(); // remove all key-value pairs\n\n// map looks like this now: ${displayMap(new Map())}`);
   };
 
   const handleReset = () => {
@@ -156,15 +162,14 @@ export default function MapConcept({
           />
         )}
 
-        <TextField
-          label="Operation Description"
-          value={getDescription(selectedOp)}
-          size="small"
-          fullWidth
-          sx={{ marginTop: 1, marginBottom: 2 }}
-          disabled
-        />
+        <Typography variant="body2" sx={{ mt: 2, mb: 1, color: '#444' }}>
+          <strong>Operation Description:</strong> {getDescription(selectedOp)}
+        </Typography>
 
+
+      </div>
+
+      <div className='run-buttons'>
         <Tooltip title={`Execute the ${selectedOp} operation`}>
           <Button variant="contained" onClick={runOperation}>
             Run
@@ -175,6 +180,8 @@ export default function MapConcept({
           Reset
         </Button>
       </div>
+
+
 
       <div className="map-box">
         {[...map.entries()].map(([key, value], idx) => (

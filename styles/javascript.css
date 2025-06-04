@@ -30,9 +30,8 @@
 
 .js-content {
   flex-grow: 1;
-  padding: 0 60px;
+  padding: 0 60px 0 310px;
   overflow-x: hidden;
-  max-width: 900px;
 }
 
 .js-sidebar-title {
