@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '@/components/common/Section';
-import OrderedList from '@/components/common/OrderedList';
 import CodeSnippet from '@/components/common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
 import VideoPlayer from '@/components/common/VideoPlayer';
