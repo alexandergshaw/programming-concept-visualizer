@@ -8,6 +8,7 @@ import MapConcept from './MapConcept';
 import ObjectConcept from './ObjectConcept';
 import SetConcept from './SetConcept';
 import VariableConcept from './VariableConcept';
+import ConstantConcept from './ConstantConcept';
 
 const navItems = [
   {
@@ -106,6 +107,8 @@ export default function JavaScriptPage() {
         return <ObjectConcept />;
       case 'variables': 
         return <VariableConcept />;
+      case 'constants':
+        return <ConstantConcept />;
       default:
         return null;
     }
