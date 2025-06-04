@@ -70,7 +70,13 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
         <Section title="Table of Contents" subtitle="Click on a section to jump to it:">
             {renderToc(sections)}
             <div style={{ marginTop: 20 }}>
-                {sections.map(({ id, element }) => React.cloneElement(element, { id }))}
+                {sections.map(({ id, element }) => {
+                    return (
+                        <div key={id} id={id}>
+                            {element}
+                        </div>
+                    );
+                })}
             </div>
         </Section>
     );
