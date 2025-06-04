@@ -11,67 +11,67 @@ import VariableConcept from './VariableConcept';
 
 const navItems = [
   {
-    label: 'Variables',
-    value: 'variables',
+    label: 'Storing Data',
+    value: 'storing data',
     children: [
       { label: 'Variables', value: 'variables' },
-      { label: 'Data Types', value: 'data types' },
       { label: 'Constants', value: 'constants' },
+      { label: 'Data Types', value: 'data types' },
     ],
   },
-  {
-    label: 'Control Flow',
-    value: 'control flow',
-    children: [
-      { label: 'Operators', value: 'operators' },
-      { label: 'Control Flow', value: 'control flow' },
-      { label: 'Loops', value: 'loops' },
-      { label: 'Conditionals', value: 'conditionals' },
-    ],
-  },
-  {
-    label: 'Functions',
-    value: 'functions',
-    children: [
-      { label: 'Function Declaration', value: 'function declaration' },
-      { label: 'Function Expression', value: 'function expression' },
-      { label: 'Arrow Functions', value: 'arrow functions' },
-      { label: 'Higher Order Functions', value: 'higher order functions' },
-    ],
-  },
-  {
-    label: 'Collections',
-    value: 'collections',
-    children: [
-      { label: 'Arrays', value: 'arrays' },
-      { label: 'Sets', value: 'sets' },
-      { label: 'Maps', value: 'maps' },
-    ],
-  },
-  {
-    label: 'Object Oriented Programming',
-    value: 'object oriented programming',
-    children: [
-      { label: 'Objects', value: 'objects' },
-      { label: 'Classes', value: 'classes' },
-    ],
-  },
-  {
-    label: 'jQuery',
-    value: 'jquery',
-    children: [
-      { label: 'Selectors', value: 'selectors' },
-      { label: 'Events', value: 'events' },
-    ],
-  },
-  {
-    label: 'Advanced Topics',
-    value: 'advanced topics',
-    children: [
-      { label: 'Asynchronous JavaScript', value: 'asynchronous' },
-      { label: 'Promises', value: 'promises' },
-    ],
-  },
+  // {
+  //   label: 'Control Flow',
+  //   value: 'control flow',
+  //   children: [
+  //     { label: 'Operators', value: 'operators' },
+  //     { label: 'Control Flow', value: 'control flow' },
+  //     { label: 'Loops', value: 'loops' },
+  //     { label: 'Conditionals', value: 'conditionals' },
+  //   ],
+  // },
+  // {
+  //   label: 'Functions',
+  //   value: 'functions',
+  //   children: [
+  //     { label: 'Function Declaration', value: 'function declaration' },
+  //     { label: 'Function Expression', value: 'function expression' },
+  //     { label: 'Arrow Functions', value: 'arrow functions' },
+  //     { label: 'Higher Order Functions', value: 'higher order functions' },
+  //   ],
+  // },
+  // {
+  //   label: 'Collections',
+  //   value: 'collections',
+  //   children: [
+  //     { label: 'Arrays', value: 'arrays' },
+  //     { label: 'Sets', value: 'sets' },
+  //     { label: 'Maps', value: 'maps' },
+  //   ],
+  // },
+  // {
+  //   label: 'Object Oriented Programming',
+  //   value: 'object oriented programming',
+  //   children: [
+  //     { label: 'Objects', value: 'objects' },
+  //     { label: 'Classes', value: 'classes' },
+  //   ],
+  // },
+  // {
+  //   label: 'jQuery',
+  //   value: 'jquery',
+  //   children: [
+  //     { label: 'Selectors', value: 'selectors' },
+  //     { label: 'Events', value: 'events' },
+  //   ],
+  // },
+  // {
+  //   label: 'Advanced Topics',
+  //   value: 'advanced topics',
+  //   children: [
+  //     { label: 'Asynchronous JavaScript', value: 'asynchronous' },
+  //     { label: 'Promises', value: 'promises' },
+  //   ],
+  // },
 ];
 
 export default function JavaScriptPage() {
