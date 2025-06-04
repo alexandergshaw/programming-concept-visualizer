@@ -52,12 +52,12 @@ export default function DataTypesConcept() {
                 <VideoPlayer src="https://www.youtube.com/embed/5K_Wq9B2eVo" />
                 <Section
                     title="1. What is a Data Type?"
-                    subtitle="Think of a data type as the 'category' of a value. For example, is it a number, some text, a list, or something else?"
+                    subtitle="Think of a data type as the &quot;category&quot; of a value. For example, is it a number, some text, a list, or something else?"
                 >
                 </Section>
                 <Section
                     title="2. The Most Common Data Types"
-                    subtitle="Here are the main types of values you'll use:"
+                    subtitle="Here are the main types of values you&apos;ll use:"
                 >
                     <TableContainer component={Paper} sx={{ mb: 3 }}>
                         <Table size="small">
@@ -76,7 +76,7 @@ export default function DataTypesConcept() {
                                 </TableRow>
                                 <TableRow>
                                     <TableCell>String</TableCell>
-                                    <TableCell>"hello", 'world', `your name`</TableCell>
+                                    <TableCell>&quot;hello&quot;, &apos;world&apos;, <code>{'`your name`'}</code></TableCell>
                                     <TableCell>Any text. Use for words, sentences, or anything you want to treat as text.</TableCell>
                                 </TableRow>
                                 <TableRow>
@@ -87,12 +87,12 @@ export default function DataTypesConcept() {
                                 <TableRow>
                                     <TableCell>Null</TableCell>
                                     <TableCell>null</TableCell>
-                                    <TableCell>A special value that means "nothing here" or "empty" on purpose.</TableCell>
+                                    <TableCell>A special value that means &quot;nothing here&quot; or &quot;empty&quot; on purpose.</TableCell>
                                 </TableRow>
                                 <TableRow>
                                     <TableCell>Undefined</TableCell>
                                     <TableCell>undefined</TableCell>
-                                    <TableCell>Means "not set yet". If you make a variable but don't give it a value, it's undefined.</TableCell>
+                                    <TableCell>Means &quot;not set yet&quot;. If you make a variable but don&apos;t give it a value, it&apos;s undefined.</TableCell>
                                 </TableRow>
                                 <TableRow>
                                     <TableCell>Object</TableCell>
@@ -101,12 +101,12 @@ export default function DataTypesConcept() {
                                 </TableRow>
                                 <TableRow>
                                     <TableCell>Array</TableCell>
-                                    <TableCell>[1, 2, 3], ['a', 'b', 'c']</TableCell>
+                                    <TableCell>[1, 2, 3], [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;]</TableCell>
                                     <TableCell>A list of values. Use when you want to keep several things together in order.</TableCell>
                                 </TableRow>
                                 <TableRow>
                                     <TableCell>Symbol <span style={{ fontSize: '0.9em' }}>(advanced)</span></TableCell>
-                                    <TableCell>Symbol('id')</TableCell>
+                                    <TableCell>Symbol(&apos;id&apos;)</TableCell>
                                     <TableCell>A unique value, mostly used by advanced code.</TableCell>
                                 </TableRow>
                                 <TableRow>

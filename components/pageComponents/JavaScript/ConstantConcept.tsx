@@ -7,7 +7,6 @@ import '../../../styles/variable.css';
 import Section from '@/components/common/Section';
 import CodeSnippet from '@/components/common/CodeSnippet';
 import OrderedList from '@/components/common/OrderedList';
-import VideoPlayer from '@/components/common/VideoPlayer';
 import TableOfContents from '@/components/common/TableOfContents';
 
 export default function ConstantConcept() {
