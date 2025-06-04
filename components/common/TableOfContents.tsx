@@ -2,95 +2,78 @@ import React, { ReactNode, ReactElement } from 'react';
 import Section from './Section';
 
 interface TableOfContentsProps {
-    children: ReactNode; // The child components, expected to include Section components
-    scrollOffset?: number; // Optional scroll offset in pixels
-    numbered?: boolean; // Optional prop to turn numbering on/off
+    children: ReactNode;
+    scrollOffset?: number;
+    numbered?: boolean;
 }
 
-const TableOfContents: React.FC<TableOfContentsProps> = ({ children, scrollOffset = 50, numbered }) => {
-    // Recursive function to extract sections, including nested ones
-    const extractSections = (nodes: ReactNode): { title: string; id: string; element: ReactElement; children: any[] }[] => {
-        return React.Children.toArray(nodes)
-            .filter((child): child is ReactElement<{ title: string }> => {
-                return React.isValidElement(child) && typeof child.props.title === 'string';
-            })
-            .map((child) => {
-                const id = child.props.title.replace(/\s+/g, '-').toLowerCase(); // Generate an ID from the title
-                const nestedSections = extractSections(child.props.children); // Recursively extract nested sections
-                return { title: child.props.title, id, element: child, children: nestedSections };
-            });
-    };
+interface SectionItem {
+    title: string;
+    id: string;
+    element: ReactElement;
+    children: SectionItem[];
+}
 
+const extractSections = (nodes: ReactNode): SectionItem[] =>
+    React.Children.toArray(nodes)
+        .filter(
+            (child): child is ReactElement<{ title: string; children?: ReactNode }> =>
+                React.isValidElement(child) && typeof (child.props as SectionItem).title === 'string'
+        )
+        .map((child): SectionItem => ({
+            title: child.props.title,
+            id: child.props.title.replace(/\s+/g, '-').toLowerCase(),
+            element: child,
+            children: extractSections(child.props.children),
+        }));
+
+const TableOfContents: React.FC<TableOfContentsProps> = ({
+    children,
+    scrollOffset = 50,
+    numbered,
+}: TableOfContentsProps): ReactElement => {
     const sections = extractSections(children);
 
-    // Scroll to the section with an offset
-    const handleLinkClick = (id: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
-        event.preventDefault(); // Prevent default anchor behavior
-        const targetElement = document.getElementById(id);
-        if (targetElement) {
-            const offsetPosition = targetElement.offsetTop - scrollOffset; // Adjust for the offset
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth', // Smooth scrolling
-            });
+    const handleLinkClick = (id: string) => (e: React.MouseEvent<HTMLAnchorElement>): void => {
+        e.preventDefault();
+        const el = document.getElementById(id);
+        if (el) {
+            window.scrollTo({ top: el.offsetTop - scrollOffset, behavior: 'smooth' });
         }
     };
 
-    // Recursive function to render the table of contents
-    const renderTableOfContents = (sections: any[], level: number = 0) => {
-        let listStyleType: React.CSSProperties['listStyleType'];
-        if (!numbered) {
-            listStyleType = 'none';
-        } else {
-            listStyleType = level === 0 ? 'decimal' : 'lower-alpha';
-        }
-        return (
-            <ol style={{ ...styles.list, listStyleType, marginLeft: `${level * 20}px` }}>
-                {sections.map(({ title, id, children }, index) => (
-                    <li key={`${title}_${index}`} style={styles.listItem}>
-                        <a href={`#${id}`} style={styles.link} onClick={handleLinkClick(id)}>
-                            {title}
-                        </a>
-                        {children.length > 0 && renderTableOfContents(children, level + 1)}
-                    </li>
-                ))}
-            </ol>
-        );
-    };
+    const renderToc = (sections: SectionItem[], level = 0): ReactElement => (
+        <ol
+            style={{
+                padding: 0,
+                margin: 0,
+                listStyleType: !numbered ? 'none' : level === 0 ? 'decimal' : 'lower-alpha',
+                marginLeft: `${level * 20}px`,
+            }}
+        >
+            {sections.map(({ title, id, children }) => (
+                <li key={id} style={{ marginBottom: 8 }}>
+                    <a
+                        href={`#${id}`}
+                        style={{ textDecoration: 'none', color: '#007bff' }}
+                        onClick={handleLinkClick(id)}
+                    >
+                        {title}
+                    </a>
+                    {children.length > 0 && renderToc(children, level + 1)}
+                </li>
+            ))}
+        </ol>
+    );
 
     return (
         <Section title="Table of Contents" subtitle="Click on a section to jump to it:">
-            <>
-                {renderTableOfContents(sections)}
-            </>
-
-            <div style={styles.content}>
-                {sections.map(({ id, element }) =>
-                    React.cloneElement(element, { id }) // Safely add the ID to the Section
-                )}
+            {renderToc(sections)}
+            <div style={{ marginTop: 20 }}>
+                {sections.map(({ id, element }) => React.cloneElement(element, { id }))}
             </div>
         </Section>
     );
-};
-
-const styles = {
-    list: {
-        padding: 0,
-        margin: 0,
-    },
-    listItem: {
-        marginBottom: '8px',
-    },
-    link: {
-        textDecoration: 'none',
-        color: '#007bff',
-        fontSize: '1rem',
-        fontWeight: '500',
-        transition: 'color 0.3s',
-    },
-    content: {
-        marginTop: '20px',
-    },
 };
 
 export default TableOfContents;
