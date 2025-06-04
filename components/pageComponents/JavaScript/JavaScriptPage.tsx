@@ -10,6 +10,7 @@ import SetConcept from './SetConcept';
 import VariableConcept from './VariableConcept';
 import ConstantConcept from './ConstantConcept';
 import DataTypesConcept from './DataTypesConcept';
+import UserInputConcept from './UserInputConcept';
 
 const navItems = [
   {
@@ -19,6 +20,7 @@ const navItems = [
       { label: 'Variables', value: 'variables' },
       { label: 'Constants', value: 'constants' },
       { label: 'Data Types', value: 'data types' },
+      { label: 'User Input', value: 'user input' },
     ],
 
   },
@@ -113,6 +115,8 @@ export default function JavaScriptPage() {
         return <ConstantConcept />;
       case 'data types':
         return <DataTypesConcept/>;
+      case 'user input':
+        return <UserInputConcept/>;
       default:
         return null;
     }
