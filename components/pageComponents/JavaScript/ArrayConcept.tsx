@@ -109,7 +109,6 @@ export default function ArrayConcept({
 
       case 'includes':
         if (!isNaN(numInput)) {
-          const exists = copy.includes(numInput);
           onCodeChange?.(`let array = [${original.join(', ')}];\narray.includes(${numInput});\n// Array isn't updated`);
         }
         break;
