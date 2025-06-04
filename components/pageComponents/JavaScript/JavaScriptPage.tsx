@@ -7,23 +7,73 @@ import ArrayConcept from './ArrayConcept';
 import MapConcept from './MapConcept';
 import ObjectConcept from './ObjectConcept';
 import SetConcept from './SetConcept';
+import VariableConcept from './VariableConcept';
+import ConstantConcept from './ConstantConcept';
+import DataTypesConcept from './DataTypesConcept';
+import UserInputConcept from './UserInputConcept';
 
 const navItems = [
   {
-    label: 'Collections',
-    value: 'collections',
+    label: 'Storing Data',
+    value: 'storing data',
     children: [
-      { label: 'Arrays', value: 'arrays' },
-      { label: 'Sets', value: 'sets' },
-      { label: 'Maps', value: 'maps' },
+      { label: 'Variables', value: 'variables' },
+      { label: 'Constants', value: 'constants' },
+      { label: 'Data Types', value: 'data types' },
     ],
+
   },
+  // {
+  //   label: 'Control Flow',
+  //   value: 'control flow',
+  //   children: [
+  //     { label: 'Operators', value: 'operators' },
+  //     { label: 'Control Flow', value: 'control flow' },
+  //     { label: 'Loops', value: 'loops' },
+  //     { label: 'Conditionals', value: 'conditionals' },
+  //   ],
+  // },
+  // {
+  //   label: 'Functions',
+  //   value: 'functions',
+  //   children: [
+  //     { label: 'Function Declaration', value: 'function declaration' },
+  //     { label: 'Function Expression', value: 'function expression' },
+  //     { label: 'Arrow Functions', value: 'arrow functions' },
+  //     { label: 'Higher Order Functions', value: 'higher order functions' },
+  //   ],
+  // },
+  // {
+  //   label: 'Collections',
+  //   value: 'collections',
+  //   children: [
+  //     { label: 'Arrays', value: 'arrays' },
+  //     { label: 'Sets', value: 'sets' },
+  //     { label: 'Maps', value: 'maps' },
+  //   ],
+  // },
   // {
   //   label: 'Object Oriented Programming',
   //   value: 'object oriented programming',
   //   children: [
   //     { label: 'Objects', value: 'objects' },
   //     { label: 'Classes', value: 'classes' },
+  //   ],
+  // },
+  // {
+  //   label: 'jQuery',
+  //   value: 'jquery',
+  //   children: [
+  //     { label: 'Selectors', value: 'selectors' },
+  //     { label: 'Events', value: 'events' },
+  //   ],
+  // },
+  // {
+  //   label: 'Advanced Topics',
+  //   value: 'advanced topics',
+  //   children: [
+  //     { label: 'Asynchronous JavaScript', value: 'asynchronous' },
+  //     { label: 'Promises', value: 'promises' },
   //   ],
   // },
 ];
@@ -57,7 +107,15 @@ export default function JavaScriptPage() {
       case 'sets':
         return <SetConcept onCodeChange={setCodeSnippet} />;
       case 'objects':
-        return <ObjectConcept />
+        return <ObjectConcept />;
+      case 'variables': 
+        return <VariableConcept />;
+      case 'constants':
+        return <ConstantConcept />;
+      case 'data types':
+        return <DataTypesConcept/>;
+      case 'user input':
+        return <UserInputConcept/>;
       default:
         return null;
     }
@@ -82,7 +140,7 @@ export default function JavaScriptPage() {
   }
 
   return (
-    <PageWrapper pageTitle={'JavaScript Visualizer'} navItems={navItems} defaultOpen={["collections"]} handleSelect={handleSelect}>
+    <PageWrapper pageTitle={'JavaScript Visualizer'} navItems={navItems} defaultOpen={["storing data"]} handleSelect={handleSelect}>
       {selectedConcept ? (
         <>
           {renderContent(selectedConcept)}
