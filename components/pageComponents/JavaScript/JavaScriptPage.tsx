@@ -20,7 +20,6 @@ const navItems = [
       { label: 'Variables', value: 'variables' },
       { label: 'Constants', value: 'constants' },
       { label: 'Data Types', value: 'data types' },
-      { label: 'User Input', value: 'user input' },
     ],
 
   },
