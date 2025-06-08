@@ -12,8 +12,8 @@ const navItems = [
     label: 'Foundational Concepts',
     value: 'foundational-concepts',
     children: [
-      { label: 'Fetch & Execute Cycle', value: 'fetch-execute' },
       { label: 'Compilers & Interpreters', value: 'compilers-interpreters' },
+      { label: 'Fetch & Execute Cycle', value: 'fetch-execute' },
       { label: 'Memory', value: 'memory' },
     ],
   },
