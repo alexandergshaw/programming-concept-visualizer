@@ -12,6 +12,411 @@ import DownloadIcon from '@mui/icons-material/Download';
 import FindInPageIcon from '@mui/icons-material/FindInPage';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import TableOfContents from '@/components/common/TableOfContents';
+import { useState, useEffect, useRef } from 'react';
+import TextField from '@mui/material/TextField';
+import VennDiagram from '@/components/common/VennDiagram';
+
+function AnimatedArrow({ animate }: { animate: boolean }) {
+  const [arrowY, setArrowY] = useState(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    if (animate) {
+      setArrowY(0);
+      intervalRef.current = setInterval(() => {
+        setArrowY(y => {
+          if (y < 32) return y + 4;
+          if (intervalRef.current) clearInterval(intervalRef.current);
+          return 32;
+        });
+      }, 16);
+    } else {
+      setArrowY(0);
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    }
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [animate]);
+
+  return (
+    <Box sx={{ width: 40, height: 60, position: 'relative', mx: 1 }}>
+      <ArrowForwardIcon
+        sx={{
+          color: '#219653',
+          fontSize: 32,
+          transform: 'rotate(90deg)',
+          position: 'absolute',
+          left: 4,
+          top: arrowY,
+          transition: 'top 0.1s',
+        }}
+      />
+    </Box>
+  );
+}
+
+function InteractiveCompilerDemo() {
+  const [step, setStep] = useState(0);
+  const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
+  const [animating, setAnimating] = useState(false);
+  const [userCode, setUserCode] = useState('print("Hello, world!")');
+
+  // Simulate "assembly" by mapping each char to a fake instruction (no letters shown)
+  const assemblyInstructions = userCode
+    .replace(/\s/g, '')
+    .split('')
+    .map((char, i) => `MOV R${i % 4}, #${char.charCodeAt(0)}`)
+    .slice(0, 8);
+
+  // Simulate machine code as 8-bit binary per char (no letters shown)
+  const machineInstructions = userCode
+    .replace(/\s/g, '')
+    .split('')
+    .map(char =>
+      char.charCodeAt(0).toString(2).padStart(8, '0')
+    )
+    .slice(0, 8);
+
+  // Simulated CPU fetch/decode/execute for each instruction (no letters shown)
+  const cpuInstructions = machineInstructions.map((code, i) => ({
+    code,
+    label: '', // No letter
+  }));
+
+  const cpuSteps = cpuInstructions.flatMap((instr, i) => [
+    { type: 'Fetch', code: instr.code, step: i },
+    { type: 'Decode', code: instr.code, step: i },
+    { type: 'Execute', code: instr.code, step: i },
+  ]);
+
+  useEffect(() => {
+    setHighlightedIndex(-1);
+    setAnimating(false);
+    let interval: NodeJS.Timeout | null = null;
+
+    if (step === 2) {
+      setAnimating(true);
+      interval = setInterval(() => {
+        setHighlightedIndex(idx => {
+          if (idx < assemblyInstructions.length - 1) {
+            return idx + 1;
+          } else {
+            setAnimating(false);
+            clearInterval(interval!);
+            return idx;
+          }
+        });
+      }, 600);
+    } else if (step === 3) {
+      setAnimating(true);
+      interval = setInterval(() => {
+        setHighlightedIndex(idx => {
+          if (idx < machineInstructions.length - 1) {
+            return idx + 1;
+          } else {
+            setAnimating(false);
+            clearInterval(interval!);
+            return idx;
+          }
+        });
+      }, 600);
+    } else if (step === 4) {
+      interval = setInterval(() => {
+        setHighlightedIndex(idx => {
+          if (idx < cpuSteps.length - 1) {
+            return idx + 1;
+          } else {
+            clearInterval(interval!);
+            return idx;
+          }
+        });
+      }, 350);
+    }
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [step, userCode]);
+
+  const codeSteps = [
+    {
+      label: 'Your Code',
+      code: (
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+          <TextField
+            label="Type your code"
+            variant="outlined"
+            size="small"
+            value={userCode}
+            onChange={e => setUserCode(e.target.value)}
+            sx={{
+              mb: 1,
+              width: '100%',
+              maxWidth: 340,
+              fontFamily: 'monospace',
+              bgcolor: '#f4f4f4',
+              borderRadius: 1,
+            }}
+            inputProps={{
+              style: {
+                fontFamily: 'monospace',
+                fontSize: 16,
+                background: '#f4f4f4',
+                borderRadius: 4,
+                padding: '8px 12px',
+              }
+            }}
+          />
+        </Box>
+      ),
+      description: 'This is what you write in a high-level language.',
+    },
+    {
+      label: 'Compiler (Front End)',
+      code: (
+        <Box sx={{ fontFamily: 'monospace', bgcolor: '#f4f4f4', borderRadius: 1, p: 1.5, fontSize: 16, color: '#333', minWidth: 220, maxWidth: 340, overflow: 'auto' }}>
+          {userCode}
+        </Box>
+      ),
+      description: 'The compiler reads your code.',
+    },
+    {
+      label: 'Assembly Code',
+      code: (
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 0.5 }}>
+          {assemblyInstructions.map((instr, i) => (
+            <span
+              key={i}
+              style={{
+                background: i <= highlightedIndex ? '#219653' : '#e0e0e0',
+                color: i <= highlightedIndex ? '#fff' : '#333',
+                borderRadius: 4,
+                padding: '2px 8px',
+                fontWeight: 700,
+                fontFamily: 'monospace',
+                marginBottom: 2,
+                boxShadow: i === highlightedIndex ? '0 2px 8px #21965333' : undefined,
+                transition: 'all 0.2s',
+                display: 'inline-block',
+              }}
+            >
+              {instr}
+            </span>
+          ))}
+        </Box>
+      ),
+      description: 'Your code is translated to assembly-like instructions.',
+    },
+    {
+      label: 'Assembly Code → Machine Code',
+      code: (
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
+          {assemblyInstructions.map((asm, i) => (
+            <Box key={i} sx={{ display: 'flex', alignItems: 'center', mb: 0.5 }}>
+              <span
+                style={{
+                  background: i <= highlightedIndex ? '#219653' : '#e0e0e0',
+                  color: i <= highlightedIndex ? '#fff' : '#333',
+                  borderRadius: 4,
+                  padding: '2px 8px',
+                  fontWeight: 700,
+                  fontFamily: 'monospace',
+                  marginRight: 12,
+                  boxShadow: i === highlightedIndex ? '0 2px 8px #21965333' : undefined,
+                  transition: 'all 0.2s',
+                  display: 'inline-block',
+                  minWidth: 120,
+                }}
+              >
+                {asm}
+              </span>
+              <ArrowForwardIcon sx={{ color: '#219653', mx: 1, fontSize: 22 }} />
+              <span
+                style={{
+                  background: i <= highlightedIndex ? '#219653' : '#e0e0e0',
+                  color: i <= highlightedIndex ? '#fff' : '#333',
+                  borderRadius: 4,
+                  padding: '2px 8px',
+                  fontWeight: 700,
+                  fontFamily: 'monospace',
+                  boxShadow: i === highlightedIndex ? '0 2px 8px #21965333' : undefined,
+                  transition: 'all 0.2s',
+                  display: 'inline-block',
+                  minWidth: 90,
+                }}
+              >
+                {machineInstructions[i]}
+              </span>
+            </Box>
+          ))}
+        </Box>
+      ),
+      description: 'Each assembly instruction is converted to a machine code instruction.',
+    },
+    {
+      label: 'CPU Runs',
+      code: (
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
+          {cpuInstructions.map((instr, instrIdx) => {
+            const fetchIdx = instrIdx * 3;
+            const decodeIdx = fetchIdx + 1;
+            const executeIdx = fetchIdx + 2;
+            const isActive = highlightedIndex >= fetchIdx && highlightedIndex <= executeIdx;
+            return (
+              <Paper
+                key={instrIdx}
+                elevation={isActive ? 6 : 1}
+                sx={{
+                  p: 1.2,
+                  mb: 0.5,
+                  minWidth: 220,
+                  bgcolor: isActive ? '#e3fcec' : '#f4f4f4',
+                  border: isActive ? '2px solid #219653' : '1px solid #ddd',
+                  transition: 'all 0.2s',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flex-start',
+                  boxShadow: isActive ? 2 : 0,
+                }}
+              >
+                <Typography fontWeight={700} sx={{ mb: 0.5, fontSize: 15 }}>
+                  Instruction: <span style={{ fontFamily: 'monospace' }}>{instr.code}</span>
+                </Typography>
+                <Box sx={{ display: 'flex', gap: 1 }}>
+                  {['Fetch', 'Decode', 'Execute'].map((phase, phaseIdx) => {
+                    const stepIdx = instrIdx * 3 + phaseIdx;
+                    const isStepActive = highlightedIndex === stepIdx;
+                    return (
+                      <Box
+                        key={phase}
+                        sx={{
+                          px: 1.2,
+                          py: 0.5,
+                          borderRadius: 1,
+                          bgcolor: isStepActive ? '#219653' : '#e0e0e0',
+                          color: isStepActive ? '#fff' : '#333',
+                          fontWeight: 700,
+                          fontFamily: 'monospace',
+                          fontSize: 15,
+                          minWidth: 80,
+                          textAlign: 'center',
+                          boxShadow: isStepActive ? 2 : 0,
+                          transition: 'all 0.2s',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 0.5,
+                        }}
+                      >
+                        {phase}
+                      </Box>
+                    );
+                  })}
+                </Box>
+              </Paper>
+            );
+          })}
+        </Box>
+      ),
+      description: 'The CPU fetches, decodes, and executes each instruction, one at a time.',
+    },
+  ];
+
+  return (
+    <Box
+      sx={{
+        bgcolor: '#f8fafc',
+        borderRadius: 3,
+        p: 3,
+        my: 3,
+        boxShadow: 1,
+        maxWidth: 500,
+        mx: 'auto',
+        textAlign: 'center',
+      }}
+    >
+      <Typography fontWeight={700} sx={{ mb: 2, fontSize: 18 }}>
+        See How Code Gets Compiled
+      </Typography>
+      <Stack direction="row" spacing={2} justifyContent="center" sx={{ mb: 2 }}>
+        {codeSteps.map((s, i) => (
+          <Box
+            key={i}
+            sx={{
+              width: 16,
+              height: 16,
+              borderRadius: '50%',
+              bgcolor: step === i ? '#219653' : '#e0e0e0',
+              cursor: 'pointer',
+              border: step === i ? '2px solid #219653' : '1px solid #bbb',
+              transition: 'all 0.2s',
+            }}
+            onClick={() => setStep(i)}
+            aria-label={typeof s.label === 'string' ? s.label : undefined}
+          />
+        ))}
+      </Stack>
+      <Paper
+        elevation={4}
+        sx={{
+          p: 2,
+          mb: 2,
+          bgcolor: step === 2 ? '#e3fcec' : step === 3 ? '#e3fcec' : step === 4 ? '#e3f7fc' : '#fff',
+          border: step === 2 || step === 3 || step === 4 ? '2px solid #219653' : '1px solid #ddd',
+          transition: 'all 0.2s',
+        }}
+      >
+        <Typography fontWeight={600} sx={{ mb: 1 }}>
+          {codeSteps[step].label}
+        </Typography>
+        <Box
+          sx={{
+            minHeight: 32,
+          }}
+        >
+          {codeSteps[step].code}
+        </Box>
+        <Typography variant="body2" color="text.secondary">
+          {codeSteps[step].description}
+        </Typography>
+      </Paper>
+      <Stack direction="row" spacing={2} justifyContent="center">
+        <Box>
+          <button
+            onClick={() => setStep((s) => Math.max(0, s - 1))}
+            disabled={step === 0}
+            style={{
+              padding: '6px 16px',
+              borderRadius: 4,
+              border: 'none',
+              background: step === 0 ? '#eee' : '#219653',
+              color: step === 0 ? '#888' : '#fff',
+              cursor: step === 0 ? 'not-allowed' : 'pointer',
+              marginRight: 8,
+              fontWeight: 600,
+            }}
+          >
+            Back
+          </button>
+          <button
+            onClick={() => setStep((s) => Math.min(codeSteps.length - 1, s + 1))}
+            disabled={step === codeSteps.length - 1}
+            style={{
+              padding: '6px 16px',
+              borderRadius: 4,
+              border: 'none',
+              background: step === codeSteps.length - 1 ? '#eee' : '#219653',
+              color: step === codeSteps.length - 1 ? '#888' : '#fff',
+              cursor: step === codeSteps.length - 1 ? 'not-allowed' : 'pointer',
+              fontWeight: 600,
+            }}
+          >
+            Next
+          </button>
+        </Box>
+      </Stack>
+    </Box>
+  );
+}
 
 function VisualStep({
   icon,
@@ -74,96 +479,7 @@ export default function CompilersInterpretersConcept() {
       description="Your code must be translated into something the computer can run."
     >
       <TableOfContents>
-        <Section title="Translation Approaches">
-          <Typography sx={{ mb: 2 }}>
-            Computers can't understand the code you write directly. They only understand very simple instructions called <b>machine code</b>.
-            To bridge this gap, we use <b>compilers</b> and <b>interpreters</b> to translate your code into something the computer can actually run.
-          </Typography>
-          <Stack
-            direction={{ xs: 'column', sm: 'row' }}
-            spacing={6}
-            alignItems="flex-start"
-            justifyContent="center"
-            sx={{ mb: 3, width: '100%' }}
-          >
-            {/* Compiler Visual */}
-            <Box sx={{ flex: 1, minWidth: 280 }}>
-              <Typography fontWeight={700} sx={{ mb: 1, textAlign: 'center' }}>
-                Compiler
-              </Typography>
-              <Stack direction="column" alignItems="center" justifyContent="center">
-                <VisualStep
-                  icon={<CodeIcon color="primary" />}
-                  label="Source Code"
-                  description="The code you write (like C, C++, Rust)"
-                />
-                <VisualArrow />
-                <VisualStep
-                  icon={<BugReportIcon color="secondary" />}
-                  label="Compiler"
-                  description="A special program that translates your code into machine code all at once, before running"
-                />
-                <VisualArrow />
-                <VisualStep
-                  icon={<MemoryIcon color="success" />}
-                  label="Machine Code"
-                  description="The final instructions the CPU can understand and execute directly"
-                />
-              </Stack>
-            </Box>
-            <Divider
-              orientation="vertical"
-              flexItem
-              sx={{
-                display: { xs: 'none', sm: 'block' },
-                mx: 2,
-                borderColor: '#bbb',
-                height: 220,
-                alignSelf: 'center',
-              }}
-            />
-            {/* Interpreter Visual */}
-            <Box sx={{ flex: 1, minWidth: 280 }}>
-              <Typography fontWeight={700} sx={{ mb: 1, textAlign: 'center' }}>
-                Interpreter
-              </Typography>
-              <Stack direction="column" alignItems="center" justifyContent="center">
-                <VisualStep
-                  icon={<CodeIcon color="primary" />}
-                  label="Source Code"
-                  description="The code you write (like Python, JavaScript)"
-                />
-                <VisualArrow />
-                <VisualStep
-                  icon={<BugReportIcon color="secondary" />}
-                  label="Interpreter"
-                  description="A program that reads and runs your code line by line, as the program runs"
-                />
-                <VisualArrow />
-                <VisualStep
-                  icon={<MemoryIcon color="success" />}
-                  label="CPU"
-                  description="The CPU executes each instruction as it's read by the interpreter"
-                />
-              </Stack>
-            </Box>
-          </Stack>
-        </Section>
-        <Section title="The Fetch-Decode-Execute Cycle">
-          <Typography sx={{ mb: 2 }}>
-            The <b>fetch-decode-execute cycle</b> is the basic loop every CPU uses to run instructions.
-            <br /><br />
-            <b>How does this relate to compilers and interpreters?</b>
-            <ul style={{ marginTop: 8, marginBottom: 8 }}>
-              <li>
-                <b>Compiled programs:</b> The CPU runs your program's instructions directly, one by one.
-              </li>
-              <li style={{ marginTop: 8 }}>
-                <b>Interpreted programs:</b> The CPU runs the interpreter, which reads your code and tells the CPU what to do, step by step.
-              </li>
-            </ul>
-            <b>In both cases, the CPU is always doing the same thing:</b> fetching, decoding, and executing instructions.
-          </Typography>
+        <Section title="1. The Fetch-Decode-Execute Cycle" subtitle="The basic loop every CPU uses to run instructions.">
           <CycleDiagram
             steps={[
               {
@@ -183,11 +499,250 @@ export default function CompilersInterpretersConcept() {
               },
             ]}
           />
-          <Typography sx={{ mt: 2 }}>
-            <b>Summary:</b> No matter how your code gets to the CPU, it always runs instructions in this simple loop.
-          </Typography>
+        </Section>
+        <Section title="2. See Compilation in Action" subtitle="The process used to convert coding languages like C, C++, Rust, and Go into machine code that the computer understands.">
+          <InteractiveCompilerDemo />
+        </Section>
+        <Section title="3. See Interpretation in Action" subtitle='The process used by languages like Python, JavaScript, Ruby, and PHP to tell the computer what to do.'>
+          <InteractiveInterpreterDemo />
         </Section>
       </TableOfContents>
     </ConceptWrapper>
+  );
+}
+
+function InteractiveInterpreterDemo() {
+  const [step, setStep] = useState(0);
+  const [highlightedIndex, setHighlightedIndex] = useState(-1);
+  const [userCode, setUserCode] = useState('print("Hello")\nprint("World")');
+
+  // Split code into lines for the interpreter
+  const codeLines = userCode.split('\n').filter(line => line.trim().length > 0);
+
+  // Each line gets "Read", "Interpret", "Execute"
+  const interpreterSteps = codeLines.flatMap((line, i) => [
+    { type: 'Read', line, idx: i },
+    { type: 'Interpret', line, idx: i },
+    { type: 'Execute', line, idx: i },
+  ]);
+
+  useEffect(() => {
+    setHighlightedIndex(-1);
+    let interval: NodeJS.Timeout | null = null;
+    if (step === 1) {
+      interval = setInterval(() => {
+        setHighlightedIndex(idx => {
+          if (idx < interpreterSteps.length - 1) {
+            return idx + 1;
+          } else {
+            clearInterval(interval!);
+            return idx;
+          }
+        });
+      }, 600);
+    }
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [step, userCode]);
+
+  const steps = [
+    {
+      label: 'Your Code',
+      code: (
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+          <TextField
+            label="Type your code"
+            variant="outlined"
+            size="small"
+            multiline
+            minRows={2}
+            value={userCode}
+            onChange={e => setUserCode(e.target.value)}
+            sx={{
+              mb: 1,
+              width: '100%',
+              maxWidth: 340,
+              fontFamily: 'monospace',
+              bgcolor: '#f4f4f4',
+              borderRadius: 1,
+            }}
+            inputProps={{
+              style: {
+                fontFamily: 'monospace',
+                fontSize: 16,
+                background: '#f4f4f4',
+                borderRadius: 4,
+                padding: '8px 12px',
+              }
+            }}
+          />
+        </Box>
+      ),
+      description: 'This is what you write in a high-level language.',
+    },
+    {
+      label: 'Interpreter Runs',
+      code: (
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
+          {codeLines.length === 0 && (
+            <Typography color="text.secondary" sx={{ fontStyle: 'italic' }}>
+              (No code to interpret)
+            </Typography>
+          )}
+          {codeLines.map((line, i) => {
+            const readIdx = i * 3;
+            const interpretIdx = readIdx + 1;
+            const executeIdx = readIdx + 2;
+            const isActive = highlightedIndex >= readIdx && highlightedIndex <= executeIdx;
+            return (
+              <Paper
+                key={i}
+                elevation={isActive ? 6 : 1}
+                sx={{
+                  p: 1.2,
+                  mb: 0.5,
+                  minWidth: 220,
+                  bgcolor: isActive ? '#e3fcec' : '#f4f4f4',
+                  border: isActive ? '2px solid #219653' : '1px solid #ddd',
+                  transition: 'all 0.2s',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flex-start',
+                  boxShadow: isActive ? 2 : 0,
+                }}
+              >
+                <Typography fontWeight={700} sx={{ mb: 0.5, fontSize: 15 }}>
+                  Line: <span style={{ fontFamily: 'monospace' }}>{line}</span>
+                </Typography>
+                <Box sx={{ display: 'flex', gap: 1 }}>
+                  {['Fetch', 'Decode', 'Execute'].map((phase, phaseIdx) => {
+                    const stepIdx = i * 3 + phaseIdx;
+                    const isStepActive = highlightedIndex === stepIdx;
+                    return (
+                      <Box
+                        key={phase}
+                        sx={{
+                          px: 1.2,
+                          py: 0.5,
+                          borderRadius: 1,
+                          bgcolor: isStepActive ? '#219653' : '#e0e0e0',
+                          color: isStepActive ? '#fff' : '#333',
+                          fontWeight: 700,
+                          fontFamily: 'monospace',
+                          fontSize: 15,
+                          minWidth: 80,
+                          textAlign: 'center',
+                          boxShadow: isStepActive ? 2 : 0,
+                          transition: 'all 0.2s',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 0.5,
+                        }}
+                      >
+                        {phase}
+                      </Box>
+                    );
+                  })}
+                </Box>
+              </Paper>
+            );
+          })}
+        </Box>
+      ),
+      description: 'The interpreter reads, interprets, and executes each line of your code, one at a time.',
+    },
+  ];
+
+  return (
+    <Box
+      sx={{
+        bgcolor: '#f8fafc',
+        borderRadius: 3,
+        p: 3,
+        my: 3,
+        boxShadow: 1,
+        maxWidth: 500,
+        mx: 'auto',
+        textAlign: 'center',
+      }}
+    >
+      <Typography fontWeight={700} sx={{ mb: 2, fontSize: 18 }}>
+        See How Interpreters Work
+      </Typography>
+      <Stack direction="row" spacing={2} justifyContent="center" sx={{ mb: 2 }}>
+        {steps.map((s, i) => (
+          <Box
+            key={i}
+            sx={{
+              width: 16,
+              height: 16,
+              borderRadius: '50%',
+              bgcolor: step === i ? '#219653' : '#e0e0e0',
+              cursor: 'pointer',
+              border: step === i ? '2px solid #219653' : '1px solid #bbb',
+              transition: 'all 0.2s',
+            }}
+            onClick={() => setStep(i)}
+            aria-label={typeof s.label === 'string' ? s.label : undefined}
+          />
+        ))}
+      </Stack>
+      <Paper
+        elevation={4}
+        sx={{
+          p: 2,
+          mb: 2,
+          bgcolor: step === 1 ? '#e3fcec' : '#fff',
+          border: step === 1 ? '2px solid #219653' : '1px solid #ddd',
+          transition: 'all 0.2s',
+        }}
+      >
+        <Typography fontWeight={600} sx={{ mb: 1 }}>
+          {steps[step].label}
+        </Typography>
+        <Box sx={{ minHeight: 32 }}>
+          {steps[step].code}
+        </Box>
+        <Typography variant="body2" color="text.secondary">
+          {steps[step].description}
+        </Typography>
+      </Paper>
+      <Stack direction="row" spacing={2} justifyContent="center">
+        <Box>
+          <button
+            onClick={() => setStep((s) => Math.max(0, s - 1))}
+            disabled={step === 0}
+            style={{
+              padding: '6px 16px',
+              borderRadius: 4,
+              border: 'none',
+              background: step === 0 ? '#eee' : '#219653',
+              color: step === 0 ? '#888' : '#fff',
+              cursor: step === 0 ? 'not-allowed' : 'pointer',
+              marginRight: 8,
+              fontWeight: 600,
+            }}
+          >
+            Back
+          </button>
+          <button
+            onClick={() => setStep((s) => Math.min(steps.length - 1, s + 1))}
+            disabled={step === steps.length - 1}
+            style={{
+              padding: '6px 16px',
+              borderRadius: 4,
+              border: 'none',
+              background: step === steps.length - 1 ? '#eee' : '#219653',
+              color: step === steps.length - 1 ? '#888' : '#fff',
+              cursor: step === steps.length - 1 ? 'not-allowed' : 'pointer',
+              fontWeight: 600,
+            }}
+          >
+            Next
+          </button>
+        </Box>
+      </Stack>
+    </Box>
   );
 }
