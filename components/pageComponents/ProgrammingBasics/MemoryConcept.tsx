@@ -398,7 +398,7 @@ function DecimalBinaryConverter() {
 	}
 
 	// Dynamic explanation and example
-	let explanation, example;
+	let explanation;
 	if (mode === 'dec2bin') {
 		explanation = (
 			<>
@@ -593,13 +593,7 @@ function BitPatternVisualizer() {
 
 	// Interpret as unsigned integer
 	const asNumber = parseInt(bits, 2);
-
-	// Interpret as ASCII character (printable range)
-	const asChar =
-		asNumber >= 32 && asNumber <= 126
-			? String.fromCharCode(asNumber)
-			: '␣';
-
+	
 	// Visual: clickable bits
 	const handleBitToggle = (idx: number) => {
 		setBits(prev =>
