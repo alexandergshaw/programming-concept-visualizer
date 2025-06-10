@@ -2,10 +2,10 @@
 
 import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
-import { Box, Typography, Paper, Stack, Divider } from '@mui/material';
+import { Box, Typography, Paper, Stack } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import TableOfContents from '@/components/common/TableOfContents';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 
 export default function CompilersInterpretersConcept() {
@@ -199,7 +199,6 @@ function InteractiveInterpreterDemo() {
           )}
           {codeLines.map((line, i) => {
             const readIdx = i * 3;
-            const interpretIdx = readIdx + 1;
             const executeIdx = readIdx + 2;
             const isActive = highlightedIndex >= readIdx && highlightedIndex <= executeIdx;
             return (
@@ -378,7 +377,6 @@ function InteractiveInterpreterDemo() {
 function InteractiveCompilerDemo() {
   const [step, setStep] = useState(0);
   const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
-  const [animating, setAnimating] = useState(false);
   const [userCode, setUserCode] = useState('print("Hello, world!")');
 
   // Simulate "assembly" by mapping each char to a fake instruction (no letters shown)
@@ -398,7 +396,7 @@ function InteractiveCompilerDemo() {
     .slice(0, 8);
 
   // Simulated CPU fetch/decode/execute for each instruction (no letters shown)
-  const cpuInstructions = machineInstructions.map((code, i) => ({
+  const cpuInstructions = machineInstructions.map((code) => ({
     code,
     label: '', // No letter
   }));
@@ -411,30 +409,25 @@ function InteractiveCompilerDemo() {
 
   useEffect(() => {
     setHighlightedIndex(-1);
-    setAnimating(false);
     let interval: NodeJS.Timeout | null = null;
 
     if (step === 2) {
-      setAnimating(true);
       interval = setInterval(() => {
         setHighlightedIndex(idx => {
           if (idx < assemblyInstructions.length - 1) {
             return idx + 1;
           } else {
-            setAnimating(false);
             clearInterval(interval!);
             return idx;
           }
         });
       }, 600);
     } else if (step === 3) {
-      setAnimating(true);
       interval = setInterval(() => {
         setHighlightedIndex(idx => {
           if (idx < machineInstructions.length - 1) {
             return idx + 1;
           } else {
-            setAnimating(false);
             clearInterval(interval!);
             return idx;
           }
@@ -578,7 +571,6 @@ function InteractiveCompilerDemo() {
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
           {cpuInstructions.map((instr, instrIdx) => {
             const fetchIdx = instrIdx * 3;
-            const decodeIdx = fetchIdx + 1;
             const executeIdx = fetchIdx + 2;
             const isActive = highlightedIndex >= fetchIdx && highlightedIndex <= executeIdx;
             return (
