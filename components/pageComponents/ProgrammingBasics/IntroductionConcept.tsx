@@ -9,13 +9,13 @@ export default function IntroductionConcept() {
     <Box sx={{ maxWidth: 700, mx: 'auto', my: 4 }}>
       <Paper sx={{ p: 3, bgcolor: '#e3f2fd', border: '2px solid #90caf9' }}>
         <Typography variant="h4" fontWeight={700} sx={{ mb: 2 }}>
-          Welcome! 
+          Welcome!
         </Typography>
         <Typography sx={{ mb: 2 }}>
-          We'll be covering concepts that apply to almost all programming languages! We'll start with the part of programming you'll interact with the most: <b>writing code</b>. 
+          We&apos;ll be covering concepts that apply to almost all programming languages! We&apos;ll start with the part of programming you&apos;ll interact with the most: <b>writing code</b>.
         </Typography>
         <Typography sx={{ mb: 2 }}>
-          As you progress, we'll peel back the layers and take you further and further "behind the scenes" to show you how a computer actually runs your code.
+          As you progress, we&apos;ll peel back the layers and take you further and further &quot;behind the scenes&quot; to show you how a computer actually runs your code.
         </Typography>
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', my: 4 }}>
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
@@ -30,10 +30,10 @@ export default function IntroductionConcept() {
           </Box>
         </Box>
         <Typography sx={{ mb: 2 }}>
-          You'll see how your code is translated, how the computer's hardware and memory work together, and how everything comes together to make your programs run.
+          You&apos;ll see how your code is translated, how the computer&apos;s hardware and memory work together, and how everything comes together to make your programs run.
         </Typography>
         <Typography>
-          Let's begin our journey from the code you write, all the way down to the circuits inside your computer!
+          Let&apos;s begin our journey from the code you write, all the way down to the circuits inside your computer!
         </Typography>
       </Paper>
     </Box>
