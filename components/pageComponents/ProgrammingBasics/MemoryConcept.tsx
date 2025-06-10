@@ -91,7 +91,7 @@ export default function MemoryConcept() {
 							</Typography>
 						</Paper>
 						<Typography sx={{ mb: 2 }}>
-							<b>Negative numbers</b> use a trick called <b>two's complement</b>. The first bit, the leftmost bit, says if the number is positive or negative.
+							<b>Negative numbers</b> use a trick called <b>two&apos;s complement</b>. The first bit, the leftmost bit, says if the number is positive or negative.
 							<ul style={{ marginTop: 4, marginBottom: 4, marginLeft: 24 }}>
 								<li>
 									If the sign bit is <b>0</b>, the number is positive (or zero).
@@ -104,10 +104,9 @@ export default function MemoryConcept() {
 						</Typography>
 						<Paper sx={{ p: 2, mb: 2, textAlign: 'center', bgcolor: '#f8fafc' }}>
 							<Typography fontWeight={600} sx={{ mb: 1 }}>
-								Try it! Enter a negative or positive number to see its 8-bit two's complement binary:
+								Try it! Enter a negative or positive number to see its 8-bit two&apos;s complement binary:
 							</Typography>
 							<NegativesTwosComplementDemo />
-
 						</Paper>
 						<Typography sx={{ mb: 2 }}>
 							<b>Letters and symbols</b> are stored as numbers too! The computer uses a code to match each letter or symbol to a number:
