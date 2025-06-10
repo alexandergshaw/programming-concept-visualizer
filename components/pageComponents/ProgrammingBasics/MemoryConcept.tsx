@@ -1,15 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { Box, Typography, Paper, Stack, Button, Fade } from '@mui/material';
+import { Box, Typography, Paper, Button, } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
 import TableOfContents from '@/components/common/TableOfContents';
 
 export default function MemoryConcept() {
-	const [step, setStep] = useState(0);
-
 	return (
 		<ConceptWrapper
 			title="How Computers Store Data"
@@ -197,64 +195,6 @@ export default function MemoryConcept() {
 }
 
 // Place these helper components in the same file, outside your main export:
-function NumberToBinaryDemoDetailed() {
-	const [num, setNum] = useState(13);
-
-	// Unsigned: 0..255, Signed (two's complement): -128..127
-	const toUnsigned = (n: number) => n.toString(2).padStart(8, '0');
-	const toSigned = (n: number) => {
-		if (n >= 0) return n.toString(2).padStart(8, '0');
-		// Two's complement for negative numbers
-		return (256 + n).toString(2).padStart(8, '0');
-	};
-
-	return (
-		<Box>
-			<input
-				type="number"
-				min={-128}
-				max={127}
-				value={num}
-				onChange={e => {
-					let v = parseInt(e.target.value, 10);
-					if (isNaN(v)) v = 0;
-					if (v < -128) v = -128;
-					if (v > 127) v = 127;
-					setNum(v);
-				}}
-				style={{
-					fontFamily: 'monospace',
-					fontSize: 20,
-					padding: '4px 8px',
-					borderRadius: 4,
-					border: '1px solid #bbb',
-					marginBottom: 12,
-					width: 80,
-					textAlign: 'center'
-				}}
-			/>
-			<Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, alignItems: 'center', mb: 1 }}>
-				<Box>
-					<Typography fontWeight={600}>Unsigned (0 to 255):</Typography>
-					<Typography sx={{ fontFamily: 'monospace', fontSize: 18, bgcolor: '#f4f4f4', borderRadius: 1, px: 1, py: 0.5 }}>
-						{toUnsigned(num & 0xff)}
-					</Typography>
-				</Box>
-				<ArrowForwardIcon sx={{ color: '#2196f3', fontSize: 28 }} />
-				<Box>
-					<Typography fontWeight={600}>Signed (-128 to 127):</Typography>
-					<Typography sx={{ fontFamily: 'monospace', fontSize: 18, bgcolor: '#f4f4f4', borderRadius: 1, px: 1, py: 0.5 }}>
-						{toSigned(num)}
-					</Typography>
-				</Box>
-			</Box>
-			<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1 }}>
-				(Signed uses two's complement for negatives)
-			</Typography>
-		</Box>
-	);
-}
-
 function CharacterToBinaryDemo() {
 	const [char, setChar] = useState('A');
 	// Helper to get UTF-8 binary for any character
@@ -297,55 +237,6 @@ function CharacterToBinaryDemo() {
 			<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1 }}>
 				(UTF-8 encoding: {char ? `${new TextEncoder().encode(char).length} byte${new TextEncoder().encode(char).length > 1 ? 's' : ''}` : ''})
 			</Typography>
-		</Box>
-	);
-}
-
-// Place this helper component in the same file, outside your main export:
-function FloatToBinaryDemo() {
-	const [input, setInput] = useState('3.14');
-	const num = parseFloat(input);
-
-	// Converts a JS number to 32-bit float binary string
-	function floatToBinary(f: number) {
-		if (isNaN(f)) return '';
-		const floatArray = new Float32Array(1);
-		floatArray[0] = f;
-		const intArray = new Uint32Array(floatArray.buffer);
-		return intArray[0].toString(2).padStart(32, '0').replace(/(.{8})/g, '$1 ').trim();
-	}
-
-	return (
-		<Box>
-			<input
-				type="text"
-				value={input}
-				onChange={e => setInput(e.target.value)}
-				style={{
-					fontFamily: 'monospace',
-					fontSize: 20,
-					padding: '4px 8px',
-					borderRadius: 4,
-					border: '1px solid #bbb',
-					marginBottom: 12,
-					width: 120,
-					textAlign: 'center'
-				}}
-			/>
-			<ArrowForwardIcon sx={{ color: '#2196f3', fontSize: 28, mx: 1, verticalAlign: 'middle' }} />
-			<span
-				style={{
-					fontFamily: 'monospace',
-					fontSize: 18,
-					background: '#f4f4f4',
-					borderRadius: 4,
-					padding: '4px 12px',
-					display: 'inline-block',
-					minWidth: 180,
-				}}
-			>
-				{floatToBinary(num)}
-			</span>
 		</Box>
 	);
 }

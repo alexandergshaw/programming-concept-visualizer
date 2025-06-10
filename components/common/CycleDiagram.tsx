@@ -196,7 +196,7 @@ function StepBox({
   onMouseLeave,
 }: {
   children: ReactNode;
-  sx?: any;
+  sx?: React.CSSProperties | Record<string, unknown>;
   hovered?: boolean;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
