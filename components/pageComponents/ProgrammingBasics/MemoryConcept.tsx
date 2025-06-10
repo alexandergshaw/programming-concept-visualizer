@@ -92,31 +92,23 @@ export default function MemoryConcept() {
 							</Typography>
 						</Paper>
 						<Typography sx={{ mb: 2 }}>
-							<b>Negative numbers</b> use a trick called <b>two's complement</b>. The first bit says if the number is positive or negative. With 8 bits, you can store numbers from <b>-128</b> up to <b>127</b>.
+							<b>Negative numbers</b> use a trick called <b>two's complement</b>. The first bit, the leftmost bit, says if the number is positive or negative.
+							<ul style={{ marginTop: 4, marginBottom: 4, marginLeft: 24 }}>
+								<li>
+									If the sign bit is <b>0</b>, the number is positive (or zero).
+								</li>
+								<li>
+									If the sign bit is <b>1</b>, the number is negative.
+								</li>
+							</ul>
+							With 8 bits, you can store numbers from <b>-128</b> up to <b>127</b>.
 						</Typography>
 						<Paper sx={{ p: 2, mb: 2, textAlign: 'center', bgcolor: '#f8fafc' }}>
 							<Typography fontWeight={600} sx={{ mb: 1 }}>
-								Try it! Enter a whole number from -128 up to 127 to see how it's stored in binary:
+								Try it! Enter a negative or positive number to see its 8-bit two's complement binary:
 							</Typography>
 							<NegativesTwosComplementDemo />
-							<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1 }}>
-								(Choose the number of bytes to see how large numbers are split across multiple bytes)
-							</Typography>
-						</Paper>
-						<Typography sx={{ mb: 2 }}>
-							<b>Decimal numbers</b> (like 3.14 or -0.001) are stored using a system called <b>floating point</b>. It’s kind of like scientific notation, but in binary. The computer splits the number into a sign, an exponent, and a fraction. This lets it store really big or really tiny numbers, but sometimes the number isn’t exact (like how 1/3 is 0.333...).
-						</Typography>
-						<Paper sx={{ p: 2, mb: 2, textAlign: 'center', bgcolor: '#f8fafc' }}>
-							<Typography fontWeight={600} sx={{ mb: 1 }}>
-								Try it! Enter a decimal number to see its 32-bit float binary:
-							</Typography>
-							<FloatToBinaryDemo />
-							<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1 }}>
-								(IEEE 754 single-precision: Sign | Exponent | Fraction)
-							</Typography>
-							<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1 }}>
-								<b>Note:</b> Not all decimals can be stored exactly!
-							</Typography>
+
 						</Paper>
 						<Typography sx={{ mb: 2 }}>
 							<b>Letters and symbols</b> are stored as numbers too! The computer uses a code to match each letter or symbol to a number:
@@ -141,165 +133,24 @@ export default function MemoryConcept() {
 						</Paper>
 					</Box>
 				</Section>
+				<Section
+					title="3. Converting Between Decimal and Binary"
+					subtitle="How to turn numbers from decimal to binary and back"
+				>
+					<Box sx={{ maxWidth: 700, mx: 'auto', my: 3 }}>
+						<Typography sx={{ mb: 2 }}>
+							Computers use <b>binary</b> (base 2), but we usually use <b>decimal</b> (base 10). You can convert between them by following a simple process!
+						</Typography>
+						<Paper sx={{ p: 2, mb: 2, textAlign: 'center', bgcolor: '#f8fafc' }}>
+							<Typography fontWeight={600} sx={{ mb: 1 }}>
+								Try it! Convert between decimal and binary:
+							</Typography>
+							<DecimalBinaryConverter />
+						</Paper>
+					</Box>
+				</Section>
 			</TableOfContents>
 		</ConceptWrapper>
-	);
-}
-
-// Place this component in the same file, outside your main export:
-function InteractiveDataEncoding() {
-	const [mode, setMode] = useState<'text' | 'image' | 'program' | 'number'>('text');
-	const [input, setInput] = useState('A');
-	const [numberInput, setNumberInput] = useState('13');
-
-	// Simple binary conversions for demo
-	const getBinary = () => {
-		if (mode === 'text') {
-			return input
-				.split('')
-				.map((char) =>
-					char
-						.charCodeAt(0)
-						.toString(2)
-						.padStart(8, '0')
-				)
-				.join(' ');
-		}
-		if (mode === 'image') {
-			return '11101100 01010101 ...';
-		}
-		if (mode === 'program') {
-			return input
-				.split('')
-				.map((char) =>
-					char
-						.charCodeAt(0)
-						.toString(2)
-						.padStart(8, '0')
-				)
-				.join(' ');
-		}
-		if (mode === 'number') {
-			const n = parseInt(numberInput, 10);
-			if (isNaN(n) || n < 0 || n > 255) return '';
-			return n.toString(2).padStart(8, '0');
-		}
-		return '';
-	};
-
-	return (
-		<Paper sx={{ p: 2, mb: 2, textAlign: 'center', bgcolor: '#f8fafc' }}>
-			<Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mb: 2 }}>
-				<Button
-					variant={mode === 'text' ? 'contained' : 'outlined'}
-					onClick={() => setMode('text')}
-					size="small"
-				>
-					Text
-				</Button>
-				<Button
-					variant={mode === 'image' ? 'contained' : 'outlined'}
-					onClick={() => setMode('image')}
-					size="small"
-				>
-					Image
-				</Button>
-				<Button
-					variant={mode === 'number' ? 'contained' : 'outlined'}
-					onClick={() => setMode('number')}
-					size="small"
-				>
-					Number
-				</Button>
-			</Box>
-			{mode === 'text' && (
-				<Box>
-					<Typography fontWeight={600} sx={{ mb: 1 }}>
-						Type a letter or word:
-					</Typography>
-					<input
-						value={input}
-						maxLength={12}
-						onChange={e => setInput(e.target.value.replace(/[^a-zA-Z0-9 ]/g, ''))}
-						style={{
-							fontFamily: 'monospace',
-							fontSize: 20,
-							padding: '4px 8px',
-							borderRadius: 4,
-							border: '1px solid #bbb',
-							marginBottom: 12,
-							width: 120,
-							textAlign: 'center'
-						}}
-					/>
-				</Box>
-			)}
-			{mode === 'image' && (
-				<Box sx={{ mb: 1 }}>
-					<Typography fontWeight={600} sx={{ mb: 1 }}>
-						Images are stored as binary for each pixel
-					</Typography>
-					<Box
-						sx={{
-							width: 40,
-							height: 40,
-							bgcolor: '#90caf9',
-							borderRadius: 1,
-							mx: 'auto',
-							mb: 1,
-							border: '2px solid #1976d2',
-						}}
-					/>
-				</Box>
-			)}
-			{mode === 'number' && (
-				<Box>
-					<Typography fontWeight={600} sx={{ mb: 1 }}>
-						Type a number (0-255):
-					</Typography>
-					<input
-						type="number"
-						min={0}
-						max={255}
-						value={numberInput}
-						onChange={e => setNumberInput(e.target.value.replace(/[^0-9]/g, '').slice(0, 3))}
-						style={{
-							fontFamily: 'monospace',
-							fontSize: 20,
-							padding: '4px 8px',
-							borderRadius: 4,
-							border: '1px solid #bbb',
-							marginBottom: 12,
-							width: 100,
-							textAlign: 'center'
-						}}
-					/>
-				</Box>
-			)}
-			<ArrowForwardIcon sx={{ color: '#2196f3', fontSize: 32, my: 1 }} />
-			<Typography fontWeight={600} sx={{ mb: 1 }}>
-				Binary
-			</Typography>
-			<Typography
-				variant="h6"
-				sx={{
-					fontFamily: 'monospace',
-					wordBreak: 'break-all',
-					bgcolor: '#f4f4f4',
-					borderRadius: 1,
-					px: 1,
-					py: 0.5,
-					display: 'inline-block',
-				}}
-			>
-				{getBinary()}
-			</Typography>
-			<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1 }}>
-				{mode === 'text' && '(Each character is stored as 8 bits)'}
-				{mode === 'image' && '(Images are stored as long sequences of bits)'}
-				{mode === 'number' && '(Numbers are stored as binary too!)'}
-			</Typography>
-		</Paper>
 	);
 }
 
@@ -579,9 +430,232 @@ function NegativesTwosComplementDemo() {
 			</span>
 			<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1 }}>
 				{num >= 0
-					? `Positive: normal binary`
-					: `Negative: two's complement (add 256 to the negative number)`}
+					? `Positive: note the 0 in the leftmost bit`
+					: `Negative: note the 1 in the leftmost bit`}
 			</Typography>
+		</Box>
+	);
+}
+
+function DecimalBinaryConverter() {
+	const [mode, setMode] = useState<'dec2bin' | 'bin2dec'>('dec2bin');
+	const [decimal, setDecimal] = useState('13');
+	const [binary, setBinary] = useState('1101');
+
+	const dec = parseInt(decimal, 10);
+	const bin = parseInt(binary, 2);
+
+	function getBinaryBreakdown(n: number) {
+		if (isNaN(n) || n < 0 || n > 255) return [];
+		const bits = n.toString(2).padStart(8, '0').split('');
+		return bits.map((bit, i) => ({
+			bit,
+			value: Math.pow(2, 7 - i),
+			used: bit === '1'
+		}));
+	}
+
+	function getDecimalBreakdown(b: string) {
+		const bits = b.padStart(8, '0').split('');
+		return bits.map((bit, i) => ({
+			bit,
+			value: Math.pow(2, 7 - i),
+			used: bit === '1'
+		}));
+	}
+
+	// Dynamic explanation and example
+	let explanation, example;
+	if (mode === 'dec2bin') {
+		explanation = (
+			<>
+				<Typography sx={{ mb: 2 }}>
+					<b>How does it work?</b>
+				</Typography>
+				<Typography sx={{ mb: 2 }}>
+					<span style={{ fontFamily: 'monospace' }}>
+						{getBinaryBreakdown(dec).map((b, i) =>
+							b.used
+								? <span key={i}>{b.bit}×{b.value}{i < 7 ? ' + ' : ''}</span>
+								: <span key={i} style={{ color: '#bbb' }}>{b.bit}×{b.value}{i < 7 ? ' + ' : ''}</span>
+						)}
+						{' = '}
+						{getBinaryBreakdown(dec).filter(b => b.used).map(b => b.value).join(' + ') || 0}
+						{' = '}
+						{isNaN(dec) ? 0 : dec}
+					</span>
+				</Typography>
+			</>
+		);
+	} else {
+		explanation = (
+			<>
+				<Typography sx={{ mb: 2 }}>
+					<b>How does it work?</b>
+				</Typography>
+				<Typography sx={{ mb: 2 }}>
+					<span style={{ fontFamily: 'monospace' }}>
+						{getDecimalBreakdown(binary).map((b, i) =>
+							b.used
+								? <span key={i}>{b.bit}×{b.value}{i < 7 ? ' + ' : ''}</span>
+								: <span key={i} style={{ color: '#bbb' }}>{b.bit}×{b.value}{i < 7 ? ' + ' : ''}</span>
+						)}
+						{' = '}
+						{getDecimalBreakdown(binary).filter(b => b.used).map(b => b.value).join(' + ') || 0}
+						{' = '}
+						{isNaN(bin) ? 0 : bin}
+					</span>
+				</Typography>
+			</>
+		);
+	}
+
+	return (
+		<Box>
+			<Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mb: 2 }}>
+				<Button
+					variant={mode === 'dec2bin' ? 'contained' : 'outlined'}
+					onClick={() => setMode('dec2bin')}
+					size="small"
+				>
+					Decimal → Binary
+				</Button>
+				<Button
+					variant={mode === 'bin2dec' ? 'contained' : 'outlined'}
+					onClick={() => setMode('bin2dec')}
+					size="small"
+				>
+					Binary → Decimal
+				</Button>
+			</Box>
+			{mode === 'dec2bin' ? (
+				<Box>
+					<Typography fontWeight={600} sx={{ mb: 1 }}>
+						Decimal:
+					</Typography>
+					<input
+						type="number"
+						min={0}
+						max={255}
+						value={decimal}
+						onChange={e => {
+							const val = e.target.value.replace(/[^0-9]/g, '').slice(0, 3);
+							setDecimal(val);
+							setBinary(parseInt(val || '0', 10).toString(2));
+						}}
+						style={{
+							fontFamily: 'monospace',
+							fontSize: 20,
+							padding: '4px 8px',
+							borderRadius: 4,
+							border: '1px solid #bbb',
+							marginBottom: 12,
+							width: 80,
+							textAlign: 'center'
+						}}
+					/>
+					<ArrowForwardIcon sx={{ color: '#2196f3', fontSize: 28, mx: 1, verticalAlign: 'middle' }} />
+					<Typography fontWeight={600} sx={{ mb: 1 }}>
+						Binary:
+					</Typography>
+					<span
+						style={{
+							fontFamily: 'monospace',
+							fontSize: 20,
+							background: '#f4f4f4',
+							borderRadius: 4,
+							padding: '4px 12px',
+							display: 'inline-block',
+							minWidth: 110,
+						}}
+					>
+						{isNaN(dec) ? '' : dec.toString(2)}
+					</span>
+					<Box sx={{ mt: 2, display: 'flex', justifyContent: 'center', gap: 1 }}>
+						{getBinaryBreakdown(dec).map((b, i) => (
+							<Box key={i} sx={{ textAlign: 'center' }}>
+								<Typography
+									sx={{
+										fontFamily: 'monospace',
+										fontSize: 18,
+										color: b.used ? '#1976d2' : '#aaa',
+										fontWeight: b.used ? 700 : 400,
+									}}
+								>
+									{b.bit}
+								</Typography>
+								<Typography variant="caption" color="text.secondary">
+									{b.value}
+								</Typography>
+							</Box>
+						))}
+					</Box>
+				</Box>
+			) : (
+				<Box>
+					<Typography fontWeight={600} sx={{ mb: 1 }}>
+						Binary:
+					</Typography>
+					<input
+						type="text"
+						maxLength={8}
+						value={binary}
+						onChange={e => {
+							const val = e.target.value.replace(/[^01]/g, '').slice(0, 8);
+							setBinary(val);
+							setDecimal(parseInt(val || '0', 2).toString(10));
+						}}
+						style={{
+							fontFamily: 'monospace',
+							fontSize: 20,
+							padding: '4px 8px',
+							borderRadius: 4,
+							border: '1px solid #bbb',
+							marginBottom: 12,
+							width: 110,
+							textAlign: 'center'
+						}}
+					/>
+					<ArrowForwardIcon sx={{ color: '#2196f3', fontSize: 28, mx: 1, verticalAlign: 'middle' }} />
+					<Typography fontWeight={600} sx={{ mb: 1 }}>
+						Decimal:
+					</Typography>
+					<span
+						style={{
+							fontFamily: 'monospace',
+							fontSize: 20,
+							background: '#f4f4f4',
+							borderRadius: 4,
+							padding: '4px 12px',
+							display: 'inline-block',
+							minWidth: 80,
+						}}
+					>
+						{isNaN(bin) ? '' : bin}
+					</span>
+					<Box sx={{ mt: 2, display: 'flex', justifyContent: 'center', gap: 1 }}>
+						{getDecimalBreakdown(binary).map((b, i) => (
+							<Box key={i} sx={{ textAlign: 'center' }}>
+								<Typography
+									sx={{
+										fontFamily: 'monospace',
+										fontSize: 18,
+										color: b.used ? '#1976d2' : '#aaa',
+										fontWeight: b.used ? 700 : 400,
+									}}
+								>
+									{b.bit}
+								</Typography>
+								<Typography variant="caption" color="text.secondary">
+									{b.value}
+								</Typography>
+							</Box>
+						))}
+					</Box>
+				</Box>
+			)}
+			{/* Dynamic explanation and example */}
+			<Box sx={{ mt: 3 }}>{explanation}</Box>
 		</Box>
 	);
 }
