@@ -39,7 +39,7 @@ export default function CompilersInterpretersConcept() {
         <Section title="4. Interpreter vs Compiler: Quick Comparison">
           <Box sx={{ maxWidth: 700, mx: 'auto', my: 3 }}>
             <Typography sx={{ mb: 2 }}>
-              Here's a side-by-side comparison of interpreters and compilers:
+              Here&apos;s a side-by-side comparison of interpreters and compilers:
             </Typography>
             <Box
               component="table"

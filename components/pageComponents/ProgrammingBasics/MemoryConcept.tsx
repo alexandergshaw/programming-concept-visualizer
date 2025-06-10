@@ -160,10 +160,10 @@ export default function MemoryConcept() {
 				>
 					<Box sx={{ maxWidth: 700, mx: 'auto', my: 3 }}>
 						<Typography sx={{ mb: 2 }}>
-							You've probably guessed that there must be some way to convert between binary and regular numbers.
+							You&apos;ve probably guessed that there must be some way to convert between binary and regular numbers.
 						</Typography>
 						<Typography sx={{ mb: 2 }}>
-							You'd be correct! To keep things simple, we do this by adding up the values of the bits.
+							You&apos;d be correct! To keep things simple, we do this by adding up the values of the bits.
 						</Typography>
 						<Typography sx={{ mb: 2 }}>
 							Each bit represents a power of 2 (i.e 2^3, 2^2, 2^1, 2^0, where the exponent is equal to the spot that the bit occupies), starting from the rightmost bit (which is 2^0 = 1).
