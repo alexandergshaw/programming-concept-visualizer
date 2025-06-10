@@ -5,8 +5,12 @@ import StorageIcon from '@mui/icons-material/Storage';
 import DnsIcon from '@mui/icons-material/Dns';
 import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import DownloadIcon from '@mui/icons-material/Download';
+import FindInPageIcon from '@mui/icons-material/FindInPage';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
+import CycleDiagram from '@/components/common/CycleDiagram';
 
 const hardwareSteps = [
   {
@@ -42,10 +46,33 @@ export default function HardwareConcept() {
 
   return (
     <ConceptWrapper
-      title="Hardware Involved in Program Execution"
-      description="These are the hardware components that make running programs possible."
+      title="Hardware Involved in Running Programs"
+      description="This page covers the physical pieces of equipment that make running programs possible, and how they interact."
     >
-      <>
+      <Section title="1. The Fetch-Decode-Execute Cycle" subtitle="Whether your programming language uses an interpreter or a compiler, the computer (the central processing unit specifically, or CPU) follows these steps to carry out the program.">
+        <CycleDiagram
+          steps={[
+            {
+              label: 'Fetch',
+              icon: <DownloadIcon fontSize="large" color="success" />,
+              description: 'CPU grabs the next instruction from memory (random access memory, RAM, specifically).',
+            },
+            {
+              label: 'Decode',
+              icon: <FindInPageIcon fontSize="large" color="primary" />,
+              description: 'CPU figures out what the instruction means.',
+            },
+            {
+              label: 'Execute',
+              icon: <PlayArrowIcon fontSize="large" color="action" />,
+              description: 'CPU does what the instruction says. This may involve reading/writing data to RAM or storage, or communicating with other hardware using buses & connections.',
+            },
+          ]}
+        />
+      </Section>
+      <Section
+        title="2. Hardware Components"
+        subtitle="These are the specific pieces of hardware involved in the execution of programs.">
         <Box
           sx={{
             width: '100%',
@@ -149,7 +176,8 @@ export default function HardwareConcept() {
             {step === hardwareSteps.length - 1 ? 'Show Buses' : step === hardwareSteps.length ? 'Done' : 'Next'}
           </Button>
         </Box>
-      </>
+      </Section>
+      
     </ConceptWrapper>
   );
 }

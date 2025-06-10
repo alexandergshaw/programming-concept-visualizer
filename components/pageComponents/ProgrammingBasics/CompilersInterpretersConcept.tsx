@@ -334,9 +334,6 @@ function InteractiveCompilerDemo() {
         textAlign: 'center',
       }}
     >
-      <Typography fontWeight={700} sx={{ mb: 2, fontSize: 18 }}>
-        See How Code Gets Compiled
-      </Typography>
       <Stack direction="row" spacing={2} justifyContent="center" sx={{ mb: 2 }}>
         {codeSteps.map((s, i) => (
           <Box
@@ -475,36 +472,30 @@ function VisualArrow() {
 export default function CompilersInterpretersConcept() {
   return (
     <ConceptWrapper
-      title="How Compilers and Interpreters Work"
-      description="Your code must be translated into something the computer can run."
+      title="How Code Tells the Computer What to Do"
+      description="The code you write must be translated into something the computer can understand."
     >
       <TableOfContents>
-        <Section title="1. The Fetch-Decode-Execute Cycle" subtitle="The basic loop every CPU uses to run instructions.">
-          <CycleDiagram
-            steps={[
-              {
-                label: 'Fetch',
-                icon: <DownloadIcon fontSize="large" color="success" />,
-                description: 'CPU grabs the next instruction from memory.',
-              },
-              {
-                label: 'Decode',
-                icon: <FindInPageIcon fontSize="large" color="primary" />,
-                description: 'CPU figures out what the instruction means.',
-              },
-              {
-                label: 'Execute',
-                icon: <PlayArrowIcon fontSize="large" color="action" />,
-                description: 'CPU does what the instruction says.',
-              },
-            ]}
-          />
+        <Section
+          title="1. How Human Code Becomes Computer Code"
+        >
+          <Box sx={{ maxWidth: 700, mx: 'auto', my: 3 }}>
+            <Typography sx={{ mb: 2 }}>
+              When you write code in a programming language like Python, JavaScript, or C++, you’re using instructions that are easy for humans to read and understand. 
+            </Typography>
+            <Typography sx={{ mb: 2 }}>
+              However, computers can only understand very simple instructions written in <b>machine code</b>—a series of 0s and 1s.
+            </Typography>
+            <Typography sx={{ mb: 2 }}>
+              To bridge this gap, your code must be <b>translated</b> into machine code. This is done by special programs called <b>compilers</b> or <b>interpreters</b>.
+            </Typography>
+          </Box>
         </Section>
-        <Section title="2. See Compilation in Action" subtitle="The process used to convert coding languages like C, C++, Rust, and Go into machine code that the computer understands.">
-          <InteractiveCompilerDemo />
-        </Section>
-        <Section title="3. See Interpretation in Action" subtitle='The process used by languages like Python, JavaScript, Ruby, and PHP to tell the computer what to do.'>
+        <Section title="2. See Interpreters in Action" subtitle='Interpreters are programs used by languages like Python, JavaScript, Ruby, and PHP to convert the code into a form that the computer can understand and take action on, line by line, as the program is running.'>
           <InteractiveInterpreterDemo />
+        </Section>
+        <Section title="3. See Compilers in Action" subtitle="Compilers are programs that translate entire high-level code into machine code before execution, used by languages like C, C++, Rust, and Go.">
+          <InteractiveCompilerDemo />
         </Section>
       </TableOfContents>
     </ConceptWrapper>
@@ -667,9 +658,6 @@ function InteractiveInterpreterDemo() {
         textAlign: 'center',
       }}
     >
-      <Typography fontWeight={700} sx={{ mb: 2, fontSize: 18 }}>
-        See How Interpreters Work
-      </Typography>
       <Stack direction="row" spacing={2} justifyContent="center" sx={{ mb: 2 }}>
         {steps.map((s, i) => (
           <Box

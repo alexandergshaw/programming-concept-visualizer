@@ -7,14 +7,15 @@ import CompilersInterpretersConcept from './CompilersInterpretersConcept';
 import MemoryConcept from './MemoryConcept';
 import HardwareConcept from './HardwareConcept';
 
+// Add Memory to navItems
 const navItems = [
 	{
 		label: 'Foundational Concepts',
 		value: 'foundational-concepts',
 		children: [
+			{ label: 'Interpreters & Compilers', value: 'compilers-interpreters' },
 			{ label: 'Hardware', value: 'hardware' },
 			{ label: 'Memory', value: 'memory' },
-			{ label: 'Compilers & Interpreters', value: 'compilers-interpreters' },
 		],
 	},
 ];
@@ -54,7 +55,7 @@ export default function ProgrammingBasicsPage() {
 		<PageWrapper
 			pageTitle="Programming Basics"
 			navItems={navItems}
-			defaultOpen={['Programming Basics']}
+			defaultOpen={['foundational-concepts']}
 			handleSelect={handleSelect}
 		>
 			{selectedConcept ? (
