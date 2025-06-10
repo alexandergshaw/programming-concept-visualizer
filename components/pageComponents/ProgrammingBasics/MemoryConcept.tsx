@@ -135,14 +135,14 @@ export default function MemoryConcept() {
 					</Box>
 				</Section>
 				<Section
-					title="3. How Bits Represent the Inner Workings of Computer Hardware"
+					title="3. How Bits Represent Hardware"
 				>
 					<Box sx={{ maxWidth: 700, mx: 'auto', my: 3 }}>
 						<Typography sx={{ mb: 2 }}>
 							Inside the computer, millions (sometimes billions) of tiny electronic switches called <b>transistors</b> can be either <b>on</b> or <b>off</b>, exactly like how bits can be either <b>1</b> or <b>0</b>. These transistors are the physical representation of bits.
 						</Typography>
 						<Typography sx={{ mb: 2 }}>
-							We flip these transistors on and off to represent different values. 
+							We flip these transistors on and off to represent different values.
 						</Typography>
 						<Typography sx={{ mb: 2 }}>
 							For example, if we want to store the number 5 (whose binary representation is <b>00000101</b>), we would turn on the transistors corresponding to the bits that are <b>1</b>.
@@ -158,13 +158,30 @@ export default function MemoryConcept() {
 						</Paper>
 					</Box>
 				</Section>
-				{/* <Section
+				<Section
 					title="4. Converting Between Decimal and Binary"
-					subtitle="How to turn numbers from decimal to binary and back"
 				>
 					<Box sx={{ maxWidth: 700, mx: 'auto', my: 3 }}>
 						<Typography sx={{ mb: 2 }}>
-							Computers use <b>binary</b> (base 2), but we usually use <b>decimal</b> (base 10). You can convert between them by following a simple process!
+							You've probably guessed that there must be some way to convert between binary and regular numbers.
+						</Typography>
+						<Typography sx={{ mb: 2 }}>
+							You'd be correct! To keep things simple, we do this by adding up the values of the bits.
+						</Typography>
+						<Typography sx={{ mb: 2 }}>
+							Each bit represents a power of 2 (i.e 2^3, 2^2, 2^1, 2^0, where the exponent is equal to the spot that the bit occupies), starting from the rightmost bit (which is 2^0 = 1).
+						</Typography>
+						<Typography sx={{ mb: 2 }}>
+							For example, to convert the binary number <b>0011</b> to decimal, we add: {" "}
+							<span style={{ fontFamily: 'monospace' }}>
+								0×8 + 0×4 + 1×2 + 1×1 = 0 + 0 + 2 + 1 = <b>3</b>
+							</span>.
+						</Typography>
+						<Typography sx={{ mb: 2 }}>
+							Another example: to convert the binary number <b>1101</b> to decimal, we add: {" "}
+							<span style={{ fontFamily: 'monospace' }}>
+								1×8 + 1×4 + 0×2 + 1×1 = 8 + 4 + 0 + 1 = <b>13</b>
+							</span>.
 						</Typography>
 						<Paper sx={{ p: 2, mb: 2, textAlign: 'center', bgcolor: '#f8fafc' }}>
 							<Typography fontWeight={600} sx={{ mb: 1 }}>
@@ -173,7 +190,7 @@ export default function MemoryConcept() {
 							<DecimalBinaryConverter />
 						</Paper>
 					</Box>
-				</Section> */}
+				</Section>
 			</TableOfContents>
 		</ConceptWrapper>
 	);
@@ -495,9 +512,6 @@ function DecimalBinaryConverter() {
 		explanation = (
 			<>
 				<Typography sx={{ mb: 2 }}>
-					<b>How does it work?</b>
-				</Typography>
-				<Typography sx={{ mb: 2 }}>
 					<span style={{ fontFamily: 'monospace' }}>
 						{getBinaryBreakdown(dec).map((b, i) =>
 							b.used
@@ -515,9 +529,6 @@ function DecimalBinaryConverter() {
 	} else {
 		explanation = (
 			<>
-				<Typography sx={{ mb: 2 }}>
-					<b>How does it work?</b>
-				</Typography>
 				<Typography sx={{ mb: 2 }}>
 					<span style={{ fontFamily: 'monospace' }}>
 						{getDecimalBreakdown(binary).map((b, i) =>
@@ -699,7 +710,7 @@ function BitPatternVisualizer() {
 			: '␣';
 
 	// Visual: clickable bits
-	const handleBitToggle = idx => {
+	const handleBitToggle = (idx: number) => {
 		setBits(prev =>
 			prev
 				.split('')
