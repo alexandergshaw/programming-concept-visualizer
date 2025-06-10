@@ -13,7 +13,7 @@ export default function MemoryConcept() {
 	return (
 		<ConceptWrapper
 			title="How Computers Store Data"
-			description="Explore how computers use memory and storage to keep and retrieve information."
+			description="When you write programs or work with data, everything needs to be stored in a way that the computer can understand. Here, we'll explain how computers work with data."
 		>
 			<TableOfContents>
 				<Section
@@ -72,15 +72,16 @@ export default function MemoryConcept() {
 						</Box>
 					</Box>
 				</Section>
+
 				<Section
 					title="2. How Data is Stored"
 				>
 					<Box sx={{ maxWidth: 700, mx: 'auto', my: 3 }}>
 						<Typography sx={{ mb: 2 }}>
-							Computers store everything—text, pictures, numbers, programs, and more—as long strings of <b>bits</b> (just 0s and 1s). These bits are grouped into <b>bytes</b> (8 bits), and then into bigger chunks like kilobytes (KB), megabytes (MB), and gigabytes (GB).
+							Computers store everything (text, pictures, numbers, programs, and more) as long strings of <b>bits</b> (just 0s and 1s). These bits are grouped into <b>bytes</b> (8 bits), and then into bigger chunks like kilobytes (KB), megabytes (MB), and gigabytes (GB).
 						</Typography>
 						<Typography sx={{ mb: 2 }}>
-							<b>Whole numbers</b> (like 42 or 2024) are stored as binary. One byte (8 bits) can count from <b>0</b> to <b>255</b>. If you need to count higher, the computer just uses more bytes together (for example, 4 bytes can count up to about 4 billion!).
+							<b>Whole numbers</b> (like 42 or 2024) are stored as groups of bits. One byte (8 bits) can count from <b>0</b> to <b>255</b>. If you need to count higher, the computer just uses more bytes together (for example, 4 bytes - 32 bits - can count up to about 4 billion!).
 						</Typography>
 						<Paper sx={{ p: 2, mb: 2, textAlign: 'center', bgcolor: '#f8fafc' }}>
 							<Typography fontWeight={600} sx={{ mb: 1 }}>
@@ -134,7 +135,31 @@ export default function MemoryConcept() {
 					</Box>
 				</Section>
 				<Section
-					title="3. Converting Between Decimal and Binary"
+					title="3. How Bits Represent the Inner Workings of Computer Hardware"
+				>
+					<Box sx={{ maxWidth: 700, mx: 'auto', my: 3 }}>
+						<Typography sx={{ mb: 2 }}>
+							Inside the computer, millions (sometimes billions) of tiny electronic switches called <b>transistors</b> can be either <b>on</b> or <b>off</b>, exactly like how bits can be either <b>1</b> or <b>0</b>. These transistors are the physical representation of bits.
+						</Typography>
+						<Typography sx={{ mb: 2 }}>
+							We flip these transistors on and off to represent different values. 
+						</Typography>
+						<Typography sx={{ mb: 2 }}>
+							For example, if we want to store the number 5 (whose binary representation is <b>00000101</b>), we would turn on the transistors corresponding to the bits that are <b>1</b>.
+						</Typography>
+						<Typography sx={{ mb: 2 }}>
+							Another example: if we want to store the letter <b>A</b> (which is represented by <b>01000001</b> in binary), we would turn on the first and sixth transistors, leaving the others off.
+						</Typography>
+						<Paper sx={{ p: 2, bgcolor: '#f8fafc', border: '1px solid #e0e0e0', mt: 2, mb: 2 }}>
+							<Typography fontWeight={600} sx={{ mb: 1 }}>
+								Visualize how a group of transistors and their corresponding bits can store numbers:
+							</Typography>
+							<BitPatternVisualizer />
+						</Paper>
+					</Box>
+				</Section>
+				{/* <Section
+					title="4. Converting Between Decimal and Binary"
 					subtitle="How to turn numbers from decimal to binary and back"
 				>
 					<Box sx={{ maxWidth: 700, mx: 'auto', my: 3 }}>
@@ -148,7 +173,7 @@ export default function MemoryConcept() {
 							<DecimalBinaryConverter />
 						</Paper>
 					</Box>
-				</Section>
+				</Section> */}
 			</TableOfContents>
 		</ConceptWrapper>
 	);
@@ -656,6 +681,73 @@ function DecimalBinaryConverter() {
 			)}
 			{/* Dynamic explanation and example */}
 			<Box sx={{ mt: 3 }}>{explanation}</Box>
+		</Box>
+	);
+}
+
+// Place this helper component in the same file, outside your main export:
+function BitPatternVisualizer() {
+	const [bits, setBits] = useState('01000001');
+
+	// Interpret as unsigned integer
+	const asNumber = parseInt(bits, 2);
+
+	// Interpret as ASCII character (printable range)
+	const asChar =
+		asNumber >= 32 && asNumber <= 126
+			? String.fromCharCode(asNumber)
+			: '␣';
+
+	// Visual: clickable bits
+	const handleBitToggle = idx => {
+		setBits(prev =>
+			prev
+				.split('')
+				.map((b, i) => (i === idx ? (b === '1' ? '0' : '1') : b))
+				.join('')
+		);
+	};
+
+	return (
+		<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+			<Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
+				{bits.split('').map((bit, i) => (
+					<Button
+						key={i}
+						variant="contained"
+						size="small"
+						sx={{
+							minWidth: 36,
+							minHeight: 36,
+							fontFamily: 'monospace',
+							fontSize: 20,
+							bgcolor: bit === '1' ? '#1976d2' : '#e0e0e0',
+							color: bit === '1' ? '#fff' : '#333',
+							border: '1px solid #90caf9',
+							boxShadow: bit === '1' ? 2 : 0,
+							transition: 'all 0.2s',
+							p: 0,
+						}}
+						onClick={() => handleBitToggle(i)}
+						aria-label={`Toggle bit ${i}`}
+					>
+						{bit}
+					</Button>
+				))}
+			</Box>
+			<Box sx={{ display: 'flex', gap: 3, alignItems: 'center', mb: 1 }}>
+				<Box sx={{ textAlign: 'center' }}>
+					<Typography variant="caption" color="text.secondary">
+						As a number
+					</Typography>
+					<Typography sx={{ fontFamily: 'monospace', fontSize: 20 }}>
+						{asNumber}
+					</Typography>
+				</Box>
+			</Box>
+			<Typography variant="caption" color="text.secondary">
+				Click a transistor to flip it (and its bit value) and see how the meaning changes!
+			</Typography>
 		</Box>
 	);
 }

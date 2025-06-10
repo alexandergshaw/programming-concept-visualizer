@@ -47,7 +47,7 @@ export default function HardwareConcept() {
   return (
     <ConceptWrapper
       title="Hardware Involved in Running Programs"
-      description="This page covers the physical pieces of equipment that make running programs possible, and how they interact."
+      description="Now we'll cover the physical pieces of equipment that make running your programs possible."
     >
       <Section title="1. The Fetch-Decode-Execute Cycle" subtitle="Whether your programming language uses an interpreter or a compiler, the computer (the central processing unit specifically, or CPU) follows these steps to carry out the program.">
         <CycleDiagram

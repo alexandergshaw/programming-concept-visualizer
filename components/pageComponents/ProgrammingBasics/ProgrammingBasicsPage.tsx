@@ -6,16 +6,17 @@ import PageWrapper from '../../common/PageWrapper';
 import CompilersInterpretersConcept from './CompilersInterpretersConcept';
 import MemoryConcept from './MemoryConcept';
 import HardwareConcept from './HardwareConcept';
+import IntroductionConcept from './IntroductionConcept';
 
-// Add Memory to navItems
 const navItems = [
 	{
-		label: 'Foundational Concepts',
-		value: 'foundational-concepts',
+		label: 'How Computers Run Programs',
+		value: 'how-computers-run-programs',
 		children: [
-			{ label: 'Interpreters & Compilers', value: 'compilers-interpreters' },
-			{ label: 'Hardware', value: 'hardware' },
-			{ label: 'Memory', value: 'memory' },
+			{ label: '1) Introduction', value: 'introduction' },
+			{ label: '2) Interpreters & Compilers', value: 'compilers-interpreters' },
+			{ label: '3) Hardware', value: 'hardware' },
+			{ label: '4) Data', value: 'memory' },
 		],
 	},
 ];
@@ -41,6 +42,8 @@ export default function ProgrammingBasicsPage() {
 				return <CompilersInterpretersConcept />;
 			case 'hardware':
 				return <HardwareConcept />;
+			case 'introduction':
+				return <IntroductionConcept />;
 			default:
 				return null;
 		}
@@ -55,7 +58,7 @@ export default function ProgrammingBasicsPage() {
 		<PageWrapper
 			pageTitle="Programming Basics"
 			navItems={navItems}
-			defaultOpen={['foundational-concepts']}
+			defaultOpen={['how-computers-run-programs']}
 			handleSelect={handleSelect}
 		>
 			{selectedConcept ? (
