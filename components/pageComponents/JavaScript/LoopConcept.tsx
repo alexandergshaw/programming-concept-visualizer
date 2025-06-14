@@ -179,7 +179,6 @@ export default function LoopConcept() {
                     </div>
                     <CodeSnippet
                         enableRun
-                        onRun={() => handleRun('dowhile')}
                         lines={[
                             { code: `let i = ${doStart};` },
                             { code: `do {` },
