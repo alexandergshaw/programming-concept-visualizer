@@ -145,19 +145,11 @@ export default function ForOfLoopOrderAnimation() {
                 <br />
                 <span>&nbsp;&nbsp;
                     <span style={currentStep === 1 ? highlightPart(1) : {}}>
-                        console.log(&quot;In if block&quot;);
+                        console.log(fruit);
                     </span>
                 </span>
                 <br />
-                <span>{'}'} else {'{'}</span>
-                <br />
-                <span>&nbsp;&nbsp;
-                    <span style={currentStep === 2 ? highlightPart(2) : {}}>
-                        console.log(&quot;In else block&quot;);
-                    </span>
-                </span>
-                <br />
-                <span>{'}'}</span>
+                <span>{'}'} </span>
             </pre>
             <div style={{
                 display: 'flex',
