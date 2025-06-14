@@ -26,13 +26,11 @@ export default function IfElseOrderAnimation() {
     const [currentStep, setCurrentStep] = useState(0);
     const [a, setA] = useState(5);
     const [b, setB] = useState(3);
-    const [output, setOutput] = useState<string | null>(null);
     const [done, setDone] = useState(false);
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
     function reset() {
         setCurrentStep(0);
-        setOutput(null);
         setDone(false);
         if (intervalRef.current) clearInterval(intervalRef.current);
     }
@@ -47,11 +45,7 @@ export default function IfElseOrderAnimation() {
             } else {
                 setCurrentStep(2);
             }
-        } else if (currentStep === 1) {
-            setOutput('In if block');
-            setDone(true);
-        } else if (currentStep === 2) {
-            setOutput('In else block');
+        } else if (currentStep === 1 || currentStep === 2) {
             setDone(true);
         }
     }
@@ -68,12 +62,7 @@ export default function IfElseOrderAnimation() {
                     step = 2;
                 }
                 setCurrentStep(step);
-            } else if (step === 1) {
-                setOutput('In if block');
-                setDone(true);
-                if (intervalRef.current) clearInterval(intervalRef.current);
-            } else if (step === 2) {
-                setOutput('In else block');
+            } else if (step === 1 || step === 2) {
                 setDone(true);
                 if (intervalRef.current) clearInterval(intervalRef.current);
             }
@@ -149,7 +138,7 @@ export default function IfElseOrderAnimation() {
                 <br />
                 <span>&nbsp;&nbsp;
                     <span style={currentStep === 1 ? highlightPart(1) : {}}>
-                        console.log("In if block");
+                        console.log(&quot;In if block&quot;);
                     </span>
                 </span>
                 <br />
@@ -157,7 +146,7 @@ export default function IfElseOrderAnimation() {
                 <br />
                 <span>&nbsp;&nbsp;
                     <span style={currentStep === 2 ? highlightPart(2) : {}}>
-                        console.log("In else block");
+                        console.log(&quot;In else block&quot;);
                     </span>
                 </span>
                 <br />
@@ -209,11 +198,13 @@ export default function IfElseOrderAnimation() {
                     color: '#444',
                     textAlign: 'center'
                 }}>
-                    {done && output
-                        ? <span>Output: <span style={{ color: stepColors[currentStep] }}>{output}</span></span>
-                        : <span>
+                    {!done
+                        ? <span>
                             <b style={{ color: stepColors[currentStep] }}>{steps[currentStep].label}:</b> {steps[currentStep].desc}
                         </span>
+                        : currentStep === 1
+                        ? <span>Output: <span style={{ color: stepColors[1] }}>&quot;In if block&quot;</span></span>
+                        : <span>Output: <span style={{ color: stepColors[2] }}>&quot;In else block&quot;</span></span>
                     }
                 </div>
             </div>
