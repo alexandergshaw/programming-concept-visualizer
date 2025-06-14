@@ -124,8 +124,28 @@ export default function ForOfLoopOrderAnimation() {
             boxShadow: '0 2px 12px #0001',
             maxWidth: 520
         }}>
-            <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 10, color: '#1976d2' }}>
-                How does a <span style={{ fontFamily: 'monospace' }}>for...of</span> loop run?
+            <div style={{
+                fontFamily: 'monospace',
+                fontSize: 16,
+                color: '#333',
+                marginBottom: 18,
+                display: 'flex',
+                justifyContent: 'center',
+                gap: 6,
+                flexWrap: 'wrap'
+            }}>
+                <span style={currentStep === 0 ? highlightPart(0) : {}}>const fruits = ["apple", "banana", "pear"];</span>
+                <span>
+                    for (<span style={currentStep === 1 ? highlightPart(1) : {}}>
+                        const
+                    </span>{' '}
+                    <span style={currentStep === 3 ? highlightPart(3) : currentStep === 1 ? highlightPart(1) : {}}>
+                        fruit of fruits
+                    </span>)
+                </span>
+                <span>{'{'}</span>
+                <span style={currentStep === 2 ? highlightPart(2) : {}}>console.log(fruit);</span>
+                <span>{'}'}</span>
             </div>
             <div style={{
                 display: 'flex',
@@ -200,19 +220,6 @@ export default function ForOfLoopOrderAnimation() {
                     }}>
                         fruit = {sampleArray[index]}
                     </div>
-                    <div style={{
-                        background: '#fff',
-                        border: '1.5px solid #e0e0e0',
-                        borderRadius: 8,
-                        padding: '10px 18px',
-                        fontFamily: 'monospace',
-                        fontSize: 16,
-                        color: '#43a047',
-                        minWidth: 120,
-                        textAlign: 'center'
-                    }}>
-                        Output: [{output.join(', ')}]
-                    </div>
                 </div>
             </div>
             <div style={{
@@ -265,30 +272,6 @@ export default function ForOfLoopOrderAnimation() {
                 >
                     Play
                 </button>
-            </div>
-            <div style={{
-                marginTop: 18,
-                fontFamily: 'monospace',
-                fontSize: 15,
-                color: '#888',
-                textAlign: 'center',
-                display: 'flex',
-                justifyContent: 'center',
-                gap: 6,
-                flexWrap: 'wrap'
-            }}>
-                <span style={currentStep === 0 ? highlightPart(0) : {}}>const fruits = ["apple", "banana", "pear"];</span>
-                <span>
-                    for (<span style={currentStep === 1 ? highlightPart(1) : {}}>
-                        const
-                    </span>{' '}
-                    <span style={currentStep === 3 ? highlightPart(3) : currentStep === 1 ? highlightPart(1) : {}}>
-                        fruit of fruits
-                    </span>)
-                </span>
-                <span>{'{'}</span>
-                <span style={currentStep === 2 ? highlightPart(2) : {}}>console.log(fruit);</span>
-                <span>{'}'}</span>
             </div>
         </div>
     );
