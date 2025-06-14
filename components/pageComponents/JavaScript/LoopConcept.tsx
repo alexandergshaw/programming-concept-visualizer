@@ -137,18 +137,6 @@ export default function LoopConcept() {
                             { code: `} while (i <= ${doEnd});` },
                         ]}
                     />
-                    {runOutput.length > 0 && (
-                        <div style={{
-                            marginTop: 10,
-                            background: '#f5f5f5',
-                            borderRadius: 6,
-                            padding: 10,
-                            fontWeight: 500,
-                            color: loopColor
-                        }}>
-                            Output: {runOutput.join(', ')}
-                        </div>
-                    )}
                     <Section title="3a. Do...While Loop Animation" subtitle="A visual of how a do...while loop executes">
                         <DoWhileLoopOrderAnimation/>
                     </Section>
