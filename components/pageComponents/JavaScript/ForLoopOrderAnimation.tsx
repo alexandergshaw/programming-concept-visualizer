@@ -29,9 +29,7 @@ const steps = [
 
 export default function ForLoopOrderAnimation() {
     const [currentStep, setCurrentStep] = useState(0);
-    const [iteration, setIteration] = useState(1);
     const [done, setDone] = useState(false);
-    const [output, setOutput] = useState<number[]>([]);
     const [i, setI] = useState(0);
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -40,9 +38,7 @@ export default function ForLoopOrderAnimation() {
 
     function reset() {
         setCurrentStep(0);
-        setIteration(1);
         setDone(false);
-        setOutput([]);
         setI(0);
         setInitialized(false);
         if (intervalRef.current) clearInterval(intervalRef.current);
@@ -59,15 +55,12 @@ export default function ForLoopOrderAnimation() {
                 setDone(true);
                 return;
             }
-        } else if (currentStep === 2) {
-            setOutput(prev => [...prev, i]);
         } else if (currentStep === 3) {
             setI(prev => prev + 1);
         }
 
         // Only go to Initialization at very first step
         if (currentStep === 3) {
-            setIteration(prev => prev + 1);
             setCurrentStep(1); // Go to Condition after Increment
         } else if (currentStep === 0 && initialized) {
             setCurrentStep(1); // Skip Initialization after first time
@@ -102,7 +95,6 @@ export default function ForLoopOrderAnimation() {
                 }
             } else if (step === 2) {
                 localOutput = [...localOutput, localI];
-                setOutput([...localOutput]);
             } else if (step === 3) {
                 localI++;
                 setI(localI);
@@ -112,7 +104,6 @@ export default function ForLoopOrderAnimation() {
 
             if (step === 3) {
                 iter++;
-                setIteration(iter);
                 step = 1; // After increment, always go to Condition
             } else if (step === 0 && localInitialized) {
                 step = 1; // Skip Initialization after first time

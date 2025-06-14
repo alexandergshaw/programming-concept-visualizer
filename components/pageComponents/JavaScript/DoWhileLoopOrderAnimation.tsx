@@ -30,7 +30,6 @@ const steps = [
 export default function DoWhileLoopOrderAnimation() {
     const [currentStep, setCurrentStep] = useState(0);
     const [i, setI] = useState(1);
-    const [output, setOutput] = useState<number[]>([]);
     const [done, setDone] = useState(false);
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
     const [initialized, setInitialized] = useState(false);
@@ -38,7 +37,6 @@ export default function DoWhileLoopOrderAnimation() {
     function reset() {
         setCurrentStep(0);
         setI(1);
-        setOutput([]);
         setDone(false);
         setInitialized(false);
         if (intervalRef.current) clearInterval(intervalRef.current);
@@ -50,8 +48,6 @@ export default function DoWhileLoopOrderAnimation() {
         if (currentStep === 0 && !initialized) {
             setI(1);
             setInitialized(true);
-        } else if (currentStep === 1) {
-            setOutput(prev => [...prev, i]);
         } else if (currentStep === 2) {
             setI(prev => prev + 1);
         } else if (currentStep === 3) {
@@ -87,7 +83,6 @@ export default function DoWhileLoopOrderAnimation() {
                 localInitialized = true;
             } else if (step === 1) {
                 localOutput = [...localOutput, localI];
-                setOutput([...localOutput]);
             } else if (step === 2) {
                 localI++;
                 setI(localI);
