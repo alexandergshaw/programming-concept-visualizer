@@ -134,7 +134,6 @@ export default function LoopConcept() {
                     </div>
                     <CodeSnippet
                         enableRun
-                        onRun={() => handleRun('forof')}
                         lines={[
                             { code: `const fruits = [${arrayItems.map(f => `"${f}"`).join(', ')}];` },
                             { code: `for (const fruit of fruits) {` },
