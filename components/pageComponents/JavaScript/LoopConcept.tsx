@@ -79,7 +79,7 @@ export default function LoopConcept() {
                         <ForLoopOrderAnimation />
                     </Section>
                 </Section>
-                
+
                 <Section
                     title="2. For...of Loop"
                     subtitle="A for...of loop goes through each item in a list (array)."
@@ -102,7 +102,7 @@ export default function LoopConcept() {
                         ]}
                     />
                     <Section title="2a. For...of Loop Animation" subtitle="A visual of how a for...of loop iterates through an array">
-                        <ForOfLoopOrderAnimation items={arrayItems} />
+                        <ForOfLoopOrderAnimation />
                     </Section>
                 </Section>
                 <Section
@@ -136,7 +136,7 @@ export default function LoopConcept() {
                         ]}
                     />
                     <Section title="3a. Do...While Loop Animation" subtitle="A visual of how a do...while loop executes">
-                        <DoWhileLoopOrderAnimation/>
+                        <DoWhileLoopOrderAnimation />
                     </Section>
                 </Section>
             </TableOfContents>
