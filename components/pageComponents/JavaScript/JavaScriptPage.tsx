@@ -11,6 +11,8 @@ import VariableConcept from './VariableConcept';
 import ConstantConcept from './ConstantConcept';
 import DataTypesConcept from './DataTypesConcept';
 import UserInputConcept from './UserInputConcept';
+import ConditionalConcept from './ConditionalConcept';
+import LoopConcept from './LoopConcept';
 
 const navItems = [
   {
@@ -22,6 +24,14 @@ const navItems = [
       { label: 'Data Types', value: 'data types' },
     ],
 
+  },
+  {
+    label: 'Control Flow',
+    value: 'control flow',
+    children: [
+      { label: 'Conditionals', value: 'conditionals' },
+      { label: 'Loops', value: 'loops' },
+    ]
   },
   // {
   //   label: 'Control Flow',
@@ -116,6 +126,10 @@ export default function JavaScriptPage() {
         return <DataTypesConcept/>;
       case 'user input':
         return <UserInputConcept/>;
+      case 'conditionals':
+        return <ConditionalConcept />;
+      case 'loops':
+        return <LoopConcept />;
       default:
         return null;
     }
@@ -140,7 +154,7 @@ export default function JavaScriptPage() {
   }
 
   return (
-    <PageWrapper pageTitle={'JavaScript Visualizer'} navItems={navItems} defaultOpen={["storing data"]} handleSelect={handleSelect}>
+    <PageWrapper pageTitle={'JavaScript Visualizer'} navItems={navItems} defaultOpen={["control flow"]} handleSelect={handleSelect}>
       {selectedConcept ? (
         <>
           {renderContent(selectedConcept)}
