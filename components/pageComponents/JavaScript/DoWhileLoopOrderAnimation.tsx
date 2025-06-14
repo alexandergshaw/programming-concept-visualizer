@@ -131,24 +131,32 @@ export default function DoWhileLoopOrderAnimation() {
             boxShadow: '0 2px 12px #0001',
             maxWidth: 520
         }}>
-            <div style={{
+            <pre style={{
                 fontFamily: 'monospace',
                 fontSize: 16,
                 color: '#333',
                 marginBottom: 18,
-                display: 'flex',
-                justifyContent: 'center',
-                gap: 6,
-                flexWrap: 'wrap'
+                background: '#f3f6fa',
+                borderRadius: 8,
+                padding: '12px 10px',
+                lineHeight: 1.6,
+                overflowX: 'auto',
+                border: '1.5px solid #e0e0e0',
+                display: 'block'
             }}>
                 <span style={currentStep === 0 ? highlightPart(0) : {}}>let i = 1;</span>
+                <br />
                 <span>do {'{'}</span>
-                <span style={currentStep === 1 ? highlightPart(1) : {}}>console.log(i);</span>
-                <span style={currentStep === 2 ? highlightPart(2) : {}}>i++;</span>
-                <span>{'}'} while (</span>
+                <br />
+                <span>&nbsp;&nbsp;<span style={currentStep === 1 ? highlightPart(1) : {}}>console.log(i);</span></span>
+                <br />
+                <span>&nbsp;&nbsp;<span style={currentStep === 2 ? highlightPart(2) : {}}>i++;</span></span>
+                <br />
+                <span>{'}'} </span>
+                <span>while (</span>
                 <span style={currentStep === 3 ? highlightPart(3) : {}}>i {'<= 3'}</span>
                 <span>);</span>
-            </div>
+            </pre>
             <div style={{
                 display: 'flex',
                 flexDirection: 'column',
