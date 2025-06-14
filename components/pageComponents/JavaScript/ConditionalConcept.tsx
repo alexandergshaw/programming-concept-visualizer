@@ -6,56 +6,26 @@ import TextField from '@mui/material/TextField';
 import '../../../styles/variable.css';
 import Section from '@/components/common/Section';
 import CodeSnippet from '@/components/common/CodeSnippet';
-import OrderedList from '@/components/common/OrderedList';
 import TableOfContents from '@/components/common/TableOfContents';
 import IfElseOrderAnimation from './IfStatementAnimation';
 import IfElseIfElseOrderAnimation from './IfElseIfElseAnimation';
 
-const highlightColor = '#1976d2';
-const trueColor = '#43a047';
-const falseColor = '#e53935';
-
 export default function ConditionalConcept() {
     const [a, setA] = useState(25);
     const [b, setB] = useState(18);
-    const [userOperator, setUserOperator] = useState('>');
     const [userIfValue, setUserIfValue] = useState('You are eligible for a license');
     const [userElseValue, setUserElseValue] = useState('You are NOT eligible for a license');
-    const [showElse, setShowElse] = useState(true);
 
     const [money, setMoney] = useState(10);
     const [ticket, setTicket] = useState(15);
     const [moneyIfMsg, setMoneyIfMsg] = useState("You can buy the ticket!");
     const [moneyElseMsg, setMoneyElseMsg] = useState("You need more money.");
-    const [showElseMoney, setShowElseMoney] = useState(true);
 
     const [score, setScore] = useState(75);
     const [passMsg, setPassMsg] = useState("You passed!");
     const [almostMsg, setAlmostMsg] = useState("Almost! Study a bit more.");
     const [failMsg, setFailMsg] = useState("You did not pass.");
     const [perfectMsg, setPerfectMsg] = useState("Perfect score!");
-
-    const operators = [
-        { label: '>', value: '>' },
-        { label: '<', value: '<' },
-        { label: '===', value: '===' },
-        { label: '!==', value: '!==' },
-        { label: '>=', value: '>=' },
-        { label: '<=', value: '<=' },
-    ];
-
-    // Evaluate the condition
-    let conditionResult = false;
-    switch (userOperator) {
-        case '>': conditionResult = a > b; break;
-        case '<': conditionResult = a < b; break;
-        case '===': conditionResult = a === b; break;
-        case '!==': conditionResult = a !== b; break;
-        case '>=': conditionResult = a >= b; break;
-        case '<=': conditionResult = a <= b; break;
-    }
-
-    const moneyResult = money >= ticket;
 
     return (
         <ConceptWrapper
@@ -74,7 +44,7 @@ export default function ConditionalConcept() {
                         ]}
                     />
                     <Section title="1a. Visualizing Conditionals">
-                        <IfElseOrderAnimation/>
+                        <IfElseOrderAnimation />
                     </Section>
                 </Section>
                 <Section
@@ -110,7 +80,6 @@ export default function ConditionalConcept() {
                         value={userElseValue}
                         onChange={e => setUserElseValue(e.target.value)}
                         sx={{ mb: 1 }}
-                        disabled={!showElse}
                     />
                     <CodeSnippet
                         enableRun
@@ -119,10 +88,8 @@ export default function ConditionalConcept() {
                             { code: `let requiredAge = ${b};` },
                             { code: `if (yourAge >= requiredAge) {` },
                             { code: `  console.log("${userIfValue}");` },
-                            ...(showElse ? [
-                                { code: `} else {` },
-                                { code: `  console.log("${userElseValue}");` },
-                            ] : []),
+                            { code: `} else {` },
+                            { code: `  console.log("${userElseValue}");` },
                             { code: `}` },
                         ]}
                     />
@@ -160,7 +127,6 @@ export default function ConditionalConcept() {
                         value={moneyElseMsg ?? "You need more money."}
                         onChange={e => setMoneyElseMsg(e.target.value)}
                         sx={{ mb: 1 }}
-                        disabled={!showElseMoney}
                     />
                     <CodeSnippet
                         enableRun
@@ -169,10 +135,8 @@ export default function ConditionalConcept() {
                             { code: `let ticketPrice = ${ticket};` },
                             { code: `if (yourMoney >= ticketPrice) {` },
                             { code: `  console.log("${moneyIfMsg}");` },
-                            ...(showElseMoney ? [
-                                { code: `} else {` },
-                                { code: `  console.log("${moneyElseMsg}");` },
-                            ] : []),
+                            { code: `} else {` },
+                            { code: `  console.log("${moneyElseMsg}");` },
                             { code: `}` },
                         ]}
                     />
@@ -234,7 +198,7 @@ export default function ConditionalConcept() {
                         ]}
                     />
                     <Section title="4a. Visualizing Multiple Conditions">
-                        <IfElseIfElseOrderAnimation/>
+                        <IfElseIfElseOrderAnimation />
                     </Section>
                 </Section>
             </TableOfContents>
