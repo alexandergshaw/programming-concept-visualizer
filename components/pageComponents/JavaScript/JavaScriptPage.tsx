@@ -12,6 +12,7 @@ import ConstantConcept from './ConstantConcept';
 import DataTypesConcept from './DataTypesConcept';
 import UserInputConcept from './UserInputConcept';
 import ConditionalConcept from './ConditionalConcept';
+import LoopConcept from './LoopConcept';
 
 const navItems = [
   {
@@ -127,6 +128,8 @@ export default function JavaScriptPage() {
         return <UserInputConcept/>;
       case 'conditionals':
         return <ConditionalConcept />;
+      case 'loops':
+        return <LoopConcept />;
       default:
         return null;
     }
