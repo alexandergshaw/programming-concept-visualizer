@@ -145,27 +145,31 @@ export default function ForLoopOrderAnimation() {
             boxShadow: '0 2px 12px #0001',
             maxWidth: 520
         }}>
-            <div style={{
+            <pre style={{
                 fontFamily: 'monospace',
                 fontSize: 16,
                 color: '#333',
                 marginBottom: 18,
-                display: 'flex',
-                justifyContent: 'center',
-                gap: 6,
-                flexWrap: 'wrap'
+                background: '#f3f6fa',
+                borderRadius: 8,
+                padding: '12px 10px',
+                lineHeight: 1.6,
+                overflowX: 'auto',
+                border: '1.5px solid #e0e0e0',
+                display: 'block'
             }}>
-                <span style={currentStep === 0 && !initialized ? highlightPart(0) : {}}>for</span>
-                <span>(</span>
+                <span style={currentStep === 0 && !initialized ? highlightPart(0) : {}}>for (</span>
                 <span style={currentStep === 0 && !initialized ? highlightPart(0) : {}}>let i = 0</span>
                 <span>;</span>
-                <span style={currentStep === 1 ? highlightPart(1) : {}}>i &lt; 3</span>
+                <span style={currentStep === 1 ? highlightPart(1) : {}}> i &lt; 3 </span>
                 <span>;</span>
-                <span style={currentStep === 3 ? highlightPart(3) : {}}>i++</span>
+                <span style={currentStep === 3 ? highlightPart(3) : {}}> i++ </span>
                 <span>) {'{'}</span>
-                <span style={currentStep === 2 ? highlightPart(2) : {}}>console.log(i);</span>
+                <br />
+                <span>&nbsp;&nbsp;<span style={currentStep === 2 ? highlightPart(2) : {}}>console.log(i);</span></span>
+                <br />
                 <span>{'}'}</span>
-            </div>
+            </pre>
             <div style={{
                 display: 'flex',
                 flexDirection: 'column',

@@ -124,29 +124,35 @@ export default function ForOfLoopOrderAnimation() {
             boxShadow: '0 2px 12px #0001',
             maxWidth: 520
         }}>
-            <div style={{
+            <pre style={{
                 fontFamily: 'monospace',
                 fontSize: 16,
                 color: '#333',
                 marginBottom: 18,
-                display: 'flex',
-                justifyContent: 'center',
-                gap: 6,
-                flexWrap: 'wrap'
+                background: '#f3f6fa',
+                borderRadius: 8,
+                padding: '12px 10px',
+                lineHeight: 1.6,
+                overflowX: 'auto',
+                border: '1.5px solid #e0e0e0',
+                display: 'block'
             }}>
-                <span style={currentStep === 0 ? highlightPart(0) : {}}>const fruits = ["apple", "banana", "pear"];</span>
-                <span>
-                    for (<span style={currentStep === 1 ? highlightPart(1) : {}}>
-                        const
-                    </span>{' '}
-                    <span style={currentStep === 3 ? highlightPart(3) : currentStep === 1 ? highlightPart(1) : {}}>
-                        fruit of fruits
-                    </span>)
+                <span style={currentStep === 0 ? highlightPart(0) : {}}>
+                    const fruits = ["apple", "banana", "pear"];
                 </span>
-                <span>{'{'}</span>
-                <span style={currentStep === 2 ? highlightPart(2) : {}}>console.log(fruit);</span>
+                <br />
+                <span>
+                    for (
+                    <span style={currentStep === 1 ? highlightPart(1) : {}}>const </span>
+                    <span style={currentStep === 3 ? highlightPart(3) : currentStep === 1 ? highlightPart(1) : {}}>fruit of fruits</span>
+                    )
+                </span>
+                <span> {'{'}</span>
+                <br />
+                <span>&nbsp;&nbsp;<span style={currentStep === 2 ? highlightPart(2) : {}}>console.log(fruit);</span></span>
+                <br />
                 <span>{'}'}</span>
-            </div>
+            </pre>
             <div style={{
                 display: 'flex',
                 flexDirection: 'column',

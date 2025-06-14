@@ -208,7 +208,6 @@ export default function LoopConcept() {
                             onChange={e => setArrayInput(e.target.value)}
                         />
                     </div>
-                    <VisualLoop label="Items" iterations={arrayItems.length} output={forOfOutput} />
                     <CodeSnippet
                         enableRun
                         onRun={() => handleRun('forof')}
