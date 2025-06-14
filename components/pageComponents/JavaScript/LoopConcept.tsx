@@ -47,7 +47,6 @@ export default function LoopConcept() {
     }
 
     // For running code and showing output
-    const [runOutput, setRunOutput] = useState<string[]>([]);
 
     return (
         <ConceptWrapper
@@ -78,19 +77,6 @@ export default function LoopConcept() {
                             { code: `}` },
                         ]}
                     />
-                    {runOutput.length > 0 && (
-                        <div style={{
-                            marginTop: 10,
-                            background: '#f5f5f5',
-                            borderRadius: 6,
-                            padding: 10,
-                            fontWeight: 500,
-                            color: loopColor
-                        }}>
-                            Output: {runOutput.join(', ')}
-                        </div>
-                    )}
-                    {/* --- Visualization of for loop order --- */}
                     <Section title="1a. For Loop Order Animation" subtitle="A visual of how a for loop executes">
                         <ForLoopOrderAnimation />
                     </Section>
