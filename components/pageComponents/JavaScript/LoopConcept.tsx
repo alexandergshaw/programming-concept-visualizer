@@ -49,30 +49,6 @@ export default function LoopConcept() {
     // For running code and showing output
     const [runOutput, setRunOutput] = useState<string[]>([]);
 
-    function handleRun(codeType: 'for' | 'forof' | 'dowhile') {
-        const output: string[] = [];
-        if (codeType === 'for') {
-            for (let i = 0; i < forCount; i++) {
-                output.push(i.toString());
-            }
-        } else if (codeType === 'forof') {
-            for (const item of arrayItems) {
-                output.push(item);
-            }
-        } else if (codeType === 'dowhile') {
-            let k = doStart;
-            if (doStart <= doEnd) {
-                do {
-                    output.push(k.toString());
-                    k++;
-                } while (k <= doEnd);
-            } else {
-                output.push(doStart.toString());
-            }
-        }
-        setRunOutput(output);
-    }
-
     return (
         <ConceptWrapper
             title="Loops in JavaScript"
