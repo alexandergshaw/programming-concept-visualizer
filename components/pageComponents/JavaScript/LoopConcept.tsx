@@ -10,8 +10,6 @@ import ForLoopOrderAnimation from './ForLoopOrderAnimation';
 import ForOfLoopOrderAnimation from './ForOfLoopOrderAnimation';
 import DoWhileLoopOrderAnimation from './DoWhileLoopOrderAnimation';
 
-const loopColor = '#0288d1';
-
 export default function LoopConcept() {
     // For-loop
     const [forCount, setForCount] = useState(5);
