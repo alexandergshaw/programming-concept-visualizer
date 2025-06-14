@@ -8,6 +8,8 @@ import Section from '@/components/common/Section';
 import CodeSnippet from '@/components/common/CodeSnippet';
 import OrderedList from '@/components/common/OrderedList';
 import TableOfContents from '@/components/common/TableOfContents';
+import IfElseOrderAnimation from './IfStatementAnimation';
+import IfElseIfElseOrderAnimation from './IfElseIfElseAnimation';
 
 const highlightColor = '#1976d2';
 const trueColor = '#43a047';
@@ -71,6 +73,9 @@ export default function ConditionalConcept() {
                             { code: `}` },
                         ]}
                     />
+                    <Section title="1a. Visualizing Conditionals">
+                        <IfElseOrderAnimation/>
+                    </Section>
                 </Section>
                 <Section
                     title="2. Try It Yourself"
@@ -228,6 +233,9 @@ export default function ConditionalConcept() {
                             { code: `}` },
                         ]}
                     />
+                    <Section title="4a. Visualizing Multiple Conditions">
+                        <IfElseIfElseOrderAnimation/>
+                    </Section>
                 </Section>
             </TableOfContents>
         </ConceptWrapper>
