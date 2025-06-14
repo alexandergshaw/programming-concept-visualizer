@@ -146,15 +146,15 @@ export default function IfElseIfElseAnimation() {
                     if (a &gt; b) {'{'}
                 </span>
                 <br />
-                <span>&nbsp;&nbsp;console.log("a is greater");</span>
+                <span>&nbsp;&nbsp;console.log(&quot;a is greater&quot;);</span>
                 <br />
                 <span>{'}'} else if (a === b) {'{'}</span>
                 <br />
-                <span>&nbsp;&nbsp;console.log("a equals b");</span>
+                <span>&nbsp;&nbsp;console.log(&quot;a equals b&quot;);</span>
                 <br />
                 <span>{'}'} else {'{'}</span>
                 <br />
-                <span>&nbsp;&nbsp;console.log("a is less");</span>
+                <span>&nbsp;&nbsp;console.log(&quot;a is less&quot;);</span>
                 <br />
                 <span>{'}'}</span>
             </pre>

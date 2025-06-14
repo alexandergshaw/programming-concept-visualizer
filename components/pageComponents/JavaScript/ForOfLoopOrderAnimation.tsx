@@ -32,14 +32,12 @@ const sampleArray = ['"apple"', '"banana"', '"pear"'];
 export default function ForOfLoopOrderAnimation() {
     const [currentStep, setCurrentStep] = useState(0);
     const [index, setIndex] = useState(0);
-    const [output, setOutput] = useState<string[]>([]);
     const [done, setDone] = useState(false);
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
     function reset() {
         setCurrentStep(0);
         setIndex(0);
-        setOutput([]);
         setDone(false);
         if (intervalRef.current) clearInterval(intervalRef.current);
     }
@@ -51,9 +49,6 @@ export default function ForOfLoopOrderAnimation() {
             // Declare array, nothing to do except highlight
         } else if (currentStep === 1) {
             // Start loop, nothing to do except highlight
-        } else if (currentStep === 2) {
-            // Loop body: output current item
-            setOutput(prev => [...prev, sampleArray[index].replace(/"/g, '')]);
         } else if (currentStep === 3) {
             // Grab next item, if there are any
             if (index + 1 >= sampleArray.length) {
@@ -85,7 +80,6 @@ export default function ForOfLoopOrderAnimation() {
                 // Start loop
             } else if (step === 2) {
                 localOutput = [...localOutput, sampleArray[localIndex].replace(/"/g, '')];
-                setOutput([...localOutput]);
             } else if (step === 3) {
                 if (localIndex + 1 >= sampleArray.length) {
                     setDone(true);
@@ -149,7 +143,19 @@ export default function ForOfLoopOrderAnimation() {
                 </span>
                 <span> {'{'}</span>
                 <br />
-                <span>&nbsp;&nbsp;<span style={currentStep === 2 ? highlightPart(2) : {}}>console.log(fruit);</span></span>
+                <span>&nbsp;&nbsp;
+                    <span style={currentStep === 1 ? highlightPart(1) : {}}>
+                        console.log(&quot;In if block&quot;);
+                    </span>
+                </span>
+                <br />
+                <span>{'}'} else {'{'}</span>
+                <br />
+                <span>&nbsp;&nbsp;
+                    <span style={currentStep === 2 ? highlightPart(2) : {}}>
+                        console.log(&quot;In else block&quot;);
+                    </span>
+                </span>
                 <br />
                 <span>{'}'}</span>
             </pre>
