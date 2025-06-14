@@ -96,7 +96,6 @@ export default function LoopConcept() {
                     </div>
                     <CodeSnippet
                         enableRun
-                        onRun={() => handleRun('for')}
                         lines={[
                             { code: `for (let i = 0; i < ${forCount}; i++) {` },
                             { code: `  console.log(i);` },
