@@ -77,7 +77,6 @@ export default function ForLoopOrderAnimation() {
     function playAnimation() {
         reset();
         let step = 0;
-        let iter = 1;
         let localI = 0;
         let localOutput: number[] = [];
         let localInitialized = false;
