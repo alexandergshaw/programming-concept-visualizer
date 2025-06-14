@@ -102,7 +102,6 @@ export default function ForLoopOrderAnimation() {
             setCurrentStep(step);
 
             if (step === 3) {
-                iter++;
                 step = 1; // After increment, always go to Condition
             } else if (step === 0 && localInitialized) {
                 step = 1; // Skip Initialization after first time
