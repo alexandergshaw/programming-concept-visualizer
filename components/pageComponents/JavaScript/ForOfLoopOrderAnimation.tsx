@@ -132,7 +132,7 @@ export default function ForOfLoopOrderAnimation() {
                 display: 'block'
             }}>
                 <span style={currentStep === 0 ? highlightPart(0) : {}}>
-                    const fruits = ["apple", "banana", "pear"];
+                    const fruits = [&quot;apple&quot;, &quot;banana&quot;, &quot;pear&quot;];
                 </span>
                 <br />
                 <span>

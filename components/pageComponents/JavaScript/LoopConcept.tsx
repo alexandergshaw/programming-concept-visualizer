@@ -50,7 +50,7 @@ export default function LoopConcept() {
     const [runOutput, setRunOutput] = useState<string[]>([]);
 
     function handleRun(codeType: 'for' | 'forof' | 'dowhile') {
-        let output: string[] = [];
+        const output: string[] = [];
         if (codeType === 'for') {
             for (let i = 0; i < forCount; i++) {
                 output.push(i.toString());
