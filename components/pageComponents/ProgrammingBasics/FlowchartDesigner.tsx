@@ -395,7 +395,7 @@ export default function FlowchartDesigner() {
                     subtitle="Add steps, questions, input, and output to plan your own program."
                 >
                     <Typography sx={{ mb: 2 }}>
-                        Click "Add" to put a new step in your flowchart. Use the purple shape for input/output, blue for actions, and yellow for questions!
+                        Click &quot;Add&quot; to put a new step in your flowchart.
                     </Typography>
                     <Box sx={{ display: 'flex', gap: 2, mb: 3, flexWrap: 'wrap' }}>
                         <FormControl size="small">
