@@ -15,9 +15,22 @@ interface CodeSnippetProps {
     enableRun?: boolean;
     editable?: boolean;
     allowCopy?: boolean;
+    language?: 'javascript' | 'python';
 }
 
-const CodeSnippet: React.FC<CodeSnippetProps> = ({ lines, enableRun = false, editable = false, allowCopy = true }) => {
+const getCommentSyntax = (language: string | undefined) => {
+    if (language === 'python') return '#';
+    // Default to JS/C-like
+    return '//';
+};
+
+const CodeSnippet: React.FC<CodeSnippetProps> = ({
+    lines,
+    enableRun = false,
+    editable = false,
+    allowCopy = true,
+    language = 'javascript'
+}) => {
     const [open, setOpen] = useState(false);
     const [output, setOutput] = useState<string>('No output yet.');
     const [editableLines, setEditableLines] = useState<string>(
@@ -73,10 +86,14 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({ lines, enableRun = false, edi
         };
     };
 
+    const commentSyntax = getCommentSyntax(language);
+
     return (
         <div style={{ backgroundColor: '#f5f5f5', borderRadius: '8px', padding: '10px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                <div style={{ fontWeight: 'bold', fontSize: '1rem', color: '#333' }}>Code Snippet</div>
+                <div style={{ fontWeight: 'bold', fontSize: '1rem', color: '#333' }}>
+                    Code Snippet {language === 'python' ? '(Python)' : '(JavaScript)'}
+                </div>
                 <div style={{ display: 'flex', gap: '8px' }}>
                     {editable && (
                         <Tooltip title={isEditing ? "Enter View Mode" : "Enter Edit Mode"}>
@@ -115,7 +132,7 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({ lines, enableRun = false, edi
                 <pre style={{ margin: 0, whiteSpace: 'pre-wrap', wordBreak: 'break-word', fontFamily: 'monospace', color: '#333' }}>
                     {lines.map((line, index) => (
                         <div key={index} style={{ marginBottom: '8px' }}>
-                            {line.code} {line.comment && <span style={{ color: '#888' }}>{`// ${line.comment}`}</span>}
+                            {line.code} {line.comment && <span style={{ color: '#888' }}>{` ${commentSyntax} ${line.comment}`}</span>}
                         </div>
                     ))}
                 </pre>

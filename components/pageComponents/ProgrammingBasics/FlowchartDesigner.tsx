@@ -156,13 +156,12 @@ interface FlowNode {
     id: number;
     type: NodeType;
     text: string;
-    branch?: 'left' | 'right'; // Now using 'left' and 'right' for clarity
+    branch?: 'left' | 'right';
     parentDecisionId?: number;
+    rejoinAfter?: boolean; // New: marks this node as the rejoin point
 }
 
-
-
-// Helper to generate code from user flowchart nodes (now supports branches)
+// Helper to generate code from user flowchart nodes (now supports branches and rejoin)
 function generateCodeFromNodes(nodes: FlowNode[]): { code: string; comment?: string }[] {
     const codeLines: { code: string; comment?: string }[] = [];
     let i = 0;
@@ -175,6 +174,7 @@ function generateCodeFromNodes(nodes: FlowNode[]): { code: string; comment?: str
                 .filter(n => n.parentDecisionId === node.id && n.branch === 'left')
                 .forEach(branchNode => {
                     codeLines.push({ code: `    // ${branchNode.text}` });
+                    if (branchNode.rejoinAfter) codeLines.push({ code: '    // (rejoin main flow)' });
                 });
             codeLines.push({ code: '} else {' });
             // Right branch
@@ -182,6 +182,7 @@ function generateCodeFromNodes(nodes: FlowNode[]): { code: string; comment?: str
                 .filter(n => n.parentDecisionId === node.id && n.branch === 'right')
                 .forEach(branchNode => {
                     codeLines.push({ code: `    // ${branchNode.text}` });
+                    if (branchNode.rejoinAfter) codeLines.push({ code: '    // (rejoin main flow)' });
                 });
             codeLines.push({ code: '}' });
         } else if (!node.parentDecisionId) {
@@ -282,6 +283,47 @@ function renderSampleFlowchart() {
     );
 }
 
+// Replace the RejoinArrow with a more aesthetic, modern look
+function RejoinArrow({ from }: { from: 'left' | 'right' }) {
+    // SVG: smooth, thick, colored, shadowed curve from branch to main flow
+    // The arrow starts at the branch and curves to the center below both branches
+    const isLeft = from === 'left';
+    const color = isLeft ? '#7e57c2' : '#42a5f5';
+    return (
+        <svg width="140" height="60" style={{ marginTop: -8, marginBottom: -8, filter: 'drop-shadow(0 2px 4px #bbb)' }}>
+            <defs>
+                <linearGradient id={`rejoin-gradient-${from}`} x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor={color} />
+                    <stop offset="100%" stopColor="#bdbdbd" />
+                </linearGradient>
+            </defs>
+            <path
+                d={
+                    isLeft
+                        // From left branch, curve right and down to center
+                        ? "M30,44 Q70,60 110,44"
+                        // From right branch, curve left and down to center
+                        : "M110,44 Q70,60 30,44"
+                }
+                stroke={`url(#rejoin-gradient-${from})`}
+                strokeWidth="6"
+                fill="none"
+                strokeLinecap="round"
+            />
+            {/* Arrowhead at the end of the curve (center bottom) */}
+            <polygon
+                points={
+                    isLeft
+                        ? "104,44 110,54 116,44"
+                        : "24,44 30,54 36,44"
+                }
+                fill={color}
+                style={{ filter: 'drop-shadow(0 1px 2px #bbb)' }}
+            />
+        </svg>
+    );
+}
+
 export default function FlowchartDesigner() {
     const [nodes, setNodes] = useState<FlowNode[]>([
         { id: 1, type: 'start', text: 'Start' },
@@ -306,7 +348,8 @@ export default function FlowchartDesigner() {
                     type: selectedType,
                     text: nodeText,
                     branch: branchMode.branch,
-                    parentDecisionId: branchMode.decisionId
+                    parentDecisionId: branchMode.decisionId,
+                    rejoinAfter: false
                 }
             ]);
         } else {
@@ -330,6 +373,20 @@ export default function FlowchartDesigner() {
         if (insertIdx > nodes.length - 2) setInsertIdx(nodes.length - 2);
     };
 
+    // New: Mark a branch node as the rejoin point
+    const setRejoinAfter = (branchNodeId: number) => {
+        setNodes(prev =>
+            prev.map(n =>
+                n.id === branchNodeId
+                    ? { ...n, rejoinAfter: true }
+                    : n.parentDecisionId === prev.find(bn => bn.id === branchNodeId)?.parentDecisionId &&
+                      n.branch === prev.find(bn => bn.id === branchNodeId)?.branch
+                        ? { ...n, rejoinAfter: false }
+                        : n
+            )
+        );
+    };
+
     // Render the correct shape for each node type
     const renderShape = (node: FlowNode) => {
         switch (node.type) {
@@ -350,7 +407,7 @@ export default function FlowchartDesigner() {
         }
     };
 
-    // Render user flowchart with branching after a decision
+    // Render user flowchart with branching after a decision and rejoin option
     const renderUserFlowchart = () => {
         return nodes
             .filter(node => !node.parentDecisionId)
@@ -359,6 +416,14 @@ export default function FlowchartDesigner() {
                     // Find branch nodes
                     const leftBranch = nodes.filter(n => n.parentDecisionId === node.id && n.branch === 'left');
                     const rightBranch = nodes.filter(n => n.parentDecisionId === node.id && n.branch === 'right');
+                    // Find rejoin points
+                    const leftRejoinIdx = leftBranch.findIndex(n => n.rejoinAfter);
+                    const rightRejoinIdx = rightBranch.findIndex(n => n.rejoinAfter);
+
+                    // Determine if either branch rejoins
+                    const showLeftRejoin = leftRejoinIdx !== -1;
+                    const showRightRejoin = rightRejoinIdx !== -1;
+
                     return (
                         <Box key={node.id + '-decision'} sx={{ width: '100%' }}>
                             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
@@ -383,20 +448,30 @@ export default function FlowchartDesigner() {
                                 </Box>
                             </Box>
                             {/* Branches */}
-                            <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%', mt: 5 }}>
+                            <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%', mt: 5, position: 'relative' }}>
                                 {/* Left branch */}
-                                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mx: 2 }}>
-                                    {leftBranch.map(branchNode => (
+                                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mx: 2, position: 'relative' }}>
+                                    {leftBranch.map((branchNode, i) => (
                                         <Box key={branchNode.id} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                             {renderShape(branchNode)}
-                                            <Button
-                                                size="small"
-                                                color="error"
-                                                sx={{ mb: 1 }}
-                                                onClick={() => setNodes(nodes.filter(n => n.id !== branchNode.id))}
-                                            >
-                                                Delete
-                                            </Button>
+                                            <Box sx={{ display: 'flex', gap: 1, mb: 1 }}>
+                                                <Button
+                                                    size="small"
+                                                    color="error"
+                                                    onClick={() => setNodes(nodes.filter(n => n.id !== branchNode.id))}
+                                                >
+                                                    Delete
+                                                </Button>
+                                                <Button
+                                                    size="small"
+                                                    variant={branchNode.rejoinAfter ? "contained" : "outlined"}
+                                                    color={branchNode.rejoinAfter ? "success" : "primary"}
+                                                    onClick={() => setRejoinAfter(branchNode.id)}
+                                                    disabled={i !== leftBranch.length - 1}
+                                                >
+                                                    {branchNode.rejoinAfter ? "Rejoins Main" : "Rejoin Main Here"}
+                                                </Button>
+                                            </Box>
                                         </Box>
                                     ))}
                                     <Button
@@ -409,18 +484,28 @@ export default function FlowchartDesigner() {
                                     </Button>
                                 </Box>
                                 {/* Right branch */}
-                                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mx: 2 }}>
-                                    {rightBranch.map(branchNode => (
+                                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mx: 2, position: 'relative' }}>
+                                    {rightBranch.map((branchNode, i) => (
                                         <Box key={branchNode.id} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                             {renderShape(branchNode)}
-                                            <Button
-                                                size="small"
-                                                color="error"
-                                                sx={{ mb: 1 }}
-                                                onClick={() => setNodes(nodes.filter(n => n.id !== branchNode.id))}
-                                            >
-                                                Delete
-                                            </Button>
+                                            <Box sx={{ display: 'flex', gap: 1, mb: 1 }}>
+                                                <Button
+                                                    size="small"
+                                                    color="error"
+                                                    onClick={() => setNodes(nodes.filter(n => n.id !== branchNode.id))}
+                                                >
+                                                    Delete
+                                                </Button>
+                                                <Button
+                                                    size="small"
+                                                    variant={branchNode.rejoinAfter ? "contained" : "outlined"}
+                                                    color={branchNode.rejoinAfter ? "success" : "primary"}
+                                                    onClick={() => setRejoinAfter(branchNode.id)}
+                                                    disabled={i !== rightBranch.length - 1}
+                                                >
+                                                    {branchNode.rejoinAfter ? "Rejoins Main" : "Rejoin Main Here"}
+                                                </Button>
+                                            </Box>
                                         </Box>
                                     ))}
                                     <Button
@@ -432,6 +517,23 @@ export default function FlowchartDesigner() {
                                         Add to Right branch
                                     </Button>
                                 </Box>
+                                {/* Rejoin arrows (shown below both branches, centered, with spacing) */}
+                                {(showLeftRejoin || showRightRejoin) && (
+                                    <Box sx={{
+                                        position: 'absolute',
+                                        left: 0,
+                                        right: 0,
+                                        bottom: -60,
+                                        width: '100%',
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        gap: 2,
+                                        pointerEvents: 'none'
+                                    }}>
+                                        {showLeftRejoin && <RejoinArrow from="left" />}
+                                        {showRightRejoin && <RejoinArrow from="right" />}
+                                    </Box>
+                                )}
                             </Box>
                         </Box>
                     );
