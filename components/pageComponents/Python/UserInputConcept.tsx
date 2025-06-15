@@ -92,7 +92,6 @@ export default function UserInputConcept() {
 
     // --- More in-depth interactive example state ---
     const [ageInput, setAgeInput] = useState('');
-    const [favColor, setFavColor] = useState('');
     const [showAdvancedResult, setShowAdvancedResult] = useState(false);
     const [ageError, setAgeError] = useState('');
 
@@ -100,14 +99,24 @@ export default function UserInputConcept() {
     const advancedCodeLines = [
         { code: 'age = input("How old are you? ")', comment: 'Ask for age' },
         { code: 'age = int(age)', comment: 'Convert age to a number' },
-        { code: 'if age < 18:', comment: 'Check if user is a child' },
-        { code: '    print("You are not old enough to vote")'},
+        { code: 'if age >= 18:', comment: 'Check if user can vote' },
+        { code: '    print("You are old enough to vote!")', comment: 'Output for eligible voters' },
         { code: 'else:', comment: 'Otherwise...' },
-        { code: '    print("You are old enough to vote")' },
+        { code: '    print("You are not old enough to vote yet.")', comment: 'Output for underage users' },
     ];
 
     // --- Advanced logic for output ---
-    const advancedOutput = '';
+    let advancedOutput = '';
+    let parsedAge = parseInt(ageInput, 10);
+    if (showAdvancedResult) {
+        if (isNaN(parsedAge)) {
+            advancedOutput = 'Please enter a valid number for age.';
+        } else if (parsedAge >= 18) {
+            advancedOutput = 'You are old enough to vote!';
+        } else {
+            advancedOutput = 'You are not old enough to vote yet.';
+        }
+    }
 
     return (
         <ConceptWrapper
@@ -231,16 +240,6 @@ export default function UserInputConcept() {
                                 error={!!ageError}
                                 helperText={ageError}
                             />
-                            <TextField
-                                label='What is your favorite color?'
-                                value={favColor}
-                                onChange={e => {
-                                    setFavColor(e.target.value);
-                                    setShowAdvancedResult(false);
-                                }}
-                                sx={{ mr: 2, width: 220 }}
-                                size="small"
-                            />
                             <Button
                                 variant="contained"
                                 onClick={() => {
@@ -252,7 +251,7 @@ export default function UserInputConcept() {
                                         setAgeError('');
                                     }
                                 }}
-                                disabled={!ageInput.trim() || !favColor.trim()}
+                                disabled={!ageInput.trim()}
                             >
                                 Show Result
                             </Button>
@@ -263,7 +262,6 @@ export default function UserInputConcept() {
                                     onClick={() => {
                                         setShowAdvancedResult(false);
                                         setAgeInput('');
-                                        setFavColor('');
                                         setAgeError('');
                                     }}
                                 >

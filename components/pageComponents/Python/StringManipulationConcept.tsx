@@ -14,14 +14,15 @@ export default function StringManipulationConcept() {
     const [age, setAge] = useState('30');
     const [color, setColor] = useState('blue');
 
-    const fString = `f"My name is ${name}, I am ${age} years old, and my favorite color is ${color}."`;
-    const fStringOutput = `My name is ${name}, I am ${age} years old, and my favorite color is ${color}.`;
+    // Improved, more natural output
+    const fString = `f"Hi {name}! You are {age} years old and your favorite color is {color}."`;
+    const fStringOutput = `Hi ${name}! You are ${age} years old and your favorite color is ${color}.`;
 
-    const concatString = '"My name is " + name + ", I am " + age + " years old, and my favorite color is " + color + "."';
-    const concatOutput = `My name is ${name}, I am ${age} years old, and my favorite color is ${color}.`;
+    const concatString = '"Hi " + name + "! You are " + age + " years old and your favorite color is " + color + "."';
+    const concatOutput = `Hi ${name}! You are ${age} years old and your favorite color is ${color}.`;
 
-    const formatString = '"My name is {}, I am {} years old, and my favorite color is {}.".format(name, age, color)';
-    const formatOutput = `My name is ${name}, I am ${age} years old, and my favorite color is ${color}.`;
+    const formatString = '"Hi {}! You are {} years old and your favorite color is {}.".format(name, age, color)';
+    const formatOutput = `Hi ${name}! You are ${age} years old and your favorite color is ${color}.`;
 
     return (
         <ConceptWrapper
@@ -50,7 +51,7 @@ export default function StringManipulationConcept() {
                                 { code: `age = input("How old are you? ")`, comment: 'get user input for age' },
                                 { code: `color = input("What is your favorite color? ")`, comment: 'get user input for color' },
                                 { code: fString, comment: 'f-string with variables' },
-                                { code: '', comment: `Output: ${fStringOutput}` },
+                                { code: `# Output: ${fStringOutput}` },
                             ]}
                             language="python"
                         />
@@ -64,8 +65,8 @@ export default function StringManipulationConcept() {
                                 { code: `name = input("What is your name? ")`, comment: 'get user input for name' },
                                 { code: `age = input("How old are you? ")`, comment: 'get user input for age' },
                                 { code: `color = input("What is your favorite color? ")`, comment: 'get user input for color' },
-                                { code: concatString, comment: 'concatenation' },
-                                { code: '', comment: `Output: ${concatOutput}` },
+                                { code: concatString, comment: 'concatenation with +' },
+                                { code: `# Output: ${concatOutput}` },
                             ]}
                             language="python"
                         />
@@ -80,7 +81,7 @@ export default function StringManipulationConcept() {
                                 { code: `age = input("How old are you? ")`, comment: 'get user input for age' },
                                 { code: `color = input("What is your favorite color? ")`, comment: 'get user input for color' },
                                 { code: formatString, comment: 'using format()' },
-                                { code: '', comment: `Output: ${formatOutput}` },
+                                { code: `# Output: ${formatOutput}` },
                             ]}
                             language="python"
                         />
@@ -117,7 +118,7 @@ export default function StringManipulationConcept() {
                                 { code: `age = "${age}"`, comment: 'variable from user input' },
                                 { code: `color = "${color}"`, comment: 'variable from user input' },
                                 { code: fString, comment: 'f-string' },
-                                { code: '', comment: `Output: ${fStringOutput}` },
+                                { code: `# Output: ${fStringOutput}` },
                             ]}
                             language="python"
                         />
@@ -129,7 +130,7 @@ export default function StringManipulationConcept() {
                                 { code: `age = "${age}"`, comment: 'variable from user input' },
                                 { code: `color = "${color}"`, comment: 'variable from user input' },
                                 { code: concatString, comment: 'concatenation' },
-                                { code: '', comment: `Output: ${concatOutput}` },
+                                { code: `# Output: ${concatOutput}` },
                             ]}
                             language="python"
                         />
@@ -141,7 +142,7 @@ export default function StringManipulationConcept() {
                                 { code: `age = "${age}"`, comment: 'variable from user input' },
                                 { code: `color = "${color}"`, comment: 'variable from user input' },
                                 { code: formatString, comment: 'format()' },
-                                { code: '', comment: `Output: ${formatOutput}` },
+                                { code: `# Output: ${formatOutput}` },
                             ]}
                             language="python"
                         />
