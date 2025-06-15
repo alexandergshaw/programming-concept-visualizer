@@ -254,10 +254,6 @@ export default function FlowchartDesigner() {
         { id: 6, type: 'end', text: 'End' }
     ];
 
-    // Helper to check if a node is a decision in the sample flowchart
-    const isSampleDecision = (node: FlowNode) =>
-        node.type === 'decision' && node.text.toLowerCase().includes('even');
-
     // For the sample flowchart, show branches for the decision node
     const renderSampleFlowchart = () => (
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0, mb: 2 }}>
@@ -452,10 +448,15 @@ export default function FlowchartDesigner() {
                                 <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                     {renderShape(node)}
                                     {node.type !== 'start' && node.type !== 'end' && (
-                                        // No text outside the shape for any node
-                                        null
+                                        <Button
+                                            size="small"
+                                            color="error"
+                                            sx={{ mb: 1 }}
+                                            onClick={() => removeNode(idx)}
+                                        >
+                                            Delete
+                                        </Button>
                                     )}
-                                    {/* Delete button, etc. */}
                                 </Box>
                                 {/* Arrow between shapes */}
                                 {idx < nodes.length - 1 && <Arrow />}
@@ -467,7 +468,18 @@ export default function FlowchartDesigner() {
                             Your Program Code
                         </Typography>
                         <CodeSnippet
-                            lines={userCodeLines.length ? userCodeLines : [{ code: '// Add steps to see your code!' }]}
+                            lines={
+                                userCodeLines.length
+                                    ? userCodeLines.map(line => ({
+                                        ...line,
+                                        comment: line.comment
+                                            ? line.comment
+                                                .replace(/"/g, '&quot;')
+                                                .replace(/'/g, '&apos;')
+                                            : undefined
+                                    }))
+                                    : [{ code: '// Add steps to see your code!' }]
+                            }
                             allowCopy
                         />
                     </Box>

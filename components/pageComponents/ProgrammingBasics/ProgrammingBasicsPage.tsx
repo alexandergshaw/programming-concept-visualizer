@@ -97,8 +97,6 @@ export default function ProgrammingBasicsPage() {
 						closing="You'll see how an idea becomes an algorithm, how that algorithm can be visualized with a flow chart, and how pseudo code bridges the gap between your plan and real code. Let's get started designing programs!"
 					/>
 				);
-			case 'algorithms':
-				return <AlgorithmConcept />;
 			case 'flow-charts':
 				return <FlowchartDesigner />;
 			default:
