@@ -13,7 +13,7 @@ import ComputerIcon from '@mui/icons-material/Computer';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import SubjectIcon from '@mui/icons-material/Subject';
 import AutoAwesomeMotionIcon from '@mui/icons-material/AutoAwesomeMotion'; 
-import AlgorithmConcept from './AlgorithmConcept';
+import FlowchartDesigner from './FlowchartDesigner';
 
 const navItems = [
 	{
@@ -30,10 +30,7 @@ const navItems = [
 		label: 'How We Design Programs',
 		value: 'how-we-design-programs',
 		children: [
-			{ label: '1) Introduction', value: 'introduction-design-programs'},
-			{ label: '2) Algorithms', value: 'algorithms'},
-			{ label: '2) Flow Charts', value: 'flow-charts'},
-			{ label: '3) Pseudo Code', value: 'pseudo-code'},
+			{ label: 'Flow Charts', value: 'flow-charts'},
 		],
 	},
 ];
@@ -102,6 +99,8 @@ export default function ProgrammingBasicsPage() {
 				);
 			case 'algorithms':
 				return <AlgorithmConcept />;
+			case 'flow-charts':
+				return <FlowchartDesigner />;
 			default:
 				return null;
 		}
