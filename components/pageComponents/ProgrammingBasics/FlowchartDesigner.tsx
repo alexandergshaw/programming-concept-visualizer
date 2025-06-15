@@ -432,7 +432,7 @@ export default function FlowchartDesigner() {
                                 {nodes.map((node, idx) => (
                                     idx !== 0 && (
                                         <MenuItem key={idx} value={idx}>
-                                            {`After "${nodes[idx - 1].text}"`}
+                                            {`After ${nodes[idx - 1].text.replace(/"/g, '&quot;').replace(/'/g, '&apos;')}`}
                                         </MenuItem>
                                     )
                                 ))}
