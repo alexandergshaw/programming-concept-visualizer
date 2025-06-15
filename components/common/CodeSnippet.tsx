@@ -91,9 +91,6 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({
     return (
         <div style={{ backgroundColor: '#f5f5f5', borderRadius: '8px', padding: '10px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                <div style={{ fontWeight: 'bold', fontSize: '1rem', color: '#333' }}>
-                    Code Snippet {language === 'python' ? '(Python)' : '(JavaScript)'}
-                </div>
                 <div style={{ display: 'flex', gap: '8px' }}>
                     {editable && (
                         <Tooltip title={isEditing ? "Enter View Mode" : "Enter Edit Mode"}>
