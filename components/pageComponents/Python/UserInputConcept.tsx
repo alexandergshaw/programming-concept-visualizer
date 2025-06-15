@@ -107,8 +107,7 @@ export default function UserInputConcept() {
     ];
 
     // --- Advanced logic for output ---
-    let advancedOutput = '';
-    const parsedAge = parseInt(ageInput, 10);
+    const advancedOutput = '';
 
     return (
         <ConceptWrapper
