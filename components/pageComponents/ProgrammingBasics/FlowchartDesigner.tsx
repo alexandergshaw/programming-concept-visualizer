@@ -369,7 +369,7 @@ export default function FlowchartDesigner() {
                 >
                     <Paper sx={{ p: 2, mb: 2, bgcolor: '#fffde7', border: '2px solid #ffe082' }}>
                         <Typography sx={{ mb: 1 }}>
-                            <b>Problem:</b> Ask the user for a number. If the number is even, show "Even". If it's odd, show "Odd".
+                            <b>Problem:</b> Ask the user for a number. If the number is even, show &quot;Even&quot;. If it&apos;s odd, show &quot;Odd&quot;.
                         </Typography>
                     </Paper>
                     <Section title="2a) Sample Flowchart" sx={{ mb: 2 }}>
