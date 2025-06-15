@@ -7,6 +7,14 @@ import Section from '../../common/Section';
 import TableOfContents from '../../common/TableOfContents';
 import CodeSnippet from '../../common/CodeSnippet';
 
+const SYMBOLS = [
+    { shape: <Oval> </Oval>, name: 'Start/end', meaning: 'Shows where your program begins or ends.' },
+    { shape: <Arrow />, name: 'Arrow', meaning: 'Shows the direction to go next.' },
+    { shape: <Parallelogram> </Parallelogram>, name: 'Input/Output', meaning: 'Purple slanted box: ask the user for info or show a result.' },
+    { shape: <Rectangle> </Rectangle>, name: 'Process', meaning: 'Blue rectangle: do a calculation or action.' },
+    { shape: <Diamond> </Diamond>, name: 'Decision', meaning: 'Yellow diamond: ask a yes/no question.' },
+];
+
 // SVG shape components for flowchart
 function Oval({ children, color }: { children: React.ReactNode, color?: string }) {
     return (
@@ -148,49 +156,130 @@ interface FlowNode {
     id: number;
     type: NodeType;
     text: string;
+    branch?: 'left' | 'right'; // Now using 'left' and 'right' for clarity
+    parentDecisionId?: number;
 }
 
-const SYMBOLS = [
-    { shape: <Oval> </Oval>, name: 'Start/end', meaning: 'Shows where your program begins or ends.' },
-    { shape: <Arrow />, name: 'Arrow', meaning: 'Shows the direction to go next.' },
-    { shape: <Parallelogram> </Parallelogram>, name: 'Input/Output', meaning: 'Purple slanted box: ask the user for info or show a result.' },
-    { shape: <Rectangle> </Rectangle>, name: 'Process', meaning: 'Blue rectangle: do a calculation or action.' },
-    { shape: <Diamond> </Diamond>, name: 'Decision', meaning: 'Yellow diamond: ask a yes/no question.' },
-];
 
-// Helper to generate code from user flowchart nodes
+
+// Helper to generate code from user flowchart nodes (now supports branches)
 function generateCodeFromNodes(nodes: FlowNode[]): { code: string; comment?: string }[] {
     const codeLines: { code: string; comment?: string }[] = [];
-    for (let i = 0; i < nodes.length; i++) {
+    let i = 0;
+    while (i < nodes.length) {
         const node = nodes[i];
-        switch (node.type) {
-            case 'start':
-                codeLines.push({ code: '', comment: 'Start of program' });
-                break;
-            case 'input':
-                codeLines.push({ code: 'const input = prompt("Enter a value:");', comment: node.text });
-                break;
-            case 'output':
-                codeLines.push({ code: 'console.log(input);', comment: node.text });
-                break;
-            case 'process':
-                codeLines.push({ code: '', comment: node.text });
-                break;
-            case 'decision':
-                codeLines.push({ code: 'if (/* condition */) {', comment: node.text });
-                codeLines.push({ code: '    // ...', comment: 'Yes branch' });
-                codeLines.push({ code: '} else {' });
-                codeLines.push({ code: '    // ...', comment: 'No branch' });
-                codeLines.push({ code: '}' });
-                break;
-            case 'end':
-                codeLines.push({ code: '', comment: 'End of program' });
-                break;
-            default:
-                break;
+        if (node.type === 'decision') {
+            codeLines.push({ code: 'if (/* condition */) {', comment: node.text });
+            // Left branch
+            nodes
+                .filter(n => n.parentDecisionId === node.id && n.branch === 'left')
+                .forEach(branchNode => {
+                    codeLines.push({ code: `    // ${branchNode.text}` });
+                });
+            codeLines.push({ code: '} else {' });
+            // Right branch
+            nodes
+                .filter(n => n.parentDecisionId === node.id && n.branch === 'right')
+                .forEach(branchNode => {
+                    codeLines.push({ code: `    // ${branchNode.text}` });
+                });
+            codeLines.push({ code: '}' });
+        } else if (!node.parentDecisionId) {
+            // Only add top-level nodes (not branch nodes)
+            switch (node.type) {
+                case 'start':
+                    codeLines.push({ code: '', comment: 'Start of program' });
+                    break;
+                case 'input':
+                    codeLines.push({ code: 'const input = prompt("Enter a value:");', comment: node.text });
+                    break;
+                case 'output':
+                    codeLines.push({ code: 'console.log(input);', comment: node.text });
+                    break;
+                case 'process':
+                    codeLines.push({ code: '', comment: node.text });
+                    break;
+                case 'end':
+                    codeLines.push({ code: '', comment: 'End of program' });
+                    break;
+                default:
+                    break;
+            }
         }
+        i++;
     }
     return codeLines;
+}
+
+// Sample flowchart nodes for the example
+const sampleNodes: FlowNode[] = [
+    { id: 1, type: 'start', text: 'Start' },
+    { id: 2, type: 'input', text: 'Ask for number' },
+    { id: 3, type: 'decision', text: 'Even?' },
+    { id: 4, type: 'output', text: 'Show "Even"' },
+    { id: 5, type: 'output', text: 'Show "Odd"' },
+    { id: 6, type: 'end', text: 'End' }
+];
+
+// Helper to render the sample flowchart with branches
+function renderSampleFlowchart() {
+    return (
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0, mb: 2 }}>
+            {/* Start */}
+            <Box sx={{ width: '100%' }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <Oval color="#81c784">Start</Oval>
+                </Box>
+                <Arrow />
+            </Box>
+            {/* Input */}
+            <Box sx={{ width: '100%' }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <Parallelogram color="#ba68c8">{sampleNodes[1].text}</Parallelogram>
+                </Box>
+                <Arrow />
+            </Box>
+            {/* Decision */}
+            <Box sx={{ width: '100%' }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
+                    <Diamond color="#ffd54f">{sampleNodes[2].text}</Diamond>
+                    {/* Branch arrows */}
+                    <Box sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        width: '100%',
+                        position: 'absolute',
+                        left: 0,
+                        right: 0,
+                        bottom: -30,
+                        zIndex: 1
+                    }}>
+                        <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end', pr: 3 }}>
+                            <BranchArrow label="Yes" direction="left" />
+                        </Box>
+                        <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-start', pl: 3 }}>
+                            <BranchArrow label="No" direction="right" />
+                        </Box>
+                    </Box>
+                </Box>
+                {/* Branches */}
+                <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%', mt: 5 }}>
+                    {/* Left branch */}
+                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mx: 2 }}>
+                        <Parallelogram color="#ba68c8">{sampleNodes[3].text}</Parallelogram>
+                        <Arrow />
+                        <Oval color="#e57373">End</Oval>
+                    </Box>
+                    {/* Right branch */}
+                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mx: 2 }}>
+                        <Parallelogram color="#ba68c8">{sampleNodes[4].text}</Parallelogram>
+                        <Arrow />
+                        <Oval color="#e57373">End</Oval>
+                    </Box>
+                </Box>
+            </Box>
+        </Box>
+    );
 }
 
 export default function FlowchartDesigner() {
@@ -200,7 +289,8 @@ export default function FlowchartDesigner() {
     ]);
     const [selectedType, setSelectedType] = useState<NodeType>('process');
     const [nodeText, setNodeText] = useState('');
-    const [insertIdx, setInsertIdx] = useState<number>(1); // Default: before 'End'
+    const [insertIdx, setInsertIdx] = useState<number>(1);
+    const [branchMode, setBranchMode] = useState<{ decisionId: number, branch: 'left' | 'right' } | null>(null);
 
     // Generate code snippet from user flowchart
     const userCodeLines = generateCodeFromNodes(nodes);
@@ -208,20 +298,36 @@ export default function FlowchartDesigner() {
     const addNode = () => {
         if (!nodeText.trim()) return;
         const newId = nodes.length ? Math.max(...nodes.map(n => n.id)) + 1 : 1;
-        const newNode: FlowNode = { id: newId, type: selectedType, text: nodeText };
-        const newNodes = [...nodes];
-        newNodes.splice(insertIdx, 0, newNode);
-        setNodes(newNodes);
+        if (branchMode) {
+            setNodes(prev => [
+                ...prev,
+                {
+                    id: newId,
+                    type: selectedType,
+                    text: nodeText,
+                    branch: branchMode.branch,
+                    parentDecisionId: branchMode.decisionId
+                }
+            ]);
+        } else {
+            const newNode: FlowNode = { id: newId, type: selectedType, text: nodeText };
+            const newNodes = [...nodes];
+            newNodes.splice(insertIdx, 0, newNode);
+            setNodes(newNodes);
+            setInsertIdx(insertIdx + 1);
+        }
         setNodeText('');
-        setInsertIdx(insertIdx + 1);
     };
 
     const removeNode = (idx: number) => {
-        if (nodes[idx].type === 'start' || nodes[idx].type === 'end') return;
-        const newNodes = [...nodes];
-        newNodes.splice(idx, 1);
-        setNodes(newNodes);
-        if (insertIdx > newNodes.length - 1) setInsertIdx(newNodes.length - 1);
+        const node = nodes[idx];
+        if (node.type === 'start' || node.type === 'end') return;
+        if (node.type === 'decision') {
+            setNodes(nodes.filter(n => n.id !== node.id && n.parentDecisionId !== node.id));
+        } else {
+            setNodes(nodes.filter((_, i) => i !== idx));
+        }
+        if (insertIdx > nodes.length - 2) setInsertIdx(nodes.length - 2);
     };
 
     // Render the correct shape for each node type
@@ -244,81 +350,114 @@ export default function FlowchartDesigner() {
         }
     };
 
-    // Sample problem, flowchart, and code
-    const sampleNodes: FlowNode[] = [
-        { id: 1, type: 'start', text: 'Start' },
-        { id: 2, type: 'input', text: 'Input number' },
-        { id: 3, type: 'decision', text: 'Even?' },
-        { id: 4, type: 'output', text: 'Show "Even"' },
-        { id: 5, type: 'output', text: 'Show "Odd"' },
-        { id: 6, type: 'end', text: 'End' }
-    ];
-
-    // For the sample flowchart, show branches for the decision node
-    const renderSampleFlowchart = () => (
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0, mb: 2 }}>
-            {/* Start */}
-            <Box sx={{ width: '100%' }}>
-                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    {renderShape(sampleNodes[0])}
-                    {/* No text outside the shape */}
-                </Box>
-                <Arrow />
-            </Box>
-            {/* Input */}
-            <Box sx={{ width: '100%' }}>
-                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    {renderShape(sampleNodes[1])}
-                    {/* No text outside the shape */}
-                </Box>
-                <Arrow />
-            </Box>
-            {/* Decision */}
-            <Box sx={{ width: '100%' }}>
-                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
-                    {renderShape(sampleNodes[2])}
-                    {/* No text outside the shape */}
-                    {/* Branch arrows */}
-                    <Box sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        width: '100%',
-                        position: 'absolute',
-                        left: 0,
-                        right: 0,
-                        bottom: -30,
-                        zIndex: 1
-                    }}>
-                        <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end', pr: 3 }}>
-                            <BranchArrow label="Yes" direction="left" />
+    // Render user flowchart with branching after a decision
+    const renderUserFlowchart = () => {
+        return nodes
+            .filter(node => !node.parentDecisionId)
+            .map((node, idx) => {
+                if (node.type === 'decision') {
+                    // Find branch nodes
+                    const leftBranch = nodes.filter(n => n.parentDecisionId === node.id && n.branch === 'left');
+                    const rightBranch = nodes.filter(n => n.parentDecisionId === node.id && n.branch === 'right');
+                    return (
+                        <Box key={node.id + '-decision'} sx={{ width: '100%' }}>
+                            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
+                                {renderShape(node)}
+                                {/* Branch arrows */}
+                                <Box sx={{
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    width: '100%',
+                                    position: 'absolute',
+                                    left: 0,
+                                    right: 0,
+                                    bottom: -30,
+                                    zIndex: 1
+                                }}>
+                                    <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end', pr: 3 }}>
+                                        <BranchArrow label="Yes" direction="left" />
+                                    </Box>
+                                    <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-start', pl: 3 }}>
+                                        <BranchArrow label="No" direction="right" />
+                                    </Box>
+                                </Box>
+                            </Box>
+                            {/* Branches */}
+                            <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%', mt: 5 }}>
+                                {/* Left branch */}
+                                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mx: 2 }}>
+                                    {leftBranch.map(branchNode => (
+                                        <Box key={branchNode.id} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                            {renderShape(branchNode)}
+                                            <Button
+                                                size="small"
+                                                color="error"
+                                                sx={{ mb: 1 }}
+                                                onClick={() => setNodes(nodes.filter(n => n.id !== branchNode.id))}
+                                            >
+                                                Delete
+                                            </Button>
+                                        </Box>
+                                    ))}
+                                    <Button
+                                        size="small"
+                                        variant="outlined"
+                                        sx={{ mb: 1 }}
+                                        onClick={() => setBranchMode({ decisionId: node.id, branch: 'left' })}
+                                    >
+                                        Add to Left branch
+                                    </Button>
+                                </Box>
+                                {/* Right branch */}
+                                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mx: 2 }}>
+                                    {rightBranch.map(branchNode => (
+                                        <Box key={branchNode.id} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                            {renderShape(branchNode)}
+                                            <Button
+                                                size="small"
+                                                color="error"
+                                                sx={{ mb: 1 }}
+                                                onClick={() => setNodes(nodes.filter(n => n.id !== branchNode.id))}
+                                            >
+                                                Delete
+                                            </Button>
+                                        </Box>
+                                    ))}
+                                    <Button
+                                        size="small"
+                                        variant="outlined"
+                                        sx={{ mb: 1 }}
+                                        onClick={() => setBranchMode({ decisionId: node.id, branch: 'right' })}
+                                    >
+                                        Add to Right branch
+                                    </Button>
+                                </Box>
+                            </Box>
                         </Box>
-                        <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-start', pl: 3 }}>
-                            <BranchArrow label="No" direction="right" />
+                    );
+                }
+                // Regular node
+                return (
+                    <Box key={node.id + '-with-arrow'} sx={{ width: '100%' }}>
+                        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                            {renderShape(node)}
+                            {node.type !== 'start' && node.type !== 'end' && (
+                                <Button
+                                    size="small"
+                                    color="error"
+                                    sx={{ mb: 1 }}
+                                    onClick={() => removeNode(idx)}
+                                >
+                                    Delete
+                                </Button>
+                            )}
                         </Box>
+                        {/* Arrow between shapes */}
+                        {idx < nodes.filter(n => !n.parentDecisionId).length - 1 && <Arrow />}
                     </Box>
-                </Box>
-                {/* Branches */}
-                <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%', mt: 5 }}>
-                    {/* Yes branch (left) */}
-                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mx: 2 }}>
-                        {renderShape(sampleNodes[3])}
-                        {/* No text outside the shape */}
-                        <Arrow />
-                        {renderShape(sampleNodes[5])}
-                        {/* No text outside the shape */}
-                    </Box>
-                    {/* No branch (right) */}
-                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mx: 2 }}>
-                        {renderShape(sampleNodes[4])}
-                        {/* No text outside the shape */}
-                        <Arrow />
-                        {renderShape(sampleNodes[5])}
-                        {/* No text outside the shape */}
-                    </Box>
-                </Box>
-            </Box>
-        </Box>
-    );
+                );
+            });
+    };
 
     return (
         <ConceptWrapper
@@ -374,7 +513,6 @@ export default function FlowchartDesigner() {
                     </Paper>
                     <Section title="2a) Sample Flowchart">
                         {renderSampleFlowchart()}
-
                     </Section>
                     <Section title="2b) Sample Code">
                         <CodeSnippet
@@ -395,7 +533,7 @@ export default function FlowchartDesigner() {
                     subtitle="Add steps, questions, input, and output to plan your own program."
                 >
                     <Typography sx={{ mb: 2 }}>
-                        Click &quot;Add&quot; to put a new step in your flowchart.
+                        Click &quot;Add&quot; to put a new step in your flowchart. To add to a branch after a decision, click &quot;Add to Left branch&quot; or &quot;Add to Right branch&quot; next to the decision.
                     </Typography>
                     <Box sx={{ display: 'flex', gap: 2, mb: 3, flexWrap: 'wrap' }}>
                         <FormControl size="small">
@@ -420,48 +558,43 @@ export default function FlowchartDesigner() {
                             onChange={e => setNodeText(e.target.value)}
                             sx={{ minWidth: 200 }}
                         />
-                        <FormControl size="small">
-                            <InputLabel id="insert-label">Insert At</InputLabel>
-                            <Select
-                                labelId="insert-label"
-                                value={insertIdx}
-                                label="Insert At"
-                                onChange={e => setInsertIdx(Number(e.target.value))}
-                                sx={{ minWidth: 120 }}
-                            >
-                                {nodes.map((node, idx) => (
-                                    idx !== 0 && (
-                                        <MenuItem key={idx} value={idx}>
-                                            {`After ${nodes[idx - 1].text.replace(/"/g, '&quot;').replace(/'/g, '&apos;')}`}
-                                        </MenuItem>
-                                    )
-                                ))}
-                            </Select>
-                        </FormControl>
+                        {!branchMode && (
+                            <FormControl size="small">
+                                <InputLabel id="insert-label">Insert At</InputLabel>
+                                <Select
+                                    labelId="insert-label"
+                                    value={insertIdx}
+                                    label="Insert At"
+                                    onChange={e => setInsertIdx(Number(e.target.value))}
+                                    sx={{ minWidth: 120 }}
+                                >
+                                    {nodes.map((node, idx) => (
+                                        idx !== 0 && (
+                                            <MenuItem key={idx} value={idx}>
+                                                {`After ${nodes[idx - 1].text.replace(/"/g, '&quot;').replace(/'/g, '&apos;')}`}
+                                            </MenuItem>
+                                        )
+                                    ))}
+                                </Select>
+                            </FormControl>
+                        )}
                         <Button variant="contained" onClick={addNode} disabled={!nodeText.trim()}>
-                            Add
+                            {branchMode
+                                ? `Add to ${branchMode.branch === 'left' ? 'Left' : 'Right'} branch`
+                                : 'Add'}
                         </Button>
+                        {branchMode && (
+                            <Button
+                                variant="outlined"
+                                color="secondary"
+                                onClick={() => setBranchMode(null)}
+                            >
+                                Cancel Branch
+                            </Button>
+                        )}
                     </Box>
                     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0 }}>
-                        {nodes.map((node, idx) => (
-                            <Box key={node.id + '-with-arrow'} sx={{ width: '100%' }}>
-                                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                                    {renderShape(node)}
-                                    {node.type !== 'start' && node.type !== 'end' && (
-                                        <Button
-                                            size="small"
-                                            color="error"
-                                            sx={{ mb: 1 }}
-                                            onClick={() => removeNode(idx)}
-                                        >
-                                            Delete
-                                        </Button>
-                                    )}
-                                </Box>
-                                {/* Arrow between shapes */}
-                                {idx < nodes.length - 1 && <Arrow />}
-                            </Box>
-                        ))}
+                        {renderUserFlowchart()}
                     </Box>
                     <Box sx={{ mt: 4, width: '100%' }}>
                         <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 700 }}>
