@@ -3,13 +3,7 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import PageWrapper from '../../common/PageWrapper';
-// Import your Python concept components here
 import VariableConcept from './VariableConcept';
-import ConstantConcept from './ConstantConcept';
-import DataTypesConcept from './DataTypesConcept';
-import ListConcept from './ListConcept';
-import DictConcept from './DictConcept';
-import SetConcept from './SetConcept';
 import UserInputConcept from './UserInputConcept';
 import StringManipulationConcept from './StringManipulationConcept';
 

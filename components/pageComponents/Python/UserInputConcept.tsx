@@ -108,7 +108,7 @@ export default function UserInputConcept() {
 
     // --- Advanced logic for output ---
     let advancedOutput = '';
-    let parsedAge = parseInt(ageInput, 10);
+    const parsedAge = parseInt(ageInput, 10);
     if (showAdvancedResult) {
         if (isNaN(parsedAge)) {
             advancedOutput = 'Please enter a valid number for age.';
