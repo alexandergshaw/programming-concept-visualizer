@@ -103,7 +103,7 @@ export default function LandingPage() {
       <HeroSection>
         <Container maxWidth="lg">
           <Grid container spacing={8} alignItems="center">
-            <Grid item xs={12} md={7}>
+            <Grid item xs={12}>
               <Box sx={{ mb: 2 }}>
                 <CodeIcon sx={{ fontSize: 40, color: '#00319b', mb: 2 }} />
               </Box>
@@ -137,40 +137,40 @@ export default function LandingPage() {
               >
                 Learn programming concepts with visual examples and interactive tutorials
               </Typography>
+              
               <Grid container spacing={3}>
-              {languages.map((lang) => (
-                <Grid item xs={6} sm={6} md={3} key={lang.name}>
-                  <MinimalCard onClick={() => handleClick(lang.name)}>
-                    <CardContent sx={{ p: 2.5, textAlign: 'center' }}>
-                      {getLanguageIcon(lang.name)}
-                      <Typography 
-                        variant="h6" 
-                        sx={{ 
-                          fontWeight: 600, 
-                          mb: 1,
-                          color: '#1e293b',
-                          fontSize: '1.1rem',
-                        }}
-                      >
-                        {lang.name}
-                      </Typography>
-                      <Typography 
-                        variant="body2" 
-                        sx={{ 
-                          color: '#64748b',
-                          mb: 2,
-                          fontSize: '0.9rem',
-                        }}
-                      >
-                        {lang.type}
-                      </Typography>
-                    </CardContent>
-                  </MinimalCard>
-                </Grid>
-              ))}
+                {languages.map((lang) => (
+                  <Grid item xs={6} sm={6} md={3} key={lang.name}>
+                    <MinimalCard onClick={() => handleClick(lang.name)}>
+                      <CardContent sx={{ p: 2.5, textAlign: 'center' }}>
+                        {getLanguageIcon(lang.name)}
+                        <Typography 
+                          variant="h6" 
+                          sx={{ 
+                            fontWeight: 600, 
+                            mb: 1,
+                            color: '#1e293b',
+                            fontSize: '1.1rem',
+                          }}
+                        >
+                          {lang.name}
+                        </Typography>
+                        <Typography 
+                          variant="body2" 
+                          sx={{ 
+                            color: '#64748b',
+                            mb: 2,
+                            fontSize: '0.9rem',
+                          }}
+                        >
+                          {lang.type}
+                        </Typography>
+                      </CardContent>
+                    </MinimalCard>
+                  </Grid>
+                ))}
+              </Grid>
             </Grid>
-            </Grid>
-            
           </Grid>
           
           {/* Footer */}
