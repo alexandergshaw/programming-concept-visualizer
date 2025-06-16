@@ -11,8 +11,7 @@ import {
 import { styled } from '@mui/material/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faJs, faPython, faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faGraduationCap, faBug, faCode, faPlay, faGlobe } from '@fortawesome/free-solid-svg-icons';
-import { faTriangle } from '@fortawesome/free-solid-svg-icons';
+import { faGraduationCap, faBug, faCode, faGlobe } from '@fortawesome/free-solid-svg-icons';
 import CodeIcon from '@mui/icons-material/Code';
 import React, { useState, useEffect } from "react";
 import Loader from '@/components/common/Loader';
@@ -60,8 +59,6 @@ const languages = [
 
 // Function to get language icon
 const getLanguageIcon = (language: string) => {
-  const iconProps = { sx: { fontSize: 32, mb: 1 } };
-
   switch (language.toLowerCase()) {
     case 'javascript':
       return (
