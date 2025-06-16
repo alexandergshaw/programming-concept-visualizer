@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import '../../styles/javascript.css';
 import { TextField } from '@mui/material';
 
@@ -15,9 +16,11 @@ interface SidebarProps {
   items: SidebarItem[];
   onSelect?: (value: string) => void;
   defaultOpen?: string[];
+  activeValue?: string;
 }
 
-export default function Sidebar({ title, items, onSelect, defaultOpen = [] }: SidebarProps) {
+export default function Sidebar({ title, items, onSelect, defaultOpen = [], activeValue }: SidebarProps) {
+  const router = useRouter();
   const [open, setOpen] = useState<Set<string>>(new Set());
   const [searchQuery, setSearchQuery] = useState(''); // State for the search query
   const [filteredItems, setFilteredItems] = useState<SidebarItem[]>(items); // State for filtered items
@@ -74,6 +77,8 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [] }: Si
         backgroundColor: '#333', // Optional: Ensure the background is visible
         overflowY: 'auto', // Allow scrolling if the content overflows
         padding: '16px', // Add some padding for better spacing
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
       <h2 className="js-sidebar-title">{title}</h2>
@@ -129,7 +134,7 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [] }: Si
                   {item.children.map((sub) => (
                     <li key={sub.value}>
                       <button
-                        className="js-nav-subitem hoverable"
+                        className={`js-nav-subitem hoverable ${activeValue === sub.value ? 'active' : ''}`}
                         onClick={() => onSelect?.(sub.value)}
                       >
                         {sub.label}
@@ -142,6 +147,13 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [] }: Si
           );
         })}
       </ul>
+      {/* Home Button */}
+      <button
+        onClick={() => router.push('/')}
+        className="js-home-button hoverable"
+      >
+        🏠 Home
+      </button>
     </aside>
   );
 }

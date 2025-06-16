@@ -49,7 +49,7 @@ export default function SoftwareTestingPage() {
   };
 
   return (
-    <PageWrapper pageTitle={"Software Testing Topics"} navItems={navItems} defaultOpen={["types of testing"]} handleSelect={handleSelect}>
+    <PageWrapper pageTitle={"Software Testing Topics"} navItems={navItems} defaultOpen={["types of testing"]} handleSelect={handleSelect} activeValue={selectedConcept || undefined}>
       {selectedConcept ? (
         <>
           {renderContent(selectedConcept)}

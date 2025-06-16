@@ -115,6 +115,7 @@ export default function ProgrammingBasicsPage() {
 			navItems={navItems}
 			defaultOpen={['how-computers-run-programs', 'how-we-design-programs']}
 			handleSelect={handleSelect}
+			activeValue={selectedConcept || undefined}
 		>
 			{selectedConcept ? (
 				<>

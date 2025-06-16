@@ -154,7 +154,7 @@ export default function JavaScriptPage() {
   }
 
   return (
-    <PageWrapper pageTitle={'JavaScript Visualizer'} navItems={navItems} defaultOpen={["control flow"]} handleSelect={handleSelect}>
+    <PageWrapper pageTitle={'JavaScript Visualizer'} navItems={navItems} defaultOpen={["storing data", "control flow"]} handleSelect={handleSelect} activeValue={selectedConcept || undefined}>
       {selectedConcept ? (
         <>
           {renderContent(selectedConcept)}

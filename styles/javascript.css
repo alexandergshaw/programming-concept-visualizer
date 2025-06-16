@@ -11,7 +11,7 @@
 }
 
 .link {
-  color: rgb(0, 0, 255)
+  color: #00319b
 }
 
 .link:hover {
@@ -80,7 +80,7 @@
   padding: 8px 0;
   color: #e2e8f0;
   font-size: 15px;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .js-nav-subitem {
@@ -94,6 +94,33 @@
   color: #ffffff;
   transform: translateX(4px);
   border-radius: 3px;
+}
+
+.js-nav-subitem.active {
+  background-color: #00319b;
+  color: #ffffff;
+  transform: translateX(4px);
+  border-radius: 3px;
+}
+
+.js-home-button {
+  margin-top: auto;
+  padding: 0.5rem 1rem;
+  background: none;
+  border: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  color: #e2e8f0;
+  font-size: 15px;
+  transition: all 0.2s ease;
+  border-radius: 3px;
+}
+
+.js-home-button:hover {
+  background-color: #00319b;
+  color: #ffffff;
+  transform: translateX(4px);
 }
 
 .js-nav-text {
@@ -133,6 +160,13 @@
   cursor: pointer;
 }
 
+.js-nav-item:hover {
+  background-color: #00319b;
+  color: #ffffff;
+  transform: translateX(4px);
+  border-radius: 3px;
+}
+
 .js-nav-subitem {
   padding: 0.4rem 1.5rem;
   width: 100%;
@@ -141,6 +175,7 @@
   border: none;
   font: inherit;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .js-sublist {
