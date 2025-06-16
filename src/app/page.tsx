@@ -21,6 +21,7 @@ import PythonIcon from '@mui/icons-material/Code';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPython, faJs } from '@fortawesome/free-brands-svg-icons';
 import { faGraduationCap, faBug } from '@fortawesome/free-solid-svg-icons';
+import CodeIcon from '@mui/icons-material/Code';
 
 // Minimal styled components
 const HeroSection = styled(Box)(() => ({
@@ -92,13 +93,6 @@ export default function LandingPage() {
   const router = useRouter();
   const [selectedSkills] = useState<string[]>([]);
 
-  const filteredLanguages = languages.filter((lang) => {
-    const matchesSearch = lang.name.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesType = selectedTypes.length === 0 || selectedTypes.includes(lang.type);
-    const matchesSkill = selectedSkills.length === 0 || selectedSkills.includes(lang.skill);
-    return matchesSearch && matchesType && matchesSkill;
-  });
-
   const handleClick = (language: string) => {
     switch (language.toLowerCase()) {
       case 'programming basics':
@@ -153,7 +147,7 @@ export default function LandingPage() {
                 Learn programming concepts with visual examples and interactive tutorials
               </Typography>
               <Grid container spacing={3}>
-              {filteredLanguages.map((lang) => (
+              {languages.map((lang) => (
                 <Grid item xs={6} sm={6} md={3} key={lang.name}>
                   <MinimalCard onClick={() => handleClick(lang.name)}>
                     <CardContent sx={{ p: 2.5, textAlign: 'center' }}>
