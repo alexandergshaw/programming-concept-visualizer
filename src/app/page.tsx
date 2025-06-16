@@ -288,6 +288,30 @@ export default function LandingPage() {
             </Grid>
             
           </Grid>
+          
+          {/* Footer */}
+          <Box sx={{ mt: 8, pt: 4, borderTop: '1px solid #e2e8f0' }}>
+            <Typography 
+              variant="body2" 
+              sx={{ 
+                color: '#64748b',
+                textAlign: 'center',
+                fontSize: '0.9rem',
+              }}
+            >
+              Maintained by Alex Shaw • Have suggestions? <a 
+                href="https://docs.google.com/forms/d/e/1FAIpQLSf73dDuwy0mZUuApiG2kEGlcCp93pN-l1eOtFOTBA2BTf0Bqw/viewform?usp=sharing" 
+                target="_blank"
+                style={{ 
+                  color: '#6366f1', 
+                  textDecoration: 'none',
+                  fontWeight: 500 
+                }}
+              >
+                Submit feedback
+              </a>
+            </Typography>
+          </Box>
         </Container>
       </HeroSection>
     </Box>
