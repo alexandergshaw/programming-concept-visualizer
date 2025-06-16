@@ -5,19 +5,12 @@ import { useRouter } from 'next/navigation';
 import {
   Box,
   Typography,
-  TextField,
-  Chip,
   Grid,
-  Paper,
   Container,
-  Button,
   Card,
   CardContent,
-  InputAdornment,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import JavaScriptIcon from '@mui/icons-material/Javascript';
-import PythonIcon from '@mui/icons-material/Code';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPython, faJs } from '@fortawesome/free-brands-svg-icons';
 import { faGraduationCap, faBug } from '@fortawesome/free-solid-svg-icons';
@@ -91,7 +84,6 @@ const getLanguageIcon = (language: string) => {
 
 export default function LandingPage() {
   const router = useRouter();
-  const [selectedSkills] = useState<string[]>([]);
 
   const handleClick = (language: string) => {
     switch (language.toLowerCase()) {
