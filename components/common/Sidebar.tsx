@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import '../../styles/javascript.css';
 import { TextField } from '@mui/material';
 
@@ -20,7 +19,6 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ title, items, onSelect, defaultOpen = [], activeValue }: SidebarProps) {
-  const router = useRouter();
   const [open, setOpen] = useState<Set<string>>(new Set());
   const [searchQuery, setSearchQuery] = useState(''); // State for the search query
   const [filteredItems, setFilteredItems] = useState<SidebarItem[]>(items); // State for filtered items
