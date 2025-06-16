@@ -57,6 +57,7 @@ export default function PythonPage() {
 			navItems={navItems}
 			defaultOpen={['storing data']}
 			handleSelect={handleSelect}
+			activeValue={selectedConcept || undefined}
 		>
 			{selectedConcept ? (
 				<>
