@@ -222,37 +222,6 @@ export default function LandingPage() {
               >
                 Learn programming concepts with visual examples and interactive tutorials
               </Typography>
-
-              <TextField
-                variant="outlined"
-                placeholder="Search topics..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                sx={{
-                  maxWidth: 400,
-                  mb: 3,
-                  '& .MuiOutlinedInput-root': {
-                    borderRadius: '12px',
-                    backgroundColor: 'white',
-                    '& fieldset': {
-                      borderColor: '#e2e8f0',
-                    },
-                    '&:hover fieldset': {
-                      borderColor: '#6366f1',
-                    },
-                    '&.Mui-focused fieldset': {
-                      borderColor: '#6366f1',
-                    },
-                  },
-                }}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon sx={{ color: '#94a3b8' }} />
-                    </InputAdornment>
-                  ),
-                }}
-              />
               <Grid container spacing={3}>
               {filteredLanguages.map((lang) => (
                 <Grid item xs={6} sm={6} md={3} key={lang.name}>
