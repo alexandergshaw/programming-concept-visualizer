@@ -122,12 +122,12 @@ export default function LandingPage() {
       case 'software testing':
         router.push('/skills/software-testing');
         break;
-      case 'deploy js app':
-        router.push('/tutorials/deploy-js-app');
+      case 'github':
+        router.push('/skills/github');
         break;
-      case 'deploy python app':
-        router.push('/tutorials/deploy-python-app');
-        break;
+      case 'deploying a website':
+        router.push('/skills/deploying-a-website');
+        break; 
       default:
         router.push(`/languages/${language.toLowerCase()}`);
     }
