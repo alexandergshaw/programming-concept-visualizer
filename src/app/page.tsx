@@ -10,8 +10,8 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPython, faJs } from '@fortawesome/free-brands-svg-icons';
-import { faGraduationCap, faBug } from '@fortawesome/free-solid-svg-icons';
+import { faJs, faPython, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faGraduationCap, faBug, faCode, faGlobe } from '@fortawesome/free-solid-svg-icons';
 import CodeIcon from '@mui/icons-material/Code';
 import React, { useState, useEffect } from "react";
 import Loader from '@/components/common/Loader';
@@ -34,6 +34,13 @@ const MinimalCard = styled(Card)(() => ({
   boxShadow: 'none',
   transition: 'all 0.2s ease',
   cursor: 'pointer',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: '180px', // Ensures all cards have the same height
+  minWidth: 0,
+  width: '100%',
   '&:hover': {
     borderColor: '#00319b',
     boxShadow: '0 4px 12px rgba(0, 49, 155, 0.1)',
@@ -46,12 +53,12 @@ const languages = [
   { name: 'JavaScript', type: 'Programming Language' },
   { name: 'Python', type: 'Programming Language' },
   { name: 'Software Testing', type: 'Quality Assurance'},
+  { name: 'GitHub', type: 'Tutorial' },
+  { name: 'Deploying a Website', type: 'Tutorial' },
 ];
 
 // Function to get language icon
 const getLanguageIcon = (language: string) => {
-  const iconProps = { sx: { fontSize: 32, mb: 1 } };
-  
   switch (language.toLowerCase()) {
     case 'javascript':
       return (
@@ -77,8 +84,20 @@ const getLanguageIcon = (language: string) => {
           <FontAwesomeIcon icon={faBug} />
         </Box>
       );
+    case 'github':
+      return (
+        <Box sx={{ fontSize: 32, mb: 1, color: '#24292e' }}>
+          <FontAwesomeIcon icon={faGithub} />
+        </Box>
+      );
+    case 'deploying a website':
+      return (
+        <Box sx={{ fontSize: 32, mb: 1, color: '#0ea5e9' }}>
+          <FontAwesomeIcon icon={faGlobe} />
+        </Box>
+      );
     default:
-      return <CodeIcon {...iconProps} sx={{ ...iconProps.sx, color: '#00319b' }} />;
+      return <FontAwesomeIcon icon={faCode} style={{ fontSize: 32, color: '#00319b' }} />;
   }
 };
 
@@ -100,6 +119,12 @@ export default function LandingPage() {
       case 'software testing':
         router.push('/skills/software-testing');
         break;
+      case 'github':
+        router.push('/skills/github');
+        break;
+      case 'deploying a website':
+        router.push('/skills/deploying-a-website');
+        break; 
       default:
         router.push(`/languages/${language.toLowerCase()}`);
     }
