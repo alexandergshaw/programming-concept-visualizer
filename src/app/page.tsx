@@ -35,8 +35,8 @@ const MinimalCard = styled(Card)(() => ({
   transition: 'all 0.2s ease',
   cursor: 'pointer',
   '&:hover': {
-    borderColor: '#6366f1',
-    boxShadow: '0 4px 12px rgba(99, 102, 241, 0.1)',
+    borderColor: '#00319b',
+    boxShadow: '0 4px 12px rgba(0, 49, 155, 0.1)',
     transform: 'translateY(-2px)',
   },
 }));
@@ -78,7 +78,7 @@ const getLanguageIcon = (language: string) => {
         </Box>
       );
     default:
-      return <CodeIcon {...iconProps} sx={{ ...iconProps.sx, color: '#6366f1' }} />;
+      return <CodeIcon {...iconProps} sx={{ ...iconProps.sx, color: '#00319b' }} />;
   }
 };
 
@@ -106,7 +106,7 @@ export default function LandingPage() {
           <Grid container spacing={8} alignItems="center">
             <Grid item xs={12} md={7}>
               <Box sx={{ mb: 2 }}>
-                <CodeIcon sx={{ fontSize: 40, color: '#6366f1', mb: 2 }} />
+                <CodeIcon sx={{ fontSize: 40, color: '#00319b', mb: 2 }} />
               </Box>
               
               <Typography 
@@ -121,7 +121,7 @@ export default function LandingPage() {
                 }}
               >
                 Programming Concept
-                <Box component="span" sx={{ color: '#6366f1', display: 'block' }}>
+                <Box component="span" sx={{ color: '#00319b', display: 'block' }}>
                   Visualizer
                 </Box>
               </Typography>
@@ -188,7 +188,7 @@ export default function LandingPage() {
                 href="https://docs.google.com/forms/d/e/1FAIpQLSf73dDuwy0mZUuApiG2kEGlcCp93pN-l1eOtFOTBA2BTf0Bqw/viewform?usp=sharing" 
                 target="_blank"
                 style={{ 
-                  color: '#6366f1', 
+                  color: '#00319b', 
                   textDecoration: 'none',
                   fontWeight: 500 
                 }}

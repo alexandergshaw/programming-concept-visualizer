@@ -34,11 +34,7 @@ export default function PageWrapper(props: PageWrapperProps) {
             href="https://docs.google.com/forms/d/e/1FAIpQLSf73dDuwy0mZUuApiG2kEGlcCp93pN-l1eOtFOTBA2BTf0Bqw/viewform?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              color: '#6366f1',
-              textDecoration: 'none',
-              fontWeight: 500
-            }}
+            className="link"
           >
             Submit feedback here.
           </Link>
