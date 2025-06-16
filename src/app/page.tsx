@@ -11,7 +11,7 @@ import {
 import { styled } from '@mui/material/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faJs, faPython, faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faGraduationCap, faBug, faCode, faGlobe } from '@fortawesome/free-solid-svg-icons';
+import { faGraduationCap, faBug, faCode, faGlobe, faDatabase, faShieldHalved } from '@fortawesome/free-solid-svg-icons';
 import CodeIcon from '@mui/icons-material/Code';
 import React, { useState, useEffect } from "react";
 import Loader from '@/components/common/Loader';
@@ -53,8 +53,10 @@ const languages = [
   { name: 'JavaScript', type: 'Programming Language' },
   { name: 'Python', type: 'Programming Language' },
   { name: 'Software Testing', type: 'Quality Assurance'},
-  { name: 'GitHub', type: 'Tutorial' },
+  // { name: 'GitHub', type: 'Tutorial' },
   { name: 'Deploying a Website', type: 'Tutorial' },
+  { name: 'Databases', type: 'Data Management' },        // Added
+  { name: 'Cybersecurity', type: 'Security' },           // Added
 ];
 
 // Function to get language icon
@@ -96,6 +98,18 @@ const getLanguageIcon = (language: string) => {
           <FontAwesomeIcon icon={faGlobe} />
         </Box>
       );
+    case 'databases':
+      return (
+        <Box sx={{ fontSize: 32, mb: 1, color: '#6366f1' }}>
+          <FontAwesomeIcon icon={faDatabase} />
+        </Box>
+      );
+    case 'cybersecurity':
+      return (
+        <Box sx={{ fontSize: 32, mb: 1, color: '#16a34a' }}>
+          <FontAwesomeIcon icon={faShieldHalved} />
+        </Box>
+      );
     default:
       return <FontAwesomeIcon icon={faCode} style={{ fontSize: 32, color: '#00319b' }} />;
   }
@@ -125,6 +139,12 @@ export default function LandingPage() {
       case 'deploying a website':
         router.push('/skills/deploying-a-website');
         break; 
+      case 'databases':
+        router.push('/skills/databases');
+        break;
+      case 'cybersecurity':
+        router.push('/skills/cybersecurity');
+        break;
       default:
         router.push(`/languages/${language.toLowerCase()}`);
     }
