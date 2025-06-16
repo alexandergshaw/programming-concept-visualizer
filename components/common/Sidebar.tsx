@@ -113,11 +113,15 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [], acti
           },
         }}
       />
-      <ul className="js-nav-list">
+      <ul className="js-nav-list" style={{ padding: 0, margin: 0 }}>
         {filteredItems.map((item) => {
           const isOpen = open.has(item.value);
           return (
-            <li key={item.value} className="js-nav-group">
+            <li
+              key={item.value}
+              className="js-nav-group"
+              style={{ marginBottom: "8px", listStyle: "none" }} // Add margin between options
+            >
               <button
                 className={`js-nav-item hoverable ${item.children ? 'js-nav-parent' : ''}`}
                 onClick={() => item.children && toggle(item.value)}
@@ -130,9 +134,9 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [], acti
               </button>
 
               {item.children && (
-                <ul className={`js-sublist ${isOpen ? 'expanded' : 'collapsed'}`}>
+                <ul className={`js-sublist ${isOpen ? 'expanded' : 'collapsed'}`} style={{ marginTop: 4 }}>
                   {item.children.map((sub) => (
-                    <li key={sub.value}>
+                    <li key={sub.value} style={{ marginBottom: "4px", listStyle: "none" }}>
                       <button
                         className={`js-nav-subitem hoverable ${activeValue === sub.value ? 'active' : ''}`}
                         onClick={() => onSelect?.(sub.value)}
