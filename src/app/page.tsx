@@ -13,6 +13,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPython, faJs } from '@fortawesome/free-brands-svg-icons';
 import { faGraduationCap, faBug } from '@fortawesome/free-solid-svg-icons';
 import CodeIcon from '@mui/icons-material/Code';
+import React, { useState, useEffect } from "react";
+import Loader from '@/components/common/Loader';
 
 // Minimal styled components
 const HeroSection = styled(Box)(() => ({
@@ -82,6 +84,13 @@ const getLanguageIcon = (language: string) => {
 
 export default function LandingPage() {
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading time (e.g., fetching data)
+    const timer = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleClick = (language: string) => {
     switch (language.toLowerCase()) {
@@ -95,6 +104,10 @@ export default function LandingPage() {
         router.push(`/languages/${language.toLowerCase()}`);
     }
   };
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <Box sx={{ minHeight: '100vh', background: '#fafafa' }}>
