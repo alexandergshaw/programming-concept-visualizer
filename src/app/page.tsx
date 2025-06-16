@@ -49,14 +49,15 @@ const MinimalCard = styled(Card)(() => ({
 }));
 
 const languages = [
-  { name: 'Programming Basics', type: 'Fundamentals'},
-  { name: 'JavaScript', type: 'Programming Language' },
+  { name: 'Programming Basics', type: 'Fundamentals' },
   { name: 'Python', type: 'Programming Language' },
-  { name: 'Software Testing', type: 'Quality Assurance'},
+  { name: 'Software Testing', type: 'Topic' },
+  { name: 'Databases', type: 'Topic' },        // Added
+  { name: 'Cybersecurity', type: 'Topic' },           // Added
+  { name: 'JavaScript', type: 'Programming Language' },
   // { name: 'GitHub', type: 'Tutorial' },
-  { name: 'Deploying a Website', type: 'Tutorial' },
-  { name: 'Databases', type: 'Data Management' },        // Added
-  { name: 'Cybersecurity', type: 'Security' },           // Added
+  // { name: 'Deploying a Website', type: 'Tutorial' },
+
 ];
 
 // Function to get language icon
@@ -138,7 +139,7 @@ export default function LandingPage() {
         break;
       case 'deploying a website':
         router.push('/skills/deploying-a-website');
-        break; 
+        break;
       case 'databases':
         router.push('/skills/databases');
         break;
@@ -163,9 +164,9 @@ export default function LandingPage() {
             <Box sx={{ mb: 2 }}>
               <CodeIcon sx={{ fontSize: 40, color: '#00319b', mb: 2 }} />
             </Box>
-            
-            <Typography 
-              variant="h2" 
+
+            <Typography
+              variant="h2"
               component="h1"
               sx={{
                 fontWeight: 700,
@@ -180,9 +181,9 @@ export default function LandingPage() {
                 Visualizer
               </Box>
             </Typography>
-            
-            <Typography 
-              variant="h6" 
+
+            <Typography
+              variant="h6"
               sx={{
                 color: '#64748b',
                 mb: 4,
@@ -193,8 +194,12 @@ export default function LandingPage() {
             >
               Learn programming concepts with visual examples and interactive tutorials
             </Typography>
-            
-            <Box 
+
+            <Typography variant="body1" sx={{ mb: 3 }}>
+              This project is developed and maintained by one person (Alex) as I cover them in my classes. Thank you for your patience as the site grows!
+            </Typography>
+
+            <Box
               sx={{
                 display: 'flex',
                 flexWrap: 'wrap',
@@ -203,19 +208,19 @@ export default function LandingPage() {
               }}
             >
               {languages.map((lang) => (
-                <Box 
+                <Box
                   key={lang.name}
-                  sx={{ 
+                  sx={{
                     flex: { xs: '0 0 calc(50% - 12px)', sm: '0 0 calc(50% - 12px)', md: '0 0 calc(25% - 18px)' }
                   }}
                 >
                   <MinimalCard onClick={() => handleClick(lang.name)}>
                     <CardContent sx={{ p: 2.5, textAlign: 'center' }}>
                       {getLanguageIcon(lang.name)}
-                      <Typography 
-                        variant="h6" 
-                        sx={{ 
-                          fontWeight: 600, 
+                      <Typography
+                        variant="h6"
+                        sx={{
+                          fontWeight: 600,
                           mb: 1,
                           color: '#1e293b',
                           fontSize: '1.1rem',
@@ -223,9 +228,9 @@ export default function LandingPage() {
                       >
                         {lang.name}
                       </Typography>
-                      <Typography 
-                        variant="body2" 
-                        sx={{ 
+                      <Typography
+                        variant="body2"
+                        sx={{
                           color: '#64748b',
                           mb: 2,
                           fontSize: '0.9rem',
@@ -239,24 +244,24 @@ export default function LandingPage() {
               ))}
             </Box>
           </Box>
-          
+
           {/* Footer */}
           <Box sx={{ mt: 8, pt: 4, borderTop: '1px solid #e2e8f0' }}>
-            <Typography 
-              variant="body2" 
-              sx={{ 
+            <Typography
+              variant="body2"
+              sx={{
                 color: '#64748b',
                 textAlign: 'center',
                 fontSize: '0.9rem',
               }}
             >
-              Maintained by Alex Shaw • Have suggestions? <a 
-                href="https://docs.google.com/forms/d/e/1FAIpQLSf73dDuwy0mZUuApiG2kEGlcCp93pN-l1eOtFOTBA2BTf0Bqw/viewform?usp=sharing" 
+              Maintained by Alex Shaw • Have suggestions? <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSf73dDuwy0mZUuApiG2kEGlcCp93pN-l1eOtFOTBA2BTf0Bqw/viewform?usp=sharing"
                 target="_blank"
-                style={{ 
-                  color: '#00319b', 
+                style={{
+                  color: '#00319b',
                   textDecoration: 'none',
-                  fontWeight: 500 
+                  fontWeight: 500
                 }}
               >
                 Submit feedback
