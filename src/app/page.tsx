@@ -137,9 +137,21 @@ export default function LandingPage() {
               Learn programming concepts with visual examples and interactive tutorials
             </Typography>
             
-            <Grid container spacing={3}>
+            <Box 
+              sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: 3,
+                mt: 2
+              }}
+            >
               {languages.map((lang) => (
-                <Grid item xs={6} sm={6} md={3} key={lang.name}>
+                <Box 
+                  key={lang.name}
+                  sx={{ 
+                    flex: { xs: '0 0 calc(50% - 12px)', sm: '0 0 calc(50% - 12px)', md: '0 0 calc(25% - 18px)' }
+                  }}
+                >
                   <MinimalCard onClick={() => handleClick(lang.name)}>
                     <CardContent sx={{ p: 2.5, textAlign: 'center' }}>
                       {getLanguageIcon(lang.name)}
@@ -166,9 +178,9 @@ export default function LandingPage() {
                       </Typography>
                     </CardContent>
                   </MinimalCard>
-                </Grid>
+                </Box>
               ))}
-            </Grid>
+            </Box>
           </Box>
           
           {/* Footer */}
