@@ -147,13 +147,6 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [], acti
           );
         })}
       </ul>
-      {/* Home Button */}
-      <button
-        onClick={() => router.push('/')}
-        className="js-home-button hoverable"
-      >
-        🏠 Home
-      </button>
     </aside>
   );
 }
