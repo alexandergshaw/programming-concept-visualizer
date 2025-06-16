@@ -209,6 +209,19 @@ export default function LandingPage() {
                   Visualizer
                 </Box>
               </Typography>
+              
+              <Typography 
+                variant="h6" 
+                sx={{
+                  color: '#64748b',
+                  mb: 4,
+                  fontWeight: 400,
+                  fontSize: '1.25rem',
+                  lineHeight: 1.6,
+                }}
+              >
+                Learn programming concepts with visual examples and interactive tutorials
+              </Typography>
 
               <TextField
                 variant="outlined"
