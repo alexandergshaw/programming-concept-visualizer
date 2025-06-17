@@ -229,14 +229,12 @@ export default function UserInputConcept() {
     // Reset everything if prompt or variable name changes
     const handlePromptChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPromptText(e.target.value);
-        setStep(1);
         setUserInput('');
     };
 
     const handleVariableNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const name = e.target.value;
         setVariableName(name);
-        setStep(1);
         setUserInput('');
         if (!isValidVarName(name)) {
             setVariableNameError('Invalid variable name for Python.');
@@ -247,7 +245,6 @@ export default function UserInputConcept() {
 
     const handlePrintPromptChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPrintPrompt(e.target.value);
-        setStep(1);
         setUserInput('');
     };
 
