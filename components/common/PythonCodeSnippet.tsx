@@ -11,6 +11,16 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import CircularProgress from '@mui/material/CircularProgress';
 
+interface PyodideInterface {
+    runPython: (code: string) => string;
+}
+
+declare global {
+    interface Window {
+        loadPyodide: (config: { indexURL: string }) => Promise<PyodideInterface>;
+    }
+}
+
 interface PythonCodeRunnerProps {
     lines?: { code: string; comment?: string; audio?: string; style?: React.CSSProperties }[];
     code?: string;
@@ -53,7 +63,7 @@ const PythonCodeSnippet: React.FC<PythonCodeRunnerProps> = ({
     const [isEditing, setIsEditing] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [pyodideReady, setPyodideReady] = useState<boolean>(false);
-    const [pyodide, setPyodide] = useState<any>(null);
+    const [pyodide, setPyodide] = useState<PyodideInterface | null>(null);
 
     useEffect(() => {
         if (!enableRun) return;
@@ -65,7 +75,6 @@ const PythonCodeSnippet: React.FC<PythonCodeRunnerProps> = ({
                 const script = document.createElement('script');
                 script.src = 'https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js';
                 script.onload = async () => {
-                    // @ts-ignore - Pyodide will be available globally
                     const pyodideInstance = await window.loadPyodide({
                         indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.24.1/full/',
                     });

@@ -16,13 +16,10 @@ export default function StringManipulationConcept() {
 
     // Improved, more natural output
     const fString = `f"Hi {name}! You are {age} years old and your favorite color is {color}."`;
-    const fStringOutput = `Hi ${name}! You are ${age} years old and your favorite color is ${color}.`;
 
     const concatString = '"Hi " + name + "! You are " + age + " years old and your favorite color is " + color + "."';
-    const concatOutput = `Hi ${name}! You are ${age} years old and your favorite color is ${color}.`;
 
     const formatString = '"Hi {}! You are {} years old and your favorite color is {}.".format(name, age, color)';
-    const formatOutput = `Hi ${name}! You are ${age} years old and your favorite color is ${color}.`;
 
     return (
         <ConceptWrapper
