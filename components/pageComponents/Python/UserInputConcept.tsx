@@ -246,6 +246,7 @@ export default function UserInputConcept() {
     const handlePrintPromptChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPrintPrompt(e.target.value);
         setUserInput('');
+        
     };
 
     return (
