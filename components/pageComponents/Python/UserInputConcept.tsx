@@ -1,13 +1,18 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '@/components/common/Section';
-import CodeSnippet from '@/components/common/CodeSnippet';
+import PythonCodeSnippet from '@/components/common/PythonCodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import Chip from '@mui/material/Chip';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PauseIcon from '@mui/icons-material/Pause';
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import SkipNextIcon from '@mui/icons-material/SkipNext';
 
 const reservedKeywords = [
     'False', 'None', 'True', 'and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else',
@@ -23,44 +28,213 @@ function isValidVarName(name: string) {
     return true;
 }
 
-const codeTemplate = (
+const getAnimatedCodeTemplate = (
     varName: string,
     promptText: string,
     userInput: string,
     printPrompt: string,
-    step: number
+    animationStep: number
 ) => [
     {
         code: `${varName} = input("${promptText}")`,
-        comment: step === 1 ? '⬅️ This line is running now: Python is asking the user for input.' : undefined,
-        highlight: step === 1,
+        comment: animationStep === 1 ? '🔄 Currently executing: Prompting user for input...' : 
+                animationStep === 2 ? `✅ Completed: User entered "${userInput || 'Alice'}" - stored in ${varName}` : undefined,
+        highlight: animationStep === 1 || animationStep === 2,
     },
     {
         code: `print("${printPrompt}", ${varName})`,
-        comment: step === 2 ? '⬅️ This line is running now: Python prints a message using the user\'s answer.' : undefined,
-        highlight: step === 2,
+        comment: animationStep === 3 ? `🔄 Currently executing: Printing result using ${varName}...` : 
+                animationStep === 4 ? `✅ Completed: Output displayed` : undefined,
+        highlight: animationStep === 3 || animationStep === 4,
     },
 ];
 
+// Animation states
+type AnimationState = 'idle' | 'step1' | 'step2' | 'step3' | 'step4' | 'completed';
+
 export default function UserInputConcept() {
+    // ...existing state...
     const [promptText, setPromptText] = useState('What is your name? ');
     const [variableName, setVariableName] = useState('name');
     const [variableNameError, setVariableNameError] = useState('');
     const [userInput, setUserInput] = useState('');
     const [printPrompt, setPrintPrompt] = useState('Hello,');
-    const [step, setStep] = useState<1 | 2>(1);
+
+    // Animation state
+    const [animationState, setAnimationState] = useState<AnimationState>('idle');
+    const [animationStep, setAnimationStep] = useState(0);
+    const [isAnimating, setIsAnimating] = useState(false);
+    const [isStepMode, setIsStepMode] = useState(false);
+    const [animationOutput, setAnimationOutput] = useState('');
+    const [showUserPrompt, setShowUserPrompt] = useState(false);
+    const [animationUserInput, setAnimationUserInput] = useState('');
+
+    // Animation control
+    useEffect(() => {
+        let timer: NodeJS.Timeout;
+        
+        if (isAnimating && !isStepMode) {
+            switch (animationState) {
+                case 'idle':
+                    setAnimationStep(1);
+                    setAnimationState('step1');
+                    setAnimationOutput('');
+                    setShowUserPrompt(false);
+                    setAnimationUserInput('');
+                    timer = setTimeout(() => setAnimationState('step2'), 1500);
+                    break;
+                    
+                case 'step1':
+                    // Show the prompt to user
+                    setShowUserPrompt(true);
+                    setAnimationOutput(`${promptText}`);
+                    timer = setTimeout(() => setAnimationState('step2'), 2000);
+                    break;
+                    
+                case 'step2':
+                    // Simulate user typing
+                    setAnimationStep(2);
+                    let currentInput = '';
+                    const targetInput = userInput || 'Alice';
+                    let charIndex = 0;
+                    
+                    const typeChar = () => {
+                        if (charIndex < targetInput.length) {
+                            currentInput += targetInput[charIndex];
+                            setAnimationUserInput(currentInput);
+                            charIndex++;
+                            setTimeout(typeChar, 150);
+                        } else {
+                            // User finished typing, move to next step
+                            timer = setTimeout(() => setAnimationState('step3'), 1000);
+                        }
+                    };
+                    typeChar();
+                    break;
+                    
+                case 'step3':
+                    // Execute print statement
+                    setAnimationStep(3);
+                    setShowUserPrompt(false);
+                    timer = setTimeout(() => setAnimationState('step4'), 1500);
+                    break;
+                    
+                case 'step4':
+                    // Show final output
+                    setAnimationStep(4);
+                    setAnimationOutput(`${printPrompt} ${animationUserInput}`);
+                    timer = setTimeout(() => setAnimationState('completed'), 1500);
+                    break;
+                    
+                case 'completed':
+                    setIsAnimating(false);
+                    break;
+            }
+        }
+
+        return () => {
+            if (timer) clearTimeout(timer);
+        };
+    }, [animationState, isAnimating, isStepMode, promptText, userInput, printPrompt, animationUserInput]);
+
+    const executeStep = (targetState: AnimationState) => {
+        switch (targetState) {
+            case 'step1':
+                setAnimationStep(1);
+                setAnimationState('step1');
+                setAnimationOutput('');
+                setShowUserPrompt(true);
+                setAnimationUserInput('');
+                setAnimationOutput(`${promptText}`);
+                break;
+                
+            case 'step2':
+                setAnimationStep(2);
+                setAnimationState('step2');
+                setShowUserPrompt(true);
+                const targetInput = userInput || 'Alice';
+                setAnimationUserInput(targetInput);
+                setAnimationOutput(`${promptText}`);
+                break;
+                
+            case 'step3':
+                setAnimationStep(3);
+                setAnimationState('step3');
+                setShowUserPrompt(false);
+                break;
+                
+            case 'step4':
+                setAnimationStep(4);
+                setAnimationState('step4');
+                setAnimationOutput(`${printPrompt} ${animationUserInput || userInput || 'Alice'}`);
+                break;
+                
+            case 'completed':
+                setAnimationState('completed');
+                setIsAnimating(false);
+                setIsStepMode(false);
+                break;
+        }
+    };
+
+    const nextStep = () => {
+        if (!isStepMode) return;
+        
+        switch (animationState) {
+            case 'idle':
+                executeStep('step1');
+                break;
+            case 'step1':
+                executeStep('step2');
+                break;
+            case 'step2':
+                executeStep('step3');
+                break;
+            case 'step3':
+                executeStep('step4');
+                break;
+            case 'step4':
+                executeStep('completed');
+                break;
+        }
+    };
+
+    const startAnimation = () => {
+        setIsAnimating(true);
+        setIsStepMode(false);
+        setAnimationState('idle');
+    };
+
+    const startStepMode = () => {
+        setIsAnimating(true);
+        setIsStepMode(true);
+        setAnimationState('idle');
+        executeStep('step1');
+    };
+
+    const stopAnimation = () => {
+        setIsAnimating(false);
+        setIsStepMode(false);
+        setAnimationState('idle');
+        setAnimationStep(0);
+        setAnimationOutput('');
+        setShowUserPrompt(false);
+        setAnimationUserInput('');
+    };
+
+    const resetAnimation = () => {
+        stopAnimation();
+    };
 
     // Reset everything if prompt or variable name changes
     const handlePromptChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPromptText(e.target.value);
-        setStep(1);
         setUserInput('');
     };
 
     const handleVariableNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const name = e.target.value;
         setVariableName(name);
-        setStep(1);
         setUserInput('');
         if (!isValidVarName(name)) {
             setVariableNameError('Invalid variable name for Python.');
@@ -71,52 +245,9 @@ export default function UserInputConcept() {
 
     const handlePrintPromptChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPrintPrompt(e.target.value);
-        setStep(1);
         setUserInput('');
+        
     };
-
-    // Step 1: User types their answer (simulating input())
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setUserInput(e.target.value);
-    };
-
-    // Step 2: Show output as if print() ran
-    const handleSubmit = () => {
-        setStep(2);
-    };
-
-    // Step 1: Go back to input
-    const handleBack = () => {
-        setStep(1);
-    };
-
-    // --- More in-depth interactive example state ---
-    const [ageInput, setAgeInput] = useState('');
-    const [showAdvancedResult, setShowAdvancedResult] = useState(false);
-    const [ageError, setAgeError] = useState('');
-
-    // --- More in-depth code template ---
-    const advancedCodeLines = [
-        { code: 'age = input("How old are you? ")', comment: 'Ask for age' },
-        { code: 'age = int(age)', comment: 'Convert age to a number' },
-        { code: 'if age >= 18:', comment: 'Check if user can vote' },
-        { code: '    print("You are old enough to vote!")', comment: 'Output for eligible voters' },
-        { code: 'else:', comment: 'Otherwise...' },
-        { code: '    print("You are not old enough to vote yet.")', comment: 'Output for underage users' },
-    ];
-
-    // --- Advanced logic for output ---
-    let advancedOutput = '';
-    const parsedAge = parseInt(ageInput, 10);
-    if (showAdvancedResult) {
-        if (isNaN(parsedAge)) {
-            advancedOutput = 'Please enter a valid number for age.';
-        } else if (parsedAge >= 18) {
-            advancedOutput = 'You are old enough to vote!';
-        } else {
-            advancedOutput = 'You are not old enough to vote yet.';
-        }
-    }
 
     return (
         <ConceptWrapper
@@ -128,10 +259,10 @@ export default function UserInputConcept() {
                     title="Getting Input from the User"
                     subtitle='Use input("Your prompt here") to ask the user for something. The answer is saved in a variable.'
                 >
-                    {/* --- Original Interactive Portion --- */}
+                    {/* --- Animated Demonstration --- */}
                     <Section
-                        title="Try it yourself!"
-                        subtitle="Experience the flow just like a real Python program:"
+                        title="How Python Input Works (Animated)"
+                        subtitle="Watch how Python executes an input program step by step:"
                     >
                         <Box sx={{ mb: 3 }}>
                             <TextField
@@ -142,6 +273,7 @@ export default function UserInputConcept() {
                                 size="small"
                                 error={!!variableNameError}
                                 helperText={variableNameError || 'Choose a valid Python variable name.'}
+                                disabled={isAnimating}
                             />
                             <TextField
                                 label='Prompt for input()'
@@ -149,6 +281,16 @@ export default function UserInputConcept() {
                                 onChange={handlePromptChange}
                                 sx={{ mt: 2, mr: 2, width: 320 }}
                                 size="small"
+                                disabled={isAnimating}
+                            />
+                            <TextField
+                                label='Sample user input'
+                                value={userInput}
+                                onChange={(e) => setUserInput(e.target.value)}
+                                sx={{ mt: 2, mr: 2, width: 200 }}
+                                size="small"
+                                disabled={isAnimating}
+                                placeholder="Alice"
                             />
                             <TextField
                                 label='Prompt for print()'
@@ -156,139 +298,173 @@ export default function UserInputConcept() {
                                 onChange={handlePrintPromptChange}
                                 sx={{ mt: 2, width: 200 }}
                                 size="small"
+                                disabled={isAnimating}
                             />
                         </Box>
-                        {step === 1 && (
-                            <Box sx={{ mb: 3 }}>
-                                <div>
-                                    <span style={{ color: '#1976d2', fontWeight: 500 }}>Python:</span>
-                                    <span style={{ fontFamily: 'monospace', marginLeft: 8 }}>{promptText}</span>
-                                </div>
-                                <TextField
-                                    label="Your answer"
-                                    value={userInput}
-                                    onChange={handleInputChange}
-                                    sx={{ mt: 2, width: 220 }}
-                                    size="small"
-                                    autoFocus
-                                />
-                                <Button
-                                    variant="contained"
-                                    sx={{ ml: 2, mt: 2 }}
-                                    onClick={handleSubmit}
-                                    disabled={
-                                        !userInput.trim() ||
-                                        !!variableNameError ||
-                                        !isValidVarName(variableName)
-                                    }
-                                >
-                                    Submit
-                                </Button>
-                            </Box>
-                        )}
-                        <CodeSnippet
-                            lines={codeTemplate(variableName, promptText, userInput, printPrompt, step).map(line => ({
-                                code: line.code,
-                                comment: line.comment,
-                                ...(line.highlight
-                                    ? { style: { background: '#fffde7', fontWeight: 600 } }
-                                    : {})
-                            }))}
-                            enableRun={false}
-                            language="python"
-                        />
-                        {step === 2 && (
-                            <Box sx={{
-                                background: '#f5f5f5',
-                                borderRadius: 2,
-                                padding: '16px 20px',
-                                marginTop: 3,
-                                fontFamily: 'monospace',
-                                color: '#333'
-                            }}>
-                                <b>Output:</b>
-                                <div style={{ color: '#1976d2', marginTop: 4 }}>
-                                    {printPrompt} {userInput}
-                                </div>
-                                <Button
-                                    variant="outlined"
-                                    sx={{ mt: 2 }}
-                                    onClick={handleBack}
-                                >
-                                    Ask again
-                                </Button>
-                            </Box>
-                        )}
-                    </Section>
 
-                    {/* --- New: More In-Depth Interactive Portion --- */}
-                    <Section
-                        title="A More In-Depth Example"
-                        subtitle="Let's see how you can use user input in a slightly bigger Python program."
-                    >
-                        <Box sx={{ mb: 2 }}>
-                            <TextField
-                                label='How old are you?'
-                                value={ageInput}
-                                onChange={e => {
-                                    setAgeInput(e.target.value);
-                                    setShowAdvancedResult(false);
-                                    setAgeError('');
-                                }}
-                                sx={{ mr: 2, width: 180 }}
-                                size="small"
-                                error={!!ageError}
-                                helperText={ageError}
-                            />
+                        <Box sx={{ mb: 3, display: 'flex', gap: 2, alignItems: 'center', flexWrap: 'wrap' }}>
                             <Button
                                 variant="contained"
-                                onClick={() => {
-                                    if (isNaN(parseInt(ageInput, 10))) {
-                                        setAgeError('Please enter a valid number for age.');
-                                        setShowAdvancedResult(false);
-                                    } else {
-                                        setShowAdvancedResult(true);
-                                        setAgeError('');
-                                    }
-                                }}
-                                disabled={!ageInput.trim()}
+                                startIcon={<PlayArrowIcon />}
+                                onClick={startAnimation}
+                                disabled={isAnimating || !!variableNameError || !isValidVarName(variableName)}
                             >
-                                Show Result
+                                Auto Play
                             </Button>
-                            {showAdvancedResult && (
+                            <Button
+                                variant="outlined"
+                                startIcon={<SkipNextIcon />}
+                                onClick={startStepMode}
+                                disabled={isAnimating || !!variableNameError || !isValidVarName(variableName)}
+                            >
+                                Step Mode
+                            </Button>
+                            {isStepMode && animationState !== 'completed' && (
                                 <Button
-                                    variant="outlined"
-                                    sx={{ ml: 2 }}
-                                    onClick={() => {
-                                        setShowAdvancedResult(false);
-                                        setAgeInput('');
-                                        setAgeError('');
-                                    }}
+                                    variant="contained"
+                                    color="secondary"
+                                    startIcon={<SkipNextIcon />}
+                                    onClick={nextStep}
                                 >
-                                    Try Again
+                                    Next Step
                                 </Button>
                             )}
+                            <Button
+                                variant="outlined"
+                                startIcon={<PauseIcon />}
+                                onClick={stopAnimation}
+                                disabled={!isAnimating}
+                            >
+                                Stop
+                            </Button>
+                            <Button
+                                variant="outlined"
+                                startIcon={<RestartAltIcon />}
+                                onClick={resetAnimation}
+                            >
+                                Reset
+                            </Button>
+                            {animationState !== 'idle' && animationState !== 'completed' && (
+                                <Chip 
+                                    label={`Step ${animationStep}/4 - ${animationState}${isStepMode ? ' (Step Mode)' : ''}`} 
+                                    color="primary" 
+                                    variant="outlined" 
+                                />
+                            )}
                         </Box>
-                        <CodeSnippet
-                            lines={advancedCodeLines}
+
+                        <PythonCodeSnippet
+                            lines={getAnimatedCodeTemplate(variableName, promptText, userInput, printPrompt, animationStep).map((line, index) => {
+                                const shouldHighlight = line.highlight;
+                                console.log(`Line ${index}: highlight=${shouldHighlight}, step=${animationStep}`);
+                                return {
+                                    code: line.code,
+                                    comment: line.comment,
+                                    style: shouldHighlight ? { 
+                                        backgroundColor: '#fff3e0', 
+                                        padding: '4px 8px', 
+                                        borderRadius: '4px',
+                                        border: '2px solid #ff9800',
+                                        fontWeight: 'bold',
+                                        marginBottom: '8px',
+                                        display: 'block'
+                                    } : {
+                                        marginBottom: '8px',
+                                        display: 'block'
+                                    }
+                                };
+                            })}
                             enableRun={false}
-                            language="python"
                         />
-                        {showAdvancedResult && (
-                            <Box sx={{
-                                background: '#f5f5f5',
-                                borderRadius: 2,
-                                padding: '16px 20px',
-                                marginTop: 3,
-                                fontFamily: 'monospace',
-                                color: '#333'
+
+                        {/* Animation Console */}
+                        <Box sx={{
+                            mt: 3,
+                            p: 2,
+                            backgroundColor: '#1e1e1e',
+                            color: '#ffffff',
+                            borderRadius: 2,
+                            fontFamily: 'monospace',
+                            minHeight: '120px',
+                            position: 'relative'
+                        }}>
+                            <Box sx={{ 
+                                display: 'flex', 
+                                alignItems: 'center', 
+                                mb: 1,
+                                borderBottom: '1px solid #333',
+                                pb: 1
                             }}>
-                                <b>Output:</b>
-                                <div style={{ color: '#1976d2', marginTop: 4 }}>
-                                    {advancedOutput}
-                                </div>
+                                <Box sx={{ 
+                                    width: 12, 
+                                    height: 12, 
+                                    borderRadius: '50%', 
+                                    backgroundColor: '#ff5f56', 
+                                    mr: 1 
+                                }} />
+                                <Box sx={{ 
+                                    width: 12, 
+                                    height: 12, 
+                                    borderRadius: '50%', 
+                                    backgroundColor: '#ffbd2e', 
+                                    mr: 1 
+                                }} />
+                                <Box sx={{ 
+                                    width: 12, 
+                                    height: 12, 
+                                    borderRadius: '50%', 
+                                    backgroundColor: '#27ca3f', 
+                                    mr: 2 
+                                }} />
+                                <span style={{ fontSize: '12px', color: '#888' }}>Python Console</span>
                             </Box>
-                        )}
+                            
+                            {animationState === 'idle' && !isAnimating && (
+                                <div style={{ color: '#888', fontStyle: 'italic' }}>
+                                    Click &quot;Start Animation&quot; to see how the program runs...
+                                </div>
+                            )}
+                            
+                            {(animationState === 'step1' || animationState === 'step2') && (
+                                <div>
+                                    <div style={{ color: '#4CAF50' }}>$ python program.py</div>
+                                    <div style={{ marginTop: '8px' }}>
+                                        {animationOutput}
+                                        {showUserPrompt && (
+                                            <span style={{ 
+                                                backgroundColor: '#333', 
+                                                padding: '2px 4px', 
+                                                marginLeft: '4px',
+                                                animation: isAnimating ? 'blink 1s infinite' : 'none'
+                                            }}>
+                                                {animationUserInput}
+                                                {animationState === 'step2' && animationUserInput.length < (userInput || 'Alice').length && '|'}
+                                            </span>
+                                        )}
+                                    </div>
+                                </div>
+                            )}
+                            
+                            {(animationState === 'step3' || animationState === 'step4' || animationState === 'completed') && (
+                                <div>
+                                    <div style={{ color: '#4CAF50' }}>$ python program.py</div>
+                                    <div style={{ marginTop: '8px' }}>{promptText}{animationUserInput}</div>
+                                    {(animationState === 'step4' || animationState === 'completed') && (
+                                        <div style={{ marginTop: '8px', color: '#2196F3' }}>{animationOutput}</div>
+                                    )}
+                                    {animationState === 'completed' && (
+                                        <div style={{ marginTop: '12px', color: '#4CAF50' }}>Program completed successfully!</div>
+                                    )}
+                                </div>
+                            )}
+                        </Box>
+
+                        <style jsx>{`
+                            @keyframes blink {
+                                0%, 50% { opacity: 1; }
+                                51%, 100% { opacity: 0; }
+                            }
+                        `}</style>
                     </Section>
                 </Section>
             </TableOfContents>

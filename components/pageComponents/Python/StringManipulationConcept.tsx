@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '@/components/common/Section';
-import CodeSnippet from '@/components/common/CodeSnippet';
+import PythonCodeSnippet from '@/components/common/PythonCodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
@@ -16,13 +16,10 @@ export default function StringManipulationConcept() {
 
     // Improved, more natural output
     const fString = `f"Hi {name}! You are {age} years old and your favorite color is {color}."`;
-    const fStringOutput = `Hi ${name}! You are ${age} years old and your favorite color is ${color}.`;
 
     const concatString = '"Hi " + name + "! You are " + age + " years old and your favorite color is " + color + "."';
-    const concatOutput = `Hi ${name}! You are ${age} years old and your favorite color is ${color}.`;
 
     const formatString = '"Hi {}! You are {} years old and your favorite color is {}.".format(name, age, color)';
-    const formatOutput = `Hi ${name}! You are ${age} years old and your favorite color is ${color}.`;
 
     return (
         <ConceptWrapper
@@ -45,45 +42,54 @@ export default function StringManipulationConcept() {
                         title="1. f-strings"
                         subtitle="Put an 'f' before the string and use curly braces {} to insert variables."
                     >
-                        <CodeSnippet
+                        <PythonCodeSnippet
                             lines={[
                                 { code: `name = input("What is your name? ")`, comment: 'get user input for name' },
+                                { code: ` ` },
                                 { code: `age = input("How old are you? ")`, comment: 'get user input for age' },
+                                { code: ` ` },
                                 { code: `color = input("What is your favorite color? ")`, comment: 'get user input for color' },
+                                { code: ` ` },
                                 { code: fString, comment: 'f-string with variables' },
-                                { code: `# Output: ${fStringOutput}` },
+                                { code: ` ` },
+                                { code: `print(f"Hi {name}! You are {age} years old and your favorite color is {color}.")`, comment: 'print the formatted string' },
                             ]}
-                            language="python"
                         />
                     </Section>
                     <Section
                         title="2. String Concatenation"
                         subtitle="Use + to join strings and variables (convert numbers to strings if needed)."
                     >
-                        <CodeSnippet
+                        <PythonCodeSnippet
                             lines={[
                                 { code: `name = input("What is your name? ")`, comment: 'get user input for name' },
+                                { code: ` ` },
                                 { code: `age = input("How old are you? ")`, comment: 'get user input for age' },
+                                { code: ` ` },
                                 { code: `color = input("What is your favorite color? ")`, comment: 'get user input for color' },
+                                { code: ` ` },
                                 { code: concatString, comment: 'concatenation with +' },
-                                { code: `# Output: ${concatOutput}` },
+                                { code: ` ` },
+                                { code: `print("Hi " + name + "! You are " + age + " years old and your favorite color is " + color + ".")`, comment: 'print the concatenated string' },
                             ]}
-                            language="python"
                         />
                     </Section>
                     <Section
                         title="3. The format() Method"
                         subtitle="Use {} as placeholders and call .format() with your variables."
                     >
-                        <CodeSnippet
+                        <PythonCodeSnippet
                             lines={[
                                 { code: `name = input("What is your name? ")`, comment: 'get user input for name' },
+                                { code: ` ` },
                                 { code: `age = input("How old are you? ")`, comment: 'get user input for age' },
+                                { code: ` ` },
                                 { code: `color = input("What is your favorite color? ")`, comment: 'get user input for color' },
+                                { code: ` ` },
                                 { code: formatString, comment: 'using format()' },
-                                { code: `# Output: ${formatOutput}` },
+                                { code: ` ` },
+                                { code: `print("Hi {}! You are {} years old and your favorite color is {}.".format(name, age, color))`, comment: 'print the formatted string' },
                             ]}
-                            language="python"
                         />
                     </Section>
                 </Section>
@@ -112,39 +118,48 @@ export default function StringManipulationConcept() {
                         />
                     </Box>
                     <Section title="f-string result">
-                        <CodeSnippet
+                        <PythonCodeSnippet
                             lines={[
                                 { code: `name = "${name}"`, comment: 'variable from user input' },
+                                { code: ` ` },
+
                                 { code: `age = "${age}"`, comment: 'variable from user input' },
+                                { code: ` ` },
+
                                 { code: `color = "${color}"`, comment: 'variable from user input' },
-                                { code: fString, comment: 'f-string' },
-                                { code: `# Output: ${fStringOutput}` },
+                                { code: ` ` },
+
+                                { code: `print(f"Hi {name}! You are {age} years old and your favorite color is {color}.")`, comment: 'print the result' },
                             ]}
-                            language="python"
+                            enableRun
                         />
                     </Section>
                     <Section title="Concatenation result">
-                        <CodeSnippet
+                        <PythonCodeSnippet
                             lines={[
                                 { code: `name = "${name}"`, comment: 'variable from user input' },
+                                { code: ` ` },
                                 { code: `age = "${age}"`, comment: 'variable from user input' },
+                                { code: ` ` },
                                 { code: `color = "${color}"`, comment: 'variable from user input' },
-                                { code: concatString, comment: 'concatenation' },
-                                { code: `# Output: ${concatOutput}` },
+                                { code: ` ` },
+                                { code: `print("Hi " + name + "! You are " + age + " years old and your favorite color is " + color + ".")`, comment: 'print the result' },
                             ]}
-                            language="python"
+                            enableRun
                         />
                     </Section>
                     <Section title="format() result">
-                        <CodeSnippet
+                        <PythonCodeSnippet
                             lines={[
                                 { code: `name = "${name}"`, comment: 'variable from user input' },
+                                { code: ` ` },
                                 { code: `age = "${age}"`, comment: 'variable from user input' },
+                                { code: ` ` },
                                 { code: `color = "${color}"`, comment: 'variable from user input' },
-                                { code: formatString, comment: 'format()' },
-                                { code: `# Output: ${formatOutput}` },
+                                { code: ` ` },
+                                { code: `print("Hi {}! You are {} years old and your favorite color is {}.".format(name, age, color))`, comment: 'print the result' },
                             ]}
-                            language="python"
+                            enableRun
                         />
                     </Section>
                 </Section>
