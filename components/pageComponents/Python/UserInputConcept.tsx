@@ -69,12 +69,6 @@ export default function UserInputConcept() {
     const [showUserPrompt, setShowUserPrompt] = useState(false);
     const [animationUserInput, setAnimationUserInput] = useState('');
 
-    // Advanced animation state
-    const [advancedAnimationState, setAdvancedAnimationState] = useState<AnimationState>('idle');
-    const [isAdvancedAnimating, setIsAdvancedAnimating] = useState(false);
-    const [isAdvancedStepMode, setIsAdvancedStepMode] = useState(false);
-    const [advancedAnimationUserInput, setAdvancedAnimationUserInput] = useState('');
-
     // Animation control
     useEffect(() => {
         let timer: NodeJS.Timeout;
