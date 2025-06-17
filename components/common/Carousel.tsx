@@ -48,7 +48,6 @@ const variants = {
     scale: 0.98,
     transition: {
       duration: 0.4,
-      ease: "easeInOut",
     },
   }),
 };
