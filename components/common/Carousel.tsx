@@ -39,7 +39,6 @@ const variants = {
     scale: 1,
     transition: {
       duration: 0.55,
-      ease: "cubic-bezier(0.33,1,0.68,1)", // <-- fix here
     },
   },
   exit: (direction: number) => ({
