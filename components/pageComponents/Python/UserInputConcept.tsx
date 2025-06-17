@@ -237,7 +237,7 @@ export default function UserInputConcept() {
         let timer: NodeJS.Timeout;
         
         if (isAdvancedAnimating && !isAdvancedStepMode) {
-            const maxStep = parseInt(advancedUserAge, 10) >= 18 ? 10 : 12;
+            const  = parseInt(advancedUserAge, 10) >= 18 ? 10 : 12;
             
             switch (advancedAnimationState) {
                 case 'idle':
@@ -431,85 +431,6 @@ export default function UserInputConcept() {
         }
     };
 
-    const nextAdvancedStep = () => {
-        if (!isAdvancedStepMode) return;
-        
-        const age = parseInt(advancedUserAge, 10);
-        
-        switch (advancedAnimationState) {
-            case 'idle':
-                executeAdvancedStep('step1');
-                break;
-            case 'step1':
-                executeAdvancedStep('step2');
-                break;
-            case 'step2':
-                executeAdvancedStep('step3');
-                break;
-            case 'step3':
-                executeAdvancedStep('step4');
-                break;
-            case 'step4':
-                executeAdvancedStep('step5');
-                break;
-            case 'step5':
-                executeAdvancedStep('step6');
-                break;
-            case 'step6':
-                executeAdvancedStep('step7');
-                break;
-            case 'step7':
-                executeAdvancedStep('step8');
-                break;
-            case 'step8':
-                executeAdvancedStep('step9');
-                break;
-            case 'step9':
-                executeAdvancedStep('step10');
-                break;
-            case 'step10':
-                if (age < 18) {
-                    executeAdvancedStep('step11');
-                } else {
-                    executeAdvancedStep('completed');
-                }
-                break;
-            case 'step11':
-                executeAdvancedStep('step12');
-                break;
-            case 'step12':
-                executeAdvancedStep('completed');
-                break;
-        }
-    };
-
-    const startAdvancedAnimation = () => {
-        setIsAdvancedAnimating(true);
-        setIsAdvancedStepMode(false);
-        setAdvancedAnimationState('idle');
-    };
-
-    const startAdvancedStepMode = () => {
-        setIsAdvancedAnimating(true);
-        setIsAdvancedStepMode(true);
-        setAdvancedAnimationState('idle');
-        executeAdvancedStep('step1');
-    };
-
-    const stopAdvancedAnimation = () => {
-        setIsAdvancedAnimating(false);
-        setIsAdvancedStepMode(false);
-        setAdvancedAnimationState('idle');
-        setAdvancedAnimationStep(0);
-        setAdvancedAnimationOutput('');
-        setShowAdvancedUserPrompt(false);
-        setAdvancedAnimationUserInput('');
-    };
-
-    const resetAdvancedAnimation = () => {
-        stopAdvancedAnimation();
-    };
-
     // Reset everything if prompt or variable name changes
     const handlePromptChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPromptText(e.target.value);
@@ -533,21 +454,6 @@ export default function UserInputConcept() {
         setPrintPrompt(e.target.value);
         setStep(1);
         setUserInput('');
-    };
-
-    // Step 1: User types their answer (simulating input())
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setUserInput(e.target.value);
-    };
-
-    // Step 2: Show output as if print() ran
-    const handleSubmit = () => {
-        setStep(2);
-    };
-
-    // Step 1: Go back to input
-    const handleBack = () => {
-        setStep(1);
     };
 
     return (
