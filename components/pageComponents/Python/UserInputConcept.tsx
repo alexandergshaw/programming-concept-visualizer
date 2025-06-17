@@ -628,7 +628,7 @@ export default function UserInputConcept() {
                             
                             {animationState === 'idle' && !isAnimating && (
                                 <div style={{ color: '#888', fontStyle: 'italic' }}>
-                                    Click "Start Animation" to see how the program runs...
+                                    Click &quot;Start Animation&quot; to see how the program runs...
                                 </div>
                             )}
                             
