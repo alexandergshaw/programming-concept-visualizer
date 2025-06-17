@@ -5,7 +5,7 @@ import ConceptWrapper from '../../common/ConceptWrapper';
 import TextField from '@mui/material/TextField';
 import '../../../styles/variable.css';
 import Section from '@/components/common/Section';
-import CodeSnippet from '@/components/common/CodeSnippet';
+import PythonCodeSnippet from '@/components/common/PythonCodeSnippet';
 import OrderedList from '@/components/common/OrderedList';
 import VideoPlayer from '@/components/common/VideoPlayer';
 import TableOfContents from '@/components/common/TableOfContents';
@@ -62,7 +62,7 @@ export default function VariableConcept() {
                             'Use the = sign to assign it a value.',
                         ]}
                     />
-                    <CodeSnippet
+                    <PythonCodeSnippet
                         lines={[
                             { code: `my_variable = "value"`, comment: `declare a variable and assign it a value` },
                             { code: `` },
@@ -72,7 +72,7 @@ export default function VariableConcept() {
                             { code: `` },
                             { code: `print("value of uninitialized_variable:", uninitialized_variable)`, comment: `output the value of the variable that is None` },
                         ]}
-                        language="python"
+                        enableRun
                     />
                 </Section>
                 <Section title="2. Naming Variables" subtitle="There are a few rules to follow when naming variables in Python:">
@@ -84,7 +84,7 @@ export default function VariableConcept() {
                         ]}
                     />
                     <Section title="2a. Examples of Valid and Invalid Variable Names" subtitle="Here are some examples of valid and invalid variable names. Try to use descriptive names!">
-                        <CodeSnippet
+                        <PythonCodeSnippet
                             lines={[
                                 { code: `1st_variable = 5`, comment: `invalid variable name - cannot start with a number` },
                                 { code: `for = 5`, comment: `invalid variable name - 'for' is a reserved keyword` },
@@ -95,7 +95,6 @@ export default function VariableConcept() {
                                 { code: `myVariable = 5`, comment: `valid variable name (but Python style is usually with underscores)` },
                                 { code: `my_variable1 = 5`, comment: `valid variable name - ends with a number` },
                             ]}
-                            language="python"
                         />
                     </Section>
                     <Section title="2b. Try It Yourself!" subtitle="Type a variable name below to see if it's valid in Python.">
@@ -128,7 +127,7 @@ export default function VariableConcept() {
                         sx={{ mr: 2 }}
                     />
 
-                    <CodeSnippet
+                    <PythonCodeSnippet
                         lines={[
                             { code: `first_num = ${firstNum}`, comment: `declare the first variable - its name is first_num, and its value is ${firstNum}` },
                             { code: `` },
@@ -138,19 +137,19 @@ export default function VariableConcept() {
                             { code: `` },
                             { code: `print("value of result:", result)`, comment: `access the value of result by using its name` },
                         ]}
-                        language="python"
+                        enableRun
                     />
                 </Section>
                 <Section title="4. Reassigning a Variable's Value" subtitle="You can change a variable's value at any time. This is called reassigning a variable. Try it yourself below!">
                     <TextField
-                        label="Reassign result to:"
+                        label="Reassign to result:"
                         size="small"
                         type="number"
                         value={userResult}
                         onChange={e => setUserResult(Number(e.target.value))}
                         sx={{ mt: 2, mb: 1 }}
                     />
-                    <CodeSnippet
+                    <PythonCodeSnippet
                         lines={[
                             { code: `first_num = ${firstNum}`, comment: `declare the first variable - its name is first_num, and its value is ${firstNum}` },
                             { code: `` },
@@ -164,7 +163,7 @@ export default function VariableConcept() {
                             { code: `` },
                             { code: `print("value of result AFTER reassigning:", result)`, comment: `output after reassigning (output: ${userResult})` },
                         ]}
-                        language="python"
+                        enableRun
                     />
                 </Section>
             </TableOfContents>
