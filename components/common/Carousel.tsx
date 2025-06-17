@@ -39,7 +39,7 @@ const variants = {
     scale: 1,
     transition: {
       duration: 0.55,
-      ease: [0.33, 1, 0.68, 1], // smooth cubic
+      ease: "cubic-bezier(0.33,1,0.68,1)", // <-- fix here
     },
   },
   exit: (direction: number) => ({
@@ -49,7 +49,7 @@ const variants = {
     scale: 0.98,
     transition: {
       duration: 0.4,
-      ease: 'easeInOut',
+      ease: "easeInOut",
     },
   }),
 };
