@@ -86,7 +86,6 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [], acti
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         className="js-sidebar-search"
-        variant="outlined"
         sx={{
           marginBottom: '16px',
           backgroundColor: 'transparent',

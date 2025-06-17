@@ -35,7 +35,7 @@ export default function PageWrapper(props: PageWrapperProps) {
             href="https://docs.google.com/forms/d/e/1FAIpQLSf73dDuwy0mZUuApiG2kEGlcCp93pN-l1eOtFOTBA2BTf0Bqw/viewform?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            className="link"
+            className="slide-underline-link"
           >
             Submit feedback here.
           </Link>
