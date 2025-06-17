@@ -258,9 +258,9 @@ export default function LandingPage() {
               Maintained by Alex Shaw • Have suggestions? <a
                 href="https://docs.google.com/forms/d/e/1FAIpQLSf73dDuwy0mZUuApiG2kEGlcCp93pN-l1eOtFOTBA2BTf0Bqw/viewform?usp=sharing"
                 target="_blank"
+                className="slide-underline-link"
                 style={{
                   color: '#00319b',
-                  textDecoration: 'none',
                   fontWeight: 500
                 }}
               >
