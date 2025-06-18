@@ -284,7 +284,7 @@ export default function StringManipulationConcept() {
             key: 'inject_color',
             output: <span>
                 <span style={{ color: '#90caf9' }}>
-                    print(&quot;Hi <span style={{ color: '#ffb300' }}>{name}</span>! You are <span style={{ color: '#ffb300' }}>{age}</span> years old and your favorite color is <span style={{ color: '#ffb300' }}>{color}</span>.&quot;
+                    print(&quot;Hi <span style={{ color: '#ffb300' }}>{name}</span>! You are <span style={{ color: '#ffb300' }}>{age}</span> years old and your favorite color is <span style={{ color: '#ffb300' }}>{color}</span>."
                     .format(<span style={{ color: '#ffb300' }}>{name}</span>, <span style={{ color: '#ffb300' }}>{age}</span>, <span style={{ color: '#ffb300' }}>{color}</span>))
                 </span>
             </span>,
