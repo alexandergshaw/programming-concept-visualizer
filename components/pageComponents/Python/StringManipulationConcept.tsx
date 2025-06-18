@@ -245,7 +245,7 @@ export default function StringManipulationConcept() {
         },
     ];
 
-    // Format tailored animation steps
+    // Format tailored animation steps (show curly braces and injected values in the same line)
     const formatSteps: AnimationStep[] = [
         {
             key: 'input1',
@@ -266,7 +266,8 @@ export default function StringManipulationConcept() {
             key: 'inject_name',
             output: <span>
                 <span style={{ color: '#90caf9' }}>
-                    "Hi {}! You are {} years old and your favorite color is {}.".format(<span style={{ color: '#ffb300' }}>{name}</span>, age, color)
+                    print("Hi <span style={{ color: '#ffb300' }}>{name}</span>! You are {'{}'} years old and your favorite color is {'{}'}."
+                    .format(<span style={{ color: '#ffb300' }}>{name}</span>, age, color))
                 </span>
             </span>,
         },
@@ -274,7 +275,8 @@ export default function StringManipulationConcept() {
             key: 'inject_age',
             output: <span>
                 <span style={{ color: '#90caf9' }}>
-                    "Hi {}! You are {} years old and your favorite color is {}.".format(<span style={{ color: '#ffb300' }}>{name}</span>, <span style={{ color: '#ffb300' }}>{age}</span>, color)
+                    print("Hi <span style={{ color: '#ffb300' }}>{name}</span>! You are <span style={{ color: '#ffb300' }}>{age}</span> years old and your favorite color is {'{}'}."
+                    .format(<span style={{ color: '#ffb300' }}>{name}</span>, <span style={{ color: '#ffb300' }}>{age}</span>, color))
                 </span>
             </span>,
         },
@@ -282,7 +284,8 @@ export default function StringManipulationConcept() {
             key: 'inject_color',
             output: <span>
                 <span style={{ color: '#90caf9' }}>
-                    "Hi {}! You are {} years old and your favorite color is {}.".format(<span style={{ color: '#ffb300' }}>{name}</span>, <span style={{ color: '#ffb300' }}>{age}</span>, <span style={{ color: '#ffb300' }}>{color}</span>)
+                    print("Hi <span style={{ color: '#ffb300' }}>{name}</span>! You are <span style={{ color: '#ffb300' }}>{age}</span> years old and your favorite color is <span style={{ color: '#ffb300' }}>{color}</span>."
+                    .format(<span style={{ color: '#ffb300' }}>{name}</span>, <span style={{ color: '#ffb300' }}>{age}</span>, <span style={{ color: '#ffb300' }}>{color}</span>))
                 </span>
             </span>,
         },
