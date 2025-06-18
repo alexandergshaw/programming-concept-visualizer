@@ -65,8 +65,6 @@ export default function UserInputConcept() {
     const [animationStep, setAnimationStep] = useState(0);
     const [isAnimating, setIsAnimating] = useState(false);
     const [isStepMode, setIsStepMode] = useState(false);
-    const [animationOutput, setAnimationOutput] = useState('');
-    const [showUserPrompt, setShowUserPrompt] = useState(false);
     const [animationUserInput, setAnimationUserInput] = useState('');
 
     // Build animation steps for PythonConsoleAnimation
@@ -113,16 +111,12 @@ export default function UserInputConcept() {
                 case 'idle':
                     setAnimationStep(1);
                     setAnimationState('step1');
-                    setAnimationOutput('');
-                    setShowUserPrompt(false);
                     setAnimationUserInput('');
                     timer = setTimeout(() => setAnimationState('step2'), 1500);
                     break;
                     
                 case 'step1':
                     // Show the prompt to user
-                    setShowUserPrompt(true);
-                    setAnimationOutput(`${promptText}`);
                     timer = setTimeout(() => setAnimationState('step2'), 2000);
                     break;
                     

@@ -19,7 +19,6 @@ interface PythonConsoleAnimationProps {
     isAnimating: boolean;
     animationUserInput?: string;
     userInput?: string;
-    promptText?: string;
 }
 
 const PythonConsoleAnimation: React.FC<PythonConsoleAnimationProps> = ({
@@ -28,7 +27,6 @@ const PythonConsoleAnimation: React.FC<PythonConsoleAnimationProps> = ({
     isAnimating,
     animationUserInput = '',
     userInput = '',
-    promptText = '',
 }) => {
     const step = steps[currentStep] || {};
     return (
