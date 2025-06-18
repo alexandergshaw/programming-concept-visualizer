@@ -166,7 +166,7 @@ export default function StringManipulationConcept() {
             key: 'inject_name',
             output: <span>
                 <span style={{ color: '#90caf9' }}>
-                    f"Hi <span style={{ color: '#ffb300' }}>{name}</span>! You are {'{age}'} years old and your favorite color is {'{color}'}."
+                    f&quot;Hi <span style={{ color: '#ffb300' }}>{name}</span>! You are {'{age}'} years old and your favorite color is {'{color}'}.&quot;
                 </span>
             </span>,
         },
@@ -174,7 +174,7 @@ export default function StringManipulationConcept() {
             key: 'inject_age',
             output: <span>
                 <span style={{ color: '#90caf9' }}>
-                    f"Hi <span style={{ color: '#ffb300' }}>{name}</span>! You are <span style={{ color: '#ffb300' }}>{age}</span> years old and your favorite color is {'{color}'}."
+                    f&quot;Hi <span style={{ color: '#ffb300' }}>{name}</span>! You are <span style={{ color: '#ffb300' }}>{age}</span> years old and your favorite color is {'{color}'}.&quot;
                 </span>
             </span>,
         },
@@ -182,7 +182,7 @@ export default function StringManipulationConcept() {
             key: 'inject_color',
             output: <span>
                 <span style={{ color: '#90caf9' }}>
-                    f"Hi <span style={{ color: '#ffb300' }}>{name}</span>! You are <span style={{ color: '#ffb300' }}>{age}</span> years old and your favorite color is <span style={{ color: '#ffb300' }}>{color}</span>."
+                    f&quot;Hi <span style={{ color: '#ffb300' }}>{name}</span>! You are <span style={{ color: '#ffb300' }}>{age}</span> years old and your favorite color is <span style={{ color: '#ffb300' }}>{color}</span>.&quot;
                 </span>
             </span>,
         },
