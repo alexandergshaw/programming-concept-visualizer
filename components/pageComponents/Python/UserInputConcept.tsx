@@ -65,7 +65,6 @@ export default function UserInputConcept() {
     const [animationStep, setAnimationStep] = useState(0);
     const [isAnimating, setIsAnimating] = useState(false);
     const [isStepMode, setIsStepMode] = useState(false);
-    const [showUserPrompt, setShowUserPrompt] = useState(false);
     const [animationUserInput, setAnimationUserInput] = useState('');
 
     // Build animation steps for PythonConsoleAnimation
@@ -113,14 +112,12 @@ export default function UserInputConcept() {
                     setAnimationStep(1);
                     setAnimationState('step1');
                     setAnimationOutput('');
-                    setShowUserPrompt(false);
                     setAnimationUserInput('');
                     timer = setTimeout(() => setAnimationState('step2'), 1500);
                     break;
                     
                 case 'step1':
                     // Show the prompt to user
-                    setShowUserPrompt(true);
                     setAnimationOutput(`${promptText}`);
                     timer = setTimeout(() => setAnimationState('step2'), 2000);
                     break;
@@ -149,7 +146,6 @@ export default function UserInputConcept() {
                 case 'step3':
                     // Execute print statement
                     setAnimationStep(3);
-                    setShowUserPrompt(false);
                     timer = setTimeout(() => setAnimationState('step4'), 1500);
                     break;
                     
@@ -177,7 +173,6 @@ export default function UserInputConcept() {
                 setAnimationStep(1);
                 setAnimationState('step1');
                 setAnimationOutput('');
-                setShowUserPrompt(true);
                 setAnimationUserInput('');
                 setAnimationOutput(`${promptText}`);
                 break;
@@ -185,7 +180,6 @@ export default function UserInputConcept() {
             case 'step2':
                 setAnimationStep(2);
                 setAnimationState('step2');
-                setShowUserPrompt(true);
                 const targetInput = userInput || 'Alice';
                 setAnimationUserInput(targetInput);
                 setAnimationOutput(`${promptText}`);
@@ -194,7 +188,6 @@ export default function UserInputConcept() {
             case 'step3':
                 setAnimationStep(3);
                 setAnimationState('step3');
-                setShowUserPrompt(false);
                 break;
                 
             case 'step4':
@@ -252,7 +245,6 @@ export default function UserInputConcept() {
         setAnimationState('idle');
         setAnimationStep(0);
         setAnimationOutput('');
-        setShowUserPrompt(false);
         setAnimationUserInput('');
     };
 
