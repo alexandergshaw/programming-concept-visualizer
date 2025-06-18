@@ -322,7 +322,6 @@ export default function UserInputConcept() {
                             isAnimating={isAnimating}
                             animationUserInput={animationUserInput}
                             userInput={userInput}
-                            promptText={promptText}
                         />
 
                         <Box sx={{ mb: 3 }}>
