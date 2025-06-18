@@ -64,7 +64,7 @@ function getFStringAnimatedLines(step: number, name: string, age: string, color:
 }
 
 function getConcatAnimatedLines(step: number, name: string, age: string, color: string) {
-    const printLine = `print("Hi " + name + "! You are " + age + " years old and your favorite color is " + color + ".")`;
+    const printLine = `print(&quot;Hi &quot; + name + &quot;! You are &quot; + age + &quot; years old and your favorite color is &quot; + color + &quot;.")`;
     let comment;
     if (step === 3) comment = '🔄 Injecting name...';
     else if (step === 4) comment = '🔄 Injecting age...';
@@ -216,7 +216,7 @@ export default function StringManipulationConcept() {
             key: 'inject_name',
             output: <span>
                 <span style={{ color: '#90caf9' }}>
-                    "Hi " + <span style={{ color: '#ffb300' }}>{name}</span> + "! You are " + age + " years old and your favorite color is " + color + "."
+                    &quot;Hi &quot; + <span style={{ color: '#ffb300' }}>{name}</span> + &quot;! You are &quot; + age + &quot; years old and your favorite color is &quot; + color + &quot;.&quot;
                 </span>
             </span>,
         },
@@ -224,7 +224,7 @@ export default function StringManipulationConcept() {
             key: 'inject_age',
             output: <span>
                 <span style={{ color: '#90caf9' }}>
-                    "Hi " + <span style={{ color: '#ffb300' }}>{name}</span> + "! You are " + <span style={{ color: '#ffb300' }}>{age}</span> + " years old and your favorite color is " + color + "."
+                    &quot;Hi &quot; + <span style={{ color: '#ffb300' }}>{name}</span> + &quot;! You are &quot; + <span style={{ color: '#ffb300' }}>{age}</span> + &quot; years old and your favorite color is &quot; + color + &quot;.&quot;
                 </span>
             </span>,
         },
@@ -232,7 +232,7 @@ export default function StringManipulationConcept() {
             key: 'inject_color',
             output: <span>
                 <span style={{ color: '#90caf9' }}>
-                    "Hi " + <span style={{ color: '#ffb300' }}>{name}</span> + "! You are " + <span style={{ color: '#ffb300' }}>{age}</span> + " years old and your favorite color is " + <span style={{ color: '#ffb300' }}>{color}</span> + "."
+                    &quot;Hi &quot; + <span style={{ color: '#ffb300' }}>{name}</span> + &quot;! You are &quot; + <span style={{ color: '#ffb300' }}>{age}</span> + &quot; years old and your favorite color is &quot; + <span style={{ color: '#ffb300' }}>{color}</span> + &quot;.&quot;
                 </span>
             </span>,
         },
@@ -266,7 +266,7 @@ export default function StringManipulationConcept() {
             key: 'inject_name',
             output: <span>
                 <span style={{ color: '#90caf9' }}>
-                    print("Hi <span style={{ color: '#ffb300' }}>{name}</span>! You are {'{}'} years old and your favorite color is {'{}'}."
+                    print(&quot;Hi <span style={{ color: '#ffb300' }}>{name}</span>! You are {'{}'} years old and your favorite color is {'{}'}.&quot;
                     .format(<span style={{ color: '#ffb300' }}>{name}</span>, age, color))
                 </span>
             </span>,
@@ -275,7 +275,7 @@ export default function StringManipulationConcept() {
             key: 'inject_age',
             output: <span>
                 <span style={{ color: '#90caf9' }}>
-                    print("Hi <span style={{ color: '#ffb300' }}>{name}</span>! You are <span style={{ color: '#ffb300' }}>{age}</span> years old and your favorite color is {'{}'}."
+                    print(&quot;Hi <span style={{ color: '#ffb300' }}>{name}</span>! You are <span style={{ color: '#ffb300' }}>{age}</span> years old and your favorite color is {'{}'}.&quot;
                     .format(<span style={{ color: '#ffb300' }}>{name}</span>, <span style={{ color: '#ffb300' }}>{age}</span>, color))
                 </span>
             </span>,
@@ -284,7 +284,7 @@ export default function StringManipulationConcept() {
             key: 'inject_color',
             output: <span>
                 <span style={{ color: '#90caf9' }}>
-                    print("Hi <span style={{ color: '#ffb300' }}>{name}</span>! You are <span style={{ color: '#ffb300' }}>{age}</span> years old and your favorite color is <span style={{ color: '#ffb300' }}>{color}</span>."
+                    print(&quot;Hi <span style={{ color: '#ffb300' }}>{name}</span>! You are <span style={{ color: '#ffb300' }}>{age}</span> years old and your favorite color is <span style={{ color: '#ffb300' }}>{color}</span>.&quot;
                     .format(<span style={{ color: '#ffb300' }}>{name}</span>, <span style={{ color: '#ffb300' }}>{age}</span>, <span style={{ color: '#ffb300' }}>{color}</span>))
                 </span>
             </span>,
@@ -543,7 +543,7 @@ export default function StringManipulationConcept() {
                                 { code: ` ` },
                                 { code: `color = "${color}"`, comment: 'variable from user input' },
                                 { code: ` ` },
-                                { code: `print("Hi " + name + "! You are " + age + " years old and your favorite color is " + color + ".")`, comment: 'print the result' },
+                                { code: `print(&quot;Hi &quot; + name + &quot;! You are &quot; + age + &quot; years old and your favorite color is &quot; + color + &quot;.")`, comment: 'print the result' },
                             ]}
                             enableRun
                         />
