@@ -13,6 +13,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
+import PythonConsoleAnimation, { AnimationStep } from '@/components/common/PythonConsoleAnimation';
 
 const reservedKeywords = [
     'False', 'None', 'True', 'and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else',
@@ -53,7 +54,6 @@ const getAnimatedCodeTemplate = (
 type AnimationState = 'idle' | 'step1' | 'step2' | 'step3' | 'step4' | 'completed';
 
 export default function UserInputConcept() {
-    // ...existing state...
     const [promptText, setPromptText] = useState('What is your name? ');
     const [variableName, setVariableName] = useState('name');
     const [variableNameError, setVariableNameError] = useState('');
@@ -68,6 +68,41 @@ export default function UserInputConcept() {
     const [animationOutput, setAnimationOutput] = useState('');
     const [showUserPrompt, setShowUserPrompt] = useState(false);
     const [animationUserInput, setAnimationUserInput] = useState('');
+
+    // Build animation steps for PythonConsoleAnimation
+    const animationSteps: AnimationStep[] = [
+        {
+            key: 'prompt',
+            output: promptText,
+            showUserPrompt: animationStep === 1 || animationStep === 2,
+        },
+        {
+            key: 'input',
+            output: promptText,
+            showUserPrompt: animationStep === 2,
+        },
+        {
+            key: 'print',
+            output: (
+                <>
+                    {promptText}
+                    {animationUserInput}
+                </>
+            ),
+            extraOutput: animationStep >= 4 ? `${printPrompt} ${animationUserInput || userInput || 'Alice'}` : undefined,
+        },
+        {
+            key: 'completed',
+            output: (
+                <>
+                    {promptText}
+                    {animationUserInput}
+                </>
+            ),
+            extraOutput: `${printPrompt} ${animationUserInput || userInput || 'Alice'}`,
+            completed: true,
+        },
+    ].slice(0, animationStep > 0 ? animationStep : 1);
 
     // Animation control
     useEffect(() => {
@@ -249,6 +284,40 @@ export default function UserInputConcept() {
         
     };
 
+    function getFStringAnimatedLines(step: number, name: string, age: string, color: string) {
+        return [
+            {
+                code: `name = input("What is your name? ")`,
+                comment: step === 0 ? '🔄 Prompting for name...' : step > 0 ? `✅ Got name: "${name}"` : undefined,
+                highlight: step === 0,
+            },
+            { code: ` ` },
+            {
+                code: `age = input("How old are you? ")`,
+                comment: step === 1 ? '🔄 Prompting for age...' : step > 1 ? `✅ Got age: "${age}"` : undefined,
+                highlight: step === 1,
+            },
+            { code: ` ` },
+            {
+                code: `color = input("What is your favorite color? ")`,
+                comment: step === 2 ? '🔄 Prompting for color...' : step > 2 ? `✅ Got color: "${color}"` : undefined,
+                highlight: step === 2,
+            },
+            { code: ` ` },
+            {
+                code: `f"Hi {name}! You are {age} years old and your favorite color is {color}."`,
+                comment: step === 3 ? '🔄 Substituting variables in f-string...' : step > 3 ? '✅ f-string ready' : undefined,
+                highlight: step === 3,
+            },
+            { code: ` ` },
+            {
+                code: `print(f"Hi ${name}! You are ${age} years old and your favorite color is ${color}.")`,
+                comment: step === 4 ? '🔄 Printing the result...' : step > 4 ? '✅ Output shown' : undefined,
+                highlight: step === 4,
+            },
+        ];
+    }
+
     return (
         <ConceptWrapper
             title="User Input in Python"
@@ -264,6 +333,15 @@ export default function UserInputConcept() {
                         title="How Python Input Works (Animated)"
                         subtitle="Watch how Python executes an input program step by step:"
                     >
+                        <PythonConsoleAnimation
+                            steps={animationSteps}
+                            currentStep={animationStep - 1}
+                            isAnimating={isAnimating}
+                            animationUserInput={animationUserInput}
+                            userInput={userInput}
+                            promptText={promptText}
+                        />
+
                         <Box sx={{ mb: 3 }}>
                             <TextField
                                 label='Variable name'
@@ -377,87 +455,27 @@ export default function UserInputConcept() {
                             enableRun={false}
                         />
 
-                        {/* Animation Console */}
-                        <Box sx={{
-                            mt: 3,
-                            p: 2,
-                            backgroundColor: '#1e1e1e',
-                            color: '#ffffff',
-                            borderRadius: 2,
-                            fontFamily: 'monospace',
-                            minHeight: '120px',
-                            position: 'relative'
-                        }}>
-                            <Box sx={{ 
-                                display: 'flex', 
-                                alignItems: 'center', 
-                                mb: 1,
-                                borderBottom: '1px solid #333',
-                                pb: 1
-                            }}>
-                                <Box sx={{ 
-                                    width: 12, 
-                                    height: 12, 
-                                    borderRadius: '50%', 
-                                    backgroundColor: '#ff5f56', 
-                                    mr: 1 
-                                }} />
-                                <Box sx={{ 
-                                    width: 12, 
-                                    height: 12, 
-                                    borderRadius: '50%', 
-                                    backgroundColor: '#ffbd2e', 
-                                    mr: 1 
-                                }} />
-                                <Box sx={{ 
-                                    width: 12, 
-                                    height: 12, 
-                                    borderRadius: '50%', 
-                                    backgroundColor: '#27ca3f', 
-                                    mr: 2 
-                                }} />
-                                <span style={{ fontSize: '12px', color: '#888' }}>Python Console</span>
-                            </Box>
-                            
-                            {animationState === 'idle' && !isAnimating && (
-                                <div style={{ color: '#888', fontStyle: 'italic' }}>
-                                    Click &quot;Start Animation&quot; to see how the program runs...
-                                </div>
-                            )}
-                            
-                            {(animationState === 'step1' || animationState === 'step2') && (
-                                <div>
-                                    <div style={{ color: '#4CAF50' }}>$ python program.py</div>
-                                    <div style={{ marginTop: '8px' }}>
-                                        {animationOutput}
-                                        {showUserPrompt && (
-                                            <span style={{ 
-                                                backgroundColor: '#333', 
-                                                padding: '2px 4px', 
-                                                marginLeft: '4px',
-                                                animation: isAnimating ? 'blink 1s infinite' : 'none'
-                                            }}>
-                                                {animationUserInput}
-                                                {animationState === 'step2' && animationUserInput.length < (userInput || 'Alice').length && '|'}
-                                            </span>
-                                        )}
-                                    </div>
-                                </div>
-                            )}
-                            
-                            {(animationState === 'step3' || animationState === 'step4' || animationState === 'completed') && (
-                                <div>
-                                    <div style={{ color: '#4CAF50' }}>$ python program.py</div>
-                                    <div style={{ marginTop: '8px' }}>{promptText}{animationUserInput}</div>
-                                    {(animationState === 'step4' || animationState === 'completed') && (
-                                        <div style={{ marginTop: '8px', color: '#2196F3' }}>{animationOutput}</div>
-                                    )}
-                                    {animationState === 'completed' && (
-                                        <div style={{ marginTop: '12px', color: '#4CAF50' }}>Program completed successfully!</div>
-                                    )}
-                                </div>
-                            )}
-                        </Box>
+                        <PythonCodeSnippet
+                            lines={getFStringAnimatedLines(animationStep, userInput, '', '').map(line => ({
+                                code: line.code,
+                                comment: line.comment,
+                                style: line.highlight
+                                    ? {
+                                        backgroundColor: '#fff3e0',
+                                        padding: '4px 8px',
+                                        borderRadius: '4px',
+                                        border: '2px solid #ff9800',
+                                        fontWeight: 'bold',
+                                        marginBottom: '8px',
+                                        display: 'block'
+                                    }
+                                    : {
+                                        marginBottom: '8px',
+                                        display: 'block'
+                                    }
+                            }))}
+                            enableRun={false}
+                        />
 
                         <style jsx>{`
                             @keyframes blink {
