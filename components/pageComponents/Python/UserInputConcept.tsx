@@ -111,14 +111,12 @@ export default function UserInputConcept() {
                 case 'idle':
                     setAnimationStep(1);
                     setAnimationState('step1');
-                    setAnimationOutput('');
                     setAnimationUserInput('');
                     timer = setTimeout(() => setAnimationState('step2'), 1500);
                     break;
                     
                 case 'step1':
                     // Show the prompt to user
-                    setAnimationOutput(`${promptText}`);
                     timer = setTimeout(() => setAnimationState('step2'), 2000);
                     break;
                     
@@ -152,7 +150,6 @@ export default function UserInputConcept() {
                 case 'step4':
                     // Show final output
                     setAnimationStep(4);
-                    setAnimationOutput(`${printPrompt} ${animationUserInput}`);
                     timer = setTimeout(() => setAnimationState('completed'), 1500);
                     break;
                     
@@ -172,9 +169,7 @@ export default function UserInputConcept() {
             case 'step1':
                 setAnimationStep(1);
                 setAnimationState('step1');
-                setAnimationOutput('');
                 setAnimationUserInput('');
-                setAnimationOutput(`${promptText}`);
                 break;
                 
             case 'step2':
@@ -182,7 +177,6 @@ export default function UserInputConcept() {
                 setAnimationState('step2');
                 const targetInput = userInput || 'Alice';
                 setAnimationUserInput(targetInput);
-                setAnimationOutput(`${promptText}`);
                 break;
                 
             case 'step3':
@@ -193,7 +187,6 @@ export default function UserInputConcept() {
             case 'step4':
                 setAnimationStep(4);
                 setAnimationState('step4');
-                setAnimationOutput(`${printPrompt} ${animationUserInput || userInput || 'Alice'}`);
                 break;
                 
             case 'completed':
@@ -244,7 +237,6 @@ export default function UserInputConcept() {
         setIsStepMode(false);
         setAnimationState('idle');
         setAnimationStep(0);
-        setAnimationOutput('');
         setAnimationUserInput('');
     };
 
