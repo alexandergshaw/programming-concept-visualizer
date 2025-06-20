@@ -42,16 +42,42 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
         }
     };
 
+    // Helper for roman numerals
+    const toRoman = (num: number): string => {
+        const romans = [
+            ['M', 1000], ['CM', 900], ['D', 500], ['CD', 400],
+            ['C', 100], ['XC', 90], ['L', 50], ['XL', 40],
+            ['X', 10], ['IX', 9], ['V', 5], ['IV', 4], ['I', 1]
+        ];
+        let result = '';
+        for (const [letter, n] of romans) {
+            while (num >= n) {
+                result += letter;
+                num -= n;
+            }
+        }
+        return result.toLowerCase();
+    };
+
+    const getListStyleType = (level: number): string => {
+        if (!numbered) return 'none';
+        if (level === 0) return 'decimal';
+        if (level === 1) return 'lower-alpha';
+        // For level 2 and deeper, use roman numerals
+        return 'lower-roman';
+    };
+
     const renderToc = (sections: SectionItem[], level = 0): ReactElement => (
         <ol
             style={{
                 padding: 0,
                 margin: 0,
-                listStyleType: !numbered ? 'none' : level === 0 ? 'decimal' : 'lower-alpha',
-                marginLeft: `${level * 20}px`,
+                listStyleType: getListStyleType(level),
+                // Increase left margin for all levels to move ToC further right
+                marginLeft: `${40 + level * 24}px`,
             }}
         >
-            {sections.map(({ title, id, children }) => (
+            {sections.map(({ title, id, children }, idx) => (
                 <li key={id} style={{ marginBottom: 8 }}>
                     <a
                         href={`#${id}`}
@@ -66,17 +92,58 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
         </ol>
     );
 
+    // --- Render section numbers for headings as well ---
+    const renderSectionWithNumber = (
+        section: SectionItem,
+        level: number,
+        prefix: string[] = []
+    ): React.ReactNode => {
+        // Compose the section number string
+        let sectionNumber = '';
+        if (level === 0) {
+            sectionNumber = (parseInt(prefix[0] || '1')).toString();
+        } else if (level === 1) {
+            sectionNumber = prefix.join('') + String.fromCharCode(97 + (parseInt(prefix[level] || '0')));
+        } else {
+            // For level 2 and deeper, use roman numerals
+            sectionNumber = prefix.slice(0, 1).join('') + String.fromCharCode(97 + (parseInt(prefix[1] || '0'))) + '.' + toRoman(parseInt(prefix[level] || '1'));
+        }
+
+        return (
+            <div key={section.id} id={section.id}>
+                <div>
+                    {React.cloneElement(
+                        section.element,
+                        {},
+                        section.element.props.children
+                    )}
+                </div>
+                {section.children.length > 0 &&
+                    section.children.map((child, childIdx) =>
+                        renderSectionWithNumber(
+                            child,
+                            level + 1,
+                            [
+                                ...prefix,
+                                (level === 0)
+                                    ? (childIdx + 1).toString()
+                                    : (level === 1)
+                                    ? childIdx.toString()
+                                    : (childIdx + 1).toString(),
+                            ]
+                        )
+                    )}
+            </div>
+        );
+    };
+
     return (
         <Section title="Table of Contents" subtitle="Click on a section to jump to it:">
             {renderToc(sections)}
             <div style={{ marginTop: 20 }}>
-                {sections.map(({ id, element }) => {
-                    return (
-                        <div key={id} id={id}>
-                            {element}
-                        </div>
-                    );
-                })}
+                {sections.map((section, idx) =>
+                    renderSectionWithNumber(section, 0, [(idx + 1).toString()])
+                )}
             </div>
         </Section>
     );

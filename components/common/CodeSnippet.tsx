@@ -38,6 +38,7 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({
     );
     const [isEditing, setIsEditing] = useState<boolean>(false);
     const [worker, setWorker] = useState<Worker | null>(null);
+    const [viewLines, setViewLines] = useState<string>(editableLines);
 
     useEffect(() => {
         // Initialize the Web Worker
@@ -50,8 +51,15 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({
         };
     }, []);
 
+    // When switching from edit to view, update the viewLines to keep changes
+    useEffect(() => {
+        if (!isEditing) {
+            setViewLines(editableLines);
+        }
+    }, [isEditing, editableLines]);
+
     const handleCopy = () => {
-        const codeToCopy = isEditing ? editableLines : lines.map(line => line.code).join('\n');
+        const codeToCopy = isEditing ? editableLines : viewLines;
         navigator.clipboard.writeText(codeToCopy);
         setOpen(true);
     };
@@ -66,7 +74,7 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({
     const runCode = () => {
         if (!worker) return;
 
-        const code = isEditing ? editableLines : lines.map(line => line.code).join('\n');
+        const code = isEditing ? editableLines : viewLines;
 
         // Send the code to the Web Worker
         worker.postMessage({ code });
@@ -127,9 +135,9 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({
                 />
             ) : (
                 <pre style={{ margin: 0, whiteSpace: 'pre-wrap', wordBreak: 'break-word', fontFamily: 'monospace', color: '#333' }}>
-                    {lines.map((line, index) => (
+                    {viewLines.split('\n').map((line, index) => (
                         <div key={index} style={{ marginBottom: '8px' }}>
-                            {line.code} {line.comment && <span style={{ color: '#888' }}>{` ${commentSyntax} ${line.comment}`}</span>}
+                            {line}
                         </div>
                     ))}
                 </pre>
