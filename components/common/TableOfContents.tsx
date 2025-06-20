@@ -42,13 +42,22 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
         }
     };
 
+    const getListStyleType = (level: number): string => {
+        if (!numbered) return 'none';
+        if (level === 0) return 'decimal';
+        if (level === 1) return 'lower-alpha';
+        // For level 2 and deeper, use roman numerals
+        return 'lower-roman';
+    };
+
     const renderToc = (sections: SectionItem[], level = 0): ReactElement => (
         <ol
             style={{
                 padding: 0,
                 margin: 0,
-                listStyleType: !numbered ? 'none' : level === 0 ? 'decimal' : 'lower-alpha',
-                marginLeft: `${level * 20}px`,
+                listStyleType: getListStyleType(level),
+                // Increase left margin for all levels to move ToC further right
+                marginLeft: `${40 + level * 24}px`,
             }}
         >
             {sections.map(({ title, id, children }) => (
@@ -66,17 +75,50 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
         </ol>
     );
 
+    // --- Render section numbers for headings as well ---
+    const renderSectionWithNumber = (
+        section: SectionItem,
+        level: number,
+        prefix: string[] = []
+    ): React.ReactNode => {
+        // Use unknown and type guard instead of any
+        const elementProps = section.element.props as { children?: ReactNode };
+
+        return (
+            <div key={section.id} id={section.id}>
+                <div>
+                    {React.cloneElement(
+                        section.element,
+                        {},
+                        elementProps.children
+                    )}
+                </div>
+                {section.children.length > 0 &&
+                    section.children.map((child, childIdx) =>
+                        renderSectionWithNumber(
+                            child,
+                            level + 1,
+                            [
+                                ...prefix,
+                                (level === 0)
+                                    ? (childIdx + 1).toString()
+                                    : (level === 1)
+                                    ? childIdx.toString()
+                                    : (childIdx + 1).toString(),
+                            ]
+                        )
+                    )}
+            </div>
+        );
+    };
+
     return (
         <Section title="Table of Contents" subtitle="Click on a section to jump to it:">
             {renderToc(sections)}
             <div style={{ marginTop: 20 }}>
-                {sections.map(({ id, element }) => {
-                    return (
-                        <div key={id} id={id}>
-                            {element}
-                        </div>
-                    );
-                })}
+                {sections.map((section, idx) =>
+                    renderSectionWithNumber(section, 0, [(idx + 1).toString()])
+                )}
             </div>
         </Section>
     );

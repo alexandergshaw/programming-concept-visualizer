@@ -13,6 +13,7 @@ import DataTypesConcept from './DataTypesConcept';
 import UserInputConcept from './UserInputConcept';
 import ConditionalConcept from './ConditionalConcept';
 import LoopConcept from './LoopConcept';
+import FunctionConcept from './FunctionConcept';
 
 const navItems = [
   {
@@ -23,7 +24,6 @@ const navItems = [
       { label: 'Constants', value: 'constants' },
       { label: 'Data Types', value: 'data types' },
     ],
-
   },
   {
     label: 'Control Flow',
@@ -32,6 +32,14 @@ const navItems = [
       { label: 'Conditionals', value: 'conditionals' },
       { label: 'Loops', value: 'loops' },
     ]
+  },
+  {
+    label: 'Functions',
+    value: 'functions',
+    children: [
+      { label: 'Functions', value: 'functions' },
+      { label: 'jQuery Event Listeners', value: 'jQuery Event Listeners' },
+    ],
   },
   // {
   //   label: 'Control Flow',
@@ -130,6 +138,8 @@ export default function JavaScriptPage() {
         return <ConditionalConcept />;
       case 'loops':
         return <LoopConcept />;
+      case 'functions':
+        return <FunctionConcept />;
       default:
         return null;
     }
