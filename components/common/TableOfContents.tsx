@@ -78,10 +78,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
     // --- Render section numbers for headings as well ---
     const renderSectionWithNumber = (
         section: SectionItem,
-        level: number,
-        prefix: string[] = []
     ): React.ReactNode => {
-        // Use unknown and type guard instead of any
         const elementProps = section.element.props as { children?: ReactNode };
 
         return (
@@ -93,21 +90,6 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
                         elementProps.children
                     )}
                 </div>
-                {section.children.length > 0 &&
-                    section.children.map((child, childIdx) =>
-                        renderSectionWithNumber(
-                            child,
-                            level + 1,
-                            [
-                                ...prefix,
-                                (level === 0)
-                                    ? (childIdx + 1).toString()
-                                    : (level === 1)
-                                    ? childIdx.toString()
-                                    : (childIdx + 1).toString(),
-                            ]
-                        )
-                    )}
             </div>
         );
     };
@@ -116,9 +98,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
         <Section title="Table of Contents" subtitle="Click on a section to jump to it:">
             {renderToc(sections)}
             <div style={{ marginTop: 20 }}>
-                {sections.map((section, idx) =>
-                    renderSectionWithNumber(section, 0, [(idx + 1).toString()])
-                )}
+                {sections.map(section => renderSectionWithNumber(section))}
             </div>
         </Section>
     );
