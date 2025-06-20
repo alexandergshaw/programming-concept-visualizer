@@ -80,7 +80,7 @@ export default function FunctionConcept() {
     return (
         <ConceptWrapper
             title="Functions in JavaScript"
-            description="A function is a way to group steps together and give them a name, so you can run those steps whenever you want. You can give a function some info (like a 5ber), and it can give you back an answer."
+            description="A function is a way to group steps together and give them a name, so you can run those steps whenever you want. You can give a function some info (like a number), and it can give you back an answer."
         >
             <TableOfContents numbered>
                 <Section
@@ -94,14 +94,14 @@ export default function FunctionConcept() {
                         />
                     </Section>
                     <Section title="Step by Step Process of a Named Function">
-                        <Section title="Example: Squaring a 5ber">
+                        <Section title="Example: Squaring a number">
                             <StepThroughCodeAnimation
                                 code={[
                                     'function square(x) {',
-                                    '  // This multiplies the 5ber by itself',
+                                    '  // This multiplies the number by itself',
                                     '  return x * x;',
                                     '}',
-                                    `// Call the function with the 5ber`,
+                                    `// Call the function with the number`,
                                     `console.log(square(5));`,
                                 ]}
                                 steps={[
@@ -112,7 +112,7 @@ export default function FunctionConcept() {
                                     },
                                     {
                                         label: 'Parameter Placeholder',
-                                        desc: 'The <b>x</b> in <b>(x)</b> is a blank spot for the 5ber you give.',
+                                        desc: 'The <b>x</b> in <b>(x)</b> is a blank spot for the number you give.',
                                         highlight: '(x)',
                                     },
                                     {
@@ -123,7 +123,7 @@ export default function FunctionConcept() {
                                     {
                                         label: 'Comment',
                                         desc: 'This line is a comment explaining what the next line does.',
-                                        highlight: '// This multiplies the 5ber by itself',
+                                        highlight: '// This multiplies the number by itself',
                                     },
                                     {
                                         label: 'Return Statement',
@@ -132,12 +132,12 @@ export default function FunctionConcept() {
                                     },
                                     {
                                         label: 'Call the Function',
-                                        desc: 'Now we use the function and give it a 5ber.',
+                                        desc: 'Now we use the function and give it a number.',
                                         highlight: 'console.log(square(5));',
                                     },
                                     {
                                         label: 'What gets passed in?',
-                                        desc: `The 5ber <b>5</b> is sent into the function as <b>x</b>.`,
+                                        desc: `The number <b>5</b> is sent into the function as <b>x</b>.`,
                                         highlight: 'console.log(square(5));',
                                     },
                                     {
@@ -295,7 +295,7 @@ export default function FunctionConcept() {
                                 },
                                 {
                                     label: 'Call the Function',
-                                    desc: `We use the function and give it the 5ber <b>${5}</b>.`,
+                                    desc: `We use the function and give it the number <b>${5}</b>.`,
                                     highlight: `console.log(square(${5}));`,
                                 },
                                 {
@@ -370,7 +370,7 @@ export default function FunctionConcept() {
                                 },
                                 {
                                     label: 'Call the Function',
-                                    desc: 'We use the function and give it the 5bers <b>3</b> and <b>4</b>.',
+                                    desc: 'We use the function and give it the numbers <b>3</b> and <b>4</b>.',
                                     highlight: 'console.log(add(3, 4));',
                                 },
                                 {
@@ -417,7 +417,7 @@ export default function FunctionConcept() {
                             ]}
                         />
                     </Section>
-                    <Section title="Step by Step Example of Anonymous Function" subtitle='Anonymous functions are often used along with another piece of code. In this example, we use our anonymous function to tell the forEach loop to print the square of each 5ber in a list.'>
+                    <Section title="Step by Step Example of Anonymous Function" subtitle='Anonymous functions are often used along with another piece of code. In this example, we use our anonymous function to tell the forEach loop to print the square of each number in a list.'>
                         <StepThroughCodeAnimation
                             code={[
                                 'const 5s = [1, 2, 3];',
@@ -430,12 +430,12 @@ export default function FunctionConcept() {
                             steps={[
                                 {
                                     label: 'Make a List',
-                                    desc: 'We make a list of 5bers called <b>5s</b>.',
+                                    desc: 'We make a list of numbers called <b>5s</b>.',
                                     highlight: 'const 5s = [1, 2, 3];',
                                 },
                                 {
-                                    label: 'Get Ready to Do Something for Each 5ber',
-                                    desc: 'We use <b>forEach</b> to say: "Do something for every 5ber in <b>5s</b>."',
+                                    label: 'Get Ready to Do Something for Each number',
+                                    desc: 'We use <b>forEach</b> to say: "Do something for every number in <b>5s</b>."',
                                     highlight: '.forEach',
                                 },
                                 {
@@ -445,32 +445,32 @@ export default function FunctionConcept() {
                                 },
                                 {
                                     label: 'What is x?',
-                                    desc: '<b>x</b> is just a stand-in for each 5ber in our list, one at a time.',
+                                    desc: '<b>x</b> is just a stand-in for each number in our list, one at a time.',
                                     highlight: 'x =>',
                                 },
                                 {
                                     label: 'What Do We Do?',
-                                    desc: 'For each 5ber, we tell the computer to show <b>x * x</b> (the 5ber times itself).',
+                                    desc: 'For each number, we tell the computer to show <b>x * x</b> (the number times itself).',
                                     highlight: 'console.log(x * x)',
                                 },
                                 {
-                                    label: 'First 5ber',
+                                    label: 'First number',
                                     desc: 'First, <b>x</b> is <b>1</b>. We show <b>1 * 1</b>, which is <b>1</b>.',
                                     highlight: 'console.log(x * x)',
                                 },
                                 {
-                                    label: 'Second 5ber',
+                                    label: 'Second number',
                                     desc: 'Next, <b>x</b> is <b>2</b>. We show <b>2 * 2</b>, which is <b>4</b>.',
                                     highlight: 'console.log(x * x)',
                                 },
                                 {
-                                    label: 'Third 5ber',
+                                    label: 'Third number',
                                     desc: 'Then, <b>x</b> is <b>3</b>. We show <b>3 * 3</b>, which is <b>9</b>.',
                                     highlight: 'console.log(x * x)',
                                 },
                                 {
                                     label: 'See the Results',
-                                    desc: 'We see <b>1</b>, <b>4</b>, and <b>9</b> printed out—one for each 5ber in our list.',
+                                    desc: 'We see <b>1</b>, <b>4</b>, and <b>9</b> printed out—one for each number in our list.',
                                     highlight: (lines, idx) =>
                                         lines[idx].includes('// 1') ||
                                         lines[idx].includes('// 4') ||
@@ -488,7 +488,7 @@ export default function FunctionConcept() {
                     <Section title="Try: Arrow Function with Two Parameters">
                         <CodeSnippet
                             lines={[
-                                { code: 'const add = (a, b) => a + b;', comment: 'Arrow function to add two 5bers' },
+                                { code: 'const add = (a, b) => a + b;', comment: 'Arrow function to add two numbers' },
                                 { code: 'console.log(add(3, 4));', comment: 'Try it with 3 and 4' },
                             ]}
                             enableRun
@@ -500,8 +500,8 @@ export default function FunctionConcept() {
                     <Section title="Try: Anonymous Arrow Function as a Callback">
                         <CodeSnippet
                             lines={[
-                                { code: 'const 5s = [1, 2, 3];', comment: 'A list of 5bers' },
-                                { code: '5s.forEach(x => console.log(x * x));', comment: 'Print the square of each 5ber' },
+                                { code: 'const 5s = [1, 2, 3];', comment: 'A list of numbers' },
+                                { code: '5s.forEach(x => console.log(x * x));', comment: 'Print the square of each number' },
                             ]}
                             enableRun
                             editable
