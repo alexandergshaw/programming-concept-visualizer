@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import ConceptWrapper from '../../common/ConceptWrapper';
 import TableOfContents from '@/components/common/TableOfContents';
 import Section from '@/components/common/Section';

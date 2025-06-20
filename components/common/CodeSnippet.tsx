@@ -18,18 +18,12 @@ interface CodeSnippetProps {
     language?: 'javascript' | 'python';
 }
 
-const getCommentSyntax = (language: string | undefined) => {
-    if (language === 'python') return '#';
-    // Default to JS/C-like
-    return '//';
-};
 
 const CodeSnippet: React.FC<CodeSnippetProps> = ({
     lines,
     enableRun = false,
     editable = false,
     allowCopy = true,
-    language = 'javascript'
 }) => {
     const [open, setOpen] = useState(false);
     const [output, setOutput] = useState<string>('No output yet.');

@@ -42,23 +42,6 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
         }
     };
 
-    // Helper for roman numerals
-    const toRoman = (num: number): string => {
-        const romans = [
-            ['M', 1000], ['CM', 900], ['D', 500], ['CD', 400],
-            ['C', 100], ['XC', 90], ['L', 50], ['XL', 40],
-            ['X', 10], ['IX', 9], ['V', 5], ['IV', 4], ['I', 1]
-        ];
-        let result = '';
-        for (const [letter, n] of romans) {
-            while (num >= n) {
-                result += letter;
-                num -= n;
-            }
-        }
-        return result.toLowerCase();
-    };
-
     const getListStyleType = (level: number): string => {
         if (!numbered) return 'none';
         if (level === 0) return 'decimal';
