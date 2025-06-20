@@ -81,8 +81,8 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
         level: number,
         prefix: string[] = []
     ): React.ReactNode => {
-        // Safely cast section.element.props to any to avoid type error
-        const elementProps = (section.element.props as any);
+        // Use unknown and type guard instead of any
+        const elementProps = section.element.props as { children?: ReactNode };
 
         return (
             <div key={section.id} id={section.id}>
