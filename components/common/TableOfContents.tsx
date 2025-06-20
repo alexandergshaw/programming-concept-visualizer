@@ -98,9 +98,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
         <Section title="Table of Contents" subtitle="Click on a section to jump to it:">
             {renderToc(sections)}
             <div style={{ marginTop: 20 }}>
-                {sections.map((section, idx) =>
-                    renderSectionWithNumber(section, 0, [(idx + 1).toString()])
-                )}
+                {sections.map(section => renderSectionWithNumber(section))}
             </div>
         </Section>
     );
