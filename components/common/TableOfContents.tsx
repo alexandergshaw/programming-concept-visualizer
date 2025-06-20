@@ -78,10 +78,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
     // --- Render section numbers for headings as well ---
     const renderSectionWithNumber = (
         section: SectionItem,
-        level: number,
-        prefix: string[] = []
     ): React.ReactNode => {
-        // Use unknown and type guard instead of any
         const elementProps = section.element.props as { children?: ReactNode };
 
         return (
