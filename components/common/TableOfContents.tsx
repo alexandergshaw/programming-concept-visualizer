@@ -81,6 +81,8 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
         level: number,
         prefix: string[] = []
     ): React.ReactNode => {
+        // Safely cast section.element.props to any to avoid type error
+        const elementProps = (section.element.props as any);
 
         return (
             <div key={section.id} id={section.id}>
@@ -88,7 +90,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
                     {React.cloneElement(
                         section.element,
                         {},
-                        section.element.props.children
+                        elementProps.children
                     )}
                 </div>
                 {section.children.length > 0 &&
