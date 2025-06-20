@@ -94,8 +94,6 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({
         };
     };
 
-    const commentSyntax = getCommentSyntax(language);
-
     return (
         <div style={{ backgroundColor: '#f5f5f5', borderRadius: '8px', padding: '10px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>

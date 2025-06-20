@@ -77,7 +77,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
                 marginLeft: `${40 + level * 24}px`,
             }}
         >
-            {sections.map(({ title, id, children }, idx) => (
+            {sections.map(({ title, id, children }) => (
                 <li key={id} style={{ marginBottom: 8 }}>
                     <a
                         href={`#${id}`}
@@ -98,16 +98,6 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
         level: number,
         prefix: string[] = []
     ): React.ReactNode => {
-        // Compose the section number string
-        let sectionNumber = '';
-        if (level === 0) {
-            sectionNumber = (parseInt(prefix[0] || '1')).toString();
-        } else if (level === 1) {
-            sectionNumber = prefix.join('') + String.fromCharCode(97 + (parseInt(prefix[level] || '0')));
-        } else {
-            // For level 2 and deeper, use roman numerals
-            sectionNumber = prefix.slice(0, 1).join('') + String.fromCharCode(97 + (parseInt(prefix[1] || '0'))) + '.' + toRoman(parseInt(prefix[level] || '1'));
-        }
 
         return (
             <div key={section.id} id={section.id}>

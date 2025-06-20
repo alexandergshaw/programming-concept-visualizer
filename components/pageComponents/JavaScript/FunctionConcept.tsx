@@ -9,8 +9,6 @@ import CodePartsExplanation, { CodePart } from '@/components/common/CodePartsExp
 import CodeSnippet from '@/components/common/CodeSnippet';
 
 export default function FunctionConcept() {
-    const [num, setNum] = useState(5);
-
     // Parts for the named function example
     const squareParts: CodePart[] = [
         {
@@ -79,55 +77,6 @@ export default function FunctionConcept() {
         },
     ];
 
-    // Parts for an arrow function with 0 parameters
-    const zeroParamArrowParts: CodePart[] = [
-        {
-            label: 'Arrow Function',
-            part: 'const sayHello =',
-            color: '#1976d2',
-            desc: 'Defines a variable and assigns it a function.',
-        },
-        {
-            label: 'No Parameters',
-            part: '() =>',
-            color: '#43a047',
-            desc: 'The empty parentheses mean this function takes no input.',
-        },
-        {
-            label: 'Function Body',
-            part: '"Hello!"',
-            color: '#e53935',
-            desc: 'The code that runs when you call the function.',
-        },
-    ];
-
-    // Parts for an arrow function with 2 parameters
-    const twoParamArrowParts: CodePart[] = [
-        {
-            label: 'Arrow Function',
-            part: 'const add =',
-            color: '#1976d2',
-            desc: 'Defines a variable and assigns it a function.',
-        },
-        {
-            label: 'Parameters',
-            part: '(a, b) =>',
-            color: '#43a047',
-            desc: 'This function takes two inputs: <b>a</b> and <b>b</b>.',
-        },
-        {
-            label: 'Function Body',
-            part: 'a + b',
-            color: '#e53935',
-            desc: 'The code that runs when you call the function.',
-        },
-        {
-            label: 'Arguments',
-            part: '(3, 4)',
-            color: '#00bcd4',
-            desc: 'The actual values you give to the function when you use it.',
-        },
-    ];
 
     return (
         <ConceptWrapper
