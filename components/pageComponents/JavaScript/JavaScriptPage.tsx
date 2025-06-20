@@ -14,6 +14,7 @@ import UserInputConcept from './UserInputConcept';
 import ConditionalConcept from './ConditionalConcept';
 import LoopConcept from './LoopConcept';
 import FunctionConcept from './FunctionConcept';
+import JQueryEventHandlersConcept from './JQueryEventHandlersConcept';
 
 const navItems = [
   {
@@ -140,6 +141,8 @@ export default function JavaScriptPage() {
         return <LoopConcept />;
       case 'functions':
         return <FunctionConcept />;
+      case 'jquery event listeners':
+        return <JQueryEventHandlersConcept />;
       default:
         return null;
     }
