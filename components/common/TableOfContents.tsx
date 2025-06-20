@@ -93,21 +93,6 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
                         elementProps.children
                     )}
                 </div>
-                {section.children.length > 0 &&
-                    section.children.map((child, childIdx) =>
-                        renderSectionWithNumber(
-                            child,
-                            level + 1,
-                            [
-                                ...prefix,
-                                (level === 0)
-                                    ? (childIdx + 1).toString()
-                                    : (level === 1)
-                                    ? childIdx.toString()
-                                    : (childIdx + 1).toString(),
-                            ]
-                        )
-                    )}
             </div>
         );
     };
