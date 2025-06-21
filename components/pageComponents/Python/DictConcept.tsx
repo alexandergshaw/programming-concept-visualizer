@@ -2,7 +2,6 @@ import ConceptWrapper from '../../common/ConceptWrapper';
 import TableOfContents from '@/components/common/TableOfContents';
 import Section from '@/components/common/Section';
 import StepThroughCodeAnimation, { Step } from '../JavaScript/StepThroughCodeAnimation';
-import { CodePart } from '@/components/common/CodePartsExplanation';
 
 const createDictSteps: Step[] = [
   {
