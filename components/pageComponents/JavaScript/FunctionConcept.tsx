@@ -420,8 +420,8 @@ export default function FunctionConcept() {
                     <Section title="Step by Step Example of Anonymous Function" subtitle='Anonymous functions are often used along with another piece of code. In this example, we use our anonymous function to tell the forEach loop to print the square of each number in a list.'>
                         <StepThroughCodeAnimation
                             code={[
-                                'const 5s = [1, 2, 3];',
-                                '5s.forEach(x => console.log(x * x));',
+                                'const nums = [1, 2, 3];',
+                                'nums.forEach(x => console.log(x * x));',
                                 '// Output:',
                                 '// 1',
                                 '// 4',
@@ -430,12 +430,12 @@ export default function FunctionConcept() {
                             steps={[
                                 {
                                     label: 'Make a List',
-                                    desc: 'We make a list of numbers called <b>5s</b>.',
-                                    highlight: 'const 5s = [1, 2, 3];',
+                                    desc: 'We make a list of numbers called <b>nums</b>.',
+                                    highlight: 'const nums = [1, 2, 3];',
                                 },
                                 {
                                     label: 'Get Ready to Do Something for Each number',
-                                    desc: 'We use <b>forEach</b> to say: "Do something for every number in <b>5s</b>."',
+                                    desc: 'We use <b>forEach</b> to say: "Do something for every number in <b>nums</b>."',
                                     highlight: '.forEach',
                                 },
                                 {
