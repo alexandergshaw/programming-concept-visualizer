@@ -1,29 +1,8 @@
 import ConceptWrapper from '../../common/ConceptWrapper';
 import TableOfContents from '@/components/common/TableOfContents';
 import Section from '@/components/common/Section';
-import CodePartsExplanation, { CodePart } from '@/components/common/CodePartsExplanation';
 import StepThroughCodeAnimation from '../JavaScript/StepThroughCodeAnimation';
 
-const tupleParts: CodePart[] = [
-  {
-    label: 'Tuple Name',
-    part: 'coords',
-    color: '#1976d2',
-    desc: 'The variable that will store the tuple.',
-  },
-  {
-    label: 'Assignment',
-    part: '=',
-    color: '#43a047',
-    desc: 'Assigns the tuple to the variable.',
-  },
-  {
-    label: 'Tuple Parentheses',
-    part: '(4, 5)',
-    color: '#fbc02d',
-    desc: 'Parentheses define a tuple in Python.',
-  },
-];
 
 export default function TupleConcept() {
   return (

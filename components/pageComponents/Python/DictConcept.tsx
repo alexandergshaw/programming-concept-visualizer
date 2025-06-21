@@ -37,27 +37,6 @@ const createDictSteps: Step[] = [
   },
 ];
 
-const dictParts: CodePart[] = [
-  {
-    label: 'Dict Name',
-    part: 'person',
-    color: '#1976d2',
-    desc: 'The variable that will store the dictionary.',
-  },
-  {
-    label: 'Assignment',
-    part: '=',
-    color: '#43a047',
-    desc: 'Assigns the dictionary to the variable.',
-  },
-  {
-    label: 'Dict Braces',
-    part: `{'name': 'Alice', 'age': 30}`,
-    color: '#fbc02d',
-    desc: 'Curly braces define a dictionary in Python.',
-  },
-];
-
 export default function DictConcept() {
   return (
     <ConceptWrapper
