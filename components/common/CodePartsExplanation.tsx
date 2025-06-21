@@ -1,5 +1,6 @@
 'use client';
 
+import React, { useState } from 'react';
 import ConceptInfoCard from '@/components/common/ConceptInfoCard';
 
 export type CodePart = {
@@ -8,6 +9,13 @@ export type CodePart = {
     color: string;
     desc: string;
 };
+
+function escapeHtml(str: string) {
+    return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+}
 
 export default function CodePartsExplanation({
     code,
@@ -18,15 +26,38 @@ export default function CodePartsExplanation({
     parts: CodePart[];
     style?: React.CSSProperties;
 }) {
-    // Highlight each part in the code sample
-    let highlightedCode = code;
+    const [hovered, setHovered] = useState<string | null>(null);
+
+    // Highlight each part in the code sample, adding a data-label for hover sync
+    let highlightedCode = escapeHtml(code);
     parts.forEach(part => {
-        // Use RegExp to avoid double-highlighting if part appears multiple times
+        // Escape the part as well for matching
+        const escapedPart = escapeHtml(part.part);
         highlightedCode = highlightedCode.replace(
-            new RegExp(part.part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'),
-            `<span style="background:${part.color}33;border-radius:4px;padding:1px 2px;">${part.part}</span>`
+            new RegExp(escapedPart.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'),
+            `<span 
+                style="
+                    background:${part.color}33;
+                    border-radius:4px;
+                    padding:1px 2px;
+                    transition: outline 0.18s cubic-bezier(.4,2,.6,1), background 0.18s cubic-bezier(.4,2,.6,1);
+                    ${hovered === part.label ? `outline:2px solid ${part.color};background:${part.color}44;` : ''}
+                " 
+                data-label="${part.label}"
+            >${escapedPart}</span>`
         );
     });
+
+    // Handler for mouse events on code (event delegation)
+    const handleCodeMouseOver = (e: React.MouseEvent<HTMLPreElement>) => {
+        const target = e.target as HTMLElement;
+        if (target && target.dataset && target.dataset.label) {
+            setHovered(target.dataset.label);
+        }
+    };
+    const handleCodeMouseOut = () => {
+        setHovered(null);
+    };
 
     return (
         <ConceptInfoCard style={style}>
@@ -44,10 +75,26 @@ export default function CodePartsExplanation({
                     display: 'block'
                 }}
                 dangerouslySetInnerHTML={{ __html: highlightedCode }}
+                onMouseOver={handleCodeMouseOver}
+                onMouseOut={handleCodeMouseOut}
             />
             <ul style={{ margin: 0, paddingLeft: 18, fontSize: 15 }}>
                 {parts.map(part => (
-                    <li key={part.label} style={{ marginBottom: 4 }}>
+                    <li
+                        key={part.label}
+                        style={{
+                            marginBottom: 4,
+                            background: hovered === part.label ? part.color + '22' : undefined,
+                            borderRadius: 4,
+                            cursor: 'pointer',
+                            transition: 'background 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.18s cubic-bezier(.4,2,.6,1)',
+                            boxShadow: hovered === part.label
+                                ? `0 2px 8px 0 ${part.color}22`
+                                : undefined,
+                        }}
+                        onMouseOver={() => setHovered(part.label)}
+                        onMouseOut={() => setHovered(null)}
+                    >
                         <span style={{
                             display: 'inline-block',
                             width: 14,
@@ -55,7 +102,11 @@ export default function CodePartsExplanation({
                             background: part.color + '33',
                             borderRadius: 3,
                             marginRight: 8,
-                            verticalAlign: 'middle'
+                            verticalAlign: 'middle',
+                            transition: 'background 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.18s cubic-bezier(.4,2,.6,1)',
+                            boxShadow: hovered === part.label
+                                ? `0 1px 4px 0 ${part.color}44`
+                                : undefined,
                         }} />
                         <b>{part.label}:</b> <span dangerouslySetInnerHTML={{ __html: part.desc }} />
                     </li>
