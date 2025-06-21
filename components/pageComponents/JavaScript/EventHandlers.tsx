@@ -6,7 +6,14 @@ import TableOfContents from '@/components/common/TableOfContents';
 import Section from '@/components/common/Section';
 import CodePartsExplanation, { CodePart } from '@/components/common/CodePartsExplanation';
 import ConceptInfoCard from '@/components/common/ConceptInfoCard';
-import CapstonePractice from '../../common/CapstonePractice';
+import CapstonePractice from './CapstonePractice';
+import MuiButton from '@mui/material/Button';
+import MuiInput from '@mui/material/Input';
+import MuiBox from '@mui/material/Box';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
 
 export default function EventHandlersConcept() {
     // Parts for a basic JS click handler, including HTML highlights
@@ -74,63 +81,68 @@ export default function EventHandlersConcept() {
     const renderDemoElement = () => {
         if (selectedElement === 'myBtn') {
             return (
-                <button
+                <MuiButton
                     id="myBtn"
                     onClick={selectedEvent === 'click' ? handleDemo : undefined}
                     onMouseEnter={selectedEvent === 'mouseenter' ? handleDemo : undefined}
                     onDoubleClick={selectedEvent === 'dblclick' ? handleDemo : undefined}
-                    style={{
-                        padding: '10px 24px',
+                    variant="contained"
+                    color="primary"
+                    sx={{
                         fontSize: 16,
-                        borderRadius: 6,
-                        border: '1.5px solid #1976d2',
-                        background: '#1976d2',
-                        color: '#fff',
-                        cursor: 'pointer',
-                        marginRight: 8
+                        borderRadius: 2,
+                        marginRight: 1,
+                        textTransform: 'none',
+                        boxShadow: 'none',
+                        px: 3,
+                        py: 1.2,
                     }}
                 >
                     Button
-                </button>
+                </MuiButton>
             );
         }
         if (selectedElement === 'myDiv') {
             return (
-                <div
+                <MuiBox
                     id="myDiv"
                     onClick={selectedEvent === 'click' ? handleDemo : undefined}
                     onMouseEnter={selectedEvent === 'mouseenter' ? handleDemo : undefined}
                     onDoubleClick={selectedEvent === 'dblclick' ? handleDemo : undefined}
-                    style={{
-                        padding: 16,
+                    sx={{
+                        padding: 2,
                         border: '1.5px solid #1976d2',
-                        borderRadius: 6,
+                        borderRadius: 2,
                         background: '#f3f6fa',
                         color: '#222',
                         display: 'inline-block',
                         minWidth: 120,
-                        cursor: selectedEvent === 'click' ? 'pointer' : 'default'
+                        cursor: selectedEvent === 'click' ? 'pointer' : 'default',
+                        fontSize: 16,
+                        textAlign: 'center'
                     }}
                 >
                     div
-                </div>
+                </MuiBox>
             );
         }
         if (selectedElement === 'myInput') {
             return (
-                <input
+                <MuiInput
                     id="myInput"
                     onClick={selectedEvent === 'click' ? handleDemo : undefined}
                     onMouseEnter={selectedEvent === 'mouseenter' ? handleDemo : undefined}
                     onDoubleClick={selectedEvent === 'dblclick' ? handleDemo : undefined}
                     placeholder="Input"
-                    style={{
-                        padding: '8px 12px',
+                    sx={{
                         fontSize: 16,
-                        borderRadius: 6,
+                        borderRadius: 2,
                         border: '1.5px solid #1976d2',
-                        marginRight: 8
+                        marginRight: 1,
+                        padding: '8px 12px',
+                        background: '#fff'
                     }}
+                    disableUnderline
                 />
             );
         }
@@ -152,7 +164,7 @@ export default function EventHandlersConcept() {
                             <div style={{ flex: '1 1 420px', minWidth: 0 }}>
                                 <CodePartsExplanation
                                     code={
-`<!DOCTYPE html>
+                                        `<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
@@ -180,37 +192,78 @@ export default function EventHandlersConcept() {
                     subtitle="Try different combinations of events and elements to see how event handlers work."
                 >
                     <ConceptInfoCard>
-                        <div style={{ marginBottom: 12 }}>
-                            <label>
-                                <b>Event:</b>{' '}
-                                <select
+                        <div style={{ marginBottom: 12, display: 'flex', gap: 24, alignItems: 'center' }}>
+                            <FormControl size="small" variant="outlined" sx={{ minWidth: 120 }}>
+                                <InputLabel id="event-label">Event</InputLabel>
+                                <Select
+                                    labelId="event-label"
                                     value={selectedEvent}
-                                    onChange={e => setSelectedEvent(e.target.value)}
-                                    style={{ marginRight: 16, fontSize: 15, padding: '4px 8px' }}
+                                    label="Event"
+                                    onChange={e => setSelectedEvent(e.target.value as string)}
+                                >
+                                    {eventOptions.map(opt => (
+                                        <MenuItem key={opt.value} value={opt.value}>{opt.label}</MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                            <FormControl size="small" variant="outlined" sx={{ minWidth: 160 }}>
+                                <InputLabel id="element-label">Element</InputLabel>
+                                <Select
+                                    labelId="element-label"
+                                    value={selectedElement}
+                                    label="Element"
+                                    onChange={e => setSelectedElement(e.target.value as string)}
+                                >
+                                    {elementOptions.map(opt => (
+                                        <MenuItem key={opt.value} value={opt.value}>{opt.label}</MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                        </div>
+                        <div style={{ margin: '24px 0' }}>
+                            {renderDemoElement()}
+                        </div>
+                        <div style={{ margin: '24px 0' }}>
+                            <b>Generated Code:</b>
+                            <pre
+                                style={{
+                                    background: '#f7f7f7',
+                                    border: '1px solid #e0e0e0',
+                                    borderRadius: 6,
+                                    padding: '12px 16px',
+                                    fontFamily: 'monospace',
+                                    fontSize: 15,
+                                    marginTop: 8,
+                                    marginBottom: 8,
+                                    whiteSpace: 'pre-wrap',
+                                    wordBreak: 'break-all'
+                                }}
                             >
-                                {eventOptions.map(opt => (
-                                    <option key={opt.value} value={opt.value}>{opt.label}</option>
-                                ))}
-                            </select>
-                        </label>
-                        <label>
-                            <b>Element:</b>{' '}
-                            <select
-                                value={selectedElement}
-                                onChange={e => setSelectedElement(e.target.value)}
-                                style={{ fontSize: 15, padding: '4px 8px' }}
-                            >
-                                {elementOptions.map(opt => (
-                                    <option key={opt.value} value={opt.value}>{opt.label}</option>
-                                ))}
-                            </select>
-                        </label>
-                    </div>
-                    <div style={{ margin: '24px 0' }}>
-                        {renderDemoElement()}
-                    </div>
-                    <div style={{ margin: '24px 0' }}>
-                        <b>Generated Code:</b>
+                                {`<button id="myBtn">Click me!</button>
+<div id="myDiv" style="padding:16px;border:1px solid #ccc;">Hover me!</div>
+<input id="myInput" placeholder="Type here..." />
+
+<script>
+document.getElementById('${selectedElement}').addEventListener('${selectedEvent}', () => {
+  alert('Event triggered!');
+});
+</script>`}
+                            </pre>
+                        </div>
+                    </ConceptInfoCard>
+                </Section>
+                <Section
+                    title="Listening for DOMContentLoaded"
+                    subtitle="How to run JavaScript as soon as your HTML is ready"
+                >
+                    <ConceptInfoCard>
+                        <div style={{ marginBottom: 12 }}>
+                            Sometimes you want your JavaScript to run as soon as the page&apos;s HTML is loaded, but before images or other resources are finished loading. The <b>DOMContentLoaded</b> event is perfect for this!<br /><br />
+                            Think of it as: <i>&quot;Let me know when the basic page structure is ready, so I can safely start working with the elements on the page.&quot;</i>
+                            <br /><br />
+                            <b>What if you don&apos;t use <code>DOMContentLoaded</code>?</b><br />
+                            If you try to run JavaScript that selects or changes elements before the HTML is loaded, your code might not work. For example, <code>document.getElementById(&apos;myBtn&apos;)</code> could return <code>null</code> if the button isn&apos;t in the page yet.
+                        </div>
                         <pre
                             style={{
                                 background: '#f7f7f7',
@@ -224,62 +277,23 @@ export default function EventHandlersConcept() {
                                 whiteSpace: 'pre-wrap',
                                 wordBreak: 'break-all'
                             }}
-                        >
-{`<button id="myBtn">Click me!</button>
-<div id="myDiv" style="padding:16px;border:1px solid #ccc;">Hover me!</div>
-<input id="myInput" placeholder="Type here..." />
-
-<script>
-document.getElementById('${selectedElement}').addEventListener('${selectedEvent}', () => {
-  alert('Event triggered!');
-});
-</script>`}
-                        </pre>
-                    </div>
-                </ConceptInfoCard>
-            </Section>
-            <Section
-                title="Listening for DOMContentLoaded"
-                subtitle="How to run JavaScript as soon as your HTML is ready"
-            >
-                <ConceptInfoCard>
-                    <div style={{ marginBottom: 12 }}>
-                        Sometimes you want your JavaScript to run as soon as the page&apos;s HTML is loaded, but before images or other resources are finished loading. The <b>DOMContentLoaded</b> event is perfect for this!<br /><br />
-                        Think of it as: <i>&quot;Let me know when the basic page structure is ready, so I can safely start working with the elements on the page.&quot;</i>
-                        <br /><br />
-                        <b>What if you don&apos;t use <code>DOMContentLoaded</code>?</b><br />
-                        If you try to run JavaScript that selects or changes elements before the HTML is loaded, your code might not work. For example, <code>document.getElementById(&apos;myBtn&apos;)</code> could return <code>null</code> if the button isn&apos;t in the page yet.
-                    </div>
-                    <pre
-                        style={{
-                            background: '#f7f7f7',
-                            border: '1px solid #e0e0e0',
-                            borderRadius: 6,
-                            padding: '12px 16px',
-                            fontFamily: 'monospace',
-                            fontSize: 15,
-                            marginTop: 8,
-                            marginBottom: 8,
-                            whiteSpace: 'pre-wrap',
-                            wordBreak: 'break-all'
-                        }}
-                    >{`
+                        >{`
 document.addEventListener('DOMContentLoaded', () => {
   // This code runs as soon as the HTML is loaded and ready
   alert('DOM fully loaded and parsed!');
 });
-                    `.trim()}</pre>
-                </ConceptInfoCard>
-            </Section>
-            <Section
-                title="Capstone Practice Problem"
-                subtitle='Use what you learned about event handlers to complete this task.'
-            >
-                <CapstonePractice
-                    requiredCode={["addEventListener"]}
-                    prompt={`Below is a sample HTML page. Write JavaScript code that logs "Hello, events!" to the console (using console.log) when the button with id "myBtn" is clicked. Add your event handler code inside the <script> tag.`}
-                    correctOutput="Hello, events!"
-                    initialCode={`<!DOCTYPE html>
+                        `.trim()}</pre>
+                    </ConceptInfoCard>
+                </Section>
+                <Section
+                    title="Capstone Practice Problem"
+                    subtitle='Use what you learned about event handlers to complete this task.'
+                >
+                    <CapstonePractice
+                        requiredCode={["addEventListener"]}
+                        prompt={`Below is a sample HTML page. Write JavaScript code that logs "Hello, events!" to the console (using console.log) when the button with id "myBtn" is clicked. Add your event handler code inside the <script> tag.`}
+                        correctOutput="Hello, events!"
+                        initialCode={`<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
@@ -293,10 +307,10 @@ document.addEventListener('DOMContentLoaded', () => {
   </body>
 </html>
 `}
-                />
-            </Section>
-            {/* ...end TableOfContents and ConceptWrapper... */}
-        </TableOfContents>
-    </ConceptWrapper>
+                    />
+                </Section>
+                {/* ...end TableOfContents and ConceptWrapper... */}
+            </TableOfContents>
+        </ConceptWrapper>
     );
 }
