@@ -298,7 +298,7 @@ export default function IfElseConcept() {
           <div style={{ marginBottom: 16 }}>
             <b>What if you want to check more than one thing?</b>
             <br />
-            You can use <b>elif</b> (which means "else if") and <b>else</b> to check different possibilities.
+            You can use <b>elif</b> (which means &quot;else if&quot;) and <b>else</b> to check different possibilities.
             <br /><br />
             For example, you might want to print something different if a number is positive, zero, or negative.
           </div>
@@ -344,9 +344,9 @@ export default function IfElseConcept() {
           <div style={{ marginBottom: 16 }}>
             <b>What if you want to check something inside another check?</b>
             <br />
-            You can put an <b>if</b> statement inside another <b>if</b>! This is called "nesting".
+            You can put an <b>if</b> statement inside another <b>if</b>. This is called &quot;nesting&quot;.
             <br /><br />
-            For example, you might want to check if a number is bigger than 10, and then check if it’s even or odd.
+            For example, you might want to check if a number is bigger than 10, and then check if it&apos;s even or odd.
           </div>
           <StepThroughCodeAnimation
             code={[

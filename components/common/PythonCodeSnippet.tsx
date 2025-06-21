@@ -32,7 +32,6 @@ interface PythonCodeRunnerProps {
     defaultCode?: string;
     style?: { [lineNumber: number]: React.CSSProperties };
     showTerminal?: boolean;
-    hideTerminalStepper?: boolean; // <-- Add this prop
 }
 
 const PythonCodeSnippet: React.FC<PythonCodeRunnerProps> = ({
@@ -44,13 +43,10 @@ const PythonCodeSnippet: React.FC<PythonCodeRunnerProps> = ({
     defaultCode,
     style,
     showTerminal,
-    hideTerminalStepper
 }) => {
     const [open, setOpen] = useState(false);
     const [output, setOutput] = useState<string>('No output yet.');
     const [terminalSteps, setTerminalSteps] = useState<AnimationStep[]>([]);
-    const [terminalStepIdx, setTerminalStepIdx] = useState<number>(-1);
-    const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
     // Convert code string to lines format if needed
     const processedLines = React.useMemo(() => {
@@ -122,7 +118,6 @@ const PythonCodeSnippet: React.FC<PythonCodeRunnerProps> = ({
         setIsLoading(true);
         setOutput('Running Python code...');
         setTerminalSteps([]);
-        setTerminalStepIdx(-1);
 
         try {
             // Get the code to execute - use editableCode if editing, otherwise use current lines
@@ -173,13 +168,9 @@ ${codeToExecute.split('\n').map(line => `        ${line}`).join('\n')}
                 output: <span>{line}</span>,
             }));
             setTerminalSteps(steps);
-            setTerminalStepIdx(steps.length > 0 ? 0 : -1);
-            setIsAnimating(true);
-
         } catch (error) {
             setOutput(`Python Error: ${error}`);
             setTerminalSteps([]);
-            setTerminalStepIdx(-1);
         } finally {
             setIsLoading(false);
         }
