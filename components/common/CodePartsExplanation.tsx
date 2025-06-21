@@ -11,10 +11,16 @@ export type CodePart = {
 };
 
 function escapeHtml(str: string) {
+    // Escape < and > only if not part of =>
+    // 1. Replace & with &amp;
+    // 2. Replace < unless it's part of =>
+    // 3. Replace > unless it's part of =>
     return str
         .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;');
+        // Escape < unless followed by =
+        .replace(/<(?![=])/g, '&lt;')
+        // Escape > unless preceded by =
+        .replace(/(?<!=)>/g, '&gt;');
 }
 
 export default function CodePartsExplanation({

@@ -26,7 +26,7 @@ export default function EventHandlersConcept() {
         },
         {
             label: 'Button Element',
-            part: `<button id="myBtn">Click me!</button>`,
+            part: `id="myBtn"`,
             color: '#1976d2',
             desc: 'This is the HTML button with <b>id="myBtn"</b> that the selector finds.',
         },
