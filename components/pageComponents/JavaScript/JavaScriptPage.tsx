@@ -34,14 +34,14 @@ const navItems = [
       { label: 'Loops', value: 'loops' },
     ]
   },
-  {
-    label: 'Functions',
-    value: 'functions',
-    children: [
-      { label: 'Functions', value: 'functions' },
-      // { label: 'jQuery Event Listeners', value: 'jQuery Event Listeners' },
-    ],
-  },
+  // {
+  //   label: 'Functions',
+  //   value: 'functions',
+  //   children: [
+  //     { label: 'Functions', value: 'functions' },
+  //     { label: 'jQuery Event Listeners', value: 'jQuery Event Listeners' },
+  //   ],
+  // },
   // {
   //   label: 'Control Flow',
   //   value: 'control flow',
