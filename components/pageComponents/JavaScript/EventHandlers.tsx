@@ -276,12 +276,26 @@ document.addEventListener('DOMContentLoaded', () => {
             </Section>
             <Section
                 title="Capstone Practice Problem"
-                subtitle="Test your understanding with a real coding challenge!"
+                subtitle='Use what you learned about event handlers to complete this task.'
             >
                 <CapstonePractice
-                    prompt={`Write JavaScript code that shows an alert with "Hello, events!" when the button with id "myBtn" is clicked.`}
+                    requiredCode={["addEventListener"]}
+                    prompt={`Below is a sample HTML page. Write JavaScript code that shows an alert with "Hello, events!" when the button with id "myBtn" is clicked. Add your event handler code inside the <script> tag.`}
                     correctOutput="Hello, events!"
-                    initialCode={`// Add your event handler below\n// Example: document.getElementById('myBtn').addEventListener(...)\n`}
+                    initialCode={`<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Event Handler Practice</title>
+  </head>
+  <body>
+    <button id="myBtn">Click me!</button>
+    <script>
+      // Your JavaScript goes here
+    </script>
+  </body>
+</html>
+`}
                 />
             </Section>
             {/* ...end TableOfContents and ConceptWrapper... */}
