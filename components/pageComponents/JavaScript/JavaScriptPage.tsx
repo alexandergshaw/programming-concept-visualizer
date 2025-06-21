@@ -39,7 +39,7 @@ const navItems = [
     value: 'functions',
     children: [
       { label: 'Functions', value: 'functions' },
-      { label: 'Event Listeners', value: 'Event Listeners' },
+      { label: 'Event Handlers', value: 'Event Listeners' },
     ],
   },
   // {
