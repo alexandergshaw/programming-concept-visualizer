@@ -184,7 +184,6 @@ function ColorDropdownPythonSnippet() {
         enableRun
         allowCopy
         showTerminal
-        hideTerminalStepper
       />
     </Box>
   );
@@ -242,7 +241,6 @@ function AnimalBreedDropdownPythonSnippet() {
         enableRun
         allowCopy
         showTerminal
-        hideTerminalStepper
       />
     </Box>
   );
