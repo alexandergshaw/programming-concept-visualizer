@@ -6,6 +6,7 @@ import TableOfContents from '@/components/common/TableOfContents';
 import Section from '@/components/common/Section';
 import CodePartsExplanation, { CodePart } from '@/components/common/CodePartsExplanation';
 import ConceptInfoCard from '@/components/common/ConceptInfoCard';
+import CapstonePractice from '../../common/CapstonePractice';
 
 export default function EventHandlersConcept() {
     // Parts for a basic JS click handler, including HTML highlights
@@ -272,6 +273,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         <b>Tip:</b> Use <code>DOMContentLoaded</code> if you want to safely select or change elements on the page right after the HTML loads, without waiting for images or other files.
                     </div>
                 </ConceptInfoCard>
+            </Section>
+            <Section
+                title="Capstone Practice Problem"
+                subtitle="Test your understanding with a real coding challenge!"
+            >
+                <CapstonePractice
+                    prompt={`Write JavaScript code that shows an alert with "Hello, events!" when the button with id "myBtn" is clicked.`}
+                    correctOutput="Hello, events!"
+                    initialCode={`// Add your event handler below\n// Example: document.getElementById('myBtn').addEventListener(...)\n`}
+                />
             </Section>
             {/* ...end TableOfContents and ConceptWrapper... */}
         </TableOfContents>

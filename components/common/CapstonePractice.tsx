@@ -29,7 +29,7 @@ export default function CapstonePractice({
 
         // Capture console.log output
         let captured = '';
-        const log = (...args: any[]) => {
+        const log = (...args: unknown[]) => {
             captured += args.join(' ') + '\n';
         };
 
@@ -44,8 +44,8 @@ export default function CapstonePractice({
             } else {
                 setResult('incorrect');
             }
-        } catch (e: any) {
-            setError(e.message || 'Error running code');
+        } catch (e) {
+            setError((e instanceof Error ? e.message : String(e)) || 'Error running code');
         }
     };
 
