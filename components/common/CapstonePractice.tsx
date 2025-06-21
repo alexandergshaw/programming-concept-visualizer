@@ -2,30 +2,47 @@
 
 import React, { useState } from 'react';
 import ConceptInfoCard from './ConceptInfoCard';
+import Button from '@mui/material/Button';
+import Alert from '@mui/material/Alert';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 interface CapstonePracticeProps {
     prompt: string;
     correctOutput: string;
     initialCode?: string;
     runCodeButtonLabel?: string;
+    requiredCode?: string | string[];
 }
 
 export default function CapstonePractice({
     prompt,
     correctOutput,
     initialCode = '',
-    runCodeButtonLabel = 'Run Code'
+    runCodeButtonLabel = 'Run Code',
+    requiredCode
 }: CapstonePracticeProps) {
     const [userCode, setUserCode] = useState(initialCode);
     const [output, setOutput] = useState<string | null>(null);
     const [result, setResult] = useState<'correct' | 'incorrect' | null>(null);
     const [error, setError] = useState<string | null>(null);
 
-    // Run user code and compare output
     const handleRunCode = () => {
         setError(null);
         setResult(null);
         setOutput(null);
+
+        // Check for required code if specified (now supports array)
+        if (requiredCode) {
+            const requiredArr = Array.isArray(requiredCode) ? requiredCode : [requiredCode];
+            const missing = requiredArr.filter(code => !userCode.includes(code));
+            if (missing.length > 0) {
+                setError(
+                    `Your answer must include: ${missing.map(m => `"${m}"`).join(', ')}`
+                );
+                return;
+            }
+        }
 
         // Capture console.log output
         let captured = '';
@@ -33,9 +50,16 @@ export default function CapstonePractice({
             captured += args.join(' ') + '\n';
         };
 
+        // Extract JS code between <script> tags if present
+        let codeToRun = userCode;
+        const scriptMatch = userCode.match(/<script[^>]*>([\s\S]*?)<\/script>/i);
+        if (scriptMatch) {
+            codeToRun = scriptMatch[1];
+        }
+
         try {
             // eslint-disable-next-line no-new-func
-            const func = new Function('console', userCode);
+            const func = new Function('console', codeToRun);
             func({ log });
             const trimmed = captured.trim();
             setOutput(trimmed);
@@ -50,8 +74,11 @@ export default function CapstonePractice({
     };
 
     return (
-        <ConceptInfoCard>
-            <div style={{ marginBottom: 16, fontWeight: 600, fontSize: 18 }}>
+        <ConceptInfoCard >
+            <div style={{
+                marginBottom: 18,
+                lineHeight: 1.4,
+            }}>
                 {prompt}
             </div>
             <textarea
@@ -60,66 +87,97 @@ export default function CapstonePractice({
                 rows={8}
                 style={{
                     width: '100%',
-                    fontFamily: 'monospace',
+                    fontFamily: 'Fira Mono, Menlo, monospace',
                     fontSize: 15,
-                    borderRadius: 6,
-                    border: '1px solid #bdbdbd',
-                    padding: 12,
-                    marginBottom: 12,
-                    background: '#fff'
+                    borderRadius: 8,
+                    border: '1.5px solid #e0e4ea',
+                    padding: '14px 16px',
+                    marginBottom: 14,
+                    background: '#f8fafc',
+                    color: '#23272f',
+                    outline: 'none',
+                    resize: 'vertical',
+                    transition: 'border 0.2s',
                 }}
                 placeholder="Type your JavaScript code here. Use console.log() to print output."
             />
-            <div>
-                <button
+            <div >
+                <Button
                     onClick={handleRunCode}
-                    style={{
-                        background: '#1976d2',
-                        color: '#fff',
-                        border: 'none',
-                        borderRadius: 6,
-                        padding: '8px 20px',
+                    variant="contained"
+                    color="primary"
+                    sx={{
+                        borderRadius: 2,
+                        paddingX: 3,
+                        paddingY: 1.2,
                         fontSize: 15,
-                        cursor: 'pointer',
-                        fontWeight: 500
+                        fontWeight: 500,
+                        textTransform: 'none',
+                        boxShadow: '0 1px 4px 0 rgba(25, 118, 210, 0.08)',
+                        letterSpacing: 0.2
                     }}
                 >
                     {runCodeButtonLabel}
-                </button>
+                </Button>
             </div>
             {output !== null && (
-                <div style={{ marginTop: 18 }}>
-                    <b>Your Output:</b>
+                <div style={{ marginTop: 10 }}>
+                    <div style={{ fontWeight: 500, color: '#23272f', marginBottom: 4 }}>Your Output:</div>
                     <pre style={{
-                        background: '#f7f7f7',
-                        border: '1px solid #e0e0e0',
-                        borderRadius: 6,
-                        padding: '10px 14px',
-                        fontFamily: 'monospace',
+                        background: '#f4f6fa',
+                        border: 'none',
+                        borderRadius: 8,
+                        padding: '12px 16px',
+                        fontFamily: 'Fira Mono, Menlo, monospace',
                         fontSize: 15,
-                        marginTop: 6,
-                        whiteSpace: 'pre-wrap'
+                        marginTop: 0,
+                        whiteSpace: 'pre-wrap',
+                        color: '#23272f'
                     }}>{output}</pre>
                 </div>
             )}
             {result === 'correct' && (
-                <div style={{ color: '#388e3c', fontWeight: 600, marginTop: 10 }}>
-                    ✅ Correct!
-                </div>
+                <Alert
+                    severity="success"
+                    icon={<CheckCircleIcon fontSize="inherit" />}
+                    sx={{
+                        mt: 2,
+                        fontWeight: 600,
+                        fontSize: 16,
+                        alignItems: 'center',
+                        borderRadius: 2
+                    }}
+                >
+                    Correct!
+                </Alert>
             )}
             {result === 'incorrect' && (
-                <div style={{ color: '#d32f2f', fontWeight: 600, marginTop: 10 }}>
-                    ❌ Not quite. Try again!
-                </div>
+                <Alert
+                    severity="error"
+                    icon={<CancelIcon fontSize="inherit" />}
+                    sx={{
+                        mt: 2,
+                        fontWeight: 600,
+                        fontSize: 16,
+                        alignItems: 'center',
+                        borderRadius: 2
+                    }}
+                >
+                    Not quite. Try again!
+                </Alert>
             )}
             {error && (
-                <div style={{ color: '#d32f2f', marginTop: 10 }}>
+                <Alert
+                    severity="error"
+                    sx={{
+                        mt: 2,
+                        fontSize: 15,
+                        borderRadius: 2
+                    }}
+                >
                     <b>Error:</b> {error}
-                </div>
+                </Alert>
             )}
-            <div style={{ marginTop: 24, fontSize: 13, color: '#888' }}>
-                <b>Tip:</b> Use <code>console.log()</code> to print your answer.
-            </div>
         </ConceptInfoCard>
     );
 }
