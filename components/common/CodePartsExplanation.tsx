@@ -29,24 +29,20 @@ export default function CodePartsExplanation({
     const [hovered, setHovered] = useState<string | null>(null);
 
     // Highlight each part in the code sample, adding a data-label for hover sync
-    let highlightedCode = escapeHtml(code);
+    let highlightedCode = code;
     parts.forEach(part => {
-        // Escape the part as well for matching
-        const escapedPart = escapeHtml(part.part);
+        // Escape for regex, but NOT for the replacement HTML
+        const escapedPartForRegex = part.part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         highlightedCode = highlightedCode.replace(
-            new RegExp(escapedPart.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'),
-            `<span 
-                style="
-                    background:${part.color}33;
-                    border-radius:4px;
-                    padding:1px 2px;
-                    transition: outline 0.18s cubic-bezier(.4,2,.6,1), background 0.18s cubic-bezier(.4,2,.6,1);
-                    ${hovered === part.label ? `outline:2px solid ${part.color};background:${part.color}44;` : ''}
-                " 
-                data-label="${part.label}"
-            >${escapedPart}</span>`
+            new RegExp(escapedPartForRegex, 'g'),
+            `<span style="background:${part.color}33;border-radius:4px;padding:1px 2px;transition:outline 0.18s cubic-bezier(.4,2,.6,1),background 0.18s cubic-bezier(.4,2,.6,1);${hovered === part.label ? `outline:2px solid ${part.color};background:${part.color}44;` : ''}" data-label="${part.label}">${escapeHtml(part.part)}</span>`
         );
     });
+    // Escape the rest of the code (outside of spans)
+    highlightedCode = escapeHtml(highlightedCode)
+        .replace(/&lt;span /g, '<span ')
+        .replace(/&lt;\/span&gt;/g, '</span>')
+        .replace(/&gt;/g, '>');
 
     // Handler for mouse events on code (event delegation)
     const handleCodeMouseOver = (e: React.MouseEvent<HTMLPreElement>) => {

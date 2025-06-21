@@ -4,7 +4,7 @@ import { useState } from 'react';
 import ConceptInfoCard from '@/components/common/ConceptInfoCard';
 import Button from '@mui/material/Button';
 
-type Step = {
+export type Step = {
     label: string;
     desc: string;
     highlight: string | ((codeLines: string[], idx: number) => boolean);
@@ -42,9 +42,14 @@ export default function StepThroughCodeAnimation({
         let shouldHighlight = false;
         let processedLine = line;
 
-        // Style comments
-        const isComment = processedLine.trim().startsWith('//');
-        if (isComment) {
+        // Style Python comments (lines starting with #)
+        const isPythonComment = processedLine.trim().startsWith('#');
+        // Style JS comments (lines starting with //)
+        const isJsComment = processedLine.trim().startsWith('//');
+
+        if (isPythonComment) {
+            processedLine = `<span style="color:#789;">${processedLine}</span>`;
+        } else if (isJsComment) {
             processedLine = `<span style="color:#789;">${processedLine}</span>`;
         } else {
             // Style code (non-comment)
@@ -60,7 +65,7 @@ export default function StepThroughCodeAnimation({
                 const color = stepColors[currentStep % stepColors.length];
                 const highlighted = `<span style="background:${color}33;border-radius:4px;padding:1px 2px;">${highlight}</span>`;
                 // Replace only in the code part, not in the comment styling
-                if (isComment) {
+                if (isPythonComment || isJsComment) {
                     processedLine = `<span style="color:#789;">${line.replace(
                         highlight,
                         highlighted
@@ -128,6 +133,21 @@ export default function StepThroughCodeAnimation({
                     }}
                 >
                     Reset
+                </Button>
+                <Button
+                    onClick={() => setCurrentStep(s => Math.max(s - 1, 0))}
+                    variant="outlined"
+                    color="primary"
+                    disabled={currentStep === 0}
+                    sx={{
+                        borderRadius: 2,
+                        px: 3,
+                        py: 1,
+                        fontWeight: 600,
+                        textTransform: 'none'
+                    }}
+                >
+                    Previous Step
                 </Button>
                 <Button
                     onClick={() => setCurrentStep(s => Math.min(s + 1, steps.length - 1))}

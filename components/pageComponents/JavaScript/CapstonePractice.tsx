@@ -8,7 +8,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 
 interface CapstonePracticeProps {
-    prompt: string;
+    prompt: React.ReactNode; // <-- Accepts JSX or string
     correctOutput: string;
     initialCode?: string;
     runCodeButtonLabel?: string;

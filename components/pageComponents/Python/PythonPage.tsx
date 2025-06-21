@@ -6,6 +6,10 @@ import PageWrapper from '../../common/PageWrapper';
 import VariableConcept from './VariableConcept';
 import UserInputConcept from './UserInputConcept';
 import StringManipulationConcept from './StringManipulationConcept';
+import ListConcept from './ListConcept';
+import TupleConcept from './TupleConcept';
+import SetConcept from './SetConcept';
+import DictConcept from './DictConcept';
 
 const navItems = [
 	{
@@ -17,6 +21,16 @@ const navItems = [
             { label: 'String Manipulation', value: 'string manipulation' },
         ],
 	},
+	{
+		label: 'Collections',
+		value: 'collections',
+		children: [
+			{ label: 'Lists', value: 'lists' },
+			{ label: 'Tuples', value: 'tuples' },
+			{ label: 'Sets', value: 'sets' },
+			{ label: 'Dictionaries', value: 'dicts' },
+		],
+	}
 ];
 
 export default function PythonPage() {
@@ -41,6 +55,14 @@ export default function PythonPage() {
                 return <UserInputConcept />;
             case 'string manipulation':
                 return <StringManipulationConcept />;
+            case 'lists':
+                return <ListConcept />;
+            case 'tuples':
+                return <TupleConcept />;
+            case 'sets':
+                return <SetConcept />;
+            case 'dicts':
+                return <DictConcept />;
             default:
 				return null;
 		}
@@ -55,7 +77,7 @@ export default function PythonPage() {
 		<PageWrapper
 			pageTitle={'Python Visualizer'}
 			navItems={navItems}
-			defaultOpen={['storing data']}
+			defaultOpen={['collections', 'storing data']}
 			handleSelect={handleSelect}
 			activeValue={selectedConcept || undefined}
 		>
