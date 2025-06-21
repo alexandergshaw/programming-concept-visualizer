@@ -10,6 +10,7 @@ import ListConcept from './ListConcept';
 import TupleConcept from './TupleConcept';
 import SetConcept from './SetConcept';
 import DictConcept from './DictConcept';
+import IfElseConcept from './IfElseConcept';
 
 const navItems = [
 	{
@@ -22,6 +23,13 @@ const navItems = [
         ],
 	},
 	{
+		label: 'Control Flow',
+		value: 'control flow',
+		children: [
+			{ label: 'If / Else', value: 'ifelse' },
+		],
+	},
+	{
 		label: 'Collections',
 		value: 'collections',
 		children: [
@@ -30,7 +38,7 @@ const navItems = [
 			{ label: 'Sets', value: 'sets' },
 			{ label: 'Dictionaries', value: 'dicts' },
 		],
-	}
+	},
 ];
 
 export default function PythonPage() {
@@ -63,6 +71,8 @@ export default function PythonPage() {
                 return <SetConcept />;
             case 'dicts':
                 return <DictConcept />;
+            case 'ifelse':
+                return <IfElseConcept />;
             default:
 				return null;
 		}
@@ -77,7 +87,7 @@ export default function PythonPage() {
 		<PageWrapper
 			pageTitle={'Python Visualizer'}
 			navItems={navItems}
-			defaultOpen={['collections', 'storing data']}
+			defaultOpen={['control flow', 'collections', 'storing data']}
 			handleSelect={handleSelect}
 			activeValue={selectedConcept || undefined}
 		>
