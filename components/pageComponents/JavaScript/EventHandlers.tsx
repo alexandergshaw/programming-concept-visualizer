@@ -14,7 +14,6 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
-import StepThroughCodeAnimation, { Step } from './StepThroughCodeAnimation';
 
 export default function EventHandlersConcept() {
     // Parts for a basic JS click handler, including HTML highlights
@@ -215,29 +214,6 @@ export default function EventHandlersConcept() {
             part: `output.textContent = 'The DOM is ready and you clicked the button!';`,
             color: '#fbc02d', // yellow for output/action
             desc: 'Adds text to the output div when the button is clicked.',
-        },
-    ];
-
-    const domContentLoadedSteps: Step[] = [
-        {
-            label: 'Wait for DOMContentLoaded',
-            desc: 'The code waits for the HTML to be fully loaded before running.',
-            highlight: `document.addEventListener('DOMContentLoaded', () => {`,
-        },
-        {
-            label: 'Select Elements',
-            desc: 'It selects the button and the output div from the page.',
-            highlight: `const btn = document.getElementById('showMsgBtn');`,
-        },
-        {
-            label: 'Add Click Listener',
-            desc: 'It adds a click event listener to the button.',
-            highlight: `btn.addEventListener('click', () => {`,
-        },
-        {
-            label: 'Update Output',
-            desc: 'When the button is clicked, the output div is updated with a message.',
-            highlight: `output.textContent = 'The DOM is ready and you clicked the button!';`,
         },
     ];
 
