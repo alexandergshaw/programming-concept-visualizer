@@ -176,7 +176,7 @@ function ColorDropdownPythonSnippet() {
           <MenuItem value="blue">blue</MenuItem>
         </Select>
       </FormControl>
-      <div style={{ marginBottom: 8, color: '#888' }}>
+      <div style={{ marginBottom: 8 }}>
         The code below checks what color you picked and prints out what you should do.
       </div>
       <PythonCodeSnippet
@@ -314,7 +314,7 @@ export default function IfElseConcept() {
             ]}
             steps={ifElseSteps}
           />
-          <div style={{ margin: '24px 0 8px 0', color: '#888' }}>
+          <div style={{ margin: '24px 0 8px 0' }}>
             You can use <b>if</b>, <b>elif</b>, and <b>else</b> with any kind of value, not just numbers! Here’s an example with colors:
           </div>
           <StepThroughCodeAnimation
