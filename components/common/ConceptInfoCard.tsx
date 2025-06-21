@@ -11,7 +11,6 @@ export default function ConceptInfoCard({ children, style = {} }: { children: Re
                 padding: 20,
                 marginBottom: 32,
                 border: '1.5px solid #e0e0e0',
-                maxWidth: 600,
                 ...style,
             }}
         >
