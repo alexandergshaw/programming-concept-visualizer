@@ -5,7 +5,6 @@ import ConceptWrapper from '../../common/ConceptWrapper';
 import TableOfContents from '@/components/common/TableOfContents';
 import Section from '@/components/common/Section';
 import CodePartsExplanation, { CodePart } from '@/components/common/CodePartsExplanation';
-import CodeSnippet from '@/components/common/CodeSnippet';
 import ConceptInfoCard from '@/components/common/ConceptInfoCard';
 
 export default function EventHandlersConcept() {
@@ -48,11 +47,6 @@ export default function EventHandlersConcept() {
             desc: 'What happens when the button is clicked.',
         },
     ];
-
-    // Handler to mimic JS event with a real alert
-    const handleMimicClick = () => {
-        window.alert('Event triggered!');
-    };
 
     // Demo options
     const eventOptions = [
@@ -251,7 +245,15 @@ ${js}
                                 wordBreak: 'break-all'
                             }}
                         >
-                            {getDemoCode()}
+{`<button id="myBtn">Click me!</button>
+<div id="myDiv" style="padding:16px;border:1px solid #ccc;">Hover me!</div>
+<input id="myInput" placeholder="Type here..." />
+
+<script>
+document.getElementById('${selectedElement}').addEventListener('${selectedEvent}', () => {
+  alert('Event triggered!');
+});
+</script>`}
                         </pre>
                     </div>
                 </ConceptInfoCard>
@@ -265,7 +267,8 @@ ${js}
                         Sometimes you want your JavaScript to run as soon as the page's HTML is loaded, but before images or other resources are finished loading. The <b>DOMContentLoaded</b> event is perfect for this!<br /><br />
                         Think of it as: <i>"Let me know when the basic page structure is ready, so I can safely start working with the elements on the page."</i>
                         <br /><br />
-                        If you try to run JavaScript that selects or changes elements before the HTML is loaded, <b>your code might not work</b>. For example, <code>document.getElementById('myBtn')</code> could return <code>null</code> if the button isn't in the page yet. 
+                        <b>What if you don't use <code>DOMContentLoaded</code>?</b><br />
+                        If you try to run JavaScript that selects or changes elements before the HTML is loaded, your code might not work. For example, <code>document.getElementById('myBtn')</code> could return <code>null</code> if the button isn't in the page yet. This can cause errors or nothing to happen at all. Using <code>DOMContentLoaded</code> makes sure your code waits until the HTML is ready.
                     </div>
                     <pre
                         style={{
@@ -281,11 +284,14 @@ ${js}
                             wordBreak: 'break-all'
                         }}
                     >{`
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
   // This code runs as soon as the HTML is loaded and ready
   alert('DOM fully loaded and parsed!');
 });
                     `.trim()}</pre>
+                    <div style={{ fontSize: 14, color: '#555' }}>
+                        <b>Tip:</b> Use <code>DOMContentLoaded</code> if you want to safely select or change elements on the page right after the HTML loads, without waiting for images or other files.
+                    </div>
                 </ConceptInfoCard>
             </Section>
             {/* ...end TableOfContents and ConceptWrapper... */}
