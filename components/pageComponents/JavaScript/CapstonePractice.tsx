@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import ConceptInfoCard from './ConceptInfoCard';
+import ConceptInfoCard from '../../common/ConceptInfoCard';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';

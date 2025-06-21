@@ -5,7 +5,7 @@ import TableOfContents from '@/components/common/TableOfContents';
 import Section from '@/components/common/Section';
 import StepThroughCodeAnimation from './StepThroughCodeAnimation';
 import CodePartsExplanation, { CodePart } from '@/components/common/CodePartsExplanation';
-import CodeSnippet from '@/components/common/CodeSnippet';
+import CapstonePractice from './CapstonePractice';
 
 export default function FunctionConcept() {
     // Parts for the named function example
@@ -480,35 +480,16 @@ export default function FunctionConcept() {
                         />
                     </Section>
                 </Section>
-
                 <Section
-                    title="Try It Yourself: Interactive Coding"
-                    subtitle="Type your own code below and see what happens! Change the code and click Run to try different functions."
+                    title="Capstone Practice Problem"
+                    subtitle="Use what you learned about arrow functions to solve this challenge!"
                 >
-                    <Section title="Try: Arrow Function with Two Parameters">
-                        <CodeSnippet
-                            lines={[
-                                { code: 'const add = (a, b) => a + b;', comment: 'Arrow function to add two numbers' },
-                                { code: 'console.log(add(3, 4));', comment: 'Try it with 3 and 4' },
-                            ]}
-                            enableRun
-                            editable
-                            allowCopy
-                            language="javascript"
-                        />
-                    </Section>
-                    <Section title="Try: Anonymous Arrow Function as a Callback">
-                        <CodeSnippet
-                            lines={[
-                                { code: 'const 5s = [1, 2, 3];', comment: 'A list of numbers' },
-                                { code: '5s.forEach(x => console.log(x * x));', comment: 'Print the square of each number' },
-                            ]}
-                            enableRun
-                            editable
-                            allowCopy
-                            language="javascript"
-                        />
-                    </Section>
+                    <CapstonePractice
+                        prompt={`Write an arrow function called triple that takes a number and returns that number times 3. Then console.log the result of passing 7 as an argument to triple().`}
+                        correctOutput="21"
+                        initialCode={`// Write your arrow function below\n`}
+                        requiredCode={["const triple", "=>", "return", "console.log"]}
+                    />
                 </Section>
             </TableOfContents>
         </ConceptWrapper>

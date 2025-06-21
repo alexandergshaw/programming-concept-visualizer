@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import ConceptInfoCard from '@/components/common/ConceptInfoCard';
+import Button from '@mui/material/Button';
 
 type Step = {
     label: string;
@@ -114,35 +115,35 @@ export default function StepThroughCodeAnimation({
                 justifyContent: 'center',
                 marginTop: 16
             }}>
-                <button
+                <Button
                     onClick={() => setCurrentStep(0)}
-                    style={{
-                        background: '#fff',
-                        border: '1.5px solid #bbb',
-                        borderRadius: 6,
-                        padding: '7px 18px',
+                    variant="outlined"
+                    color="primary"
+                    sx={{
+                        borderRadius: 2,
+                        px: 3,
+                        py: 1,
                         fontWeight: 600,
-                        color: '#1976d2',
-                        cursor: 'pointer'
+                        textTransform: 'none'
                     }}
                 >
                     Reset
-                </button>
-                <button
+                </Button>
+                <Button
                     onClick={() => setCurrentStep(s => Math.min(s + 1, steps.length - 1))}
+                    variant="contained"
+                    color="primary"
                     disabled={currentStep >= steps.length - 1}
-                    style={{
-                        background: currentStep >= steps.length - 1 ? '#eee' : '#1976d2',
-                        border: 'none',
-                        borderRadius: 6,
-                        padding: '7px 18px',
+                    sx={{
+                        borderRadius: 2,
+                        px: 3,
+                        py: 1,
                         fontWeight: 600,
-                        color: currentStep >= steps.length - 1 ? '#aaa' : '#fff',
-                        cursor: currentStep >= steps.length - 1 ? 'not-allowed' : 'pointer'
+                        textTransform: 'none'
                     }}
                 >
                     Next Step
-                </button>
+                </Button>
             </div>
         </ConceptInfoCard>
     );
