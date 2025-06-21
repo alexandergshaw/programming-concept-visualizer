@@ -43,26 +43,6 @@ const navItems = [
     ],
   },
   // {
-  //   label: 'Control Flow',
-  //   value: 'control flow',
-  //   children: [
-  //     { label: 'Operators', value: 'operators' },
-  //     { label: 'Control Flow', value: 'control flow' },
-  //     { label: 'Loops', value: 'loops' },
-  //     { label: 'Conditionals', value: 'conditionals' },
-  //   ],
-  // },
-  // {
-  //   label: 'Functions',
-  //   value: 'functions',
-  //   children: [
-  //     { label: 'Function Declaration', value: 'function declaration' },
-  //     { label: 'Function Expression', value: 'function expression' },
-  //     { label: 'Arrow Functions', value: 'arrow functions' },
-  //     { label: 'Higher Order Functions', value: 'higher order functions' },
-  //   ],
-  // },
-  // {
   //   label: 'Collections',
   //   value: 'collections',
   //   children: [

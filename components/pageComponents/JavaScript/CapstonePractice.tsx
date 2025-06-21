@@ -6,9 +6,10 @@ import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
+import ReactMarkdown from 'react-markdown';
 
 interface CapstonePracticeProps {
-    prompt: string;
+    prompt: React.ReactNode; // <-- Accepts JSX or string
     correctOutput: string;
     initialCode?: string;
     runCodeButtonLabel?: string;
