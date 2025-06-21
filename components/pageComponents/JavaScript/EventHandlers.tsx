@@ -48,6 +48,7 @@ export default function EventHandlersConcept() {
         },
     ];
 
+
     // Demo options
     const eventOptions = [
         { label: 'Click', value: 'click' },
@@ -62,28 +63,6 @@ export default function EventHandlersConcept() {
 
     const [selectedEvent, setSelectedEvent] = useState(eventOptions[0].value);
     const [selectedElement, setSelectedElement] = useState(elementOptions[0].value);
-
-    // Code generator for the selected element and event
-    const getDemoCode = () => {
-        // Always show all elements
-        const html = 
-`<button id="myBtn">Click me!</button>
-<div id="myDiv" style="padding:16px;border:1px solid #ccc;">Hover me!</div>
-<input id="myInput" placeholder="Type here..." />`;
-
-        // Always use the same alert for all events
-        const handler = `function() {\n  alert('Event triggered!');\n}`;
-
-        // Only show one event listener for the selected element and event
-        const js = 
-`document.getElementById('${selectedElement}').addEventListener('${selectedEvent}', ${handler});`;
-
-        return `${html}
-
-<script>
-${js}
-</script>`;
-    };
 
     // Handler for demo (always shows the same alert)
     const handleDemo = () => {
