@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import ConceptInfoCard from './ConceptInfoCard';
 
 interface CapstonePracticeProps {
     prompt: string;
@@ -49,13 +50,7 @@ export default function CapstonePractice({
     };
 
     return (
-        <div style={{
-            border: '1.5px solid #1976d2',
-            borderRadius: 8,
-            padding: 24,
-            margin: '32px 0',
-            background: '#f8fafc'
-        }}>
+        <ConceptInfoCard>
             <div style={{ marginBottom: 16, fontWeight: 600, fontSize: 18 }}>
                 {prompt}
             </div>
@@ -125,6 +120,6 @@ export default function CapstonePractice({
             <div style={{ marginTop: 24, fontSize: 13, color: '#888' }}>
                 <b>Tip:</b> Use <code>console.log()</code> to print your answer.
             </div>
-        </div>
+        </ConceptInfoCard>
     );
 }

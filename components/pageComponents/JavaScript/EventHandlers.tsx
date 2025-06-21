@@ -243,11 +243,11 @@ document.getElementById('${selectedElement}').addEventListener('${selectedEvent}
             >
                 <ConceptInfoCard>
                     <div style={{ marginBottom: 12 }}>
-                        Sometimes you want your JavaScript to run as soon as the page's HTML is loaded, but before images or other resources are finished loading. The <b>DOMContentLoaded</b> event is perfect for this!<br /><br />
-                        Think of it as: <i>"Let me know when the basic page structure is ready, so I can safely start working with the elements on the page."</i>
+                        Sometimes you want your JavaScript to run as soon as the page&apos;s HTML is loaded, but before images or other resources are finished loading. The <b>DOMContentLoaded</b> event is perfect for this!<br /><br />
+                        Think of it as: <i>&quot;Let me know when the basic page structure is ready, so I can safely start working with the elements on the page.&quot;</i>
                         <br /><br />
-                        <b>What if you don't use <code>DOMContentLoaded</code>?</b><br />
-                        If you try to run JavaScript that selects or changes elements before the HTML is loaded, your code might not work. For example, <code>document.getElementById('myBtn')</code> could return <code>null</code> if the button isn't in the page yet. This can cause errors or nothing to happen at all. Using <code>DOMContentLoaded</code> makes sure your code waits until the HTML is ready.
+                        <b>What if you don&apos;t use <code>DOMContentLoaded</code>?</b><br />
+                        If you try to run JavaScript that selects or changes elements before the HTML is loaded, your code might not work. For example, <code>document.getElementById(&apos;myBtn&apos;)</code> could return <code>null</code> if the button isn&apos;t in the page yet.
                     </div>
                     <pre
                         style={{
