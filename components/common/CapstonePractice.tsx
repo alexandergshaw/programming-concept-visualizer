@@ -178,15 +178,6 @@ export default function CapstonePractice({
                     <b>Error:</b> {error}
                 </Alert>
             )}
-            <div style={{
-                marginTop: 22,
-                fontSize: 13,
-                color: '#7b8494',
-                borderTop: '1px solid #f0f1f5',
-                paddingTop: 12
-            }}>
-                <b>Tip:</b> Use <code>console.log()</code> to print your answer.
-            </div>
         </ConceptInfoCard>
     );
 }

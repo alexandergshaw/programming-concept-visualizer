@@ -269,9 +269,6 @@ document.addEventListener('DOMContentLoaded', () => {
   alert('DOM fully loaded and parsed!');
 });
                     `.trim()}</pre>
-                    <div style={{ fontSize: 14, color: '#555' }}>
-                        <b>Tip:</b> Use <code>DOMContentLoaded</code> if you want to safely select or change elements on the page right after the HTML loads, without waiting for images or other files.
-                    </div>
                 </ConceptInfoCard>
             </Section>
             <Section
@@ -280,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
             >
                 <CapstonePractice
                     requiredCode={["addEventListener"]}
-                    prompt={`Below is a sample HTML page. Write JavaScript code that shows an alert with "Hello, events!" when the button with id "myBtn" is clicked. Add your event handler code inside the <script> tag.`}
+                    prompt={`Below is a sample HTML page. Write JavaScript code that logs "Hello, events!" to the console (using console.log) when the button with id "myBtn" is clicked. Add your event handler code inside the <script> tag.`}
                     correctOutput="Hello, events!"
                     initialCode={`<!DOCTYPE html>
 <html>
