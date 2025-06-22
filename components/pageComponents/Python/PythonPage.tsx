@@ -11,6 +11,7 @@ import TupleConcept from './TupleConcept';
 import SetConcept from './SetConcept';
 import DictConcept from './DictConcept';
 import IfElseConcept from './IfElseConcept';
+import LogicalAndOrConcept from './LogicalAndOrConcept';
 
 const navItems = [
 	{
@@ -27,6 +28,7 @@ const navItems = [
 		value: 'control flow',
 		children: [
 			{ label: 'If / Else', value: 'ifelse' },
+			{ label: 'Logical And / Or', value: 'logicalandor' },
 		],
 	},
 	{
@@ -73,6 +75,8 @@ export default function PythonPage() {
                 return <DictConcept />;
             case 'ifelse':
                 return <IfElseConcept />;
+            case 'logicalandor':
+                return <LogicalAndOrConcept />;
             default:
 				return null;
 		}
