@@ -15,7 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 
-export default function EventHandlersConcept() { 
+export default function EventHandlersConcept() {  
     // Parts for a basic JS click handler, including HTML highlights
     const clickParts: CodePart[] = [
         {
