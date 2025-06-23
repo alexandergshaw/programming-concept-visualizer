@@ -6,6 +6,12 @@ import PageWrapper from '../../common/PageWrapper';
 import VariableConcept from './VariableConcept';
 import UserInputConcept from './UserInputConcept';
 import StringManipulationConcept from './StringManipulationConcept';
+import ListConcept from './ListConcept';
+import TupleConcept from './TupleConcept';
+import SetConcept from './SetConcept';
+import DictConcept from './DictConcept';
+import IfElseConcept from './IfElseConcept';
+import LogicalAndOrConcept from './LogicalAndOrConcept';
 
 const navItems = [
 	{
@@ -16,6 +22,24 @@ const navItems = [
 			{ label: 'User Input', value: 'user input' },
             { label: 'String Manipulation', value: 'string manipulation' },
         ],
+	},
+	{
+		label: 'Control Flow',
+		value: 'control flow',
+		children: [
+			{ label: 'If / Else', value: 'ifelse' },
+			{ label: 'Logical And / Or', value: 'logicalandor' },
+		],
+	},
+	{
+		label: 'Collections',
+		value: 'collections',
+		children: [
+			{ label: 'Lists', value: 'lists' },
+			{ label: 'Tuples', value: 'tuples' },
+			{ label: 'Sets', value: 'sets' },
+			{ label: 'Dictionaries', value: 'dicts' },
+		],
 	},
 ];
 
@@ -41,6 +65,18 @@ export default function PythonPage() {
                 return <UserInputConcept />;
             case 'string manipulation':
                 return <StringManipulationConcept />;
+            case 'lists':
+                return <ListConcept />;
+            case 'tuples':
+                return <TupleConcept />;
+            case 'sets':
+                return <SetConcept />;
+            case 'dicts':
+                return <DictConcept />;
+            case 'ifelse':
+                return <IfElseConcept />;
+            case 'logicalandor':
+                return <LogicalAndOrConcept />;
             default:
 				return null;
 		}
@@ -55,7 +91,7 @@ export default function PythonPage() {
 		<PageWrapper
 			pageTitle={'Python Visualizer'}
 			navItems={navItems}
-			defaultOpen={['storing data']}
+			defaultOpen={['control flow', 'collections', 'storing data']}
 			handleSelect={handleSelect}
 			activeValue={selectedConcept || undefined}
 		>

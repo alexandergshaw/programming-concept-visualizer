@@ -10,6 +10,8 @@ import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import CircularProgress from '@mui/material/CircularProgress';
+import PythonConsoleStatic from './PythonConsoleStatic';
+import { AnimationStep } from './PythonConsoleAnimation';
 
 interface PyodideInterface {
     runPython: (code: string) => string;
@@ -29,6 +31,7 @@ interface PythonCodeRunnerProps {
     allowCopy?: boolean;
     defaultCode?: string;
     style?: { [lineNumber: number]: React.CSSProperties };
+    showTerminal?: boolean;
 }
 
 const PythonCodeSnippet: React.FC<PythonCodeRunnerProps> = ({
@@ -38,11 +41,13 @@ const PythonCodeSnippet: React.FC<PythonCodeRunnerProps> = ({
     editable = false,
     allowCopy = true,
     defaultCode,
-    style
+    style,
+    showTerminal,
 }) => {
     const [open, setOpen] = useState(false);
     const [output, setOutput] = useState<string>('No output yet.');
-    
+    const [terminalSteps, setTerminalSteps] = useState<AnimationStep[]>([]);
+
     // Convert code string to lines format if needed
     const processedLines = React.useMemo(() => {
         if (lines) {
@@ -56,7 +61,7 @@ const PythonCodeSnippet: React.FC<PythonCodeRunnerProps> = ({
         }
         return [];
     }, [lines, code, style]);
-    
+
     const [editableCode, setEditableCode] = useState<string>(
         defaultCode || processedLines.map(line => line.code).join('\n')
     );
@@ -67,7 +72,7 @@ const PythonCodeSnippet: React.FC<PythonCodeRunnerProps> = ({
 
     useEffect(() => {
         if (!enableRun) return;
-        
+
         // Load Pyodide
         const loadPyodide = async () => {
             try {
@@ -112,6 +117,7 @@ const PythonCodeSnippet: React.FC<PythonCodeRunnerProps> = ({
 
         setIsLoading(true);
         setOutput('Running Python code...');
+        setTerminalSteps([]);
 
         try {
             // Get the code to execute - use editableCode if editing, otherwise use current lines
@@ -123,10 +129,8 @@ import sys
 from io import StringIO
 import contextlib
 
-# Create a StringIO object to capture output
 output_buffer = StringIO()
 
-# Redirect stdout to capture print statements
 @contextlib.contextmanager
 def capture_output():
     old_stdout = sys.stdout
@@ -150,82 +154,93 @@ ${codeToExecute.split('\n').map(line => `        ${line}`).join('\n')}
 
             // Get the captured output
             const result = pyodide.runPython('output_buffer.getvalue()');
-            
+
             if (result.trim()) {
                 setOutput(result);
             } else {
                 setOutput('Code executed successfully (no output).');
             }
+
+            // For terminal animation: split output into steps
+            const lines = result.split('\n').filter(Boolean);
+            const steps: AnimationStep[] = lines.map((line, idx) => ({
+                key: `step-${idx}`,
+                output: <span>{line}</span>,
+            }));
+            setTerminalSteps(steps);
         } catch (error) {
             setOutput(`Python Error: ${error}`);
+            setTerminalSteps([]);
         } finally {
             setIsLoading(false);
         }
     };
 
     return (
-        <div style={{ backgroundColor: '#f5f5f5', borderRadius: '8px', padding: '10px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    {enableRun && !pyodideReady && <CircularProgress size={16} />}
-                </div>
-                <div style={{ display: 'flex', gap: '8px' }}>
-                    {editable && (
-                        <Tooltip title={isEditing ? "Enter View Mode" : "Enter Edit Mode"}>
-                            <IconButton onClick={() => setIsEditing(!isEditing)} size="small">
-                                {isEditing ? <VisibilityIcon fontSize="small" /> : <EditIcon fontSize="small" />}
-                            </IconButton>
-                        </Tooltip>
-                    )}
-                    {allowCopy && (
-                        <Tooltip title="Copy code">
-                            <IconButton onClick={handleCopy} size="small">
-                                <ContentCopyIcon fontSize="small" />
-                            </IconButton>
-                        </Tooltip>
-                    )}
-                    {enableRun && (
-                        <Tooltip title={pyodideReady ? "Run Python Code" : "Python interpreter loading..."}>
-                            <span>
-                                <IconButton 
-                                    onClick={runPythonCode} 
-                                    size="small" 
-                                    disabled={!pyodideReady || isLoading}
-                                >
-                                    {isLoading ? <CircularProgress size={16} /> : <PlayArrowIcon fontSize="small" />}
+        <div>
+            <div style={{ backgroundColor: '#f5f5f5', borderRadius: '8px', padding: '10px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        {enableRun && !pyodideReady && <CircularProgress size={16} />}
+                    </div>
+                    <div style={{ display: 'flex', gap: '8px' }}>
+                        {editable && (
+                            <Tooltip title={isEditing ? "Enter View Mode" : "Enter Edit Mode"}>
+                                <IconButton onClick={() => setIsEditing(!isEditing)} size="small">
+                                    {isEditing ? <VisibilityIcon fontSize="small" /> : <EditIcon fontSize="small" />}
                                 </IconButton>
-                            </span>
-                        </Tooltip>
-                    )}
+                            </Tooltip>
+                        )}
+                        {allowCopy && (
+                            <Tooltip title="Copy code">
+                                <IconButton onClick={handleCopy} size="small">
+                                    <ContentCopyIcon fontSize="small" />
+                                </IconButton>
+                            </Tooltip>
+                        )}
+                        {enableRun && (
+                            <Tooltip title={pyodideReady ? "Run Python Code" : "Python interpreter loading..."}>
+                                <span>
+                                    <IconButton
+                                        onClick={runPythonCode}
+                                        size="small"
+                                        disabled={!pyodideReady || isLoading}
+                                    >
+                                        {isLoading ? <CircularProgress size={16} /> : <PlayArrowIcon fontSize="small" />}
+                                    </IconButton>
+                                </span>
+                            </Tooltip>
+                        )}
+                    </div>
                 </div>
+
+                {editable && isEditing ? (
+                    <TextField
+                        multiline
+                        rows={Math.max(processedLines.length + 2, editableCode.split('\n').length + 2)}
+                        value={editableCode}
+                        onChange={(e) => setEditableCode(e.target.value)}
+                        fullWidth
+                        variant="outlined"
+                        sx={{ marginBottom: '16px', fontFamily: 'monospace', whiteSpace: 'pre-wrap' }}
+                    />
+                ) : (
+                    <pre style={{ margin: 0, whiteSpace: 'pre-wrap', wordBreak: 'break-word', fontFamily: 'monospace', color: '#333' }}>
+                        {processedLines.map((line, index) => (
+                            <div key={index} style={{ ...line.style }}>
+                                <span style={{ fontFamily: 'monospace' }}>
+                                    {line.code}
+                                </span>
+                                {line.comment && (
+                                    <span style={{ color: '#888' }}>{`  # ${line.comment}`}</span>
+                                )}
+                            </div>
+                        ))}
+                    </pre>
+                )}
             </div>
-
-            {editable && isEditing ? (
-                <TextField
-                    multiline
-                    rows={Math.max(processedLines.length + 2, editableCode.split('\n').length + 2)}
-                    value={editableCode}
-                    onChange={(e) => setEditableCode(e.target.value)}
-                    fullWidth
-                    variant="outlined"
-                    sx={{ marginBottom: '16px', fontFamily: 'monospace', whiteSpace: 'pre-wrap' }}
-                />
-            ) : (
-                <pre style={{ margin: 0, whiteSpace: 'pre-wrap', wordBreak: 'break-word', fontFamily: 'monospace', color: '#333' }}>
-                    {processedLines.map((line, index) => (
-                        <div key={index} style={{ ...line.style }}>
-                            <span style={{ fontFamily: 'monospace' }}>
-                                {line.code}
-                            </span>
-                            {line.comment && (
-                                <span style={{ color: '#888' }}>{`  # ${line.comment}`}</span>
-                            )}
-                        </div>
-                    ))}
-                </pre>
-            )}
-
-            {enableRun && (
+            {/* Output box: hide if terminal is shown and has steps */}
+            {enableRun && (!showTerminal) && (
                 <Box
                     sx={{
                         padding: '8px',
@@ -240,6 +255,15 @@ ${codeToExecute.split('\n').map(line => `        ${line}`).join('\n')}
                     <div style={{ fontWeight: 'bold', marginBottom: '4px', color: '#444' }}>Output</div>
                     {output}
                 </Box>
+            )}
+
+            {/* Static Terminal Output */}
+            {showTerminal && enableRun && (
+                <div style={{ marginTop: 24 }}>
+                    <PythonConsoleStatic
+                        steps={terminalSteps}
+                    />
+                </div>
             )}
 
             <Snackbar

@@ -7,7 +7,6 @@ import '../../../styles/variable.css';
 import Section from '@/components/common/Section';
 import PythonCodeSnippet from '@/components/common/PythonCodeSnippet';
 import OrderedList from '@/components/common/OrderedList';
-import VideoPlayer from '@/components/common/VideoPlayer';
 import TableOfContents from '@/components/common/TableOfContents';
 
 const reservedKeywords = [
@@ -54,7 +53,6 @@ export default function VariableConcept() {
             description="A variable in Python is like a labeled box that stores a value. You can use variables to store numbers, text, or other data so you can use them later in your program."
         >
             <TableOfContents>
-                <VideoPlayer src="https://www.youtube.com/embed/YYXdXT2l-Gg" />
                 <Section title="1. Creating a Variable" subtitle="To create (declare) a variable in Python, just pick a name and use the = sign to assign it a value.">
                     <OrderedList
                         items={[

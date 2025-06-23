@@ -5,7 +5,6 @@ import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '@/components/common/Section';
 import CodeSnippet from '@/components/common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
-import VideoPlayer from '@/components/common/VideoPlayer';
 import TextField from '@mui/material/TextField';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -49,7 +48,6 @@ export default function DataTypesConcept() {
             description="A data type is just the kind of thing you are storing in a variable or constant. JavaScript can handle numbers, words, true/false values, empty values, lists, and more."
         >
             <TableOfContents>
-                <VideoPlayer src="https://www.youtube.com/embed/5K_Wq9B2eVo" />
                 <Section
                     title="1. What is a Data Type?"
                     subtitle="Think of a data type as the &quot;category&quot; of a value. For example, is it a number, some text, a list, or something else?"
