@@ -14,7 +14,7 @@ import UserInputConcept from './UserInputConcept';
 import ConditionalConcept from './ConditionalConcept';
 import LoopConcept from './LoopConcept';
 import FunctionConcept from './FunctionConcept';
-import JQueryEventHandlersConcept from './JQueryEventHandlersConcept';
+import EventHandlersConcept from './EventHandlers';
 
 const navItems = [
   {
@@ -34,34 +34,15 @@ const navItems = [
       { label: 'Loops', value: 'loops' },
     ]
   },
-  // {
-  //   label: 'Functions',
-  //   value: 'functions',
-  //   children: [
-  //     { label: 'Functions', value: 'functions' },
-  //     { label: 'jQuery Event Listeners', value: 'jQuery Event Listeners' },
-  //   ],
-  // },
-  // {
-  //   label: 'Control Flow',
-  //   value: 'control flow',
-  //   children: [
-  //     { label: 'Operators', value: 'operators' },
-  //     { label: 'Control Flow', value: 'control flow' },
-  //     { label: 'Loops', value: 'loops' },
-  //     { label: 'Conditionals', value: 'conditionals' },
-  //   ],
-  // },
-  // {
-  //   label: 'Functions',
-  //   value: 'functions',
-  //   children: [
-  //     { label: 'Function Declaration', value: 'function declaration' },
-  //     { label: 'Function Expression', value: 'function expression' },
-  //     { label: 'Arrow Functions', value: 'arrow functions' },
-  //     { label: 'Higher Order Functions', value: 'higher order functions' },
-  //   ],
-  // },
+  {
+    label: 'Functions',
+    value: 'functions',
+    children: [
+      { label: 'Functions', value: 'functions' },
+      { label: 'Event Handlers', value: 'Event Listeners' },
+    ],
+  },
+
   // {
   //   label: 'Collections',
   //   value: 'collections',
@@ -141,8 +122,8 @@ export default function JavaScriptPage() {
         return <LoopConcept />;
       case 'functions':
         return <FunctionConcept />;
-      case 'jquery event listeners':
-        return <JQueryEventHandlersConcept />;
+      case 'event listeners':
+        return <EventHandlersConcept />;
       default:
         return null;
     }
@@ -167,7 +148,7 @@ export default function JavaScriptPage() {
   }
 
   return (
-    <PageWrapper pageTitle={'JavaScript Visualizer'} navItems={navItems} defaultOpen={["storing data", "control flow"]} handleSelect={handleSelect} activeValue={selectedConcept || undefined}>
+    <PageWrapper pageTitle={'JavaScript Visualizer'} navItems={navItems} defaultOpen={["functions", "storing data", "control flow"]} handleSelect={handleSelect} activeValue={selectedConcept || undefined}>
       {selectedConcept ? (
         <>
           {renderContent(selectedConcept)}

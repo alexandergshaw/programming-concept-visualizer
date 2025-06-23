@@ -5,10 +5,9 @@ import TableOfContents from '@/components/common/TableOfContents';
 import Section from '@/components/common/Section';
 import StepThroughCodeAnimation from './StepThroughCodeAnimation';
 import CodePartsExplanation, { CodePart } from '@/components/common/CodePartsExplanation';
-import CodeSnippet from '@/components/common/CodeSnippet';
+import CapstonePractice from './CapstonePractice';
 
 export default function FunctionConcept() {
-    // Parts for the named function example
     const squareParts: CodePart[] = [
         {
             label: 'Function Keyword',
@@ -84,16 +83,48 @@ export default function FunctionConcept() {
         >
             <TableOfContents numbered>
                 <Section
-                    title="Named Functions"
-                    subtitle="A named function uses the word 'function' and a name you pick."
+                    title="Introduction to Functions"
                 >
-                    <Section title="Parts of a Named Function">
+                    <div
+                        style={{
+                            position: 'relative',
+                            width: '100%',
+                            height: 0,
+                            paddingTop: '56.25%',
+                            paddingBottom: 0,
+                            boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+                            marginTop: '1.6em',
+                            marginBottom: '0.9em',
+                            overflow: 'hidden',
+                            borderRadius: '8px',
+                            willChange: 'transform',
+                        }}
+                    >
+                        <iframe
+                            loading="lazy"
+                            style={{
+                                position: 'absolute',
+                                width: '100%',
+                                height: '100%',
+                                top: 0,
+                                left: 0,
+                                border: 'none',
+                                padding: 0,
+                                margin: 0,
+                            }}
+                            src="https://www.canva.com/design/DAGrIDVlfJc/qvTIrutwpb4R5SNOW3HdHA/watch?embed"
+                            allowFullScreen={true}
+                            allow="fullscreen"
+                        >
+                        </iframe>
+                    </div>
+                    <Section title="Parts of a Function">
                         <CodePartsExplanation
                             code={`function square(x) {\n  return x * x;\n}\nconsole.log(square(5));`}
                             parts={squareParts}
                         />
                     </Section>
-                    <Section title="Step by Step Process of a Named Function">
+                    <Section title="Step by Step Process of a Function">
                         <Section title="Example: Squaring a number">
                             <StepThroughCodeAnimation
                                 code={[
@@ -275,6 +306,39 @@ export default function FunctionConcept() {
                     title="Arrow Functions"
                     subtitle="Arrow functions are a shorter way to write functions and are often assigned to variables."
                 >
+                    <div
+                        style={{
+                            position: 'relative',
+                            width: '100%',
+                            height: 0,
+                            paddingTop: '56.25%',
+                            paddingBottom: 0,
+                            boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+                            marginTop: '1.6em',
+                            marginBottom: '0.9em',
+                            overflow: 'hidden',
+                            borderRadius: '8px',
+                            willChange: 'transform',
+                        }}
+                    >
+                        <iframe
+                            loading="lazy"
+                            style={{
+                                position: 'absolute',
+                                width: '100%',
+                                height: '100%',
+                                top: 0,
+                                left: 0,
+                                border: 'none',
+                                padding: 0,
+                                margin: 0,
+                            }}
+                            src="https://www.canva.com/design/DAGrIAx7pGo/L3paE-TzPKAX9G6owiASyQ/watch?embed"
+                            allowFullScreen={true}
+                            allow="fullscreen"
+                        >
+                        </iframe>
+                    </div>
                     <Section title="Parts of an Arrow Function">
                         <CodePartsExplanation
                             code={`const square = x => x * x;\nconsole.log(square(${5}));`}
@@ -356,6 +420,7 @@ export default function FunctionConcept() {
                         title="Arrow Functions with 2 Parameters"
                         subtitle="Arrow functions can take more than one input."
                     >
+
                         <StepThroughCodeAnimation
                             code={[
                                 'const add = (a, b) => a + b;',
@@ -392,6 +457,39 @@ export default function FunctionConcept() {
                     title="Anonymous Functions"
                     subtitle="Sometimes we need to tell our program how another piece of code should behave. This is where we can use something called an anonymous function."
                 >
+                    <div
+                        style={{
+                            position: 'relative',
+                            width: '100%',
+                            height: 0,
+                            paddingTop: '56.25%',
+                            paddingBottom: 0,
+                            boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+                            marginTop: '1.6em',
+                            marginBottom: '0.9em',
+                            overflow: 'hidden',
+                            borderRadius: '8px',
+                            willChange: 'transform',
+                        }}
+                    >
+                        <iframe
+                            loading="lazy"
+                            style={{
+                                position: 'absolute',
+                                width: '100%',
+                                height: '100%',
+                                top: 0,
+                                left: 0,
+                                border: 'none',
+                                padding: 0,
+                                margin: 0,
+                            }}
+                            src="https://www.canva.com/design/DAGrIOBSQJk/J4k-K4b6X9qkAHeQ3ILCJw/watch?embed"
+                            allowFullScreen={true}
+                            allow="fullscreen"
+                        >
+                        </iframe>
+                    </div>
                     <Section title="Parts of an Anonymous Function">
                         <CodePartsExplanation
                             code={`x => console.log(x * x)`}
@@ -420,8 +518,8 @@ export default function FunctionConcept() {
                     <Section title="Step by Step Example of Anonymous Function" subtitle='Anonymous functions are often used along with another piece of code. In this example, we use our anonymous function to tell the forEach loop to print the square of each number in a list.'>
                         <StepThroughCodeAnimation
                             code={[
-                                'const 5s = [1, 2, 3];',
-                                '5s.forEach(x => console.log(x * x));',
+                                'const nums = [1, 2, 3];',
+                                'nums.forEach(x => console.log(x * x));',
                                 '// Output:',
                                 '// 1',
                                 '// 4',
@@ -430,12 +528,12 @@ export default function FunctionConcept() {
                             steps={[
                                 {
                                     label: 'Make a List',
-                                    desc: 'We make a list of numbers called <b>5s</b>.',
-                                    highlight: 'const 5s = [1, 2, 3];',
+                                    desc: 'We make a list of numbers called <b>nums</b>.',
+                                    highlight: 'const nums = [1, 2, 3];',
                                 },
                                 {
                                     label: 'Get Ready to Do Something for Each number',
-                                    desc: 'We use <b>forEach</b> to say: "Do something for every number in <b>5s</b>."',
+                                    desc: 'We use <b>forEach</b> to say: "Do something for every number in <b>nums</b>."',
                                     highlight: '.forEach',
                                 },
                                 {
@@ -480,35 +578,16 @@ export default function FunctionConcept() {
                         />
                     </Section>
                 </Section>
-
                 <Section
-                    title="Try It Yourself: Interactive Coding"
-                    subtitle="Type your own code below and see what happens! Change the code and click Run to try different functions."
+                    title="Capstone Practice Problem"
+                    subtitle="Use what you learned about arrow functions to solve this challenge!"
                 >
-                    <Section title="Try: Arrow Function with Two Parameters">
-                        <CodeSnippet
-                            lines={[
-                                { code: 'const add = (a, b) => a + b;', comment: 'Arrow function to add two numbers' },
-                                { code: 'console.log(add(3, 4));', comment: 'Try it with 3 and 4' },
-                            ]}
-                            enableRun
-                            editable
-                            allowCopy
-                            language="javascript"
-                        />
-                    </Section>
-                    <Section title="Try: Anonymous Arrow Function as a Callback">
-                        <CodeSnippet
-                            lines={[
-                                { code: 'const 5s = [1, 2, 3];', comment: 'A list of numbers' },
-                                { code: '5s.forEach(x => console.log(x * x));', comment: 'Print the square of each number' },
-                            ]}
-                            enableRun
-                            editable
-                            allowCopy
-                            language="javascript"
-                        />
-                    </Section>
+                    <CapstonePractice
+                        prompt={`Write an arrow function called triple that takes a number and returns that number times 3. Then console.log the result of passing 7 as an argument to triple().`}
+                        correctOutput="21"
+                        initialCode={`// Write your arrow function below\n`}
+                        requiredCode={["const triple", "=>", "return", "console.log"]}
+                    />
                 </Section>
             </TableOfContents>
         </ConceptWrapper>
