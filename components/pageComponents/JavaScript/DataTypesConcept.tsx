@@ -5,7 +5,6 @@ import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '@/components/common/Section';
 import CodeSnippet from '@/components/common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
-import VideoPlayer from '@/components/common/VideoPlayer';
 import TextField from '@mui/material/TextField';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
