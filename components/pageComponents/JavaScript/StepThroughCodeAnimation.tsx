@@ -7,7 +7,8 @@ import Button from '@mui/material/Button';
 export type Step = {
     label: string;
     desc: string;
-    highlight: string | ((codeLines: string[], idx: number) => boolean);
+    // Now supports: string | string[] | function
+    highlight: string | string[] | ((codeLines: string[], idx: number) => boolean);
     outputLine?: string;
 };
 
@@ -56,15 +57,39 @@ export default function StepThroughCodeAnimation({
             processedLine = `<span style="color:#222;">${processedLine}</span>`;
         }
 
-        // Highlight function for substring
+        // Highlight logic
+        const color = stepColors[currentStep % stepColors.length];
+
         if (typeof highlight === 'function') {
             shouldHighlight = highlight(codeLines, idx);
+        } else if (Array.isArray(highlight)) {
+            // Highlight multiple words/phrases on any line
+            let lineToHighlight = line;
+            let matched = false;
+            highlight.forEach(word => {
+                if (word && lineToHighlight.includes(word)) {
+                    matched = true;
+                    // Highlight all occurrences of the word
+                    const re = new RegExp(word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+                    lineToHighlight = lineToHighlight.replace(
+                        re,
+                        `<span style="background:${color}33;border-radius:4px;padding:1px 2px;">${word}</span>`
+                    );
+                }
+            });
+            if (matched) {
+                if (isPythonComment || isJsComment) {
+                    processedLine = `<span style="color:#789;">${lineToHighlight}</span>`;
+                } else {
+                    processedLine = `<span style="color:#222;">${lineToHighlight}</span>`;
+                }
+                return processedLine;
+            }
+            // fallback: no match, continue
         } else if (typeof highlight === 'string') {
             if (highlight && line.includes(highlight)) {
                 // Highlight just the substring (preserve comment styling)
-                const color = stepColors[currentStep % stepColors.length];
                 const highlighted = `<span style="background:${color}33;border-radius:4px;padding:1px 2px;">${highlight}</span>`;
-                // Replace only in the code part, not in the comment styling
                 if (isPythonComment || isJsComment) {
                     processedLine = `<span style="color:#789;">${line.replace(
                         highlight,
@@ -81,7 +106,7 @@ export default function StepThroughCodeAnimation({
             shouldHighlight = line.trim() === highlight.trim();
         }
         if (shouldHighlight) {
-            return `<span style="background:${stepColors[currentStep % stepColors.length]}33;border-radius:4px;padding:1px 2px;">${processedLine}</span>`;
+            return `<span style="background:${color}33;border-radius:4px;padding:1px 2px;">${processedLine}</span>`;
         }
         return processedLine;
     }).join('\n');

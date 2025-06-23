@@ -12,6 +12,8 @@ import SetConcept from './SetConcept';
 import DictConcept from './DictConcept';
 import IfElseConcept from './IfElseConcept';
 import LogicalAndOrConcept from './LogicalAndOrConcept';
+import WhileLoopConcept from './WhileLoopConcept';
+import ForLoopConcept from './ForLoopConcept';
 
 const navItems = [
 	{
@@ -29,6 +31,8 @@ const navItems = [
 		children: [
 			{ label: 'If / Else', value: 'ifelse' },
 			{ label: 'Logical And / Or', value: 'logicalandor' },
+			{ label: 'For Loops', value: 'forloops' },
+			{ label: 'While Loops', value: 'whileloops' },
 		],
 	},
 	{
@@ -56,9 +60,7 @@ export default function PythonPage() {
 	}, [searchParams]);
 
 	const renderContent = (concept: string | null) => {
-		if (!concept) return null;
-
-		switch (concept.toLowerCase()) {
+		switch (concept) {
             case 'variables':
                 return <VariableConcept />;
             case 'user input':
@@ -77,6 +79,10 @@ export default function PythonPage() {
                 return <IfElseConcept />;
             case 'logicalandor':
                 return <LogicalAndOrConcept />;
+            case 'whileloops':
+                return <WhileLoopConcept />;
+            case 'forloops':
+                return <ForLoopConcept />;
             default:
 				return null;
 		}
