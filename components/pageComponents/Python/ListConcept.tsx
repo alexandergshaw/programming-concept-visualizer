@@ -175,175 +175,173 @@ export default function ListConcept() {
             />
           </Section>
         </Section>
-        <Section title="Changing Values in a List">
-          <Section
-            title="Updating Values in a List"
+        <Section
+          title="Updating Values in a List"
+        >
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              height: 0,
+              paddingTop: '56.25%',
+              paddingBottom: 0,
+              boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+              marginTop: '1.6em',
+              marginBottom: '0.9em',
+              overflow: 'hidden',
+              borderRadius: 8,
+              willChange: 'transform',
+            }}
           >
-            <div
+            <iframe
+              loading="lazy"
               style={{
-                position: 'relative',
+                position: 'absolute',
                 width: '100%',
-                height: 0,
-                paddingTop: '56.25%',
-                paddingBottom: 0,
-                boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
-                marginTop: '1.6em',
-                marginBottom: '0.9em',
-                overflow: 'hidden',
-                borderRadius: 8,
-                willChange: 'transform',
+                height: '100%',
+                top: 0,
+                left: 0,
+                border: 'none',
+                padding: 0,
+                margin: 0,
               }}
-            >
-              <iframe
-                loading="lazy"
-                style={{
-                  position: 'absolute',
-                  width: '100%',
-                  height: '100%',
-                  top: 0,
-                  left: 0,
-                  border: 'none',
-                  padding: 0,
-                  margin: 0,
-                }}
-                src="https://www.canva.com/design/DAGrIKbOFUo/YRLEV7p54o1B-k8u-Pvmgw/watch?embed"
-                allowFullScreen
-                allow="fullscreen"
-              />
-            </div>
-            <StepThroughCodeAnimation
-              code={[
-                'cars = ["Toyota", "Honda", "Ford"]',
-                'cars[1] = "Chevrolet"',
-                'print(cars)',
-                '# Output: [\'Toyota\', \'Chevrolet\', \'Ford\']',
-              ]}
-              steps={[
-                {
-                  label: 'Create List',
-                  desc: 'We create a list called <b>cars</b> with three values: "Toyota", "Honda", and "Ford".',
-                  highlight: 'cars = ["Toyota", "Honda", "Ford"]',
-                },
-                {
-                  label: 'Update Value',
-                  desc: 'We change the value at index 1 (the second value) to <b>"Chevrolet"</b>.',
-                  highlight: 'cars[1] = "Chevrolet"',
-                },
-                {
-                  label: 'Print List',
-                  desc: 'We print the updated list: <b>[\'Toyota\', \'Chevrolet\', \'Ford\']</b>.',
-                  highlight: 'print(cars)',
-                },
-              ]}
+              src="https://www.canva.com/design/DAGrIKbOFUo/YRLEV7p54o1B-k8u-Pvmgw/watch?embed"
+              allowFullScreen
+              allow="fullscreen"
             />
-          </Section>
-          <Section
-            title="Adding and Removing Values"
+          </div>
+          <StepThroughCodeAnimation
+            code={[
+              'cars = ["Toyota", "Honda", "Ford"]',
+              'cars[1] = "Chevrolet"',
+              'print(cars)',
+              '# Output: [\'Toyota\', \'Chevrolet\', \'Ford\']',
+            ]}
+            steps={[
+              {
+                label: 'Create List',
+                desc: 'We create a list called <b>cars</b> with three values: "Toyota", "Honda", and "Ford".',
+                highlight: 'cars = ["Toyota", "Honda", "Ford"]',
+              },
+              {
+                label: 'Update Value',
+                desc: 'We change the value at index 1 (the second value) to <b>"Chevrolet"</b>.',
+                highlight: 'cars[1] = "Chevrolet"',
+              },
+              {
+                label: 'Print List',
+                desc: 'We print the updated list: <b>[\'Toyota\', \'Chevrolet\', \'Ford\']</b>.',
+                highlight: 'print(cars)',
+              },
+            ]}
+          />
+        </Section>
+        <Section
+          title="Adding and Removing Values"
+        >
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              height: 0,
+              paddingTop: '56.25%',
+              paddingBottom: 0,
+              boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+              marginTop: '1.6em',
+              marginBottom: '0.9em',
+              overflow: 'hidden',
+              borderRadius: 8,
+              willChange: 'transform',
+            }}
           >
-            <div
+            <iframe
+              loading="lazy"
               style={{
-                position: 'relative',
+                position: 'absolute',
                 width: '100%',
-                height: 0,
-                paddingTop: '56.25%',
-                paddingBottom: 0,
-                boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
-                marginTop: '1.6em',
-                marginBottom: '0.9em',
-                overflow: 'hidden',
-                borderRadius: 8,
-                willChange: 'transform',
+                height: '100%',
+                top: 0,
+                left: 0,
+                border: 'none',
+                padding: 0,
+                margin: 0,
               }}
-            >
-              <iframe
-                loading="lazy"
-                style={{
-                  position: 'absolute',
-                  width: '100%',
-                  height: '100%',
-                  top: 0,
-                  left: 0,
-                  border: 'none',
-                  padding: 0,
-                  margin: 0,
-                }}
-                src="https://www.canva.com/design/DAGrIPUXkrk/yY2jtrjiQkJ-okxa6ZVmjg/watch?embed"
-                allowFullScreen
-                allow="fullscreen"
-              />
-            </div>
-            <div
-              style={{
-                position: 'relative',
-                width: '100%',
-                height: 0,
-                paddingTop: '56.25%',
-                paddingBottom: 0,
-                boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
-                marginTop: '1.6em',
-                marginBottom: '0.9em',
-                overflow: 'hidden',
-                borderRadius: 8,
-                willChange: 'transform',
-              }}
-            >
-              <iframe
-                loading="lazy"
-                style={{
-                  position: 'absolute',
-                  width: '100%',
-                  height: '100%',
-                  top: 0,
-                  left: 0,
-                  border: 'none',
-                  padding: 0,
-                  margin: 0,
-                }}
-                src="https://www.canva.com/design/DAGrIMdF5DE/_XxrtYqwsW54foOwBnxD-A/watch?embed"
-                allowFullScreen
-                allow="fullscreen"
-              />
-            </div>
-            <StepThroughCodeAnimation
-              code={[
-                'animals = ["cat", "dog", "rabbit"]',
-                'animals.append("hamster")',
-                'print(animals)',
-                '# Output: [\'cat\', \'dog\', \'rabbit\', \'hamster\']',
-                ' ',
-                'animals.remove("dog")',
-                'print(animals)',
-                '# Output: [\'cat\', \'rabbit\', \'hamster\']',
-              ]}
-              steps={[
-                {
-                  label: 'Create List',
-                  desc: 'We create a list called <b>animals</b>.',
-                  highlight: 'animals = ["cat", "dog", "rabbit"]',
-                },
-                {
-                  label: 'Add Value',
-                  desc: 'We add <b>"hamster"</b> to the end of the list.',
-                  highlight: 'animals.append("hamster")',
-                },
-                {
-                  label: 'Print List',
-                  desc: 'We print the list: <b>[\'cat\', \'dog\', \'rabbit\', \'hamster\']</b>.',
-                  highlight: '# Output: [\'cat\', \'dog\', \'rabbit\', \'hamster\']',
-                },
-                {
-                  label: 'Remove Value',
-                  desc: 'We remove <b>"dog"</b> from the list.',
-                  highlight: 'animals.remove("dog")',
-                },
-                {
-                  label: 'Print List',
-                  desc: 'We print the updated list: <b>[\'cat\', \'rabbit\', \'hamster\']</b>.',
-                  highlight: '# Output: [\'cat\', \'rabbit\', \'hamster\']',
-                },
-              ]}
+              src="https://www.canva.com/design/DAGrIPUXkrk/yY2jtrjiQkJ-okxa6ZVmjg/watch?embed"
+              allowFullScreen
+              allow="fullscreen"
             />
-          </Section>
+          </div>
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              height: 0,
+              paddingTop: '56.25%',
+              paddingBottom: 0,
+              boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+              marginTop: '1.6em',
+              marginBottom: '0.9em',
+              overflow: 'hidden',
+              borderRadius: 8,
+              willChange: 'transform',
+            }}
+          >
+            <iframe
+              loading="lazy"
+              style={{
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                top: 0,
+                left: 0,
+                border: 'none',
+                padding: 0,
+                margin: 0,
+              }}
+              src="https://www.canva.com/design/DAGrIMdF5DE/_XxrtYqwsW54foOwBnxD-A/watch?embed"
+              allowFullScreen
+              allow="fullscreen"
+            />
+          </div>
+          <StepThroughCodeAnimation
+            code={[
+              'animals = ["cat", "dog", "rabbit"]',
+              'animals.append("hamster")',
+              'print(animals)',
+              '# Output: [\'cat\', \'dog\', \'rabbit\', \'hamster\']',
+              ' ',
+              'animals.remove("dog")',
+              'print(animals)',
+              '# Output: [\'cat\', \'rabbit\', \'hamster\']',
+            ]}
+            steps={[
+              {
+                label: 'Create List',
+                desc: 'We create a list called <b>animals</b>.',
+                highlight: 'animals = ["cat", "dog", "rabbit"]',
+              },
+              {
+                label: 'Add Value',
+                desc: 'We add <b>"hamster"</b> to the end of the list.',
+                highlight: 'animals.append("hamster")',
+              },
+              {
+                label: 'Print List',
+                desc: 'We print the list: <b>[\'cat\', \'dog\', \'rabbit\', \'hamster\']</b>.',
+                highlight: '# Output: [\'cat\', \'dog\', \'rabbit\', \'hamster\']',
+              },
+              {
+                label: 'Remove Value',
+                desc: 'We remove <b>"dog"</b> from the list.',
+                highlight: 'animals.remove("dog")',
+              },
+              {
+                label: 'Print List',
+                desc: 'We print the updated list: <b>[\'cat\', \'rabbit\', \'hamster\']</b>.',
+                highlight: '# Output: [\'cat\', \'rabbit\', \'hamster\']',
+              },
+            ]}
+          />
         </Section>
         <Section
           title="Common Helper Functions"
