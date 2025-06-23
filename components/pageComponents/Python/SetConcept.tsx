@@ -43,85 +43,150 @@ export default function SetConcept() {
       description="A set in Python is an unordered collection of unique values. Sets are mutable, but cannot contain duplicate items."
     >
       <TableOfContents numbered>
-        <Section
-          title="Creating a Set"
-          subtitle="How to make a set in Python"
-        >
-          <StepThroughCodeAnimation
-            code={[
-              'unique_numbers = {1, 2, 3}',
-              'colors = {"red", "green", "blue"}',
-              'mixed = {1, "two", 3.0}',
-            ]}
-            steps={createSetSteps}
-          />
-        </Section>
-        <Section
-          title="Accessing Values in a Set"
-          subtitle="How to check for values and loop through a set"
-        >
-          <div style={{ marginBottom: 16 }}>
-            <b>Note:</b> You <b>cannot</b> access a set by index in Python, because sets are unordered collections. If you need to access items by position, use a list or tuple instead.
+        <Section title="Introduction">
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              height: 0,
+              paddingTop: '56.25%',
+              paddingBottom: 0,
+              boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+              marginTop: '1.6em',
+              marginBottom: '0.9em',
+              overflow: 'hidden',
+              borderRadius: 8,
+              willChange: 'transform',
+            }}
+          >
+            <iframe
+              loading="lazy"
+              style={{
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                top: 0,
+                left: 0,
+                border: 'none',
+                padding: 0,
+                margin: 0,
+              }}
+              src="https://www.canva.com/design/DAGrHqNMVgw/33I1Uxnyn_JrGR9mE-sg0g/watch?embed"
+              allowFullScreen
+              allow="fullscreen"
+            ></iframe>
           </div>
-          <StepThroughCodeAnimation
-            code={[
-              'fruits = {"apple", "banana", "cherry"}',
-              '',
-              'print(fruits[0])',
-              '# TypeError: \'set\' object is not subscriptable',
-              '',
-              'print("apple" in fruits)',
-              '# Output: True',
-              '',
-              'print("orange" in fruits)',
-              '# Output: False',
-              '',
-              'for fruit in fruits:',
-              '   print(fruit)',
-            ]}
-            steps={[
-              {
-                label: 'Create Set',
-                desc: 'We make a set called <b>fruits</b> with three values: "apple", "banana", and "cherry".',
-                highlight: 'fruits = {"apple", "banana", "cherry"}',
-              },
-              {
-                label: 'Try Index Access',
-                desc: 'We try to access the first element by index. <b>This will cause a TypeError because sets do not support indexing (because they do not maintain the order of their items).</b>',
-                highlight: 'print(fruits[0])',
-              },
-              {
-                label: 'TypeError Output',
-                desc: 'Python shows a <b>TypeError</b> because sets do not maintain order (they are unordered).',
-                highlight: "# TypeError: 'set' object is not subscriptable",
-              },
-              {
-                label: 'Check for Value',
-                desc: 'We can, however, check if <b>"apple"</b> is in the set. This prints <b>True</b>, since it is in the set.',
-                highlight: 'print("apple" in fruits)',
-              },
-              {
-                label: 'Check for Another Value',
-                desc: 'We can also check if <b>"orange"</b> is in the set. This prints <b>False</b>, since it is not in the set.',
-                highlight: 'print("orange" in fruits)',
-              },
-              {
-                label: 'For-Each Loop',
-                desc: 'We use a <b>for</b> loop to go through each fruit in the set. The order is not guaranteed.',
-                highlight: 'for fruit in fruits:',
-              },
-              {
-                label: 'Print Each Item',
-                desc: 'Inside the loop, we print the current fruit. Each fruit is printed, but the order may be different each time.',
-                highlight: 'print(fruit)',
-              },
-            ]}
-          />
+          <Section
+            title="Creating a Set"
+          >
+            <StepThroughCodeAnimation
+              code={[
+                'unique_numbers = {1, 2, 3}',
+                'colors = {"red", "green", "blue"}',
+                'mixed = {1, "two", 3.0}',
+              ]}
+              steps={createSetSteps}
+            />
+          </Section>
+          <Section
+            title="Accessing Values in a Set"
+          >
+            <div style={{ marginBottom: 16 }}>
+              <b>Note:</b> You <b>cannot</b> access a set by index in Python, because sets are unordered collections. If you need to access items by position, use a list or tuple instead.
+            </div>
+            <StepThroughCodeAnimation
+              code={[
+                'fruits = {"apple", "banana", "cherry"}',
+                '',
+                'print(fruits[0])',
+                '# TypeError: \'set\' object is not subscriptable',
+                '',
+                'print("apple" in fruits)',
+                '# Output: True',
+                '',
+                'print("orange" in fruits)',
+                '# Output: False',
+                '',
+                'for fruit in fruits:',
+                '   print(fruit)',
+              ]}
+              steps={[
+                {
+                  label: 'Create Set',
+                  desc: 'We make a set called <b>fruits</b> with three values: "apple", "banana", and "cherry".',
+                  highlight: 'fruits = {"apple", "banana", "cherry"}',
+                },
+                {
+                  label: 'Try Index Access',
+                  desc: 'We try to access the first element by index. <b>This will cause a TypeError because sets do not support indexing (because they do not maintain the order of their items).</b>',
+                  highlight: 'print(fruits[0])',
+                },
+                {
+                  label: 'TypeError Output',
+                  desc: 'Python shows a <b>TypeError</b> because sets do not maintain order (they are unordered).',
+                  highlight: "# TypeError: 'set' object is not subscriptable",
+                },
+                {
+                  label: 'Check for Value',
+                  desc: 'We can, however, check if <b>"apple"</b> is in the set. This prints <b>True</b>, since it is in the set.',
+                  highlight: 'print("apple" in fruits)',
+                },
+                {
+                  label: 'Check for Another Value',
+                  desc: 'We can also check if <b>"orange"</b> is in the set. This prints <b>False</b>, since it is not in the set.',
+                  highlight: 'print("orange" in fruits)',
+                },
+                {
+                  label: 'For-Each Loop',
+                  desc: 'We use a <b>for</b> loop to go through each fruit in the set. The order is not guaranteed.',
+                  highlight: 'for fruit in fruits:',
+                },
+                {
+                  label: 'Print Each Item',
+                  desc: 'Inside the loop, we print the current fruit. Each fruit is printed, but the order may be different each time.',
+                  highlight: 'print(fruit)',
+                },
+              ]}
+            />
+          </Section>
         </Section>
+
         <Section
-          title="Updating Values in a Set"
-          subtitle="How to add or remove items from a set"
+          title="Adding and Removing Values in a Set"
         >
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              height: 0,
+              paddingTop: '56.25%',
+              paddingBottom: 0,
+              boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+              marginTop: '1.6em',
+              marginBottom: '0.9em',
+              overflow: 'hidden',
+              borderRadius: 8,
+              willChange: 'transform',
+            }}
+          >
+            <iframe
+              loading="lazy"
+              style={{
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                top: 0,
+                left: 0,
+                border: 'none',
+                padding: 0,
+                margin: 0,
+              }}
+              src="https://www.canva.com/design/DAGrHsqkpKQ/gnAXOUSXbDInvjhdp8POmA/watch?embed"
+              allowFullScreen
+              allow="fullscreen"
+            ></iframe>
+          </div>
+          <a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGrHsqkpKQ&#x2F;gnAXOUSXbDInvjhdp8POmA&#x2F;watch?utm_content=DAGrHsqkpKQ&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">Python - Sets - Adding and Removing Values</a> by Alex Shaw
           <StepThroughCodeAnimation
             code={[
               'colors = {"red", "green", "blue"}',

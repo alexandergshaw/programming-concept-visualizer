@@ -45,108 +45,171 @@ export default function ListConcept() {
       description="A list in Python is an ordered collection of values. Lists are mutable, so you can change, add, or remove items."
     >
       <TableOfContents numbered>
-        <Section
-          title="Creating a List"
-          subtitle="How to make a list in Python"
-        >
-          <StepThroughCodeAnimation
-            code={[
-              'numbers = [1, 2, 3]',
-              'colors = ["red", "green", "blue"]',
-              'mixed = [1, "two", 3.0]',
-            ]}
-            steps={createListSteps}
-          />
-        </Section>
-        <Section
-          title="Accessing Values in a List"
-          subtitle="How to get a value from a list using its index"
-        >
-          <StepThroughCodeAnimation
-            code={[
-              'fruits = ["apple", "banana", "cherry"]',
-              'first = fruits[0]',
-              'print(first)',
-              '# Output: apple',
-              '',
-              'second = fruits[1]',
-              'print(second)',
-              '# Output: banana',
-              '',
-              'third = fruits[2]',
-              'print(third)',
-              '# Output: cherry',
-              '',
-              '',
-              'for fruit in fruits:',
-              '    print(fruit)',
-              '',
-              'for i in range(len(fruits)):',
-              '    print(fruits[i])',
-            ]}
-            steps={[
-              {
-                label: 'Create List',
-                desc: 'We make a list called <b>fruits</b> with three values: "apple", "banana", and "cherry".',
-                highlight: 'fruits = ["apple", "banana", "cherry"]',
-              },
-              {
-                label: 'Get the First Value',
-                desc: 'We get the value at position <b>0</b> (the first item), which is <b>"apple"</b>.',
-                highlight: 'first = fruits[0]',
-              },
-              {
-                label: 'Print First Value',
-                desc: 'We print the first value.',
-                highlight: 'print(first)',
-              },
-              {
-                label: 'Get the Second Value',
-                desc: 'We get the value at position <b>1</b> (the second item), which is <b>"banana"</b>.',
-                highlight: 'second = fruits[1]',
-              },
-              {
-                label: 'Print Second Value',
-                desc: 'We print the second value.',
-                highlight: 'print(second)',
-              },
-              {
-                label: 'Get the Third Value',
-                desc: 'We get the value at position <b>2</b> (the third item), which is <b>"cherry"</b>.',
-                highlight: 'third = fruits[2]',
-              },
-              {
-                label: 'Print Third Value',
-                desc: 'We print the third value.',
-                highlight: 'print(third)',
-              },
-              {
-                label: 'For-Each Loop',
-                desc: 'We can also use a <b>for</b> loop to go through each fruit in the list, one at a time.',
-                highlight: 'for fruit in fruits:',
-              },
-              {
-                label: 'Print Each Item',
-                desc: 'Inside the loop, we print the current fruit. This prints "apple", then "banana", then "cherry", each on its own line.',
-                highlight: 'print(fruit)',
-              },
-              {
-                label: 'For Loop with Index',
-                desc: 'Another way is to use a loop with an index. <b>range(len(fruits))</b> gives us numbers for each position in the list (0, 1, 2).',
-                highlight: 'for i in range(len(fruits)):',
-              },
-              {
-                label: 'Print by Index',
-                desc: 'We print each fruit by its index.',
-                highlight: 'print(fruits[i])',
-              },
-            ]}
-          />
+        <Section title="Introduction">
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              height: 0,
+              paddingTop: '56.25%',
+              paddingBottom: 0,
+              boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+              marginTop: '1.6em',
+              marginBottom: '0.9em',
+              overflow: 'hidden',
+              borderRadius: 8,
+              willChange: 'transform',
+            }}
+          >
+            <iframe
+              loading="lazy"
+              style={{
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                top: 0,
+                left: 0,
+                border: 'none',
+                padding: 0,
+                margin: 0,
+              }}
+              src="https://www.canva.com/design/DAGrIIVwShc/zn7wJdeCEKMqAqxzYsdAdQ/watch?embed"
+              allowFullScreen
+              allow="fullscreen"
+            />
+          </div>
+          <Section
+            title="Creating a List"
+          >
+            <StepThroughCodeAnimation
+              code={[
+                'numbers = [1, 2, 3]',
+                'colors = ["red", "green", "blue"]',
+                'mixed = [1, "two", 3.0]',
+              ]}
+              steps={createListSteps}
+            />
+          </Section>
+          <Section
+            title="Accessing Values in a List"
+          >
+            <StepThroughCodeAnimation
+              code={[
+                'fruits = ["apple", "banana", "cherry"]',
+                'first = fruits[0]',
+                'print(first)',
+                '# Output: apple',
+                '',
+                'second = fruits[1]',
+                'print(second)',
+                '# Output: banana',
+                '',
+                'third = fruits[2]',
+                'print(third)',
+                '# Output: cherry',
+                '',
+                '',
+                'for fruit in fruits:',
+                '    print(fruit)',
+                '',
+                'for i in range(len(fruits)):',
+                '    print(fruits[i])',
+              ]}
+              steps={[
+                {
+                  label: 'Create List',
+                  desc: 'We make a list called <b>fruits</b> with three values: "apple", "banana", and "cherry".',
+                  highlight: 'fruits = ["apple", "banana", "cherry"]',
+                },
+                {
+                  label: 'Get the First Value',
+                  desc: 'We get the value at position <b>0</b> (the first item), which is <b>"apple"</b>.',
+                  highlight: 'first = fruits[0]',
+                },
+                {
+                  label: 'Print First Value',
+                  desc: 'We print the first value.',
+                  highlight: 'print(first)',
+                },
+                {
+                  label: 'Get the Second Value',
+                  desc: 'We get the value at position <b>1</b> (the second item), which is <b>"banana"</b>.',
+                  highlight: 'second = fruits[1]',
+                },
+                {
+                  label: 'Print Second Value',
+                  desc: 'We print the second value.',
+                  highlight: 'print(second)',
+                },
+                {
+                  label: 'Get the Third Value',
+                  desc: 'We get the value at position <b>2</b> (the third item), which is <b>"cherry"</b>.',
+                  highlight: 'third = fruits[2]',
+                },
+                {
+                  label: 'Print Third Value',
+                  desc: 'We print the third value.',
+                  highlight: 'print(third)',
+                },
+                {
+                  label: 'For-Each Loop',
+                  desc: 'We can also use a <b>for</b> loop to go through each fruit in the list, one at a time.',
+                  highlight: 'for fruit in fruits:',
+                },
+                {
+                  label: 'Print Each Item',
+                  desc: 'Inside the loop, we print the current fruit. This prints "apple", then "banana", then "cherry", each on its own line.',
+                  highlight: 'print(fruit)',
+                },
+                {
+                  label: 'For Loop with Index',
+                  desc: 'Another way is to use a loop with an index. <b>range(len(fruits))</b> gives us numbers for each position in the list (0, 1, 2).',
+                  highlight: 'for i in range(len(fruits)):',
+                },
+                {
+                  label: 'Print by Index',
+                  desc: 'We print each fruit by its index.',
+                  highlight: 'print(fruits[i])',
+                },
+              ]}
+            />
+          </Section>
         </Section>
         <Section
           title="Updating Values in a List"
-          subtitle="How to change a value in a list"
         >
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              height: 0,
+              paddingTop: '56.25%',
+              paddingBottom: 0,
+              boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+              marginTop: '1.6em',
+              marginBottom: '0.9em',
+              overflow: 'hidden',
+              borderRadius: 8,
+              willChange: 'transform',
+            }}
+          >
+            <iframe
+              loading="lazy"
+              style={{
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                top: 0,
+                left: 0,
+                border: 'none',
+                padding: 0,
+                margin: 0,
+              }}
+              src="https://www.canva.com/design/DAGrIKbOFUo/YRLEV7p54o1B-k8u-Pvmgw/watch?embed"
+              allowFullScreen
+              allow="fullscreen"
+            />
+          </div>
           <StepThroughCodeAnimation
             code={[
               'cars = ["Toyota", "Honda", "Ford"]',
@@ -175,8 +238,71 @@ export default function ListConcept() {
         </Section>
         <Section
           title="Adding and Removing Values"
-          subtitle="How to add or remove items from a list"
         >
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              height: 0,
+              paddingTop: '56.25%',
+              paddingBottom: 0,
+              boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+              marginTop: '1.6em',
+              marginBottom: '0.9em',
+              overflow: 'hidden',
+              borderRadius: 8,
+              willChange: 'transform',
+            }}
+          >
+            <iframe
+              loading="lazy"
+              style={{
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                top: 0,
+                left: 0,
+                border: 'none',
+                padding: 0,
+                margin: 0,
+              }}
+              src="https://www.canva.com/design/DAGrIPUXkrk/yY2jtrjiQkJ-okxa6ZVmjg/watch?embed"
+              allowFullScreen
+              allow="fullscreen"
+            />
+          </div>
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              height: 0,
+              paddingTop: '56.25%',
+              paddingBottom: 0,
+              boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+              marginTop: '1.6em',
+              marginBottom: '0.9em',
+              overflow: 'hidden',
+              borderRadius: 8,
+              willChange: 'transform',
+            }}
+          >
+            <iframe
+              loading="lazy"
+              style={{
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                top: 0,
+                left: 0,
+                border: 'none',
+                padding: 0,
+                margin: 0,
+              }}
+              src="https://www.canva.com/design/DAGrIMdF5DE/_XxrtYqwsW54foOwBnxD-A/watch?embed"
+              allowFullScreen
+              allow="fullscreen"
+            />
+          </div>
           <StepThroughCodeAnimation
             code={[
               'animals = ["cat", "dog", "rabbit"]',
