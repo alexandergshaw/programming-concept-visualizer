@@ -7,7 +7,6 @@ import '../../../styles/variable.css';
 import Section from '@/components/common/Section';
 import CodeSnippet from '@/components/common/CodeSnippet';
 import OrderedList from '@/components/common/OrderedList';
-import VideoPlayer from '@/components/common/VideoPlayer';
 import TableOfContents from '@/components/common/TableOfContents';
 
 const reservedKeywords = [
@@ -55,7 +54,6 @@ export default function VariableConcept() {
             description="We can think of a variable as a box that we put a value in. In professional terms, we call this storing data. We can store all kinds of data in a variable, like numbers, text, or even more complex things like lists and objects."
         >
             <TableOfContents>
-                <VideoPlayer src="https://www.youtube.com/embed/9QbIDVcRnc8?si=MdHHGk2C7Tesrc6D" />
                 <Section title="1. Creating a Variable" subtitle='Every single time we create (aka declare) a variable in JavaScript, we follow these steps:'>
                     <OrderedList
                         items={[
