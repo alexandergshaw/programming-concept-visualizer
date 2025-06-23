@@ -159,7 +159,7 @@ function ColorDropdownPythonSnippet() {
   return (
     <Box sx={{ my: 2 }}>
       <div style={{ marginBottom: 8 }}>
-        Pick a color below and see what the program says you should do at a traffic light.  
+        Pick a color below and see what the program says you should do at a traffic light.
         <br />
       </div>
       <FormControl size="small" sx={{ minWidth: 160, mb: 1 }}>
@@ -253,10 +253,44 @@ export default function IfElseConcept() {
       description="Conditional statements let you run different code depending on whether something is true or false."
     >
       <TableOfContents numbered>
+        <Section title="Video Overview">
+          <div style={{
+            position: 'relative',
+            width: '100%',
+            height: 0,
+            paddingTop: '56.25%',
+            paddingBottom: 0,
+            boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+            marginTop: '1.6em',
+            marginBottom: '0.9em',
+            overflow: 'hidden',
+            borderRadius: 8,
+            willChange: 'transform'
+          }}>
+            <iframe
+              loading="lazy"
+              style={{
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                top: 0,
+                left: 0,
+                border: 'none',
+                padding: 0,
+                margin: 0
+              }}
+              src="https://www.canva.com/design/DAGrHmb_5Yo/Eahc0b0P2epVaUwr0vNA5g/watch?embed"
+              allowFullScreen
+              allow="fullscreen"
+            >
+            </iframe>
+          </div>
+        </Section>
         <Section
           title="Basic If Statement"
           subtitle="How to use if to run code only when a condition is true"
         >
+
           <div style={{ marginBottom: 16 }}>
             <b>What is an <code>if</code> statement?</b>
             <br />
