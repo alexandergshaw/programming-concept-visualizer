@@ -15,7 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 
-export default function EventHandlersConcept() {  
+export default function EventHandlersConcept() {
     // Parts for a basic JS click handler, including HTML highlights
     const clickParts: CodePart[] = [
         {
@@ -227,6 +227,32 @@ export default function EventHandlersConcept() {
                     title="What is an Event Handler?"
                     subtitle="An event handler is code that runs when something happens, like a button click."
                 >
+                    <div style={{
+                        position: 'relative',
+                        width: '100%',
+                        height: 0,
+                        paddingTop: '56.25%',
+                        paddingBottom: 0,
+                        boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+                        marginTop: '1.6em',
+                        marginBottom: '0.9em',
+                        overflow: 'hidden',
+                        borderRadius: 8,
+                        willChange: 'transform'
+                    }}>
+                        <iframe loading="lazy" style={{
+                            position: 'absolute',
+                            width: '100%',
+                            height: '100%',
+                            top: 0,
+                            left: 0,
+                            border: 'none',
+                            padding: 0,
+                            margin: 0
+                        }}
+                            src="https://www.canva.com/design/DAGrIMBBH58/RNeY10R9YGxd2f-g9-xcMA/watch?embed" allowFullScreen={true} allow="fullscreen">
+                        </iframe>
+                    </div>
                     <Section title="Parts of a JavaScript Event Handler">
                         <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap', alignItems: 'flex-start' }}>
                             <div style={{ flex: '1 1 420px', minWidth: 0 }}>
@@ -325,6 +351,32 @@ document.getElementById('${selectedElement}').addEventListener('${selectedEvent}
                     title="Listening for DOMContentLoaded"
                     subtitle="How to run JavaScript as soon as your HTML is ready"
                 >
+                    <div style={{
+                        position: 'relative',
+                        width: '100%',
+                        height: 0,
+                        paddingTop: '56.25%',
+                        paddingBottom: 0,
+                        boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+                        marginTop: '1.6em',
+                        marginBottom: '0.9em',
+                        overflow: 'hidden',
+                        borderRadius: 8,
+                        willChange: 'transform'
+                    }}>
+                        <iframe loading="lazy" style={{
+                            position: 'absolute',
+                            width: '100%',
+                            height: '100%',
+                            top: 0,
+                            left: 0,
+                            border: 'none',
+                            padding: 0,
+                            margin: 0
+                        }}
+                            src="https://www.canva.com/design/DAGrIPybrnE/gSYOM1X_6p525q64M9iAaA/watch?embed" allowFullScreen={true} allow="fullscreen">
+                        </iframe>
+                    </div>
                     <ConceptInfoCard>
                         <div style={{ marginBottom: 12 }}>
                             Sometimes you want your JavaScript to run as soon as the page&apos;s HTML is loaded, but before images or other resources are finished loading. The <b>DOMContentLoaded</b> event is perfect for this!<br /><br />
@@ -333,12 +385,12 @@ document.getElementById('${selectedElement}').addEventListener('${selectedEvent}
                             <b>What if you don&apos;t use <code>DOMContentLoaded</code>?</b><br />
                             If you try to run JavaScript that selects or changes elements before the HTML is loaded, your code might not work. For example, <code>document.getElementById(&apos;myBtn&apos;)</code> could return <code>null</code> if the button isn&apos;t in the page yet.
                         </div>
-                        
+
                     </ConceptInfoCard>
                     <CodePartsExplanation
-                            code={domContentLoadedCode}
-                            parts={domContentLoadedParts}
-                        />
+                        code={domContentLoadedCode}
+                        parts={domContentLoadedParts}
+                    />
                 </Section>
                 <Section
                     title="Capstone Practice Problem"

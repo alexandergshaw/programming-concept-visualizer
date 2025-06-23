@@ -8,7 +8,6 @@ import CodePartsExplanation, { CodePart } from '@/components/common/CodePartsExp
 import CapstonePractice from './CapstonePractice';
 
 export default function FunctionConcept() {
-    // Parts for the named function example
     const squareParts: CodePart[] = [
         {
             label: 'Function Keyword',
@@ -84,16 +83,48 @@ export default function FunctionConcept() {
         >
             <TableOfContents numbered>
                 <Section
-                    title="Named Functions"
-                    subtitle="A named function uses the word 'function' and a name you pick."
+                    title="Introduction to Functions"
                 >
-                    <Section title="Parts of a Named Function">
+                    <div
+                        style={{
+                            position: 'relative',
+                            width: '100%',
+                            height: 0,
+                            paddingTop: '56.25%',
+                            paddingBottom: 0,
+                            boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+                            marginTop: '1.6em',
+                            marginBottom: '0.9em',
+                            overflow: 'hidden',
+                            borderRadius: '8px',
+                            willChange: 'transform',
+                        }}
+                    >
+                        <iframe
+                            loading="lazy"
+                            style={{
+                                position: 'absolute',
+                                width: '100%',
+                                height: '100%',
+                                top: 0,
+                                left: 0,
+                                border: 'none',
+                                padding: 0,
+                                margin: 0,
+                            }}
+                            src="https://www.canva.com/design/DAGrIDVlfJc/qvTIrutwpb4R5SNOW3HdHA/watch?embed"
+                            allowFullScreen={true}
+                            allow="fullscreen"
+                        >
+                        </iframe>
+                    </div>
+                    <Section title="Parts of a Function">
                         <CodePartsExplanation
                             code={`function square(x) {\n  return x * x;\n}\nconsole.log(square(5));`}
                             parts={squareParts}
                         />
                     </Section>
-                    <Section title="Step by Step Process of a Named Function">
+                    <Section title="Step by Step Process of a Function">
                         <Section title="Example: Squaring a number">
                             <StepThroughCodeAnimation
                                 code={[
@@ -275,6 +306,39 @@ export default function FunctionConcept() {
                     title="Arrow Functions"
                     subtitle="Arrow functions are a shorter way to write functions and are often assigned to variables."
                 >
+                    <div
+                        style={{
+                            position: 'relative',
+                            width: '100%',
+                            height: 0,
+                            paddingTop: '56.25%',
+                            paddingBottom: 0,
+                            boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+                            marginTop: '1.6em',
+                            marginBottom: '0.9em',
+                            overflow: 'hidden',
+                            borderRadius: '8px',
+                            willChange: 'transform',
+                        }}
+                    >
+                        <iframe
+                            loading="lazy"
+                            style={{
+                                position: 'absolute',
+                                width: '100%',
+                                height: '100%',
+                                top: 0,
+                                left: 0,
+                                border: 'none',
+                                padding: 0,
+                                margin: 0,
+                            }}
+                            src="https://www.canva.com/design/DAGrIAx7pGo/L3paE-TzPKAX9G6owiASyQ/watch?embed"
+                            allowFullScreen={true}
+                            allow="fullscreen"
+                        >
+                        </iframe>
+                    </div>
                     <Section title="Parts of an Arrow Function">
                         <CodePartsExplanation
                             code={`const square = x => x * x;\nconsole.log(square(${5}));`}
@@ -356,6 +420,7 @@ export default function FunctionConcept() {
                         title="Arrow Functions with 2 Parameters"
                         subtitle="Arrow functions can take more than one input."
                     >
+
                         <StepThroughCodeAnimation
                             code={[
                                 'const add = (a, b) => a + b;',
@@ -392,6 +457,39 @@ export default function FunctionConcept() {
                     title="Anonymous Functions"
                     subtitle="Sometimes we need to tell our program how another piece of code should behave. This is where we can use something called an anonymous function."
                 >
+                    <div
+                        style={{
+                            position: 'relative',
+                            width: '100%',
+                            height: 0,
+                            paddingTop: '56.25%',
+                            paddingBottom: 0,
+                            boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+                            marginTop: '1.6em',
+                            marginBottom: '0.9em',
+                            overflow: 'hidden',
+                            borderRadius: '8px',
+                            willChange: 'transform',
+                        }}
+                    >
+                        <iframe
+                            loading="lazy"
+                            style={{
+                                position: 'absolute',
+                                width: '100%',
+                                height: '100%',
+                                top: 0,
+                                left: 0,
+                                border: 'none',
+                                padding: 0,
+                                margin: 0,
+                            }}
+                            src="https://www.canva.com/design/DAGrIOBSQJk/J4k-K4b6X9qkAHeQ3ILCJw/watch?embed"
+                            allowFullScreen={true}
+                            allow="fullscreen"
+                        >
+                        </iframe>
+                    </div>
                     <Section title="Parts of an Anonymous Function">
                         <CodePartsExplanation
                             code={`x => console.log(x * x)`}
