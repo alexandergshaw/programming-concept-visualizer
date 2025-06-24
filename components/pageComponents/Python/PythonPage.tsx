@@ -14,6 +14,7 @@ import IfElseConcept from './IfElseConcept';
 import LogicalAndOrConcept from './LogicalAndOrConcept';
 import WhileLoopConcept from './WhileLoopConcept';
 import ForLoopConcept from './ForLoopConcept';
+import RecursionConcept from './RecursionConcept';
 
 const navItems = [
 	{
@@ -45,6 +46,13 @@ const navItems = [
 			{ label: 'Dictionaries', value: 'dicts' },
 		],
 	},
+	{
+		label: 'Functions',
+		value: 'functions',
+		children: [
+			{ label: 'Recursion', value: 'recursion' },
+		]
+	}
 ];
 
 export default function PythonPage() {
@@ -83,6 +91,8 @@ export default function PythonPage() {
                 return <WhileLoopConcept />;
             case 'forloops':
                 return <ForLoopConcept />;
+            case 'recursion':
+                return <RecursionConcept />;
             default:
 				return null;
 		}

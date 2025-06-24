@@ -14,25 +14,27 @@ import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import SubjectIcon from '@mui/icons-material/Subject';
 import AutoAwesomeMotionIcon from '@mui/icons-material/AutoAwesomeMotion'; 
 import FlowchartDesigner from './FlowchartDesigner';
+import BigOConcept from './BigOConcept';
 
 const navItems = [
-	{
-		label: 'How Computers Run Programs',
-		value: 'how-computers-run-programs',
-		children: [
-			{ label: '1) Introduction', value: 'introduction-computers-run-programs' },
-			{ label: '2) Interpreters & Compilers', value: 'compilers-interpreters' },
-			{ label: '3) Hardware', value: 'hardware' },
-			{ label: '4) Data', value: 'memory' },
-		],
-	},
-	{
-		label: 'How We Design Programs',
-		value: 'how-we-design-programs',
-		children: [
-			{ label: 'Flow Charts', value: 'flow-charts'},
-		],
-	},
+    {
+        label: 'How Computers Run Programs',
+        value: 'how-computers-run-programs',
+        children: [
+            { label: '1) Introduction', value: 'introduction-computers-run-programs' },
+            { label: '2) Interpreters & Compilers', value: 'compilers-interpreters' },
+            { label: '3) Hardware', value: 'hardware' },
+            { label: '4) Data', value: 'memory' },
+        ],
+    },
+    {
+        label: 'How We Design Programs',
+        value: 'how-we-design-programs',
+        children: [
+            { label: 'Flow Charts', value: 'flow-charts'},
+            { label: 'Big O Notation', value: 'big-o-notation' },
+        ],
+    },
 ];
 
 export default function ProgrammingBasicsPage() {
@@ -99,6 +101,8 @@ export default function ProgrammingBasicsPage() {
 				);
 			case 'flow-charts':
 				return <FlowchartDesigner />;
+			case 'big-o-notation':
+				return <BigOConcept />;
 			default:
 				return null;
 		}
