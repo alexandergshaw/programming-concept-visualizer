@@ -21,6 +21,16 @@ const stepColors = [
 const MathStepThrough: React.FC<MathStepThroughProps> = ({ steps, initialStep = 0, style }) => {
     const [current, setCurrent] = useState(initialStep);
 
+    // Function to render expressions with line breaks
+    const renderExpression = (expression: string) => {
+        return expression.split('\n').map((line, i) => (
+            <React.Fragment key={i}>
+                {line}
+                {i < expression.split('\n').length - 1 && <br />}
+            </React.Fragment>
+        ));
+    };
+
     return (
         <ConceptInfoCard style={style}>
             <div>
@@ -38,13 +48,14 @@ const MathStepThrough: React.FC<MathStepThroughProps> = ({ steps, initialStep = 
                                 overflowX: 'auto',
                                 border: '1.5px solid #e0e0e0',
                                 display: 'block',
-                                textAlign: 'center',
+                                textAlign: 'left',
                                 marginBottom: 8,
+                                whiteSpace: 'pre-wrap',
                             }}
                         >
-                            {step.expression}
+                            {renderExpression(step.expression)}
                         </pre>
-                        <div style={{ minHeight: 24, textAlign: 'center' }}>
+                        <div style={{ minHeight: 24, textAlign: 'left' }}>
                             <b style={{ color: stepColors[idx % stepColors.length], fontSize: 16 }}>
                                 {step.label}:
                             </b>{' '}
@@ -58,7 +69,7 @@ const MathStepThrough: React.FC<MathStepThroughProps> = ({ steps, initialStep = 
             <div style={{
                 display: 'flex',
                 gap: 12,
-                justifyContent: 'center',
+                justifyContent: 'flex-start',
                 marginTop: 8
             }}>
                 <Button
