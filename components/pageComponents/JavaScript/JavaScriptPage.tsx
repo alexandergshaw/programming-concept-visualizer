@@ -45,13 +45,6 @@ const navItems = [
       { label: 'Event-Driven DOM', value: 'event-driven dom' },
     ],
   },
-  {
-    label: 'Testing and Debugging',
-    value: 'testing and debugging',
-    children: [
-      { label: 'console.log', value: 'console.log' },
-    ],
-  }
 
   // {
   //   label: 'Collections',
