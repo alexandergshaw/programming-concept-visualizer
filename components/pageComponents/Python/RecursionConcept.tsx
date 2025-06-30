@@ -4,6 +4,8 @@ import Section from '@/components/common/Section';
 import InteractiveStepThrough from '../../common/InteractiveStepThrough';
 import StepThroughCodeAnimation, { Step } from '../JavaScript/StepThroughCodeAnimation';
 import Box from '@mui/material/Box';
+import RecursionVisualizer from './RecursionVisualizer';
+import RecursiveConstructor from './RecursiveConstructor';
 
 const factorialSteps: Step[] = [
   {
@@ -130,95 +132,11 @@ export default function RecursionConcept() {
     >
       <TableOfContents numbered>
         <Section title="What is Recursion?">
-          <p>
-            <b>Recursion</b> is a programming technique where a function calls itself to solve a smaller version of the problem. Each time the function calls itself, it works on a simpler or smaller input, until it reaches a <b>base case</b> that stops the recursion.
-          </p>
-          <Box sx={{ display: 'flex', gap: 4, flexWrap: 'wrap', mt: 2, mb: 2 }}>
-            <Box sx={{ minWidth: 220, bgcolor: '#f8fafc', borderRadius: 2, p: 2, border: '1px solid #e0e0e0', flex: 1 }}>
-              <b>Real-World Analogy</b>
-              <ul style={{ margin: '10px 0 0 18px', fontSize: 15 }}>
-                <li>
-                  <b>Russian Dolls:</b> Each doll contains a smaller doll, until you reach the smallest one.
-                </li>
-                <li>
-                  <b>Mirrors Facing Each Other:</b> Each reflection contains another reflection, and so on.
-                </li>
-              </ul>
-            </Box>
-            <Box sx={{ minWidth: 220, bgcolor: '#f8fafc', borderRadius: 2, p: 2, border: '1px solid #e0e0e0', flex: 1 }}>
-              <b>Recursion Structure (Pseudocode)</b>
-              <pre style={{ margin: 0, fontSize: 14, color: '#1976d2' }}>
-{`def recursive_function(problem):
-    if simple_case(problem):
-        return simple_answer
-    else:
-        smaller_problem = make_smaller(problem)
-        return recursive_function(smaller_problem)
-`}
-              </pre>
-            </Box>
-          </Box>
-          <p>
-            <i>
-              Every recursive function needs a <b>base case</b> (when to stop) and a <b>recursive case</b> (when to call itself).
-            </i>
-          </p>
+
+          <RecursionVisualizer />
         </Section>
         <Section title="Build a Recursive Function (Interactive)">
-          <InteractiveStepThrough
-            codeTemplate={inputs => [
-              'def mystery(n):',
-              inputs.baseCase === 'n == 1'
-                ? '    if n == 1:'
-                : '    if n == 0:',
-              `        print("Base case reached!")`,
-              inputs.baseCase === 'n == 1'
-                ? '        return 1'
-                : '        return 0',
-              '    else:',
-              `        print("Recursing with", n - 1)`,
-              inputs.baseCase === 'n == 1'
-                ? '        return n * mystery(n - 1)'
-                : '        return n + mystery(n - 1)',
-              '',
-              'print(mystery(3))',
-            ]}
-            stepsTemplate={inputs => [
-              {
-                label: 'Write the Base Case',
-                desc: `The <b>base case</b> stops the recursion. Here, it's <code>${inputs.baseCase}</code>.`,
-                highlight: inputs.baseCase === 'n == 1' ? 'if n == 1:' : 'if n == 0:',
-              },
-              {
-                label: 'Write the Recursive Case',
-                desc: `The <b>recursive case</b> calls the function again with a smaller value (<code>n - 1</code>).`,
-                highlight: inputs.baseCase === 'n == 1'
-                  ? 'return n * mystery(n - 1)'
-                  : 'return n + mystery(n - 1)',
-              },
-              {
-                label: 'Add Debug Output',
-                desc: `We add <code>print()</code> statements to see when the base case and recursive case are reached.`,
-                highlight: ['print("Base case reached!")', 'print("Recursing with", n - 1)'],
-              },
-              {
-                label: 'Try It!',
-                desc: `Run <code>mystery(3)</code> to see the output and how recursion works step by step.`,
-                highlight: 'print(mystery(3))',
-              },
-            ]}
-            inputConfigs={[
-              {
-                name: 'baseCase',
-                label: 'Base Case',
-                options: [
-                  { label: 'n == 1 (factorial)', value: 'n == 1' },
-                  { label: 'n == 0 (sum)', value: 'n == 0' },
-                ],
-                defaultValue: 'n == 1',
-              },
-            ]}
-          />
+          <RecursiveConstructor />
         </Section>
         <Section title="Debugging Recursion with Output">
           <StepThroughCodeAnimation
