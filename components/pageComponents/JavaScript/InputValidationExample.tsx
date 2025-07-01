@@ -40,6 +40,33 @@ const InputValidationExample: React.FC = () => {
                 In this example, we&apos;ll check if the input is a valid number.
             </p>
 
+            <div style={{
+                position: 'relative',
+                width: '100%',
+                height: 0,
+                paddingTop: '56.25%',
+                paddingBottom: 0,
+                boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+                marginTop: '1.6em',
+                marginBottom: '0.9em',
+                overflow: 'hidden',
+                borderRadius: 8,
+                willChange: 'transform'
+            }}>
+                <iframe loading="lazy" style={{
+                    position: 'absolute',
+                    width: '100%',
+                    height: '100%',
+                    top: 0,
+                    left: 0,
+                    border: 'none',
+                    padding: 0,
+                    margin: 0
+                }}
+                    src="https://www.canva.com/design/DAGr4TWw4vk/yfCmm4Qeq59RyrfCA7vphg/watch?embed" allowFullScreen={true} allow="fullscreen">
+                </iframe>
+            </div>
+
             {/* Visual demo of what we're building */}
             <ConceptInfoCard>
                 <Typography variant="subtitle1" fontWeight={600} gutterBottom>

@@ -11,9 +11,35 @@ const ChangeTextExample: React.FC = () => {
     return (
         <div>
             <p style={{ fontSize: 16, lineHeight: 1.6, marginBottom: 16 }}>
-                Let&apos;s learn how to change text on a webpage when a button is clicked. This is one of the most basic
-                and useful things you can do with JavaScript!
+                Let&apos;s learn how to change text on a webpage when an event occurs. 
             </p>
+
+            <div style={{
+                position: 'relative',
+                width: '100%',
+                height: 0,
+                paddingTop: '56.25%',
+                paddingBottom: 0,
+                boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+                marginTop: '1.6em',
+                marginBottom: '0.9em',
+                overflow: 'hidden',
+                borderRadius: 8,
+                willChange: 'transform'
+            }}>
+                <iframe loading="lazy" style={{
+                    position: 'absolute',
+                    width: '100%',
+                    height: '100%',
+                    top: 0,
+                    left: 0,
+                    border: 'none',
+                    padding: 0,
+                    margin: 0
+                }}
+                    src="https://www.canva.com/design/DAGr4TqTq-w/FZLW2KhZapZVDb7OAFFcPA/watch?embed" allowFullScreen={true} allow="fullscreen">
+                </iframe>
+            </div>
 
             {/* Visual demo of what we're building */}
             <ConceptInfoCard>

@@ -14,14 +14,14 @@ import { faHandPointer, faCheck, faCodeBranch, faRadio, faDotCircle } from '@for
 const RadioButtonExample: React.FC = () => {
     const [selectedOption, setSelectedOption] = useState('');
     const [message, setMessage] = useState('');
-    
+
     const handleCheck = () => {
         if (selectedOption) {
             setMessage(`You selected: ${selectedOption}`);
         } else {
             setMessage('Please select an option first');
         }
-        
+
         // Reset after 3 seconds
         setTimeout(() => {
             setMessage('');
@@ -31,9 +31,36 @@ const RadioButtonExample: React.FC = () => {
     return (
         <div>
             <p style={{ fontSize: 16, lineHeight: 1.6, marginBottom: 16 }}>
-                Let&apos;s learn how to use JavaScript to check which radio button is selected. 
+                Let&apos;s learn how to use JavaScript to check which radio button is selected.
                 Radio buttons are useful when users need to select a single option from a list of choices.
             </p>
+
+            <div style={{
+                position: 'relative',
+                width: '100%',
+                height: 0,
+                paddingTop: '56.25%',
+                paddingBottom: 0,
+                boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+                marginTop: '1.6em',
+                marginBottom: '0.9em',
+                overflow: 'hidden',
+                borderRadius: 8,
+                willChange: 'transform'
+            }}>
+                <iframe loading="lazy" style={{
+                    position: 'absolute',
+                    width: '100%',
+                    height: '100%',
+                    top: 0,
+                    left: 0,
+                    border: 'none',
+                    padding: 0,
+                    margin: 0
+                }}
+                    src="https://www.canva.com/design/DAGr4T6EhAU/3G7GzJlhSf6GcXTIHxodMg/watch?embed" allowFullScreen={true} allow="fullscreen">
+                </iframe>
+            </div>
 
             {/* Visual demo of what we're building */}
             <ConceptInfoCard>
@@ -52,7 +79,7 @@ const RadioButtonExample: React.FC = () => {
                     <Box sx={{ fontSize: 12, position: 'absolute', right: 8, top: 4, color: '#666' }}>
                         Preview
                     </Box>
-                    
+
                     <Box sx={{ mb: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
                         <Typography fontWeight={500} gutterBottom>Select your favorite pet:</Typography>
                         <RadioGroup
@@ -64,20 +91,20 @@ const RadioButtonExample: React.FC = () => {
                             <FormControlLabel value="fish" control={<Radio />} label="Fish" />
                             <FormControlLabel value="bird" control={<Radio />} label="Bird" />
                         </RadioGroup>
-                        
-                        <Button 
-                            variant="contained" 
+
+                        <Button
+                            variant="contained"
                             color="primary"
                             onClick={handleCheck}
                             style={{ alignSelf: 'flex-start' }}
                         >
                             Check Selection
                         </Button>
-                        
+
                         {message && (
-                            <Box sx={{ 
-                                p: 1, 
-                                bgcolor: '#e3f2fd', 
+                            <Box sx={{
+                                p: 1,
+                                bgcolor: '#e3f2fd',
                                 border: '1px solid #90caf9',
                                 borderRadius: 1,
                                 display: 'flex',
@@ -299,7 +326,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#fff8e1', p: 2, borderRadius: 1 }}>
                         <FontAwesomeIcon icon={faDotCircle} style={{ fontSize: 20, color: '#ff9800' }} />
                         <Typography variant="body2">
-                            <b>What&apos;s happening:</b> We loop through all the radio buttons using a <code>for...of</code> loop, 
+                            <b>What&apos;s happening:</b> We loop through all the radio buttons using a <code>for...of</code> loop,
                             checking each one to see if its <code>checked</code> property is true. When we find the checked radio button,
                             we store its value and exit the loop with <code>break</code>.
                         </Typography>
@@ -368,8 +395,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e8f5e9', p: 2, borderRadius: 1 }}>
                         <FontAwesomeIcon icon={faCheck} style={{ fontSize: 20, color: '#4caf50' }} />
                         <Typography variant="body2">
-                            <b>What&apos;s happening:</b> We create a new paragraph element to display our message, style it 
-                            according to whether an option was selected, and add it to the page. We also clear any previous 
+                            <b>What&apos;s happening:</b> We create a new paragraph element to display our message, style it
+                            according to whether an option was selected, and add it to the page. We also clear any previous
                             messages by setting <code>innerHTML = &quot;&quot;</code> before creating the new message.
                         </Typography>
                     </Box>
@@ -496,19 +523,19 @@ document.addEventListener("DOMContentLoaded", function() {
                 </Typography>
                 <ul style={{ paddingLeft: 20, margin: '8px 0' }}>
                     <li style={{ marginBottom: 8 }}>
-                        <b>Missing name attribute:</b> All radio buttons in a group must share the same <code>name</code> attribute 
+                        <b>Missing name attribute:</b> All radio buttons in a group must share the same <code>name</code> attribute
                         for the browser to treat them as a single group where only one can be selected
                     </li>
                     <li style={{ marginBottom: 8 }}>
-                        <b>Forgetting to check if a selection exists:</b> Always check if <code>selectedRadio</code> exists before 
+                        <b>Forgetting to check if a selection exists:</b> Always check if <code>selectedRadio</code> exists before
                         trying to access its <code>value</code> property
                     </li>
                     <li style={{ marginBottom: 8 }}>
-                        <b>Using getElementById for groups:</b> You can&apos;t use <code>getElementById</code> to get multiple elements; 
+                        <b>Using getElementById for groups:</b> You can&apos;t use <code>getElementById</code> to get multiple elements;
                         use <code>querySelectorAll</code> or <code>getElementsByName</code> instead
                     </li>
                     <li>
-                        <b>Not using proper CSS selectors:</b> When using <code>querySelector</code> with the <code>:checked</code> 
+                        <b>Not using proper CSS selectors:</b> When using <code>querySelector</code> with the <code>:checked</code>
                         pseudo-class, make sure your selector is correctly formatted
                     </li>
                 </ul>
