@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import ConceptInfoCard from '@/components/common/ConceptInfoCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTree, faCubes } from '@fortawesome/free-solid-svg-icons';
+import { faCubes } from '@fortawesome/free-solid-svg-icons';
 
 const DomExplanation: React.FC = () => {
   return (
@@ -11,7 +11,7 @@ const DomExplanation: React.FC = () => {
       
       <p style={{ fontSize: 16, lineHeight: 1.6, marginTop: 0, marginBottom: 16 }}>
         When you visit a website, your browser turns the HTML code into something called the <b>DOM</b> (Document Object Model). 
-        Don't worry about the technical name - just think of it as a <b>live blueprint</b> of the page.
+        Don&apos;t worry about the technical name - just think of it as a <b>live blueprint</b> of the page.
       </p>
       
       <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 3, alignItems: 'center', mb: 3 }}>
@@ -24,7 +24,7 @@ const DomExplanation: React.FC = () => {
           </ul>
           
           <Box sx={{ mt: 3, mb: 2, pl: 2, borderLeft: '3px solid #2196f3' }}>
-            <Typography fontWeight={500} gutterBottom>That's how JavaScript works with websites:</Typography>
+            <Typography fontWeight={500} gutterBottom>That&apos;s how JavaScript works with websites:</Typography>
             <p style={{ margin: '8px 0 0 0' }}>
               JavaScript can change the DOM (the blueprint), and the browser automatically updates what you see on screen.
             </p>
@@ -66,7 +66,7 @@ const DomExplanation: React.FC = () => {
         <Typography sx={{ fontSize: 16 }}>
           The DOM is like a live version of your webpage that JavaScript can change. 
           When JavaScript modifies the DOM, the browser instantly updates what you see.
-          It's like having a magical connection between code and the screen!
+          It&apos;s like having a magical connection between code and the screen!
         </Typography>
       </Box>
     </ConceptInfoCard>

@@ -31,14 +31,14 @@ const RadioButtonExample: React.FC = () => {
     return (
         <div>
             <p style={{ fontSize: 16, lineHeight: 1.6, marginBottom: 16 }}>
-                Let's learn how to use JavaScript to check which radio button is selected. 
+                Let&apos;s learn how to use JavaScript to check which radio button is selected. 
                 Radio buttons are useful when users need to select a single option from a list of choices.
             </p>
 
             {/* Visual demo of what we're building */}
             <ConceptInfoCard>
                 <Typography variant="subtitle1" fontWeight={600} gutterBottom>
-                    What We're Building:
+                    What We&apos;re Building:
                 </Typography>
 
                 <Box sx={{
@@ -141,7 +141,7 @@ const RadioButtonExample: React.FC = () => {
 <div id="result"></div>`}
                     </Box>
                     <Typography variant="body2" sx={{ color: '#555' }}>
-                        Note how all radio buttons share the same <code>name="pet"</code> attribute. This creates a group
+                        Note how all radio buttons share the same <code>name=&quot;pet&quot;</code> attribute. This creates a group
                         where only one option can be selected at a time.
                     </Typography>
                 </Paper>
@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1 }}>
                         <FontAwesomeIcon icon={faCodeBranch} style={{ fontSize: 20, color: '#1976d2' }} />
                         <Typography variant="body2">
-                            <b>What's happening:</b> We're ensuring our JavaScript only runs after all HTML elements have
+                            <b>What&apos;s happening:</b> We&apos;re ensuring our JavaScript only runs after all HTML elements have
                             been loaded and are ready to be accessed.
                         </Typography>
                     </Box>
@@ -203,8 +203,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1 }}>
                         <FontAwesomeIcon icon={faRadio} style={{ fontSize: 20, color: '#1976d2' }} />
                         <Typography variant="body2">
-                            <b>What's happening:</b> We're using <code>document.querySelectorAll()</code> to get all radio buttons
-                            with the name "pet". This returns a collection of elements rather than a single element.
+                            <b>What&apos;s happening:</b> We&apos;re using <code>document.querySelectorAll()</code> to get all radio buttons
+                            with the name &quot;pet&quot;. This returns a collection of elements rather than a single element.
                         </Typography>
                     </Box>
                 </Paper>
@@ -242,7 +242,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1 }}>
                         <FontAwesomeIcon icon={faHandPointer} style={{ fontSize: 20, color: '#1976d2' }} />
                         <Typography variant="body2">
-                            <b>What's happening:</b> We're setting up an event listener that will run our code
+                            <b>What&apos;s happening:</b> We&apos;re setting up an event listener that will run our code
                             whenever the button is clicked.
                         </Typography>
                     </Box>
@@ -251,7 +251,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Step 5: Find the Selected Radio Button</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
-                        Now let's write the code that finds which radio button is checked:
+                        Now let&apos;s write the code that finds which radio button is checked:
                     </Typography>
                     <Box sx={{
                         bgcolor: '#f5f5f5',
@@ -299,7 +299,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#fff8e1', p: 2, borderRadius: 1 }}>
                         <FontAwesomeIcon icon={faDotCircle} style={{ fontSize: 20, color: '#ff9800' }} />
                         <Typography variant="body2">
-                            <b>What's happening:</b> We loop through all the radio buttons using a <code>for...of</code> loop, 
+                            <b>What&apos;s happening:</b> We loop through all the radio buttons using a <code>for...of</code> loop, 
                             checking each one to see if its <code>checked</code> property is true. When we find the checked radio button,
                             we store its value and exit the loop with <code>break</code>.
                         </Typography>
@@ -309,7 +309,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Step 6: Display the Selected Value</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
-                        Finally, let's update the page to show which option was selected:
+                        Finally, let&apos;s update the page to show which option was selected:
                     </Typography>
                     <Box sx={{
                         bgcolor: '#f5f5f5',
@@ -368,9 +368,9 @@ document.addEventListener("DOMContentLoaded", function() {
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e8f5e9', p: 2, borderRadius: 1 }}>
                         <FontAwesomeIcon icon={faCheck} style={{ fontSize: 20, color: '#4caf50' }} />
                         <Typography variant="body2">
-                            <b>What's happening:</b> We create a new paragraph element to display our message, style it 
+                            <b>What&apos;s happening:</b> We create a new paragraph element to display our message, style it 
                             according to whether an option was selected, and add it to the page. We also clear any previous 
-                            messages by setting <code>innerHTML = ""</code> before creating the new message.
+                            messages by setting <code>innerHTML = &quot;&quot;</code> before creating the new message.
                         </Typography>
                     </Box>
                 </Paper>
@@ -504,7 +504,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         trying to access its <code>value</code> property
                     </li>
                     <li style={{ marginBottom: 8 }}>
-                        <b>Using getElementById for groups:</b> You can't use <code>getElementById</code> to get multiple elements; 
+                        <b>Using getElementById for groups:</b> You can&apos;t use <code>getElementById</code> to get multiple elements; 
                         use <code>querySelectorAll</code> or <code>getElementsByName</code> instead
                     </li>
                     <li>

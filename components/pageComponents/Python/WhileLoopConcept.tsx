@@ -40,7 +40,7 @@ export default function WhileLoopConcept() {
             <TableOfContents numbered>
                 <Section title="What is a While Loop?">
                     <p>
-                        A <b>while loop</b> lets you repeat code as long as a condition is <b>true</b>. It's like saying: "Keep doing this until something changes."
+                        A <b>while loop</b> lets you repeat code as long as a condition is <b>true</b>. It&apos;s like saying: &quot;Keep doing this until something changes.&quot;
                     </p>
                 </Section>
                 <Section title="Basic While Loop (Code Animation)">
@@ -95,7 +95,7 @@ export default function WhileLoopConcept() {
                             },
                             {
                                 label: 'Pause Before Next Check',
-                                desc: 'Wait 5 seconds before checking again, so we don\'t overload the system.',
+                                desc: 'Wait 5 seconds before checking again, so we don&apos;t overload the system.',
                                 highlight: '    time.sleep(5)',
                             },
                             {

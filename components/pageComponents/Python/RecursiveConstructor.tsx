@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -9,23 +8,18 @@ import InputLabel from '@mui/material/InputLabel';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import ReplayIcon from '@mui/icons-material/Replay';
 import CodeIcon from '@mui/icons-material/Code';
 import ConceptInfoCard from '@/components/common/ConceptInfoCard';
-import StepThroughCodeAnimation, { Step } from '../JavaScript/StepThroughCodeAnimation';
+import StepThroughCodeAnimation from '../JavaScript/StepThroughCodeAnimation';
 
 const RecursiveConstructor: React.FC = () => {
     const [problem, setProblem] = useState('factorial');
-    const [step, setStep] = useState(1);
     const [userInput, setUserInput] = useState('');
-    const [showHint, setShowHint] = useState(false);
     const [showSolution, setShowSolution] = useState(false);
 
     // Reset when problem changes
     React.useEffect(() => {
-        setStep(1);
         setUserInput('');
-        setShowHint(false);
         setShowSolution(false);
     }, [problem]);
 
@@ -180,29 +174,6 @@ const RecursiveConstructor: React.FC = () => {
     };
 
     const currentProblem = problems[problem as keyof typeof problems];
-    const currentStep = currentProblem.steps[step - 1];
-
-    const checkStep = () => {
-        // Simple check - we're not doing exact syntax checking, just basic verification
-        const solution = currentStep.solution.trim();
-        const input = userInput.trim();
-
-        if (input.includes(solution.split('\n')[0].trim())) {
-            if (step < currentProblem.steps.length) {
-                setStep(step + 1);
-                setUserInput('');
-                setShowHint(false);
-            }
-        } else {
-            setShowHint(true);
-        }
-    };
-
-    const resetExercise = () => {
-        setStep(1);
-        setUserInput('');
-        setShowHint(false);
-    };
 
     const renderVisualization = () => {
         if (problem === 'factorial') {
@@ -336,7 +307,7 @@ const RecursiveConstructor: React.FC = () => {
                     <Box>
                         <Typography fontWeight={600} sx={{ fontSize: 15, mb: 1 }}>Step 1: Identify the Base Case</Typography>
                         <Typography sx={{ fontSize: 14, color: '#444' }}>
-                            Ask: "What's the simplest version of this problem?"
+                            Ask: &quot;What&apos;s the simplest version of this problem?&quot;
                             <br />
                             This is where your function will stop recursing and return a direct answer.
                             For example, factorial(1) = 1, or the sum of numbers up to 1 is just 1.
@@ -346,7 +317,7 @@ const RecursiveConstructor: React.FC = () => {
                     <Box>
                         <Typography fontWeight={600} sx={{ fontSize: 15, mb: 1 }}>Step 2: Define the Recursive Relationship</Typography>
                         <Typography sx={{ fontSize: 14, color: '#444' }}>
-                            Ask: "How can I express the current problem in terms of a smaller version of itself?"
+                            Ask: &quot;How can I express the current problem in terms of a smaller version of itself?&quot;
                             <br />
                             For example, factorial(n) = n × factorial(n-1), or sum(n) = n + sum(n-1)
                         </Typography>

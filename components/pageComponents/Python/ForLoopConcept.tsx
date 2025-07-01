@@ -4,102 +4,6 @@ import Section from '@/components/common/Section';
 import StepThroughCodeAnimation, { Step } from '../JavaScript/StepThroughCodeAnimation';
 import InteractiveStepThrough from '../../common/InteractiveStepThrough';
 
-const forLoopSteps: Step[] = [
-    {
-        label: 'Create List',
-        desc: 'We define a list called <b>fruits</b> with three items: "apple", "banana", and "cherry".',
-        highlight: 'fruits = ["apple", "banana", "cherry"]',
-    },
-    {
-        label: 'Start For Loop',
-        desc: 'The <b>for</b> loop begins. It will repeat once for each item in <b>fruits</b>.',
-        highlight: 'for fruit in fruits:',
-    },
-    {
-        label: 'Assign Value to Variable',
-        desc: 'On each loop, the next value from <b>fruits</b> is stored in the <b>fruit</b> variable. First "apple", then "banana", then "cherry".',
-        highlight: [' fruit ', 'apple, banana, cherry'],
-    },
-    {
-        label: 'First Iteration',
-        desc: 'On the first loop, <b>fruit</b> is <b style="color:#d14;">"apple"</b>.',
-        highlight: ' fruit ',
-    },
-    {
-        label: 'Print First Item',
-        desc: 'We print the value of <b>fruit</b>, which is "apple".',
-        highlight: '    print(fruit)',
-    },
-    {
-        label: 'Second Iteration',
-        desc: 'On the second loop, <b>fruit</b> is "banana".',
-        highlight: ' fruit ',
-    },
-    {
-        label: 'Print Second Item',
-        desc: 'We print the value of <b>fruit</b>, which is "banana".',
-        highlight: '    print(fruit)',
-    },
-    {
-        label: 'Third Iteration',
-        desc: 'On the third loop, <b>fruit</b> is "cherry".',
-        highlight: ' fruit ',
-    },
-    {
-        label: 'Print Third Item',
-        desc: 'We print the value of <b>fruit</b>, which is "cherry".',
-        highlight: '    print(fruit)',
-    },
-    {
-        label: 'Loop Ends',
-        desc: 'All items have been printed. The loop ends.',
-        highlight: '# Output:',
-    },
-];
-
-const rangeSteps: Step[] = [
-    {
-        label: 'Start For Loop with range()',
-        desc: 'We use <b>range(3)</b> to create a sequence of numbers: 0, 1, 2.',
-        highlight: 'for i in range(3):',
-    },
-    {
-        label: 'First Iteration',
-        desc: '<b>i</b> is 0 on the first loop.',
-        highlight: 'for i in range(3):',
-    },
-    {
-        label: 'Print 0',
-        desc: 'We print the value of <b>i</b>, which is 0.',
-        highlight: '    print(i)',
-    },
-    {
-        label: 'Second Iteration',
-        desc: '<b>i</b> is 1 on the second loop.',
-        highlight: 'for i in range(3):',
-    },
-    {
-        label: 'Print 1',
-        desc: 'We print the value of <b>i</b>, which is 1.',
-        highlight: '    print(i)',
-    },
-    {
-        label: 'Third Iteration',
-        desc: '<b>i</b> is 2 on the third loop.',
-        highlight: 'for i in range(3):',
-    },
-    {
-        label: 'Print 2',
-        desc: 'We print the value of <b>i</b>, which is 2.',
-        highlight: '    print(i)',
-    },
-    {
-        label: 'Loop Ends',
-        desc: 'The loop ends after printing 2, since <b>range(3)</b> only includes 0, 1, and 2.',
-        highlight: '# Output:',
-    },
-];
-
 const filesSteps = [
     {
         label: 'Create List of Files',
@@ -157,7 +61,7 @@ export default function ForLoopConcept() {
             <TableOfContents numbered>
                 <Section title="What is a For Loop?">
                     <p>
-                        A <b>for loop</b> lets you run code for each item in a sequence (like a list, tuple, or string). It's perfect when you know how many times you want to repeat something.
+                        A <b>for loop</b> lets you run code for each item in a sequence (like a list, tuple, or string). It&apos;s perfect when you know how many times you want to repeat something.
                     </p>
                 </Section>
                 <Section title="Try It: Interactive For Loop">
@@ -259,7 +163,7 @@ export default function ForLoopConcept() {
                 </Section>
                 <Section title="What is range()? (Interactive)">
                     <p>
-                        <b>range</b> is a built-in Python function that generates a sequence of numbers, starting from 0 by default, and stopping before the number you give it. It's commonly used to repeat something a specific number of times in a loop.
+                        <b>range</b> is a built-in Python function that generates a sequence of numbers, starting from 0 by default, and stopping before the number you give it. It&apos;s commonly used to repeat something a specific number of times in a loop.
                     </p>
                     <p>
                         <b>Try changing the range below to see how it affects the loop:</b>
@@ -332,7 +236,7 @@ export default function ForLoopConcept() {
                     <ul>
                         <li>Use <b>for</b> when you know how many times to repeat, or when looping through a collection.</li>
                         <li>Remember: <b>range(n)</b> goes from 0 up to (but not including) n.</li>
-                        <li>Don't change the list you're looping over inside the loop.</li>
+                        <li>Don&apos;t change the list you&apos;re looping over inside the loop.</li>
                     </ul>
                 </Section>
             </TableOfContents>

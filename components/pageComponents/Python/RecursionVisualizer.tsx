@@ -120,7 +120,7 @@ const RecursionVisualizer: React.FC = () => (
         <iframe width="560" height="315" src="https://www.youtube.com/embed/rf60MejMz3E?si=Y82pSaB0ILUGp--f" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         <div style={{ margin: '10px 0 18px 0' }}>
             <Section title="Stepping Through Recursion">
-                This animation shows how a recursive function works by calling itself, reaching a base case, and then "unwinding" as each call returns. Follow each step to see how the stack of function calls grows and shrinks!
+                This animation shows how a recursive function works by calling itself, reaching a base case, and then &quot;unwinding&quot; as each call returns. Follow each step to see how the stack of function calls grows and shrinks!
             </Section>
         </div>
         <StepThroughCodeAnimation code={code} steps={steps} />

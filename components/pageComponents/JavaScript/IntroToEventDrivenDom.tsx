@@ -10,13 +10,9 @@ import {
   faHandPointer, 
   faEarListen,
   faCode,
-  faTree,
-  faCubes
 } from '@fortawesome/free-solid-svg-icons';
 
 const EventDrivenIntro: React.FC = () => {
-  const theme = useTheme();
-
   return (
     <div style={{ marginBottom: 40 }}>
       {/* Main concept explanation */}
@@ -79,15 +75,15 @@ const EventDrivenIntro: React.FC = () => {
         <Box sx={{ mt: 3, p: 2, bgcolor: '#f5f5f5', borderRadius: 1, border: '1px dashed #ccc' }}>
           <Typography sx={{ fontFamily: 'monospace', fontSize: '0.9rem', whiteSpace: 'pre-wrap' }}>
             <span style={{ color: '#777' }}>// The pattern is always:</span><br/>
-            element.<span style={{ color: '#0066cc' }}>addEventListener</span>(<span style={{ color: '#cc0000' }}>"event"</span>, function() {'{'}<br/>
-            &nbsp;&nbsp;<span style={{ color: '#777' }}>// Do something with the DOM</span><br/>
+            element.<span style={{ color: '#0066cc' }}>addEventListener</span>(<span style={{ color: '#cc0000' }}>&quot;event&quot;</span>, function() {'{'}<br/>
+            &nbsp;&nbsp;<span style={{ color: '#777' }}>{'//'} Do something with the DOM</span><br/>
             {'}'});
           </Typography>
         </Box>
       </ConceptInfoCard>
 
       {/* Key concepts explanation */}
-      <Section title="The Three Key Pieces" style={{ marginTop: 24 }}>
+      <Section title="The Three Key Pieces">
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, mt: 2 }}>
           <Paper sx={{ p: 2, bgcolor: '#f3f6ff', borderLeft: '4px solid #3f51b5', borderRadius: '4px' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
@@ -115,7 +111,7 @@ const EventDrivenIntro: React.FC = () => {
               watching for specific activities.
             </Typography>
             <Box sx={{ mt: 1, p: 1, bgcolor: '#e8f5e9', borderRadius: 1, fontFamily: 'monospace', fontSize: '0.9rem' }}>
-              button.addEventListener("click", handleClick);
+              button.addEventListener(&quot;click&quot;, handleClick);
             </Box>
           </Paper>
           

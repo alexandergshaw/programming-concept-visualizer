@@ -7,17 +7,17 @@ import Button from '@mui/material/Button';
 import ConceptInfoCard from '@/components/common/ConceptInfoCard';
 import StepThroughCodeAnimation from './StepThroughCodeAnimation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHandPointer, faCheck, faTimes, faUserCheck, faExclamationTriangle, faCodeBranch, faCalculator } from '@fortawesome/free-solid-svg-icons';
+import { faHandPointer, faCheck, faTimes, faUserCheck, faCodeBranch, faCalculator } from '@fortawesome/free-solid-svg-icons';
 
 const InputValidationExample: React.FC = () => {
     const [input, setInput] = useState('');
     const [message, setMessage] = useState('');
     const [isError, setIsError] = useState(false);
-    
+
     const handleValidation = () => {
         // Clear any previous messages
         setMessage('');
-        
+
         // Check if the input is a valid number
         if (isNaN(Number(input)) || input.trim() === '') {
             setMessage('Invalid input! Please enter a number.');
@@ -26,7 +26,7 @@ const InputValidationExample: React.FC = () => {
             setMessage('Success! You entered the number: ' + Number(input));
             setIsError(false);
         }
-        
+
         // Reset after 3 seconds
         setTimeout(() => {
             setMessage('');
@@ -36,14 +36,14 @@ const InputValidationExample: React.FC = () => {
     return (
         <div>
             <p style={{ fontSize: 16, lineHeight: 1.6, marginBottom: 16 }}>
-                Let's learn how to get values from form inputs, validate them, and show feedback messages to the user.
-                In this example, we'll check if the input is a valid number.
+                Let&apos;s learn how to get values from form inputs, validate them, and show feedback messages to the user.
+                In this example, we&apos;ll check if the input is a valid number.
             </p>
 
             {/* Visual demo of what we're building */}
             <ConceptInfoCard>
                 <Typography variant="subtitle1" fontWeight={600} gutterBottom>
-                    What We're Building:
+                    What We&apos;re Building:
                 </Typography>
 
                 <Box sx={{
@@ -57,7 +57,7 @@ const InputValidationExample: React.FC = () => {
                     <Box sx={{ fontSize: 12, position: 'absolute', right: 8, top: 4, color: '#666' }}>
                         Preview
                     </Box>
-                    
+
                     <Box sx={{ mb: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
                         <TextField
                             label="Enter a number"
@@ -67,20 +67,20 @@ const InputValidationExample: React.FC = () => {
                             onChange={(e) => setInput(e.target.value)}
                             fullWidth
                         />
-                        
-                        <Button 
-                            variant="contained" 
+
+                        <Button
+                            variant="contained"
                             color="primary"
                             onClick={handleValidation}
                             style={{ alignSelf: 'flex-start' }}
                         >
                             Validate Number
                         </Button>
-                        
+
                         {message && (
-                            <Box sx={{ 
-                                p: 1, 
-                                bgcolor: isError ? '#ffebee' : '#e8f5e9', 
+                            <Box sx={{
+                                p: 1,
+                                bgcolor: isError ? '#ffebee' : '#e8f5e9',
                                 border: `1px solid ${isError ? '#f44336' : '#4caf50'}`,
                                 borderRadius: 1,
                                 display: 'flex',
@@ -123,7 +123,7 @@ const InputValidationExample: React.FC = () => {
 <div id="messageContainer"></div>`}
                     </Box>
                     <Typography variant="body2" sx={{ color: '#555' }}>
-                        We've given each element an ID so we can easily reference it with JavaScript.
+                        We&apos;ve given each element an ID so we can easily reference it with JavaScript.
                     </Typography>
                 </Paper>
 
@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1 }}>
                         <FontAwesomeIcon icon={faCodeBranch} style={{ fontSize: 20, color: '#1976d2' }} />
                         <Typography variant="body2">
-                            <b>What's happening:</b> We're telling JavaScript to wait until the webpage is 
+                            <b>What&apos;s happening:</b> We&apos;re telling JavaScript to wait until the webpage is
                             fully loaded before trying to interact with it. This ensures all elements are available.
                         </Typography>
                     </Box>
@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1 }}>
                         <FontAwesomeIcon icon={faHandPointer} style={{ fontSize: 20, color: '#1976d2' }} />
                         <Typography variant="body2">
-                            <b>What's happening:</b> We're using <code>document.getElementById()</code> to find each element on the page
+                            <b>What&apos;s happening:</b> We&apos;re using <code>document.getElementById()</code> to find each element on the page
                             by its unique ID.
                         </Typography>
                     </Box>
@@ -219,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1 }}>
                         <FontAwesomeIcon icon={faHandPointer} style={{ fontSize: 20, color: '#1976d2' }} />
                         <Typography variant="body2">
-                            <b>What's happening:</b> We're telling JavaScript to watch for clicks on the button and 
+                            <b>What&apos;s happening:</b> We&apos;re telling JavaScript to watch for clicks on the button and
                             run some code when that happens.
                         </Typography>
                     </Box>
@@ -258,7 +258,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1 }}>
                         <FontAwesomeIcon icon={faUserCheck} style={{ fontSize: 20, color: '#1976d2' }} />
                         <Typography variant="body2">
-                            <b>What's happening:</b> <code>input.value</code> gives us the text the user typed. 
+                            <b>What's happening:</b> <code>input.value</code> gives us the text the user typed.
                             Remember that this is always a string, even if the user typed numbers.
                         </Typography>
                     </Box>
@@ -367,8 +367,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e8f5e9', p: 2, borderRadius: 1 }}>
                         <FontAwesomeIcon icon={faCheck} style={{ fontSize: 20, color: '#4caf50' }} />
                         <Typography variant="body2">
-                            <b>What's happening:</b> Based on our validation, we create and style a message element.
-                            If it's a valid number, we convert the string to a number with <code>Number(value)</code> and 
+                            <b>What&apos;s happening:</b> Based on our validation, we create and style a message element.
+                            If it&apos;s a valid number, we convert the string to a number with <code>Number(value)</code> and
                             show it in the success message. Then we add the message element to the page.
                         </Typography>
                     </Box>
@@ -377,7 +377,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Complete Code</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
-                        Here's the full JavaScript code:
+                        Here&apos;s the full JavaScript code:
                     </Typography>
                     <StepThroughCodeAnimation
                         code={[
@@ -482,23 +482,23 @@ document.addEventListener("DOMContentLoaded", function() {
                 </Typography>
                 <ul style={{ paddingLeft: 20, margin: '8px 0' }}>
                     <li style={{ marginBottom: 8 }}>
-                        <b>Only using isNaN():</b> Without checking for empty strings, <code>isNaN("")</code> will return 
+                        <b>Only using isNaN():</b> Without checking for empty strings, <code>isNaN("")</code> will return
                         <code>false</code> because an empty string converts to <code>0</code> in JavaScript
                     </li>
                     <li style={{ marginBottom: 8 }}>
-                        <b>Forgetting to trim():</b> Users might enter spaces before or after a number, so it's good practice 
+                        <b>Forgetting to trim():</b> Users might enter spaces before or after a number, so it&apos;s good practice
                         to use <code>trim()</code> to remove whitespace
                     </li>
                     <li style={{ marginBottom: 8 }}>
-                        <b>Not converting to Number:</b> Remember that <code>input.value</code> is always a string, even when the 
+                        <b>Not converting to Number:</b> Remember that <code>input.value</code> is always a string, even when the
                         user types numbers. Use <code>Number()</code> to convert it
                     </li>
                     <li style={{ marginBottom: 8 }}>
-                        <b>Confusing NaN behaviors:</b> Remember that <code>NaN !== NaN</code> in JavaScript, which is why we use 
+                        <b>Confusing NaN behaviors:</b> Remember that <code>NaN !== NaN</code> in JavaScript, which is why we use
                         <code>isNaN()</code> to check
                     </li>
                     <li>
-                        <b>Ignoring input types:</b> In a real application, consider using <code>&lt;input type="number"&gt;</code> 
+                        <b>Ignoring input types:</b> In a real application, consider using <code>&lt;input type="number"&gt;</code>
                         for better mobile keyboard support
                     </li>
                 </ul>
