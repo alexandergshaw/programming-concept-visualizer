@@ -128,8 +128,6 @@ export default function JavaScriptPage() {
         return <EventHandlersConcept />;
       case 'event-driven dom':
         return <EventDrivenDomConcept />;
-      case 'console.log':
-        return <ConsoleLogConcept />;
       default:
         return null;
     }
