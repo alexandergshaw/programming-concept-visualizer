@@ -1,0 +1,86 @@
+{
+  "whileloops": {
+    "label": "While Loops",
+    "languages": [
+      { "id": "python", "display": "Python", "path": "/python/whileloops" },
+      { "id": "javascript", "display": "JavaScript", "path": "/javascript/whileloops" },
+      { "id": "java", "display": "Java", "path": "/java/whileloops" }
+    ]
+  },
+  "forloops": {
+    "label": "For Loops",
+    "languages": [
+      { "id": "python", "display": "Python", "path": "/python/forloops" },
+      { "id": "javascript", "display": "JavaScript", "path": "/javascript/forloops" },
+      { "id": "java", "display": "Java", "path": "/java/forloops" }
+    ]
+  },
+  "ifelse": {
+    "label": "If / Else Statements",
+    "languages": [
+      { "id": "python", "display": "Python", "path": "/python/ifelse" },
+      { "id": "javascript", "display": "JavaScript", "path": "/javascript/ifelse" },
+      { "id": "java", "display": "Java", "path": "/java/ifelse" }
+    ]
+  },
+  "logicalandor": {
+    "label": "Logical And / Or",
+    "languages": [
+      { "id": "python", "display": "Python", "path": "/python/logicalandor" },
+      { "id": "javascript", "display": "JavaScript", "path": "/javascript/logicalandor" },
+      { "id": "java", "display": "Java", "path": "/java/logicalandor" }
+    ]
+  },
+  "variables": {
+    "label": "Variables",
+    "languages": [
+      { "id": "python", "display": "Python", "path": "/python/variables" },
+      { "id": "javascript", "display": "JavaScript", "path": "/javascript/variables" },
+      { "id": "java", "display": "Java", "path": "/java/variables" }
+    ]
+  },
+  "userinput": {
+    "label": "User Input",
+    "languages": [
+      { "id": "python", "display": "Python", "path": "/python/userinput" },
+      { "id": "javascript", "display": "JavaScript", "path": "/javascript/userinput" }
+    ]
+  },
+  "stringmanipulation": {
+    "label": "String Manipulation",
+    "languages": [
+      { "id": "python", "display": "Python", "path": "/python/stringmanipulation" },
+      { "id": "javascript", "display": "JavaScript", "path": "/javascript/stringmanipulation" }
+    ]
+  },
+  "lists": {
+    "label": "Lists / Arrays",
+    "languages": [
+      { "id": "python", "display": "Python", "path": "/python/lists" },
+      { "id": "javascript", "display": "JavaScript", "path": "/javascript/arrays" },
+      { "id": "java", "display": "Java", "path": "/java/arrays" }
+    ]
+  },
+  "tuples": {
+    "label": "Tuples",
+    "languages": [
+      { "id": "python", "display": "Python", "path": "/python/tuples" }
+    ]
+  },
+  "sets": {
+    "label": "Sets",
+    "languages": [
+      { "id": "python", "display": "Python", "path": "/python/sets" },
+      { "id": "javascript", "display": "JavaScript", "path": "/javascript/sets" },
+      { "id": "java", "display": "Java", "path": "/java/sets" }
+    ]
+  },
+  "dicts": {
+    "label": "Dictionaries / Objects / Maps",
+    "languages": [
+      { "id": "python", "display": "Python", "path": "/python/dicts" },
+      { "id": "javascript", "display": "JavaScript", "path": "/javascript/objects" },
+      { "id": "java", "display": "Java", "path": "/java/maps" }
+    ]
+  }
+}

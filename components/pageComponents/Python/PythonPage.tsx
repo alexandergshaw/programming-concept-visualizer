@@ -12,6 +12,9 @@ import SetConcept from './SetConcept';
 import DictConcept from './DictConcept';
 import IfElseConcept from './IfElseConcept';
 import LogicalAndOrConcept from './LogicalAndOrConcept';
+import WhileLoopConcept from './WhileLoopConcept';
+import ForLoopConcept from './ForLoopConcept';
+import RecursionConcept from './RecursionConcept';
 
 const navItems = [
 	{
@@ -29,6 +32,8 @@ const navItems = [
 		children: [
 			{ label: 'If / Else', value: 'ifelse' },
 			{ label: 'Logical And / Or', value: 'logicalandor' },
+			{ label: 'For Loops', value: 'forloops' },
+			{ label: 'While Loops', value: 'whileloops' },
 		],
 	},
 	{
@@ -41,6 +46,13 @@ const navItems = [
 			{ label: 'Dictionaries', value: 'dicts' },
 		],
 	},
+	{
+		label: 'Functions',
+		value: 'functions',
+		children: [
+			{ label: 'Recursion', value: 'recursion' },
+		]
+	}
 ];
 
 export default function PythonPage() {
@@ -56,9 +68,7 @@ export default function PythonPage() {
 	}, [searchParams]);
 
 	const renderContent = (concept: string | null) => {
-		if (!concept) return null;
-
-		switch (concept.toLowerCase()) {
+		switch (concept) {
             case 'variables':
                 return <VariableConcept />;
             case 'user input':
@@ -77,6 +87,12 @@ export default function PythonPage() {
                 return <IfElseConcept />;
             case 'logicalandor':
                 return <LogicalAndOrConcept />;
+            case 'whileloops':
+                return <WhileLoopConcept />;
+            case 'forloops':
+                return <ForLoopConcept />;
+            case 'recursion':
+                return <RecursionConcept />;
             default:
 				return null;
 		}
@@ -91,7 +107,7 @@ export default function PythonPage() {
 		<PageWrapper
 			pageTitle={'Python Visualizer'}
 			navItems={navItems}
-			defaultOpen={['control flow', 'collections', 'storing data']}
+			defaultOpen={['control flow', 'functions']}
 			handleSelect={handleSelect}
 			activeValue={selectedConcept || undefined}
 		>

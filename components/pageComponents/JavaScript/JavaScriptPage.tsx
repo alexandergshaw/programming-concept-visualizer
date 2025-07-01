@@ -15,6 +15,7 @@ import ConditionalConcept from './ConditionalConcept';
 import LoopConcept from './LoopConcept';
 import FunctionConcept from './FunctionConcept';
 import EventHandlersConcept from './EventHandlers';
+import EventDrivenDomConcept from './EventDrivenDomConcept';
 
 const navItems = [
   {
@@ -40,6 +41,7 @@ const navItems = [
     children: [
       { label: 'Functions', value: 'functions' },
       { label: 'Event Handlers', value: 'Event Listeners' },
+      { label: 'Event-Driven DOM', value: 'event-driven dom' },
     ],
   },
 
@@ -124,6 +126,8 @@ export default function JavaScriptPage() {
         return <FunctionConcept />;
       case 'event listeners':
         return <EventHandlersConcept />;
+      case 'event-driven dom':
+        return <EventDrivenDomConcept />;
       default:
         return null;
     }
