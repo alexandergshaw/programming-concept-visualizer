@@ -117,7 +117,7 @@ const RecursionVisualizer: React.FC = () => (
         <p style={{ marginBottom: 18 }}>
             Think of recursion like a set of Russian nesting dolls: each function call is like opening a doll to find a smaller one inside. You keep opening dolls <b>(calling the function)</b> until you reach the smallest one <b>(the base case)</b>, and then you start putting them back together <b>(returning from the function calls)</b>.
         </p>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/rf60MejMz3E?si=Y82pSaB0ILUGp--f" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/rf60MejMz3E?si=Y82pSaB0ILUGp--f" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         <div style={{ margin: '10px 0 18px 0' }}>
             <Section title="Stepping Through Recursion">
                 This animation shows how a recursive function works by calling itself, reaching a base case, and then &quot;unwinding&quot; as each call returns. Follow each step to see how the stack of function calls grows and shrinks!
