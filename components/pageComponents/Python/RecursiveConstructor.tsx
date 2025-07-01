@@ -14,12 +14,10 @@ import StepThroughCodeAnimation from '../JavaScript/StepThroughCodeAnimation';
 
 const RecursiveConstructor: React.FC = () => {
     const [problem, setProblem] = useState('factorial');
-    const [userInput, setUserInput] = useState('');
     const [showSolution, setShowSolution] = useState(false);
 
     // Reset when problem changes
     React.useEffect(() => {
-        setUserInput('');
         setShowSolution(false);
     }, [problem]);
 

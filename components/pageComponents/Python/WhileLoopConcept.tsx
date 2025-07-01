@@ -144,7 +144,7 @@ export default function WhileLoopConcept() {
                 <Section title="Tips & Common Mistakes">
                     <ul>
                         <li>Make sure your loop condition will eventually become <b>false</b>, or use <b>break</b> to exit.</li>
-                        <li>Use <b>while</b> when you don't know exactly how many times you need to loop.</li>
+                        <li>Use <b>while</b> when you don&apos;t know exactly how many times you need to loop.</li>
                         <li>Be careful with <b>break</b> and <b>continue</b>; they can make your code harder to understand.</li>
                     </ul>
                 </Section>
