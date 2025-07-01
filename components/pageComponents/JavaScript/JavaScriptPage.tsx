@@ -16,7 +16,6 @@ import LoopConcept from './LoopConcept';
 import FunctionConcept from './FunctionConcept';
 import EventHandlersConcept from './EventHandlers';
 import EventDrivenDomConcept from './EventDrivenDomConcept';
-import ConsoleLogConcept from './ConsoleLogConcept';
 
 const navItems = [
   {
