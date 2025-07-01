@@ -258,7 +258,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1 }}>
                         <FontAwesomeIcon icon={faUserCheck} style={{ fontSize: 20, color: '#1976d2' }} />
                         <Typography variant="body2">
-                            <b>What's happening:</b> <code>input.value</code> gives us the text the user typed.
+                            <b>What&apos;s happening:</b> <code>input.value</code> gives us the text the user typed.
                             Remember that this is always a string, even if the user typed numbers.
                         </Typography>
                     </Box>
@@ -303,10 +303,10 @@ document.addEventListener("DOMContentLoaded", function() {
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#fff8e1', p: 2, borderRadius: 1 }}>
                         <FontAwesomeIcon icon={faCalculator} style={{ fontSize: 20, color: '#ff9800' }} />
                         <Typography variant="body2">
-                            <b>What's happening:</b> We're using two checks here:
+                            <b>What&apos;s happening:</b> We&apos;re using two checks here:
                             <ul style={{ margin: '8px 0 0 0', paddingLeft: 20 }}>
-                                <li><code>isNaN(Number(value))</code> checks if the value is "Not a Number"</li>
-                                <li><code>value.trim() === ""</code> checks if the input is empty or just spaces</li>
+                                <li><code>isNaN(Number(value))</code> checks if the value is &quot;Not a Number&quot;</li>
+                                <li><code>value.trim() === &quot;&quot;</code> checks if the input is empty or just spaces</li>
                             </ul>
                             If either condition is true, the input is invalid.
                         </Typography>
@@ -482,7 +482,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 </Typography>
                 <ul style={{ paddingLeft: 20, margin: '8px 0' }}>
                     <li style={{ marginBottom: 8 }}>
-                        <b>Only using isNaN():</b> Without checking for empty strings, <code>isNaN("")</code> will return
+                        <b>Only using isNaN():</b> Without checking for empty strings, <code>isNaN(&quot;&quot;)</code> will return
                         <code>false</code> because an empty string converts to <code>0</code> in JavaScript
                     </li>
                     <li style={{ marginBottom: 8 }}>
@@ -498,7 +498,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <code>isNaN()</code> to check
                     </li>
                     <li>
-                        <b>Ignoring input types:</b> In a real application, consider using <code>&lt;input type="number"&gt;</code>
+                        <b>Ignoring input types:</b> In a real application, consider using <code>&lt;input type=&quot;number&quot;&gt;</code>
                         for better mobile keyboard support
                     </li>
                 </ul>

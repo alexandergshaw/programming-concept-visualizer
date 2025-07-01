@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e8f5e9', p: 2, borderRadius: 1 }}>
                         <FontAwesomeIcon icon={faEdit} style={{ fontSize: 20, color: '#4caf50' }} />
                         <Typography variant="body2">
-                            <b>What's happening:</b> <code>textElement.textContent</code> is like an eraser and pencil -
+                            <b>What&apos;s happening:</b> <code>textElement.textContent</code> is like an eraser and pencil -
                             it erases the old text and writes in new text. All of this happens when the button is clicked,
                             and only after the page has fully loaded.
                         </Typography>

@@ -17,14 +17,14 @@ const chartOptions = {
 
 const ConstantsAndMultipleComplexitiesSection = () => {
     // State for multipliers and toggles
-    const [customMultiplier, setCustomMultiplier] = useState<number>(2);
+    const [customMultiplier] = useState<number>(2);
     const [selectedMultipliers, setSelectedMultipliers] = useState<number[]>([1, 2, 5]);
     const [showLinear, setShowLinear] = useState(true);
     const [showQuadratic, setShowQuadratic] = useState(true);
     const [showLog, setShowLog] = useState(false);
     const [showCombined, setShowCombined] = useState(true);
-    const [multiXAxisMax, setMultiXAxisMax] = useState<number | ''>('');
-    const [multiYAxisMax, setMultiYAxisMax] = useState<number | ''>('');
+    const [multiXAxisMax] = useState<number | ''>('');
+    const [multiYAxisMax] = useState<number | ''>('');
 
     const multipliers = [
         { value: 1, label: 'n' },
@@ -73,12 +73,12 @@ const ConstantsAndMultipleComplexitiesSection = () => {
     return (
         <>
             <p style={{ marginBottom: 24 }}>
-                When analyzing Big O, it's important to understand how constants and multiple terms affect the overall complexity. This helps you simplify your answer and focus on what really matters as your input grows.
+                When analyzing Big O, it&apos;s important to understand how constants and multiple terms affect the overall complexity. This helps you simplify your answer and focus on what really matters as your input grows.
             </p>
             <div style={{ marginBottom: 32 }}>
                 <b>Dropping Constants</b>
                 <div style={{ margin: '10px 0 18px 0', color: '#444', fontSize: 15 }}>
-                    <b>What is a constant?</b> In Big O, a <b>constant</b> is any fixed amount of work that doesn't change as your input grows. For example, printing a message once, or doing a small number of extra steps before or after a loop, is a constant. Even if you do something 10 or 100 times, that's still a constant if it doesn't depend on the size of your input.
+                    <b>What is a constant?</b> In Big O, a <b>constant</b> is any fixed amount of work that doesn&apos;t change as your input grows. For example, printing a message once, or doing a small number of extra steps before or after a loop, is a constant. Even if you do something 10 or 100 times, that&apos;s still a constant if it doesn&apos;t depend on the size of your input.
                 </div>
                 <StepThroughCodeAnimation
                     code={[
@@ -121,10 +121,10 @@ const ConstantsAndMultipleComplexitiesSection = () => {
                     ]}
                 />
                 <div style={{ marginTop: 12, color: '#444', fontSize: 15 }}>
-                    <b>Why?</b> Constants and constant multipliers don’t change how fast your code grows as n gets huge. They only affect the exact number of steps, not the overall trend.
+                    <b>Why?</b> Constants and constant multipliers don&apos;t change how fast your code grows as n gets huge. They only affect the exact number of steps, not the overall trend.
                 </div>
                 <div style={{ margin: '24px 0 0 0', maxWidth: 520 }}>
-                    <b>Visual: What Do We Mean by "Same Trend"?</b>
+                    <b>Visual: What Do We Mean by &quot;Same Trend&quot;?</b>
                     <div style={{ margin: '12px 0 12px 0', display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
                         {allMultipliers.map(m => (
                             <label key={m.value} style={{ fontSize: 14, cursor: 'pointer', marginRight: 8 }}>
@@ -169,10 +169,10 @@ const ConstantsAndMultipleComplexitiesSection = () => {
                         </div>
                         <ul style={{ margin: '8px 0 0 16px', padding: 0 }}>
                             <li>
-                                In Big O, we care about the <b>shape</b> of the growth, not the exact steepness. That's why O(2n), O(5n), and O(n) are all considered <b>O(n)</b>, but O(n²) is not.
+                                In Big O, we care about the <b>shape</b> of the growth, not the exact steepness. That&apos;s why O(2n), O(5n), and O(n) are all considered <b>O(n)</b>, but O(n²) is not.
                             </li>
                             <li>
-                                All the <b>linear</b> lines (n, 2n, 5n) have the same shape—they just start higher or lower. This is what we mean by "same trend."
+                                All the <b>linear</b> lines (n, 2n, 5n) have the same shape—they just start higher or lower. This is what we mean by &quot;same trend.&quot;
                             </li>
                             <li>
                                 If you turn on <b>Quadratic (n²)</b> or <b>Logarithmic (log n)</b>, you'll see those lines curve differently. These are <b>different trends</b>—they grow at different rates as n increases.

@@ -4,7 +4,6 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import ConceptInfoCard from '@/components/common/ConceptInfoCard';
 import Section from '@/components/common/Section';
-import { useTheme } from '@mui/material/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faHandPointer, 
@@ -22,7 +21,7 @@ const EventDrivenIntro: React.FC = () => {
       </p>
 
       <p style={{ marginBottom: 18, fontSize: 16, lineHeight: 1.6 }}>
-        Think of it as setting up a series of "If this happens, then do that" instructions for your webpage.
+        Think of it as setting up a series of &quot;If this happens, then do that&quot; instructions for your webpage.
       </p>
 
       {/* Visual explanation of the flow */}
@@ -74,9 +73,9 @@ const EventDrivenIntro: React.FC = () => {
 
         <Box sx={{ mt: 3, p: 2, bgcolor: '#f5f5f5', borderRadius: 1, border: '1px dashed #ccc' }}>
           <Typography sx={{ fontFamily: 'monospace', fontSize: '0.9rem', whiteSpace: 'pre-wrap' }}>
-            <span style={{ color: '#777' }}>// The pattern is always:</span><br/>
+            <span style={{ color: '#777' }}>{/* The pattern is always: */}</span><br/>
             element.<span style={{ color: '#0066cc' }}>addEventListener</span>(<span style={{ color: '#cc0000' }}>&quot;event&quot;</span>, function() {'{'}<br/>
-            &nbsp;&nbsp;<span style={{ color: '#777' }}>{'//'} Do something with the DOM</span><br/>
+            &nbsp;&nbsp;<span style={{ color: '#777' }}>{/* Do something with the DOM */}</span><br/>
             {'}'});
           </Typography>
         </Box>

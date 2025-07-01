@@ -378,7 +378,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Complete Code</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
-                        Here's the full JavaScript code:
+                        Here&apos;s the full JavaScript code:
                     </Typography>
                     <StepThroughCodeAnimation
                         code={[

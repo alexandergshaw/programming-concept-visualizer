@@ -1,11 +1,10 @@
 import React from 'react';
-import Section from '@/components/common/Section';
 import StepThroughCodeAnimation from '../JavaScript/StepThroughCodeAnimation';
 
 const CommonComplexitiesSection: React.FC = () => (
     <>
         <p style={{ marginBottom: 32 }}>
-            <b>What does O(_) mean?</b> In Big O notation, the "O" stands for "order of," and the letter or expression inside the parentheses (like n, log n, n²) describes how the amount of work (time or memory) grows as your input gets bigger.
+            <b>What does O(_) mean?</b> In Big O notation, the &quot;O&quot; stands for &quot;order of,&quot; and the letter or expression inside the parentheses (like n, log n, n²) describes how the amount of work (time or memory) grows as your input gets bigger.
         </p>
         <div style={{ marginBottom: 40 }}>
             <b>O(1) — Constant Time</b>
