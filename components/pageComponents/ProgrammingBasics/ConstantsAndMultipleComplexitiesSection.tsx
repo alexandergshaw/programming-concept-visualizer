@@ -1,6 +1,19 @@
 import React, { useState } from 'react';
 import StepThroughCodeAnimation from '../JavaScript/StepThroughCodeAnimation';
 import { Line } from 'react-chartjs-2';
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+} from 'chart.js';
+
+// Register Chart.js components
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const chartLabels = Array.from({ length: 21 }, (_, i) => i * 50); // [0, 50, 100, ..., 1000]
 const chartOptions = {
