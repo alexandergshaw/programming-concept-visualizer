@@ -175,7 +175,7 @@ const ConstantsAndMultipleComplexitiesSection = () => {
                                 All the <b>linear</b> lines (n, 2n, 5n) have the same shape—they just start higher or lower. This is what we mean by &quot;same trend.&quot;
                             </li>
                             <li>
-                                If you turn on <b>Quadratic (n²)</b> or <b>Logarithmic (log n)</b>, you'll see those lines curve differently. These are <b>different trends</b>—they grow at different rates as n increases.
+                                If you turn on <b>Quadratic (n²)</b> or <b>Logarithmic (log n)</b>, you&apos;ll see those lines curve differently. These are <b>different trends</b>—they grow at different rates as n increases.
                             </li>
                         </ul>
                     </div>
