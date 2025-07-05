@@ -15,6 +15,9 @@ import LogicalAndOrConcept from './LogicalAndOrConcept';
 import WhileLoopConcept from './WhileLoopConcept';
 import ForLoopConcept from './ForLoopConcept';
 import RecursionConcept from './RecursionConcept';
+import FunctionBasicsConcept from './FunctionBasicsConcept';
+import AdvancedFunctionsConcept from './AdvancedFunctionsConcept';
+import ModulesConcept from './ModulesConcept';
 
 const navItems = [
 	{
@@ -50,7 +53,16 @@ const navItems = [
 		label: 'Functions',
 		value: 'functions',
 		children: [
+			{ label: 'Function Basics', value: 'function-basics' },
+			{ label: 'Advanced Functions', value: 'advanced-functions' },
 			{ label: 'Recursion', value: 'recursion' },
+		]
+	},
+	{
+		label: 'Code Organization',
+		value: 'code-organization',
+		children: [
+			{ label: 'Modules', value: 'modules' },
 		]
 	}
 ];
@@ -93,6 +105,12 @@ export default function PythonPage() {
                 return <ForLoopConcept />;
             case 'recursion':
                 return <RecursionConcept />;
+            case 'function-basics':
+                return <FunctionBasicsConcept />;
+            case 'advanced-functions':
+                return <AdvancedFunctionsConcept />;
+            case 'modules':
+                return <ModulesConcept />;
             default:
 				return null;
 		}
@@ -107,7 +125,7 @@ export default function PythonPage() {
 		<PageWrapper
 			pageTitle={'Python Visualizer'}
 			navItems={navItems}
-			defaultOpen={['control flow', 'functions']}
+			defaultOpen={['control flow', 'functions', 'code-organization']}
 			handleSelect={handleSelect}
 			activeValue={selectedConcept || undefined}
 		>
