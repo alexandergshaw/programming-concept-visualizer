@@ -3,10 +3,6 @@ import TableOfContents from '@/components/common/TableOfContents';
 import Section from '@/components/common/Section';
 import JQueryIntroduction from './JQueryIntroduction';
 import JQueryInclusionMethods from './JQueryInclusionMethods';
-import JQuerySelectorsSyntax from './JQuerySelectorsSyntax';
-import JQueryChaining from './JQueryChaining';
-import JQueryDomManipulation from './JQueryDomManipulation';
-import JQueryFormHandling from './JQueryFormHandling';
 
 export default function JQueryConcept() {
   return (

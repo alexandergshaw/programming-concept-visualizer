@@ -7,6 +7,11 @@ import Section from '@/components/common/Section';
 import CodeSnippet from '@/components/common/CodeSnippet';
 import StepThroughCodeAnimation from './StepThroughCodeAnimation';
 import ConceptInfoCard from '@/components/common/ConceptInfoCard';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
 interface PreviewState {
   highlight?: boolean;
@@ -385,66 +390,84 @@ export default function JQuerySelectorsAndChainingConcept() {
     >
       <TableOfContents numbered>
         <Section title="jQuery Selectors">
-          <p className="mb-4">
+          <Typography variant="body2" paragraph>
             jQuery makes it super easy to find and work with elements on your webpage. Try out different selectors below:
-          </p>
+          </Typography>
 
           <ConceptInfoCard>
-            <div className="grid grid-cols-2 gap-8">
-              <div>
-                <h4 className="font-semibold mb-4">Interactive Selector Tester:</h4>
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium mb-1">Enter a selector:</label>
-                    <input
-                      type="text"
+            <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4 }}>
+              <Box>
+                <Typography variant="subtitle1" gutterBottom fontWeight="medium">Interactive Selector Tester</Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  <Box>
+                    <Typography variant="subtitle2" gutterBottom>Enter a selector:</Typography>
+                    <TextField
+                      fullWidth
                       value={selectorInput}
                       onChange={handleSelectorChange}
                       placeholder="Try: .item, #header, p, li.active"
-                      className="w-full p-2 border rounded"
+                      size="small"
                     />
-                  </div>
+                  </Box>
 
-                  <div>
-                    <h5 className="font-medium mb-2">Selected Elements:</h5>
-                    <div className="bg-gray-100 p-3 rounded min-h-[100px]">
+                  <Box>
+                    <Typography variant="subtitle2" gutterBottom>Selected Elements</Typography>
+                    <Paper 
+                      variant="outlined" 
+                      sx={{ 
+                        p: 2, 
+                        bgcolor: 'grey.50',
+                        minHeight: '100px',
+                        fontFamily: 'monospace',
+                        fontSize: '0.875rem'
+                      }}
+                    >
                       {selectedElements.length > 0 ? (
-                        <ul className="space-y-2">
+                        <Box component="ul" sx={{ m: 0, pl: 2, '& > li': { mb: 1 } }}>
                           {selectedElements.map((element, index) => (
-                            <li key={index} className="font-mono text-sm">
-                              {element}
-                            </li>
+                            <li key={index}>{element}</li>
                           ))}
-                        </ul>
+                        </Box>
                       ) : (
-                        <p className="text-gray-500 italic">No elements selected</p>
+                        <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic' }}>
+                          No elements selected
+                        </Typography>
                       )}
-                    </div>
-                  </div>
-                </div>
-              </div>
+                    </Paper>
+                  </Box>
+                </Box>
+              </Box>
 
-              <div>
-                <h4 className="font-semibold mb-4">Sample DOM Structure:</h4>
-                <div className="space-y-2 font-mono text-sm bg-gray-100 p-3 rounded">
-                  <p>&lt;div id="header" class="section"&gt;Welcome Header&lt;/div&gt;</p>
-                  <p>&lt;div id="nav" class="navigation"&gt;Navigation Menu&lt;/div&gt;</p>
-                  <p>&lt;ul&gt;</p>
-                  <p>&nbsp;&nbsp;&lt;li class="item active"&gt;First Item&lt;/li&gt;</p>
-                  <p>&nbsp;&nbsp;&lt;li class="item"&gt;Second Item&lt;/li&gt;</p>
-                  <p>&nbsp;&nbsp;&lt;li class="item disabled"&gt;Third Item&lt;/li&gt;</p>
-                  <p>&lt;/ul&gt;</p>
-                  <p>&lt;p class="text intro"&gt;Introduction text&lt;/p&gt;</p>
-                  <p>&lt;p class="text"&gt;Regular paragraph&lt;/p&gt;</p>
-                </div>
-              </div>
-            </div>
+              <Box>
+                <Typography variant="subtitle1" gutterBottom fontWeight="medium">Sample DOM Structure</Typography>
+                <Paper 
+                  variant="outlined" 
+                  sx={{ 
+                    p: 2, 
+                    bgcolor: 'grey.50',
+                    fontFamily: 'monospace',
+                    fontSize: '0.875rem',
+                    '& > p': { mb: 0.5 }
+                  }}
+                >
+                  <Typography component="p" variant="body2">&lt;div id="header" class="section"&gt;Welcome Header&lt;/div&gt;</Typography>
+                  <Typography component="p" variant="body2">&lt;div id="nav" class="navigation"&gt;Navigation Menu&lt;/div&gt;</Typography>
+                  <Typography component="p" variant="body2">&lt;ul&gt;</Typography>
+                  <Typography component="p" variant="body2" sx={{ pl: 2 }}>&lt;li class="item active"&gt;First Item&lt;/li&gt;</Typography>
+                  <Typography component="p" variant="body2" sx={{ pl: 2 }}>&lt;li class="item"&gt;Second Item&lt;/li&gt;</Typography>
+                  <Typography component="p" variant="body2" sx={{ pl: 2 }}>&lt;li class="item disabled"&gt;Third Item&lt;/li&gt;</Typography>
+                  <Typography component="p" variant="body2">&lt;/ul&gt;</Typography>
+                  <Typography component="p" variant="body2">&lt;p class="text intro"&gt;Introduction text&lt;/p&gt;</Typography>
+                  <Typography component="p" variant="body2">&lt;p class="text"&gt;Regular paragraph&lt;/p&gt;</Typography>
+                </Paper>
+              </Box>
+            </Box>
           </ConceptInfoCard>
 
-          <h3 className="text-xl font-semibold mt-6">Common Selector Types</h3>
-          <div className="space-y-4">
-            <div>
-              <h4 className="font-semibold">1. Element Selectors</h4>
+          <Typography variant="subtitle1" sx={{ mt: 4, mb: 2 }} fontWeight="medium">Common Selector Types</Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+            <Box>
+              <Typography variant="subtitle2" gutterBottom>1. Element Selectors</Typography>
               <CodeSnippet
                 lines={[
                   { code: '$(\'p\')        // Finds all <p> elements' },
@@ -453,10 +476,10 @@ export default function JQuerySelectorsAndChainingConcept() {
                 ]}
                 language="javascript"
               />
-            </div>
+            </Box>
 
-            <div>
-              <h4 className="font-semibold">2. ID Selectors</h4>
+            <Box>
+              <Typography variant="subtitle2" gutterBottom>2. ID Selectors</Typography>
               <CodeSnippet
                 lines={[
                   { code: '$(\'#myId\')    // Finds the element with id="myId"' },
@@ -464,10 +487,10 @@ export default function JQuerySelectorsAndChainingConcept() {
                 ]}
                 language="javascript"
               />
-            </div>
+            </Box>
 
-            <div>
-              <h4 className="font-semibold">3. Class Selectors</h4>
+            <Box>
+              <Typography variant="subtitle2" gutterBottom>3. Class Selectors</Typography>
               <CodeSnippet
                 lines={[
                   { code: '$(\'.myClass\')   // Finds all elements with class="myClass"' },
@@ -475,10 +498,10 @@ export default function JQuerySelectorsAndChainingConcept() {
                 ]}
                 language="javascript"
               />
-            </div>
+            </Box>
 
-            <div>
-              <h4 className="font-semibold">4. Combined Selectors</h4>
+            <Box>
+              <Typography variant="subtitle2" gutterBottom>4. Combined Selectors</Typography>
               <CodeSnippet
                 lines={[
                   { code: '$(\'.btn.primary\')     // Elements with both btn AND primary classes' },
@@ -487,138 +510,133 @@ export default function JQuerySelectorsAndChainingConcept() {
                 ]}
                 language="javascript"
               />
-            </div>
-          </div>
+            </Box>
+          </Box>
         </Section>
 
         <Section title="Method Chaining">
-          <p className="mb-4">
+          <Typography variant="body2" paragraph>
             jQuery lets you run multiple methods one after another - this is called "chaining". 
             Try out these examples to see method chaining in action:
-          </p>
+          </Typography>
 
-          <h3 className="text-xl font-semibold mt-6">Common Chaining Examples</h3>
-          <div className="space-y-8">
-            <div>
-              <h4 className="font-semibold">1. Styling Changes</h4>
+          <Typography variant="subtitle1" sx={{ mt: 4, mb: 2 }} fontWeight="medium">Common Chaining Examples</Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+            <Box>
+              <Typography variant="subtitle2" gutterBottom>1. Styling Changes</Typography>
               <ConceptInfoCard>
-                <div className="space-y-6">
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
                   <StepThroughCodeAnimation
                     code={stylingCode}
                     steps={stylingSteps}
                     onStepChange={setStylingStep}
                   />
-                  <div className="flex items-center justify-center">
-                    <div 
-                      className={`p-4 border rounded transition-all duration-500 ${
-                        stylingExample.isHighlighted ? 'bg-yellow-100 border-yellow-300' : ''
-                      }`}
-                      style={{
+                  <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <Paper 
+                      elevation={0}
+                      sx={{ 
+                        p: 2,
+                        border: 1,
+                        borderColor: theme => stylingExample.isHighlighted ? 'warning.light' : 'grey.300',
+                        bgcolor: theme => stylingExample.isHighlighted ? 'warning.50' : 'background.paper',
                         color: stylingExample.color,
                         opacity: stylingExample.isVisible ? 1 : 0,
                         transform: `translateY(${stylingExample.isVisible ? '0' : '20px'})`,
+                        transition: 'all 0.5s ease-in-out'
                       }}
                     >
-                      <h5 className="text-lg font-medium">Demo Card</h5>
-                      <p>This card will be styled</p>
-                    </div>
-                  </div>
-                </div>
+                      <Typography variant="subtitle2">Demo Card</Typography>
+                      <Typography>This card will be styled</Typography>
+                    </Paper>
+                  </Box>
+                </Box>
               </ConceptInfoCard>
-            </div>
+            </Box>
 
-            <div>
-              <h4 className="font-semibold">2. Content Updates</h4>
+            <Box>
+              <Typography variant="subtitle2" gutterBottom>2. Content Updates</Typography>
               <ConceptInfoCard>
-                <div className="space-y-6">
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
                   <StepThroughCodeAnimation
                     code={contentCode}
                     steps={contentSteps}
                     onStepChange={setContentStep}
                   />
-                  <div className="flex items-center justify-center">
-                    <div 
-                      className={`p-4 border rounded transition-all duration-500 ${
-                        contentExample.isActive ? 'bg-green-100 border-green-300' : ''
-                      }`}
-                      style={{
+                  <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <Paper 
+                      elevation={0}
+                      sx={{ 
+                        p: 2,
+                        border: 1,
+                        borderColor: theme => contentExample.isActive ? 'success.light' : 'grey.300',
+                        bgcolor: theme => contentExample.isActive ? 'success.50' : 'background.paper',
                         opacity: contentExample.isVisible ? 1 : 0,
-                        transform: `scale(${contentExample.isVisible ? 1 : 0.95})`
+                        transform: `scale(${contentExample.isVisible ? 1 : 0.95})`,
+                        transition: 'all 0.5s ease-in-out'
                       }}
                       dangerouslySetInnerHTML={{ __html: contentExample.content }}
                     />
-                  </div>
-                </div>
+                  </Box>
+                </Box>
               </ConceptInfoCard>
-            </div>
+            </Box>
 
-            <div>
-              <h4 className="font-semibold">3. Event Handling</h4>
+            <Box>
+              <Typography variant="subtitle2" gutterBottom>3. Event Handling</Typography>
               <ConceptInfoCard>
-                <div className="space-y-6">
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
                   <StepThroughCodeAnimation
                     code={eventCode}
                     steps={eventSteps}
                     onStepChange={setEventStep}
                   />
-                  <div className="flex flex-col items-center space-y-2">
-                    <button
+                  <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
+                    <Button
                       onClick={() => eventStep >= 1 && setEventExample(prev => ({ ...prev, clickCount: prev.clickCount + 1 }))}
-                      className={`px-6 py-3 ${eventStep >= 1 ? 'bg-purple-100 hover:bg-purple-200' : 'bg-gray-100'} rounded transition-all duration-300`}
-                      style={{
+                      variant={eventStep >= 1 ? 'contained' : 'outlined'}
+                      color="secondary"
+                      sx={{
                         cursor: eventExample.hasPointer ? 'pointer' : 'default',
-                        opacity: eventStep > 0 ? 1 : 0.7
+                        opacity: eventStep > 0 ? 1 : 0.7,
+                        transition: 'all 0.3s ease-in-out'
                       }}
                       title={eventExample.title}
                       disabled={eventStep < 1}
                     >
                       Interactive Button
-                    </button>
+                    </Button>
                     {eventExample.clickCount > 0 && (
-                      <div className="text-sm text-gray-600">
+                      <Typography variant="body2" color="text.secondary">
                         Click count: {eventExample.clickCount}
-                      </div>
+                      </Typography>
                     )}
-                  </div>
-                </div>
+                  </Box>
+                </Box>
               </ConceptInfoCard>
-            </div>
-          </div>
+            </Box>
+          </Box>
 
-          <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mt-6">
-            <p className="text-yellow-700">
-              <strong>Pro Tip:</strong> When chaining methods, it's common to put each method on a new line 
+          <Paper 
+            variant="outlined" 
+            sx={{ 
+              mt: 4,
+              p: 2,
+              bgcolor: 'warning.50',
+              borderColor: 'warning.main',
+              borderLeftWidth: 4
+            }}
+          >
+            <Typography variant="subtitle1" color="warning.dark" sx={{ fontWeight: 600 }}>
+              Pro Tip:
+            </Typography>
+            <Typography variant="body2" color="warning.dark">
+              When chaining methods, it's common to put each method on a new line 
               (indented) to make your code easier to read. The dots at the start of each line show that 
               the methods are chained together.
-            </p>
-          </div>
+            </Typography>
+          </Paper>
         </Section>
       </TableOfContents>
-
-      <style jsx>{`
-        @keyframes fadeOut {
-          from { opacity: 1; }
-          to { opacity: 0.3; }
-        }
-        @keyframes slideUp {
-          from { transform: translateY(0); }
-          to { transform: translateY(-10px); }
-        }
-        @keyframes bounce {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
-        }
-        .highlight {
-          background-color: #fff3cd;
-          border: 1px solid #ffeeba;
-        }
-        .demo-element {
-          transition: all 0.3s ease;
-        }
-        .transition-all {
-          transition: all 0.5s ease-in-out;
-        }
-      `}</style>
     </ConceptWrapper>
   );
 } 

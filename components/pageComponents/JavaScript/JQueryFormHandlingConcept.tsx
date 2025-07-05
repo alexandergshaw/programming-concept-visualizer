@@ -7,6 +7,15 @@ import Section from '@/components/common/Section';
 import CodeSnippet from '@/components/common/CodeSnippet';
 import ConceptInfoCard from '@/components/common/ConceptInfoCard';
 import StepThroughCodeAnimation from './StepThroughCodeAnimation';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormGroup from '@mui/material/FormGroup';
+import FormControl from '@mui/material/FormControl';
 
 export default function JQueryFormHandlingConcept() {
   const [username, setUsername] = useState('');
@@ -68,36 +77,35 @@ export default function JQueryFormHandlingConcept() {
     >
       <TableOfContents numbered>
         <Section title="Real-time Form Validation">
-          <p className="mb-4">
+          <Typography variant="body1" paragraph>
             Try out this form to see jQuery-style validation in action. The validation happens as you type 
             and when fields lose focus:
-          </p>
+          </Typography>
 
           <ConceptInfoCard>
-            <div className="grid grid-cols-2 gap-8">
-              <div>
-                <h4 className="font-semibold mb-4">Interactive Demo:</h4>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium mb-1">Username:</label>
-                    <input
-                      type="text"
+            <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4 }}>
+              <Box>
+                <Typography variant="subtitle1" gutterBottom fontWeight="medium">Interactive Demo</Typography>
+                <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                  <FormControl error={!!formErrors.username}>
+                    <TextField
+                      label="Username"
                       value={username}
                       onChange={(e) => {
                         setUsername(e.target.value);
                         validateField('username', e.target.value);
                       }}
                       onBlur={() => validateField('username', username)}
-                      className={`w-full p-2 border rounded ${formErrors.username ? 'border-red-500' : 'border-gray-300'}`}
+                      error={!!formErrors.username}
+                      helperText={formErrors.username}
+                      fullWidth
+                      size="small"
                     />
-                    {formErrors.username && (
-                      <p className="text-red-500 text-sm mt-1">{formErrors.username}</p>
-                    )}
-                  </div>
+                  </FormControl>
 
-                  <div>
-                    <label className="block text-sm font-medium mb-1">Email:</label>
-                    <input
+                  <FormControl error={!!formErrors.email}>
+                    <TextField
+                      label="Email"
                       type="email"
                       value={email}
                       onChange={(e) => {
@@ -105,38 +113,43 @@ export default function JQueryFormHandlingConcept() {
                         validateField('email', e.target.value);
                       }}
                       onBlur={() => validateField('email', email)}
-                      className={`w-full p-2 border rounded ${formErrors.email ? 'border-red-500' : 'border-gray-300'}`}
+                      error={!!formErrors.email}
+                      helperText={formErrors.email}
+                      fullWidth
+                      size="small"
                     />
-                    {formErrors.email && (
-                      <p className="text-red-500 text-sm mt-1">{formErrors.email}</p>
-                    )}
-                  </div>
+                  </FormControl>
 
-                  <button
+                  <Button
                     type="submit"
+                    variant="contained"
                     disabled={Object.keys(formErrors).length > 0}
-                    className={`px-4 py-2 rounded text-white ${
-                      Object.keys(formErrors).length > 0 
-                        ? 'bg-gray-400 cursor-not-allowed' 
-                        : 'bg-blue-500 hover:bg-blue-600'
-                    }`}
+                    sx={{ mt: 1 }}
                   >
                     Submit Form
-                  </button>
-                </form>
+                  </Button>
+                </Box>
 
                 {formOutput && (
-                  <div className="mt-4">
-                    <h4 className="font-semibold mb-2">Form Output:</h4>
-                    <pre className="bg-gray-100 p-3 rounded">
-                      {formOutput}
-                    </pre>
-                  </div>
+                  <Box sx={{ mt: 3 }}>
+                    <Typography variant="subtitle2" gutterBottom>Form Output</Typography>
+                    <Paper 
+                      variant="outlined" 
+                      sx={{ 
+                        p: 2, 
+                        bgcolor: 'grey.50',
+                        fontFamily: 'monospace',
+                        fontSize: '0.875rem'
+                      }}
+                    >
+                      <pre style={{ margin: 0 }}>{formOutput}</pre>
+                    </Paper>
+                  </Box>
                 )}
-              </div>
+              </Box>
 
-              <div>
-                <h4 className="font-semibold mb-4">jQuery Implementation:</h4>
+              <Box>
+                <Typography variant="subtitle1" gutterBottom fontWeight="medium">jQuery Implementation</Typography>
                 <CodeSnippet
                   lines={[
                     { code: '// HTML Structure' },
@@ -202,13 +215,13 @@ export default function JQueryFormHandlingConcept() {
                   ]}
                   language="javascript"
                 />
-              </div>
-            </div>
+              </Box>
+            </Box>
           </ConceptInfoCard>
 
-          <div className="mt-8">
+          <Box sx={{ mt: 4 }}>
             <ConceptInfoCard>
-              <h4 className="font-semibold mb-4">Step-by-Step jQuery Explanation:</h4>
+              <Typography variant="subtitle1" gutterBottom fontWeight="medium">Step-by-Step jQuery Explanation</Typography>
               <StepThroughCodeAnimation
                 code={[
                   '$(document).ready(function() {',
@@ -351,54 +364,74 @@ export default function JQueryFormHandlingConcept() {
                 ]}
               />
             </ConceptInfoCard>
-          </div>
+          </Box>
         </Section>
 
         <Section title="Form Serialization">
-          <p className="mb-4">
+          <Typography variant="body1" paragraph>
             See how jQuery converts form data into different formats. Select some hobbies to see the serialized output:
-          </p>
+          </Typography>
 
           <ConceptInfoCard>
-            <div className="grid grid-cols-2 gap-8">
-              <div>
-                <h4 className="font-semibold mb-4">Interactive Demo:</h4>
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-semibold mb-2">Select Your Hobbies:</h4>
-                    <div className="space-y-2">
+            <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4 }}>
+              <Box>
+                <Typography variant="subtitle1" gutterBottom fontWeight="medium">Interactive Demo</Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                  <Box>
+                    <Typography variant="subtitle2" gutterBottom>Select Your Hobbies</Typography>
+                    <FormGroup>
                       {['Reading', 'Gaming', 'Cooking', 'Sports', 'Music', 'Art'].map(hobby => (
-                        <label key={hobby} className="flex items-center space-x-2">
-                          <input
-                            type="checkbox"
-                            checked={selectedHobbies.includes(hobby)}
-                            onChange={() => handleHobbyChange(hobby)}
-                            className="form-checkbox h-4 w-4 text-blue-500"
-                          />
-                          <span>{hobby}</span>
-                        </label>
+                        <FormControlLabel
+                          key={hobby}
+                          control={
+                            <Checkbox
+                              checked={selectedHobbies.includes(hobby)}
+                              onChange={() => handleHobbyChange(hobby)}
+                              color="primary"
+                            />
+                          }
+                          label={hobby}
+                        />
                       ))}
-                    </div>
-                  </div>
+                    </FormGroup>
+                  </Box>
 
-                  <div>
-                    <h4 className="font-semibold mb-2">Serialized Output:</h4>
-                    <div className="bg-gray-100 p-3 rounded">
-                      <p className="text-sm font-mono break-all">{serializedOutput || '(Select some hobbies)'}</p>
-                    </div>
+                  <Box>
+                    <Typography variant="subtitle2" gutterBottom>Serialized Output</Typography>
+                    <Paper 
+                      variant="outlined" 
+                      sx={{ 
+                        p: 2, 
+                        bgcolor: 'grey.50',
+                        fontFamily: 'monospace',
+                        fontSize: '0.875rem'
+                      }}
+                    >
+                      <Typography variant="body2" sx={{ wordBreak: 'break-all' }}>
+                        {serializedOutput || '(Select some hobbies)'}
+                      </Typography>
+                    </Paper>
 
-                    <h4 className="font-semibold mb-2 mt-4">Array Format:</h4>
-                    <div className="bg-gray-100 p-3 rounded">
-                      <pre className="text-sm">
+                    <Typography variant="subtitle2" sx={{ mt: 3 }} gutterBottom>Array Format</Typography>
+                    <Paper 
+                      variant="outlined" 
+                      sx={{ 
+                        p: 2, 
+                        bgcolor: 'grey.50',
+                        fontFamily: 'monospace',
+                        fontSize: '0.875rem'
+                      }}
+                    >
+                      <pre style={{ margin: 0 }}>
                         {JSON.stringify(selectedHobbies, null, 2)}
                       </pre>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                    </Paper>
+                  </Box>
+                </Box>
+              </Box>
 
-              <div>
-                <h4 className="font-semibold mb-4">jQuery Implementation:</h4>
+              <Box>
+                <Typography variant="subtitle1" gutterBottom fontWeight="medium">jQuery Implementation</Typography>
                 <CodeSnippet
                   lines={[
                     { code: '// HTML Structure' },
@@ -433,13 +466,13 @@ export default function JQueryFormHandlingConcept() {
                   ]}
                   language="javascript"
                 />
-              </div>
-            </div>
+              </Box>
+            </Box>
           </ConceptInfoCard>
 
-          <div className="mt-8">
+          <Box sx={{ mt: 4 }}>
             <ConceptInfoCard>
-              <h4 className="font-semibold mb-4">Step-by-Step jQuery Explanation:</h4>
+              <Typography variant="subtitle1" gutterBottom fontWeight="medium">Step-by-Step jQuery Explanation</Typography>
               <StepThroughCodeAnimation
                 code={[
                   '$(document).ready(function() {',
@@ -558,17 +591,17 @@ export default function JQueryFormHandlingConcept() {
                 ]}
               />
             </ConceptInfoCard>
-          </div>
+          </Box>
         </Section>
 
         <Section title="jQuery Form Methods Reference">
-          <p className="mb-4">
+          <Typography variant="body1" paragraph>
             Here are the key jQuery methods used for form handling:
-          </p>
+          </Typography>
 
-          <div className="space-y-4">
-            <div>
-              <h4 className="font-semibold">Getting Values</h4>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+            <Box>
+              <Typography variant="subtitle1" gutterBottom fontWeight="medium">Getting Values</Typography>
               <CodeSnippet
                 lines={[
                   { code: '// Get single value' },
@@ -582,10 +615,10 @@ export default function JQueryFormHandlingConcept() {
                 ]}
                 language="javascript"
               />
-            </div>
+            </Box>
 
-            <div>
-              <h4 className="font-semibold">Form Events</h4>
+            <Box>
+              <Typography variant="subtitle1" gutterBottom fontWeight="medium">Form Events</Typography>
               <CodeSnippet
                 lines={[
                   { code: '// On submit' },
@@ -599,10 +632,10 @@ export default function JQueryFormHandlingConcept() {
                 ]}
                 language="javascript"
               />
-            </div>
+            </Box>
 
-            <div>
-              <h4 className="font-semibold">Serialization</h4>
+            <Box>
+              <Typography variant="subtitle1" gutterBottom fontWeight="medium">Serialization</Typography>
               <CodeSnippet
                 lines={[
                   { code: '// Get URL-encoded string' },
@@ -613,8 +646,8 @@ export default function JQueryFormHandlingConcept() {
                 ]}
                 language="javascript"
               />
-            </div>
-          </div>
+            </Box>
+          </Box>
         </Section>
       </TableOfContents>
     </ConceptWrapper>
