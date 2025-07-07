@@ -52,17 +52,17 @@ const navItems = [
 		label: 'Functions',
 		value: 'functions',
 		children: [
-			{ label: 'Function Basics', value: 'function-basics' },
+			// { label: 'Function Basics', value: 'function-basics' },
 			{ label: 'Recursion', value: 'recursion' },
 		]
 	},
-	{
-		label: 'Code Organization',
-		value: 'code-organization',
-		children: [
-			{ label: 'Modules', value: 'modules' },
-		]
-	}
+	// {
+	// 	label: 'Code Organization',
+	// 	value: 'code-organization',
+	// 	children: [
+	// 		{ label: 'Modules', value: 'modules' },
+	// 	]
+	// }
 ];
 
 export default function PythonPage() {
@@ -121,7 +121,7 @@ export default function PythonPage() {
 		<PageWrapper
 			pageTitle={'Python Visualizer'}
 			navItems={navItems}
-			defaultOpen={['control flow', 'functions', 'code-organization']}
+			defaultOpen={["functions"]}
 			handleSelect={handleSelect}
 			activeValue={selectedConcept || undefined}
 		>

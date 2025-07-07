@@ -12,19 +12,14 @@ import TableOfContents from '@/components/common/TableOfContents';
 export default function FunctionBasicsConcept() {
   const basicFunctionCode = [
     'def greet(name):',
-    '    &quot;&quot;&quot;This function prints a greeting&quot;&quot;&quot;',
-    '    print(f&quot;Hello, {name}!&quot;)',
+    '    """This function prints a greeting"""',
+    '    print(f"Hello, {name}!")',
     '',
     '# Call the function',
-    'greet(&quot;Alice&quot;)'
+    'greet("Alice")'
   ];
 
-  const functionCode = `def greet(name):
-    &quot;&quot;&quot;This function prints a greeting&quot;&quot;&quot;
-    print(f&quot;Hello, {name}!&quot;)
-
-# Call the function
-greet(&quot;Alice&quot;)`;
+  const functionCode = "def greet(name):\n    \"\"\"This function prints a greeting\"\"\"\n    print(f\"Hello, {name}!\")\n\n# Call the function\ngreet(\"Alice\")";
 
   return (
     <ConceptWrapper
