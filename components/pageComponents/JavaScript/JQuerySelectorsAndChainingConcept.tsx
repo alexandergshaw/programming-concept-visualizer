@@ -45,9 +45,9 @@ export default function JQuerySelectorsAndChainingConcept() {
 
   // Step-through data for each example
   const stylingCode = [
-    '$(\'.card\')',
-    '  .addClass(\'highlight\')',
-    '  .css(\'color\', \'blue\')',
+    '$(&quot;.card&quot;)',
+    '  .addClass(&quot;highlight&quot;)',
+    '  .css(&quot;color&quot;, &quot;blue&quot;)',
     '  .slideDown();'
   ];
 
@@ -55,17 +55,17 @@ export default function JQuerySelectorsAndChainingConcept() {
     {
       label: 'Select Element',
       desc: 'Selects elements with class "card"',
-      highlight: '$(\'.card\')'
+      highlight: '$(&quot;.card&quot;)'
     },
     {
       label: 'Add Class',
       desc: 'Adds yellow highlight background',
-      highlight: '.addClass(\'highlight\')'
+      highlight: '.addClass(&quot;highlight&quot;)'
     },
     {
       label: 'Change Color',
       desc: 'Changes text color to blue',
-      highlight: '.css(\'color\', \'blue\')'
+      highlight: '.css(&quot;color&quot;, &quot;blue&quot;)'
     },
     {
       label: 'Animate',
@@ -75,9 +75,9 @@ export default function JQuerySelectorsAndChainingConcept() {
   ];
 
   const contentCode = [
-    '$(\'.message\')',
-    '  .html(\'<strong>Hello!</strong>\')',
-    '  .addClass(\'active\')',
+    '$(&quot;.message&quot;)',
+    '  .html(&quot;&lt;strong&gt;Hello!&lt;/strong&gt;&quot;)',
+    '  .addClass(&quot;active&quot;)',
     '  .fadeIn();'
   ];
 
@@ -85,17 +85,17 @@ export default function JQuerySelectorsAndChainingConcept() {
     {
       label: 'Select Element',
       desc: 'Selects elements with class "message"',
-      highlight: '$(\'.message\')'
+      highlight: '$(&quot;.message&quot;)'
     },
     {
       label: 'Update Content',
       desc: 'Updates the HTML content with bold text',
-      highlight: '.html(\'<strong>Hello!</strong>\')'
+      highlight: '.html(&quot;&lt;strong&gt;Hello!&lt;/strong&gt;&quot;)'
     },
     {
       label: 'Add Class',
       desc: 'Adds active class for styling',
-      highlight: '.addClass(\'active\')'
+      highlight: '.addClass(&quot;active&quot;)'
     },
     {
       label: 'Fade In',
@@ -105,34 +105,34 @@ export default function JQuerySelectorsAndChainingConcept() {
   ];
 
   const eventCode = [
-    '$(\'.button\')',
-    '  .on(\'click\', function() {',
-    '    console.log(\'Clicked!\');',
+    '$(&quot;.button&quot;)',
+    '  .on(&quot;click&quot;, function() {',
+    '    console.log(&quot;Clicked!&quot;);',
     '  })',
-    '  .css(\'cursor\', \'pointer\')',
-    '  .attr(\'title\', \'Click me!\');'
+    '  .css(&quot;cursor&quot;, &quot;pointer&quot;)',
+    '  .attr(&quot;title&quot;, &quot;Click me!&quot;);'
   ];
 
   const eventSteps = [
     {
       label: 'Select Element',
       desc: 'Selects elements with class "button"',
-      highlight: '$(\'.button\')'
+      highlight: '$(&quot;.button&quot;)'
     },
     {
       label: 'Add Click Handler',
       desc: 'Attaches click event handler',
-      highlight: ['.on(\'click\'', 'console.log(\'Clicked!\');']
+      highlight: ['.on(&quot;click&quot;', 'console.log(&quot;Clicked!&quot;);']
     },
     {
       label: 'Change Cursor',
       desc: 'Changes cursor to pointer on hover',
-      highlight: '.css(\'cursor\', \'pointer\')'
+      highlight: '.css(&quot;cursor&quot;, &quot;pointer&quot;)'
     },
     {
       label: 'Add Tooltip',
       desc: 'Adds tooltip text',
-      highlight: '.attr(\'title\', \'Click me!\')'
+      highlight: '.attr(&quot;title&quot;, &quot;Click me!&quot;)'
     }
   ];
 
@@ -258,7 +258,7 @@ export default function JQuerySelectorsAndChainingConcept() {
       case 1: // html('<strong>Hello!</strong>')
         setContentExample(prev => ({
           ...prev,
-          content: '<strong>Hello!</strong>'
+          content: '&lt;strong&gt;Hello!&lt;/strong&gt;'
         }));
         break;
       case 2: // addClass('active')
@@ -420,9 +420,9 @@ export default function JQuerySelectorsAndChainingConcept() {
               <Typography variant="subtitle2" gutterBottom>1. Element Selectors</Typography>
               <CodeSnippet
                 lines={[
-                  { code: '$(\'p\')        // Finds all <p> elements' },
-                  { code: '$(\'div\')      // Finds all <div> elements' },
-                  { code: '$(\'button\')   // Finds all <button> elements' }
+                  { code: '$(&quot;p&quot;)        // Finds all &lt;p&gt; elements' },
+                  { code: '$(&quot;div&quot;)      // Finds all &lt;div&gt; elements' },
+                  { code: '$(&quot;button&quot;)   // Finds all &lt;button&gt; elements' }
                 ]}
                 language="javascript"
               />
@@ -432,8 +432,8 @@ export default function JQuerySelectorsAndChainingConcept() {
               <Typography variant="subtitle2" gutterBottom>2. ID Selectors</Typography>
               <CodeSnippet
                 lines={[
-                  { code: '$(\'#myId\')    // Finds the element with id="myId"' },
-                  { code: '$(\'#header\')  // Finds the element with id="header"' }
+                  { code: '$(&quot;#myId&quot;)    // Finds the element with id=&quot;myId&quot;' },
+                  { code: '$(&quot;#header&quot;)  // Finds the element with id=&quot;header&quot;' }
                 ]}
                 language="javascript"
               />
@@ -443,8 +443,8 @@ export default function JQuerySelectorsAndChainingConcept() {
               <Typography variant="subtitle2" gutterBottom>3. Class Selectors</Typography>
               <CodeSnippet
                 lines={[
-                  { code: '$(\'.myClass\')   // Finds all elements with class="myClass"' },
-                  { code: '$(\'.btn\')       // Finds all elements with class="btn"' }
+                  { code: '$(&quot;.myClass&quot;)   // Finds all elements with class=&quot;myClass&quot;' },
+                  { code: '$(&quot;.btn&quot;)       // Finds all elements with class=&quot;btn&quot;' }
                 ]}
                 language="javascript"
               />
@@ -454,9 +454,9 @@ export default function JQuerySelectorsAndChainingConcept() {
               <Typography variant="subtitle2" gutterBottom>4. Combined Selectors</Typography>
               <CodeSnippet
                 lines={[
-                  { code: '$(\'.btn.primary\')     // Elements with both btn AND primary classes' },
-                  { code: '$(\'.card p\')          // <p> elements inside elements with class="card"' },
-                  { code: '$(\'.nav > .item\')     // Direct children with class="item" inside class="nav"' }
+                  { code: '$(&quot;.btn.primary&quot;)     // Elements with both btn AND primary classes' },
+                  { code: '$(&quot;.card p&quot;)          // &lt;p&gt; elements inside elements with class=&quot;card&quot;' },
+                  { code: '$(&quot;.nav &gt; .item&quot;)     // Direct children with class=&quot;item&quot; inside class=&quot;nav&quot;' }
                 ]}
                 language="javascript"
               />
