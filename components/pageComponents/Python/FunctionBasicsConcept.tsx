@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import ConceptInfoCard from '../../common/ConceptInfoCard';
 import StepThroughCodeAnimation from '../JavaScript/StepThroughCodeAnimation';
 import CodePartsExplanation from '../../common/CodePartsExplanation';
+import TableOfContents from '@/components/common/TableOfContents';
 
 export default function FunctionBasicsConcept() {
   const basicFunctionCode = [
@@ -30,35 +31,66 @@ greet("Alice")`;
       title="Python Functions: The Basics"
       description="Learn how to create and use functions in Python"
     >
-      <Section title="What is a Function?">
-        <Typography variant="body2" paragraph>
-          A function is like a mini-program inside your program. It's a way to package up code so you can use it over and over again, just like how you might save a recipe to cook the same dish multiple times.
-        </Typography>
-
-        <ConceptInfoCard>
-          <Typography variant="subtitle1" gutterBottom fontWeight="medium">
-            Why Use Functions?
+      <TableOfContents numbered>
+        <Section title="What is a Function?">
+          <Typography variant="body2" paragraph>
+            A function is like a mini-program inside your program. It's a way to package up code so you can use it over and over again, just like how you might save a recipe to cook the same dish multiple times.
           </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <Typography variant="body2">
-              <strong>📦 Package Code:</strong> Put related code together in one place
-            </Typography>
-            <Typography variant="body2">
-              <strong>🔄 Reuse Code:</strong> Write once, use many times
-            </Typography>
-            <Typography variant="body2">
-              <strong>🧹 Stay Organized:</strong> Keep your code neat and easy to understand
-            </Typography>
-            <Typography variant="body2">
-              <strong>🐛 Debug Easier:</strong> Test and fix smaller pieces of code
-            </Typography>
-          </Box>
-        </ConceptInfoCard>
 
-        <Box sx={{ my: 4 }}>
-          <Typography variant="subtitle1" gutterBottom fontWeight="medium">
-            How to Write a Function
-          </Typography>
+          <ConceptInfoCard>
+            <Typography variant="subtitle1" gutterBottom fontWeight="medium">
+              Why Use Functions?
+            </Typography>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+              <Typography variant="body2">
+                <strong>📦 Package Code:</strong> Put related code together in one place
+              </Typography>
+              <Typography variant="body2">
+                <strong>🔄 Reuse Code:</strong> Write once, use many times
+              </Typography>
+              <Typography variant="body2">
+                <strong>🧹 Stay Organized:</strong> Keep your code neat and easy to understand
+              </Typography>
+              <Typography variant="body2">
+                <strong>🐛 Debug Easier:</strong> Test and fix smaller pieces of code
+              </Typography>
+            </Box>
+          </ConceptInfoCard>
+        </Section>
+
+        <Section title="How to Write a Function">
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              height: 0,
+              paddingTop: '56.25%',
+              paddingBottom: 0,
+              boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+              marginTop: '1.6em',
+              marginBottom: '0.9em',
+              overflow: 'hidden',
+              borderRadius: 8,
+              willChange: 'transform'
+            }}
+          >
+            <iframe
+              loading="lazy"
+              style={{
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                top: 0,
+                left: 0,
+                border: 'none',
+                padding: 0,
+                margin: 0
+              }}
+              src="https://www.canva.com/design/DAGscnUHEEg/Fspg52MHC_gKtjnFwELo2Q/watch?embed"
+              allowFullScreen
+              allow="fullscreen"
+            />
+          </div>
           <ConceptInfoCard>
             <Box sx={{ mb: 3 }}>
               <Typography variant="body2" paragraph>
@@ -126,12 +158,41 @@ greet("Alice")`;
               ]}
             />
           </ConceptInfoCard>
-        </Box>
+        </Section>
 
-        <Box sx={{ mb: 4 }}>
-          <Typography variant="subtitle1" gutterBottom fontWeight="medium">
-            Getting Results Back
-          </Typography>
+        <Section title="Return Statements">
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              height: 0,
+              paddingTop: '56.25%',
+              paddingBottom: 0,
+              boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+              marginTop: '1.6em',
+              marginBottom: '0.9em',
+              overflow: 'hidden',
+              borderRadius: 8,
+              willChange: 'transform'
+            }}
+          >
+            <iframe
+              loading="lazy"
+              style={{
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                top: 0,
+                left: 0,
+                border: 'none',
+                padding: 0,
+                margin: 0
+              }}
+              src="https://www.canva.com/design/DAGscpNX8I0/Pu7P7XkfDzrXeMITVE6ZSg/watch?embed"
+              allowFullScreen
+              allow="fullscreen"
+            />
+          </div>
           <ConceptInfoCard>
             <Box sx={{ mb: 3 }}>
               <Typography variant="body2" paragraph>
@@ -202,20 +263,50 @@ print(result)    # Prints: 8`}
                   highlight: 'print(result)    # Prints: 8'
                 }
               ]}
-              onStepChange={() => {}}
+              onStepChange={() => { }}
             />
           </ConceptInfoCard>
-        </Box>
+        </Section>
 
-        <Box sx={{ mb: 4 }}>
-          <Typography variant="subtitle1" gutterBottom fontWeight="medium">
-            Parameters and Arguments
-          </Typography>
+        <Section title="Parameters and Arguments">
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              height: 0,
+              paddingTop: '56.25%',
+              paddingBottom: 0,
+              boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+              marginTop: '1.6em',
+              marginBottom: '0.9em',
+              overflow: 'hidden',
+              borderRadius: 8,
+              willChange: 'transform'
+            }}
+          >
+            <iframe
+              loading="lazy"
+              style={{
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                top: 0,
+                left: 0,
+                border: 'none',
+                padding: 0,
+                margin: 0
+              }}
+              src="https://www.canva.com/design/DAGscgRCtlY/xPXPZYjLgBObw_8fr5DQtA/watch?embed"
+              allowFullScreen
+              allow="fullscreen"
+            />
+          </div>
           <ConceptInfoCard>
             <Box sx={{ mb: 3 }}>
               <Typography variant="body2" paragraph>
                 Functions can have default parameter values and accept arguments in different ways.
               </Typography>
+
               <CodePartsExplanation
                 code={`def describe_pet(name, animal_type="dog"):
     """Demonstrates default parameters"""
@@ -285,15 +376,12 @@ describe_pet(animal_type="fish", name="Bubbles")  # Output: I have a fish named 
                   highlight: 'describe_pet(animal_type="fish", name="Bubbles")  # Output: I have a fish named Bubbles.'
                 }
               ]}
-              onStepChange={() => {}}
+              onStepChange={() => { }}
             />
           </ConceptInfoCard>
-        </Box>
+        </Section>
 
-        <Box>
-          <Typography variant="subtitle1" gutterBottom fontWeight="medium">
-            Try It Out
-          </Typography>
+        <Section title="Try It Out">
           <ConceptInfoCard>
             <Typography variant="body2" gutterBottom>
               Here's a practical example of a function that calculates area:
@@ -390,11 +478,11 @@ print(area)                   # Should print: 24`}
                   highlight: 'print(area)                   # Should print: 24'
                 }
               ]}
-              onStepChange={() => {}}
+              onStepChange={() => { }}
             />
           </ConceptInfoCard>
-        </Box>
-      </Section>
+        </Section>
+      </TableOfContents>
     </ConceptWrapper>
   );
 } 

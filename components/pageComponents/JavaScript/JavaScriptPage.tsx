@@ -19,6 +19,7 @@ import EventDrivenDomConcept from './EventDrivenDomConcept';
 import JQueryConcept from './JQueryConcept';
 import JQuerySelectorsAndChainingConcept from './JQuerySelectorsAndChainingConcept';
 import JQueryFormHandlingConcept from './JQueryFormHandlingConcept';
+import JQueryDomManipulation from './JQueryDomManipulation';
 
 const navItems = [
   {
@@ -53,7 +54,7 @@ const navItems = [
     children: [
       { label: 'jQuery Basics', value: 'jquery-basics' },
       { label: 'Selectors & Chaining', value: 'jquery-selectors-chaining' },
-      { label: 'Form Handling', value: 'jquery-form-handling' }
+      { label: 'DOM Manipulation', value: 'jquery-dom-manipulation' },
     ],
   },
 
@@ -138,6 +139,8 @@ export default function JavaScriptPage() {
         return <JQuerySelectorsAndChainingConcept />;
       case 'jquery-form-handling':
         return <JQueryFormHandlingConcept />;
+      case 'jquery-dom-manipulation':
+        return <JQueryDomManipulation />;
       default:
         return null;
     }

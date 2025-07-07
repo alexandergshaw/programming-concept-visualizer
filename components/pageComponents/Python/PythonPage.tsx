@@ -54,7 +54,6 @@ const navItems = [
 		value: 'functions',
 		children: [
 			{ label: 'Function Basics', value: 'function-basics' },
-			// { label: 'Advanced Functions', value: 'advanced-functions' },
 			{ label: 'Recursion', value: 'recursion' },
 		]
 	},

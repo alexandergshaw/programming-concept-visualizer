@@ -178,7 +178,7 @@ export default function JQuerySelectorsAndChainingConcept() {
         { classes: ['text'], content: 'Regular paragraph' }
       ]
     };
-    
+
     try {
       // Basic selector parsing
       if (selector.startsWith('#')) {
@@ -391,9 +391,38 @@ export default function JQuerySelectorsAndChainingConcept() {
       <TableOfContents numbered>
         <Section title="jQuery Selectors">
           <Typography variant="body2" paragraph>
-            jQuery makes it super easy to find and work with elements on your webpage. Try out different selectors below:
+            jQuery makes it super easy to find and work with elements on your webpage.
           </Typography>
-
+          <div style={{
+            position: 'relative',
+            width: '100%',
+            height: 0,
+            paddingTop: '56.25%',
+            paddingBottom: 0,
+            boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+            marginTop: '1.6em',
+            marginBottom: '0.9em',
+            overflow: 'hidden',
+            borderRadius: 8,
+            willChange: 'transform'
+          }}>
+            <iframe
+              loading="lazy"
+              style={{
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                top: 0,
+                left: 0,
+                border: 'none',
+                padding: 0,
+                margin: 0
+              }}
+              src="https://www.canva.com/design/DAGscaWUiuQ/_fhkwVaAFGCzvGR9PrzfyA/watch?embed"
+              allowFullScreen
+              allow="fullscreen"
+            />
+          </div>
           <ConceptInfoCard>
             <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4 }}>
               <Box>
@@ -412,10 +441,10 @@ export default function JQuerySelectorsAndChainingConcept() {
 
                   <Box>
                     <Typography variant="subtitle2" gutterBottom>Selected Elements</Typography>
-                    <Paper 
-                      variant="outlined" 
-                      sx={{ 
-                        p: 2, 
+                    <Paper
+                      variant="outlined"
+                      sx={{
+                        p: 2,
                         bgcolor: 'grey.50',
                         minHeight: '100px',
                         fontFamily: 'monospace',
@@ -440,10 +469,10 @@ export default function JQuerySelectorsAndChainingConcept() {
 
               <Box>
                 <Typography variant="subtitle1" gutterBottom fontWeight="medium">Sample DOM Structure</Typography>
-                <Paper 
-                  variant="outlined" 
-                  sx={{ 
-                    p: 2, 
+                <Paper
+                  variant="outlined"
+                  sx={{
+                    p: 2,
                     bgcolor: 'grey.50',
                     fontFamily: 'monospace',
                     fontSize: '0.875rem',
@@ -516,9 +545,41 @@ export default function JQuerySelectorsAndChainingConcept() {
 
         <Section title="Method Chaining">
           <Typography variant="body2" paragraph>
-            jQuery lets you run multiple methods one after another - this is called "chaining". 
+            jQuery lets you run multiple methods one after another - this is called "chaining".
             Try out these examples to see method chaining in action:
           </Typography>
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              height: 0,
+              paddingTop: '56.25%',
+              paddingBottom: 0,
+              boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+              marginTop: '1.6em',
+              marginBottom: '0.9em',
+              overflow: 'hidden',
+              borderRadius: 8,
+              willChange: 'transform'
+            }}
+          >
+            <iframe
+              loading="lazy"
+              style={{
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                top: 0,
+                left: 0,
+                border: 'none',
+                padding: 0,
+                margin: 0
+              }}
+              src="https://www.canva.com/design/DAGsceyN2eI/k3ZxlMKnJojaJWyQpGMTBw/watch?embed"
+              allowFullScreen
+              allow="fullscreen"
+            />
+          </div>
 
           <Typography variant="subtitle1" sx={{ mt: 4, mb: 2 }} fontWeight="medium">Common Chaining Examples</Typography>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
@@ -532,9 +593,9 @@ export default function JQuerySelectorsAndChainingConcept() {
                     onStepChange={setStylingStep}
                   />
                   <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <Paper 
+                    <Paper
                       elevation={0}
-                      sx={{ 
+                      sx={{
                         p: 2,
                         border: 1,
                         borderColor: theme => stylingExample.isHighlighted ? 'warning.light' : 'grey.300',
@@ -563,9 +624,9 @@ export default function JQuerySelectorsAndChainingConcept() {
                     onStepChange={setContentStep}
                   />
                   <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <Paper 
+                    <Paper
                       elevation={0}
-                      sx={{ 
+                      sx={{
                         p: 2,
                         border: 1,
                         borderColor: theme => contentExample.isActive ? 'success.light' : 'grey.300',
@@ -616,9 +677,9 @@ export default function JQuerySelectorsAndChainingConcept() {
             </Box>
           </Box>
 
-          <Paper 
-            variant="outlined" 
-            sx={{ 
+          <Paper
+            variant="outlined"
+            sx={{
               mt: 4,
               p: 2,
               bgcolor: 'warning.50',
@@ -630,8 +691,8 @@ export default function JQuerySelectorsAndChainingConcept() {
               Pro Tip:
             </Typography>
             <Typography variant="body2" color="warning.dark">
-              When chaining methods, it's common to put each method on a new line 
-              (indented) to make your code easier to read. The dots at the start of each line show that 
+              When chaining methods, it's common to put each method on a new line
+              (indented) to make your code easier to read. The dots at the start of each line show that
               the methods are chained together.
             </Typography>
           </Paper>
