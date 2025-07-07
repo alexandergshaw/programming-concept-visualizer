@@ -163,7 +163,7 @@ export default function JQueryDomManipulation() {
           <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mt-4">
             <p className="text-yellow-700">
               <strong>Speed Tip:</strong> When changing many things at once, save your jQuery selection in a
-              variable. For example: <code>let menu = $("#menu");</code> then use <code>menu</code> instead
+              variable. For example: <code>let menu = $(&quot;#menu&quot;);</code> then use <code>menu</code> instead
               of searching for it again.
             </p>
           </div>

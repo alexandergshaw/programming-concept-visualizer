@@ -62,8 +62,8 @@ export default function JQueryChaining() {
   return (
     <div className="space-y-4">
       <p>
-        jQuery lets you do many things to the same element all at once. This is called "chaining" - 
-        it's like giving a list of commands one after another.
+        jQuery lets you do many things to the same element all at once. This is called &quot;chaining&quot; - 
+        it&apos;s like giving a list of commands one after another.
       </p>
 
       <h3 className="text-xl font-semibold mt-4">The Old Way vs The jQuery Way</h3>
@@ -103,7 +103,7 @@ export default function JQueryChaining() {
           <h4 className="font-semibold">Working with Forms:</h4>
           <CodeSnippet
             lines={[
-              { code: '// Disable a form and show it\'s inactive' },
+              { code: '// Disable a form and show it&apos;s inactive' },
               { code: '$("form")' },
               { code: '  .find("input")          // Find all inputs' },
               { code: '  .prop("disabled", true) // Disable them' },

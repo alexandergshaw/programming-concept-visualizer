@@ -9,12 +9,9 @@ import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
 import ConceptInfoCard from '../../common/ConceptInfoCard';
 import StepThroughCodeAnimation from '../JavaScript/StepThroughCodeAnimation';
-import { Table } from '@mui/material';
 import TableOfContents from '@/components/common/TableOfContents';
 
 export default function ModulesConcept() {
-  const [currentStep, setCurrentStep] = useState(0);
-
   const moduleImportCode = [
     'import math',
     'from datetime import datetime',
@@ -175,7 +172,6 @@ export default function ModulesConcept() {
               <StepThroughCodeAnimation
                 code={moduleImportCode}
                 steps={moduleImportSteps}
-                onStepChange={setCurrentStep}
               />
             </ConceptInfoCard>
           </Box>
@@ -191,7 +187,6 @@ export default function ModulesConcept() {
               <StepThroughCodeAnimation
                 code={customModuleCode}
                 steps={customModuleSteps}
-                onStepChange={setCurrentStep}
               />
             </ConceptInfoCard>
           </Box>
@@ -245,7 +240,7 @@ export default function ModulesConcept() {
           <Alert severity="warning" sx={{ mt: 4 }}>
             <Typography variant="body2">
               Avoid using `from module import *` as it can lead to naming conflicts and make code harder to understand.
-              It's better to be explicit about what you're importing.
+              It&apos;s better to be explicit about what you&apos;re importing.
             </Typography>
           </Alert>
         </Section>

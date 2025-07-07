@@ -16,7 +16,6 @@ import WhileLoopConcept from './WhileLoopConcept';
 import ForLoopConcept from './ForLoopConcept';
 import RecursionConcept from './RecursionConcept';
 import FunctionBasicsConcept from './FunctionBasicsConcept';
-import AdvancedFunctionsConcept from './AdvancedFunctionsConcept';
 import ModulesConcept from './ModulesConcept';
 
 const navItems = [
@@ -106,8 +105,6 @@ export default function PythonPage() {
                 return <RecursionConcept />;
             case 'function-basics':
                 return <FunctionBasicsConcept />;
-            case 'advanced-functions':
-                return <AdvancedFunctionsConcept />;
             case 'modules':
                 return <ModulesConcept />;
             default:

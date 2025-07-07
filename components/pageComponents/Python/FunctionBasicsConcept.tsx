@@ -103,7 +103,7 @@ greet("Alice")`;
                     label: 'def keyword',
                     part: 'def',
                     color: '#9333ea',
-                    desc: 'This word tells Python "I\'m about to create a function"'
+                    desc: 'This word tells Python &quot;I\'m about to create a function&quot;'
                   },
                   {
                     label: 'Function name',
@@ -137,7 +137,7 @@ greet("Alice")`;
               steps={[
                 {
                   label: 'Step 1: Start the Function',
-                  desc: 'Tell Python you want to create a function called "greet"',
+                  desc: 'Tell Python you want to create a function called &quot;greet&quot;',
                   highlight: 'def greet(name):'
                 },
                 {
@@ -352,7 +352,7 @@ describe_pet(animal_type="fish", name="Bubbles")  # Output: I have a fish named 
               steps={[
                 {
                   label: 'Function with Default Parameter',
-                  desc: 'Define a function where animal_type has a default value of "dog"',
+                  desc: 'Define a function where animal_type has a default value of &quot;dog&quot;',
                   highlight: 'def describe_pet(name, animal_type="dog"):'
                 },
                 {
@@ -362,7 +362,7 @@ describe_pet(animal_type="fish", name="Bubbles")  # Output: I have a fish named 
                 },
                 {
                   label: 'Call with Default',
-                  desc: 'Call with only required parameter - animal_type defaults to "dog"',
+                  desc: 'Call with only required parameter - animal_type defaults to &quot;dog&quot;',
                   highlight: 'describe_pet("Rover")                  # Output: I have a dog named Rover.'
                 },
                 {
