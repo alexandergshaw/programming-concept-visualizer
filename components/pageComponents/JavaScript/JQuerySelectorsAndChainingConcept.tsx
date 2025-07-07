@@ -1,0 +1,624 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import ConceptWrapper from '../../common/ConceptWrapper';
+import TableOfContents from '@/components/common/TableOfContents';
+import Section from '@/components/common/Section';
+import CodeSnippet from '@/components/common/CodeSnippet';
+import StepThroughCodeAnimation from './StepThroughCodeAnimation';
+import ConceptInfoCard from '@/components/common/ConceptInfoCard';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+
+export default function JQuerySelectorsAndChainingConcept() {
+  const [selectorInput, setSelectorInput] = useState('');
+  const [selectedElements, setSelectedElements] = useState<string[]>([]);
+
+  // Track current step for each example
+  const [stylingStep, setStylingStep] = useState(0);
+  const [contentStep, setContentStep] = useState(0);
+  const [eventStep, setEventStep] = useState(0);
+
+  // State for styling example based on current step
+  const [stylingExample, setStylingExample] = useState({
+    isHighlighted: false,
+    color: 'inherit',
+    isVisible: true
+  });
+
+  // State for content example based on current step
+  const [contentExample, setContentExample] = useState({
+    content: 'Click to update content',
+    isActive: false,
+    isVisible: true
+  });
+
+  // State for event example based on current step
+  const [eventExample, setEventExample] = useState({
+    clickCount: 0,
+    hasPointer: false,
+    title: ''
+  });
+
+  // Step-through data for each example
+  const stylingCode = [
+    '$(&quot;.card&quot;)',
+    '  .addClass(&quot;highlight&quot;)',
+    '  .css(&quot;color&quot;, &quot;blue&quot;)',
+    '  .slideDown();'
+  ];
+
+  const stylingSteps = [
+    {
+      label: 'Select Element',
+      desc: 'Selects elements with class "card"',
+      highlight: '$(&quot;.card&quot;)'
+    },
+    {
+      label: 'Add Class',
+      desc: 'Adds yellow highlight background',
+      highlight: '.addClass(&quot;highlight&quot;)'
+    },
+    {
+      label: 'Change Color',
+      desc: 'Changes text color to blue',
+      highlight: '.css(&quot;color&quot;, &quot;blue&quot;)'
+    },
+    {
+      label: 'Animate',
+      desc: 'Animates the element sliding down',
+      highlight: '.slideDown()'
+    }
+  ];
+
+  const contentCode = [
+    '$(&quot;.message&quot;)',
+    '  .html(&quot;&lt;strong&gt;Hello!&lt;/strong&gt;&quot;)',
+    '  .addClass(&quot;active&quot;)',
+    '  .fadeIn();'
+  ];
+
+  const contentSteps = [
+    {
+      label: 'Select Element',
+      desc: 'Selects elements with class "message"',
+      highlight: '$(&quot;.message&quot;)'
+    },
+    {
+      label: 'Update Content',
+      desc: 'Updates the HTML content with bold text',
+      highlight: '.html(&quot;&lt;strong&gt;Hello!&lt;/strong&gt;&quot;)'
+    },
+    {
+      label: 'Add Class',
+      desc: 'Adds active class for styling',
+      highlight: '.addClass(&quot;active&quot;)'
+    },
+    {
+      label: 'Fade In',
+      desc: 'Fades in the element',
+      highlight: '.fadeIn()'
+    }
+  ];
+
+  const eventCode = [
+    '$(&quot;.button&quot;)',
+    '  .on(&quot;click&quot;, function() {',
+    '    console.log(&quot;Clicked!&quot;);',
+    '  })',
+    '  .css(&quot;cursor&quot;, &quot;pointer&quot;)',
+    '  .attr(&quot;title&quot;, &quot;Click me!&quot;);'
+  ];
+
+  const eventSteps = [
+    {
+      label: 'Select Element',
+      desc: 'Selects elements with class "button"',
+      highlight: '$(&quot;.button&quot;)'
+    },
+    {
+      label: 'Add Click Handler',
+      desc: 'Attaches click event handler',
+      highlight: ['.on(&quot;click&quot;', 'console.log(&quot;Clicked!&quot;);']
+    },
+    {
+      label: 'Change Cursor',
+      desc: 'Changes cursor to pointer on hover',
+      highlight: '.css(&quot;cursor&quot;, &quot;pointer&quot;)'
+    },
+    {
+      label: 'Add Tooltip',
+      desc: 'Adds tooltip text',
+      highlight: '.attr(&quot;title&quot;, &quot;Click me!&quot;)'
+    }
+  ];
+
+  // Simulated jQuery selector function
+  const simulateSelector = (selector: string) => {
+    const elements: string[] = [];
+    const sampleDOM = {
+      header: { id: 'header', classes: ['section'], content: 'Welcome Header' },
+      nav: { id: 'nav', classes: ['navigation'], content: 'Navigation Menu' },
+      items: [
+        { classes: ['item', 'active'], content: 'First Item' },
+        { classes: ['item'], content: 'Second Item' },
+        { classes: ['item', 'disabled'], content: 'Third Item' }
+      ],
+      paragraphs: [
+        { classes: ['text', 'intro'], content: 'Introduction text' },
+        { classes: ['text'], content: 'Regular paragraph' }
+      ]
+    };
+
+    try {
+      // Basic selector parsing
+      if (selector.startsWith('#')) {
+        // ID selector
+        const id = selector.slice(1);
+        if (sampleDOM.header.id === id) {
+          elements.push(`<div id="${id}" class="${sampleDOM.header.classes.join(' ')}">${sampleDOM.header.content}</div>`);
+        }
+        if (sampleDOM.nav.id === id) {
+          elements.push(`<div id="${id}" class="${sampleDOM.nav.classes.join(' ')}">${sampleDOM.nav.content}</div>`);
+        }
+      } else if (selector.startsWith('.')) {
+        // Class selector
+        const className = selector.slice(1);
+        // Check items
+        sampleDOM.items.forEach(item => {
+          if (item.classes.includes(className)) {
+            elements.push(`<li class="${item.classes.join(' ')}">${item.content}</li>`);
+          }
+        });
+        // Check paragraphs
+        sampleDOM.paragraphs.forEach(p => {
+          if (p.classes.includes(className)) {
+            elements.push(`<p class="${p.classes.join(' ')}">${p.content}</p>`);
+          }
+        });
+      } else if (selector.includes('.')) {
+        // Combined selector (e.g., "li.active")
+        const [tag, className] = selector.split('.');
+        if (tag === 'li') {
+          sampleDOM.items.forEach(item => {
+            if (item.classes.includes(className)) {
+              elements.push(`<li class="${item.classes.join(' ')}">${item.content}</li>`);
+            }
+          });
+        }
+      } else {
+        // Element selector
+        if (selector === 'p') {
+          sampleDOM.paragraphs.forEach(p => {
+            elements.push(`<p class="${p.classes.join(' ')}">${p.content}</p>`);
+          });
+        }
+        if (selector === 'li') {
+          sampleDOM.items.forEach(item => {
+            elements.push(`<li class="${item.classes.join(' ')}">${item.content}</li>`);
+          });
+        }
+      }
+    } catch (error) {
+      console.error('Selector parsing error:', error);
+    }
+
+    setSelectedElements(elements);
+  };
+
+  const handleSelectorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectorInput(e.target.value);
+    simulateSelector(e.target.value);
+  };
+
+  // Update styling example based on current step
+  useEffect(() => {
+    switch (stylingStep) {
+      case 0: // Initial selection
+        setStylingExample({
+          isHighlighted: false,
+          color: 'inherit',
+          isVisible: true
+        });
+        break;
+      case 1: // addClass('highlight')
+        setStylingExample(prev => ({
+          ...prev,
+          isHighlighted: true
+        }));
+        break;
+      case 2: // css('color', 'blue')
+        setStylingExample(prev => ({
+          ...prev,
+          color: 'blue'
+        }));
+        break;
+      case 3: // slideDown()
+        setStylingExample(prev => ({
+          ...prev,
+          isVisible: false
+        }));
+        break;
+    }
+  }, [stylingStep]);
+
+  // Update content example based on current step
+  useEffect(() => {
+    switch (contentStep) {
+      case 0: // Initial selection
+        setContentExample({
+          content: 'Click to update content',
+          isActive: false,
+          isVisible: false
+        });
+        break;
+      case 1: // html('<strong>Hello!</strong>')
+        setContentExample(prev => ({
+          ...prev,
+          content: '&lt;strong&gt;Hello!&lt;/strong&gt;'
+        }));
+        break;
+      case 2: // addClass('active')
+        setContentExample(prev => ({
+          ...prev,
+          isActive: true
+        }));
+        break;
+      case 3: // fadeIn()
+        setContentExample(prev => ({
+          ...prev,
+          isVisible: true
+        }));
+        break;
+    }
+  }, [contentStep]);
+
+  // Update event example based on current step
+  useEffect(() => {
+    switch (eventStep) {
+      case 0: // Initial selection
+        setEventExample({
+          clickCount: 0,
+          hasPointer: false,
+          title: ''
+        });
+        break;
+      case 1: // on('click')
+        // Just attach the click handler, no visual change
+        break;
+      case 2: // css('cursor', 'pointer')
+        setEventExample(prev => ({
+          ...prev,
+          hasPointer: true
+        }));
+        break;
+      case 3: // attr('title', 'Click me!')
+        setEventExample(prev => ({
+          ...prev,
+          title: 'Click me!'
+        }));
+        break;
+    }
+  }, [eventStep]);
+
+  return (
+    <ConceptWrapper
+      title="jQuery Selectors and Method Chaining"
+      description="Learn how to select elements and chain methods together in jQuery."
+    >
+      <TableOfContents numbered>
+        <Section title="jQuery Selectors">
+          <Typography variant="body2" paragraph>
+            jQuery makes it super easy to find and work with elements on your webpage.
+          </Typography>
+          <div style={{
+            position: 'relative',
+            width: '100%',
+            height: 0,
+            paddingTop: '56.25%',
+            paddingBottom: 0,
+            boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+            marginTop: '1.6em',
+            marginBottom: '0.9em',
+            overflow: 'hidden',
+            borderRadius: 8,
+            willChange: 'transform'
+          }}>
+            <iframe
+              loading="lazy"
+              style={{
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                top: 0,
+                left: 0,
+                border: 'none',
+                padding: 0,
+                margin: 0
+              }}
+              src="https://www.canva.com/design/DAGscaWUiuQ/_fhkwVaAFGCzvGR9PrzfyA/watch?embed"
+              allowFullScreen
+              allow="fullscreen"
+            />
+          </div>
+          <ConceptInfoCard>
+            <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4 }}>
+              <Box>
+                <Typography variant="subtitle1" gutterBottom fontWeight="medium">Interactive Selector Tester</Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  <Box>
+                    <Typography variant="subtitle2" gutterBottom>Enter a selector:</Typography>
+                    <TextField
+                      fullWidth
+                      value={selectorInput}
+                      onChange={handleSelectorChange}
+                      placeholder="Try: .item, #header, p, li.active"
+                      size="small"
+                    />
+                  </Box>
+
+                  <Box>
+                    <Typography variant="subtitle2" gutterBottom>Selected Elements</Typography>
+                    <Paper
+                      variant="outlined"
+                      sx={{
+                        p: 2,
+                        bgcolor: 'grey.50',
+                        minHeight: '100px',
+                        fontFamily: 'monospace',
+                        fontSize: '0.875rem'
+                      }}
+                    >
+                      {selectedElements.length > 0 ? (
+                        <Box component="ul" sx={{ m: 0, pl: 2, '& > li': { mb: 1 } }}>
+                          {selectedElements.map((element, index) => (
+                            <li key={index}>{element}</li>
+                          ))}
+                        </Box>
+                      ) : (
+                        <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic' }}>
+                          No elements selected
+                        </Typography>
+                      )}
+                    </Paper>
+                  </Box>
+                </Box>
+              </Box>
+
+              <Box>
+                <Typography variant="subtitle1" gutterBottom fontWeight="medium">Sample DOM Structure</Typography>
+                <Paper
+                  variant="outlined"
+                  sx={{
+                    p: 2,
+                    bgcolor: 'grey.50',
+                    fontFamily: 'monospace',
+                    fontSize: '0.875rem',
+                    '& > p': { mb: 0.5 }
+                  }}
+                >
+                  <Typography component="p" variant="body2">&lt;div id=&quot;header&quot; class=&quot;section&quot;&gt;Welcome Header&lt;/div&gt;</Typography>
+                  <Typography component="p" variant="body2">&lt;div id=&quot;nav&quot; class=&quot;navigation&quot;&gt;Navigation Menu&lt;/div&gt;</Typography>
+                  <Typography component="p" variant="body2">&lt;ul&gt;</Typography>
+                  <Typography component="p" variant="body2" sx={{ pl: 2 }}>&lt;li class=&quot;item active&quot;&gt;First Item&lt;/li&gt;</Typography>
+                  <Typography component="p" variant="body2" sx={{ pl: 2 }}>&lt;li class=&quot;item&quot;&gt;Second Item&lt;/li&gt;</Typography>
+                  <Typography component="p" variant="body2" sx={{ pl: 2 }}>&lt;li class=&quot;item disabled&quot;&gt;Third Item&lt;/li&gt;</Typography>
+                  <Typography component="p" variant="body2">&lt;/ul&gt;</Typography>
+                  <Typography component="p" variant="body2">&lt;p class=&quot;text intro&quot;&gt;Introduction text&lt;/p&gt;</Typography>
+                  <Typography component="p" variant="body2">&lt;p class=&quot;text&quot;&gt;Regular paragraph&lt;/p&gt;</Typography>
+                </Paper>
+              </Box>
+            </Box>
+          </ConceptInfoCard>
+
+          <Typography variant="subtitle1" sx={{ mt: 4, mb: 2 }} fontWeight="medium">Common Selector Types</Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+            <Box>
+              <Typography variant="subtitle2" gutterBottom>1. Element Selectors</Typography>
+              <CodeSnippet
+                lines={[
+                  { code: '$(&quot;p&quot;)        // Finds all &lt;p&gt; elements' },
+                  { code: '$(&quot;div&quot;)      // Finds all &lt;div&gt; elements' },
+                  { code: '$(&quot;button&quot;)   // Finds all &lt;button&gt; elements' }
+                ]}
+                language="javascript"
+              />
+            </Box>
+
+            <Box>
+              <Typography variant="subtitle2" gutterBottom>2. ID Selectors</Typography>
+              <CodeSnippet
+                lines={[
+                  { code: '$(&quot;#myId&quot;)    // Finds the element with id=&quot;myId&quot;' },
+                  { code: '$(&quot;#header&quot;)  // Finds the element with id=&quot;header&quot;' }
+                ]}
+                language="javascript"
+              />
+            </Box>
+
+            <Box>
+              <Typography variant="subtitle2" gutterBottom>3. Class Selectors</Typography>
+              <CodeSnippet
+                lines={[
+                  { code: '$(&quot;.myClass&quot;)   // Finds all elements with class=&quot;myClass&quot;' },
+                  { code: '$(&quot;.btn&quot;)       // Finds all elements with class=&quot;btn&quot;' }
+                ]}
+                language="javascript"
+              />
+            </Box>
+
+            <Box>
+              <Typography variant="subtitle2" gutterBottom>4. Combined Selectors</Typography>
+              <CodeSnippet
+                lines={[
+                  { code: '$(&quot;.btn.primary&quot;)     // Elements with both btn AND primary classes' },
+                  { code: '$(&quot;.card p&quot;)          // &lt;p&gt; elements inside elements with class=&quot;card&quot;' },
+                  { code: '$(&quot;.nav &gt; .item&quot;)     // Direct children with class=&quot;item&quot; inside class=&quot;nav&quot;' }
+                ]}
+                language="javascript"
+              />
+            </Box>
+          </Box>
+        </Section>
+
+        <Section title="Method Chaining">
+          <Typography variant="body2" paragraph>
+            jQuery lets you run multiple methods one after another - this is called &quot;chaining&quot;.
+            Try out these examples to see method chaining in action:
+          </Typography>
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              height: 0,
+              paddingTop: '56.25%',
+              paddingBottom: 0,
+              boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+              marginTop: '1.6em',
+              marginBottom: '0.9em',
+              overflow: 'hidden',
+              borderRadius: 8,
+              willChange: 'transform'
+            }}
+          >
+            <iframe
+              loading="lazy"
+              style={{
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                top: 0,
+                left: 0,
+                border: 'none',
+                padding: 0,
+                margin: 0
+              }}
+              src="https://www.canva.com/design/DAGsceyN2eI/k3ZxlMKnJojaJWyQpGMTBw/watch?embed"
+              allowFullScreen
+              allow="fullscreen"
+            />
+          </div>
+
+          <Typography variant="subtitle1" sx={{ mt: 4, mb: 2 }} fontWeight="medium">Common Chaining Examples</Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+            <Box>
+              <Typography variant="subtitle2" gutterBottom>1. Styling Changes</Typography>
+              <ConceptInfoCard>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                  <StepThroughCodeAnimation
+                    code={stylingCode}
+                    steps={stylingSteps}
+                    onStepChange={setStylingStep}
+                  />
+                  <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <Paper
+                      elevation={0}
+                      sx={{
+                        p: 2,
+                        border: 1,
+                        borderColor: stylingExample.isHighlighted ? 'warning.light' : 'grey.300',
+                        bgcolor: stylingExample.isHighlighted ? 'warning.50' : 'background.paper',
+                        color: stylingExample.color,
+                        opacity: stylingExample.isVisible ? 1 : 0,
+                        transform: `translateY(${stylingExample.isVisible ? '0' : '20px'})`,
+                        transition: 'all 0.5s ease-in-out'
+                      }}
+                    >
+                      <Typography variant="subtitle2">Demo Card</Typography>
+                      <Typography>This card will be styled</Typography>
+                    </Paper>
+                  </Box>
+                </Box>
+              </ConceptInfoCard>
+            </Box>
+
+            <Box>
+              <Typography variant="subtitle2" gutterBottom>2. Content Updates</Typography>
+              <ConceptInfoCard>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                  <StepThroughCodeAnimation
+                    code={contentCode}
+                    steps={contentSteps}
+                    onStepChange={setContentStep}
+                  />
+                  <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <Paper
+                      elevation={0}
+                      sx={{
+                        p: 2,
+                        border: 1,
+                        borderColor: contentExample.isActive ? 'success.light' : 'grey.300',
+                        bgcolor: contentExample.isActive ? 'success.50' : 'background.paper',
+                        opacity: contentExample.isVisible ? 1 : 0,
+                        transform: `scale(${contentExample.isVisible ? 1 : 0.95})`,
+                        transition: 'all 0.5s ease-in-out'
+                      }}
+                      dangerouslySetInnerHTML={{ __html: contentExample.content }}
+                    />
+                  </Box>
+                </Box>
+              </ConceptInfoCard>
+            </Box>
+
+            <Box>
+              <Typography variant="subtitle2" gutterBottom>3. Event Handling</Typography>
+              <ConceptInfoCard>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                  <StepThroughCodeAnimation
+                    code={eventCode}
+                    steps={eventSteps}
+                    onStepChange={setEventStep}
+                  />
+                  <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
+                    <Button
+                      onClick={() => eventStep >= 1 && setEventExample(prev => ({ ...prev, clickCount: prev.clickCount + 1 }))}
+                      variant={eventStep >= 1 ? 'contained' : 'outlined'}
+                      color="secondary"
+                      sx={{
+                        cursor: eventExample.hasPointer ? 'pointer' : 'default',
+                        opacity: eventStep > 0 ? 1 : 0.7,
+                        transition: 'all 0.3s ease-in-out'
+                      }}
+                      title={eventExample.title}
+                      disabled={eventStep < 1}
+                    >
+                      Interactive Button
+                    </Button>
+                    {eventExample.clickCount > 0 && (
+                      <Typography variant="body2" color="text.secondary">
+                        Click count: {eventExample.clickCount}
+                      </Typography>
+                    )}
+                  </Box>
+                </Box>
+              </ConceptInfoCard>
+            </Box>
+          </Box>
+
+          <Paper
+            variant="outlined"
+            sx={{
+              mt: 4,
+              p: 2,
+              bgcolor: 'warning.50',
+              borderColor: 'warning.main',
+              borderLeftWidth: 4
+            }}
+          >
+            <Typography variant="subtitle1" color="warning.dark" sx={{ fontWeight: 600 }}>
+              Pro Tip:
+            </Typography>
+            <Typography variant="body2" color="warning.dark">
+              When chaining methods, it&apos;s common to put each method on a new line
+              (indented) to make your code easier to read. The dots at the start of each line show that
+              the methods are chained together.
+            </Typography>
+          </Paper>
+        </Section>
+      </TableOfContents>
+    </ConceptWrapper>
+  );
+} 
