@@ -1,24 +1,9 @@
 import CodeSnippet from '../../common/CodeSnippet';
-import StepThroughCodeAnimation from './StepThroughCodeAnimation';
-import ConceptInfoCard from '../../common/ConceptInfoCard';
 import Section from '../../common/Section';
 import ConceptWrapper from '../../common/ConceptWrapper';
 import TableOfContents from '../../common/TableOfContents';
-import { useState } from 'react';
-
-interface DemoElementState {
-  text: string;
-  isVisible: boolean;
-  classes: string[];
-}
 
 export default function JQueryDomManipulation() {
-  const [demoElement, setDemoElement] = useState<DemoElementState>({
-    text: 'Hello!',
-    isVisible: true,
-    classes: []
-  });
-
   return (
     <ConceptWrapper
       title="jQuery DOM Manipulation"

@@ -5,12 +5,9 @@ import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 
 export default function JQueryIntroduction() {
-  const [demoText, setDemoText] = useState('Click the buttons to see the difference!');
-  const [isAnimating, setIsAnimating] = useState(false);
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>

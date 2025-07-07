@@ -13,35 +13,9 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
-interface PreviewState {
-  highlight?: boolean;
-  color?: string;
-  visible?: boolean;
-  content?: string;
-  active?: boolean;
-  clickCount?: number;
-  hasPointer?: boolean;
-  title?: string;
-}
-
 export default function JQuerySelectorsAndChainingConcept() {
   const [selectorInput, setSelectorInput] = useState('');
   const [selectedElements, setSelectedElements] = useState<string[]>([]);
-  const [chainedElement, setChainedElement] = useState<{
-    text: string;
-    classes: string[];
-    isVisible: boolean;
-    color: string;
-    fontSize: string;
-    animation: string;
-  }>({
-    text: 'Interactive Element',
-    classes: ['demo-element'],
-    isVisible: true,
-    color: '#333',
-    fontSize: '16px',
-    animation: 'none'
-  });
 
   // Track current step for each example
   const [stylingStep, setStylingStep] = useState(0);
@@ -238,59 +212,6 @@ export default function JQuerySelectorsAndChainingConcept() {
   const handleSelectorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectorInput(e.target.value);
     simulateSelector(e.target.value);
-  };
-
-  // Method chaining handlers
-  const handleAddClass = (className: string) => {
-    setChainedElement(prev => ({
-      ...prev,
-      classes: [...prev.classes.filter(c => c !== className), className]
-    }));
-  };
-
-  const handleRemoveClass = (className: string) => {
-    setChainedElement(prev => ({
-      ...prev,
-      classes: prev.classes.filter(c => c !== className)
-    }));
-  };
-
-  const handleChangeText = () => {
-    setChainedElement(prev => ({
-      ...prev,
-      text: prev.text === 'Interactive Element' ? 'Text Changed!' : 'Interactive Element'
-    }));
-  };
-
-  const handleToggleVisibility = () => {
-    setChainedElement(prev => ({
-      ...prev,
-      isVisible: !prev.isVisible
-    }));
-  };
-
-  const handleChangeColor = () => {
-    const colors = ['#333', '#007bff', '#28a745', '#dc3545'];
-    setChainedElement(prev => ({
-      ...prev,
-      color: colors[(colors.indexOf(prev.color) + 1) % colors.length]
-    }));
-  };
-
-  const handleChangeFontSize = () => {
-    const sizes = ['16px', '20px', '24px', '28px'];
-    setChainedElement(prev => ({
-      ...prev,
-      fontSize: sizes[(sizes.indexOf(prev.fontSize) + 1) % sizes.length]
-    }));
-  };
-
-  const handleAnimate = () => {
-    const animations = ['none', 'fadeOut', 'slideUp', 'bounce'];
-    setChainedElement(prev => ({
-      ...prev,
-      animation: animations[(animations.indexOf(prev.animation) + 1) % animations.length]
-    }));
   };
 
   // Update styling example based on current step

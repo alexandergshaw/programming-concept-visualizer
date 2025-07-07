@@ -1,34 +1,12 @@
 import CodeSnippet from '../../common/CodeSnippet';
-import { useState, useEffect } from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import Alert from '@mui/material/Alert';
 import Link from '@mui/material/Link';
 
 export default function JQueryInclusionMethods() {
-  const [loadingDemo, setLoadingDemo] = useState('');
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    if (loadingDemo) {
-      const timer = setInterval(() => {
-        setProgress(prev => {
-          if (prev >= 100) {
-            clearInterval(timer);
-            return 100;
-          }
-          // CDN loads faster than local
-          return prev + (loadingDemo === 'cdn' ? 4 : 2);
-        });
-      }, 50);
-
-      return () => clearInterval(timer);
-    }
-  }, [loadingDemo]);
-
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
       <Typography variant="body2">
