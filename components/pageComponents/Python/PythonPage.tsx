@@ -121,7 +121,7 @@ export default function PythonPage() {
 		<PageWrapper
 			pageTitle={'Python Visualizer'}
 			navItems={navItems}
-			defaultOpen={['control flow', 'functions', 'code-organization']}
+			defaultOpen={[]}
 			handleSelect={handleSelect}
 			activeValue={selectedConcept || undefined}
 		>
