@@ -10,7 +10,7 @@ export default function JQueryDomManipulation() {
       description="Learn how to use jQuery to change, add, remove, and style elements on your webpage"
     >
       <p>
-        jQuery makes it easy to change your webpage. Here's how to do common tasks like changing text,
+        jQuery makes it easy to change your webpage. Here&apos;s how to do common tasks like changing text,
         adding new elements, and styling things.
       </p>
 

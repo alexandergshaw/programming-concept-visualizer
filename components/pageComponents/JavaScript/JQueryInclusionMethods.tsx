@@ -58,34 +58,16 @@ export default function JQueryInclusionMethods() {
           <ListItem>
             <ListItemText 
               primary={<Typography variant="body2">Make sure jQuery loads before any scripts that use it</Typography>}
-              secondary={<Typography variant="body2" color="text.secondary">Your code won't work if it tries to use jQuery before it's loaded</Typography>}
+              secondary={<Typography variant="body2" color="text.secondary">Your code won&apos;t work if it tries to use jQuery before it&apos;s loaded</Typography>}
             />
           </ListItem>
           <ListItem>
             <ListItemText 
               primary={<Typography variant="body2">Use the minified version (.min.js) in production</Typography>}
-              secondary={<Typography variant="body2" color="text.secondary">It's smaller and loads faster</Typography>}
+              secondary={<Typography variant="body2" color="text.secondary">It&apos;s smaller and loads faster</Typography>}
             />
           </ListItem>
         </List>
-      </Box>
-
-      <Box>
-        <Typography variant="subtitle1" gutterBottom fontWeight="medium">
-          Testing If jQuery Is Working
-        </Typography>
-        <Typography variant="body2" paragraph>
-          Open your browser's console and type:
-        </Typography>
-        <CodeSnippet
-          lines={[
-            { code: 'typeof jQuery' }
-          ]}
-          language="javascript"
-        />
-        <Typography variant="body2" paragraph>
-          If it returns "function", jQuery is loaded and ready to use!
-        </Typography>
       </Box>
     </Box>
   );

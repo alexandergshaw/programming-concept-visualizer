@@ -400,15 +400,15 @@ export default function JQuerySelectorsAndChainingConcept() {
                     '& > p': { mb: 0.5 }
                   }}
                 >
-                  <Typography component="p" variant="body2">&lt;div id="header" class="section"&gt;Welcome Header&lt;/div&gt;</Typography>
-                  <Typography component="p" variant="body2">&lt;div id="nav" class="navigation"&gt;Navigation Menu&lt;/div&gt;</Typography>
+                  <Typography component="p" variant="body2">&lt;div id=&quot;header&quot; class=&quot;section&quot;&gt;Welcome Header&lt;/div&gt;</Typography>
+                  <Typography component="p" variant="body2">&lt;div id=&quot;nav&quot; class=&quot;navigation&quot;&gt;Navigation Menu&lt;/div&gt;</Typography>
                   <Typography component="p" variant="body2">&lt;ul&gt;</Typography>
-                  <Typography component="p" variant="body2" sx={{ pl: 2 }}>&lt;li class="item active"&gt;First Item&lt;/li&gt;</Typography>
-                  <Typography component="p" variant="body2" sx={{ pl: 2 }}>&lt;li class="item"&gt;Second Item&lt;/li&gt;</Typography>
-                  <Typography component="p" variant="body2" sx={{ pl: 2 }}>&lt;li class="item disabled"&gt;Third Item&lt;/li&gt;</Typography>
+                  <Typography component="p" variant="body2" sx={{ pl: 2 }}>&lt;li class=&quot;item active&quot;&gt;First Item&lt;/li&gt;</Typography>
+                  <Typography component="p" variant="body2" sx={{ pl: 2 }}>&lt;li class=&quot;item&quot;&gt;Second Item&lt;/li&gt;</Typography>
+                  <Typography component="p" variant="body2" sx={{ pl: 2 }}>&lt;li class=&quot;item disabled&quot;&gt;Third Item&lt;/li&gt;</Typography>
                   <Typography component="p" variant="body2">&lt;/ul&gt;</Typography>
-                  <Typography component="p" variant="body2">&lt;p class="text intro"&gt;Introduction text&lt;/p&gt;</Typography>
-                  <Typography component="p" variant="body2">&lt;p class="text"&gt;Regular paragraph&lt;/p&gt;</Typography>
+                  <Typography component="p" variant="body2">&lt;p class=&quot;text intro&quot;&gt;Introduction text&lt;/p&gt;</Typography>
+                  <Typography component="p" variant="body2">&lt;p class=&quot;text&quot;&gt;Regular paragraph&lt;/p&gt;</Typography>
                 </Paper>
               </Box>
             </Box>
@@ -466,7 +466,7 @@ export default function JQuerySelectorsAndChainingConcept() {
 
         <Section title="Method Chaining">
           <Typography variant="body2" paragraph>
-            jQuery lets you run multiple methods one after another - this is called "chaining".
+            jQuery lets you run multiple methods one after another - this is called &quot;chaining&quot;.
             Try out these examples to see method chaining in action:
           </Typography>
           <div
@@ -519,8 +519,8 @@ export default function JQuerySelectorsAndChainingConcept() {
                       sx={{
                         p: 2,
                         border: 1,
-                        borderColor: theme => stylingExample.isHighlighted ? 'warning.light' : 'grey.300',
-                        bgcolor: theme => stylingExample.isHighlighted ? 'warning.50' : 'background.paper',
+                        borderColor: stylingExample.isHighlighted ? 'warning.light' : 'grey.300',
+                        bgcolor: stylingExample.isHighlighted ? 'warning.50' : 'background.paper',
                         color: stylingExample.color,
                         opacity: stylingExample.isVisible ? 1 : 0,
                         transform: `translateY(${stylingExample.isVisible ? '0' : '20px'})`,
@@ -550,8 +550,8 @@ export default function JQuerySelectorsAndChainingConcept() {
                       sx={{
                         p: 2,
                         border: 1,
-                        borderColor: theme => contentExample.isActive ? 'success.light' : 'grey.300',
-                        bgcolor: theme => contentExample.isActive ? 'success.50' : 'background.paper',
+                        borderColor: contentExample.isActive ? 'success.light' : 'grey.300',
+                        bgcolor: contentExample.isActive ? 'success.50' : 'background.paper',
                         opacity: contentExample.isVisible ? 1 : 0,
                         transform: `scale(${contentExample.isVisible ? 1 : 0.95})`,
                         transition: 'all 0.5s ease-in-out'
@@ -612,7 +612,7 @@ export default function JQuerySelectorsAndChainingConcept() {
               Pro Tip:
             </Typography>
             <Typography variant="body2" color="warning.dark">
-              When chaining methods, it's common to put each method on a new line
+              When chaining methods, it&apos;s common to put each method on a new line
               (indented) to make your code easier to read. The dots at the start of each line show that
               the methods are chained together.
             </Typography>

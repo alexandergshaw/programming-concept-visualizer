@@ -1,5 +1,4 @@
 import CodeSnippet from '../../common/CodeSnippet';
-import { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
@@ -12,7 +11,7 @@ export default function JQueryIntroduction() {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
       <Typography variant="body2">
-        jQuery makes JavaScript easier to write. It's like a toolkit that helps you do common tasks with
+        jQuery makes JavaScript easier to write. It&apos;s like a toolkit that helps you do common tasks with
         less code. Instead of writing lots of complicated JavaScript, jQuery lets you write simple commands
         to make things happen on your webpage.
       </Typography>
@@ -233,7 +232,7 @@ export default function JQueryIntroduction() {
 
       <Typography variant="body2">
         As you can see, jQuery makes your code shorter and easier to read. While modern JavaScript has
-        gotten better, many developers still use jQuery because it's simple and gets the job done quickly.
+        gotten better, many developers still use jQuery because it&apos;s simple and gets the job done quickly.
       </Typography>
     </Box>
   );
