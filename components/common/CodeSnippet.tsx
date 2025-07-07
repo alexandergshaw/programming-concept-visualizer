@@ -118,15 +118,35 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({
             {editable && isEditing ? (
                 <TextField
                     multiline
-                    rows={lines.length + 2}
+                    rows={Math.min(lines.length + 2, 20)}
                     value={editableLines}
                     onChange={(e) => setEditableLines(e.target.value)}
                     fullWidth
                     variant="outlined"
-                    sx={{ marginBottom: '16px', fontFamily: 'monospace', whiteSpace: 'pre-wrap' }}
+                    sx={{ 
+                        marginBottom: '16px', 
+                        fontFamily: 'monospace', 
+                        whiteSpace: 'pre-wrap',
+                        '& .MuiInputBase-root': {
+                            maxHeight: '400px',
+                            overflowY: 'auto'
+                        }
+                    }}
                 />
             ) : (
-                <pre style={{ margin: 0, whiteSpace: 'pre-wrap', wordBreak: 'break-word', fontFamily: 'monospace', color: '#333' }}>
+                <pre style={{ 
+                    margin: 0, 
+                    whiteSpace: 'pre-wrap', 
+                    wordBreak: 'break-word', 
+                    fontFamily: 'monospace', 
+                    color: '#333',
+                    maxHeight: '400px',
+                    overflowY: 'auto',
+                    padding: '8px',
+                    backgroundColor: '#f8f8f8',
+                    border: '1px solid #eaeaea',
+                    borderRadius: '4px'
+                }}>
                     {viewLines.split('\n').map((line, index) => (
                         <div key={index} style={{ marginBottom: '8px' }}>
                             {line}

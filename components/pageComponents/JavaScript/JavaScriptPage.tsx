@@ -16,6 +16,10 @@ import LoopConcept from './LoopConcept';
 import FunctionConcept from './FunctionConcept';
 import EventHandlersConcept from './EventHandlers';
 import EventDrivenDomConcept from './EventDrivenDomConcept';
+import JQueryConcept from './JQueryConcept';
+import JQuerySelectorsAndChainingConcept from './JQuerySelectorsAndChainingConcept';
+import JQueryFormHandlingConcept from './JQueryFormHandlingConcept';
+import JQueryDomManipulation from './JQueryDomManipulation';
 
 const navItems = [
   {
@@ -44,6 +48,15 @@ const navItems = [
       { label: 'Event-Driven DOM', value: 'event-driven dom' },
     ],
   },
+  {
+    label: 'jQuery',
+    value: 'jquery',
+    children: [
+      { label: 'jQuery Basics', value: 'jquery-basics' },
+      { label: 'Selectors & Chaining', value: 'jquery-selectors-chaining' },
+      { label: 'DOM Manipulation', value: 'jquery-dom-manipulation' },
+    ],
+  },
 
   // {
   //   label: 'Collections',
@@ -60,14 +73,6 @@ const navItems = [
   //   children: [
   //     { label: 'Objects', value: 'objects' },
   //     { label: 'Classes', value: 'classes' },
-  //   ],
-  // },
-  // {
-  //   label: 'jQuery',
-  //   value: 'jquery',
-  //   children: [
-  //     { label: 'Selectors', value: 'selectors' },
-  //     { label: 'Events', value: 'events' },
   //   ],
   // },
   // {
@@ -128,6 +133,14 @@ export default function JavaScriptPage() {
         return <EventHandlersConcept />;
       case 'event-driven dom':
         return <EventDrivenDomConcept />;
+      case 'jquery-basics':
+        return <JQueryConcept />;
+      case 'jquery-selectors-chaining':
+        return <JQuerySelectorsAndChainingConcept />;
+      case 'jquery-form-handling':
+        return <JQueryFormHandlingConcept />;
+      case 'jquery-dom-manipulation':
+        return <JQueryDomManipulation />;
       default:
         return null;
     }
@@ -152,7 +165,7 @@ export default function JavaScriptPage() {
   }
 
   return (
-    <PageWrapper pageTitle={'JavaScript Visualizer'} navItems={navItems} defaultOpen={["functions", "storing data", "control flow"]} handleSelect={handleSelect} activeValue={selectedConcept || undefined}>
+    <PageWrapper pageTitle={'JavaScript Visualizer'} navItems={navItems} defaultOpen={["jquery"]} handleSelect={handleSelect} activeValue={selectedConcept || undefined}>
       {selectedConcept ? (
         <>
           {renderContent(selectedConcept)}

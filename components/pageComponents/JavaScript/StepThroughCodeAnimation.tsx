@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ConceptInfoCard from '@/components/common/ConceptInfoCard';
 import Button from '@mui/material/Button';
 
@@ -21,13 +21,20 @@ export default function StepThroughCodeAnimation({
     steps,
     stepColors = defaultStepColors,
     style = {},
+    onStepChange,
 }: {
     code: string | string[];
     steps: Step[];
     stepColors?: string[];
     style?: React.CSSProperties;
+    onStepChange?: (step: number) => void;
 }) {
     const [currentStep, setCurrentStep] = useState(0);
+
+    // Call onStepChange when currentStep changes
+    useEffect(() => {
+        onStepChange?.(currentStep);
+    }, [currentStep, onStepChange]);
 
     // Support both string and string[] for code
     let codeLines = Array.isArray(code) ? code : code.split('\n');
@@ -124,6 +131,8 @@ export default function StepThroughCodeAnimation({
                     padding: '12px 10px',
                     lineHeight: 1.7,
                     overflowX: 'auto',
+                    overflowY: 'auto',
+                    maxHeight: '400px',
                     border: '1.5px solid #e0e0e0',
                     display: 'block'
                 }}
