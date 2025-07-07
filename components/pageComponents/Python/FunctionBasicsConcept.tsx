@@ -34,7 +34,7 @@ greet(&quot;Alice&quot;)`;
       <TableOfContents numbered>
         <Section title="What is a Function?">
           <Typography variant="body2" paragraph>
-            A function is like a mini-program inside your program. It's a way to package up code so you can use it over and over again, just like how you might save a recipe to cook the same dish multiple times.
+            A function is like a mini-program inside your program. It&apos;s a way to package up code so you can use it over and over again, just like how you might save a recipe to cook the same dish multiple times.
           </Typography>
 
           <ConceptInfoCard>
@@ -94,7 +94,7 @@ greet(&quot;Alice&quot;)`;
           <ConceptInfoCard>
             <Box sx={{ mb: 3 }}>
               <Typography variant="body2" paragraph>
-                Every function has the same basic parts. Let's see what each piece does:
+                Every function has the same basic parts. Let&apos;s see what each piece does:
               </Typography>
               <CodePartsExplanation
                 code={functionCode}
@@ -196,7 +196,7 @@ greet(&quot;Alice&quot;)`;
           <ConceptInfoCard>
             <Box sx={{ mb: 3 }}>
               <Typography variant="body2" paragraph>
-                Sometimes you want your function to give you back an answer, like a calculator. Use "return" to send back a result:
+                Sometimes you want your function to give you back an answer, like a calculator. Use &quot;return&quot; to send back a result:
               </Typography>
               <CodePartsExplanation
                 code={`def add_numbers(a, b):
@@ -384,7 +384,7 @@ describe_pet(animal_type=&quot;fish&quot;, name=&quot;Bubbles&quot;)  # Output: 
         <Section title="Try It Out">
           <ConceptInfoCard>
             <Typography variant="body2" gutterBottom>
-              Here's a practical example of a function that calculates area:
+              Here&apos;s a practical example of a function that calculates area:
             </Typography>
             <Box sx={{ mb: 3 }}>
               <CodePartsExplanation

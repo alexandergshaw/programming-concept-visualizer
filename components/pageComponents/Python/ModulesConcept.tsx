@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
 import Typography from '@mui/material/Typography';
@@ -167,7 +166,7 @@ export default function ModulesConcept() {
             </Typography>
             <ConceptInfoCard>
               <Typography variant="body2" paragraph>
-                Python comes with many built-in modules. Here's how to use them:
+                Python comes with many built-in modules. Here&apos;s how to use them:
               </Typography>
               <StepThroughCodeAnimation
                 code={moduleImportCode}
