@@ -56,12 +56,12 @@ export default function JQueryDomManipulation() {
               <CodeSnippet
                 lines={[
                   { code: '// Get or change text' },
-                  { code: 'let message = $("#greeting").text();     // Get text' },
-                  { code: '$("#greeting").text("Hello!");          // Change text' },
+                  { code: 'let message = $(&quot;#greeting&quot;).text();     // Get text' },
+                  { code: '$(&quot;#greeting&quot;).text(&quot;Hello!&quot;);          // Change text' },
                   { code: '' },
                   { code: '// Get or change HTML' },
-                  { code: 'let content = $("#info").html();        // Get HTML' },
-                  { code: '$("#info").html("<b>Important!</b>");  // Change HTML' }
+                  { code: 'let content = $(&quot;#info&quot;).html();        // Get HTML' },
+                  { code: '$(&quot;#info&quot;).html(&quot;&lt;b&gt;Important!&lt;/b&gt;&quot;);  // Change HTML' }
                 ]}
                 language="javascript"
               />
@@ -71,11 +71,11 @@ export default function JQueryDomManipulation() {
               <CodeSnippet
                 lines={[
                   { code: '// Change image source' },
-                  { code: '$("img").attr("src", "new-pic.jpg");' },
+                  { code: '$(&quot;img&quot;).attr(&quot;src&quot;, &quot;new-pic.jpg&quot;);' },
                   { code: '' },
                   { code: '// Check or change checkboxes' },
-                  { code: 'let isChecked = $("#terms").prop("checked");' },
-                  { code: '$("#terms").prop("checked", true);' }
+                  { code: 'let isChecked = $(&quot;#terms&quot;).prop(&quot;checked&quot;);' },
+                  { code: '$(&quot;#terms&quot;).prop(&quot;checked&quot;, true);' }
                 ]}
                 language="javascript"
               />
@@ -90,13 +90,13 @@ export default function JQueryDomManipulation() {
               <CodeSnippet
                 lines={[
                   { code: '// Add a new paragraph' },
-                  { code: '$("<p>New text</p>").appendTo("#container");' },
+                  { code: '$(&quot;&lt;p&gt;New text&lt;/p&gt;&quot;).appendTo(&quot;#container&quot;);' },
                   { code: '' },
                   { code: '// Add things in different spots' },
-                  { code: '$("p").before("<hr>");         // Add before' },
-                  { code: '$("p").after("<hr>");          // Add after' },
-                  { code: '$("div").prepend("Start");     // Add at start' },
-                  { code: '$("div").append("End");        // Add at end' }
+                  { code: '$(&quot;p&quot;).before(&quot;&lt;hr&gt;&quot;);         // Add before' },
+                  { code: '$(&quot;p&quot;).after(&quot;&lt;hr&gt;&quot;);          // Add after' },
+                  { code: '$(&quot;div&quot;).prepend(&quot;Start&quot;);     // Add at start' },
+                  { code: '$(&quot;div&quot;).append(&quot;End&quot;);        // Add at end' }
                 ]}
                 language="javascript"
               />
@@ -106,13 +106,13 @@ export default function JQueryDomManipulation() {
               <CodeSnippet
                 lines={[
                   { code: '// Remove elements completely' },
-                  { code: '$(".old-stuff").remove();' },
+                  { code: '$(&quot;.old-stuff&quot;).remove();' },
                   { code: '' },
                   { code: '// Empty a container' },
-                  { code: '$("#container").empty();' },
+                  { code: '$(&quot;#container&quot;).empty();' },
                   { code: '' },
                   { code: '// Replace something' },
-                  { code: '$("p").replaceWith("<div>New</div>");' }
+                  { code: '$(&quot;p&quot;).replaceWith(&quot;&lt;div&gt;New&lt;/div&gt;&quot;);' }
                 ]}
                 language="javascript"
               />
@@ -127,14 +127,14 @@ export default function JQueryDomManipulation() {
               <CodeSnippet
                 lines={[
                   { code: '// Add or remove classes' },
-                  { code: '$("div").addClass("highlight");' },
-                  { code: '$("div").removeClass("old");' },
+                  { code: '$(&quot;div&quot;).addClass(&quot;highlight&quot;);' },
+                  { code: '$(&quot;div&quot;).removeClass(&quot;old&quot;);' },
                   { code: '' },
                   { code: '// Toggle a class (add/remove)' },
-                  { code: '$("div").toggleClass("active");' },
+                  { code: '$(&quot;div&quot;).toggleClass(&quot;active&quot;);' },
                   { code: '' },
                   { code: '// Check for a class' },
-                  { code: 'if ($("div").hasClass("important")) {' },
+                  { code: 'if ($(&quot;div&quot;).hasClass(&quot;important&quot;)) {' },
                   { code: '  // Do something' },
                   { code: '}' }
                 ]}
@@ -146,13 +146,13 @@ export default function JQueryDomManipulation() {
               <CodeSnippet
                 lines={[
                   { code: '// Change one style' },
-                  { code: '$("p").css("color", "blue");' },
+                  { code: '$(&quot;p&quot;).css(&quot;color&quot;, &quot;blue&quot;);' },
                   { code: '' },
                   { code: '// Change many styles at once' },
-                  { code: '$("div").css({' },
-                  { code: '  "background": "yellow",' },
-                  { code: '  "padding": "10px",' },
-                  { code: '  "border": "1px solid black"' },
+                  { code: '$(&quot;div&quot;).css({' },
+                  { code: '  &quot;background&quot;: &quot;yellow&quot;,' },
+                  { code: '  &quot;padding&quot;: &quot;10px&quot;,' },
+                  { code: '  &quot;border&quot;: &quot;1px solid black&quot;' },
                   { code: '});' }
                 ]}
                 language="javascript"

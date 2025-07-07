@@ -12,19 +12,19 @@ import TableOfContents from '@/components/common/TableOfContents';
 export default function FunctionBasicsConcept() {
   const basicFunctionCode = [
     'def greet(name):',
-    '    """This function prints a greeting"""',
-    '    print(f"Hello, {name}!")',
+    '    &quot;&quot;&quot;This function prints a greeting&quot;&quot;&quot;',
+    '    print(f&quot;Hello, {name}!&quot;)',
     '',
     '# Call the function',
-    'greet("Alice")'
+    'greet(&quot;Alice&quot;)'
   ];
 
   const functionCode = `def greet(name):
-    """This function prints a greeting"""
-    print(f"Hello, {name}!")
+    &quot;&quot;&quot;This function prints a greeting&quot;&quot;&quot;
+    print(f&quot;Hello, {name}!&quot;)
 
 # Call the function
-greet("Alice")`;
+greet(&quot;Alice&quot;)`;
 
   return (
     <ConceptWrapper
@@ -148,12 +148,12 @@ greet("Alice")`;
                 {
                   label: 'Step 3: Do the Work',
                   desc: 'Write the code that actually does something useful',
-                  highlight: 'print(f"Hello, {name}!")'
+                  highlight: 'print(f&quot;Hello, {name}!&quot;)'
                 },
                 {
                   label: 'Step 4: Use the Function',
                   desc: 'Now you can use your function by calling its name',
-                  highlight: 'greet("Alice")'
+                  highlight: 'greet(&quot;Alice&quot;)'
                 }
               ]}
             />
@@ -308,14 +308,14 @@ print(result)    # Prints: 8`}
               </Typography>
 
               <CodePartsExplanation
-                code={`def describe_pet(name, animal_type="dog"):
-    """Demonstrates default parameters"""
-    print(f"I have a {animal_type} named {name}.")
+                code={`def describe_pet(name, animal_type=&quot;dog&quot;):
+    &quot;&quot;&quot;Demonstrates default parameters&quot;&quot;&quot;
+    print(f&quot;I have a {animal_type} named {name}.&quot;)
 
 # Different ways to call the function
-describe_pet("Rover")                  # Output: I have a dog named Rover.
-describe_pet("Whiskers", "cat")        # Output: I have a cat named Whiskers.
-describe_pet(animal_type="fish", name="Bubbles")  # Output: I have a fish named Bubbles.`}
+describe_pet(&quot;Rover&quot;)                  # Output: I have a dog named Rover.
+describe_pet(&quot;Whiskers&quot;, &quot;cat&quot;)        # Output: I have a cat named Whiskers.
+describe_pet(animal_type=&quot;fish&quot;, name=&quot;Bubbles&quot;)  # Output: I have a fish named Bubbles.`}
                 parts={[
                   {
                     label: 'Default parameter',
@@ -340,14 +340,14 @@ describe_pet(animal_type="fish", name="Bubbles")  # Output: I have a fish named 
             </Box>
             <StepThroughCodeAnimation
               code={[
-                'def describe_pet(name, animal_type="dog"):',
-                '    """Demonstrates default parameters"""',
-                '    print(f"I have a {animal_type} named {name}.")',
+                'def describe_pet(name, animal_type=&quot;dog&quot;):',
+                '    &quot;&quot;&quot;Demonstrates default parameters&quot;&quot;&quot;',
+                '    print(f&quot;I have a {animal_type} named {name}.&quot;)',
                 '',
                 '# Different ways to call the function',
-                'describe_pet("Rover")                  # Output: I have a dog named Rover.',
-                'describe_pet("Whiskers", "cat")        # Output: I have a cat named Whiskers.',
-                'describe_pet(animal_type="fish", name="Bubbles")  # Output: I have a fish named Bubbles.'
+                'describe_pet(&quot;Rover&quot;)                  # Output: I have a dog named Rover.',
+                'describe_pet(&quot;Whiskers&quot;, &quot;cat&quot;)        # Output: I have a cat named Whiskers.',
+                'describe_pet(animal_type=&quot;fish&quot;, name=&quot;Bubbles&quot;)  # Output: I have a fish named Bubbles.'
               ]}
               steps={[
                 {
@@ -358,7 +358,7 @@ describe_pet(animal_type="fish", name="Bubbles")  # Output: I have a fish named 
                 {
                   label: 'Function Body',
                   desc: 'The function prints information about the pet using both parameters',
-                  highlight: 'print(f"I have a {animal_type} named {name}.")'
+                  highlight: 'print(f&quot;I have a {animal_type} named {name}.&quot;)'
                 },
                 {
                   label: 'Call with Default',

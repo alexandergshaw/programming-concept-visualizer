@@ -73,10 +73,10 @@ export default function JQueryChaining() {
           <CodeSnippet
             lines={[
               { code: '// Do one thing at a time' },
-              { code: '$("p").css("color", "blue");' },
-              { code: '$("p").hide();' },
-              { code: '$("p").fadeIn();' },
-              { code: '$("p").addClass("done");' }
+              { code: '$(&quot;p&quot;).css(&quot;color&quot;, &quot;blue&quot;);' },
+              { code: '$(&quot;p&quot;).hide();' },
+              { code: '$(&quot;p&quot;).fadeIn();' },
+              { code: '$(&quot;p&quot;).addClass(&quot;done&quot;);' }
             ]}
             language="javascript"
           />
@@ -86,11 +86,11 @@ export default function JQueryChaining() {
           <CodeSnippet
             lines={[
               { code: '// Do many things in one go' },
-              { code: '$("p")' },
-              { code: '  .css("color", "blue")' },
+              { code: '$(&quot;p&quot;)' },
+              { code: '  .css(&quot;color&quot;, &quot;blue&quot;)' },
               { code: '  .hide()' },
               { code: '  .fadeIn()' },
-              { code: '  .addClass("done");' }
+              { code: '  .addClass(&quot;done&quot;);' }
             ]}
             language="javascript"
           />
@@ -104,11 +104,11 @@ export default function JQueryChaining() {
           <CodeSnippet
             lines={[
               { code: '// Disable a form and show it&apos;s inactive' },
-              { code: '$("form")' },
-              { code: '  .find("input")          // Find all inputs' },
-              { code: '  .prop("disabled", true) // Disable them' },
-              { code: '  .addClass("inactive")   // Make them look disabled' },
-              { code: '  .val("");              // Clear their values' }
+              { code: '$(&quot;form&quot;)' },
+              { code: '  .find(&quot;input&quot;)          // Find all inputs' },
+              { code: '  .prop(&quot;disabled&quot;, true) // Disable them' },
+              { code: '  .addClass(&quot;inactive&quot;)   // Make them look disabled' },
+              { code: '  .val(&quot;&quot;);              // Clear their values' }
             ]}
             language="javascript"
           />
@@ -119,11 +119,11 @@ export default function JQueryChaining() {
           <CodeSnippet
             lines={[
               { code: '// Create a smooth animation' },
-              { code: '$(".box")' },
+              { code: '$(&quot;.box&quot;)' },
               { code: '  .fadeOut()                    // Fade away' },
               { code: '  .delay(1000)                 // Wait a second' },
               { code: '  .fadeIn()                    // Fade back' },
-              { code: '  .animate({ width: "200px" }) // Get wider' }
+              { code: '  .animate({ width: &quot;200px&quot; }) // Get wider' }
             ]}
             language="javascript"
           />
@@ -134,12 +134,12 @@ export default function JQueryChaining() {
           <CodeSnippet
             lines={[
               { code: '// React to mouse movements' },
-              { code: '$("button")' },
-              { code: '  .on("mouseenter", function() {  // When mouse moves in' },
-              { code: '    $(this).addClass("hover");' },
+              { code: '$(&quot;button&quot;)' },
+              { code: '  .on(&quot;mouseenter&quot;, function() {  // When mouse moves in' },
+              { code: '    $(this).addClass(&quot;hover&quot;);' },
               { code: '  })' },
-              { code: '  .on("mouseleave", function() {  // When mouse leaves' },
-              { code: '    $(this).removeClass("hover");' },
+              { code: '  .on(&quot;mouseleave&quot;, function() {  // When mouse leaves' },
+              { code: '    $(this).removeClass(&quot;hover&quot;);' },
               { code: '  });' }
             ]}
             language="javascript"
@@ -151,62 +151,62 @@ export default function JQueryChaining() {
       <StepThroughCodeAnimation
         code={[
           '// Example 1: Simple animation chain',
-          '$(".box")',
+          '$(&quot;.box&quot;)',
           '  .fadeOut()',
           '  .delay(500)',
           '  .fadeIn()',
-          '  .css("background", "yellow");',
+          '  .css(&quot;background&quot;, &quot;yellow&quot;);',
           '',
           '// Example 2: Form handling chain',
-          '$("form")',
-          '  .find("input")',
-          '  .prop("disabled", true)',
-          '  .val("")',
-          '  .addClass("inactive");',
+          '$(&quot;form&quot;)',
+          '  .find(&quot;input&quot;)',
+          '  .prop(&quot;disabled&quot;, true)',
+          '  .val(&quot;&quot;)',
+          '  .addClass(&quot;inactive&quot;);',
           '',
           '// Example 3: Content update chain',
-          '$(".message")',
-          '  .text("Loading...")',
-          '  .addClass("loading")',
+          '$(&quot;.message&quot;)',
+          '  .text(&quot;Loading...&quot;)',
+          '  .addClass(&quot;loading&quot;)',
           '  .delay(1000)',
-          '  .text("Done!")',
-          '  .removeClass("loading")',
-          '  .addClass("success");'
+          '  .text(&quot;Done!&quot;)',
+          '  .removeClass(&quot;loading&quot;)',
+          '  .addClass(&quot;success&quot;);'
         ]}
         steps={[
           {
             label: 'Animation Chain',
             desc: 'Chain multiple animation effects together',
             highlight: [
-              '$(".box")',
+              '$(&quot;.box&quot;)',
               '  .fadeOut()',
               '  .delay(500)',
               '  .fadeIn()',
-              '  .css("background", "yellow");'
+              '  .css(&quot;background&quot;, &quot;yellow&quot;);'
             ]
           },
           {
             label: 'Form Chain',
             desc: 'Chain form field modifications together',
             highlight: [
-              '$("form")',
-              '  .find("input")',
-              '  .prop("disabled", true)',
-              '  .val("")',
-              '  .addClass("inactive");'
+              '$(&quot;form&quot;)',
+              '  .find(&quot;input&quot;)',
+              '  .prop(&quot;disabled&quot;, true)',
+              '  .val(&quot;&quot;)',
+              '  .addClass(&quot;inactive&quot;);'
             ]
           },
           {
             label: 'Content Chain',
             desc: 'Chain content and style updates together',
             highlight: [
-              '$(".message")',
-              '  .text("Loading...")',
-              '  .addClass("loading")',
+              '$(&quot;.message&quot;)',
+              '  .text(&quot;Loading...&quot;)',
+              '  .addClass(&quot;loading&quot;)',
               '  .delay(1000)',
-              '  .text("Done!")',
-              '  .removeClass("loading")',
-              '  .addClass("success");'
+              '  .text(&quot;Done!&quot;)',
+              '  .removeClass(&quot;loading&quot;)',
+              '  .addClass(&quot;success&quot;);'
             ]
           }
         ]}

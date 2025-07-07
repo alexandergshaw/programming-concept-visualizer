@@ -55,15 +55,15 @@ export default function ModulesConcept() {
   const customModuleCode = [
     '# helpers.py',
     'def greet(name):',
-    '    return f"Hello, {name}!"',
+    '    return f&quot;Hello, {name}!&quot;',
     '',
     'PI = 3.14159',
     '',
     '# main.py',
     'import helpers',
     '',
-    'print(helpers.greet("Alice"))',
-    'print(f"PI is {helpers.PI}")'
+    'print(helpers.greet(&quot;Alice&quot;))',
+    'print(f&quot;PI is {helpers.PI}&quot;)'
   ];
 
   const customModuleSteps = [
@@ -75,7 +75,7 @@ export default function ModulesConcept() {
     {
       label: 'Define Functions',
       desc: 'Add functions to your module',
-      highlight: ['def greet(name):', '    return f"Hello, {name}!"']
+      highlight: ['def greet(name):', '    return f&quot;Hello, {name}!&quot;']
     },
     {
       label: 'Define Constants',
@@ -90,7 +90,7 @@ export default function ModulesConcept() {
     {
       label: 'Use Module',
       desc: 'Access functions and variables from your module',
-      highlight: ['print(helpers.greet("Alice"))', 'print(f"PI is {helpers.PI}")']
+      highlight: ['print(helpers.greet(&quot;Alice&quot;))', 'print(f&quot;PI is {helpers.PI}&quot;)']
     }
   ];
 
