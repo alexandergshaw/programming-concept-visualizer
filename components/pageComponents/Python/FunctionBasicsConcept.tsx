@@ -19,8 +19,6 @@ export default function FunctionBasicsConcept() {
     'greet("Alice")'
   ];
 
-  const functionCode = "def greet(name):\n    \"\"\"This function prints a greeting\"\"\"\n    print(f\"Hello, {name}!\")\n\n# Call the function\ngreet(\"Alice\")";
-
   return (
     <ConceptWrapper
       title="Python Functions: The Basics"
@@ -87,46 +85,6 @@ export default function FunctionBasicsConcept() {
             />
           </div>
           <ConceptInfoCard>
-            <Box sx={{ mb: 3 }}>
-              <Typography variant="body2" paragraph>
-                Every function has the same basic parts. Let&apos;s see what each piece does:
-              </Typography>
-              <CodePartsExplanation
-                code={functionCode}
-                parts={[
-                  {
-                    label: 'def keyword',
-                    part: 'def',
-                    color: '#9333ea',
-                    desc: 'This word tells Python &quot;I\'m about to create a function&quot;'
-                  },
-                  {
-                    label: 'Function name',
-                    part: 'greet',
-                    color: '#059669',
-                    desc: 'Give your function a name so you can use it later'
-                  },
-                  {
-                    label: 'Input',
-                    part: 'name',
-                    color: '#dc2626',
-                    desc: 'This is information the function needs to do its job'
-                  },
-                  {
-                    label: 'Description',
-                    part: '"""This function prints a greeting"""',
-                    color: '#ea580c',
-                    desc: 'Write a note explaining what your function does'
-                  },
-                  {
-                    label: 'The work',
-                    part: 'f"Hello, {name}!"',
-                    color: '#2563eb',
-                    desc: 'This is the actual work the function does'
-                  }
-                ]}
-              />
-            </Box>
             <StepThroughCodeAnimation
               code={basicFunctionCode}
               steps={[
@@ -141,14 +99,14 @@ export default function FunctionBasicsConcept() {
                   highlight: '"""This function prints a greeting"""'
                 },
                 {
-                  label: 'Step 3: Do the Work',
+                  label: 'Step 3: Function Body',
                   desc: 'Write the code that actually does something useful',
-                  highlight: 'print(f&quot;Hello, {name}!&quot;)'
+                  highlight: 'print(f"Hello, {name}!")'
                 },
                 {
                   label: 'Step 4: Use the Function',
                   desc: 'Now you can use your function by calling its name',
-                  highlight: 'greet(&quot;Alice&quot;)'
+                  highlight: 'greet("Alice")'
                 }
               ]}
             />
@@ -202,7 +160,7 @@ result = add_numbers(5, 3)
 print(result)    # Prints: 8`}
                 parts={[
                   {
-                    label: 'return',
+                    label: 'Return Statement',
                     part: 'return',
                     color: '#9333ea',
                     desc: 'This gives back an answer to whoever asked for it'
@@ -211,10 +169,10 @@ print(result)    # Prints: 8`}
                     label: 'Catch the answer',
                     part: 'result = add_numbers(5, 3)',
                     color: '#059669',
-                    desc: 'Put the answer in a box (variable) so you can use it'
+                    desc: 'Put the answer in a variable so you can use it'
                   },
                   {
-                    label: 'Multiple inputs',
+                    label: 'Multiple parameters',
                     part: 'a, b',
                     color: '#dc2626',
                     desc: 'You can give your function multiple pieces of information'
@@ -303,14 +261,14 @@ print(result)    # Prints: 8`}
               </Typography>
 
               <CodePartsExplanation
-                code={`def describe_pet(name, animal_type=&quot;dog&quot;):
-    &quot;&quot;&quot;Demonstrates default parameters&quot;&quot;&quot;
-    print(f&quot;I have a {animal_type} named {name}.&quot;)
+                code={`def describe_pet(name, animal_type="dog"):
+    """Demonstrates default parameters"""
+    print(f"I have a {animal_type} named {name}.")
 
 # Different ways to call the function
-describe_pet(&quot;Rover&quot;)                  # Output: I have a dog named Rover.
-describe_pet(&quot;Whiskers&quot;, &quot;cat&quot;)        # Output: I have a cat named Whiskers.
-describe_pet(animal_type=&quot;fish&quot;, name=&quot;Bubbles&quot;)  # Output: I have a fish named Bubbles.`}
+describe_pet("Rover")                  # Output: I have a dog named Rover.
+describe_pet("Whiskers", "cat")        # Output: I have a cat named Whiskers.
+describe_pet(animal_type="fish", name="Bubbles")  # Output: I have a fish named Bubbles.`}
                 parts={[
                   {
                     label: 'Default parameter',
@@ -348,7 +306,7 @@ describe_pet(animal_type=&quot;fish&quot;, name=&quot;Bubbles&quot;)  # Output: 
                 {
                   label: 'Function with Default Parameter',
                   desc: 'Define a function where animal_type has a default value of &quot;dog&quot;',
-                  highlight: 'def describe_pet(name, animal_type="dog"):'
+                  highlight: 'def describe_pet(name, animal_type=&quot;dog&quot;):'
                 },
                 {
                   label: 'Function Body',
@@ -358,17 +316,17 @@ describe_pet(animal_type=&quot;fish&quot;, name=&quot;Bubbles&quot;)  # Output: 
                 {
                   label: 'Call with Default',
                   desc: 'Call with only required parameter - animal_type defaults to &quot;dog&quot;',
-                  highlight: 'describe_pet("Rover")                  # Output: I have a dog named Rover.'
+                  highlight: 'describe_pet(&quot;Rover&quot;)                  # Output: I have a dog named Rover.'
                 },
                 {
                   label: 'Call with All Arguments',
                   desc: 'Provide both arguments in order to override the default',
-                  highlight: 'describe_pet("Whiskers", "cat")        # Output: I have a cat named Whiskers.'
+                  highlight: 'describe_pet(&quot;Whiskers&quot;, &quot;cat&quot;)        # Output: I have a cat named Whiskers.'
                 },
                 {
                   label: 'Call with Named Arguments',
                   desc: 'Use parameter names to specify which value goes where',
-                  highlight: 'describe_pet(animal_type="fish", name="Bubbles")  # Output: I have a fish named Bubbles.'
+                  highlight: 'describe_pet(animal_type=&quot;fish&quot;, name=&quot;Bubbles&quot;)  # Output: I have a fish named Bubbles.'
                 }
               ]}
               onStepChange={() => { }}
