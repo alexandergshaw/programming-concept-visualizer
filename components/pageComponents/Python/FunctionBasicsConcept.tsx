@@ -19,8 +19,6 @@ export default function FunctionBasicsConcept() {
     'greet("Alice")'
   ];
 
-  const functionCode = "def greet(name):\n    print(f\"Hello, {name}!\")\n\n# Call the function\ngreet(\"Alice\")";
-
   return (
     <ConceptWrapper
       title="Python Functions: The Basics"
