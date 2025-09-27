@@ -16,7 +16,7 @@ export default function ConceptWrapper({
 }: ConceptWrapperProps) {
     return (
         <Box className="array-container">
-            <Typography variant="h5" gutterBottom>
+            <Typography variant="h4" gutterBottom>
                 {title}
             </Typography>
 

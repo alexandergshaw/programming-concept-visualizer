@@ -65,7 +65,7 @@ export default function SetConcept({
         const addSet = new Set(setValues);
         addSet.add(val);
         setSetValues(addSet);
-        updateCodePreview(`\nset.add(${val}); // adds ${val} to the set, if ${val} isn't already in the set\n\n// ${hasValue ? `${val} was already in the set` : `${val} was not already in the set`}\n\n// updated set: ${hasValue ? "same as before" : displaySet(addSet)}`);
+        updateCodePreview(`\nset.add(${val}); // adds ${val} to the set, if ${val} isn&apos;t already in the set\n\n// ${hasValue ? `${val} was already in the set` : `${val} was not already in the set`}\n\n// updated set: ${hasValue ? "same as before" : displaySet(addSet)}`);
         break;
 
       case 'delete':
@@ -77,7 +77,7 @@ export default function SetConcept({
 
       case 'has':
         const exists = setValues.has(val);
-        updateCodePreview(`\nset.has(${val}); // checks if ${val} exists in the set\n\n// set.has(${val}) returns ${exists} because ${val} ${exists ? "exists in the set" : "doesn't exist in the set"}\n\n// set is unchanged`);
+        updateCodePreview(`\nset.has(${val}); // checks if ${val} exists in the set\n\n// set.has(${val}) returns ${exists} because ${val} ${exists ? "exists in the set" : "doesn&apos;t exist in the set"}\n\n// set is unchanged`);
         break;
 
       case 'clear':

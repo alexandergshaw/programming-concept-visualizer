@@ -151,7 +151,7 @@ function InteractiveInterpreterDemo() {
     return () => {
       if (interval) clearInterval(interval);
     };
-  }, [step, userCode]);
+  }, [step, userCode, interpreterSteps.length]);
 
   const steps = [
     {
@@ -448,7 +448,7 @@ function InteractiveCompilerDemo() {
     return () => {
       if (interval) clearInterval(interval);
     };
-  }, [step, userCode]);
+  }, [step, userCode, assemblyInstructions.length, machineInstructions.length, cpuSteps.length]);
 
   const codeSteps = [
     {

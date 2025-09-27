@@ -58,7 +58,7 @@ export default function CapstonePractice({
         }
 
         try {
-            // eslint-disable-next-line no-new-func
+             
             const func = new Function('console', codeToRun);
             func({ log });
             const trimmed = captured.trim();

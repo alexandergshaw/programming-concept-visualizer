@@ -20,6 +20,18 @@ import JQueryConcept from './JQueryConcept';
 import JQuerySelectorsAndChainingConcept from './JQuerySelectorsAndChainingConcept';
 import JQueryFormHandlingConcept from './JQueryFormHandlingConcept';
 import JQueryDomManipulation from './JQueryDomManipulation';
+import TryCatchFinallyConcept from './TryCatchFinally/TryCatchFinallyConcept';
+import ErrorsConcept from './Errors/ErrorsConcept';
+import SwitchStatementConcept from './SwitchCase/SwitchStatementConcept';
+import TernaryOperatorConcept from './TernaryOperator/TernaryOperatorConcept';
+import IdentityOperatorConcept from './IdentityOperator/IdentityOperatorConcept';
+import EqualityOperatorConcept from './EqualityOperator/EqualityOperatorConcept';
+import ObjectFundamentalsConcept from './ObjectOriented/ObjectFundamentalsConcept';
+import InheritanceHierarchiesConcept from './ObjectOriented/InheritanceHierarchiesConcept';
+import ObjectPatternsConcept from './ObjectOriented/ObjectPatternsConcept';
+import FunctionParametersConcept from './Advanced/FunctionParametersConcept';
+import ScopeClosuresConcept from './Advanced/ScopeClosuresConcept';
+import ModulesPatternsConcept from './Advanced/ModulesPatternsConcept';
 
 const navItems = [
   {
@@ -32,12 +44,31 @@ const navItems = [
     ],
   },
   {
+    label: 'Operators',
+    value: 'operators',
+    children: [
+      { label: 'Identity Operators', value: 'identity-operators' },
+      { label: 'Equality Operators', value: 'equality-operators' },
+    ],
+  },
+  {
     label: 'Control Flow',
     value: 'control flow',
     children: [
-      { label: 'Conditionals', value: 'conditionals' },
+      { label: 'Ternary Operator', value: 'ternary-operator' },
+      { label: 'If/Else', value: 'conditionals' },
+      { label: 'Switch Statement', value: 'switch-statement' },
       { label: 'Loops', value: 'loops' },
     ]
+  },
+  {
+    label: 'Collections',
+    value: 'collections',
+    children: [
+      { label: 'Arrays', value: 'arrays' },
+      { label: 'Sets', value: 'sets' },
+      { label: 'Maps', value: 'maps' },
+    ],
   },
   {
     label: 'Functions',
@@ -49,6 +80,32 @@ const navItems = [
     ],
   },
   {
+    label: 'Error Handling',
+    value: 'error handling',
+    children: [
+      { label: 'Common Errors', value: 'javascript-errors' },
+      { label: 'Try-Catch-Finally', value: 'try-catch-finally' },
+    ],
+  },
+  {
+    label: 'Object Oriented Programming',
+    value: 'object oriented programming',
+    children: [
+      { label: 'Object Fundamentals', value: 'object-fundamentals' },
+      { label: 'Inheritance & Hierarchies', value: 'inheritance-hierarchies' },
+      { label: 'Object Patterns', value: 'object-patterns' },
+    ],
+  },
+  {
+    label: 'Advanced JavaScript',
+    value: 'advanced javascript',
+    children: [
+      { label: 'Function Parameters', value: 'function-parameters' },
+      { label: 'Scope & Closures', value: 'scope-closures' },
+      { label: 'Modules & Patterns', value: 'modules-patterns' },
+    ],
+  },
+  {
     label: 'jQuery',
     value: 'jquery',
     children: [
@@ -57,16 +114,6 @@ const navItems = [
       { label: 'DOM Manipulation', value: 'jquery-dom-manipulation' },
     ],
   },
-
-  // {
-  //   label: 'Collections',
-  //   value: 'collections',
-  //   children: [
-  //     { label: 'Arrays', value: 'arrays' },
-  //     { label: 'Sets', value: 'sets' },
-  //     { label: 'Maps', value: 'maps' },
-  //   ],
-  // },
   // {
   //   label: 'Object Oriented Programming',
   //   value: 'object oriented programming',
@@ -115,6 +162,12 @@ export default function JavaScriptPage() {
         return <SetConcept onCodeChange={setCodeSnippet} />;
       case 'objects':
         return <ObjectConcept />;
+      case 'object-fundamentals':
+        return <ObjectFundamentalsConcept />;
+      case 'inheritance-hierarchies':
+        return <InheritanceHierarchiesConcept />;
+      case 'object-patterns':
+        return <ObjectPatternsConcept />;
       case 'variables': 
         return <VariableConcept />;
       case 'constants':
@@ -123,8 +176,16 @@ export default function JavaScriptPage() {
         return <DataTypesConcept/>;
       case 'user input':
         return <UserInputConcept/>;
+      case 'identity-operators':
+        return <IdentityOperatorConcept />;
+      case 'equality-operators':
+        return <EqualityOperatorConcept />;
+      case 'ternary-operator':
+        return <TernaryOperatorConcept />;
       case 'conditionals':
         return <ConditionalConcept />;
+      case 'switch-statement':
+        return <SwitchStatementConcept />;
       case 'loops':
         return <LoopConcept />;
       case 'functions':
@@ -141,6 +202,16 @@ export default function JavaScriptPage() {
         return <JQueryFormHandlingConcept />;
       case 'jquery-dom-manipulation':
         return <JQueryDomManipulation />;
+      case 'try-catch-finally':
+        return <TryCatchFinallyConcept />;
+      case 'javascript-errors':
+        return <ErrorsConcept />;
+      case 'function-parameters':
+        return <FunctionParametersConcept />;
+      case 'scope-closures':
+        return <ScopeClosuresConcept />;
+      case 'modules-patterns':
+        return <ModulesPatternsConcept />;
       default:
         return null;
     }
@@ -155,7 +226,7 @@ export default function JavaScriptPage() {
     return (
       <div className="js-code-preview">
         <div className="code-preview-header">
-          <h3>JavaScript Code</h3>
+          <h5>JavaScript Code</h5>
         </div>
         <pre>
           <code>{codeSnippet}</code>
@@ -165,7 +236,7 @@ export default function JavaScriptPage() {
   }
 
   return (
-    <PageWrapper pageTitle={'JavaScript Visualizer'} navItems={navItems} defaultOpen={["jquery"]} handleSelect={handleSelect} activeValue={selectedConcept || undefined}>
+    <PageWrapper pageTitle={'JavaScript Visualizer'} navItems={navItems} defaultOpen={[]} handleSelect={handleSelect} activeValue={selectedConcept || undefined} headerImage="/js-logo.svg">
       {selectedConcept ? (
         <>
           {renderContent(selectedConcept)}

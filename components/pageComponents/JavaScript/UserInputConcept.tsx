@@ -86,7 +86,7 @@ export default function UserInputConcept() {
                         items={[
                             "Use parseInt to convert a string to a whole number (integer).",
                             "Use parseFloat to convert a string to a decimal number.",
-                            "If the input can't be converted, the result will be NaN (Not a Number)."
+                            "If the input can&apos;t be converted, the result will be NaN (Not a Number)."
                         ]}
                     />
                     <TextField
@@ -200,7 +200,7 @@ export default function UserInputConcept() {
                 </Section>
                 <Section
                     title="4. What if the User Types Something Weird?"
-                    subtitle="If the user types something that isn't a number, parseInt and parseFloat will return NaN (Not a Number). Try it below!"
+                    subtitle="If the user types something that isn&apos;t a number, parseInt and parseFloat will return NaN (Not a Number). Try it below!"
                 >
                     <TextField
                         label='Type a number'

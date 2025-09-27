@@ -48,10 +48,10 @@ export default function JQueryFormHandling() {
         type in, checking boxes, and handling when forms are sent.
       </p>
 
-      <h3 className="text-xl font-semibold mt-4">Form Basics</h3>
+      <h5 className="text-xl font-semibold mt-4">Form Basics</h5>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
         <div>
-          <h4 className="font-semibold">When Forms Are Used:</h4>
+          <h5 className="font-semibold">When Forms Are Used:</h5>
           <CodeSnippet
             lines={[
               { code: '// When someone submits a form' },
@@ -69,7 +69,7 @@ export default function JQueryFormHandling() {
           />
         </div>
         <div>
-          <h4 className="font-semibold">Getting Form Info:</h4>
+          <h5 className="font-semibold">Getting Form Info:</h5>
           <CodeSnippet
             lines={[
               { code: '// Get all form data as one string' },
@@ -78,17 +78,17 @@ export default function JQueryFormHandling() {
               { code: '' },
               { code: '// Get form data as an array' },
               { code: 'let dataArray = $("form").serializeArray();' },
-              { code: '// Result: [{name: "name", value: "John"}, ...]' }
+              { code: '// Result: [{name: &quot;name&quot;, value: "John"}, ...]' }
             ]}
             language="javascript"
           />
         </div>
       </div>
 
-      <h3 className="text-xl font-semibold mt-6">Working with Text Boxes</h3>
+      <h5 className="text-xl font-semibold mt-6">Working with Text Boxes</h5>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
         <div>
-          <h4 className="font-semibold">Getting and Setting Text:</h4>
+          <h5 className="font-semibold">Getting and Setting Text:</h5>
           <CodeSnippet
             lines={[
               { code: '// Get what\'s typed in' },
@@ -106,7 +106,7 @@ export default function JQueryFormHandling() {
           />
         </div>
         <div>
-          <h4 className="font-semibold">Special Effects:</h4>
+          <h5 className="font-semibold">Special Effects:</h5>
           <CodeSnippet
             lines={[
               { code: '// When clicked on' },
@@ -124,10 +124,10 @@ export default function JQueryFormHandling() {
         </div>
       </div>
 
-      <h3 className="text-xl font-semibold mt-6">Checkboxes and Radio Buttons</h3>
+      <h5 className="text-xl font-semibold mt-6">Checkboxes and Radio Buttons</h5>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
         <div>
-          <h4 className="font-semibold">Working with Checkboxes:</h4>
+          <h5 className="font-semibold">Working with Checkboxes:</h5>
           <CodeSnippet
             lines={[
               { code: '// See if it\'s checked' },
@@ -144,7 +144,7 @@ export default function JQueryFormHandling() {
           />
         </div>
         <div>
-          <h4 className="font-semibold">Working with Radio Buttons:</h4>
+          <h5 className="font-semibold">Working with Radio Buttons:</h5>
           <CodeSnippet
             lines={[
               { code: '// Get picked option' },
@@ -160,10 +160,10 @@ export default function JQueryFormHandling() {
         </div>
       </div>
 
-      <h3 className="text-xl font-semibold mt-6">Dropdown Menus</h3>
+      <h5 className="text-xl font-semibold mt-6">Dropdown Menus</h5>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
         <div>
-          <h4 className="font-semibold">Single Choice Dropdowns:</h4>
+          <h5 className="font-semibold">Single Choice Dropdowns:</h5>
           <CodeSnippet
             lines={[
               { code: '// Get picked option' },
@@ -180,7 +180,7 @@ export default function JQueryFormHandling() {
           />
         </div>
         <div>
-          <h4 className="font-semibold">Multi-Choice Dropdowns:</h4>
+          <h5 className="font-semibold">Multi-Choice Dropdowns:</h5>
           <CodeSnippet
             lines={[
               { code: '// Get all picked options' },
@@ -199,7 +199,7 @@ export default function JQueryFormHandling() {
         </div>
       </div>
 
-      <h3 className="text-xl font-semibold mt-6">Watch Form Validation in Action</h3>
+      <h5 className="text-xl font-semibold mt-6">Watch Form Validation in Action</h5>
       <StepThroughCodeAnimation
         code={[
           '// Set up form validation',
@@ -289,7 +289,7 @@ export default function JQueryFormHandling() {
         ]}
       />
 
-      <h3 className="text-xl font-semibold mt-6">Try the Form</h3>
+      <h5 className="text-xl font-semibold mt-6">Try the Form</h5>
       <ConceptInfoCard>
         <div className="space-y-4">
           {formDemo.isSubmitted ? (
