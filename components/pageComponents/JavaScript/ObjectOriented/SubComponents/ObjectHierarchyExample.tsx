@@ -199,7 +199,7 @@ myArray.push(4);           // From Array.prototype
 myArray.toString();        // From Object.prototype
 
 // Same pattern for all built-in types
-const myString = "hello";
+const myString = &quot;hello&quot;;
 console.log(myString.__proto__ === String.prototype); // true
 console.log(String.prototype.__proto__ === Object.prototype); // true`}
           parts={codeParts}
@@ -247,7 +247,7 @@ console.log(String.prototype.__proto__ === Object.prototype); // true`}
         <div style={{ fontFamily: 'monospace', fontSize: 14, lineHeight: 1.8 }}>
           <div style={{ color: '#e91e63', fontWeight: 'bold' }}>Object.prototype</div>
           <div style={{ marginLeft: 20 }}>├── Array.prototype → <span style={{ color: '#4caf50' }}>Arrays [1,2,3]</span></div>
-          <div style={{ marginLeft: 20 }}>├── String.prototype → <span style={{ color: '#4caf50' }}>Strings "hello"</span></div>
+          <div style={{ marginLeft: 20 }}>├── String.prototype → <span style={{ color: '#4caf50' }}>Strings &quot;hello&quot;</span></div>
           <div style={{ marginLeft: 20 }}>├── Number.prototype → <span style={{ color: '#4caf50' }}>Numbers 42</span></div>
           <div style={{ marginLeft: 20 }}>├── Date.prototype → <span style={{ color: '#4caf50' }}>Dates new Date()</span></div>
           <div style={{ marginLeft: 20 }}>├── Function.prototype → <span style={{ color: '#4caf50' }}>Functions function(){`{}`}</span></div>

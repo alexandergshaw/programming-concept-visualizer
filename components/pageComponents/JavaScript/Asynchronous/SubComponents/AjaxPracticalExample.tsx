@@ -154,7 +154,7 @@ contactForm.addEventListener('submit', async (e) => {
   return (
     <div>
       <p style={{ marginBottom: 18, fontSize: 16, lineHeight: 1.6 }}>
-        Let's build a complete Ajax application that demonstrates real-world patterns: <strong>dynamic search with live results</strong>. This shows how Ajax creates smooth, responsive user experiences.
+        Let&apos;s build a complete Ajax application that demonstrates real-world patterns: <strong>dynamic search with live results</strong>. This shows how Ajax creates smooth, responsive user experiences.
       </p>
 
       <Box sx={{ mb: 3 }}>

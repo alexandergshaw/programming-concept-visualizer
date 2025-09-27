@@ -25,7 +25,7 @@ export default function ObjectFundamentalsConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faWrench} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Now let's explore how to access and use the properties and methods of the objects you create.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Now let's explore how to access and use the properties and methods of the objects you create.
             </Typography>
           </Box>
         </Section>
@@ -35,7 +35,7 @@ export default function ObjectFundamentalsConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faBoxOpen} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Learn destructuring - a powerful way to extract values from objects into individual variables.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Learn destructuring - a powerful way to extract values from objects into individual variables.
             </Typography>
           </Box>
         </Section>

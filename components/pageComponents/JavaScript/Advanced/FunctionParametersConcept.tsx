@@ -22,7 +22,7 @@ export default function FunctionParametersConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faCog} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Let's explore default parameters - how to provide fallback values when arguments aren't provided.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Let&apos;s explore default parameters - how to provide fallback values when arguments aren&apos;t provided.
             </Typography>
           </Box>
         </Section>
@@ -32,7 +32,7 @@ export default function FunctionParametersConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faEllipsisH} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Now discover rest and spread operators - powerful tools for handling variable numbers of arguments.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Now discover rest and spread operators - powerful tools for handling variable numbers of arguments.
             </Typography>
           </Box>
         </Section>
@@ -42,7 +42,7 @@ export default function FunctionParametersConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faPuzzlePiece} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Time to combine all these techniques in advanced real-world function examples.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Time to combine all these techniques in advanced real-world function examples.
             </Typography>
           </Box>
         </Section>

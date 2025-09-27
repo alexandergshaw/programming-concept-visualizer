@@ -186,7 +186,7 @@ Promise.race([promise1, promise2, promise3])
           items={[
             {
               title: "�� PENDING",
-              description: "Initial state. The operation has started but hasn't completed yet.",
+              description: "Initial state. The operation has started but hasn&apos;t completed yet.",
               titleColor: "#92400e",
               backgroundColor: "#fffbeb"
             },

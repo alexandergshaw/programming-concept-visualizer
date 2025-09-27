@@ -138,9 +138,9 @@ console.log(userName); // ReferenceError: userName is not defined
 // Should be: username (lowercase 'n')
 
 // Unexpected: Wrong method call
-let text = "hello";
-text.push("world"); // TypeError: text.push is not a function
-// Should be: text + "world" or use an array
+let text = &quot;hello&quot;;
+text.push(&quot;world&quot;); // TypeError: text.push is not a function
+// Should be: text + &quot;world&quot; or use an array
 
 // Unexpected: Logic error
 for (let i = 0; i <= array.length; i++) {
@@ -160,7 +160,7 @@ for (let i = 0; i <= array.length; i++) {
             <Box sx={{ p: 2, bgcolor: '#e3f2fd', borderRadius: 1, borderLeft: '4px solid #1976d2' }}>
               <Typography fontWeight={600} sx={{ color: '#1976d2', mb: 1 }}>Questions to Ask:</Typography>
               <ul style={{ margin: 0, paddingLeft: 20, fontSize: '0.9rem' }}>
-                <li>Is this error caused by external factors I can't control?</li>
+                <li>Is this error caused by external factors I can&apos;t control?</li>
                 <li>Could this happen even in a perfectly written program?</li>
                 <li>Do I need to provide a fallback or alternative for users?</li>
               </ul>

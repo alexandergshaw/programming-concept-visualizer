@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import {
   Box,
   Typography,
@@ -71,17 +71,17 @@ export default function Carousel({
     setIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1));
   };
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setDirection(1);
     setIndex((prev) => (prev === items.length - 1 ? 0 : prev + 1));
-  };
+  }, [items.length]);
 
   useEffect(() => {
     if (autoplayInterval > 0 && !isPaused) {
       intervalRef.current = setInterval(handleNext, autoplayInterval);
       return () => clearInterval(intervalRef.current!);
     }
-  }, [autoplayInterval, isPaused]);
+  }, [autoplayInterval, isPaused, handleNext]);
 
   return (
     <Box

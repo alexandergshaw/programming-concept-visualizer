@@ -113,7 +113,7 @@ console.log('Search result:', result);`];
             name: 'testData',
             label: 'Test Data:',
             options: [
-              { value: '{"name": "John", "email": "john@test.com"}', label: 'Valid Data' },
+              { value: '{&quot;name&quot;: "John", "email": "john@test.com"}', label: 'Valid Data' },
               { value: 'null', label: 'null' },
               { value: 'undefined', label: 'undefined' }
             ]

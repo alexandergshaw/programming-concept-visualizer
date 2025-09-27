@@ -68,12 +68,12 @@ export default function MapConcept({
     const value = newMap.get(keyInput)
     const keyWasDeleted = newMap.delete(keyInput);
     setMap(newMap);
-    updateCodePreview(`\nmap.delete("${keyInput}"); // try to delete the key "${keyInput}" and its value, if the key exists in the map \n\n// ${keyWasDeleted ? `the key "${keyInput}" and the value "${value}" were removed from the map` : `the key "${keyInput}" doesn't exist in the map\n\n// map.delete(${keyInput}) returns ${keyWasDeleted ? "true" : "false"}`}`);
+    updateCodePreview(`\nmap.delete("${keyInput}"); // try to delete the key "${keyInput}" and its value, if the key exists in the map \n\n// ${keyWasDeleted ? `the key "${keyInput}" and the value "${value}" were removed from the map` : `the key "${keyInput}" doesn&apos;t exist in the map\n\n// map.delete(${keyInput}) returns ${keyWasDeleted ? "true" : "false"}`}`);
   };
 
   const handleHas = () => {
     const result = map.has(keyInput);
-    updateCodePreview(`\nmap.has("${keyInput}"); // check if the map contains the key "${keyInput}"\n\n// map.has("${keyInput}") returns ${result} because the key "${keyInput}" ${result ? "exists in the map" : "doesn't exist in the map"}\n\n// map is unchanged`);
+    updateCodePreview(`\nmap.has("${keyInput}"); // check if the map contains the key "${keyInput}"\n\n// map.has("${keyInput}") returns ${result} because the key "${keyInput}" ${result ? "exists in the map" : "doesn&apos;t exist in the map"}\n\n// map is unchanged`);
   };
 
   const handleClear = () => {

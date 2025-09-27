@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/javascript.css';
 import { TextField } from '@mui/material';
+import Image from 'next/image';
 
 export interface SidebarItem {
   label: string;
@@ -82,12 +83,12 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [], acti
     >
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
         {headerImage && (
-          <img 
+          <Image 
             src={headerImage} 
             alt="Header Icon" 
-            style={{ 
-              height: '2em', 
-              width: '2em', 
+            width={32}
+            height={32}
+            style={{  
               marginRight: '12px',
               borderRadius: '4px',
               objectFit: 'contain'

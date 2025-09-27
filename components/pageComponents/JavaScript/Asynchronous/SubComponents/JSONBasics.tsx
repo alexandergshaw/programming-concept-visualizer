@@ -8,8 +8,8 @@ const JSONBasics: React.FC = () => {
   "students": [
     {
       "id": "001",
-      "name": "John Doe",
-      "age": 20,
+      &quot;name&quot;: "John Doe",
+      &quot;age&quot;: 20,
       "courses": [
         {
           "code": "CS101",
@@ -33,8 +33,8 @@ const JSONBasics: React.FC = () => {
     },
     {
       "id": "002",
-      "name": "Jane Smith",
-      "age": 19,
+      &quot;name&quot;: "Jane Smith",
+      &quot;age&quot;: 19,
       "courses": [
         {
           "code": "ENG101",
@@ -87,11 +87,11 @@ console.log(jsonOutput);`;
 
   const jsonDataTypesCode = `{
   // String values - must be in double quotes
-  "name": "John Doe",
+  &quot;name&quot;: "John Doe",
   "description": "A student in the computer science program",
   
   // Number values - integers or floating-point
-  "age": 25,
+  &quot;age&quot;: 25,
   "gpa": 3.75,
   "negativeBalance": -150.50,
   
@@ -165,7 +165,7 @@ console.log(jsonOutput);`;
             },
             {
               label: 'String Keys',
-              part: '"name": "John Doe"',
+              part: '&quot;name&quot;: "John Doe"',
               color: '#f44336',
               desc: 'All keys must be strings enclosed in double quotes'
             },
@@ -229,13 +229,13 @@ console.log(jsonOutput);`;
           parts={[
             {
               label: 'Strings',
-              part: '"name": "John Doe"',
+              part: '&quot;name&quot;: "John Doe"',
               color: '#ff5722',
               desc: 'Text values must be enclosed in double quotes'
             },
             {
               label: 'Numbers',
-              part: '"age": 25',
+              part: '&quot;age&quot;: 25',
               color: '#673ab7',
               desc: 'Integers and floating-point numbers (no quotes needed)'
             },

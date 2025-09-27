@@ -95,7 +95,7 @@ export default function ArrayConcept({
         if (!isNaN(numInput)) {
           const idx = copy.indexOf(numInput);
           setOutput(`indexOf(${numInput}) → ${idx}`);
-          onCodeChange?.(`let array = [${original.join(', ')}];\narray.indexOf(${numInput});\n// Array isn't updated`);
+          onCodeChange?.(`let array = [${original.join(', ')}];\narray.indexOf(${numInput});\n// Array isn&apos;t updated`);
         }
         break;
 
@@ -103,13 +103,13 @@ export default function ArrayConcept({
         if (!isNaN(numInput)) {
           const idx = copy.lastIndexOf(numInput);
           setOutput(`lastIndexOf(${numInput}) → ${idx}`);
-          onCodeChange?.(`let array = [${original.join(', ')}];\narray.lastIndexOf(${numInput});\n// Array isn't updated`);
+          onCodeChange?.(`let array = [${original.join(', ')}];\narray.lastIndexOf(${numInput});\n// Array isn&apos;t updated`);
         }
         break;
 
       case 'includes':
         if (!isNaN(numInput)) {
-          onCodeChange?.(`let array = [${original.join(', ')}];\narray.includes(${numInput});\n// Array isn't updated`);
+          onCodeChange?.(`let array = [${original.join(', ')}];\narray.includes(${numInput});\n// Array isn&apos;t updated`);
         }
         break;
 

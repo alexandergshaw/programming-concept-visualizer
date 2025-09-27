@@ -16,7 +16,7 @@ const TryCatchIntro: React.FC = () => {
     <div style={{ marginBottom: 40 }}>
       {/* Main concept explanation */}
       <p style={{ marginBottom: 18, fontSize: 16, lineHeight: 1.6 }}>
-        When code runs, things can go wrong—network requests fail, users enter invalid data, or files can't be found. 
+        When code runs, things can go wrong—network requests fail, users enter invalid data, or files can&apos;t be found. 
         Without proper handling, these errors crash your program and create a poor user experience.
       </p>
 

@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
-import { Box, Typography, Button, Alert } from '@mui/material';
-import CodePreview from '@/components/common/CodePreview';
+import React from 'react';
+import { Box, Typography } from '@mui/material';
 import CalloutBox from '@/components/common/CalloutBox';
 import CodePartsExplanation, { CodePart } from '@/components/common/CodePartsExplanation';
 import InteractiveStepThrough from '@/components/common/InteractiveStepThrough';
 import { Step } from '@/components/pageComponents/JavaScript/StepThroughCodeAnimation';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const CatchBlockExample: React.FC = () => {
   // Code parts for highlighting different sections

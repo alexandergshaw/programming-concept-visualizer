@@ -65,13 +65,13 @@ export default function VariableConcept() {
                     <CodeSnippet
                         enableRun
                         lines={[
-                            { code: `let variableName = "value";`, comment: `declare a variable using 'let', give it a name, and assign it a value` },
+                            { code: `let variableName = &quot;value&quot;;`, comment: `declare a variable using 'let', give it a name, and assign it a value` },
                             { code: "" },
                             { code: `let uninitializedVariable;`, comment: `declare a variable without assigning a value (it will be 'undefined')` },
                             { code: "" },
                             { code: `console.log("value of variableName: ", variableName);`, comment: `output the value of the variable that we assigned a value` },
                             { code: "" },
-                            { code: `console.log("value of uninitializedVariable: ", uninitializedVariable);`, comment: `output the value of the variable that didn't assign a value (we call these variables "unitialized")` },
+                            { code: `console.log("value of uninitializedVariable: ", uninitializedVariable);`, comment: `output the value of the variable that didn&apos;t assign a value (we call these variables "unitialized")` },
 
                         ]}
                     />

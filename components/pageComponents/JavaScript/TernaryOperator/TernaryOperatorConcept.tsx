@@ -22,7 +22,7 @@ export default function TernaryOperatorConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faLightbulb} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Now that you understand the basic syntax, let's see the ternary operator in action with an interactive example.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Now that you understand the basic syntax, let's see the ternary operator in action with an interactive example.
             </Typography>
           </Box>
         </Section>
@@ -32,7 +32,7 @@ export default function TernaryOperatorConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faChain} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Simple ternary operators are great, but what happens when you need to handle multiple conditions? Let's explore chaining ternary operators together.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Simple ternary operators are great, but what happens when you need to handle multiple conditions? Let&apos;s explore chaining ternary operators together.
             </Typography>
           </Box>
         </Section>
@@ -42,7 +42,7 @@ export default function TernaryOperatorConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faRocket} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> You've mastered the basics and chaining. Now let's see how ternary operators are used in real-world development scenarios.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> You've mastered the basics and chaining. Now let's see how ternary operators are used in real-world development scenarios.
             </Typography>
           </Box>
         </Section>

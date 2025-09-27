@@ -24,7 +24,7 @@ export default function SwitchStatementConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faCodeBranch} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Now let's see how to build a basic switch statement with cases and learn the essential structure.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Now let's see how to build a basic switch statement with cases and learn the essential structure.
             </Typography>
           </Box>
         </Section>
@@ -34,7 +34,7 @@ export default function SwitchStatementConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faExclamationTriangle} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Understanding break statements is crucial - without them, your code will "fall through" to the next case unexpectedly.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Understanding break statements is crucial - without them, your code will "fall through" to the next case unexpectedly.
             </Typography>
           </Box>
         </Section>
@@ -44,7 +44,7 @@ export default function SwitchStatementConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faShield} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> The default case acts as your safety net, handling any values that don't match your specific cases.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> The default case acts as your safety net, handling any values that don&apos;t match your specific cases.
             </Typography>
           </Box>
         </Section>
@@ -54,7 +54,7 @@ export default function SwitchStatementConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faLink} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Sometimes you want cases to fall through intentionally - let's see when and how to use this powerful technique.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Sometimes you want cases to fall through intentionally - let's see when and how to use this powerful technique.
             </Typography>
           </Box>
         </Section>
@@ -64,7 +64,7 @@ export default function SwitchStatementConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faCog} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Time to see all the concepts working together in a complete, real-world switch statement example.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Time to see all the concepts working together in a complete, real-world switch statement example.
             </Typography>
           </Box>
         </Section>

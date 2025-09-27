@@ -50,7 +50,7 @@ sum(...[1, 2, 3]); // same as sum(1, 2, 3)`,
             <strong>Default Parameters:</strong> When parameters have sensible default values
           </Typography>
           <Typography component="div" sx={{ mb: 1, fontSize: 14 }}>
-            <strong>Rest (...args):</strong> When you don't know how many arguments you'll receive
+            <strong>Rest (...args):</strong> When you don&apos;t know how many arguments you'll receive
           </Typography>
           <Typography component="div" sx={{ fontSize: 14 }}>
             <strong>Spread (...array):</strong> When you have an array but need separate arguments

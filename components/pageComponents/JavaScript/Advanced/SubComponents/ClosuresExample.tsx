@@ -368,7 +368,7 @@ counter2(); // 1 - separate from first counter`}
         <Box component="ul" sx={{ margin: 0, paddingLeft: 3, '& li': { marginBottom: 1.5, color: '#475569' } }}>
           <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Lexical Scoping:</Typography> Inner functions have access to outer function variables</li>
           <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Persistent Variables:</Typography> Outer variables stay alive as long as closure exists</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Private Data:</Typography> Variables in closures can't be accessed from outside</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Private Data:</Typography> Variables in closures can&apos;t be accessed from outside</li>
           <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Independent Instances:</Typography> Each closure maintains its own copy of variables</li>
         </Box>
       </CalloutBox>

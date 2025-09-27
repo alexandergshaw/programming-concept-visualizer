@@ -78,7 +78,7 @@ export default function JQueryFormHandling() {
               { code: '' },
               { code: '// Get form data as an array' },
               { code: 'let dataArray = $("form").serializeArray();' },
-              { code: '// Result: [{name: "name", value: "John"}, ...]' }
+              { code: '// Result: [{name: &quot;name&quot;, value: "John"}, ...]' }
             ]}
             language="javascript"
           />

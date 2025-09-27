@@ -22,7 +22,7 @@ export default function ModulesPatternsConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faBoxes} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Let's explore the classic module pattern - using closures to create private and public interfaces.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Let&apos;s explore the classic module pattern - using closures to create private and public interfaces.
             </Typography>
           </Box>
         </Section>
@@ -32,7 +32,7 @@ export default function ModulesPatternsConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faCube} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Now learn about namespaces - organizing related functions and variables under a common name.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Now learn about namespaces - organizing related functions and variables under a common name.
             </Typography>
           </Box>
         </Section>
@@ -42,7 +42,7 @@ export default function ModulesPatternsConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faFolder} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Finally, discover modern ES6 modules - the standard way to organize JavaScript code today.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Finally, discover modern ES6 modules - the standard way to organize JavaScript code today.
             </Typography>
           </Box>
         </Section>

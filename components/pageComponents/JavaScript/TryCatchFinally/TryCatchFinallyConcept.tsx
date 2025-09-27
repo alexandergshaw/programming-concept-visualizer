@@ -23,7 +23,7 @@ export default function TryCatchFinallyConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faExclamationTriangle} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Let's start with the try block - where you put code that might fail and see how JavaScript handles it step by step.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Let&apos;s start with the try block - where you put code that might fail and see how JavaScript handles it step by step.
             </Typography>
           </Box>
         </Section>
@@ -33,7 +33,7 @@ export default function TryCatchFinallyConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faShield} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> When the try block fails, the catch block saves the day - let's see how it transforms errors into helpful responses.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> When the try block fails, the catch block saves the day - let's see how it transforms errors into helpful responses.
             </Typography>
           </Box>
         </Section>
@@ -43,7 +43,7 @@ export default function TryCatchFinallyConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faBroom} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> The finally block is your cleanup crew - it always runs, whether your code succeeds or fails. Perfect for essential cleanup tasks.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> The finally block is your cleanup crew - it always runs, whether your code succeeds or fails. Perfect for essential cleanup tasks.
             </Typography>
           </Box>
         </Section>
@@ -53,7 +53,7 @@ export default function TryCatchFinallyConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faPuzzlePiece} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Time to see try, catch, and finally working together in a complete, real-world error handling example.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Time to see try, catch, and finally working together in a complete, real-world error handling example.
             </Typography>
           </Box>
         </Section>

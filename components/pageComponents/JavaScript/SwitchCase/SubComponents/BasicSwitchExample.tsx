@@ -130,7 +130,7 @@ getGrade(${score});`];
 
   return (
     <div>
-      <p>Let's see how a basic switch statement works with a simple grade calculator:</p>
+      <p>Let&apos;s see how a basic switch statement works with a simple grade calculator:</p>
 
       <h5>Code Breakdown:</h5>
       <CodePartsExplanation

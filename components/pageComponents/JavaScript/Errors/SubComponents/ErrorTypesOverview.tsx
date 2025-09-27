@@ -47,7 +47,7 @@ number.toUpperCase();
 // TypeError: number.toUpperCase is not a function
 
 // Calling non-function as function
-let text = "hello";
+let text = &quot;hello&quot;;
 text();
 // TypeError: text is not a function`
             },

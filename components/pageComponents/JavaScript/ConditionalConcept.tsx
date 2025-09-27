@@ -96,7 +96,7 @@ export default function ConditionalConcept() {
                 </Section>
                 <Section
                     title="3. Another Real Life Example"
-                    subtitle="Let's check if you have enough money to buy a ticket!"
+                    subtitle="Let&apos;s check if you have enough money to buy a ticket!"
                 >
                     <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 12 }}>
                         <TextField

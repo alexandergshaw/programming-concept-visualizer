@@ -23,7 +23,7 @@ export default function EqualityOperatorConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faExclamationTriangle} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Now we'll see the == operator in action and discover why it can cause unexpected results through automatic type conversion.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Now we'll see the == operator in action and discover why it can cause unexpected results through automatic type conversion.
             </Typography>
           </Box>
         </Section>
@@ -33,7 +33,7 @@ export default function EqualityOperatorConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faEquals} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> The != operator works similarly to ==, but there's one useful pattern you should know about.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> The != operator works similarly to ==, but there's one useful pattern you should know about.
             </Typography>
           </Box>
         </Section>
@@ -43,7 +43,7 @@ export default function EqualityOperatorConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faMagnifyingGlass} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Let's examine exactly how JavaScript converts types during loose equality comparisons.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Let&apos;s examine exactly how JavaScript converts types during loose equality comparisons.
             </Typography>
           </Box>
         </Section>
@@ -53,7 +53,7 @@ export default function EqualityOperatorConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faLightbulb} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Now you understand how type coercion works. Let's see the few cases where loose operators are actually useful.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Now you understand how type coercion works. Let&apos;s see the few cases where loose operators are actually useful.
             </Typography>
           </Box>
         </Section>

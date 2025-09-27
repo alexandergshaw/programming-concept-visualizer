@@ -123,7 +123,7 @@ export default function DataTypesConcept() {
                     <CodeSnippet
                         lines={[
                             { code: `typeof 42;`, comment: `number` },
-                            { code: `typeof "hello";`, comment: `string` },
+                            { code: `typeof &quot;hello&quot;;`, comment: `string` },
                             { code: `typeof true;`, comment: `boolean` },
                             { code: `typeof null;`, comment: `object (this is a weird JavaScript quirk!)` },
                             { code: `typeof undefined;`, comment: `undefined` },

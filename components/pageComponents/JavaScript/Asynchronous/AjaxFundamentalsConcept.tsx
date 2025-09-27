@@ -20,16 +20,16 @@ export default function AjaxFundamentalsConcept() {
       <TableOfContents numbered>
         <Section title="Understanding Ajax">
           <AjaxBasics />
-          <CalloutBox title="💡 What's Next" type="info">
+          <CalloutBox title="💡 What&apos;s Next" type="info">
             <Typography variant="body2">
-              Let's explore the Fetch API - the modern way to make Ajax requests in JavaScript.
+              Let&apos;s explore the Fetch API - the modern way to make Ajax requests in JavaScript.
             </Typography>
           </CalloutBox>
         </Section>
 
         <Section title="Using the Fetch API">
           <FetchAPIExample />
-          <CalloutBox title="💡 What's Next" type="info">
+          <CalloutBox title="💡 What&apos;s Next" type="info">
             <Typography variant="body2">
               Learn to inspect network requests in your browser to debug and understand API responses.
             </Typography>
@@ -38,7 +38,7 @@ export default function AjaxFundamentalsConcept() {
 
         <Section title="Browser Request Inspection">
           <BrowserInspectionExample />
-          <CalloutBox title="💡 What's Next" type="info">
+          <CalloutBox title="💡 What&apos;s Next" type="info">
             <Typography variant="body2">
               Time to build a complete Ajax application that updates content dynamically without page reloads.
             </Typography>

@@ -21,7 +21,7 @@ export default function ObjectPatternsConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faTree} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Let's see inheritance in action with a complete example showing IS-A relationships in practice.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Let&apos;s see inheritance in action with a complete example showing IS-A relationships in practice.
             </Typography>
           </Box>
         </Section>
@@ -31,7 +31,7 @@ export default function ObjectPatternsConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faPuzzlePiece} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Now explore composition - a more flexible approach using HAS-A relationships to build complex objects.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Now explore composition - a more flexible approach using HAS-A relationships to build complex objects.
             </Typography>
           </Box>
         </Section>

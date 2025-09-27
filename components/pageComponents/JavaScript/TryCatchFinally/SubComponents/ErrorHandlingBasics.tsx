@@ -39,7 +39,7 @@ const ErrorHandlingBasics: React.FC = () => {
         </Box>
 
         <Typography variant="body2" sx={{ mt: 2, fontStyle: 'italic', textAlign: 'center' }}>
-          Let's explore each block step by step, starting with the <strong>try block</strong> where it all begins.
+          Let&apos;s explore each block step by step, starting with the <strong>try block</strong> where it all begins.
         </Typography>
       </ConceptInfoCard>
     </div>

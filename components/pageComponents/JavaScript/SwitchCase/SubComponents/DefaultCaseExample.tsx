@@ -128,7 +128,7 @@ getPermissions("${inputs.role}");`];
 
   return (
     <div>
-      <p>The <strong>default</strong> case handles any value that doesn't match other cases. It's like the "else" in an if-else statement:</p>
+      <p>The <strong>default</strong> case handles any value that doesn&apos;t match other cases. It's like the "else" in an if-else statement:</p>
 
       <h5>Permission System:</h5>
       <CodePartsExplanation

@@ -22,7 +22,7 @@ export default function InheritanceHierarchiesConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faLayerGroup} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Now let's explore JavaScript's built-in object hierarchy and how all objects inherit from base types.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Now let's explore JavaScript's built-in object hierarchy and how all objects inherit from base types.
             </Typography>
           </Box>
         </Section>

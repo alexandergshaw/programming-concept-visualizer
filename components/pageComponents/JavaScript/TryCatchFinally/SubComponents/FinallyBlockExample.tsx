@@ -63,6 +63,7 @@ const FinallyBlockExample: React.FC = () => {
   // Template for generating executable code
   const codeTemplate = (inputs: Record<string, string | number>) => {
     // Convert special string values to actual values
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let inputData: any = inputs.inputData;
     if (inputData === 'null') inputData = null;
     if (inputData === 'true') inputData = true;
@@ -89,6 +90,7 @@ console.log("Final result:", result);`];
   // Template for generating step-by-step explanation
   const stepsTemplate = (inputs: Record<string, string | number>) => {
     // Convert special string values to actual values
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let inputData: any = inputs.inputData;
     if (inputData === 'null') inputData = null;
     if (inputData === 'true') inputData = true;

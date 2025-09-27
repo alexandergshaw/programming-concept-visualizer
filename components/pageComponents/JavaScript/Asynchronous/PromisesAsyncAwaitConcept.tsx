@@ -22,7 +22,7 @@ export default function PromisesAsyncAwaitConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faClock} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Let's explore the three Promise states - pending, fulfilled, and rejected - and how they work.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Let&apos;s explore the three Promise states - pending, fulfilled, and rejected - and how they work.
             </Typography>
           </Box>
         </Section>
@@ -32,7 +32,7 @@ export default function PromisesAsyncAwaitConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faRocket} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Discover async/await - the modern, cleaner way to work with asynchronous functions.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Discover async/await - the modern, cleaner way to work with asynchronous functions.
             </Typography>
           </Box>
         </Section>
@@ -42,7 +42,7 @@ export default function PromisesAsyncAwaitConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faExchangeAlt} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Learn advanced asynchronous patterns for handling multiple operations concurrently.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Learn advanced asynchronous patterns for handling multiple operations concurrently.
             </Typography>
           </Box>
         </Section>

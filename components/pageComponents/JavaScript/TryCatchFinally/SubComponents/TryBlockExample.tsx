@@ -62,6 +62,7 @@ const TryBlockExample: React.FC = () => {
 
   // Template for generating executable code
   const codeTemplate = (inputs: Record<string, string | number>) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let inputValue: any = inputs.inputValue;
     if (inputValue === 'null') inputValue = null;
     if (inputValue === 'true') inputValue = true;
@@ -90,6 +91,7 @@ console.log("Final result:", result);`];
 
   // Template for generating step-by-step explanation
   const stepsTemplate = (inputs: Record<string, string | number>) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let inputValue: any = inputs.inputValue;
     if (inputValue === 'null') inputValue = null;
     if (inputValue === 'true') inputValue = true;

@@ -23,7 +23,7 @@ export default function IdentityOperatorConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faBullseye} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Now let's see the strict equality operator (===) in action and learn how it prevents type coercion surprises.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Now let's see the strict equality operator (===) in action and learn how it prevents type coercion surprises.
             </Typography>
           </Box>
         </Section>
@@ -33,7 +33,7 @@ export default function IdentityOperatorConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faEquals} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> The !== operator works similarly but returns true when values or types differ. Let's see it in validation scenarios.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> The !== operator works similarly but returns true when values or types differ. Let&apos;s see it in validation scenarios.
             </Typography>
           </Box>
         </Section>
@@ -43,7 +43,7 @@ export default function IdentityOperatorConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faNotEqual} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Let's compare strict operators with loose operators to see why strict comparison prevents bugs.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Let&apos;s compare strict operators with loose operators to see why strict comparison prevents bugs.
             </Typography>
           </Box>
         </Section>
@@ -53,7 +53,7 @@ export default function IdentityOperatorConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faShieldHalved} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Time to see how identity operators prevent security vulnerabilities and data corruption in real applications.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Time to see how identity operators prevent security vulnerabilities and data corruption in real applications.
             </Typography>
           </Box>
         </Section>

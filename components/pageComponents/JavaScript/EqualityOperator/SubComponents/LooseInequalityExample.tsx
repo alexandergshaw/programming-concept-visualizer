@@ -107,7 +107,7 @@ validateInput(${testValue});`];
             options: [
               { value: 'null', label: 'null' },
               { value: 'undefined', label: 'undefined' },
-              { value: '"hello"', label: 'String "hello"' }
+              { value: '&quot;hello&quot;', label: 'String &quot;hello&quot;' }
             ]
           }
         ]}

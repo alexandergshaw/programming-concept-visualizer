@@ -8,7 +8,7 @@ const UnhandledErrorsImpact: React.FC = () => {
   return (
     <div style={{ marginBottom: 40 }}>
       <p style={{ marginBottom: 18, fontSize: 16, lineHeight: 1.6 }}>
-        Let&apos;s see what happens when errors occur in your code and you don't handle them properly.
+        Let&apos;s see what happens when errors occur in your code and you don&apos;t handle them properly.
       </p>
 
       {/* Step-by-step explanation */}

@@ -117,7 +117,7 @@ getOrderMessage("${inputs.status}");`];
         label: 'Check earlier cases',
         desc: 'Check pending and processing cases',
         highlight: 'case "pending":',
-        outputLine: `"${status}" doesn't match earlier cases - continue checking`
+        outputLine: `"${status}" doesn&apos;t match earlier cases - continue checking`
       });
       steps.push({
         label: 'Check shipped case',
@@ -136,7 +136,7 @@ getOrderMessage("${inputs.status}");`];
         label: 'Check earlier cases',
         desc: 'Check previous cases',
         highlight: 'case "pending":',
-        outputLine: `"${status}" doesn't match earlier cases - continue checking`
+        outputLine: `"${status}" doesn&apos;t match earlier cases - continue checking`
       });
       steps.push({
         label: 'Check delivered case',
@@ -155,7 +155,7 @@ getOrderMessage("${inputs.status}");`];
         label: 'Check all cases',
         desc: 'Check all known status cases',
         highlight: 'case "pending":',
-        outputLine: `"${status}" doesn't match any known status - continue to default`
+        outputLine: `"${status}" doesn&apos;t match any known status - continue to default`
       });
       steps.push({
         label: 'Execute default case',

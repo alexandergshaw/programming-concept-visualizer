@@ -4,8 +4,7 @@ import Typography from '@mui/material/Typography';
 import CodePartsExplanation, { CodePart } from '@/components/common/CodePartsExplanation';
 import CalloutBox from '@/components/common/CalloutBox';
 import InteractiveStepThrough from '@/components/common/InteractiveStepThrough';
-import { Step } from '@/components/pageComponents/JavaScript/StepThroughCodeAnimation';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Step } from '../../StepThroughCodeAnimation';
 
 const ClassCreationExample: React.FC = () => {
   // Code parts for highlighting different sections
@@ -58,7 +57,7 @@ const ClassCreationExample: React.FC = () => {
   
   celebrateBirthday() {
     this.age++;
-    return \`🎉 Happy Birthday! I'm now \${this.age} years old!\`;
+    return \`Happy Birthday! I'm now \${this.age} years old!\`;
   }
 }
 

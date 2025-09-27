@@ -20,7 +20,7 @@ export default function ErrorsConcept() {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
             <FontAwesomeIcon icon={faExclamationTriangle} style={{ fontSize: 20, color: '#1976d2' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What's next:</strong> Now that you understand the different error types, let's see what happens when these errors go unhandled in your application.
+              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Now that you understand the different error types, let's see what happens when these errors go unhandled in your application.
             </Typography>
           </Box>
         </Section>

@@ -1,15 +1,7 @@
 import React from 'react';
-import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
 import ConceptInfoCard from '@/components/common/ConceptInfoCard';
-import FlexibleGrid, { GridItem } from '@/components/common/FlexibleGrid';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faCube,
-  faWrench,
-  faBoxOpen,
-} from '@fortawesome/free-solid-svg-icons';
+import FlexibleGrid from '@/components/common/FlexibleGrid';
 
 const ObjectBasics: React.FC = () => {
   return (
@@ -47,7 +39,7 @@ const ObjectBasics: React.FC = () => {
         />
 
         <Typography variant="body2" sx={{ mt: 2, fontStyle: 'italic', textAlign: 'center' }}>
-          Let's explore how to create and use classes with properties and methods step by step.
+          Let&apos;s explore how to create and use classes with properties and methods step by step.
         </Typography>
       </ConceptInfoCard>
     </div>

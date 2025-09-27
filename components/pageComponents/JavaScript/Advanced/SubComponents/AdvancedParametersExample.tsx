@@ -349,7 +349,7 @@ function advancedFunction(
 
 // Call with spread and mixed arguments
 const result = advancedFunction(
-  "value",
+  &quot;value&quot;,
   undefined,  // Use default
   { name: "test", extra: "data" },
   ...arrayArgs
