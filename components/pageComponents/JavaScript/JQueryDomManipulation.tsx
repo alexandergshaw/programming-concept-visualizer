@@ -52,7 +52,7 @@ export default function JQueryDomManipulation() {
         <Section title="Changing Content">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
             <div>
-              <h4 className="font-semibold">Change Text and HTML:</h4>
+              <h5 className="font-semibold">Change Text and HTML:</h5>
               <CodeSnippet
                 lines={[
                   { code: '// Get or change text' },
@@ -67,7 +67,7 @@ export default function JQueryDomManipulation() {
               />
             </div>
             <div>
-              <h4 className="font-semibold">Change Settings:</h4>
+              <h5 className="font-semibold">Change Settings:</h5>
               <CodeSnippet
                 lines={[
                   { code: '// Change image source' },
@@ -86,7 +86,7 @@ export default function JQueryDomManipulation() {
         <Section title="Adding and Removing">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
             <div>
-              <h4 className="font-semibold">Add New Things:</h4>
+              <h5 className="font-semibold">Add New Things:</h5>
               <CodeSnippet
                 lines={[
                   { code: '// Add a new paragraph' },
@@ -102,7 +102,7 @@ export default function JQueryDomManipulation() {
               />
             </div>
             <div>
-              <h4 className="font-semibold">Remove Things:</h4>
+              <h5 className="font-semibold">Remove Things:</h5>
               <CodeSnippet
                 lines={[
                   { code: '// Remove elements completely' },
@@ -123,7 +123,7 @@ export default function JQueryDomManipulation() {
         <Section title="Styling Things">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
             <div>
-              <h4 className="font-semibold">Using Classes:</h4>
+              <h5 className="font-semibold">Using Classes:</h5>
               <CodeSnippet
                 lines={[
                   { code: '// Add or remove classes' },
@@ -142,7 +142,7 @@ export default function JQueryDomManipulation() {
               />
             </div>
             <div>
-              <h4 className="font-semibold">Direct Styling:</h4>
+              <h5 className="font-semibold">Direct Styling:</h5>
               <CodeSnippet
                 lines={[
                   { code: '// Change one style' },

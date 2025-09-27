@@ -140,7 +140,7 @@ const RadioButtonExample: React.FC = () => {
                         whiteSpace: 'pre-wrap',
                         mb: 2
                     }}>
-                        {`<h3>Select your favorite pet:</h3>
+                        {`<h5>Select your favorite pet:</h5>
 
 <div>
   <input type="radio" id="dog" name="pet" value="dog">

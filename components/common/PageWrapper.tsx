@@ -10,13 +10,14 @@ export interface PageWrapperProps {
     navItems: SidebarItem[],
     defaultOpen: string[],
     handleSelect: (value: string) => void,
-    activeValue?: string
+    activeValue?: string,
+    headerImage?: string
 }
 
 export default function PageWrapper(props: PageWrapperProps) {
   return (
     <main className="js-layout">
-      <Sidebar title={props.pageTitle} items={props.navItems} defaultOpen={props.defaultOpen} onSelect={props.handleSelect} activeValue={props.activeValue} />
+      <Sidebar title={props.pageTitle} items={props.navItems} defaultOpen={props.defaultOpen} onSelect={props.handleSelect} activeValue={props.activeValue} headerImage={props.headerImage} />
       <div className="js-page-body">
         <Alert
           severity="info"

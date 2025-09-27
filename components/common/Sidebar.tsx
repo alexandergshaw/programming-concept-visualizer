@@ -16,9 +16,10 @@ interface SidebarProps {
   onSelect?: (value: string) => void;
   defaultOpen?: string[];
   activeValue?: string;
+  headerImage?: string;
 }
 
-export default function Sidebar({ title, items, onSelect, defaultOpen = [], activeValue }: SidebarProps) {
+export default function Sidebar({ title, items, onSelect, defaultOpen = [], activeValue, headerImage }: SidebarProps) {
   const [open, setOpen] = useState<Set<string>>(new Set());
   const [searchQuery, setSearchQuery] = useState(''); // State for the search query
   const [filteredItems, setFilteredItems] = useState<SidebarItem[]>(items); // State for filtered items
@@ -79,7 +80,22 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [], acti
         flexDirection: 'column',
       }}
     >
-      <h2 className="js-sidebar-title">{title}</h2>
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
+        {headerImage && (
+          <img 
+            src={headerImage} 
+            alt="Header Icon" 
+            style={{ 
+              height: '2em', 
+              width: '2em', 
+              marginRight: '12px',
+              borderRadius: '4px',
+              objectFit: 'contain'
+            }} 
+          />
+        )}
+        <h2 className="js-sidebar-title" style={{ margin: 0 }}>{title}</h2>
+      </div>
       {/* Search Box */}
       <TextField
         placeholder="Search concepts..."
