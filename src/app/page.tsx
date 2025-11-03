@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faJs, faPython, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faJs, faPython, faGithub, faReact } from '@fortawesome/free-brands-svg-icons';
 import { faGraduationCap, faBug, faCode, faGlobe, faDatabase, faShieldHalved } from '@fortawesome/free-solid-svg-icons';
 import CodeIcon from '@mui/icons-material/Code';
 import React, { useState, useEffect } from "react";
@@ -51,9 +51,10 @@ const MinimalCard = styled(Card)(() => ({
 const languages = [
   { name: 'Programming Basics', type: 'Fundamentals' },
   { name: 'Python', type: 'Programming Language' },
+  { name: 'React', type: 'Library' },
   { name: 'Software Testing', type: 'Topic' },
-  { name: 'Databases', type: 'Topic' },        // Added
-  { name: 'Cybersecurity', type: 'Topic' },           // Added
+  { name: 'Databases', type: 'Topic' },
+  { name: 'Cybersecurity', type: 'Topic' },
   { name: 'JavaScript', type: 'Programming Language' },
   // { name: 'GitHub', type: 'Tutorial' },
   // { name: 'Deploying a Website', type: 'Tutorial' },
@@ -73,6 +74,12 @@ const getLanguageIcon = (language: string) => {
       return (
         <Box sx={{ fontSize: 32, mb: 1, color: '#3776AB' }}>
           <FontAwesomeIcon icon={faPython} />
+        </Box>
+      );
+    case 'react':
+      return (
+        <Box sx={{ fontSize: 32, mb: 1, color: '#61DAFB' }}>
+          <FontAwesomeIcon icon={faReact} />
         </Box>
       );
     case 'programming basics':
