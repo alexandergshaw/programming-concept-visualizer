@@ -11,7 +11,7 @@ import {
 import { styled } from '@mui/material/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faJs, faPython, faGithub, faReact } from '@fortawesome/free-brands-svg-icons';
-import { faGraduationCap, faBug, faCode, faGlobe, faDatabase, faShieldHalved } from '@fortawesome/free-solid-svg-icons';
+import { faGraduationCap, faBug, faCode, faGlobe, faDatabase, faShieldHalved, faSitemap } from '@fortawesome/free-solid-svg-icons';
 import CodeIcon from '@mui/icons-material/Code';
 import React, { useState, useEffect } from "react";
 import Loader from '@/components/common/Loader';
@@ -56,6 +56,7 @@ const languages = [
   { name: 'Databases', type: 'Topic' },
   { name: 'Cybersecurity', type: 'Topic' },
   { name: 'JavaScript', type: 'Programming Language' },
+  { name: 'Website Management', type: 'Topic' },
   // { name: 'GitHub', type: 'Tutorial' },
   // { name: 'Deploying a Website', type: 'Tutorial' },
 
@@ -118,6 +119,12 @@ const getLanguageIcon = (language: string) => {
           <FontAwesomeIcon icon={faShieldHalved} />
         </Box>
       );
+    case 'website management':
+      return (
+        <Box sx={{ fontSize: 32, mb: 1, color: '#8b5cf6' }}>
+          <FontAwesomeIcon icon={faSitemap} />
+        </Box>
+      );
     default:
       return <FontAwesomeIcon icon={faCode} style={{ fontSize: 32, color: '#00319b' }} />;
   }
@@ -153,6 +160,9 @@ export default function LandingPage() {
       case 'cybersecurity':
         router.push('/skills/cybersecurity');
         break;
+      case 'website management':
+        router.push('/skills/website-management');
+        break;
       default:
         router.push(`/languages/${language.toLowerCase()}`);
     }
@@ -183,9 +193,9 @@ export default function LandingPage() {
                 lineHeight: 1.1,
               }}
             >
-              Programming Concept
+              Concept
               <Box component="span" sx={{ color: '#00319b', display: 'block' }}>
-                Visualizer
+                Visuals
               </Box>
             </Typography>
 
@@ -200,10 +210,6 @@ export default function LandingPage() {
               }}
             >
               Learn programming concepts with visual examples and interactive tutorials
-            </Typography>
-
-            <Typography variant="body1" sx={{ mb: 3 }}>
-              This project is developed and maintained by one person (Alex) as I cover them in my classes. Thank you for your patience as the site grows!
             </Typography>
 
             <Box
