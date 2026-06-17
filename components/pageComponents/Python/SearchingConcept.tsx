@@ -15,7 +15,7 @@ const DATA = [2, 5, 8, 12, 16, 23, 38, 45, 56, 72, 91];
 type CellState = '' | 'range' | 'active' | 'eliminated' | 'found';
 type Snap = { states: CellState[]; desc: string };
 
-// --- Static illustration data (a smaller, clearer list) --------------------
+// Static illustration data (a smaller, clearer list)
 const ILLUS = [3, 9, 14, 21, 28, 35, 42, 50];
 const ILLUS_TARGET_INDEX = 6; // value 42
 const linearBadges = ILLUS.map((_, i) => (i <= ILLUS_TARGET_INDEX ? i + 1 : null));
@@ -72,14 +72,14 @@ function binarySnaps(arr: number[], target: number): Snap[] {
     if (arr[mid] === target) {
       const found = [...states];
       found[mid] = 'found';
-      snaps.push({ states: found, desc: `The middle number ${arr[mid]} equals ${target} — found at position ${mid} in ${checks} checks.` });
+      snaps.push({ states: found, desc: `The middle number ${arr[mid]} equals ${target} — found in ${checks} checks.` });
       return snaps;
     }
     if (arr[mid] < target) {
-      snaps.push({ states, desc: `Middle value ${arr[mid]} is smaller than ${target}, so the answer must be to the right. Discard the entire left half.` });
+      snaps.push({ states, desc: `Middle is ${arr[mid]}, smaller than ${target}. Throw away the left half.` });
       lo = mid + 1;
     } else {
-      snaps.push({ states, desc: `Middle value ${arr[mid]} is larger than ${target}, so the answer must be to the left. Discard the entire right half.` });
+      snaps.push({ states, desc: `Middle is ${arr[mid]}, larger than ${target}. Throw away the right half.` });
       hi = mid - 1;
     }
   }
@@ -117,34 +117,30 @@ export default function SearchingConcept() {
   return (
     <ConceptWrapper
       title="Searching"
-      description="Searching is how a program finds where a value lives in a list. The smarter the method, the fewer items it has to examine."
+      description="Finding where a value lives in a list."
     >
       <TableOfContents numbered>
         {/* 1 ----------------------------------------------------------------- */}
         <Section title="The Big Idea">
-          <Typography variant="body2" paragraph>
-            Suppose you want to find a contact named Maria in your phone. You could scroll from the very top, name by name, until you reach hers. Or, because your contacts are in alphabetical order, you could jump to the middle, check whether you have gone too far, and keep narrowing the range.
-          </Typography>
-          <Typography variant="body2" paragraph>
-            Those are the two fundamental searching strategies, and computers rely on the same two ideas.
-          </Typography>
-
-          <CalloutBox title="Definition" type="info">
+          <CalloutBox title="Searching is elimination" type="key-concepts">
             <Typography variant="body2">
-              <strong>Searching</strong> is the process of looking through a collection to locate one specific item, or to determine that the item is not present.
+              Every search rules out items until only the answer is left. <strong>The faster you can rule items out, the faster you find what you want.</strong>
             </Typography>
           </CalloutBox>
+          <Typography variant="body2" sx={{ mt: 2 }}>
+            That single idea separates the two strategies below: one rules out <em>one</em> item per step, the other rules out <em>half the list</em> per step.
+          </Typography>
         </Section>
 
         {/* 2 ----------------------------------------------------------------- */}
-        <Section title="Linear Search: Check Every Item">
+        <Section title="Rule Out One at a Time (Linear Search)">
           <Typography variant="body2" paragraph>
-            The most direct method is to start at the beginning and examine every item in turn until the target is found. This is the equivalent of reading a grocery list from top to bottom looking for &quot;milk.&quot;
+            Check each item from the start until you find the target. Works on any list.
           </Typography>
 
           <div className="ds-viz">
             <div className="illus">
-              <div className="illus-label">Searching for 42 — linear search examines each box in order:</div>
+              <div className="illus-label">Finding 42 — one check per item:</div>
               <div className="illus-cells">
                 {ILLUS.map((val, i) => (
                   <div key={i} className={`illus-cell ${i === ILLUS_TARGET_INDEX ? 'target' : linearBadges[i] ? 'hit' : 'dim'}`}>
@@ -153,26 +149,20 @@ export default function SearchingConcept() {
                   </div>
                 ))}
               </div>
-              <p className="ds-caption">Reaching 42 took 7 checks. The numbered badges show the order of examination.</p>
+              <p className="ds-caption">7 checks to reach 42.</p>
             </div>
           </div>
-
-          <CalloutBox title="Trade-off" type="warning">
-            <Typography variant="body2">
-              Linear search works on any list, sorted or unsorted. The downside is that for a long list, an item near the end requires examining nearly everything.
-            </Typography>
-          </CalloutBox>
         </Section>
 
         {/* 3 ----------------------------------------------------------------- */}
-        <Section title="Binary Search: Halve the Range Each Step">
+        <Section title="Rule Out Half at a Time (Binary Search)">
           <Typography variant="body2" paragraph>
-            When the list is sorted, a far more efficient approach is available. Examine the middle item. If it is smaller than the target, discard the entire left half; if it is larger, discard the entire right half. Repeat on whatever remains. Each examination eliminates half of the remaining items.
+            On a <strong>sorted</strong> list, check the middle. Too small? Drop the left half. Too big? Drop the right half. Repeat. Each check halves what&apos;s left.
           </Typography>
 
           <div className="ds-viz">
             <div className="illus">
-              <div className="illus-label">Searching for 42 — binary search jumps to the middle of each remaining range:</div>
+              <div className="illus-label">Finding 42 — jump to the middle each time:</div>
               <div className="illus-cells">
                 {ILLUS.map((val, i) => {
                   const order = binaryOrder.indexOf(i);
@@ -186,53 +176,41 @@ export default function SearchingConcept() {
                   );
                 })}
               </div>
-              <p className="ds-caption">Reaching 42 took only 3 checks; everything else was eliminated without being examined.</p>
+              <p className="ds-caption">Only 3 checks to reach 42.</p>
             </div>
           </div>
 
-          <CalloutBox title="Prerequisite" type="warning">
+          <CalloutBox title="The catch" type="warning">
             <Typography variant="body2">
-              Binary search requires a <strong>sorted</strong> list. The core deduction — &quot;the answer must be to the left or right&quot; — depends entirely on the items being in order.
+              Binary search only works if the list is <strong>sorted</strong> — that&apos;s what lets you trust &quot;the answer must be on this side.&quot;
             </Typography>
           </CalloutBox>
         </Section>
 
         {/* 4 ----------------------------------------------------------------- */}
-        <Section title="Interactive Comparison">
+        <Section title="Try It">
           <Typography variant="body2" paragraph>
-            The list below is sorted. Choose a number to find and a strategy, then use Play or step through manually. The scoreboard updates instantly so you can compare how many checks each method needs for the same target.
+            Pick a target and a strategy. The scoreboard shows how many items each one rules out before finding the answer.
           </Typography>
 
           <div className="ds-viz">
             <div className="ds-controls">
-              <Button variant={algorithm === 'linear' ? 'contained' : 'outlined'} onClick={() => setAlgorithm('linear')}>
-                Linear search
-              </Button>
-              <Button variant={algorithm === 'binary' ? 'contained' : 'outlined'} onClick={() => setAlgorithm('binary')}>
-                Binary search
-              </Button>
-              <TextField
-                label="Find this number"
-                type="number"
-                size="small"
-                value={target}
-                onChange={(e) => setTarget(parseInt(e.target.value, 10) || 0)}
-                sx={{ width: 150 }}
-              />
+              <Button variant={algorithm === 'linear' ? 'contained' : 'outlined'} onClick={() => setAlgorithm('linear')}>Linear</Button>
+              <Button variant={algorithm === 'binary' ? 'contained' : 'outlined'} onClick={() => setAlgorithm('binary')}>Binary</Button>
+              <TextField label="Find" type="number" size="small" value={target} onChange={(e) => setTarget(parseInt(e.target.value, 10) || 0)} sx={{ width: 110 }} />
             </div>
 
-            {/* Live scoreboard */}
             <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', mb: 2 }}>
-              <Box sx={{ flex: 1, minWidth: 180, p: 1.5, borderRadius: 2, border: '1px solid', borderColor: algorithm === 'linear' ? '#2563eb' : '#e2e8f0', bgcolor: '#f8fafc' }}>
-                <Typography variant="caption" sx={{ color: '#64748b', display: 'block' }}>Linear search</Typography>
+              <Box sx={{ flex: 1, minWidth: 150, p: 1.5, borderRadius: 2, border: '1px solid', borderColor: algorithm === 'linear' ? '#2563eb' : '#e2e8f0', bgcolor: '#f8fafc' }}>
+                <Typography variant="caption" sx={{ color: '#64748b', display: 'block' }}>Linear</Typography>
                 <Typography variant="h6" sx={{ color: '#3b82f6', fontWeight: 700 }}>
-                  {linearResult.found ? `${linearResult.checks} checks` : `${linearResult.checks} checks (not found)`}
+                  {linearResult.found ? `${linearResult.checks} checks` : `${linearResult.checks} (not found)`}
                 </Typography>
               </Box>
-              <Box sx={{ flex: 1, minWidth: 180, p: 1.5, borderRadius: 2, border: '1px solid', borderColor: algorithm === 'binary' ? '#2563eb' : '#e2e8f0', bgcolor: '#f8fafc' }}>
-                <Typography variant="caption" sx={{ color: '#64748b', display: 'block' }}>Binary search</Typography>
+              <Box sx={{ flex: 1, minWidth: 150, p: 1.5, borderRadius: 2, border: '1px solid', borderColor: algorithm === 'binary' ? '#2563eb' : '#e2e8f0', bgcolor: '#f8fafc' }}>
+                <Typography variant="caption" sx={{ color: '#64748b', display: 'block' }}>Binary</Typography>
                 <Typography variant="h6" sx={{ color: '#8b5cf6', fontWeight: 700 }}>
-                  {binaryResult.found ? `${binaryResult.checks} checks` : `${binaryResult.checks} checks (not found)`}
+                  {binaryResult.found ? `${binaryResult.checks} checks` : `${binaryResult.checks} (not found)`}
                 </Typography>
               </Box>
             </Box>
@@ -247,45 +225,27 @@ export default function SearchingConcept() {
             </div>
 
             <div className="ds-controls">
-              <Button variant="outlined" onClick={() => { setPlaying(false); setStep((s) => Math.max(0, s - 1)); }} disabled={step === 0}>
-                Previous
-              </Button>
-              <Button variant="contained" onClick={() => { setPlaying(false); setStep((s) => Math.min(snaps.length - 1, s + 1)); }} disabled={step >= snaps.length - 1}>
-                Next
-              </Button>
-              <Button variant="outlined" onClick={() => setPlaying((p) => !p)} disabled={step >= snaps.length - 1}>
-                {playing ? 'Pause' : 'Play'}
-              </Button>
-              <Button variant="text" color="secondary" onClick={() => { setPlaying(false); setStep(0); }}>
-                Reset
-              </Button>
+              <Button variant="outlined" onClick={() => { setPlaying(false); setStep((s) => Math.max(0, s - 1)); }} disabled={step === 0}>Previous</Button>
+              <Button variant="contained" onClick={() => { setPlaying(false); setStep((s) => Math.min(snaps.length - 1, s + 1)); }} disabled={step >= snaps.length - 1}>Next</Button>
+              <Button variant="outlined" onClick={() => setPlaying((p) => !p)} disabled={step >= snaps.length - 1}>{playing ? 'Pause' : 'Play'}</Button>
+              <Button variant="text" color="secondary" onClick={() => { setPlaying(false); setStep(0); }}>Reset</Button>
             </div>
 
             <p className="ds-output"><strong>Step {step + 1} / {snaps.length}:</strong> {snap.desc}</p>
-
-            <div className="ds-legend">
-              <span className="ds-legend-item"><span className="ds-swatch" style={{ background: '#fef9c3', borderColor: '#facc15' }} /> Examining</span>
-              <span className="ds-legend-item"><span className="ds-swatch" style={{ background: '#eff6ff', borderColor: '#93c5fd' }} /> Still possible</span>
-              <span className="ds-legend-item"><span className="ds-swatch" style={{ background: '#bbf7d0', borderColor: '#22c55e' }} /> Found</span>
-              <span className="ds-legend-item"><span className="ds-swatch" style={{ background: '#f1f5f9', borderColor: '#cbd5e1', opacity: 0.5 }} /> Eliminated</span>
-            </div>
           </div>
 
-          <CalloutBox title="Suggested experiment" type="success">
-            <Typography variant="body2">
-              Search for <strong>91</strong> (the last value) with each strategy and compare the scoreboard: linear search examines all 11 items, while binary search finds it in about 4. Then enter a value that is not present, such as <strong>50</strong>, to see how each method concludes the item is missing.
-            </Typography>
-          </CalloutBox>
+          <Typography variant="body2" sx={{ mt: 1 }}>
+            Try finding <strong>91</strong> with each strategy, then try <strong>50</strong> (not in the list).
+          </Typography>
         </Section>
 
         {/* 5 ----------------------------------------------------------------- */}
-        <Section title="Why Binary Search Scales So Well">
+        <Section title="Why Halving Wins">
           <Typography variant="body2" paragraph>
-            Each examination in binary search discards half of the remaining items. Halving repeatedly reduces even a very large list to a single candidate in a small number of steps.
+            Ruling out half the list each step adds up fast.
           </Typography>
 
           <div className="ds-viz">
-            <div className="illus-label">Starting from 16 items, each check roughly halves what remains:</div>
             {[
               { left: 16, w: 100 },
               { left: 8, w: 50 },
@@ -294,40 +254,17 @@ export default function SearchingConcept() {
               { left: 1, w: 6.25 },
             ].map((row, i) => (
               <div className="halve-row" key={i}>
-                <span style={{ width: 70, fontSize: 13, color: '#475569' }}>Check {i + 1}</span>
+                <span style={{ width: 64, fontSize: 13, color: '#475569' }}>Check {i + 1}</span>
                 <span className="halve-bar" style={{ width: `${row.w}%` }}>{row.left} left</span>
               </div>
             ))}
-            <p className="ds-caption">16 items resolve in 4 checks. A list of 1,000,000 items requires only about 20.</p>
+            <p className="ds-caption">16 items: found in 4 checks. 1,000,000 items: about 20.</p>
           </div>
 
-          <CalloutBox title="Scaling behaviour" type="info">
+          <CalloutBox title="Connecting back" type="success">
             <Typography variant="body2">
-              Doubling the size of the list adds just one additional step to binary search. This growth rate is written as <strong>O(log n)</strong> and is covered in detail in <em>Algorithm Analysis &amp; Design</em>.
+              Same goal, very different speed — because binary search eliminates more per step. That is the whole point of searching: <strong>rule out as much as you can, as fast as you can.</strong>
             </Typography>
-          </CalloutBox>
-        </Section>
-
-        {/* 6 ----------------------------------------------------------------- */}
-        <Section title="Real-World Examples">
-          <CalloutBox title="Where these strategies appear" type="key-concepts">
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, mt: 1 }}>
-              <Typography variant="body2"><strong>Dictionaries and phone books:</strong> flipping toward the middle rather than starting at page one is binary search performed by hand.</Typography>
-              <Typography variant="body2"><strong>Find on a page (Ctrl+F):</strong> scanning text item by item is linear search.</Typography>
-              <Typography variant="body2"><strong>Number-guessing games:</strong> a &quot;higher or lower&quot; strategy is binary search.</Typography>
-              <Typography variant="body2"><strong>Databases:</strong> data is kept sorted or indexed so lookups can use binary-search-style efficiency.</Typography>
-            </Box>
-          </CalloutBox>
-        </Section>
-
-        {/* 7 ----------------------------------------------------------------- */}
-        <Section title="Key Takeaways">
-          <CalloutBox title="Summary" type="success">
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, mt: 1 }}>
-              <Typography variant="body2"><strong>Linear search</strong> examines items one at a time. It is simple and works on any list, but is slow for long lists.</Typography>
-              <Typography variant="body2"><strong>Binary search</strong> repeatedly halves a sorted list, requiring far fewer checks.</Typography>
-              <Typography variant="body2"><strong>The trade-off:</strong> binary search&apos;s efficiency depends on the list being sorted in advance.</Typography>
-            </Box>
           </CalloutBox>
         </Section>
       </TableOfContents>
