@@ -23,12 +23,15 @@ export default function PageWrapper(props: PageWrapperProps) {
           severity="info"
           className="feedback-banner"
           sx={{
-            position: 'fixed', // Make it fixed
-            top: 0, // Stick to the top of the viewport
-            left: '250px', // Offset to account for the sidebar
-            width: 'calc(100% - 250px)', // Adjust width to fit the remaining space
-            zIndex: 1100, // Ensure it stays above other content
-            mb: 3,
+            // On desktop: fixed, offset to clear the 250px sidebar.
+            // On mobile: in normal flow, full width, with room for the menu button.
+            position: { xs: 'static', md: 'fixed' },
+            top: { md: 0 },
+            left: { md: '250px' },
+            width: { xs: '100%', md: 'calc(100% - 250px)' },
+            pl: { xs: '56px', md: 2 },
+            zIndex: 1100,
+            mb: { xs: 2, md: 3 },
           }}
         >
           Have ideas to improve this page?{' '}
@@ -42,7 +45,7 @@ export default function PageWrapper(props: PageWrapperProps) {
           </Link>
         </Alert>
         <section className="js-content">
-          <div style={{ marginTop: '100px' }}>
+          <div className="js-content-inner">
             {props.children}
           </div>
         </section>

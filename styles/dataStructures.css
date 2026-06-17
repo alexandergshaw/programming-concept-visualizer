@@ -646,3 +646,45 @@
   background: #86efac;
   border: 1px solid #16a34a;
 }
+
+/* ----------------------------- Responsive ------------------------------- */
+@media (max-width: 600px) {
+  .ds-viz {
+    padding: 14px;
+  }
+
+  /* Step controls wrap onto multiple rows on narrow screens. */
+  .ds-controls {
+    gap: 8px;
+  }
+
+  /* Give the Big-O bars more room by shrinking the fixed-width columns. */
+  .bigo-label {
+    width: 84px;
+    font-size: 12px;
+  }
+
+  .bigo-steps {
+    width: 46px;
+    font-size: 12px;
+  }
+
+  /* Stack plates and play cards scale down so they never overflow. */
+  .stack-item {
+    width: 150px;
+    font-size: 16px;
+  }
+
+  .play-card {
+    width: 52px;
+    height: 72px;
+    font-size: 22px;
+  }
+
+  /* Object/shape cards stretch to the full width on phones. */
+  .obj-card,
+  .shape-card {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+}

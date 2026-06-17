@@ -207,3 +207,82 @@
   font-size: '1.25rem';
   color: '#555';
 }
+
+/* ===========================================================================
+   Responsive layout
+   - Desktop (>= 900px): fixed 250px sidebar, content offset to clear it.
+   - Mobile  (<  900px): sidebar becomes an off-canvas drawer opened by a
+     floating menu button; content goes full width.
+   =========================================================================== */
+
+/* Desktop default: content clears the fixed banner. */
+.js-content-inner {
+  margin-top: 100px;
+}
+
+/* Menu button + backdrop are hidden on desktop. */
+.js-sidebar-toggle {
+  display: none;
+}
+
+.js-sidebar-backdrop {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  /* Content uses the full width with small gutters. */
+  .js-content {
+    padding: 0 16px;
+  }
+
+  /* Banner is in normal flow on mobile, so only a small gap is needed. */
+  .js-content-inner {
+    margin-top: 12px;
+  }
+
+  /* Sidebar slides in from the left instead of taking permanent space. */
+  .js-sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.28s ease;
+    box-shadow: 2px 0 16px rgba(0, 0, 0, 0.35);
+  }
+
+  .js-sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* Floating menu button. */
+  .js-sidebar-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 8px;
+    background: #1f2937;
+    color: #ffffff;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 1200;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Dim the page behind the open drawer. */
+  .js-sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 999;
+  }
+}

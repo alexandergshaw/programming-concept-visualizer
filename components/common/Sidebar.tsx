@@ -24,6 +24,7 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [], acti
   const [open, setOpen] = useState<Set<string>>(new Set());
   const [searchQuery, setSearchQuery] = useState(''); // State for the search query
   const [filteredItems, setFilteredItems] = useState<SidebarItem[]>(items); // State for filtered items
+  const [mobileOpen, setMobileOpen] = useState(false); // Off-canvas drawer state (mobile only)
 
   // Initialize open state from defaultOpen prop
   useEffect(() => {
@@ -65,22 +66,38 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [], acti
   };
 
   return (
-    <aside
-      className="js-sidebar"
-      style={{
-        position: 'fixed', // Fix the sidebar in place
-        top: '0', // Stick to the top of the viewport
-        left: '0', // Align it to the left of the viewport
-        width: '250px', // Set a fixed width for the sidebar
-        height: '100vh', // Make it span the full height of the viewport
-        zIndex: 1000, // Ensure it stays above other content
-        backgroundColor: '#333', // Optional: Ensure the background is visible
-        overflowY: 'auto', // Allow scrolling if the content overflows
-        padding: '16px', // Add some padding for better spacing
-        display: 'flex',
-        flexDirection: 'column',
-      }}
-    >
+    <>
+      <button
+        className="js-sidebar-toggle"
+        aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
+        aria-expanded={mobileOpen}
+        onClick={() => setMobileOpen((o) => !o)}
+      >
+        {mobileOpen ? '✕' : '☰'}
+      </button>
+      {mobileOpen && (
+        <button
+          className="js-sidebar-backdrop"
+          aria-label="Close navigation menu"
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
+      <aside
+        className={`js-sidebar${mobileOpen ? ' open' : ''}`}
+        style={{
+          position: 'fixed', // Fix the sidebar in place
+          top: '0', // Stick to the top of the viewport
+          left: '0', // Align it to the left of the viewport
+          width: '250px', // Set a fixed width for the sidebar
+          height: '100vh', // Make it span the full height of the viewport
+          zIndex: 1000, // Ensure it stays above other content
+          backgroundColor: '#333', // Optional: Ensure the background is visible
+          overflowY: 'auto', // Allow scrolling if the content overflows
+          padding: '16px', // Add some padding for better spacing
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
         {headerImage && (
           <Image 
@@ -153,7 +170,7 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [], acti
                     <li key={sub.value} style={{ marginBottom: "4px", listStyle: "none" }}>
                       <button
                         className={`js-nav-subitem hoverable ${activeValue === sub.value ? 'active' : ''}`}
-                        onClick={() => onSelect?.(sub.value)}
+                        onClick={() => { onSelect?.(sub.value); setMobileOpen(false); }}
                       >
                         {sub.label}
                       </button>
@@ -165,6 +182,7 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [], acti
           );
         })}
       </ul>
-    </aside>
+      </aside>
+    </>
   );
 }

@@ -80,3 +80,23 @@
   font-weight: 500;
   color: #334155;
 }
+
+/* Tighten the concept container on small screens. */
+@media (max-width: 900px) {
+  .array-container {
+    margin-top: 12px;
+    padding: 16px;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .array-controls {
+    gap: 8px;
+  }
+  .array-cell {
+    min-width: 56px;
+    min-height: 56px;
+    padding: 10px 12px;
+  }
+}
