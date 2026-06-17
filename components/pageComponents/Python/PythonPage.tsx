@@ -17,6 +17,19 @@ import ForLoopConcept from './ForLoopConcept';
 import RecursionConcept from './RecursionConcept';
 import FunctionBasicsConcept from './FunctionBasicsConcept';
 import ModulesConcept from './ModulesConcept';
+import ClassesObjectsConcept from './ClassesObjectsConcept';
+import AttributesMethodsConcept from './AttributesMethodsConcept';
+import InheritanceConcept from './InheritanceConcept';
+import EncapsulationConcept from './EncapsulationConcept';
+import PolymorphismConcept from './PolymorphismConcept';
+import AbstractionConcept from './AbstractionConcept';
+import StackConcept from './StackConcept';
+import QueueConcept from './QueueConcept';
+import TreeConcept from './TreeConcept';
+import AlgorithmAnalysisConcept from './AlgorithmAnalysisConcept';
+import RecursionVisualConcept from './RecursionVisualConcept';
+import SearchingConcept from './SearchingConcept';
+import SortingConcept from './SortingConcept';
 
 const navItems = [
 	{
@@ -61,6 +74,37 @@ const navItems = [
 		value: 'code-organization',
 		children: [
 			{ label: 'Modules', value: 'modules' },
+		]
+	},
+	{
+		label: 'Object-Oriented Programming',
+		value: 'oop',
+		children: [
+			{ label: 'Classes & Objects', value: 'classes-objects' },
+			{ label: 'Attributes & Methods', value: 'attributes-methods' },
+			{ label: 'Inheritance', value: 'inheritance' },
+			{ label: 'Encapsulation', value: 'encapsulation' },
+			{ label: 'Polymorphism', value: 'polymorphism' },
+			{ label: 'Abstraction', value: 'abstraction' },
+		]
+	},
+	{
+		label: 'Data Structures',
+		value: 'data-structures',
+		children: [
+			{ label: 'Stacks', value: 'stacks' },
+			{ label: 'Queues', value: 'queues' },
+			{ label: 'Trees', value: 'trees' },
+		]
+	},
+	{
+		label: 'Algorithms',
+		value: 'algorithms',
+		children: [
+			{ label: 'Algorithm Analysis & Design', value: 'algorithm-analysis' },
+			{ label: 'Recursion', value: 'recursion-viz' },
+			{ label: 'Searching', value: 'searching' },
+			{ label: 'Sorting', value: 'sorting' },
 		]
 	}
 ];
@@ -107,6 +151,32 @@ export default function PythonPage() {
                 return <FunctionBasicsConcept />;
             case 'modules':
                 return <ModulesConcept />;
+            case 'classes-objects':
+                return <ClassesObjectsConcept />;
+            case 'attributes-methods':
+                return <AttributesMethodsConcept />;
+            case 'inheritance':
+                return <InheritanceConcept />;
+            case 'encapsulation':
+                return <EncapsulationConcept />;
+            case 'polymorphism':
+                return <PolymorphismConcept />;
+            case 'abstraction':
+                return <AbstractionConcept />;
+            case 'stacks':
+                return <StackConcept />;
+            case 'queues':
+                return <QueueConcept />;
+            case 'trees':
+                return <TreeConcept />;
+            case 'algorithm-analysis':
+                return <AlgorithmAnalysisConcept />;
+            case 'recursion-viz':
+                return <RecursionVisualConcept />;
+            case 'searching':
+                return <SearchingConcept />;
+            case 'sorting':
+                return <SortingConcept />;
             default:
 				return null;
 		}
@@ -121,7 +191,7 @@ export default function PythonPage() {
 		<PageWrapper
 			pageTitle={'Python Visualizer'}
 			navItems={navItems}
-			defaultOpen={["functions", "code-organization"]}
+			defaultOpen={[]}
 			handleSelect={handleSelect}
 			activeValue={selectedConcept || undefined}
 		>

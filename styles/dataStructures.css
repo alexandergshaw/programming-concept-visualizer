@@ -1,0 +1,648 @@
+/* ===========================================================================
+   Shared visualization styles for Data Structures & Algorithms concept pages.
+   Modeled on the array visualizer (see array.css) but extended for stacks,
+   queues, trees, recursion, searching and sorting.
+   =========================================================================== */
+
+.ds-viz {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  margin: 16px 0 24px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.ds-controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.ds-output {
+  font-size: 15px;
+  font-weight: 500;
+  color: #334155;
+  min-height: 22px;
+  margin-top: 10px;
+}
+
+.ds-caption {
+  font-size: 13px;
+  color: #64748b;
+  font-style: italic;
+  text-align: center;
+  margin-top: 6px;
+}
+
+.ds-legend {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: #475569;
+  margin-top: 16px;
+}
+
+.ds-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ds-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* --------------------------------- Stack --------------------------------- */
+.stack-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 340px;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.stack-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.stack-item {
+  position: relative;
+  width: 190px;
+  padding: 16px 0;
+  text-align: center;
+  border-radius: 10px;
+  background: #dbeafe;
+  border: 1px solid #60a5fa;
+  font-weight: 600;
+  font-size: 18px;
+  color: #1e3a8a;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+.stack-item.top {
+  background: #bfdbfe;
+  border-color: #2563eb;
+}
+
+.stack-top-tag {
+  position: absolute;
+  right: -78px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  font-weight: 700;
+  color: #2563eb;
+  white-space: nowrap;
+}
+
+.stack-base {
+  width: 230px;
+  height: 16px;
+  background: #475569;
+  border-radius: 4px;
+  margin-top: 4px;
+}
+
+.stack-empty {
+  color: #94a3b8;
+  font-style: italic;
+  padding: 24px 0;
+}
+
+/* --------------------------------- Queue --------------------------------- */
+.queue-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 28px 4px 8px;
+  min-height: 120px;
+}
+
+.queue-item {
+  min-width: 72px;
+  padding: 16px 14px;
+  border-radius: 10px;
+  background: #dcfce7;
+  border: 1px solid #4ade80;
+  font-weight: 600;
+  font-size: 18px;
+  color: #14532d;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.queue-item .queue-emoji {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
+.queue-tag {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.queue-tag.front {
+  color: #16a34a;
+}
+
+.queue-tag.back {
+  color: #2563eb;
+}
+
+.queue-empty {
+  color: #94a3b8;
+  font-style: italic;
+}
+
+/* --------------------------- Searching cells ----------------------------- */
+.cells-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.search-cell {
+  min-width: 60px;
+  min-height: 64px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s, border-color 0.25s, transform 0.2s;
+}
+
+.search-cell .cell-index {
+  font-size: 11px;
+  color: #94a3b8;
+  margin-bottom: 2px;
+}
+
+.search-cell .cell-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.search-cell.range {
+  background: #eff6ff;
+  border-color: #93c5fd;
+}
+
+.search-cell.active {
+  background: #fef9c3;
+  border-color: #facc15;
+  transform: translateY(-4px);
+}
+
+.search-cell.eliminated {
+  opacity: 0.35;
+}
+
+.search-cell.found {
+  background: #bbf7d0;
+  border-color: #22c55e;
+  transform: translateY(-4px);
+}
+
+/* --------------------------- Sorting bars -------------------------------- */
+.bars-area {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 240px;
+  padding-top: 10px;
+}
+
+.bar {
+  flex: 1;
+  min-width: 14px;
+  background: #93c5fd;
+  border-radius: 5px 5px 0 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  color: #1e3a8a;
+  font-size: 12px;
+  font-weight: 600;
+  padding-bottom: 4px;
+  transition: height 0.25s ease, background 0.2s ease;
+}
+
+.bar.compare {
+  background: #fbbf24;
+}
+
+.bar.swap {
+  background: #f87171;
+}
+
+.bar.sorted {
+  background: #34d399;
+  color: #064e3b;
+}
+
+/* --------------------------- Recursion frames ---------------------------- */
+.rec-frames {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.rec-frame {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  font-family: monospace;
+  font-size: 15px;
+  color: #334155;
+  transition: background 0.2s, border-color 0.2s, opacity 0.2s;
+}
+
+.rec-frame.calling {
+  background: #fef9c3;
+  border-color: #facc15;
+}
+
+.rec-frame.active {
+  background: #fde68a;
+  border-color: #f59e0b;
+  font-weight: 700;
+}
+
+.rec-frame.base {
+  background: #fee2e2;
+  border-color: #f87171;
+}
+
+.rec-frame.returning {
+  background: #dcfce7;
+  border-color: #4ade80;
+}
+
+.rec-frame .rec-return {
+  color: #15803d;
+  font-weight: 700;
+}
+
+/* ------------------------- Big-O growth bars ----------------------------- */
+.bigo-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.bigo-label {
+  width: 130px;
+  font-family: monospace;
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+  flex-shrink: 0;
+}
+
+.bigo-track {
+  flex: 1;
+  background: #f1f5f9;
+  border-radius: 6px;
+  overflow: hidden;
+  height: 26px;
+}
+
+.bigo-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.bigo-steps {
+  width: 120px;
+  font-size: 13px;
+  color: #475569;
+  flex-shrink: 0;
+}
+
+/* ===========================================================================
+   Static illustration helpers (used to make concepts more visual)
+   =========================================================================== */
+.illus {
+  margin: 16px 0;
+}
+
+.illus-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+  margin-bottom: 8px;
+}
+
+.illus-cells {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.illus-cell {
+  position: relative;
+  min-width: 46px;
+  height: 46px;
+  padding: 0 6px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 15px;
+  color: #1e293b;
+}
+
+.illus-cell.dim {
+  opacity: 0.35;
+}
+
+.illus-cell.hit {
+  background: #fef9c3;
+  border-color: #facc15;
+}
+
+.illus-cell.target {
+  background: #bbf7d0;
+  border-color: #22c55e;
+}
+
+.viz-badge {
+  position: absolute;
+  top: -10px;
+  left: -8px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 4px;
+  border-radius: 10px;
+  background: #3b82f6;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.viz-badge.binary {
+  background: #8b5cf6;
+}
+
+/* Halving diagram (binary search "wow" visual) */
+.halve-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.halve-bar {
+  height: 28px;
+  border-radius: 6px;
+  background: #a5b4fc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1e1b4b;
+  font-size: 12px;
+  font-weight: 700;
+  min-width: 28px;
+}
+
+.halve-note {
+  font-size: 13px;
+  color: #475569;
+}
+
+/* Horizontal "flow" of steps (recipe / pipeline) */
+.flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.flow-step {
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #3730a3;
+  text-align: center;
+}
+
+.flow-arrow {
+  font-size: 22px;
+  color: #94a3b8;
+}
+
+/* Two-card compare/swap visual (sorting) */
+.cards-compare {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.play-card {
+  width: 64px;
+  height: 88px;
+  border-radius: 10px;
+  border: 2px solid #cbd5e1;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: #1e293b;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.play-card.big {
+  border-color: #f87171;
+  background: #fef2f2;
+}
+
+.compare-symbol {
+  font-size: 26px;
+  font-weight: 700;
+  color: #ef4444;
+}
+
+.swap-arrows {
+  font-size: 26px;
+  color: #2563eb;
+}
+
+/* ===========================================================================
+   OOP interactive widgets
+   =========================================================================== */
+.obj-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.obj-card {
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #f8fafc;
+  padding: 14px 16px;
+  min-width: 190px;
+}
+
+.obj-card-title {
+  font-family: monospace;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.obj-attr {
+  font-family: monospace;
+  font-size: 13px;
+  color: #475569;
+  margin: 2px 0;
+}
+
+.obj-attr .obj-key {
+  color: #2563eb;
+}
+
+/* Console-style output panel for method results */
+.output-panel {
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-family: monospace;
+  font-size: 13px;
+  min-height: 46px;
+  white-space: pre-wrap;
+  line-height: 1.65;
+  margin-top: 12px;
+}
+
+.output-panel .muted {
+  color: #64748b;
+}
+
+.output-panel .ok {
+  color: #4ade80;
+}
+
+.output-panel .err {
+  color: #f87171;
+}
+
+.output-panel .out-prompt {
+  color: #38bdf8;
+  user-select: none;
+}
+
+/* Shape row for polymorphism */
+.shape-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+.shape-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #f8fafc;
+  padding: 14px;
+  text-align: center;
+  min-width: 150px;
+}
+
+.shape-card svg {
+  display: block;
+  margin: 0 auto 8px;
+}
+
+/* Selectable option chips (e.g. payment methods, subclasses) */
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.select-chip {
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+.select-chip:hover {
+  border-color: #94a3b8;
+}
+
+.select-chip.selected {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+/* Neutral avatar used in the queue (replaces emoji) */
+.queue-avatar {
+  display: block;
+  width: 26px;
+  height: 26px;
+  margin: 0 auto 4px;
+  border-radius: 50%;
+  background: #86efac;
+  border: 1px solid #16a34a;
+}
