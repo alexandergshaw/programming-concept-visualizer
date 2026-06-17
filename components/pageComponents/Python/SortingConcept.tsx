@@ -156,6 +156,28 @@ export default function SortingConcept() {
             </Typography>
           </CalloutBox>
         </Section>
+
+        {/* 5 ----------------------------------------------------------------- */}
+        <Section title="When You'd Actually Use This">
+          <Typography variant="body2" paragraph>
+            Almost any time a program shows a list to a person, it shows it in some order — and putting it in that order is sorting:
+          </Typography>
+
+          <CalloutBox title="Everyday programming situations" type="key-concepts">
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, mt: 1 }}>
+              <Typography variant="body2"><strong>A feed or inbox:</strong> newest posts and emails shown first.</Typography>
+              <Typography variant="body2"><strong>A leaderboard:</strong> highest scores ranked at the top.</Typography>
+              <Typography variant="body2"><strong>A contacts list or music library:</strong> sorted A–Z.</Typography>
+              <Typography variant="body2"><strong>Shopping results:</strong> &quot;price: low to high&quot; or &quot;most relevant first.&quot;</Typography>
+            </Box>
+          </CalloutBox>
+
+          <CalloutBox title="Sorting helps searching" type="success">
+            <Typography variant="body2">
+              Sorting is also a setup step: once a list is in order, you can find things in it with fast binary search. The main choice you make is <em>what</em> to sort by — date, price, name, score.
+            </Typography>
+          </CalloutBox>
+        </Section>
       </TableOfContents>
     </ConceptWrapper>
   );

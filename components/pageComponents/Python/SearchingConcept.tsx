@@ -267,6 +267,28 @@ export default function SearchingConcept() {
             </Typography>
           </CalloutBox>
         </Section>
+
+        {/* 6 ----------------------------------------------------------------- */}
+        <Section title="When You'd Actually Use This">
+          <Typography variant="body2" paragraph>
+            Searching shows up any time a program has a pile of data and needs to find one specific thing in it:
+          </Typography>
+
+          <CalloutBox title="Everyday programming situations" type="key-concepts">
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, mt: 1 }}>
+              <Typography variant="body2"><strong>Logging in:</strong> checking the email you typed against millions of stored accounts.</Typography>
+              <Typography variant="body2"><strong>&quot;Username already taken&quot;:</strong> searching existing users when someone signs up.</Typography>
+              <Typography variant="body2"><strong>Scanning a barcode:</strong> finding that product in the store&apos;s catalog.</Typography>
+              <Typography variant="body2"><strong>Autocomplete:</strong> finding the entries that match what you&apos;ve typed so far.</Typography>
+            </Box>
+          </CalloutBox>
+
+          <CalloutBox title="Why the sorted version matters" type="info">
+            <Typography variant="body2">
+              The reason apps keep data sorted or &quot;indexed&quot; — a leaderboard, a contacts list, a database — is so lookups can use binary search and stay instant even with millions of records. That speed is only possible because the data is in order.
+            </Typography>
+          </CalloutBox>
+        </Section>
       </TableOfContents>
     </ConceptWrapper>
   );

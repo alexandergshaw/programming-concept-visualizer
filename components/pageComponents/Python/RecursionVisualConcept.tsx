@@ -217,23 +217,23 @@ export default function RecursionVisualConcept() {
         </Section>
 
         {/* 6 ----------------------------------------------------------------- */}
-        <Section title="Recursion in Real Programs">
+        <Section title="When You'd Actually Use This">
           <Typography variant="body2" paragraph>
-            A real input is rarely a tidy number like <code>n</code>. Usually it&apos;s a <strong>nested structure</strong>, and each call handles one smaller piece of it — the exact same shrinking-input idea.
+            You reach for recursion when the thing you&apos;re working with <strong>contains smaller versions of itself</strong>. The input isn&apos;t a number like <code>n</code> — it&apos;s a nested structure, and each call handles one smaller piece.
           </Typography>
 
-          <CalloutBox title="Same pattern, real inputs" type="key-concepts">
+          <CalloutBox title="Real tasks that call for recursion" type="key-concepts">
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, mt: 1 }}>
-              <Typography variant="body2"><strong>Folders on your computer:</strong> the input is a folder; process it by recursing into each subfolder. Base case: a folder with no subfolders.</Typography>
-              <Typography variant="body2"><strong>A web page or JSON:</strong> the input is an element; process it by recursing into its child elements. Base case: an element with no children.</Typography>
-              <Typography variant="body2"><strong>Comment threads:</strong> the input is a comment; show it, then recurse into its replies. Base case: a comment with no replies.</Typography>
-              <Typography variant="body2"><strong>Trees:</strong> the input is a node; visit it, then recurse into its branches — exactly how the traversals on the <em>Trees</em> page work.</Typography>
+              <Typography variant="body2"><strong>&quot;How big is this folder?&quot;</strong> Add up every file inside it — and inside its subfolders, and theirs. Each subfolder is a smaller folder handed to the same function.</Typography>
+              <Typography variant="body2"><strong>Showing a comment thread:</strong> display a comment, then its replies, then the replies to those replies (a forum or social feed).</Typography>
+              <Typography variant="body2"><strong>A category menu:</strong> a shopping site&apos;s navigation where categories open into sub-categories that open into more.</Typography>
+              <Typography variant="body2"><strong>Drawing a family tree or org chart:</strong> each person branches into the people below them.</Typography>
             </Box>
           </CalloutBox>
 
-          <CalloutBox title="Why recursion fits these" type="success">
+          <CalloutBox title="Why a loop won't cut it" type="success">
             <Typography variant="body2">
-              These inputs nest to no fixed depth — a folder can hold folders that hold more folders. A loop has to ask &quot;how deep?&quot;; recursion doesn&apos;t care, because each piece is simply a smaller input handed to the same function.
+              These nest to no fixed depth — a folder can hold folders that hold more folders forever. A plain loop has to know &quot;how deep?&quot; in advance; recursion doesn&apos;t, because each piece is just a smaller input handed back to the same function.
             </Typography>
           </CalloutBox>
         </Section>
