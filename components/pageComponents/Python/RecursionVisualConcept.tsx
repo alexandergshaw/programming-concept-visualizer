@@ -127,6 +127,22 @@ export default function RecursionVisualConcept() {
         </Section>
 
         {/* 2 ----------------------------------------------------------------- */}
+        <Section title="The Input Is What Shrinks">
+          <Typography variant="body2" paragraph>
+            The value you hand a function is its <strong>input</strong>. In <code>factorial(n)</code>, the input is <code>n</code> — give it <code>4</code> and the function works on the number 4.
+          </Typography>
+          <Typography variant="body2" paragraph>
+            Recursion&apos;s trick is that each call runs on a <strong>smaller input</strong>: <code>factorial(4)</code> calls <code>factorial(3)</code>, which calls <code>factorial(2)</code>, and so on. &quot;A smaller copy of the problem&quot; really just means &quot;the same function on a smaller input.&quot;
+          </Typography>
+
+          <CalloutBox title="The input marches toward the base case" type="info">
+            <Typography variant="body2">
+              Every call shrinks the input one step (<code>n</code> → <code>n - 1</code>) until it reaches the base case (<code>n == 1</code>) and stops. If the input never got smaller, the recursion would never end.
+            </Typography>
+          </CalloutBox>
+        </Section>
+
+        {/* 3 ----------------------------------------------------------------- */}
         <Section title="Every Recursion Needs Two Things">
           <CalloutBox title="The two rules" type="info">
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, mt: 1 }}>
@@ -145,12 +161,12 @@ export default function RecursionVisualConcept() {
         {/* 3 ----------------------------------------------------------------- */}
         <Section title="Watch It: Down, Then Back Up">
           <Typography variant="body2" paragraph>
-            Calls stack up on the way <strong>down</strong> (each waiting on a smaller copy). Once the base case answers, the results travel <strong>back up</strong> and each call finishes. Step through <code>factorial(n)</code>:
+            Pick the <strong>input</strong> with the slider. Calls stack up on the way <strong>down</strong> (each one waiting on a smaller input). Once the base case answers, the results travel <strong>back up</strong> and each call finishes.
           </Typography>
 
           <div className="ds-viz">
             <Box sx={{ px: 1, mb: 2 }}>
-              <Typography variant="body2" gutterBottom>factorial({n})</Typography>
+              <Typography variant="body2" gutterBottom>Input: <strong>n = {n}</strong> &nbsp;&rarr;&nbsp; <code>factorial({n})</code></Typography>
               <Slider value={n} min={1} max={6} step={1} marks onChange={(_, v) => setN(v as number)} valueLabelDisplay="auto" />
             </Box>
 
@@ -195,7 +211,29 @@ export default function RecursionVisualConcept() {
           />
           <CalloutBox title="Connecting back" type="success">
             <Typography variant="body2">
-              Both rules are right there: stop at the base case, otherwise call a smaller copy. That is every recursion.
+              Both rules are right there: stop at the base case, otherwise call the function on a smaller input. That is every recursion.
+            </Typography>
+          </CalloutBox>
+        </Section>
+
+        {/* 6 ----------------------------------------------------------------- */}
+        <Section title="Recursion in Real Programs">
+          <Typography variant="body2" paragraph>
+            A real input is rarely a tidy number like <code>n</code>. Usually it&apos;s a <strong>nested structure</strong>, and each call handles one smaller piece of it — the exact same shrinking-input idea.
+          </Typography>
+
+          <CalloutBox title="Same pattern, real inputs" type="key-concepts">
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, mt: 1 }}>
+              <Typography variant="body2"><strong>Folders on your computer:</strong> the input is a folder; process it by recursing into each subfolder. Base case: a folder with no subfolders.</Typography>
+              <Typography variant="body2"><strong>A web page or JSON:</strong> the input is an element; process it by recursing into its child elements. Base case: an element with no children.</Typography>
+              <Typography variant="body2"><strong>Comment threads:</strong> the input is a comment; show it, then recurse into its replies. Base case: a comment with no replies.</Typography>
+              <Typography variant="body2"><strong>Trees:</strong> the input is a node; visit it, then recurse into its branches — exactly how the traversals on the <em>Trees</em> page work.</Typography>
+            </Box>
+          </CalloutBox>
+
+          <CalloutBox title="Why recursion fits these" type="success">
+            <Typography variant="body2">
+              These inputs nest to no fixed depth — a folder can hold folders that hold more folders. A loop has to ask &quot;how deep?&quot;; recursion doesn&apos;t care, because each piece is simply a smaller input handed to the same function.
             </Typography>
           </CalloutBox>
         </Section>
