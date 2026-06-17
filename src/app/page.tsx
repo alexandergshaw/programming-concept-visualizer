@@ -56,6 +56,7 @@ const languages = [
   { name: 'Databases', type: 'Topic' },
   { name: 'Cybersecurity', type: 'Topic' },
   { name: 'JavaScript', type: 'Programming Language' },
+  { name: 'SQL', type: 'Query Language' },
   { name: 'Website Management', type: 'Topic' },
   // { name: 'GitHub', type: 'Tutorial' },
   // { name: 'Deploying a Website', type: 'Tutorial' },
@@ -123,6 +124,12 @@ const getLanguageIcon = (language: string) => {
       return (
         <Box sx={{ fontSize: 32, mb: 1, color: '#8b5cf6' }}>
           <FontAwesomeIcon icon={faSitemap} />
+        </Box>
+      );
+    case 'sql':
+      return (
+        <Box sx={{ fontSize: 32, mb: 1, color: '#00758f' }}>
+          <FontAwesomeIcon icon={faDatabase} />
         </Box>
       );
     default:
