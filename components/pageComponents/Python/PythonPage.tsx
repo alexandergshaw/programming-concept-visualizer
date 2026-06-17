@@ -17,6 +17,12 @@ import ForLoopConcept from './ForLoopConcept';
 import RecursionConcept from './RecursionConcept';
 import FunctionBasicsConcept from './FunctionBasicsConcept';
 import ModulesConcept from './ModulesConcept';
+import ClassesObjectsConcept from './ClassesObjectsConcept';
+import AttributesMethodsConcept from './AttributesMethodsConcept';
+import InheritanceConcept from './InheritanceConcept';
+import EncapsulationConcept from './EncapsulationConcept';
+import PolymorphismConcept from './PolymorphismConcept';
+import AbstractionConcept from './AbstractionConcept';
 
 const navItems = [
 	{
@@ -61,6 +67,18 @@ const navItems = [
 		value: 'code-organization',
 		children: [
 			{ label: 'Modules', value: 'modules' },
+		]
+	},
+	{
+		label: 'Object-Oriented Programming',
+		value: 'oop',
+		children: [
+			{ label: 'Classes & Objects', value: 'classes-objects' },
+			{ label: 'Attributes & Methods', value: 'attributes-methods' },
+			{ label: 'Inheritance', value: 'inheritance' },
+			{ label: 'Encapsulation', value: 'encapsulation' },
+			{ label: 'Polymorphism', value: 'polymorphism' },
+			{ label: 'Abstraction', value: 'abstraction' },
 		]
 	}
 ];
@@ -107,6 +125,18 @@ export default function PythonPage() {
                 return <FunctionBasicsConcept />;
             case 'modules':
                 return <ModulesConcept />;
+            case 'classes-objects':
+                return <ClassesObjectsConcept />;
+            case 'attributes-methods':
+                return <AttributesMethodsConcept />;
+            case 'inheritance':
+                return <InheritanceConcept />;
+            case 'encapsulation':
+                return <EncapsulationConcept />;
+            case 'polymorphism':
+                return <PolymorphismConcept />;
+            case 'abstraction':
+                return <AbstractionConcept />;
             default:
 				return null;
 		}
@@ -121,7 +151,7 @@ export default function PythonPage() {
 		<PageWrapper
 			pageTitle={'Python Visualizer'}
 			navItems={navItems}
-			defaultOpen={["functions", "code-organization"]}
+			defaultOpen={["functions", "code-organization", "oop"]}
 			handleSelect={handleSelect}
 			activeValue={selectedConcept || undefined}
 		>
