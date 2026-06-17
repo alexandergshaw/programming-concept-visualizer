@@ -5,6 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
+import SqlPlayground from './SqlPlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -44,6 +45,12 @@ export default function ViewsConcept() {
               A normal view holds no data of its own — it re-runs its query each time, so results are always current. (Some databases also offer <strong>materialized views</strong>, which cache the results and must be refreshed.)
             </Typography>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: The Query Behind a View">
+          <Typography variant="body2" paragraph>
+            A view is just a saved <code>SELECT</code>. Build a filtered query here — wrapping it in <code>CREATE VIEW ... AS</code> would let you reuse it by name.
+          </Typography>
+          <SqlPlayground features={{ columns: true, where: true, orderBy: false, limit: false }} />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

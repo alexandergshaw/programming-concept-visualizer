@@ -5,6 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
+import GroupByPlayground from './GroupByPlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from './SqlTable';
@@ -43,6 +44,12 @@ export default function HavingConcept() {
               If your condition uses an aggregate, it belongs in <code>HAVING</code>. If it tests a plain column value, put it in <code>WHERE</code> (it is faster — fewer rows reach the grouping step).
             </Typography>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Filter Groups">
+          <Typography variant="body2" paragraph>
+            Group the rows, then set a <code>HAVING</code> condition on the aggregate. Watch groups disappear when they fail the test.
+          </Typography>
+          <GroupByPlayground having />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

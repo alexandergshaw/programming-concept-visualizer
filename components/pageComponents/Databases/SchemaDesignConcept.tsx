@@ -4,6 +4,7 @@ import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import TableOfContents from '@/components/common/TableOfContents';
+import CreateTableBuilder from '../SQL/CreateTableBuilder';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -45,6 +46,12 @@ export default function SchemaDesignConcept() {
           <Typography variant="body2">
             Applying &quot;one fact in one place&quot; rigorously is called <strong>normalization</strong> — the next page. Sometimes you deliberately relax it for speed, which is <strong>denormalization</strong>.
           </Typography>
+        </Section>
+        <Section title="Try It: Design a Table">
+          <Typography variant="body2" paragraph>
+            Turn design choices into a real schema: pick columns and constraints and watch the <code>CREATE TABLE</code> statement build up.
+          </Typography>
+          <CreateTableBuilder />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

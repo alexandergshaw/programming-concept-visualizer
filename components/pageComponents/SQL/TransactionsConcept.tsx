@@ -5,6 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
+import TransactionPlayground from './TransactionPlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -47,6 +48,12 @@ export default function TransactionsConcept() {
               ...two or more changes only make sense together (transfers, orders that adjust inventory, multi-table edits), or whenever you want a safety net to <code>ROLLBACK</code> a risky <code>UPDATE</code>/<code>DELETE</code>.
             </Typography>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Commit or Rollback">
+          <Typography variant="body2" paragraph>
+            Step through a transfer. Stop after the debit and notice the balances no longer add up — then ROLLBACK to undo it, or finish and COMMIT.
+          </Typography>
+          <TransactionPlayground />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

@@ -5,6 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
+import CrudPlayground from '../SQL/CrudPlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from '../SQL/SqlTable';
@@ -51,6 +52,12 @@ export default function CrudConcept() {
               CRUD shows up far beyond SQL — REST APIs, admin panels, and form builders are all organized around the same four actions. Each detailed statement (INSERT/SELECT/UPDATE/DELETE) has its own page in the SQL section.
             </Typography>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: All Four Operations">
+          <Typography variant="body2" paragraph>
+            Create, read, update, and delete rows in a live table. Every change shows the SQL it maps to.
+          </Typography>
+          <CrudPlayground />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

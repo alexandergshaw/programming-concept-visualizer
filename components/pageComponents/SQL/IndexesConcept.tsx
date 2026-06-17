@@ -5,6 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
+import IndexPlayground from './IndexPlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -48,6 +49,12 @@ export default function IndexesConcept() {
               <Typography variant="body2">Foreign key columns, which are frequently joined.</Typography>
             </Box>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Index vs Scan">
+          <Typography variant="body2" paragraph>
+            Toggle the index on and off and watch how many rows the database has to look at to answer the same query.
+          </Typography>
+          <IndexPlayground />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

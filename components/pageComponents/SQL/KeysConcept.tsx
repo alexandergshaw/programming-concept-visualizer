@@ -4,6 +4,7 @@ import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import TableOfContents from '@/components/common/TableOfContents';
+import JoinPlayground from './JoinPlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from './SqlTable';
@@ -56,6 +57,12 @@ export default function KeysConcept() {
               <Typography variant="body2"><strong>Integrity:</strong> a foreign key can stop you from adding an order for a customer who does not exist.</Typography>
             </Box>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Follow the Keys">
+          <Typography variant="body2" paragraph>
+            Keys let you recombine related tables. Toggle the join type to see how following the foreign key reconnects customers with their orders.
+          </Typography>
+          <JoinPlayground />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

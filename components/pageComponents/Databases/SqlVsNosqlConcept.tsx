@@ -4,6 +4,7 @@ import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import TableOfContents from '@/components/common/TableOfContents';
+import OptionExplorer from '../SQL/OptionExplorer';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from '../SQL/SqlTable';
@@ -48,6 +49,17 @@ export default function SqlVsNosqlConcept() {
               For most projects a relational database is the safer default: strong guarantees, mature tooling, and flexible querying. Choose NoSQL when you have a concrete need it serves better — covered in <em>When to Use Which</em>.
             </Typography>
           </CalloutBox>
+        </Section>
+        <Section title="Explore the Trade-offs">
+          <Typography variant="body2" paragraph>
+            Click each side to see what it offers and what it gives up.
+          </Typography>
+          <OptionExplorer
+            options={[
+              { label: 'SQL (relational)', points: ['Fixed schema of tables', 'Combine tables with joins via keys', 'Strong ACID consistency', 'Best for structured, related data'] },
+              { label: 'NoSQL', points: ['Flexible or schema-less', 'Data often embedded rather than joined', 'Scales out across many servers', 'Often eventual (not immediate) consistency'] },
+            ]}
+          />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

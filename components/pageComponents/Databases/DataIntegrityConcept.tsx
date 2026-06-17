@@ -4,6 +4,7 @@ import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import TableOfContents from '@/components/common/TableOfContents';
+import ConstraintPlayground from '../SQL/ConstraintPlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from '../SQL/SqlTable';
@@ -51,6 +52,12 @@ export default function DataIntegrityConcept() {
               Validation in app code can be skipped, forgotten, or bypassed by another script. A constraint in the schema is the last line of defense — it holds for every writer, forever.
             </Typography>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Constraints in Action">
+          <Typography variant="body2" paragraph>
+            Each constraint is enforced live. Try to insert rows that break the PRIMARY KEY, UNIQUE, or CHECK rules and watch them get rejected.
+          </Typography>
+          <ConstraintPlayground />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

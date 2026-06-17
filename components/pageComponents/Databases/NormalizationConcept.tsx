@@ -4,6 +4,7 @@ import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import TableOfContents from '@/components/common/TableOfContents';
+import NormalizationToggle from '../SQL/NormalizationToggle';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from '../SQL/SqlTable';
@@ -59,6 +60,12 @@ export default function NormalizationConcept() {
               <Typography variant="body2">In practice, aim for <strong>3NF</strong>: each table is about one thing, with no duplicated facts.</Typography>
             </Box>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Normalize the Data">
+          <Typography variant="body2" paragraph>
+            Toggle between the un-normalized and normalized versions to see the duplication — and the anomalies — appear and disappear.
+          </Typography>
+          <NormalizationToggle />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

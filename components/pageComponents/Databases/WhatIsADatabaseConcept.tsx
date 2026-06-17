@@ -4,6 +4,7 @@ import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import TableOfContents from '@/components/common/TableOfContents';
+import CrudPlayground from '../SQL/CrudPlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -43,6 +44,12 @@ export default function WhatIsADatabaseConcept() {
               <Typography variant="body2">Almost every app you use is backed by one.</Typography>
             </Box>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Store & Change Data">
+          <Typography variant="body2" paragraph>
+            This is a tiny database in your browser. Add, change, and remove rows — the data persists and updates just like a real one.
+          </Typography>
+          <CrudPlayground />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

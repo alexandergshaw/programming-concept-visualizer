@@ -5,6 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
+import PredicatePlayground from './PredicatePlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from './SqlTable';
@@ -51,6 +52,12 @@ export default function NullConcept() {
           <Typography variant="body2">
             Also remember: aggregate functions like <code>AVG</code> and <code>SUM</code> simply skip <code>NULL</code>s.
           </Typography>
+        </Section>
+        <Section title="Try It: Handle NULLs">
+          <Typography variant="body2" paragraph>
+            Compare <code>IS NULL</code> and <code>IS NOT NULL</code> with the broken <code>= NULL</code> — notice the last one always returns nothing.
+          </Typography>
+          <PredicatePlayground kinds={['IS NULL', 'IS NOT NULL', '= NULL']} />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

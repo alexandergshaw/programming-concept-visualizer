@@ -5,6 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
+import CrudPlayground from './CrudPlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -39,6 +40,12 @@ export default function UpdateConcept() {
             The new value can be based on the current one — give the Sales team a 10% raise:
           </Typography>
           <CodeSnippet lines={[{ code: 'UPDATE employees' }, { code: 'SET salary = salary * 1.10' }, { code: "WHERE department = 'Sales';" }]} />
+        </Section>
+        <Section title="Try It: Update Rows">
+          <Typography variant="body2" paragraph>
+            Pick an id and a new country, then press UPDATE. Only the matching row changes — that is the power of the <code>WHERE</code> clause.
+          </Typography>
+          <CrudPlayground only="update" />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

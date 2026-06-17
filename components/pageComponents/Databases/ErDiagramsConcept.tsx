@@ -4,6 +4,7 @@ import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import TableOfContents from '@/components/common/TableOfContents';
+import RelationshipExplorer from '../SQL/RelationshipExplorer';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -64,6 +65,12 @@ export default function ErDiagramsConcept() {
               <Typography variant="body2">Many-to-many shows a fork on both ends and becomes a junction table when built.</Typography>
             </Box>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Read the Relationships">
+          <Typography variant="body2" paragraph>
+            Each relationship in a diagram becomes tables and a foreign key. Switch shapes to see what each one turns into.
+          </Typography>
+          <RelationshipExplorer />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

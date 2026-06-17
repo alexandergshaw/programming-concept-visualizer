@@ -4,6 +4,7 @@ import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import TableOfContents from '@/components/common/TableOfContents';
+import OptionExplorer from '../SQL/OptionExplorer';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -47,6 +48,20 @@ export default function ChoosingDatabaseConcept() {
               Begin with a relational database; it will take you far. Real systems often use <strong>more than one</strong> — for example PostgreSQL for core data plus Redis for caching. Choose per need, not per trend.
             </Typography>
           </CalloutBox>
+        </Section>
+        <Section title="Explore the Fits">
+          <Typography variant="body2" paragraph>
+            Click the question that matches your situation to see which database tends to fit.
+          </Typography>
+          <OptionExplorer
+            options={[
+              { label: 'Need ACID?', points: ['Money, orders, bookings point to a relational database', 'Correctness matters more than raw scale'] },
+              { label: 'Flexible records?', points: ['Catalogs and content that change shape point to a document store'] },
+              { label: 'Fast lookups?', points: ['Caching, sessions, and leaderboards point to a key-value store'] },
+              { label: 'Connections matter?', points: ['Social graphs, recommendations, and fraud point to a graph database'] },
+              { label: 'Not sure?', points: ['Start relational — it covers the large majority of apps', 'Add a cache or specialized store later if a real need appears'] },
+            ]}
+          />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

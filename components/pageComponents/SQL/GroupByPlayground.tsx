@@ -16,9 +16,13 @@ const DATA = [
 type Agg = 'COUNT(*)' | 'SUM(salary)' | 'AVG(salary)' | 'MIN(salary)' | 'MAX(salary)';
 type GroupCol = 'department' | 'country';
 
-export default function GroupByPlayground() {
+export default function GroupByPlayground({ having }: { having?: boolean }) {
   const [groupCol, setGroupCol] = useState<GroupCol>('department');
   const [agg, setAgg] = useState<Agg>('COUNT(*)');
+  const [havingOp, setHavingOp] = useState('>');
+  const [havingVal, setHavingVal] = useState('1');
+
+  const aggAlias = agg === 'COUNT(*)' ? 'count' : agg.replace('(salary)', '').toLowerCase() + '_salary';
 
   const result = useMemo(() => {
     const groups = new Map<string, number[]>();
@@ -27,7 +31,7 @@ export default function GroupByPlayground() {
       if (!groups.has(key)) groups.set(key, []);
       groups.get(key)!.push(r.salary);
     }
-    const rows: (string | number)[][] = [];
+    let rows: (string | number)[][] = [];
     groups.forEach((salaries, key) => {
       let val: number;
       switch (agg) {
@@ -40,10 +44,27 @@ export default function GroupByPlayground() {
       }
       rows.push([key, val]);
     });
+    if (having) {
+      const threshold = Number(havingVal);
+      if (!Number.isNaN(threshold)) {
+        rows = rows.filter(([, v]) => {
+          const n = v as number;
+          switch (havingOp) {
+            case '>': return n > threshold;
+            case '<': return n < threshold;
+            case '>=': return n >= threshold;
+            case '<=': return n <= threshold;
+            case '=': return n === threshold;
+            default: return true;
+          }
+        });
+      }
+    }
     return rows;
-  }, [groupCol, agg]);
+  }, [groupCol, agg, having, havingOp, havingVal]);
 
-  const aggAlias = agg === 'COUNT(*)' ? 'count' : agg.replace('(salary)', '').toLowerCase() + '_salary';
+  const sql = [`SELECT ${groupCol}, ${agg} AS ${aggAlias}`, 'FROM employees', `GROUP BY ${groupCol}`];
+  if (having) sql.push(`HAVING ${agg} ${havingOp} ${havingVal}`);
 
   return (
     <div className="sql-pg">
@@ -65,10 +86,20 @@ export default function GroupByPlayground() {
         </div>
       </div>
 
-      <pre className="sql-pg-code">{`SELECT ${groupCol}, ${agg} AS ${aggAlias}
-FROM employees
-GROUP BY ${groupCol};`}</pre>
+      {having && (
+        <div className="sql-pg-block">
+          <span className="sql-pg-label">Filter groups (HAVING)</span>
+          <div className="sql-pg-inline">
+            <span style={{ fontSize: 13, color: '#475569', fontFamily: 'monospace' }}>{agg}</span>
+            <select value={havingOp} onChange={(e) => setHavingOp(e.target.value)} aria-label="having operator">
+              {['>', '<', '>=', '<=', '='].map((o) => <option key={o} value={o}>{o}</option>)}
+            </select>
+            <input value={havingVal} onChange={(e) => setHavingVal(e.target.value)} aria-label="having value" style={{ width: 90 }} />
+          </div>
+        </div>
+      )}
 
+      <pre className="sql-pg-code">{sql.join('\n') + ';'}</pre>
       <SqlTable columns={[groupCol, aggAlias]} rows={result} />
       <p className="sql-pg-count">{result.length} group{result.length === 1 ? '' : 's'}</p>
     </div>

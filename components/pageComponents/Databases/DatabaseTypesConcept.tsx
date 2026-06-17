@@ -4,6 +4,7 @@ import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import TableOfContents from '@/components/common/TableOfContents';
+import OptionExplorer from '../SQL/OptionExplorer';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from '../SQL/SqlTable';
@@ -46,6 +47,20 @@ export default function DatabaseTypesConcept() {
           <Typography variant="body2">
             The upcoming pages focus mostly on the relational model — tables, keys, design, and integrity — because those ideas underpin SQL and transfer to almost every database you will meet.
           </Typography>
+        </Section>
+        <Section title="Explore the Families">
+          <Typography variant="body2" paragraph>
+            Click each family to see how it stores data and what it is best at.
+          </Typography>
+          <OptionExplorer
+            options={[
+              { label: 'Relational', points: ['Tables with rows and columns', 'Linked by keys, queried with SQL', 'Best for structured, related data'], code: 'SELECT * FROM customers;' },
+              { label: 'Document', points: ['JSON-like documents', 'Flexible, nested records', 'Example: MongoDB'] },
+              { label: 'Key-Value', points: ['A dictionary of key to value', 'Ultra-fast lookups and caching', 'Example: Redis'] },
+              { label: 'Wide-Column', points: ['Rows with flexible columns', 'Huge write volume across servers', 'Example: Cassandra'] },
+              { label: 'Graph', points: ['Nodes and edges', 'Networks and relationships', 'Example: Neo4j'] },
+            ]}
+          />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

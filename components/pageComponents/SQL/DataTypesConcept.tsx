@@ -5,6 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
+import OptionExplorer from './OptionExplorer';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from './SqlTable';
@@ -64,6 +65,19 @@ export default function DataTypesConcept() {
               <Typography variant="body2">Exact type names vary a little between database systems.</Typography>
             </Box>
           </CalloutBox>
+        </Section>
+        <Section title="Explore the Types">
+          <Typography variant="body2" paragraph>
+            Click a category to see its common types and an example column definition.
+          </Typography>
+          <OptionExplorer
+            options={[
+              { label: 'Text', points: ['VARCHAR(n) — short text with a length limit', 'TEXT — long, free-form text', 'CHAR(n) — fixed length'], code: 'name VARCHAR(100)' },
+              { label: 'Numbers', points: ['INTEGER / BIGINT — whole numbers', 'DECIMAL(p,s) — exact decimals (use for money)', 'REAL / FLOAT — approximate decimals'], code: 'price DECIMAL(10, 2)' },
+              { label: 'Boolean', points: ['BOOLEAN — TRUE or FALSE'], code: 'in_stock BOOLEAN' },
+              { label: 'Dates', points: ['DATE — a calendar date', 'TIMESTAMP — date and time', 'Store as a date type, never as text'], code: 'added_on DATE' },
+            ]}
+          />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

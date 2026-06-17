@@ -5,6 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
+import SqlPlayground from './SqlPlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -58,6 +59,12 @@ export default function WhatIsSqlConcept() {
               <Typography variant="body2"><strong>Dialects vary slightly</strong> — PostgreSQL, MySQL, SQLite, and SQL Server share the same core but differ in details.</Typography>
             </Box>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Run a Query">
+          <Typography variant="body2" paragraph>
+            Here is a live database. Choose columns and add a filter — you are writing real SQL, and the result updates instantly.
+          </Typography>
+          <SqlPlayground features={{ columns: true, where: true, orderBy: false, limit: false }} />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

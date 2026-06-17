@@ -5,6 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
+import CreateTableBuilder from './CreateTableBuilder';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -46,6 +47,12 @@ export default function CreateTableConcept() {
               <Typography variant="body2">Constraints are covered in depth next.</Typography>
             </Box>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Build a Table">
+          <Typography variant="body2" paragraph>
+            Toggle columns and constraints on and off and watch the <code>CREATE TABLE</code> statement assemble itself.
+          </Typography>
+          <CreateTableBuilder />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

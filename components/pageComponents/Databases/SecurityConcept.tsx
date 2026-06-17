@@ -5,6 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
+import InjectionDemo from '../SQL/InjectionDemo';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -57,6 +58,12 @@ export default function SecurityConcept() {
               <Typography variant="body2"><strong>Limit network access</strong> so the database isn&apos;t reachable from the open internet.</Typography>
             </Box>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: SQL Injection">
+          <Typography variant="body2" paragraph>
+            Type a username, then press &quot;use a malicious input&quot; and compare the vulnerable string-built query with the safe parameterized one.
+          </Typography>
+          <InjectionDemo />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

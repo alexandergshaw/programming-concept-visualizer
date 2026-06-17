@@ -4,6 +4,7 @@ import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import TableOfContents from '@/components/common/TableOfContents';
+import NormalizationToggle from '../SQL/NormalizationToggle';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -45,6 +46,12 @@ export default function DenormalizationConcept() {
               Design normalized, then denormalize only specific spots after you measure a real performance problem. Premature denormalization buys complexity you may never need.
             </Typography>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Compare the Two Shapes">
+          <Typography variant="body2" paragraph>
+            Denormalization trades the tidy split for a flatter shape that is faster to read. Toggle the two to weigh duplication against convenience.
+          </Typography>
+          <NormalizationToggle />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

@@ -4,6 +4,7 @@ import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import TableOfContents from '@/components/common/TableOfContents';
+import ConstraintPlayground from '../SQL/ConstraintPlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from '../SQL/SqlTable';
@@ -43,6 +44,12 @@ export default function WhyDatabasesConcept() {
               <Typography variant="body2"><strong>Safety:</strong> transactions and backups protect against half-finished changes and crashes.</Typography>
             </Box>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: The Database Rejects Bad Data">
+          <Typography variant="body2" paragraph>
+            A spreadsheet lets you type anything. A database enforces rules. Try to insert a duplicate id or email, or a negative balance — and watch it get refused.
+          </Typography>
+          <ConstraintPlayground />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

@@ -5,6 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
+import SqlPlayground from './SqlPlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -42,6 +43,12 @@ export default function CteConcept() {
           <Typography variant="body2">
             Each CTE can use the ones defined before it, so a big problem becomes a readable pipeline.
           </Typography>
+        </Section>
+        <Section title="Try It: Explore the Data">
+          <Typography variant="body2" paragraph>
+            A CTE is a named query you build on. Filter and sort the base table here — imagine wrapping this result in <code>WITH ... AS (...)</code> and querying it by name.
+          </Typography>
+          <SqlPlayground features={{ columns: true, where: true, orderBy: true, limit: false }} />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

@@ -5,6 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
+import SqlPlayground from './SqlPlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -42,6 +43,12 @@ export default function AliasesConcept() {
               <Typography variant="body2">Table aliases become essential once you join the same table to itself.</Typography>
             </Box>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Choose Columns">
+          <Typography variant="body2" paragraph>
+            Pick the columns to return and filter the rows. (In real queries you would add <code>AS</code> to rename any of these in the output.)
+          </Typography>
+          <SqlPlayground features={{ columns: true, where: true, orderBy: false, limit: false }} />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

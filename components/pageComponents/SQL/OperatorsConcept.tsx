@@ -5,6 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
+import SqlPlayground from './SqlPlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from './SqlTable';
@@ -53,6 +54,12 @@ export default function OperatorsConcept() {
               <Typography variant="body2">Parenthesize mixed <code>AND</code>/<code>OR</code> to make intent clear.</Typography>
             </Box>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Build a Condition">
+          <Typography variant="body2" paragraph>
+            Combine a column, an operator, and a value to filter the rows. Try the different operators and watch which rows survive.
+          </Typography>
+          <SqlPlayground features={{ columns: false, where: true, orderBy: false, limit: false }} />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

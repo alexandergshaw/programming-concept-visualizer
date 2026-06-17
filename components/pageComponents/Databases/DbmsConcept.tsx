@@ -4,6 +4,7 @@ import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import TableOfContents from '@/components/common/TableOfContents';
+import SqlPlayground from '../SQL/SqlPlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -41,6 +42,12 @@ export default function DbmsConcept() {
           <Typography variant="body2" sx={{ mt: 1 }}>
             &quot;Database&quot; often refers loosely to both your data and the DBMS running it — context makes it clear.
           </Typography>
+        </Section>
+        <Section title="Try It: Send the Engine a Query">
+          <Typography variant="body2" paragraph>
+            You never touch the data files directly — you hand the DBMS a request and it does the work. Build a query and watch the engine return the rows.
+          </Typography>
+          <SqlPlayground />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

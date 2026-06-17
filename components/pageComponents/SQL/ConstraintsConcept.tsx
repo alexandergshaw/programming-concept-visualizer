@@ -5,6 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
+import ConstraintPlayground from './ConstraintPlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from './SqlTable';
@@ -49,6 +50,12 @@ export default function ConstraintsConcept() {
               Application code can have bugs; constraints can&apos;t be bypassed. Putting rules in the schema means the data stays valid no matter which app, script, or person writes to it.
             </Typography>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Break a Constraint">
+          <Typography variant="body2" paragraph>
+            Try to insert a row that violates a rule: reuse id <code>1</code>, reuse an existing email, or set a negative balance. The database rejects each one.
+          </Typography>
+          <ConstraintPlayground />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

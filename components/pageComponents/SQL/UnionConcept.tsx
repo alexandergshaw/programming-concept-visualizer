@@ -5,6 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
+import SetOpPlayground from './SetOpPlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from './SqlTable';
@@ -48,6 +49,12 @@ export default function UnionConcept() {
               <code>UNION</code> removes duplicate rows (which costs a sort). <code>UNION ALL</code> keeps every row and is faster — use it when you know there are no duplicates or you want the repeats.
             </Typography>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: UNION vs UNION ALL">
+          <Typography variant="body2" paragraph>
+            Toggle between the two and watch the duplicate email appear and disappear.
+          </Typography>
+          <SetOpPlayground />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

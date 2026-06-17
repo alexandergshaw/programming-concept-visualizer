@@ -5,6 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
+import CrudPlayground from './CrudPlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -43,6 +44,12 @@ export default function DeleteConcept() {
           <Typography variant="body2">
             If other rows reference the one you are deleting (e.g. orders pointing at a customer), a foreign key may stop the delete to protect data integrity. You then delete the dependent rows first, or configure <code>ON DELETE CASCADE</code>.
           </Typography>
+        </Section>
+        <Section title="Try It: Delete Rows">
+          <Typography variant="body2" paragraph>
+            Delete a row by id and watch the table shrink. Then press Reset — in a real database you would wrap risky deletes in a transaction so you could roll back.
+          </Typography>
+          <CrudPlayground only="delete" />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

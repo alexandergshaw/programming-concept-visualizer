@@ -5,6 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
+import PredicatePlayground from './PredicatePlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -43,6 +44,12 @@ export default function InBetweenLikeConcept() {
               <code>NOT IN (...)</code>, <code>NOT BETWEEN ...</code>, and <code>NOT LIKE ...</code> all work as you would expect.
             </Typography>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Match Patterns">
+          <Typography variant="body2" paragraph>
+            Switch between IN, BETWEEN, and LIKE and change the value to see which rows match.
+          </Typography>
+          <PredicatePlayground kinds={['IN', 'BETWEEN', 'LIKE']} />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

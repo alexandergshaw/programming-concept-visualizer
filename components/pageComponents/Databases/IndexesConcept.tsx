@@ -5,6 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
+import IndexPlayground from '../SQL/IndexPlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -48,6 +49,12 @@ export default function IndexesConcept() {
               <Typography variant="body2">Measure first — add indexes to fix real slow queries, not on a hunch.</Typography>
             </Box>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Index vs Scan">
+          <Typography variant="body2" paragraph>
+            Toggle the index on and off and see how many rows the database must examine to answer the same lookup.
+          </Typography>
+          <IndexPlayground />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

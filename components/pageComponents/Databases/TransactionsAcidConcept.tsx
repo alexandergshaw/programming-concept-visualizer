@@ -5,6 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
+import TransactionPlayground from '../SQL/TransactionPlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -54,6 +55,12 @@ export default function TransactionsAcidConcept() {
               ACID transactions are the main reason relational databases are trusted for money, orders, and bookings: even with thousands of simultaneous users and unexpected crashes, the data stays correct.
             </Typography>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: All or Nothing">
+          <Typography variant="body2" paragraph>
+            Step through a transfer. Pause after the debit to see the inconsistent middle state, then ROLLBACK to undo it or COMMIT to keep it. The total is only ever right when committed.
+          </Typography>
+          <TransactionPlayground />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

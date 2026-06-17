@@ -5,6 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
+import CrudPlayground from './CrudPlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -42,6 +43,12 @@ export default function InsertConcept() {
               <Typography variant="body2">You can insert the results of a query with <code>INSERT INTO ... SELECT ...</code>.</Typography>
             </Box>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Insert Rows">
+          <Typography variant="body2" paragraph>
+            Fill in a name and country and press INSERT. Watch the row appear in the table and the generated SQL update.
+          </Typography>
+          <CrudPlayground only="insert" />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

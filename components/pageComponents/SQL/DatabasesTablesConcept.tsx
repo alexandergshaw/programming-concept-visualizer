@@ -4,6 +4,7 @@ import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import TableOfContents from '@/components/common/TableOfContents';
+import SqlPlayground from './SqlPlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from './SqlTable';
@@ -69,6 +70,12 @@ export default function DatabasesTablesConcept() {
               <Typography variant="body2">Tables reference each other by id, which is what makes SQL &quot;relational.&quot;</Typography>
             </Box>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Explore a Table">
+          <Typography variant="body2" paragraph>
+            Query a sample <code>employees</code> table: pick columns, filter, sort, and limit. The result is always a new table of rows.
+          </Typography>
+          <SqlPlayground />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

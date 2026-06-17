@@ -5,6 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
+import OptionExplorer from './OptionExplorer';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from './SqlTable';
@@ -57,6 +58,19 @@ export default function AggregateFunctionsConcept() {
           <Typography variant="body2" sx={{ mt: 1 }}>
             To get a summary <em>per group</em> instead of one for the whole table, add <code>GROUP BY</code> — covered next.
           </Typography>
+        </Section>
+        <Section title="Explore the Functions">
+          <Typography variant="body2" paragraph>
+            Click each aggregate to see what it does and an example query.
+          </Typography>
+          <OptionExplorer
+            options={[
+              { label: 'COUNT', points: ['Counts rows', 'COUNT(*) counts every row; COUNT(col) skips NULLs'], code: 'SELECT COUNT(*) FROM employees;' },
+              { label: 'SUM', points: ['Adds up a numeric column', 'Ignores NULLs'], code: 'SELECT SUM(salary) FROM employees;' },
+              { label: 'AVG', points: ['Average of a numeric column'], code: 'SELECT AVG(salary) FROM employees;' },
+              { label: 'MIN / MAX', points: ['Smallest and largest value'], code: 'SELECT MIN(salary), MAX(salary) FROM employees;' },
+            ]}
+          />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

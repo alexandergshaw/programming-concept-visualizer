@@ -4,6 +4,7 @@ import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import TableOfContents from '@/components/common/TableOfContents';
+import ConstraintPlayground from '../SQL/ConstraintPlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from '../SQL/SqlTable';
@@ -55,6 +56,12 @@ export default function PrimaryKeysConcept() {
           <Typography variant="body2" sx={{ mt: 1 }}>
             A primary key in one table is what other tables point at — through a <strong>foreign key</strong>, next.
           </Typography>
+        </Section>
+        <Section title="Try It: Unique & Not Null">
+          <Typography variant="body2" paragraph>
+            The primary key must be unique and never null. Try to insert a row reusing id <code>1</code>, or leave the id blank — the key rejects it.
+          </Typography>
+          <ConstraintPlayground />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

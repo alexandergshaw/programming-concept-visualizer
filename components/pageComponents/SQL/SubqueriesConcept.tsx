@@ -5,6 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
+import SqlPlayground from './SqlPlayground';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -48,6 +49,12 @@ export default function SubqueriesConcept() {
           <Typography variant="body2" sx={{ mt: 1 }}>
             When subqueries get long or repeat, a <strong>CTE</strong> (next) makes them far more readable.
           </Typography>
+        </Section>
+        <Section title="Try It: Explore the Data">
+          <Typography variant="body2" paragraph>
+            A subquery often computes a value (like the average salary) that an outer query filters against. Sort by salary here to see who sits above and below the middle.
+          </Typography>
+          <SqlPlayground features={{ columns: true, where: true, orderBy: true, limit: false }} />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

@@ -4,6 +4,7 @@ import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import TableOfContents from '@/components/common/TableOfContents';
+import RelationshipExplorer from '../SQL/RelationshipExplorer';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from '../SQL/SqlTable';
@@ -57,6 +58,12 @@ export default function RelationshipTypesConcept() {
               A many-to-many relationship is always modeled as <strong>two one-to-many relationships</strong> pointing into a junction table. That table&apos;s job is simply to record which pairs go together.
             </Typography>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Explore Relationships">
+          <Typography variant="body2" paragraph>
+            Switch between the three relationship shapes and see the example tables and where the foreign key lives.
+          </Typography>
+          <RelationshipExplorer />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

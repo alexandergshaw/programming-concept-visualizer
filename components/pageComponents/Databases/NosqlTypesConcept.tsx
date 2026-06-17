@@ -5,6 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 import TableOfContents from '@/components/common/TableOfContents';
+import OptionExplorer from '../SQL/OptionExplorer';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from '../SQL/SqlTable';
@@ -59,6 +60,19 @@ export default function NosqlTypesConcept() {
               <Typography variant="body2">Graph databases shine when relationships <em>are</em> the data.</Typography>
             </Box>
           </CalloutBox>
+        </Section>
+        <Section title="Explore the Families">
+          <Typography variant="body2" paragraph>
+            Click each NoSQL family to see its shape and what it suits.
+          </Typography>
+          <OptionExplorer
+            options={[
+              { label: 'Document', points: ['Stores JSON-like documents', 'Flexible, nested, evolving records', 'Example: MongoDB'] },
+              { label: 'Key-Value', points: ['A giant dictionary of key to value', 'Caching, sessions, fast lookups', 'Example: Redis'] },
+              { label: 'Wide-Column', points: ['Rows with flexible columns', 'Massive, write-heavy data', 'Example: Cassandra'] },
+              { label: 'Graph', points: ['Nodes connected by edges', 'Networks, recommendations, fraud', 'Example: Neo4j'] },
+            ]}
+          />
         </Section>
       </TableOfContents>
     </ConceptWrapper>
