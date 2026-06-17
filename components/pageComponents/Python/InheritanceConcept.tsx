@@ -1,17 +1,45 @@
 'use client';
 
+import { useState } from 'react';
 import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 import ConceptInfoCard from '../../common/ConceptInfoCard';
 import CodePartsExplanation from '../../common/CodePartsExplanation';
 import CodeSnippet from '../../common/CodeSnippet';
 import StepThroughCodeAnimation from '../JavaScript/StepThroughCodeAnimation';
 import TableOfContents from '@/components/common/TableOfContents';
+import '../../../styles/dataStructures.css';
+
+const SUBCLASSES: { name: string; sound: string }[] = [
+  { name: 'Dog', sound: 'Woof!' },
+  { name: 'Cat', sound: 'Meow!' },
+  { name: 'Cow', sound: 'Moo!' },
+];
 
 export default function InheritanceConcept() {
+  const [selected, setSelected] = useState('Dog');
+  const [petName, setPetName] = useState('Buddy');
+  const [log, setLog] = useState<string[]>([]);
+
+  const run = () => {
+    const cls = SUBCLASSES.find((c) => c.name === selected)!;
+    const name = petName.trim() || 'Buddy';
+    setLog((prev) => [
+      ...prev,
+      `${selected.toLowerCase()} = ${selected}("${name}")`,
+      `${selected.toLowerCase()}.name      ->  "${name}"   (inherited from Animal)`,
+      `${selected.toLowerCase()}.speak()   ->  "${cls.sound}"   (overridden in ${selected})`,
+      `isinstance(${selected.toLowerCase()}, Animal)  ->  True`,
+    ].slice(-8));
+  };
+
+  const clearLog = () => setLog([]);
+
   const inheritanceCode = [
     'class Animal:',
     '    def __init__(self, name):',
@@ -91,13 +119,13 @@ export default function InheritanceConcept() {
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
               <Typography variant="body2">
-                <strong>♻️ Avoid repetition:</strong> Write shared behavior once in the parent
+                <strong>Avoid repetition:</strong> Write shared behavior once in the parent
               </Typography>
               <Typography variant="body2">
-                <strong>🌳 Model hierarchies:</strong> Express natural &quot;is-a&quot; relationships
+                <strong>Model hierarchies:</strong> Express natural &quot;is-a&quot; relationships
               </Typography>
               <Typography variant="body2">
-                <strong>🔧 Extend safely:</strong> Add or change behavior in a child without touching the parent
+                <strong>Extend safely:</strong> Add or change behavior in a child without touching the parent
               </Typography>
             </Box>
           </ConceptInfoCard>
@@ -147,6 +175,55 @@ class Dog(Animal):
               steps={inheritanceSteps}
             />
           </ConceptInfoCard>
+        </Section>
+
+        <Section title="Try It Yourself: Subclasses in Action">
+          <Typography variant="body2" paragraph>
+            <code>Dog</code>, <code>Cat</code>, and <code>Cow</code> all inherit from <code>Animal</code>. Each one reuses the inherited <code>name</code> attribute but provides its own version of <code>speak()</code>. Pick a subclass, give it a name, and run it.
+          </Typography>
+
+          <div className="ds-viz">
+            <div className="chip-row" style={{ marginBottom: 14 }}>
+              {SUBCLASSES.map((c) => (
+                <button
+                  key={c.name}
+                  className={`select-chip ${selected === c.name ? 'selected' : ''}`}
+                  onClick={() => setSelected(c.name)}
+                >
+                  {c.name}(Animal)
+                </button>
+              ))}
+            </div>
+
+            <div className="ds-controls">
+              <TextField
+                label="name"
+                size="small"
+                value={petName}
+                onChange={(e) => setPetName(e.target.value)}
+                onKeyDown={(e) => { if (e.key === 'Enter') run(); }}
+                sx={{ width: 180 }}
+              />
+              <Button variant="contained" onClick={run}>Create &amp; call speak()</Button>
+              <Button variant="text" color="secondary" onClick={clearLog} disabled={log.length === 0}>Clear</Button>
+            </div>
+
+            <div className="output-panel">
+              {log.length === 0 ? (
+                <span className="muted"># Choose a subclass and run it to see inherited vs overridden behavior</span>
+              ) : (
+                log.map((line, i) => (
+                  <div key={i}><span className="out-prompt">&gt;&gt;&gt; </span>{line}</div>
+                ))
+              )}
+            </div>
+          </div>
+
+          <Alert severity="info" sx={{ mt: 2 }}>
+            <Typography variant="body2">
+              The <code>name</code> attribute is the same code inherited from <code>Animal</code>, while <code>speak()</code> changes per subclass. That combination — shared structure, customized behavior — is the heart of inheritance.
+            </Typography>
+          </Alert>
         </Section>
 
         <Section title="Extending the Parent with super()">

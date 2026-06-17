@@ -25,7 +25,7 @@ function factorial(n: number): number {
 function buildSnaps(n: number): Snap[] {
   const snaps: Snap[] = [];
 
-  // Going down: factorial(n) keeps calling a smaller copy of itself
+  // Descent: factorial(n) keeps calling a smaller copy of itself
   for (let i = n; i >= 1; i--) {
     const frames: Frame[] = [];
     for (let j = i; j <= n; j++) {
@@ -35,12 +35,12 @@ function buildSnaps(n: number): Snap[] {
       frames,
       desc:
         i === 1
-          ? 'factorial(1) is the base case — it can answer immediately (1) without calling deeper. The going-down phase stops here.'
-          : `factorial(${i}) can't finish yet: it needs factorial(${i - 1}) first, so it pauses and calls a smaller copy.`,
+          ? 'factorial(1) is the base case — it returns 1 immediately without calling deeper. The descent stops here.'
+          : `factorial(${i}) cannot finish yet: it needs factorial(${i - 1}) first, so it pauses and calls a smaller copy.`,
     });
   }
 
-  // Coming back up: each paused call now gets its answer and finishes
+  // Ascent: each paused call now receives its result and finishes
   for (let i = 1; i <= n; i++) {
     const frames: Frame[] = [];
     for (let j = i; j <= n; j++) {
@@ -50,8 +50,8 @@ function buildSnaps(n: number): Snap[] {
       frames,
       desc:
         i === n
-          ? `factorial(${i}) finishes and returns ${factorial(i)} — that's the final answer! 🎉`
-          : `factorial(${i}) now returns ${factorial(i)}, handing it back to factorial(${i + 1}), which was waiting for it.`,
+          ? `factorial(${i}) finishes and returns ${factorial(i)} — the final answer.`
+          : `factorial(${i}) returns ${factorial(i)}, handing it back to factorial(${i + 1}), which was waiting for it.`,
     });
   }
 
@@ -104,91 +104,91 @@ export default function RecursionVisualConcept() {
   useEffect(() => () => { if (timer.current) clearTimeout(timer.current); }, []);
 
   const snap = snaps[step];
-  const phase = step < n ? 'Going down ⬇️ (calling smaller copies)' : 'Coming back up ⬆️ (returning answers)';
+  const phase = step < n ? 'Descent — calling smaller copies' : 'Ascent — returning answers';
 
   return (
     <ConceptWrapper
       title="Recursion"
-      description="Recursion is when a function solves a big problem by calling itself on a smaller version of the same problem."
+      description="Recursion is a technique where a function solves a problem by calling itself on a smaller version of the same problem."
     >
       <TableOfContents numbered>
         {/* 1 ----------------------------------------------------------------- */}
         <Section title="The Big Idea">
           <Typography variant="body2" paragraph>
-            Picture a set of <strong>Russian nesting dolls</strong>. To open the biggest doll you have to open the slightly smaller one inside it, and the one inside that, and so on — until you reach the tiniest doll that doesn&apos;t open at all. Then you close them all back up, one by one.
+            Consider a set of Russian nesting dolls. To open the largest doll you must open the slightly smaller one inside it, and the one inside that, and so on, until you reach the smallest doll that does not open at all. Then you close them back up, one at a time.
           </Typography>
           <Typography variant="body2" paragraph>
-            A recursive function works the same way: it keeps handing a smaller version of the job to <em>another copy of itself</em> until the job is small enough to answer instantly.
+            A recursive function works the same way: it hands a smaller version of the job to another copy of itself until the job is small enough to answer directly.
           </Typography>
 
           <div className="ds-viz">
             <div className="illus-label">Each call contains a smaller call inside it:</div>
             <NestingDolls />
-            <p className="ds-caption">The smallest doll (red) is the &quot;base case&quot; — the one that can answer without opening anything else.</p>
+            <p className="ds-caption">The smallest doll (red) is the base case — the one that can be answered without opening anything further.</p>
           </div>
 
-          <CalloutBox title="In plain English" type="info" icon="💡">
+          <CalloutBox title="Definition" type="info">
             <Typography variant="body2">
-              <strong>Recursion</strong> = a function that calls itself, each time on a smaller or simpler input, until it hits a case simple enough to answer directly.
+              <strong>Recursion</strong> is a function that calls itself, each time on a smaller or simpler input, until it reaches a case that can be answered directly.
             </Typography>
           </CalloutBox>
         </Section>
 
         {/* 2 ----------------------------------------------------------------- */}
-        <Section title="The Two Rules Every Recursion Needs">
-          <CalloutBox title="Rule 1 — the base case 🛑" type="key-concepts" icon="🛑">
+        <Section title="The Two Requirements">
+          <CalloutBox title="1. The base case" type="key-concepts">
             <Typography variant="body2">
-              The simplest version of the problem, one you can answer <strong>without</strong> calling yourself again. This is what makes the chain of calls eventually <em>stop</em>. (For our nesting dolls, it&apos;s the tiniest doll.)
+              The simplest version of the problem, one that can be answered <strong>without</strong> calling the function again. The base case is what allows the chain of calls to eventually stop. For the nesting dolls, it is the smallest doll.
             </Typography>
           </CalloutBox>
 
-          <CalloutBox title="Rule 2 — the recursive case 🔁" type="key-concepts" icon="🔁">
+          <CalloutBox title="2. The recursive case" type="key-concepts">
             <Typography variant="body2">
-              The function calls itself on a <strong>smaller</strong> input, getting one step closer to the base case each time.
+              The function calls itself on a <strong>smaller</strong> input, moving one step closer to the base case with each call.
             </Typography>
           </CalloutBox>
 
-          <CalloutBox title="Forget the base case and..." type="warning" icon="⚠️">
+          <CalloutBox title="Missing base case" type="warning">
             <Typography variant="body2">
-              ...the function calls itself <strong>forever</strong>. That&apos;s an <em>infinite recursion</em>, and the program eventually runs out of memory and crashes. Always make sure every path leads to the base case.
+              Without a reachable base case, the function calls itself indefinitely. This is <em>infinite recursion</em>; the program eventually exhausts memory and crashes. Always ensure every path leads to the base case.
             </Typography>
           </CalloutBox>
         </Section>
 
         {/* 3 ----------------------------------------------------------------- */}
-        <Section title="Down, Then Back Up">
+        <Section title="Descent, Then Ascent">
           <Typography variant="body2" paragraph>
-            Recursion happens in two phases. First it goes <strong>down</strong>, with each call pausing and asking a smaller copy for help. Once the base case answers, the results travel <strong>back up</strong>, with each paused call finishing its math.
+            Recursion proceeds in two phases. First the calls descend, each one pausing and asking a smaller copy for help. Once the base case returns an answer, results travel back up, and each paused call completes its calculation.
           </Typography>
 
           <div className="ds-viz">
-            <div className="illus-label">⬇️ Going down — keep asking a smaller copy:</div>
+            <div className="illus-label">Descent — each call defers to a smaller copy:</div>
             <div className="flow" style={{ marginBottom: 18 }}>
               <span className="flow-step">factorial(4)</span>
-              <span className="flow-arrow">→</span>
+              <span className="flow-arrow">&rarr;</span>
               <span className="flow-step">factorial(3)</span>
-              <span className="flow-arrow">→</span>
+              <span className="flow-arrow">&rarr;</span>
               <span className="flow-step">factorial(2)</span>
-              <span className="flow-arrow">→</span>
+              <span className="flow-arrow">&rarr;</span>
               <span className="flow-step" style={{ background: '#fee2e2', borderColor: '#f87171', color: '#991b1b' }}>factorial(1) = 1</span>
             </div>
-            <div className="illus-label">⬆️ Coming back up — now each one can finish:</div>
+            <div className="illus-label">Ascent — each call now completes:</div>
             <div className="flow">
               <span className="flow-step" style={{ background: '#dcfce7', borderColor: '#4ade80', color: '#166534' }}>1</span>
-              <span className="flow-arrow">→</span>
-              <span className="flow-step" style={{ background: '#dcfce7', borderColor: '#4ade80', color: '#166534' }}>2 × 1 = 2</span>
-              <span className="flow-arrow">→</span>
-              <span className="flow-step" style={{ background: '#dcfce7', borderColor: '#4ade80', color: '#166534' }}>3 × 2 = 6</span>
-              <span className="flow-arrow">→</span>
-              <span className="flow-step" style={{ background: '#dcfce7', borderColor: '#4ade80', color: '#166534' }}>4 × 6 = 24</span>
+              <span className="flow-arrow">&rarr;</span>
+              <span className="flow-step" style={{ background: '#dcfce7', borderColor: '#4ade80', color: '#166534' }}>2 &times; 1 = 2</span>
+              <span className="flow-arrow">&rarr;</span>
+              <span className="flow-step" style={{ background: '#dcfce7', borderColor: '#4ade80', color: '#166534' }}>3 &times; 2 = 6</span>
+              <span className="flow-arrow">&rarr;</span>
+              <span className="flow-step" style={{ background: '#dcfce7', borderColor: '#4ade80', color: '#166534' }}>4 &times; 6 = 24</span>
             </div>
           </div>
         </Section>
 
         {/* 4 ----------------------------------------------------------------- */}
-        <Section title="Watch the Call Stack">
+        <Section title="Interactive Call Stack">
           <Typography variant="body2" paragraph>
-            Every time the function calls itself, the computer stacks up a paused copy — exactly like a stack of plates. When the base case is reached, the plates come off the top one at a time as each call finishes. Step through <code>factorial(n)</code> to see it.
+            Every time the function calls itself, the computer stores a paused copy on the <strong>call stack</strong> — much like a stack of plates. When the base case is reached, the copies are removed from the top one at a time as each call completes. Step through <code>factorial(n)</code> to observe this.
           </Typography>
 
           <div className="ds-viz">
@@ -220,7 +220,7 @@ export default function RecursionVisualConcept() {
             <div className="rec-frames">
               {snap.frames.map((f, i) => (
                 <div key={i} className={`rec-frame ${kindClass[f.kind]}`}>
-                  {f.kind === 'returning' ? <span className="rec-return">↩ {f.label}</span> : f.label}
+                  {f.kind === 'returning' ? <span className="rec-return">returns {f.label}</span> : f.label}
                 </div>
               ))}
             </div>
@@ -234,17 +234,17 @@ export default function RecursionVisualConcept() {
             </div>
           </div>
 
-          <CalloutBox title="Try this" type="success" icon="🧪">
+          <CalloutBox title="Suggested experiment" type="success">
             <Typography variant="body2">
-              Set <strong>n = 6</strong> and press Play. Notice how the stack grows to its tallest at the base case, then shrinks back down as the answers come up.
+              Set <strong>n = 6</strong> and press Play. Notice that the stack reaches its maximum height at the base case, then shrinks back down as each result is returned.
             </Typography>
           </CalloutBox>
         </Section>
 
         {/* 5 ----------------------------------------------------------------- */}
-        <Section title="The Code Behind It">
+        <Section title="The Code">
           <Typography variant="body2" paragraph>
-            Here&apos;s the actual function the animation runs. It&apos;s tiny — that&apos;s the appeal of recursion. Notice the two rules in the code: the <strong>base case</strong> and the <strong>recursive case</strong>.
+            Below is the function the animation runs. It is intentionally short, which is the appeal of recursion. Both requirements are visible in the code: the base case and the recursive case.
           </Typography>
           <CodeSnippet
             language="python"
@@ -262,24 +262,24 @@ export default function RecursionVisualConcept() {
         {/* 6 ----------------------------------------------------------------- */}
         <Section title="Recursion vs. Loops">
           <Typography variant="body2" paragraph>
-            A loop and recursion can solve the same problems — they&apos;re equally powerful. The question is which one makes your code <em>clearer</em>.
+            A loop and recursion can solve the same problems; they are equally powerful. The question is which one expresses a given problem more clearly.
           </Typography>
 
-          <CalloutBox title="Which should I reach for?" type="key-concepts" icon="🤔">
+          <CalloutBox title="Which to choose" type="key-concepts">
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, mt: 1 }}>
-              <Typography variant="body2"><strong>Use recursion</strong> when a problem naturally breaks into smaller copies of itself — trees, nested folders, or divide-and-conquer algorithms.</Typography>
-              <Typography variant="body2"><strong>Use a loop</strong> when you&apos;re simply repeating a step a set number of times — it usually uses less memory and is easier to follow.</Typography>
+              <Typography variant="body2"><strong>Prefer recursion</strong> when a problem naturally breaks into smaller copies of itself — trees, nested folders, or divide-and-conquer algorithms.</Typography>
+              <Typography variant="body2"><strong>Prefer a loop</strong> when simply repeating a step a fixed number of times — it usually uses less memory and is easier to trace.</Typography>
             </Box>
           </CalloutBox>
         </Section>
 
         {/* 7 ----------------------------------------------------------------- */}
         <Section title="Key Takeaways">
-          <CalloutBox title="Remember these" type="success" icon="✅">
+          <CalloutBox title="Summary" type="success">
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, mt: 1 }}>
               <Typography variant="body2"><strong>Recursion</strong> is a function calling itself on a smaller version of the problem.</Typography>
-              <Typography variant="body2"><strong>Every recursion needs a base case</strong> (to stop) and a recursive case (to shrink the problem).</Typography>
-              <Typography variant="body2"><strong>It runs in two phases:</strong> calls pile up going down, then resolve coming back up.</Typography>
+              <Typography variant="body2"><strong>Every recursion needs a base case</strong> to stop and a recursive case to shrink the problem.</Typography>
+              <Typography variant="body2"><strong>It runs in two phases:</strong> calls accumulate during the descent, then resolve during the ascent.</Typography>
             </Box>
           </CalloutBox>
         </Section>

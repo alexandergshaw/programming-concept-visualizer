@@ -1,16 +1,46 @@
 'use client';
 
+import { useState } from 'react';
 import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 import ConceptInfoCard from '../../common/ConceptInfoCard';
 import CodePartsExplanation from '../../common/CodePartsExplanation';
 import StepThroughCodeAnimation from '../JavaScript/StepThroughCodeAnimation';
 import TableOfContents from '@/components/common/TableOfContents';
+import '../../../styles/dataStructures.css';
+
+type DogObject = { id: number; name: string; breed: string };
 
 export default function ClassesObjectsConcept() {
+  const [dogs, setDogs] = useState<DogObject[]>([]);
+  const [dogName, setDogName] = useState('');
+  const [dogBreed, setDogBreed] = useState('');
+  const [nextDogId, setNextDogId] = useState(1);
+  const [barkLog, setBarkLog] = useState<string[]>([]);
+
+  const createDog = () => {
+    const name = dogName.trim() || 'Buddy';
+    const breed = dogBreed.trim() || 'Mixed';
+    setDogs((prev) => [...prev, { id: nextDogId, name, breed }]);
+    setNextDogId((n) => n + 1);
+    setDogName('');
+    setDogBreed('');
+  };
+
+  const bark = (d: DogObject) => {
+    setBarkLog((prev) => [...prev, `${d.name}.bark()  ->  "${d.name} says Woof!"`].slice(-6));
+  };
+
+  const clearAll = () => {
+    setDogs([]);
+    setBarkLog([]);
+  };
+
   const classDefinitionCode = [
     'class Dog:',
     '    def __init__(self, name, breed):',
@@ -78,16 +108,16 @@ export default function ClassesObjectsConcept() {
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
               <Typography variant="body2">
-                <strong>🧩 Organization:</strong> Group related data and behavior together
+                <strong>Organization:</strong> Group related data and behavior together
               </Typography>
               <Typography variant="body2">
-                <strong>🔄 Reusability:</strong> Define a blueprint once, create many objects from it
+                <strong>Reusability:</strong> Define a blueprint once, create many objects from it
               </Typography>
               <Typography variant="body2">
-                <strong>🛠️ Maintainability:</strong> Change behavior in one place and every object benefits
+                <strong>Maintainability:</strong> Change behavior in one place and every object benefits
               </Typography>
               <Typography variant="body2">
-                <strong>🌍 Real-world modeling:</strong> Code that maps cleanly onto how we think about problems
+                <strong>Real-world modeling:</strong> Code that maps cleanly onto how we think about problems
               </Typography>
             </Box>
           </ConceptInfoCard>
@@ -101,10 +131,10 @@ export default function ClassesObjectsConcept() {
           <ConceptInfoCard>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
               <Typography variant="body2">
-                <strong>📐 A Class is a blueprint.</strong> It describes <em>what</em> something will look like and <em>what</em> it can do, but it isn&apos;t the thing itself. Think of the architectural plan for a house.
+                <strong>A Class is a blueprint.</strong> It describes <em>what</em> something will look like and <em>what</em> it can do, but it isn&apos;t the thing itself. Think of the architectural plan for a house.
               </Typography>
               <Typography variant="body2">
-                <strong>🏠 An Object is a real thing built from that blueprint.</strong> It&apos;s a concrete instance with its own actual data. From one house plan you can build many houses, each painted a different color.
+                <strong>An Object is a real thing built from that blueprint.</strong> It&apos;s a concrete instance with its own actual data. From one house plan you can build many houses, each painted a different color.
               </Typography>
             </Box>
           </ConceptInfoCard>
@@ -166,6 +196,70 @@ print(buddy.name)`}
               steps={classDefinitionSteps}
             />
           </ConceptInfoCard>
+        </Section>
+
+        <Section title="Try It Yourself: An Object Factory">
+          <Typography variant="body2" paragraph>
+            The <code>Dog</code> class is the blueprint. Fill in a name and breed, then create as many <code>Dog</code> objects as you like. Each one is an independent instance with its own data — and each can run the same <code>bark()</code> method.
+          </Typography>
+
+          <div className="ds-viz">
+            <div className="ds-controls">
+              <TextField
+                label="name"
+                size="small"
+                value={dogName}
+                onChange={(e) => setDogName(e.target.value)}
+                onKeyDown={(e) => { if (e.key === 'Enter') createDog(); }}
+                sx={{ width: 160 }}
+              />
+              <TextField
+                label="breed"
+                size="small"
+                value={dogBreed}
+                onChange={(e) => setDogBreed(e.target.value)}
+                onKeyDown={(e) => { if (e.key === 'Enter') createDog(); }}
+                sx={{ width: 180 }}
+              />
+              <Button variant="contained" onClick={createDog}>Create Dog object</Button>
+              <Button variant="text" color="secondary" onClick={clearAll} disabled={dogs.length === 0}>Clear</Button>
+            </div>
+
+            {dogs.length === 0 ? (
+              <Typography variant="body2" sx={{ color: '#94a3b8', fontStyle: 'italic' }}>
+                No objects yet. Create one from the Dog blueprint above.
+              </Typography>
+            ) : (
+              <div className="obj-grid">
+                {dogs.map((d) => (
+                  <div className="obj-card" key={d.id}>
+                    <div className="obj-card-title">Dog instance</div>
+                    <div className="obj-attr"><span className="obj-key">name</span> = &quot;{d.name}&quot;</div>
+                    <div className="obj-attr"><span className="obj-key">breed</span> = &quot;{d.breed}&quot;</div>
+                    <Button size="small" variant="outlined" sx={{ mt: 1 }} onClick={() => bark(d)}>
+                      call bark()
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <div className="output-panel">
+              {barkLog.length === 0 ? (
+                <span className="muted"># Output of bark() calls will appear here</span>
+              ) : (
+                barkLog.map((line, i) => (
+                  <div key={i}><span className="out-prompt">&gt;&gt;&gt; </span>{line}</div>
+                ))
+              )}
+            </div>
+          </div>
+
+          <Alert severity="info" sx={{ mt: 2 }}>
+            <Typography variant="body2">
+              Notice that every object shares the same blueprint and the same <code>bark()</code> behavior, yet each keeps its own separate <code>name</code> and <code>breed</code>.
+            </Typography>
+          </Alert>
         </Section>
 
         <Section title="The self Parameter">

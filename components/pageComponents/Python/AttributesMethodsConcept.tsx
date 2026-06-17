@@ -1,17 +1,37 @@
 'use client';
 
+import { useState } from 'react';
 import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 import ConceptInfoCard from '../../common/ConceptInfoCard';
 import CodePartsExplanation from '../../common/CodePartsExplanation';
 import CodeSnippet from '../../common/CodeSnippet';
 import StepThroughCodeAnimation from '../JavaScript/StepThroughCodeAnimation';
 import TableOfContents from '@/components/common/TableOfContents';
+import '../../../styles/dataStructures.css';
+
+type Account = { id: number; owner: string; balance: number };
 
 export default function AttributesMethodsConcept() {
+  const [bankName, setBankName] = useState('PyBank');
+  const [accounts, setAccounts] = useState<Account[]>([
+    { id: 1, owner: 'Alice', balance: 100 },
+    { id: 2, owner: 'Bob', balance: 50 },
+  ]);
+  const [amounts, setAmounts] = useState<Record<number, string>>({ 1: '', 2: '' });
+
+  const deposit = (id: number) => {
+    const a = parseInt(amounts[id], 10);
+    if (isNaN(a) || a <= 0) return;
+    setAccounts((prev) => prev.map((ac) => (ac.id === id ? { ...ac, balance: ac.balance + a } : ac)));
+    setAmounts((prev) => ({ ...prev, [id]: '' }));
+  };
+
   const methodCode = [
     'class BankAccount:',
     '    def __init__(self, owner, balance=0):',
@@ -169,6 +189,53 @@ p = Person("Sam", 30)`}
           <Alert severity="info" sx={{ mt: 2 }}>
             <Typography variant="body2">
               The difference between a function and a method is simply <em>where</em> it lives: a method is defined inside a class and almost always takes <code>self</code> as its first parameter.
+            </Typography>
+          </Alert>
+        </Section>
+
+        <Section title="Try It Yourself: Instance vs. Class Attributes">
+          <Typography variant="body2" paragraph>
+            Both accounts are built from the same <code>BankAccount</code> class. The <code>bank_name</code> is a <strong>class attribute</strong> shared by every account, while <code>owner</code> and <code>balance</code> are <strong>instance attributes</strong> unique to each one. Change the bank name and watch it update everywhere; deposit into one account and watch the other stay untouched.
+          </Typography>
+
+          <div className="ds-viz">
+            <Box sx={{ mb: 2 }}>
+              <TextField
+                label="BankAccount.bank_name (class attribute)"
+                size="small"
+                value={bankName}
+                onChange={(e) => setBankName(e.target.value)}
+                sx={{ width: 360, maxWidth: '100%' }}
+              />
+            </Box>
+
+            <div className="obj-grid">
+              {accounts.map((ac) => (
+                <div className="obj-card" key={ac.id}>
+                  <div className="obj-card-title">BankAccount instance</div>
+                  <div className="obj-attr"><span className="obj-key">bank_name</span> = &quot;{bankName}&quot;</div>
+                  <div className="obj-attr"><span className="obj-key">owner</span> = &quot;{ac.owner}&quot;</div>
+                  <div className="obj-attr"><span className="obj-key">balance</span> = {ac.balance}</div>
+                  <Box sx={{ display: 'flex', gap: 1, mt: 1.5, alignItems: 'center' }}>
+                    <TextField
+                      label="amount"
+                      type="number"
+                      size="small"
+                      value={amounts[ac.id]}
+                      onChange={(e) => setAmounts((prev) => ({ ...prev, [ac.id]: e.target.value }))}
+                      onKeyDown={(e) => { if (e.key === 'Enter') deposit(ac.id); }}
+                      sx={{ width: 100 }}
+                    />
+                    <Button size="small" variant="outlined" onClick={() => deposit(ac.id)}>deposit()</Button>
+                  </Box>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <Alert severity="info" sx={{ mt: 2 }}>
+            <Typography variant="body2">
+              The shared <code>bank_name</code> changes on both cards at once because it belongs to the class. Each <code>balance</code> changes independently because it belongs to the individual object.
             </Typography>
           </Alert>
         </Section>

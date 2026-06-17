@@ -6,10 +6,9 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Alert from '@mui/material/Alert';
 import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
-import ConceptInfoCard from '../../common/ConceptInfoCard';
+import CalloutBox from '../../common/CalloutBox';
 import TableOfContents from '@/components/common/TableOfContents';
 import '../../../styles/dataStructures.css';
 
@@ -30,66 +29,59 @@ export default function QueueConcept() {
     const value = input.trim() === '' ? names[Math.floor(Math.random() * names.length)] : input.trim();
     setQueue((prev) => [...prev, { id: nextId, value }]);
     setNextId((n) => n + 1);
-    setMessage(`enqueue(${value}) — joined the back of the line`);
+    setMessage(`enqueue(${value}) — added to the back of the line.`);
     setInput('');
   };
 
   const dequeue = () => {
     if (queue.length === 0) {
-      setMessage('dequeue() — the line is empty, no one to serve!');
+      setMessage('dequeue() — the queue is empty, so there is no one to serve.');
       return;
     }
     const front = queue[0];
     setQueue((prev) => prev.slice(1));
-    setMessage(`dequeue() → served ${front.value} (the person who waited longest)`);
+    setMessage(`dequeue() returned ${front.value} — the item that had waited longest.`);
   };
 
   const peek = () => {
     if (queue.length === 0) {
-      setMessage('peek() — the line is empty!');
+      setMessage('peek() — the queue is empty.');
       return;
     }
-    setMessage(`peek() → ${queue[0].value} is next to be served`);
+    setMessage(`peek() returned ${queue[0].value} — the item that will be served next.`);
   };
 
   return (
     <ConceptWrapper
       title="Queues"
-      description="A queue is a First-In, First-Out (FIFO) collection — the first thing you add is the first thing you take out."
+      description="A queue is a First-In, First-Out (FIFO) collection: the item that has waited longest is the first one removed."
     >
       <TableOfContents numbered>
-        <Section title="Picture a Line at the Store">
+        {/* 1 ----------------------------------------------------------------- */}
+        <Section title="The Big Idea">
           <Typography variant="body2" paragraph>
-            A queue works exactly like a <strong>line of people</strong> waiting at a checkout. New people join at the <em>back</em>, and the person at the <em>front</em> is always served next. It&apos;s fair: whoever has been waiting longest goes first.
+            A queue works exactly like a line of people at a checkout. New arrivals join at the <em>back</em>, and the person at the <em>front</em> is always served next. It is inherently fair: whoever has waited longest is handled first.
           </Typography>
 
-          <ConceptInfoCard>
-            <Typography variant="subtitle1" gutterBottom fontWeight="medium">
-              First In, First Out (FIFO)
-            </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-              <Typography variant="body2">
-                <strong>🧍 A checkout line:</strong> first to arrive is first to be served
-              </Typography>
-              <Typography variant="body2">
-                <strong>🖨️ A printer queue:</strong> documents print in the order they were sent
-              </Typography>
-              <Typography variant="body2">
-                <strong>🎫 Customer support tickets:</strong> handled in the order they came in
-              </Typography>
+          <CalloutBox title="First In, First Out (FIFO)" type="info">
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, mt: 1 }}>
+              <Typography variant="body2"><strong>A checkout line:</strong> the first to arrive is the first to be served.</Typography>
+              <Typography variant="body2"><strong>A printer queue:</strong> documents print in the order they were submitted.</Typography>
+              <Typography variant="body2"><strong>Support tickets:</strong> requests are handled in the order they arrive.</Typography>
             </Box>
-          </ConceptInfoCard>
+          </CalloutBox>
 
-          <Alert severity="info" sx={{ mt: 2 }}>
+          <CalloutBox title="The opposite of a stack" type="key-concepts">
             <Typography variant="body2">
-              This is the opposite of a <strong>stack</strong>. A stack removes the <em>newest</em> item first (LIFO); a queue removes the <em>oldest</em> item first (FIFO).
+              A stack removes the <em>newest</em> item first (LIFO); a queue removes the <em>oldest</em> item first (FIFO).
             </Typography>
-          </Alert>
+          </CalloutBox>
         </Section>
 
-        <Section title="Try It Yourself">
+        {/* 2 ----------------------------------------------------------------- */}
+        <Section title="Interactive Queue">
           <Typography variant="body2" paragraph>
-            <strong>Enqueue</strong> adds a person to the back of the line. <strong>Dequeue</strong> serves the person at the front. Notice that things enter on one end and leave from the other.
+            <strong>Enqueue</strong> adds an item to the back of the line; <strong>Dequeue</strong> serves the item at the front. Items enter at one end and leave from the other.
           </Typography>
 
           <div className="ds-viz">
@@ -109,7 +101,7 @@ export default function QueueConcept() {
 
             <div className="queue-area">
               {queue.length === 0 ? (
-                <span className="queue-empty">The line is empty — enqueue someone!</span>
+                <span className="queue-empty">The queue is empty — enqueue an item to begin.</span>
               ) : (
                 <AnimatePresence initial={false}>
                   {queue.map((item, idx) => (
@@ -122,59 +114,56 @@ export default function QueueConcept() {
                       exit={{ opacity: 0, x: -40 }}
                       transition={{ duration: 0.25 }}
                     >
-                      {idx === 0 && <span className="queue-tag front">FRONT ↓</span>}
+                      {idx === 0 && <span className="queue-tag front">front</span>}
                       {idx === queue.length - 1 && queue.length > 1 && (
-                        <span className="queue-tag back">BACK ↓</span>
+                        <span className="queue-tag back">back</span>
                       )}
-                      <span className="queue-emoji">🧍</span>
+                      <span className="queue-avatar" />
                       {item.value}
                     </motion.div>
                   ))}
                 </AnimatePresence>
               )}
             </div>
-            <p className="ds-caption">People join on the right (back) and are served from the left (front).</p>
+            <p className="ds-caption">Items join on the right (back) and are served from the left (front).</p>
 
             {message && <p className="ds-output">{message}</p>}
           </div>
         </Section>
 
+        {/* 3 ----------------------------------------------------------------- */}
         <Section title="The Core Operations">
-          <ConceptInfoCard>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <Typography variant="body2">
-                <strong>enqueue(item)</strong> — add an item to the back of the queue
-              </Typography>
-              <Typography variant="body2">
-                <strong>dequeue()</strong> — remove and return the front item
-              </Typography>
-              <Typography variant="body2">
-                <strong>peek()</strong> — look at the front item without removing it
-              </Typography>
-              <Typography variant="body2">
-                <strong>is_empty()</strong> — check whether anyone is still waiting
-              </Typography>
+          <CalloutBox title="Every queue supports four operations" type="key-concepts">
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, mt: 1 }}>
+              <Typography variant="body2"><strong>enqueue(item)</strong> — add an item to the back of the queue.</Typography>
+              <Typography variant="body2"><strong>dequeue()</strong> — remove and return the front item.</Typography>
+              <Typography variant="body2"><strong>peek()</strong> — read the front item without removing it.</Typography>
+              <Typography variant="body2"><strong>is_empty()</strong> — check whether any items remain.</Typography>
             </Box>
-          </ConceptInfoCard>
+          </CalloutBox>
         </Section>
 
-        <Section title="Where Queues Show Up">
-          <ConceptInfoCard>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-              <Typography variant="body2">
-                <strong>Task scheduling:</strong> operating systems line up jobs to run in order
-              </Typography>
-              <Typography variant="body2">
-                <strong>Printing:</strong> print jobs are handled first-come, first-served
-              </Typography>
-              <Typography variant="body2">
-                <strong>Breadth-first search:</strong> exploring a graph or tree level by level uses a queue
-              </Typography>
-              <Typography variant="body2">
-                <strong>Messaging systems:</strong> messages wait in line to be processed fairly
-              </Typography>
+        {/* 4 ----------------------------------------------------------------- */}
+        <Section title="Where Queues Are Used">
+          <CalloutBox title="Common applications" type="key-concepts">
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, mt: 1 }}>
+              <Typography variant="body2"><strong>Task scheduling:</strong> operating systems line up jobs to run in order.</Typography>
+              <Typography variant="body2"><strong>Printing:</strong> print jobs are handled on a first-come, first-served basis.</Typography>
+              <Typography variant="body2"><strong>Breadth-first search:</strong> exploring a graph or tree level by level relies on a queue.</Typography>
+              <Typography variant="body2"><strong>Messaging systems:</strong> messages wait in line to be processed in order.</Typography>
             </Box>
-          </ConceptInfoCard>
+          </CalloutBox>
+        </Section>
+
+        {/* 5 ----------------------------------------------------------------- */}
+        <Section title="Key Takeaways">
+          <CalloutBox title="Summary" type="success">
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, mt: 1 }}>
+              <Typography variant="body2"><strong>A queue is First-In, First-Out:</strong> the oldest item is removed first.</Typography>
+              <Typography variant="body2"><strong>Items enter at the back and leave from the front</strong> via enqueue and dequeue.</Typography>
+              <Typography variant="body2"><strong>Queues model fair, in-order processing</strong> such as scheduling and printing.</Typography>
+            </Box>
+          </CalloutBox>
         </Section>
       </TableOfContents>
     </ConceptWrapper>

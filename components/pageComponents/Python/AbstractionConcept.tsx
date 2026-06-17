@@ -1,17 +1,39 @@
 'use client';
 
+import { useState } from 'react';
 import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 import ConceptInfoCard from '../../common/ConceptInfoCard';
 import CodePartsExplanation from '../../common/CodePartsExplanation';
 import CodeSnippet from '../../common/CodeSnippet';
 import StepThroughCodeAnimation from '../JavaScript/StepThroughCodeAnimation';
 import TableOfContents from '@/components/common/TableOfContents';
+import '../../../styles/dataStructures.css';
+
+const PAYMENT_METHODS = [
+  { name: 'CreditCard', verb: 'by credit card' },
+  { name: 'PayPal', verb: 'via PayPal' },
+  { name: 'BankTransfer', verb: 'via bank transfer' },
+];
 
 export default function AbstractionConcept() {
+  const [method, setMethod] = useState('CreditCard');
+  const [amount, setAmount] = useState('50');
+  const [log, setLog] = useState<string[]>([]);
+
+  const checkout = () => {
+    const m = PAYMENT_METHODS.find((p) => p.name === method)!;
+    const a = parseInt(amount, 10) || 0;
+    setLog((prev) => [...prev, `checkout(${m.name}(), ${a})  ->  "Paid $${a} ${m.verb}"`].slice(-6));
+  };
+
+  const clearLog = () => setLog([]);
+
   const abstractionCode = [
     'from abc import ABC, abstractmethod',
     '',
@@ -169,6 +191,56 @@ class PaymentMethod(ABC):
           <Alert severity="info" sx={{ mt: 2 }}>
             <Typography variant="body2">
               <code>checkout</code> never needs to change when you add a new payment type. As long as the new class honors the <code>PaymentMethod</code> contract, it just works.
+            </Typography>
+          </Alert>
+        </Section>
+
+        <Section title="Try It Yourself: One Contract, Many Implementations">
+          <Typography variant="body2" paragraph>
+            Every payment type below fulfills the same <code>PaymentMethod</code> contract by implementing <code>pay()</code>. The <code>checkout()</code> function calls <code>pay()</code> without knowing or caring which specific type it received. Pick a method, enter an amount, and run it.
+          </Typography>
+
+          <div className="ds-viz">
+            <div className="chip-row" style={{ marginBottom: 14 }}>
+              {PAYMENT_METHODS.map((p) => (
+                <button
+                  key={p.name}
+                  className={`select-chip ${method === p.name ? 'selected' : ''}`}
+                  onClick={() => setMethod(p.name)}
+                >
+                  {p.name}
+                </button>
+              ))}
+            </div>
+
+            <div className="ds-controls">
+              <TextField
+                label="amount"
+                type="number"
+                size="small"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                onKeyDown={(e) => { if (e.key === 'Enter') checkout(); }}
+                sx={{ width: 120 }}
+              />
+              <Button variant="contained" onClick={checkout}>Run checkout()</Button>
+              <Button variant="text" color="secondary" onClick={clearLog} disabled={log.length === 0}>Clear</Button>
+            </div>
+
+            <div className="output-panel">
+              {log.length === 0 ? (
+                <span className="muted"># checkout() treats every payment method the same way</span>
+              ) : (
+                log.map((line, i) => (
+                  <div key={i}><span className="out-prompt">&gt;&gt;&gt; </span>{line}</div>
+                ))
+              )}
+            </div>
+          </div>
+
+          <Alert severity="info" sx={{ mt: 2 }}>
+            <Typography variant="body2">
+              Each method produces a different result, yet the calling code is identical. The abstract contract is what lets <code>checkout()</code> remain simple while supporting any number of payment types.
             </Typography>
           </Alert>
         </Section>

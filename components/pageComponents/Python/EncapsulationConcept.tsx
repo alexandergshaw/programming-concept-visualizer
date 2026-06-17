@@ -1,17 +1,57 @@
 'use client';
 
+import { useState } from 'react';
 import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 import ConceptInfoCard from '../../common/ConceptInfoCard';
 import CodePartsExplanation from '../../common/CodePartsExplanation';
 import CodeSnippet from '../../common/CodeSnippet';
 import StepThroughCodeAnimation from '../JavaScript/StepThroughCodeAnimation';
 import TableOfContents from '@/components/common/TableOfContents';
+import '../../../styles/dataStructures.css';
+
+type LogLine = { text: string; ok: boolean };
 
 export default function EncapsulationConcept() {
+  const [balance, setBalance] = useState(100);
+  const [amount, setAmount] = useState('');
+  const [log, setLog] = useState<LogLine[]>([]);
+
+  const addLog = (text: string, ok: boolean) => setLog((prev) => [...prev, { text, ok }].slice(-6));
+
+  const deposit = () => {
+    const a = parseInt(amount, 10);
+    if (isNaN(a) || a <= 0) {
+      addLog(`deposit(${amount || '?'})  rejected: amount must be positive`, false);
+      return;
+    }
+    setBalance((b) => b + a);
+    addLog(`deposit(${a})  accepted -> balance is now ${balance + a}`, true);
+    setAmount('');
+  };
+
+  const withdraw = () => {
+    const a = parseInt(amount, 10);
+    if (isNaN(a) || a <= 0) {
+      addLog(`withdraw(${amount || '?'})  rejected: amount must be positive`, false);
+      return;
+    }
+    if (a > balance) {
+      addLog(`withdraw(${a})  rejected: cannot exceed balance of ${balance}`, false);
+      return;
+    }
+    setBalance((b) => b - a);
+    addLog(`withdraw(${a})  accepted -> balance is now ${balance - a}`, true);
+    setAmount('');
+  };
+
+  const clearLog = () => setLog([]);
+
   const encapsulationCode = [
     'class BankAccount:',
     '    def __init__(self, balance):',
@@ -84,13 +124,13 @@ export default function EncapsulationConcept() {
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
               <Typography variant="body2">
-                <strong>🛡️ Protect data:</strong> Stop outside code from putting the object in an invalid state
+                <strong>Protect data:</strong> Stop outside code from putting the object in an invalid state
               </Typography>
               <Typography variant="body2">
-                <strong>✅ Validate changes:</strong> Run checks before allowing a value to change
+                <strong>Validate changes:</strong> Run checks before allowing a value to change
               </Typography>
               <Typography variant="body2">
-                <strong>🔌 Stable interface:</strong> Change internals later without breaking other code
+                <strong>Stable interface:</strong> Change internals later without breaking other code
               </Typography>
             </Box>
           </ConceptInfoCard>
@@ -169,6 +209,49 @@ export default function EncapsulationConcept() {
               steps={encapsulationSteps}
             />
           </ConceptInfoCard>
+        </Section>
+
+        <Section title="Try It Yourself: A Guarded Account">
+          <Typography variant="body2" paragraph>
+            The balance is private and can only change through <code>deposit()</code> and <code>withdraw()</code>. Those methods enforce the rules, so the balance can never become negative or change by an invalid amount. Try to break it.
+          </Typography>
+
+          <div className="ds-viz">
+            <Box sx={{ mb: 2, p: 2, borderRadius: 2, bgcolor: '#f0fdf4', border: '1px solid #86efac' }}>
+              <Typography variant="caption" sx={{ color: '#15803d', display: 'block' }}>account.get_balance()</Typography>
+              <Typography variant="h5" sx={{ fontWeight: 700, color: '#166534' }}>${balance}</Typography>
+            </Box>
+
+            <div className="ds-controls">
+              <TextField
+                label="amount"
+                type="number"
+                size="small"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                sx={{ width: 150 }}
+              />
+              <Button variant="contained" onClick={deposit}>deposit()</Button>
+              <Button variant="outlined" onClick={withdraw}>withdraw()</Button>
+              <Button variant="text" color="secondary" onClick={clearLog} disabled={log.length === 0}>Clear log</Button>
+            </div>
+
+            <div className="output-panel">
+              {log.length === 0 ? (
+                <span className="muted"># Try depositing a negative number, or withdrawing more than the balance</span>
+              ) : (
+                log.map((line, i) => (
+                  <div key={i} className={line.ok ? 'ok' : 'err'}>{line.ok ? '[ok] ' : '[blocked] '}{line.text}</div>
+                ))
+              )}
+            </div>
+          </div>
+
+          <Alert severity="info" sx={{ mt: 2 }}>
+            <Typography variant="body2">
+              There is no way to set the balance directly from outside — every change must pass through a method that validates it first. That guarantee is exactly what encapsulation provides.
+            </Typography>
+          </Alert>
         </Section>
 
         <Section title="The Pythonic Way: @property">

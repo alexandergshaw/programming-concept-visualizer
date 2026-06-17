@@ -2,14 +2,13 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Alert from '@mui/material/Alert';
 import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
-import ConceptInfoCard from '../../common/ConceptInfoCard';
+import CalloutBox from '../../common/CalloutBox';
 import TableOfContents from '@/components/common/TableOfContents';
+import Box from '@mui/material/Box';
 import '../../../styles/dataStructures.css';
 
 type TreeNode = { value: number; left: TreeNode | null; right: TreeNode | null };
@@ -96,7 +95,7 @@ export default function TreeConcept() {
     }
     stopAnimation();
     setTree((t) => insert(t, v));
-    setMessage(`insert(${v}) — walked down from the root, going left for smaller and right for larger, until an empty spot was found.`);
+    setMessage(`insert(${v}) — starting at the root, the value goes left when smaller and right when larger until it finds an empty spot.`);
     setInput('');
   };
 
@@ -139,44 +138,35 @@ export default function TreeConcept() {
   return (
     <ConceptWrapper
       title="Trees"
-      description="A tree is a branching structure of connected nodes — like a family tree or a set of nested folders."
+      description="A tree is a branching structure of connected nodes, similar to a family tree or a set of nested folders."
     >
       <TableOfContents numbered>
-        <Section title="Picture a Family Tree">
+        {/* 1 ----------------------------------------------------------------- */}
+        <Section title="The Big Idea">
           <Typography variant="body2" paragraph>
-            A tree organizes data into a <strong>hierarchy</strong>. There&apos;s one node at the very top called the <strong>root</strong>, and every node can branch into <strong>children</strong> below it. It looks just like a <em>family tree</em> drawn upside down, or the way <em>folders</em> nest inside folders on your computer.
+            A tree organizes data into a <strong>hierarchy</strong>. A single node at the top, called the <strong>root</strong>, branches into <strong>children</strong> below it, and each child can branch further. The shape mirrors a family tree drawn upside down, or the way folders nest inside folders on a computer.
           </Typography>
 
-          <ConceptInfoCard>
-            <Typography variant="subtitle1" gutterBottom fontWeight="medium">
-              Tree Vocabulary
-            </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-              <Typography variant="body2">
-                <strong>🌳 Root:</strong> the single node at the top with no parent
-              </Typography>
-              <Typography variant="body2">
-                <strong>👶 Child / Parent:</strong> a node directly below / above another
-              </Typography>
-              <Typography variant="body2">
-                <strong>🍃 Leaf:</strong> a node with no children (the tips of the branches)
-              </Typography>
-              <Typography variant="body2">
-                <strong>📏 Depth:</strong> how many steps a node is from the root
-              </Typography>
+          <CalloutBox title="Tree vocabulary" type="info">
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, mt: 1 }}>
+              <Typography variant="body2"><strong>Root:</strong> the single node at the top, with no parent.</Typography>
+              <Typography variant="body2"><strong>Child / Parent:</strong> a node directly below / above another.</Typography>
+              <Typography variant="body2"><strong>Leaf:</strong> a node with no children (the tips of the branches).</Typography>
+              <Typography variant="body2"><strong>Depth:</strong> the number of steps from the root to a node.</Typography>
             </Box>
-          </ConceptInfoCard>
+          </CalloutBox>
 
-          <Alert severity="info" sx={{ mt: 2 }}>
+          <CalloutBox title="This example is a Binary Search Tree" type="key-concepts">
             <Typography variant="body2">
-              The example below is a <strong>Binary Search Tree</strong>: each node has at most two children, and everything on the <em>left</em> is smaller while everything on the <em>right</em> is larger. That ordering makes searching very fast.
+              Each node has at most two children, and everything in the <em>left</em> branch is smaller while everything in the <em>right</em> branch is larger. This ordering is what makes searching a tree fast.
             </Typography>
-          </Alert>
+          </CalloutBox>
         </Section>
 
-        <Section title="Build & Explore a Tree">
+        {/* 2 ----------------------------------------------------------------- */}
+        <Section title="Build and Explore a Tree">
           <Typography variant="body2" paragraph>
-            Insert numbers and watch where they land — smaller values branch left, larger values branch right. Then run a <strong>traversal</strong> to light up the nodes in the order a program would visit them.
+            Insert numbers and observe where each one lands — smaller values branch left, larger values branch right. Then run a <strong>traversal</strong> to highlight the nodes in the order a program would visit them.
           </Typography>
 
           <div className="ds-viz">
@@ -220,15 +210,7 @@ export default function TreeConcept() {
                   viewBox={`0 0 ${Math.max(width, 320)} ${height}`}
                 >
                   {edges.map((e, i) => (
-                    <line
-                      key={`e-${i}`}
-                      x1={e.x1}
-                      y1={e.y1}
-                      x2={e.x2}
-                      y2={e.y2}
-                      stroke="#cbd5e1"
-                      strokeWidth={2}
-                    />
+                    <line key={`e-${i}`} x1={e.x1} y1={e.y1} x2={e.x2} y2={e.y2} stroke="#cbd5e1" strokeWidth={2} />
                   ))}
                   {nodes.map((n) => {
                     const isActive = activeValue === n.value;
@@ -240,15 +222,7 @@ export default function TreeConcept() {
                     return (
                       <g key={`n-${n.value}`}>
                         <circle cx={n.x} cy={n.y} r={R} fill={fill} stroke={stroke} strokeWidth={2} />
-                        <text
-                          x={n.x}
-                          y={n.y}
-                          textAnchor="middle"
-                          dominantBaseline="central"
-                          fontSize={14}
-                          fontWeight={600}
-                          fill="#1e293b"
-                        >
+                        <text x={n.x} y={n.y} textAnchor="middle" dominantBaseline="central" fontSize={14} fontWeight={600} fill="#1e293b">
                           {n.value}
                         </text>
                       </g>
@@ -261,7 +235,7 @@ export default function TreeConcept() {
             {order.length > 0 && (
               <p className="ds-output">
                 <strong>{traversalName}:</strong> {visited.join(' → ')}
-                {step >= order.length ? ' ✓' : ' …'}
+                {step >= order.length ? ' (complete)' : ' …'}
               </p>
             )}
             {message && order.length === 0 && <p className="ds-output">{message}</p>}
@@ -274,43 +248,42 @@ export default function TreeConcept() {
           </div>
         </Section>
 
-        <Section title="Why In-order Gives Sorted Output">
+        {/* 3 ----------------------------------------------------------------- */}
+        <Section title="Why In-order Produces Sorted Output">
           <Typography variant="body2" paragraph>
-            Try the <strong>In-order</strong> traversal on a Binary Search Tree and watch the numbers come out in sorted order. That&apos;s no coincidence: in-order always visits <em>everything smaller</em> (the left side) before a node, then the node, then <em>everything larger</em> (the right side).
+            Run the <strong>in-order</strong> traversal on the Binary Search Tree and the numbers emerge in sorted order. This is not a coincidence: in-order always visits everything smaller (the left branch) before a node, then the node, then everything larger (the right branch).
           </Typography>
 
-          <ConceptInfoCard>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-              <Typography variant="body2">
-                <strong>In-order (Left → Node → Right):</strong> visits values in sorted order
-              </Typography>
-              <Typography variant="body2">
-                <strong>Pre-order (Node → Left → Right):</strong> handy for copying or saving a tree
-              </Typography>
-              <Typography variant="body2">
-                <strong>Post-order (Left → Right → Node):</strong> handy for deleting a tree safely from the bottom up
-              </Typography>
+          <CalloutBox title="The three traversal orders" type="key-concepts">
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, mt: 1 }}>
+              <Typography variant="body2"><strong>In-order (Left, Node, Right):</strong> visits values in sorted order.</Typography>
+              <Typography variant="body2"><strong>Pre-order (Node, Left, Right):</strong> useful for copying or saving a tree.</Typography>
+              <Typography variant="body2"><strong>Post-order (Left, Right, Node):</strong> useful for deleting a tree safely from the bottom up.</Typography>
             </Box>
-          </ConceptInfoCard>
+          </CalloutBox>
         </Section>
 
-        <Section title="Where Trees Show Up">
-          <ConceptInfoCard>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-              <Typography variant="body2">
-                <strong>File systems:</strong> folders containing folders containing files
-              </Typography>
-              <Typography variant="body2">
-                <strong>The HTML DOM:</strong> a web page is a tree of nested elements
-              </Typography>
-              <Typography variant="body2">
-                <strong>Search & databases:</strong> balanced trees keep lookups fast even with millions of records
-              </Typography>
-              <Typography variant="body2">
-                <strong>Decision making:</strong> game AI and flowcharts branch like trees
-              </Typography>
+        {/* 4 ----------------------------------------------------------------- */}
+        <Section title="Where Trees Are Used">
+          <CalloutBox title="Common applications" type="key-concepts">
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, mt: 1 }}>
+              <Typography variant="body2"><strong>File systems:</strong> folders containing folders containing files.</Typography>
+              <Typography variant="body2"><strong>The HTML DOM:</strong> a web page is a tree of nested elements.</Typography>
+              <Typography variant="body2"><strong>Search and databases:</strong> balanced trees keep lookups fast even with millions of records.</Typography>
+              <Typography variant="body2"><strong>Decision making:</strong> game AI and flowcharts branch like trees.</Typography>
             </Box>
-          </ConceptInfoCard>
+          </CalloutBox>
+        </Section>
+
+        {/* 5 ----------------------------------------------------------------- */}
+        <Section title="Key Takeaways">
+          <CalloutBox title="Summary" type="success">
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, mt: 1 }}>
+              <Typography variant="body2"><strong>A tree is a hierarchy</strong> of nodes branching from a single root.</Typography>
+              <Typography variant="body2"><strong>A Binary Search Tree</strong> keeps smaller values left and larger values right, making lookups fast.</Typography>
+              <Typography variant="body2"><strong>Traversals</strong> visit nodes in a defined order; in-order yields sorted output.</Typography>
+            </Box>
+          </CalloutBox>
         </Section>
       </TableOfContents>
     </ConceptWrapper>

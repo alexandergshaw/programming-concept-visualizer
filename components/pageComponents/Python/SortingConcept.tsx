@@ -11,7 +11,8 @@ import TableOfContents from '@/components/common/TableOfContents';
 import '../../../styles/dataStructures.css';
 
 type BarState = '' | 'compare' | 'swap' | 'sorted';
-type Snap = { values: number[]; states: BarState[]; desc: string };
+type SnapKind = 'compare' | 'swap' | 'done';
+type Snap = { values: number[]; states: BarState[]; desc: string; kind: SnapKind };
 
 function buildBubbleSnaps(input: number[]): Snap[] {
   const arr = [...input];
@@ -22,7 +23,7 @@ function buildBubbleSnaps(input: number[]): Snap[] {
       const states: BarState[] = arr.map((_, idx) => (idx >= n - i ? 'sorted' : ''));
       states[j] = 'compare';
       states[j + 1] = 'compare';
-      snaps.push({ values: [...arr], states, desc: `Compare the two yellow neighbors: ${arr[j]} and ${arr[j + 1]}.` });
+      snaps.push({ values: [...arr], states, kind: 'compare', desc: `Compare the two highlighted neighbours: ${arr[j]} and ${arr[j + 1]}.` });
       if (arr[j] > arr[j + 1]) {
         const a = arr[j];
         const b = arr[j + 1];
@@ -31,11 +32,11 @@ function buildBubbleSnaps(input: number[]): Snap[] {
         const s2: BarState[] = arr.map((_, idx) => (idx >= n - i ? 'sorted' : ''));
         s2[j] = 'swap';
         s2[j + 1] = 'swap';
-        snaps.push({ values: [...arr], states: s2, desc: `${a} is bigger than ${b}, so swap them — the bigger number moves right.` });
+        snaps.push({ values: [...arr], states: s2, kind: 'swap', desc: `${a} is greater than ${b}, so they are swapped — the larger value moves to the right.` });
       }
     }
   }
-  snaps.push({ values: [...arr], states: arr.map(() => 'sorted'), desc: 'No swaps left to make — the list is fully sorted! ✅' });
+  snaps.push({ values: [...arr], states: arr.map(() => 'sorted'), kind: 'done', desc: 'No further swaps are needed — the list is fully sorted.' });
   return snaps;
 }
 
@@ -66,77 +67,93 @@ export default function SortingConcept() {
   const snap = snaps[step];
   const maxVal = Math.max(...snap.values);
 
+  // Live tallies up to the current step
+  const comparisons = snaps.slice(0, step + 1).filter((s) => s.kind === 'compare').length;
+  const swaps = snaps.slice(0, step + 1).filter((s) => s.kind === 'swap').length;
+
   return (
     <ConceptWrapper
       title="Sorting"
-      description="Sorting means putting a list in order. Seeing the values slide into place makes the strategy easy to follow."
+      description="Sorting arranges a list into order. Watching the values move into place makes the underlying strategy easy to follow."
     >
       <TableOfContents numbered>
         {/* 1 ----------------------------------------------------------------- */}
         <Section title="The Big Idea">
           <Typography variant="body2" paragraph>
-            Imagine you&apos;re holding a messy hand of playing cards and you want them in order. Most people do something simple without thinking about it: they glance at two cards next to each other and, if they&apos;re in the wrong order, swap them. Do that enough times and the whole hand ends up sorted.
+            Consider tidying a hand of playing cards. Most people do something simple without thinking about it: they glance at two adjacent cards and, if those cards are out of order, swap them. Repeat that enough times and the whole hand ends up sorted.
           </Typography>
           <Typography variant="body2" paragraph>
-            That everyday habit is almost exactly the algorithm called <strong>bubble sort</strong>.
+            That everyday habit is almost exactly the algorithm known as <strong>bubble sort</strong>.
           </Typography>
 
-          <CalloutBox title="In plain English" type="info" icon="💡">
+          <CalloutBox title="Definition" type="info">
             <Typography variant="body2">
-              <strong>Sorting</strong> = rearranging a list so the items are in order (smallest to largest, A to Z, oldest to newest, and so on).
+              <strong>Sorting</strong> is the process of rearranging a list so its items follow a defined order — smallest to largest, A to Z, oldest to newest, and so on.
             </Typography>
           </CalloutBox>
         </Section>
 
         {/* 2 ----------------------------------------------------------------- */}
-        <Section title="The One Move: Compare Two Neighbors">
+        <Section title="The Core Move: Compare Two Neighbours">
           <Typography variant="body2" paragraph>
-            Bubble sort only ever does one tiny thing: it looks at <strong>two side-by-side items</strong> and swaps them if the left one is bigger.
+            Bubble sort performs only one basic operation: it looks at two adjacent items and swaps them if the one on the left is larger.
           </Typography>
 
           <div className="ds-viz">
-            <div className="illus-label">Two neighbors are out of order, so swap them:</div>
+            <div className="illus-label">Two neighbours are out of order, so they are swapped:</div>
             <div className="cards-compare">
               <div className="play-card big">7</div>
               <span className="compare-symbol">&gt;</span>
               <div className="play-card">3</div>
-              <span className="swap-arrows">⇄</span>
+              <span className="swap-arrows">&#8644;</span>
               <div className="play-card">3</div>
               <div className="play-card big">7</div>
             </div>
-            <p className="ds-caption">7 is bigger than 3, so they trade places. The bigger number ends up on the right.</p>
+            <p className="ds-caption">7 is greater than 3, so they trade places. The larger value ends up on the right.</p>
           </div>
 
-          <CalloutBox title="The whole algorithm, in 4 steps" type="key-concepts" icon="📋">
+          <CalloutBox title="The full algorithm in four steps" type="key-concepts">
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mt: 1 }}>
-              <Typography variant="body2"><strong>1.</strong> Start at the left with the first two items.</Typography>
-              <Typography variant="body2"><strong>2.</strong> If they&apos;re in the wrong order, swap them.</Typography>
-              <Typography variant="body2"><strong>3.</strong> Shuffle one step to the right and repeat, all the way to the end.</Typography>
-              <Typography variant="body2"><strong>4.</strong> Go back to the start and do another pass — keep going until a pass makes no swaps.</Typography>
+              <Typography variant="body2"><strong>1.</strong> Begin at the left with the first two items.</Typography>
+              <Typography variant="body2"><strong>2.</strong> If they are out of order, swap them.</Typography>
+              <Typography variant="body2"><strong>3.</strong> Move one position to the right and repeat, all the way to the end.</Typography>
+              <Typography variant="body2"><strong>4.</strong> Return to the start and perform another pass; continue until a full pass makes no swaps.</Typography>
             </Box>
           </CalloutBox>
         </Section>
 
         {/* 3 ----------------------------------------------------------------- */}
-        <Section title="Why It's Called 'Bubble' Sort">
+        <Section title="Why It Is Called Bubble Sort">
           <Typography variant="body2" paragraph>
-            On each left-to-right pass, the biggest remaining number keeps getting swapped rightward until it can&apos;t go any further. It looks like the largest value <strong>bubbles up</strong> to the end of the list, like a bubble rising to the top of a glass. After the first pass the biggest is parked at the far right; after the second pass the next-biggest is parked next to it, and so on.
+            On each left-to-right pass, the largest remaining value is swapped rightward until it can move no further. The largest value appears to rise to the end of the list, much like a bubble rising to the surface. After the first pass the largest value is in its final position; after the second pass the next-largest is settled beside it, and so on.
           </Typography>
 
-          <CalloutBox title="Watch for the green zone" type="success" icon="🫧">
+          <CalloutBox title="Watch the sorted region" type="info">
             <Typography variant="body2">
-              In the visualizer below, every number that has &quot;bubbled&quot; into its final spot turns <strong>green</strong>. The green zone grows from the right with every pass until the whole list is green.
+              In the visualization below, every value that has reached its final position turns <strong>green</strong>. This sorted region grows from the right with each pass until the entire list is green.
             </Typography>
           </CalloutBox>
         </Section>
 
         {/* 4 ----------------------------------------------------------------- */}
-        <Section title="Watch It Sort">
+        <Section title="Interactive Visualization">
           <Typography variant="body2" paragraph>
-            Each bar is a number — taller means bigger. Step through (or press Play) to watch the comparisons, the swaps, and the green &quot;done&quot; zone growing from the right.
+            Each bar represents a number; taller means larger. Step through or press Play to watch the comparisons, the swaps, and the sorted region growing from the right. The counters track the total work performed so far.
           </Typography>
 
           <div className="ds-viz">
+            {/* Live counters */}
+            <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', mb: 2 }}>
+              <Box sx={{ p: 1.25, px: 2, borderRadius: 2, bgcolor: '#fffbeb', border: '1px solid #fcd34d' }}>
+                <Typography variant="caption" sx={{ color: '#92400e', display: 'block' }}>Comparisons</Typography>
+                <Typography variant="h6" sx={{ fontWeight: 700, color: '#b45309' }}>{comparisons}</Typography>
+              </Box>
+              <Box sx={{ p: 1.25, px: 2, borderRadius: 2, bgcolor: '#fef2f2', border: '1px solid #fca5a5' }}>
+                <Typography variant="caption" sx={{ color: '#991b1b', display: 'block' }}>Swaps</Typography>
+                <Typography variant="h6" sx={{ fontWeight: 700, color: '#b91c1c' }}>{swaps}</Typography>
+              </Box>
+            </Box>
+
             <div className="bars-area">
               {snap.values.map((val, idx) => (
                 <div key={idx} className={`bar ${snap.states[idx]}`} style={{ height: `${(val / maxVal) * 100}%` }}>
@@ -169,45 +186,45 @@ export default function SortingConcept() {
               <span className="ds-legend-item"><span className="ds-swatch" style={{ background: '#fbbf24' }} /> Comparing</span>
               <span className="ds-legend-item"><span className="ds-swatch" style={{ background: '#f87171' }} /> Swapping</span>
               <span className="ds-legend-item"><span className="ds-swatch" style={{ background: '#34d399' }} /> In final position</span>
-              <span className="ds-legend-item"><span className="ds-swatch" style={{ background: '#93c5fd' }} /> Not sorted yet</span>
+              <span className="ds-legend-item"><span className="ds-swatch" style={{ background: '#93c5fd' }} /> Not yet sorted</span>
             </div>
           </div>
 
-          <CalloutBox title="Try this" type="success" icon="🧪">
+          <CalloutBox title="Suggested experiment" type="success">
             <Typography variant="body2">
-              Press <strong>Shuffle</strong> a few times and predict which bar will turn green first. (Hint: it&apos;s always the tallest one still in play.)
+              Press <strong>Shuffle</strong> a few times and predict which bar will turn green first. It is always the tallest bar still in play. Note how an already-sorted list still requires a full pass of comparisons to confirm it is sorted.
             </Typography>
           </CalloutBox>
         </Section>
 
         {/* 5 ----------------------------------------------------------------- */}
-        <Section title="Is Bubble Sort Fast?">
+        <Section title="How Efficient Is Bubble Sort?">
           <Typography variant="body2" paragraph>
-            Honestly? No. Bubble sort is fantastic for <em>learning</em> because you can see every move — but it compares almost every pair of items, so it gets slow quickly. Double the list and it does roughly <strong>four times</strong> the work.
+            Bubble sort is excellent for learning because every move is visible, but it is not efficient. It compares nearly every pair of items, so the work grows quickly: doubling the list size roughly quadruples the number of comparisons.
           </Typography>
 
-          <CalloutBox title="What real programs use" type="info" icon="🚀">
+          <CalloutBox title="What production code uses" type="info">
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, mt: 1 }}>
-              <Typography variant="body2"><strong>Bubble / insertion / selection sort:</strong> easy to understand, fine for tiny lists. (&quot;Slow&quot; — O(n²).)</Typography>
-              <Typography variant="body2"><strong>Merge / quick / heap sort:</strong> what real software uses for big lists. (&quot;Fast&quot; — O(n log n).)</Typography>
-              <Typography variant="body2"><strong>In actual Python code,</strong> you almost never write a sort yourself — you call the built-in <code>sorted()</code>, which uses a highly optimized fast sort.</Typography>
+              <Typography variant="body2"><strong>Bubble, insertion, and selection sort</strong> are easy to understand and acceptable for very small lists. Their growth rate is O(n&sup2;).</Typography>
+              <Typography variant="body2"><strong>Merge, quick, and heap sort</strong> are what real software uses for large data. Their growth rate is O(n log n).</Typography>
+              <Typography variant="body2"><strong>In practice,</strong> you rarely write a sort by hand in Python — you call the built-in <code>sorted()</code>, which uses a highly optimized O(n log n) algorithm.</Typography>
             </Box>
           </CalloutBox>
 
-          <CalloutBox title="The clever trick behind fast sorts" type="key-concepts" icon="✂️">
+          <CalloutBox title="The strategy behind fast sorts" type="key-concepts">
             <Typography variant="body2">
-              Fast sorts like merge sort use <strong>divide &amp; conquer</strong>: split the list in half, sort each half, then merge the two sorted halves back together. You can read more about that strategy in <em>Algorithm Analysis &amp; Design</em>.
+              Efficient sorts such as merge sort use <strong>divide and conquer</strong>: split the list in half, sort each half, then merge the two sorted halves. This strategy is discussed further in <em>Algorithm Analysis &amp; Design</em>.
             </Typography>
           </CalloutBox>
         </Section>
 
         {/* 6 ----------------------------------------------------------------- */}
         <Section title="Key Takeaways">
-          <CalloutBox title="Remember these" type="success" icon="✅">
+          <CalloutBox title="Summary" type="success">
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, mt: 1 }}>
-              <Typography variant="body2"><strong>Sorting</strong> puts a list in order; it makes searching and many other tasks easier.</Typography>
-              <Typography variant="body2"><strong>Bubble sort</strong> repeatedly compares neighbors and swaps them, &quot;bubbling&quot; big values to the end.</Typography>
-              <Typography variant="body2"><strong>It&apos;s simple but slow</strong> — great for learning, but real code uses faster sorts like <code>sorted()</code>.</Typography>
+              <Typography variant="body2"><strong>Sorting</strong> arranges a list into order and makes searching and many other tasks easier.</Typography>
+              <Typography variant="body2"><strong>Bubble sort</strong> repeatedly compares neighbours and swaps them, moving large values toward the end.</Typography>
+              <Typography variant="body2"><strong>It is simple but slow</strong> — ideal for learning, while production code relies on faster sorts such as <code>sorted()</code>.</Typography>
             </Box>
           </CalloutBox>
         </Section>

@@ -6,10 +6,9 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Alert from '@mui/material/Alert';
 import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '../../common/Section';
-import ConceptInfoCard from '../../common/ConceptInfoCard';
+import CalloutBox from '../../common/CalloutBox';
 import TableOfContents from '@/components/common/TableOfContents';
 import '../../../styles/dataStructures.css';
 
@@ -17,9 +16,9 @@ type Item = { id: number; value: string };
 
 export default function StackConcept() {
   const [stack, setStack] = useState<Item[]>([
-    { id: 1, value: '🍽️ 3' },
-    { id: 2, value: '🍽️ 7' },
-    { id: 3, value: '🍽️ 5' },
+    { id: 1, value: '3' },
+    { id: 2, value: '7' },
+    { id: 3, value: '5' },
   ]);
   const [nextId, setNextId] = useState(4);
   const [input, setInput] = useState('');
@@ -27,29 +26,29 @@ export default function StackConcept() {
 
   const push = () => {
     const value = input.trim() === '' ? String(Math.floor(Math.random() * 90) + 10) : input.trim();
-    setStack((prev) => [...prev, { id: nextId, value: `🍽️ ${value}` }]);
+    setStack((prev) => [...prev, { id: nextId, value }]);
     setNextId((n) => n + 1);
-    setMessage(`push(${value}) — placed a new plate on top`);
+    setMessage(`push(${value}) — a new item was placed on top.`);
     setInput('');
   };
 
   const pop = () => {
     if (stack.length === 0) {
-      setMessage('pop() — the stack is empty, nothing to remove!');
+      setMessage('pop() — the stack is empty, so there is nothing to remove.');
       return;
     }
     const top = stack[stack.length - 1];
     setStack((prev) => prev.slice(0, -1));
-    setMessage(`pop() → returned ${top.value.replace('🍽️ ', '')} (the top plate)`);
+    setMessage(`pop() returned ${top.value} — the item that was on top.`);
   };
 
   const peek = () => {
     if (stack.length === 0) {
-      setMessage('peek() — the stack is empty!');
+      setMessage('peek() — the stack is empty.');
       return;
     }
     const top = stack[stack.length - 1];
-    setMessage(`peek() → ${top.value.replace('🍽️ ', '')} (looks at the top without removing it)`);
+    setMessage(`peek() returned ${top.value} — the top item, which stays on the stack.`);
   };
 
   // Render top-of-stack first (visually on top)
@@ -58,35 +57,28 @@ export default function StackConcept() {
   return (
     <ConceptWrapper
       title="Stacks"
-      description="A stack is a Last-In, First-Out (LIFO) collection — the last thing you add is the first thing you take off."
+      description="A stack is a Last-In, First-Out (LIFO) collection: the most recently added item is the first one removed."
     >
       <TableOfContents numbered>
-        <Section title="Picture a Stack of Plates">
+        {/* 1 ----------------------------------------------------------------- */}
+        <Section title="The Big Idea">
           <Typography variant="body2" paragraph>
-            The easiest way to understand a stack is to picture a <strong>stack of plates</strong> in a cupboard. You always add a clean plate to the <em>top</em>, and when you need one, you take it from the <em>top</em> too. You never pull a plate out from the middle or the bottom.
+            The clearest way to picture a stack is a pile of plates in a cupboard. A clean plate is always added to the <em>top</em>, and when one is needed it is taken from the <em>top</em> as well. Plates are never removed from the middle or the bottom.
           </Typography>
 
-          <ConceptInfoCard>
-            <Typography variant="subtitle1" gutterBottom fontWeight="medium">
-              Last In, First Out (LIFO)
-            </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-              <Typography variant="body2">
-                <strong>🍽️ Plates in a cupboard:</strong> the last plate stacked is the first one grabbed
-              </Typography>
-              <Typography variant="body2">
-                <strong>↩️ The Undo button:</strong> &quot;undo&quot; reverses your most recent action first
-              </Typography>
-              <Typography variant="body2">
-                <strong>🌐 Browser back button:</strong> returns you to the page you visited most recently
-              </Typography>
+          <CalloutBox title="Last In, First Out (LIFO)" type="info">
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, mt: 1 }}>
+              <Typography variant="body2"><strong>A pile of plates:</strong> the last plate added is the first one taken.</Typography>
+              <Typography variant="body2"><strong>The Undo command:</strong> &quot;undo&quot; reverses your most recent action first.</Typography>
+              <Typography variant="body2"><strong>The browser back button:</strong> returns you to the page you visited most recently.</Typography>
             </Box>
-          </ConceptInfoCard>
+          </CalloutBox>
         </Section>
 
-        <Section title="Try It Yourself">
+        {/* 2 ----------------------------------------------------------------- */}
+        <Section title="Interactive Stack">
           <Typography variant="body2" paragraph>
-            Use <strong>Push</strong> to add a plate to the top and <strong>Pop</strong> to take the top plate off. Watch how everything happens at the top — the bottom plates never move.
+            Use <strong>Push</strong> to add an item to the top and <strong>Pop</strong> to remove the top item. Note that every operation happens at the top — the lower items never move.
           </Typography>
 
           <div className="ds-viz">
@@ -106,7 +98,7 @@ export default function StackConcept() {
 
             <div className="stack-area">
               {displayItems.length === 0 && (
-                <div className="stack-empty">The stack is empty — push something on!</div>
+                <div className="stack-empty">The stack is empty — push an item to begin.</div>
               )}
               <div className="stack-column">
                 <AnimatePresence initial={false}>
@@ -121,61 +113,58 @@ export default function StackConcept() {
                       transition={{ duration: 0.25 }}
                     >
                       {item.value}
-                      {idx === 0 && <span className="stack-top-tag">← TOP</span>}
+                      {idx === 0 && <span className="stack-top-tag">&larr; top</span>}
                     </motion.div>
                   ))}
                 </AnimatePresence>
               </div>
               <div className="stack-base" />
             </div>
-            <p className="ds-caption">The dark bar is the bottom of the stack. New plates land on top.</p>
+            <p className="ds-caption">The dark bar is the bottom of the stack. New items are added on top.</p>
 
             {message && <p className="ds-output">{message}</p>}
           </div>
         </Section>
 
+        {/* 3 ----------------------------------------------------------------- */}
         <Section title="The Core Operations">
-          <ConceptInfoCard>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <Typography variant="body2">
-                <strong>push(item)</strong> — add an item to the top of the stack
-              </Typography>
-              <Typography variant="body2">
-                <strong>pop()</strong> — remove and return the top item
-              </Typography>
-              <Typography variant="body2">
-                <strong>peek()</strong> — look at the top item without removing it
-              </Typography>
-              <Typography variant="body2">
-                <strong>is_empty()</strong> — check whether there is anything left
-              </Typography>
+          <CalloutBox title="Every stack supports four operations" type="key-concepts">
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, mt: 1 }}>
+              <Typography variant="body2"><strong>push(item)</strong> — add an item to the top of the stack.</Typography>
+              <Typography variant="body2"><strong>pop()</strong> — remove and return the top item.</Typography>
+              <Typography variant="body2"><strong>peek()</strong> — read the top item without removing it.</Typography>
+              <Typography variant="body2"><strong>is_empty()</strong> — check whether any items remain.</Typography>
             </Box>
-          </ConceptInfoCard>
+          </CalloutBox>
 
-          <Alert severity="info" sx={{ mt: 2 }}>
+          <CalloutBox title="Performance" type="info">
             <Typography variant="body2">
-              Because every operation happens at one end, push and pop are extremely fast — they take the same tiny amount of time no matter how tall the stack gets. (That&apos;s <strong>O(1)</strong>, which you can read about in Algorithm Analysis &amp; Design.)
+              Because every operation happens at one end, push and pop are very fast — they take the same constant amount of time no matter how tall the stack becomes. This is <strong>O(1)</strong>, described further in <em>Algorithm Analysis &amp; Design</em>.
             </Typography>
-          </Alert>
+          </CalloutBox>
         </Section>
 
-        <Section title="Where Stacks Show Up">
-          <ConceptInfoCard>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-              <Typography variant="body2">
-                <strong>Function calls:</strong> the computer uses a &quot;call stack&quot; to remember where to return after each function finishes
-              </Typography>
-              <Typography variant="body2">
-                <strong>Undo / redo:</strong> editors stack up your actions so the most recent can be reversed first
-              </Typography>
-              <Typography variant="body2">
-                <strong>Matching brackets:</strong> compilers use a stack to check that every <code>(</code> has a matching <code>)</code>
-              </Typography>
-              <Typography variant="body2">
-                <strong>Back navigation:</strong> your browser history behaves like a stack of pages
-              </Typography>
+        {/* 4 ----------------------------------------------------------------- */}
+        <Section title="Where Stacks Are Used">
+          <CalloutBox title="Common applications" type="key-concepts">
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, mt: 1 }}>
+              <Typography variant="body2"><strong>Function calls:</strong> the computer uses a call stack to remember where to return after each function completes.</Typography>
+              <Typography variant="body2"><strong>Undo and redo:</strong> editors stack recorded actions so the most recent can be reversed first.</Typography>
+              <Typography variant="body2"><strong>Matching brackets:</strong> compilers use a stack to verify that every opening bracket has a matching closing bracket.</Typography>
+              <Typography variant="body2"><strong>Back navigation:</strong> browser history behaves like a stack of visited pages.</Typography>
             </Box>
-          </ConceptInfoCard>
+          </CalloutBox>
+        </Section>
+
+        {/* 5 ----------------------------------------------------------------- */}
+        <Section title="Key Takeaways">
+          <CalloutBox title="Summary" type="success">
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, mt: 1 }}>
+              <Typography variant="body2"><strong>A stack is Last-In, First-Out:</strong> the newest item is removed first.</Typography>
+              <Typography variant="body2"><strong>All access happens at the top</strong> via push, pop, and peek.</Typography>
+              <Typography variant="body2"><strong>Operations are O(1)</strong> and underpin function calls, undo systems, and more.</Typography>
+            </Box>
+          </CalloutBox>
         </Section>
       </TableOfContents>
     </ConceptWrapper>
