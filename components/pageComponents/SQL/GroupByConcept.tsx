@@ -8,6 +8,7 @@ import TableOfContents from '@/components/common/TableOfContents';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from './SqlTable';
+import GroupByPlayground from './GroupByPlayground';
 
 export default function GroupByConcept() {
   return (
@@ -62,6 +63,12 @@ export default function GroupByConcept() {
               <Typography variant="body2">Non-aggregated SELECT columns must be in the <code>GROUP BY</code>.</Typography>
             </Box>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Group & Aggregate">
+          <Typography variant="body2" paragraph>
+            Choose what to group by and which aggregate to apply. Watch one summary row appear per group.
+          </Typography>
+          <GroupByPlayground />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

@@ -8,6 +8,7 @@ import TableOfContents from '@/components/common/TableOfContents';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from './SqlTable';
+import JoinPlayground from './JoinPlayground';
 
 export default function InnerJoinConcept() {
   return (
@@ -51,6 +52,12 @@ export default function InnerJoinConcept() {
               <Typography variant="body2">To keep unmatched rows too, use an outer join (next).</Typography>
             </Box>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Join Explorer">
+          <Typography variant="body2" paragraph>
+            Switch between join types and watch which rows survive. Start with INNER, then compare it to the others.
+          </Typography>
+          <JoinPlayground />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

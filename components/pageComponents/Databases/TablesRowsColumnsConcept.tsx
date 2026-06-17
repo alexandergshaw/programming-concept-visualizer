@@ -7,6 +7,7 @@ import TableOfContents from '@/components/common/TableOfContents';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from '../SQL/SqlTable';
+import SqlPlayground from '../SQL/SqlPlayground';
 
 export default function TablesRowsColumnsConcept() {
   return (
@@ -49,6 +50,12 @@ export default function TablesRowsColumnsConcept() {
           <Typography variant="body2" sx={{ mt: 1 }}>
             That second rule is why every table needs a reliable way to point at a single row — a <strong>primary key</strong>, up next.
           </Typography>
+        </Section>
+        <Section title="Try It: Query a Table">
+          <Typography variant="body2" paragraph>
+            Here is a sample <code>employees</code> table. Choose columns, filter, and sort it — the query and result update live. This is exactly what reading from a table feels like.
+          </Typography>
+          <SqlPlayground features={{ columns: true, where: true, orderBy: true, limit: false }} />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

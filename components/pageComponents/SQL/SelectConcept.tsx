@@ -8,6 +8,7 @@ import TableOfContents from '@/components/common/TableOfContents';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from './SqlTable';
+import SqlPlayground from './SqlPlayground';
 
 export default function SelectConcept() {
   return (
@@ -69,6 +70,12 @@ export default function SelectConcept() {
           <Typography variant="body2">
             <code>AS new_salary</code> gives the computed column a readable name (an <em>alias</em>).
           </Typography>
+        </Section>
+        <Section title="Try It: Build a SELECT">
+          <Typography variant="body2" paragraph>
+            Toggle which columns to return and add a filter — the query and its result update live.
+          </Typography>
+          <SqlPlayground features={{ columns: true, where: true, orderBy: false, limit: false }} />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

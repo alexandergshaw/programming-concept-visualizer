@@ -8,6 +8,7 @@ import TableOfContents from '@/components/common/TableOfContents';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from './SqlTable';
+import SqlPlayground from './SqlPlayground';
 
 export default function DistinctConcept() {
   return (
@@ -51,6 +52,12 @@ export default function DistinctConcept() {
               <Typography variant="body2">To also count the unique values, see <code>COUNT(DISTINCT ...)</code> in Aggregate Functions.</Typography>
             </Box>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Remove Duplicates">
+          <Typography variant="body2" paragraph>
+            Select just <code>department</code>, then toggle DISTINCT on and off to watch the duplicate rows collapse.
+          </Typography>
+          <SqlPlayground features={{ columns: true, distinct: true, where: false, orderBy: false, limit: false }} />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

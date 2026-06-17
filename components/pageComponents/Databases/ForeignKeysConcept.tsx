@@ -7,6 +7,7 @@ import TableOfContents from '@/components/common/TableOfContents';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from '../SQL/SqlTable';
+import JoinPlayground from '../SQL/JoinPlayground';
 
 export default function ForeignKeysConcept() {
   return (
@@ -51,6 +52,12 @@ export default function ForeignKeysConcept() {
               Without keys you would copy &quot;Ana&quot; onto every one of her orders. With a foreign key, her name lives once in <code>customers</code>; update it there and every order reflects the change. Combining the linked tables is the job of a <strong>JOIN</strong> (see the SQL section).
             </Typography>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Combine Linked Tables">
+          <Typography variant="body2" paragraph>
+            Foreign keys are what let you recombine split tables. Toggle the join type to see how following the <code>customer_id</code> link pulls customers and their orders back together.
+          </Typography>
+          <JoinPlayground />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

@@ -8,6 +8,7 @@ import TableOfContents from '@/components/common/TableOfContents';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from './SqlTable';
+import SqlPlayground from './SqlPlayground';
 
 export default function OrderByConcept() {
   return (
@@ -58,6 +59,12 @@ export default function OrderByConcept() {
               <Typography variant="body2">Multiple columns sort by priority, left to right.</Typography>
             </Box>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Sort Rows">
+          <Typography variant="body2" paragraph>
+            Choose a column to sort by and flip between ASC and DESC. Watch the rows reorder.
+          </Typography>
+          <SqlPlayground features={{ columns: false, where: false, orderBy: true, limit: false }} />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

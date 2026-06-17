@@ -8,6 +8,7 @@ import TableOfContents from '@/components/common/TableOfContents';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from './SqlTable';
+import JoinPlayground from './JoinPlayground';
 
 export default function OuterJoinsConcept() {
   return (
@@ -47,6 +48,12 @@ export default function OuterJoinsConcept() {
               <Typography variant="body2"><strong>FULL OUTER JOIN:</strong> all rows from both, NULLs filling the gaps.</Typography>
             </Box>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Join Explorer">
+          <Typography variant="body2" paragraph>
+            Toggle <strong>LEFT</strong> to keep customers with no orders, and <strong>RIGHT</strong> to keep the order that points to a missing customer. The NULLs show where a side had no match.
+          </Typography>
+          <JoinPlayground />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

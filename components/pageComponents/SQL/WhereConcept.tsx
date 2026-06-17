@@ -8,6 +8,7 @@ import TableOfContents from '@/components/common/TableOfContents';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from './SqlTable';
+import SqlPlayground from './SqlPlayground';
 
 export default function WhereConcept() {
   return (
@@ -57,6 +58,12 @@ export default function WhereConcept() {
               <Typography variant="body2">More operators (<code>IN</code>, <code>BETWEEN</code>, <code>LIKE</code>) come next.</Typography>
             </Box>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Filter Rows">
+          <Typography variant="body2" paragraph>
+            Pick a column, an operator, and a value. Try <code>department = Sales</code>, <code>salary &gt; 60000</code>, or <code>name LIKE A%</code>.
+          </Typography>
+          <SqlPlayground features={{ columns: false, where: true, orderBy: false, limit: false }} />
         </Section>
       </TableOfContents>
     </ConceptWrapper>

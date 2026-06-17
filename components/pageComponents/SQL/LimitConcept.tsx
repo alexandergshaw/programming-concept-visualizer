@@ -8,6 +8,7 @@ import TableOfContents from '@/components/common/TableOfContents';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import SqlTable from './SqlTable';
+import SqlPlayground from './SqlPlayground';
 
 export default function LimitConcept() {
   return (
@@ -57,6 +58,12 @@ export default function LimitConcept() {
               PostgreSQL, MySQL, and SQLite use <code>LIMIT</code>. SQL Server uses <code>TOP</code> or <code>OFFSET ... FETCH</code>. The idea is identical; the keyword differs.
             </Typography>
           </CalloutBox>
+        </Section>
+        <Section title="Try It: Top N">
+          <Typography variant="body2" paragraph>
+            Sort by salary (DESC) and set a limit to get the &quot;top N&quot; rows. Change the limit and watch the result shrink.
+          </Typography>
+          <SqlPlayground features={{ columns: false, where: false, orderBy: true, limit: true }} />
         </Section>
       </TableOfContents>
     </ConceptWrapper>
