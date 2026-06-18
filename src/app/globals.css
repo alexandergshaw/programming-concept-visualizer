@@ -115,6 +115,13 @@
   background: #2c8c4a;
 }
 
+/* Landing-page topic cards: monochrome glowing-green icons in the terminal theme
+   (the brand colors only apply in the academic theme). */
+[data-theme="terminal"] .topic-card svg {
+  color: var(--accent);
+  filter: drop-shadow(0 0 4px currentColor);
+}
+
 * {
   box-sizing: border-box;
 }

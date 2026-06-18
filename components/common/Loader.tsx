@@ -1,14 +1,12 @@
 import React from "react";
 
-const ACCENT_COLOR = "#00319b"; // Match landing page blue
-
 const loaderStyles = {
   container: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     minHeight: "100vh",
-    background: "#fff",
+    background: "var(--paper)",
   },
   loader: {
     display: "flex",
@@ -17,7 +15,7 @@ const loaderStyles = {
   dot: {
     width: "1em",
     height: "1em",
-    background: ACCENT_COLOR,
+    background: "var(--accent)",
     borderRadius: "50%",
     animation: "bounce 0.7s infinite alternate",
   },

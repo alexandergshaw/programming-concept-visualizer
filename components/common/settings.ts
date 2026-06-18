@@ -16,8 +16,11 @@ const SETTINGS_EVENT = 'pcv:settingschange';
 export type ThemePreference = 'academic' | 'terminal';
 
 const THEME_KEY = 'pcv:theme';
+// Mirrored to a cookie so the server can render the right theme (no flash).
+// Cookie names can't contain ':', so use an underscore here.
+export const THEME_COOKIE = 'pcv_theme';
 
-/** The selected color theme. "academic" is the current/default look. */
+/** The selected color theme. "academic" is the default look. */
 export function getThemePreference(): ThemePreference {
   if (typeof window === 'undefined') return 'academic';
   return window.localStorage.getItem(THEME_KEY) === 'terminal' ? 'terminal' : 'academic';
@@ -26,17 +29,20 @@ export function getThemePreference(): ThemePreference {
 export function setThemePreference(value: ThemePreference): void {
   if (typeof window === 'undefined') return;
   window.localStorage.setItem(THEME_KEY, value);
+  // Keep a cookie copy so the server-rendered HTML matches on the next load.
+  document.cookie = `${THEME_COOKIE}=${value}; path=/; max-age=31536000; SameSite=Lax`;
   window.dispatchEvent(new Event(SETTINGS_EVENT));
 }
 
 /**
  * Subscribe to the theme preference. Returns the current value and a setter; a
- * change made anywhere updates every subscriber.
+ * change made anywhere updates every subscriber. Pass the server-resolved theme
+ * as `initial` so the first client render matches the SSR markup.
  */
-export function useThemePreference(): [ThemePreference, (value: ThemePreference) => void] {
-  // Start with the default so server and first client render match, then correct
-  // from localStorage after mount.
-  const [value, setValue] = useState<ThemePreference>('academic');
+export function useThemePreference(
+  initial: ThemePreference = 'academic',
+): [ThemePreference, (value: ThemePreference) => void] {
+  const [value, setValue] = useState<ThemePreference>(initial);
 
   useEffect(() => {
     const sync = () => setValue(getThemePreference());

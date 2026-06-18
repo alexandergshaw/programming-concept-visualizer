@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Lora } from "next/font/google";
+import { cookies } from "next/headers";
 import "./globals.css";
 import { Analytics } from '@vercel/analytics/next';
 import Providers from "@/components/common/Providers";
+import { THEME_COOKIE, type ThemePreference } from "@/components/common/settings";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,22 +34,23 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
-// Set the saved theme on <html> before first paint so there's no flash of the
-// wrong theme on load. Mirrors getThemePreference() in components/common/settings.ts.
-const THEME_INIT = `(function(){try{var t=localStorage.getItem('pcv:theme');document.documentElement.dataset.theme=(t==='terminal')?'terminal':'academic';}catch(e){document.documentElement.dataset.theme='academic';}})();`;
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Resolve the theme server-side from the cookie so the SSR markup already
+  // carries the right theme — no flash of the wrong theme on load.
+  const cookieStore = await cookies();
+  const initialTheme: ThemePreference =
+    cookieStore.get(THEME_COOKIE)?.value === "terminal" ? "terminal" : "academic";
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-theme={initialTheme} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${lora.variable} antialiased`}
       >
-        <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
-        <Providers>{children}</Providers>
+        <Providers initialTheme={initialTheme}>{children}</Providers>
         <Analytics />
       </body>
     </html>

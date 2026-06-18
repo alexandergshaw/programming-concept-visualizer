@@ -1,41 +1,18 @@
 'use client';
 
-import { useState } from 'react';
-import {
-  AppBar,
-  Toolbar as MuiToolbar,
-  IconButton,
-  Menu,
-  MenuItem,
-  ListItemText,
-  ListItemIcon,
-  ListSubheader,
-  Tooltip,
-  Box,
-} from '@mui/material';
-import SettingsIcon from '@mui/icons-material/Settings';
-import CheckIcon from '@mui/icons-material/Check';
-import { useThemePreference, type ThemePreference } from './settings';
+import { AppBar, Toolbar as MuiToolbar, IconButton, Tooltip, Box } from '@mui/material';
+import HomeIcon from '@mui/icons-material/Home';
+import Link from 'next/link';
+import SettingsMenu from './SettingsMenu';
 
 // Height of the bar; the spacer below keeps page content clear of the fixed bar.
 const TOOLBAR_HEIGHT = 48;
 
-// Available color themes shown in the settings menu. "Terminal" is listed now;
-// its styling will be implemented later.
-const THEME_OPTIONS: { value: ThemePreference; label: string; note?: string }[] = [
-  { value: 'academic', label: 'Academic' },
-  { value: 'terminal', label: 'Terminal', note: 'Coming soon' },
-];
-
 /**
- * Top toolbar shown on topic pages (see PageWrapper). A settings gear sits at
- * the far right and opens a small preferences menu (theme selection).
+ * Top toolbar shown on topic pages (see PageWrapper). Home + settings sit at the
+ * far right; the settings gear opens the theme menu.
  */
 export default function Toolbar() {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const menuOpen = Boolean(anchorEl);
-  const [themePreference, setThemePreference] = useThemePreference();
-
   return (
     <>
       <AppBar
@@ -55,51 +32,22 @@ export default function Toolbar() {
       >
         <MuiToolbar variant="dense" sx={{ minHeight: TOOLBAR_HEIGHT }}>
           <Box sx={{ flexGrow: 1 }} />
-          <Tooltip title="Settings">
+          <Tooltip title="Home">
             <IconButton
-              edge="end"
-              aria-label="Settings"
-              aria-haspopup="true"
-              aria-expanded={menuOpen}
-              onClick={(e) => setAnchorEl(e.currentTarget)}
+              component={Link}
+              href="/"
+              aria-label="Home"
               sx={{ color: 'var(--chrome-fg)' }}
             >
-              <SettingsIcon />
+              <HomeIcon />
             </IconButton>
           </Tooltip>
+          <SettingsMenu edge="end" color="var(--chrome-fg)" />
         </MuiToolbar>
       </AppBar>
 
       {/* Spacer pushes page content below the fixed bar. */}
       <MuiToolbar variant="dense" sx={{ minHeight: TOOLBAR_HEIGHT }} />
-
-      <Menu
-        anchorEl={anchorEl}
-        open={menuOpen}
-        onClose={() => setAnchorEl(null)}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        slotProps={{ paper: { sx: { minWidth: 200 } } }}
-      >
-        <ListSubheader sx={{ bgcolor: 'transparent', lineHeight: '36px' }}>
-          Theme
-        </ListSubheader>
-        {THEME_OPTIONS.map((opt) => (
-          <MenuItem
-            key={opt.value}
-            selected={themePreference === opt.value}
-            onClick={() => {
-              setThemePreference(opt.value);
-              setAnchorEl(null);
-            }}
-          >
-            <ListItemIcon>
-              {themePreference === opt.value && <CheckIcon fontSize="small" />}
-            </ListItemIcon>
-            <ListItemText primary={opt.label} secondary={opt.note} />
-          </MenuItem>
-        ))}
-      </Menu>
     </>
   );
 }

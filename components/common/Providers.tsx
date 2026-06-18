@@ -2,7 +2,7 @@
 
 import { ReactNode, useEffect } from 'react';
 import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
-import { useThemePreference } from './settings';
+import { useThemePreference, type ThemePreference } from './settings';
 
 // Warm, welcoming "old textbook" palette: faint cream paper, warm ink, sienna.
 const academicTheme = createTheme({
@@ -75,8 +75,16 @@ const terminalTheme = createTheme({
   },
 });
 
-export default function Providers({ children }: { children: ReactNode }) {
-  const [themePreference] = useThemePreference();
+export default function Providers({
+  children,
+  initialTheme = 'academic',
+}: {
+  children: ReactNode;
+  initialTheme?: ThemePreference;
+}) {
+  // Seed from the server-resolved theme (cookie) so SSR and the first client
+  // render agree — no flash, no hydration mismatch.
+  const [themePreference] = useThemePreference(initialTheme);
   const theme = themePreference === 'terminal' ? terminalTheme : academicTheme;
 
   // Drive the CSS-variable themes (see globals.css) off the same preference.
