@@ -21,7 +21,7 @@ export default function GenericIntroduction({
 }: GenericIntroductionProps) {
   return (
     <Box sx={{ maxWidth: 700, mx: 'auto', my: 4 }}>
-      <Paper sx={{ p: 3, bgcolor: '#e3f2fd', border: '2px solid #90caf9' }}>
+      <Paper sx={{ p: 3, bgcolor: 'var(--info-bg)', border: '2px solid var(--info)' }}>
         <Typography variant="h4" fontWeight={700} sx={{ mb: 2 }}>
           {title}
         </Typography>
@@ -38,7 +38,7 @@ export default function GenericIntroduction({
                   {step.icon}
                   <Typography fontWeight={600}>{step.label}</Typography>
                   {i < steps.length - 1 && (
-                    <Typography sx={{ fontSize: 32, color: '#90caf9' }}>↓</Typography>
+                    <Typography sx={{ fontSize: 32, color: 'var(--info)' }}>↓</Typography>
                   )}
                 </Box>
               ))}

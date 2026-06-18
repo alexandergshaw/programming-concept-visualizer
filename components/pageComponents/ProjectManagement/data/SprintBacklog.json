@@ -1,0 +1,52 @@
+{
+  "userStories": [
+    {
+      "id": 1,
+      "title": "Sign Up for an Account",
+      "asA": "new visitor",
+      "iWant": "to create an account with my email",
+      "soThat": "I can save my work and come back later",
+      "status": "Done"
+    },
+    {
+      "id": 2,
+      "title": "Log In Securely",
+      "asA": "returning user",
+      "iWant": "to log in with my email and password",
+      "soThat": "only I can access my account",
+      "status": "Done"
+    },
+    {
+      "id": 3,
+      "title": "Reset a Forgotten Password",
+      "asA": "user",
+      "iWant": "to reset my password by email",
+      "soThat": "I can get back in if I forget it",
+      "status": "In Progress"
+    },
+    {
+      "id": 4,
+      "title": "Edit My Profile",
+      "asA": "user",
+      "iWant": "to update my name and photo",
+      "soThat": "my profile stays accurate",
+      "status": "In Progress"
+    },
+    {
+      "id": 5,
+      "title": "Search My Saved Items",
+      "asA": "user",
+      "iWant": "to search through my saved items",
+      "soThat": "I can find things quickly",
+      "status": "To Do"
+    },
+    {
+      "id": 6,
+      "title": "Receive Email Notifications",
+      "asA": "user",
+      "iWant": "to get notified about important updates",
+      "soThat": "I don't miss anything",
+      "status": "To Do"
+    }
+  ]
+}

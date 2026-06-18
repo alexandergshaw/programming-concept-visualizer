@@ -17,6 +17,22 @@
   --accent-strong: #141d33;
   --accent-bg: #e6e9ef;      /* light highlight */
 
+  /* --- Semantic content tokens --------------------------------------------
+     Use these in page/concept components instead of hardcoded hex so content
+     follows the active theme. Every theme below redefines the same names.
+     See docs/THEMING.md for the full reference and usage rules. */
+  --ink-faint: #8b9099;      /* tertiary text: captions, hints */
+  --line-strong: #cbd5e1;    /* heavier divider / card outline */
+  --code-bg: #0f172a;        /* code & "console" panels */
+  --code-fg: #e2e8f0;        /* text on --code-bg */
+
+  /* Status families: a readable foreground + a soft fill behind it. */
+  --info: #2563eb;     --info-bg: #eff6ff;       /* blue: neutral emphasis */
+  --success: #15803d;  --success-bg: #ecfdf3;    /* green: positive / done */
+  --warning: #b45309;  --warning-bg: #fff7ed;    /* amber: caution */
+  --danger: #b91c1c;   --danger-bg: #fef2f2;     /* red: error / stop */
+  --feature: #7c3aed;  --feature-bg: #f5f3ff;    /* violet: decorative accent */
+
   /* Sidebar + top bar ("chrome"). */
   --chrome-bg: linear-gradient(180deg, #1e2b48, #141d33); /* deep warm navy */
   --chrome-fg: #f5f1ea;
@@ -39,6 +55,15 @@
   --accent: #8a5a2b;
   --accent-strong: #6e461f;
   --accent-bg: #f1e7d6;
+  --ink-faint: #928773;
+  --line-strong: #d8cdb8;
+  --code-bg: #2a2118;
+  --code-fg: #f3ece0;
+  --info: #4f7384;     --info-bg: #e9eef1;
+  --success: #5b7a4f;  --success-bg: #e9efe3;
+  --warning: #b5862f;  --warning-bg: #f4ebd7;
+  --danger: #a4472f;   --danger-bg: #f3e1da;
+  --feature: #7a5ea8;  --feature-bg: #ece6f3;
   --chrome-bg: linear-gradient(180deg, #3a2f22, #2a2118);
   --chrome-fg: #f3ece0;
   --chrome-border: #5a4a37;
@@ -56,6 +81,15 @@
   --accent: #5b9dff;
   --accent-strong: #8fbcff;
   --accent-bg: #1a2740;
+  --ink-faint: #6f6f6f;
+  --line-strong: #3a3a3a;
+  --code-bg: #0a0a0a;
+  --code-fg: #e6e6e6;
+  --info: #5b9dff;     --info-bg: #15233b;
+  --success: #4ade80;  --success-bg: #14321f;
+  --warning: #fbbf24;  --warning-bg: #3a2e10;
+  --danger: #f87171;   --danger-bg: #3a1c1c;
+  --feature: #a78bfa;  --feature-bg: #241a3a;
   --chrome-bg: linear-gradient(180deg, #1c1c1f, #141416);
   --chrome-fg: #e6e6e6;
   --chrome-border: #333333;
@@ -77,6 +111,15 @@
   --accent: #39ff14;
   --accent-strong: #7dffa0;
   --accent-bg: #0f2a16;
+  --ink-faint: #159a48;
+  --line-strong: #2c8048;
+  --code-bg: #060a06;
+  --code-fg: #39ff66;
+  --info: #39ffd0;     --info-bg: #06241c;
+  --success: #39ff66;  --success-bg: #06240f;
+  --warning: #d4ff3a;  --warning-bg: #1c2406;
+  --danger: #ff6a4a;   --danger-bg: #240a06;
+  --feature: #7dffa0;  --feature-bg: #06240f;
 
   --chrome-bg: linear-gradient(180deg, #0c130c, #050805);
   --chrome-fg: #39ff66;
