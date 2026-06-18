@@ -1,6 +1,6 @@
 'use client';
 
-import { AppBar, Toolbar as MuiToolbar, IconButton, Tooltip, Box } from '@mui/material';
+import { AppBar, Toolbar as MuiToolbar, IconButton, Box } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import Link from 'next/link';
 import SettingsMenu from './SettingsMenu';
@@ -32,16 +32,14 @@ export default function Toolbar() {
       >
         <MuiToolbar variant="dense" sx={{ minHeight: TOOLBAR_HEIGHT }}>
           <Box sx={{ flexGrow: 1 }} />
-          <Tooltip title="Home">
-            <IconButton
-              component={Link}
-              href="/"
-              aria-label="Home"
-              sx={{ color: 'var(--chrome-fg)' }}
-            >
-              <HomeIcon />
-            </IconButton>
-          </Tooltip>
+          <IconButton
+            component={Link}
+            href="/"
+            aria-label="Home"
+            sx={{ color: 'var(--chrome-fg)' }}
+          >
+            <HomeIcon />
+          </IconButton>
           <SettingsMenu edge="end" color="var(--chrome-fg)" />
         </MuiToolbar>
       </AppBar>

@@ -8,7 +8,6 @@ import {
   ListItemText,
   ListItemIcon,
   ListSubheader,
-  Tooltip,
 } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
 import CheckIcon from '@mui/icons-material/Check';
@@ -38,18 +37,16 @@ export default function SettingsMenu({
 
   return (
     <>
-      <Tooltip title="Settings">
-        <IconButton
-          edge={edge}
-          aria-label="Settings"
-          aria-haspopup="true"
-          aria-expanded={open}
-          onClick={(e) => setAnchorEl(e.currentTarget)}
-          sx={{ color }}
-        >
-          <SettingsIcon />
-        </IconButton>
-      </Tooltip>
+      <IconButton
+        edge={edge}
+        aria-label="Settings"
+        aria-haspopup="true"
+        aria-expanded={open}
+        onClick={(e) => setAnchorEl(e.currentTarget)}
+        sx={{ color }}
+      >
+        <SettingsIcon />
+      </IconButton>
 
       <Menu
         anchorEl={anchorEl}
