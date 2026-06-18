@@ -8,12 +8,16 @@ import EthicalHackingConcept from './EthicalHackingConcept';
 import HackingPhasesConcept from './HackingPhasesConcept';
 import FootprintingConcept from './FootprintingConcept';
 import ScanningConcept from './ScanningConcept';
+import VulnerabilityAssessmentConcept from './VulnerabilityAssessmentConcept';
 import SocialEngineeringConcept from './SocialEngineeringConcept';
 import WebAttacksConcept from './WebAttacksConcept';
+import AuthenticationSecurityConcept from './AuthenticationSecurityConcept';
+import NetworksConcept from './NetworksConcept';
 import SystemArchitectureConcept from './SystemArchitectureConcept';
 import MalwareConcept from './MalwareConcept';
 import WirelessSecurityConcept from './WirelessSecurityConcept';
 import CryptographyConcept from './CryptographyConcept';
+import WebSecurityConcept from './WebSecurityConcept';
 import SecurityIcon from '@mui/icons-material/Security';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import CoronavirusIcon from '@mui/icons-material/Coronavirus';
@@ -36,14 +40,17 @@ const navItems = [
     children: [
       { label: 'Footprinting & Recon', value: 'footprinting' },
       { label: 'Scanning & Enumeration', value: 'scanning' },
+      { label: 'Vulnerability Assessment', value: 'vulnerability-assessment' },
       { label: 'Social Engineering', value: 'social-engineering' },
       { label: 'Web App Attacks', value: 'web-attacks' },
+      { label: 'Authentication Security', value: 'authentication-security' },
     ],
   },
   {
     label: 'Systems & Threats',
     value: 'systems-and-threats',
     children: [
+      { label: 'Networks & Communication', value: 'networks' },
       { label: 'System Architecture', value: 'system-architecture' },
       { label: 'Malware', value: 'malware' },
       { label: 'Wireless Security', value: 'wireless-security' },
@@ -54,6 +61,7 @@ const navItems = [
     value: 'protecting-data',
     children: [
       { label: 'Cryptography', value: 'cryptography' },
+      { label: 'Cryptography on the Web', value: 'web-security' },
     ],
   },
 ];
@@ -98,10 +106,16 @@ export default function CybersecurityPage() {
         return <FootprintingConcept />;
       case 'scanning':
         return <ScanningConcept />;
+      case 'vulnerability-assessment':
+        return <VulnerabilityAssessmentConcept />;
       case 'social-engineering':
         return <SocialEngineeringConcept />;
       case 'web-attacks':
         return <WebAttacksConcept />;
+      case 'authentication-security':
+        return <AuthenticationSecurityConcept />;
+      case 'networks':
+        return <NetworksConcept />;
       case 'system-architecture':
         return <SystemArchitectureConcept />;
       case 'malware':
@@ -110,6 +124,8 @@ export default function CybersecurityPage() {
         return <WirelessSecurityConcept />;
       case 'cryptography':
         return <CryptographyConcept />;
+      case 'web-security':
+        return <WebSecurityConcept />;
       default:
         return null;
     }
