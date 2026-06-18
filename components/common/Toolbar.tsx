@@ -35,10 +35,15 @@ export default function Toolbar() {
         position="fixed"
         elevation={0}
         sx={{
-          // Warm "book spine" tone matching the sidebar; sit above it (z 1000).
+          // Warm "book spine" tone matching the sidebar.
           background: 'linear-gradient(180deg, #3a2f22, #2a2118)',
           color: '#f3ece0',
           borderBottom: '1px solid #5a4a37',
+          // The full-height sidebar owns the left rail and sits on top of this
+          // bar, so on desktop the bar only spans the content area to its right.
+          // Full width on mobile, where the sidebar is an off-canvas drawer.
+          left: { xs: 0, md: '250px' },
+          width: { xs: '100%', md: 'calc(100% - 250px)' },
         }}
       >
         <MuiToolbar variant="dense" sx={{ minHeight: TOOLBAR_HEIGHT, gap: 1 }}>

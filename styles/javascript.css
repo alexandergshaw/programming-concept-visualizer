@@ -1,7 +1,6 @@
 .js-layout {
   display: flex;
-  /* The 48px top toolbar (via a spacer) already occupies the top of the page. */
-  min-height: calc(100vh - 48px);
+  min-height: 100vh;
   font-family: sans-serif;
   background-color: var(--paper);
   overflow: hidden;

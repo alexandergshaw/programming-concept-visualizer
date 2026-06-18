@@ -105,11 +105,11 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [], acti
         className={`js-sidebar${mobileOpen ? ' open' : ''}`}
         style={{
           position: 'fixed', // Fix the sidebar in place
-          top: '48px', // Sit below the always-on top toolbar
+          top: '0', // Full-height left rail, starting at the very top
           left: '0', // Align it to the left of the viewport
           width: '250px', // Set a fixed width for the sidebar
-          height: 'calc(100vh - 48px)', // Fill the viewport below the toolbar
-          zIndex: 1000, // Ensure it stays above other content
+          height: '100vh', // Span the full height of the viewport
+          zIndex: 1200, // Sit on top of the header bar (AppBar z-index 1100)
           background: 'linear-gradient(180deg, #3a2f22, #2a2118)', // Warm "book spine" tone
           color: '#f3ece0',
           overflowY: 'auto', // Allow scrolling if the content overflows
