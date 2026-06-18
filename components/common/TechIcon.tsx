@@ -2,7 +2,7 @@
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPython, faJs, faReact } from '@fortawesome/free-brands-svg-icons';
-import { faDatabase, faGraduationCap, faBug, faSitemap } from '@fortawesome/free-solid-svg-icons';
+import { faDatabase, faGraduationCap, faBug, faSitemap, faShieldHalved } from '@fortawesome/free-solid-svg-icons';
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { useThemePreference } from './settings';
 
@@ -22,6 +22,7 @@ function resolve(title: string): Entry | null {
   if (t.includes('database')) return { icon: faDatabase, color: '#8b8ff5' };
   if (t.includes('basics')) return { icon: faGraduationCap, color: '#34d399' };
   if (t.includes('testing')) return { icon: faBug, color: '#fbbf24' };
+  if (t.includes('cyber') || t.includes('security')) return { icon: faShieldHalved, color: '#34d399' };
   if (t.includes('website') || t.includes('management')) return { icon: faSitemap, color: '#a78bfa' };
   return null;
 }
