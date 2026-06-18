@@ -147,11 +147,19 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({
                     border: '1px solid var(--line)',
                     borderRadius: '4px'
                 }}>
-                    {viewLines.split('\n').map((line, index) => (
-                        <div key={index} style={{ marginBottom: '8px' }}>
-                            {line}
-                        </div>
-                    ))}
+                    {viewLines.split('\n').map((line, index) => {
+                        // Show the line's comment only when the code is unchanged
+                        // from the prop, so comments stay correct after edits.
+                        const comment = lines[index] && lines[index].code === line ? lines[index].comment : undefined;
+                        return (
+                            <div key={index} style={{ marginBottom: '8px' }}>
+                                <span>{line}</span>
+                                {comment && (
+                                    <span style={{ color: 'var(--ink-soft)' }}>{`  # ${comment}`}</span>
+                                )}
+                            </div>
+                        );
+                    })}
                 </pre>
             )}
             {enableRun && (

@@ -11,7 +11,7 @@ import {
 import { styled } from '@mui/material/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faJs, faPython, faGithub, faReact } from '@fortawesome/free-brands-svg-icons';
-import { faGraduationCap, faBug, faCode, faGlobe, faDatabase, faShieldHalved, faSitemap } from '@fortawesome/free-solid-svg-icons';
+import { faGraduationCap, faBug, faCode, faGlobe, faDatabase, faShieldHalved, faSitemap, faClipboardList } from '@fortawesome/free-solid-svg-icons';
 import CodeIcon from '@mui/icons-material/Code';
 import React, { useState, useEffect } from "react";
 import Loader from '@/components/common/Loader';
@@ -59,6 +59,7 @@ const languages = [
   { name: 'JavaScript', type: 'Programming Language' },
   { name: 'SQL', type: 'Query Language' },
   { name: 'Website Management', type: 'Topic' },
+  { name: 'Project Management', type: 'Topic' },
   // { name: 'GitHub', type: 'Tutorial' },
   // { name: 'Deploying a Website', type: 'Tutorial' },
 
@@ -127,6 +128,12 @@ const getLanguageIcon = (language: string) => {
           <FontAwesomeIcon icon={faSitemap} />
         </Box>
       );
+    case 'project management':
+      return (
+        <Box sx={{ fontSize: 32, mb: 1, color: '#0d9488' }}>
+          <FontAwesomeIcon icon={faClipboardList} />
+        </Box>
+      );
     case 'sql':
       return (
         <Box sx={{ fontSize: 32, mb: 1, color: '#00758f' }}>
@@ -170,6 +177,9 @@ export default function LandingPage() {
         break;
       case 'website management':
         router.push('/skills/website-management');
+        break;
+      case 'project management':
+        router.push('/skills/project-management');
         break;
       default:
         router.push(`/languages/${language.toLowerCase()}`);

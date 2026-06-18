@@ -71,7 +71,7 @@ export default function ScrumBoard(props: ScrumBoardProps) {
                       sx={{
                         p: 2,
                         borderRadius: 2,
-                        backgroundColor: '#fff',
+                        backgroundColor: 'var(--paper-raised)',
                         display: 'flex',
                         flexDirection: 'column',
                         gap: 1,
