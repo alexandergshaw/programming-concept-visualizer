@@ -1,6 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { THEME_KEY, THEME_COOKIE, DEFAULT_THEME, normalizeTheme } from './themeConfig';
+import type { ThemePreference } from './themeConfig';
+
+export type { ThemePreference } from './themeConfig';
 
 /**
  * Lightweight, client-only user preferences persisted to localStorage.
@@ -13,17 +17,10 @@ const SETTINGS_EVENT = 'pcv:settingschange';
 
 // --- Theme preference -------------------------------------------------------
 
-export type ThemePreference = 'academic' | 'terminal';
-
-const THEME_KEY = 'pcv:theme';
-// Mirrored to a cookie so the server can render the right theme (no flash).
-// Cookie names can't contain ':', so use an underscore here.
-export const THEME_COOKIE = 'pcv_theme';
-
-/** The selected color theme. "academic" is the default look. */
+/** The selected color theme. "corporate" is the default look. */
 export function getThemePreference(): ThemePreference {
-  if (typeof window === 'undefined') return 'academic';
-  return window.localStorage.getItem(THEME_KEY) === 'terminal' ? 'terminal' : 'academic';
+  if (typeof window === 'undefined') return DEFAULT_THEME;
+  return normalizeTheme(window.localStorage.getItem(THEME_KEY));
 }
 
 export function setThemePreference(value: ThemePreference): void {
@@ -40,7 +37,7 @@ export function setThemePreference(value: ThemePreference): void {
  * as `initial` so the first client render matches the SSR markup.
  */
 export function useThemePreference(
-  initial: ThemePreference = 'academic',
+  initial: ThemePreference = DEFAULT_THEME,
 ): [ThemePreference, (value: ThemePreference) => void] {
   const [value, setValue] = useState<ThemePreference>(initial);
 

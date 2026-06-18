@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import "./globals.css";
 import { Analytics } from '@vercel/analytics/next';
 import Providers from "@/components/common/Providers";
-import { THEME_COOKIE, type ThemePreference } from "@/components/common/settings";
+import { THEME_COOKIE, normalizeTheme } from "@/components/common/themeConfig";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,8 +42,7 @@ export default async function RootLayout({
   // Resolve the theme server-side from the cookie so the SSR markup already
   // carries the right theme — no flash of the wrong theme on load.
   const cookieStore = await cookies();
-  const initialTheme: ThemePreference =
-    cookieStore.get(THEME_COOKIE)?.value === "terminal" ? "terminal" : "academic";
+  const initialTheme = normalizeTheme(cookieStore.get(THEME_COOKIE)?.value);
 
   return (
     <html lang="en" data-theme={initialTheme} suppressHydrationWarning>

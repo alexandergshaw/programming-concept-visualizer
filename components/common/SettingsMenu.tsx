@@ -15,6 +15,8 @@ import CheckIcon from '@mui/icons-material/Check';
 import { useThemePreference, type ThemePreference } from './settings';
 
 const THEME_OPTIONS: { value: ThemePreference; label: string }[] = [
+  { value: 'corporate', label: 'Corporate' },
+  { value: 'dark', label: 'Dark' },
   { value: 'academic', label: 'Academic' },
   { value: 'terminal', label: 'Terminal' },
 ];

@@ -1,10 +1,62 @@
 'use client';
 
 import { ReactNode, useEffect } from 'react';
-import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
+import { ThemeProvider, createTheme, CssBaseline, type Theme } from '@mui/material';
 import { useThemePreference, type ThemePreference } from './settings';
 
-// Warm, welcoming "old textbook" palette: faint cream paper, warm ink, sienna.
+// Shared across every theme: flat buttons, no Paper gradient.
+const sharedComponents = {
+  MuiButton: {
+    defaultProps: { disableElevation: true },
+    styleOverrides: { root: { textTransform: 'none' as const, fontWeight: 600 } },
+  },
+  MuiPaper: {
+    styleOverrides: { root: { backgroundImage: 'none' } },
+  },
+};
+
+const SANS = 'var(--font-geist-sans), Inter, system-ui, sans-serif';
+
+// Corporate (default): navy blues on crisp white, clean sans throughout.
+const corporateTheme = createTheme({
+  palette: {
+    mode: 'light',
+    primary: { main: '#1e40af', dark: '#1e3a8a', light: '#3b5bbf', contrastText: '#ffffff' },
+    secondary: { main: '#0e7490', contrastText: '#ffffff' },
+    background: { default: '#eef2f8', paper: '#ffffff' },
+    text: { primary: '#14233b', secondary: '#4a5b73' },
+    divider: '#d4def0',
+    info: { main: '#2563eb' },
+    success: { main: '#15803d' },
+    warning: { main: '#b45309' },
+    error: { main: '#b91c1c' },
+  },
+  shape: { borderRadius: 8 },
+  typography: { fontFamily: SANS },
+  components: sharedComponents,
+});
+
+// Dark: neutral charcoal with a cool blue accent.
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: { main: '#5b9dff', dark: '#3b7fe0', light: '#8fbcff', contrastText: '#0a0f1a' },
+    secondary: { main: '#22d3ee', contrastText: '#0a0f1a' },
+    background: { default: '#121212', paper: '#1e1e1e' },
+    text: { primary: '#e6e6e6', secondary: '#a0a0a0' },
+    divider: '#2e2e2e',
+    info: { main: '#5b9dff' },
+    success: { main: '#4ade80' },
+    warning: { main: '#fbbf24' },
+    error: { main: '#f87171' },
+  },
+  shape: { borderRadius: 8 },
+  typography: { fontFamily: SANS },
+  components: sharedComponents,
+});
+
+// Academic: warm "old textbook" — cream paper, warm ink, sienna, serif headings.
+const SERIF = 'var(--font-serif), Georgia, serif';
 const academicTheme = createTheme({
   palette: {
     mode: 'light',
@@ -20,27 +72,19 @@ const academicTheme = createTheme({
   },
   shape: { borderRadius: 8 },
   typography: {
-    fontFamily: 'var(--font-geist-sans), Inter, system-ui, sans-serif',
-    h1: { fontFamily: 'var(--font-serif), Georgia, serif' },
-    h2: { fontFamily: 'var(--font-serif), Georgia, serif' },
-    h3: { fontFamily: 'var(--font-serif), Georgia, serif' },
-    h4: { fontFamily: 'var(--font-serif), Georgia, serif' },
-    h5: { fontFamily: 'var(--font-serif), Georgia, serif' },
-    h6: { fontFamily: 'var(--font-serif), Georgia, serif' },
+    fontFamily: SANS,
+    h1: { fontFamily: SERIF },
+    h2: { fontFamily: SERIF },
+    h3: { fontFamily: SERIF },
+    h4: { fontFamily: SERIF },
+    h5: { fontFamily: SERIF },
+    h6: { fontFamily: SERIF },
   },
-  components: {
-    MuiButton: {
-      defaultProps: { disableElevation: true },
-      styleOverrides: { root: { textTransform: 'none', fontWeight: 600 } },
-    },
-    MuiPaper: {
-      styleOverrides: { root: { backgroundImage: 'none' } },
-    },
-  },
+  components: sharedComponents,
 });
 
 // Retro CRT terminal palette: glowing phosphor green on near-black, monospace.
-const TERMINAL_MONO = "var(--font-geist-mono), 'Courier New', monospace";
+const MONO = "var(--font-geist-mono), 'Courier New', monospace";
 const terminalTheme = createTheme({
   palette: {
     mode: 'dark',
@@ -56,28 +100,27 @@ const terminalTheme = createTheme({
   },
   shape: { borderRadius: 4 }, // sharper corners read more "terminal"
   typography: {
-    fontFamily: TERMINAL_MONO,
-    h1: { fontFamily: TERMINAL_MONO },
-    h2: { fontFamily: TERMINAL_MONO },
-    h3: { fontFamily: TERMINAL_MONO },
-    h4: { fontFamily: TERMINAL_MONO },
-    h5: { fontFamily: TERMINAL_MONO },
-    h6: { fontFamily: TERMINAL_MONO },
+    fontFamily: MONO,
+    h1: { fontFamily: MONO },
+    h2: { fontFamily: MONO },
+    h3: { fontFamily: MONO },
+    h4: { fontFamily: MONO },
+    h5: { fontFamily: MONO },
+    h6: { fontFamily: MONO },
   },
-  components: {
-    MuiButton: {
-      defaultProps: { disableElevation: true },
-      styleOverrides: { root: { textTransform: 'none', fontWeight: 600 } },
-    },
-    MuiPaper: {
-      styleOverrides: { root: { backgroundImage: 'none' } },
-    },
-  },
+  components: sharedComponents,
 });
+
+const THEMES: Record<ThemePreference, Theme> = {
+  corporate: corporateTheme,
+  dark: darkTheme,
+  academic: academicTheme,
+  terminal: terminalTheme,
+};
 
 export default function Providers({
   children,
-  initialTheme = 'academic',
+  initialTheme = 'corporate',
 }: {
   children: ReactNode;
   initialTheme?: ThemePreference;
@@ -85,7 +128,7 @@ export default function Providers({
   // Seed from the server-resolved theme (cookie) so SSR and the first client
   // render agree — no flash, no hydration mismatch.
   const [themePreference] = useThemePreference(initialTheme);
-  const theme = themePreference === 'terminal' ? terminalTheme : academicTheme;
+  const theme = THEMES[themePreference] ?? corporateTheme;
 
   // Drive the CSS-variable themes (see globals.css) off the same preference.
   useEffect(() => {

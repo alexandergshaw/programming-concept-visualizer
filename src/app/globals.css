@@ -1,29 +1,65 @@
 @import "tailwindcss";
 
 /* ===========================================================================
-   Warm, welcoming "old textbook" theme.
-   The page is a faint, faint cream (off-white); text is warm ink; the accent
-   is a muted sienna. Shared across the whole app via these variables and a
-   matching MUI theme (see components/common/Providers.tsx).
+   Theme variables. The DEFAULT theme is Corporate (navy blues + crisp whites).
+   Academic, Dark, and Terminal override these via data-theme="..." on <html>,
+   set by the theme switcher (Providers) and the server (src/app/layout.tsx).
+   Each theme has a matching MUI theme in components/common/Providers.tsx.
    =========================================================================== */
 :root {
-  --paper: #faf6ee;          /* page background: faint cream */
-  --paper-raised: #fffdf8;   /* cards / panels: a touch lighter */
-  --paper-sunken: #f4eee2;   /* insets / subtle fills */
-  --ink: #322e27;            /* warm dark text */
-  --ink-soft: #6f6657;       /* muted text */
-  --line: #e7dfd0;           /* warm hairline borders */
-  --accent: #8a5a2b;         /* warm sienna */
-  --accent-strong: #6e461f;
-  --accent-bg: #f1e7d6;      /* warm highlight background */
+  --paper: #eef2f8;          /* page background: cool light blue-grey */
+  --paper-raised: #ffffff;   /* cards / panels: crisp white */
+  --paper-sunken: #e2e8f0;   /* insets / subtle fills */
+  --ink: #14233b;            /* deep navy text */
+  --ink-soft: #4a5b73;       /* muted slate-blue text */
+  --line: #d4def0;           /* cool hairline borders */
+  --accent: #1e40af;         /* navy blue */
+  --accent-strong: #1e3a8a;
+  --accent-bg: #dbe4f5;      /* light blue highlight */
 
-  /* Sidebar + top bar ("chrome"). Dark in both themes. */
-  --chrome-bg: linear-gradient(180deg, #3a2f22, #2a2118);
-  --chrome-fg: #f3ece0;
-  --chrome-border: #5a4a37;
+  /* Sidebar + top bar ("chrome"). */
+  --chrome-bg: linear-gradient(180deg, #1e3a8a, #152c6b); /* navy */
+  --chrome-fg: #eef3fb;
+  --chrome-border: #2c4a9a;
+
+  --scrollbar-thumb: #b8c6e0;
 
   --background: var(--paper);
   --foreground: var(--ink);
+}
+
+/* Academic: warm "old textbook" — cream paper, warm ink, sienna accent. */
+[data-theme="academic"] {
+  --paper: #faf6ee;
+  --paper-raised: #fffdf8;
+  --paper-sunken: #f4eee2;
+  --ink: #322e27;
+  --ink-soft: #6f6657;
+  --line: #e7dfd0;
+  --accent: #8a5a2b;
+  --accent-strong: #6e461f;
+  --accent-bg: #f1e7d6;
+  --chrome-bg: linear-gradient(180deg, #3a2f22, #2a2118);
+  --chrome-fg: #f3ece0;
+  --chrome-border: #5a4a37;
+  --scrollbar-thumb: #d8cdb8;
+}
+
+/* Dark: neutral charcoal with a cool blue accent. */
+[data-theme="dark"] {
+  --paper: #121212;
+  --paper-raised: #1e1e1e;
+  --paper-sunken: #0a0a0a;
+  --ink: #e6e6e6;
+  --ink-soft: #a0a0a0;
+  --line: #2e2e2e;
+  --accent: #5b9dff;
+  --accent-strong: #8fbcff;
+  --accent-bg: #1a2740;
+  --chrome-bg: linear-gradient(180deg, #1c1c1f, #141416);
+  --chrome-fg: #e6e6e6;
+  --chrome-border: #333333;
+  --scrollbar-thumb: #3a3a3a;
 }
 
 /* ===========================================================================
@@ -45,6 +81,7 @@
   --chrome-bg: linear-gradient(180deg, #0c130c, #050805);
   --chrome-fg: #39ff66;
   --chrome-border: #1c5c30;
+  --scrollbar-thumb: #39b86a;
 }
 
 /* Monospace + phosphor glow for the whole page. */
@@ -107,21 +144,8 @@
   color: #d6ffe2;
 }
 
-/* Light-green scrollbars (override the academic `*` scrollbar-color too). */
-[data-theme="terminal"] * {
-  scrollbar-color: #39b86a transparent;
-}
-
-[data-theme="terminal"] ::-webkit-scrollbar-thumb {
-  background: #39b86a;
-}
-
-[data-theme="terminal"] ::-webkit-scrollbar-thumb:hover {
-  background: #57e08a;
-}
-
 /* Landing-page topic cards: monochrome glowing-green icons in the terminal theme
-   (the brand colors only apply in the academic theme). */
+   (other themes keep the brand colors). */
 [data-theme="terminal"] .topic-card svg {
   color: var(--accent);
   filter: drop-shadow(0 0 4px currentColor);
@@ -145,8 +169,17 @@ body {
   overflow-x: hidden;
 }
 
-/* Serif headings give the editorial, textbook feel. */
+/* Clean sans headings by default; Academic restores the serif "textbook" feel. */
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-geist-sans), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+[data-theme="academic"] h1,
+[data-theme="academic"] h2,
+[data-theme="academic"] h3,
+[data-theme="academic"] h4,
+[data-theme="academic"] h5,
+[data-theme="academic"] h6 {
   font-family: var(--font-serif), Georgia, 'Times New Roman', serif;
 }
 
@@ -166,7 +199,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d8cdb8;
+  background: var(--scrollbar-thumb);
   border-radius: 4px;
   border: 2px solid transparent;
   background-clip: padding-box;
@@ -174,13 +207,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #c3b39a;
+  background: var(--accent);
 }
 
 /* For Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #d8cdb8 transparent;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
 }
 
 /* Ensure text is readable in glass morphism */
