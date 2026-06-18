@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import ConceptInfoCard from '@/components/common/ConceptInfoCard';
+import { withAlpha } from '@/components/common/colorUtils';
 
 const stepColors = ['var(--info)', 'var(--success)', 'var(--warning)', 'var(--danger)', 'var(--feature)'];
 
@@ -64,11 +65,11 @@ export default function NamedFunctionAnimation({ input = 5 }: { input: number })
     const highlightedCode = displayCode.split('\n').map((line, idx) => {
         // For the output step, highlight the output line
         if (currentStep === 5 && idx === displayCode.split('\n').length - 1) {
-            return `<span style="background:${stepColors[5]}33;border-radius:4px;padding:1px 2px;">${line}</span>`;
+            return `<span style="background:${withAlpha(stepColors[5], 20)};border-radius:4px;padding:1px 2px;">${line}</span>`;
         }
         // Otherwise, highlight the relevant line for the step
         if (line.trim() === highlightParts[currentStep]?.trim()) {
-            return `<span style="background:${stepColors[currentStep]}33;border-radius:4px;padding:1px 2px;">${line}</span>`;
+            return `<span style="background:${withAlpha(stepColors[currentStep], 20)};border-radius:4px;padding:1px 2px;">${line}</span>`;
         }
         return line;
     }).join('\n');

@@ -37,7 +37,7 @@
 .js-sidebar-title {
   font-size: 20px;
   font-weight: 600;
-  color: var(--paper-raised);
+  color: var(--chrome-fg);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -75,7 +75,7 @@
 .js-nav-item,
 .js-nav-subitem {
   padding: 8px 0;
-  color: var(--line);
+  color: var(--chrome-fg);
   font-size: 15px;
   transition: all 0.2s ease;
 }
@@ -108,7 +108,7 @@
   font: inherit;
   text-align: left;
   cursor: pointer;
-  color: var(--line);
+  color: var(--chrome-fg);
   font-size: 15px;
   transition: all 0.2s ease;
   border-radius: 3px;

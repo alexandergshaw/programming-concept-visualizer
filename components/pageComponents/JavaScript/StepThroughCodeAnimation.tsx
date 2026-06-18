@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import ConceptInfoCard from '@/components/common/ConceptInfoCard';
+import { withAlpha } from '@/components/common/colorUtils';
 import Button from '@mui/material/Button';
 
 export type Step = {
@@ -80,7 +81,7 @@ export default function StepThroughCodeAnimation({
                     const re = new RegExp(word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
                     lineToHighlight = lineToHighlight.replace(
                         re,
-                        `<span style="background:${color}33;border-radius:4px;padding:1px 2px;">${word}</span>`
+                        `<span style="background:${withAlpha(color, 20)};border-radius:4px;padding:1px 2px;">${word}</span>`
                     );
                 }
             });
@@ -96,7 +97,7 @@ export default function StepThroughCodeAnimation({
         } else if (typeof highlight === 'string') {
             if (highlight && line.includes(highlight)) {
                 // Highlight just the substring (preserve comment styling)
-                const highlighted = `<span style="background:${color}33;border-radius:4px;padding:1px 2px;">${highlight}</span>`;
+                const highlighted = `<span style="background:${withAlpha(color, 20)};border-radius:4px;padding:1px 2px;">${highlight}</span>`;
                 if (isPythonComment || isJsComment) {
                     processedLine = `<span style="color:var(--ink-soft);">${line.replace(
                         highlight,
@@ -113,7 +114,7 @@ export default function StepThroughCodeAnimation({
             shouldHighlight = line.trim() === highlight.trim();
         }
         if (shouldHighlight) {
-            return `<span style="background:${color}33;border-radius:4px;padding:1px 2px;">${processedLine}</span>`;
+            return `<span style="background:${withAlpha(color, 20)};border-radius:4px;padding:1px 2px;">${processedLine}</span>`;
         }
         return processedLine;
     }).join('\n');
