@@ -223,6 +223,15 @@
   color: var(--paper);
 }
 
+/* Light theme: the accent equals the slate sidebar, so the highlight would be
+   invisible — use a light pill with dark text instead. */
+[data-theme="corporate"] .js-nav-item:hover,
+[data-theme="corporate"] .js-nav-subitem:hover,
+[data-theme="corporate"] .js-nav-subitem.active {
+  background-color: var(--paper);
+  color: var(--ink);
+}
+
 [data-theme="terminal"] .js-sublist {
   border-left-color: var(--chrome-border);
 }

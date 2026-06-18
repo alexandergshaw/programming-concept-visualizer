@@ -1,28 +1,28 @@
 @import "tailwindcss";
 
 /* ===========================================================================
-   Theme variables. The DEFAULT theme is Corporate (navy blues + crisp whites).
+   Theme variables. The DEFAULT theme is Light (dark slate on light gray).
    Academic, Dark, and Terminal override these via data-theme="..." on <html>,
    set by the theme switcher (Providers) and the server (src/app/layout.tsx).
    Each theme has a matching MUI theme in components/common/Providers.tsx.
    =========================================================================== */
 :root {
-  --paper: #eef2f8;          /* page background: cool light blue-grey */
-  --paper-raised: #ffffff;   /* cards / panels: crisp white */
-  --paper-sunken: #e2e8f0;   /* insets / subtle fills */
-  --ink: #14233b;            /* deep navy text */
-  --ink-soft: #4a5b73;       /* muted slate-blue text */
-  --line: #d4def0;           /* cool hairline borders */
-  --accent: #1e40af;         /* navy blue */
-  --accent-strong: #1e3a8a;
-  --accent-bg: #dbe4f5;      /* light blue highlight */
+  --paper: #d1d5db;          /* page background: light gray */
+  --paper-raised: #d1d5db;   /* cards / panels */
+  --paper-sunken: #c3c8cf;   /* insets / subtle fills (a touch darker) */
+  --ink: #1f2937;            /* dark slate text */
+  --ink-soft: #4b5563;       /* muted slate text */
+  --line: #9ca3af;           /* gray hairline borders */
+  --accent: #1f2937;         /* dark slate */
+  --accent-strong: #111827;
+  --accent-bg: #c3c8cf;      /* subtle highlight */
 
   /* Sidebar + top bar ("chrome"). */
-  --chrome-bg: linear-gradient(180deg, #1e3a8a, #152c6b); /* navy */
-  --chrome-fg: #eef3fb;
-  --chrome-border: #2c4a9a;
+  --chrome-bg: linear-gradient(180deg, #1f2937, #111827); /* dark slate */
+  --chrome-fg: #d1d5db;
+  --chrome-border: #374151;
 
-  --scrollbar-thumb: #b8c6e0;
+  --scrollbar-thumb: #9ca3af;
 
   --background: var(--paper);
   --foreground: var(--ink);
