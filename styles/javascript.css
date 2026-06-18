@@ -182,7 +182,8 @@
   overflow: hidden;
   transition: max-height 0.25s ease;
   margin-left: 20px;
-  border-left: 2px solid #5a4a37;
+  /* Match the nav text color so the guide line reads as part of the text. */
+  border-left: 2px solid #e2e8f0;
 }
 
 .js-sublist.collapsed {
@@ -233,7 +234,7 @@
 }
 
 [data-theme="terminal"] .js-sublist {
-  border-left-color: var(--chrome-border);
+  border-left-color: var(--chrome-fg);
 }
 
 [data-theme="terminal"] .js-code-preview {
