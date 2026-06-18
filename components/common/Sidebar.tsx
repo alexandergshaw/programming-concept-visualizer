@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import '../../styles/javascript.css';
 import { TextField } from '@mui/material';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export interface SidebarItem {
   label: string;
@@ -21,15 +22,12 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ title, items, onSelect, defaultOpen = [], activeValue, headerImage }: SidebarProps) {
-  const [open, setOpen] = useState<Set<string>>(new Set());
+  // Initialized once from defaultOpen; afterwards a section stays open until
+  // the user explicitly collapses it (navigation no longer resets it).
+  const [open, setOpen] = useState<Set<string>>(() => new Set(defaultOpen));
   const [searchQuery, setSearchQuery] = useState(''); // State for the search query
   const [filteredItems, setFilteredItems] = useState<SidebarItem[]>(items); // State for filtered items
   const [mobileOpen, setMobileOpen] = useState(false); // Off-canvas drawer state (mobile only)
-
-  // Initialize open state from defaultOpen prop
-  useEffect(() => {
-    setOpen(new Set(defaultOpen));
-  }, [defaultOpen]);
 
   // Filter items based on the search query
   useEffect(() => {
@@ -115,6 +113,10 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [], acti
         )}
         <h2 className="js-sidebar-title" style={{ margin: 0 }}>{title}</h2>
       </div>
+      {/* Back to the home page from any topic */}
+      <Link href="/" className="js-home-link" onClick={() => setMobileOpen(false)}>
+        &larr; Home
+      </Link>
       {/* Search Box */}
       <TextField
         placeholder="Search concepts..."

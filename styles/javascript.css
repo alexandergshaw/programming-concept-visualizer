@@ -43,6 +43,27 @@
   letter-spacing: 0.05em;
 }
 
+/* "Back to home" link shown at the top of every topic sidebar. */
+.js-home-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  margin-bottom: 16px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: #e7ddc9;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.js-home-link:hover {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
 .js-page-title {
   font-size: 32px;
   font-weight: bold;
@@ -215,9 +236,9 @@
      floating menu button; content goes full width.
    =========================================================================== */
 
-/* Desktop default: content clears the fixed banner. */
+/* Modest top gap (the old fixed feedback banner is gone). */
 .js-content-inner {
-  margin-top: 100px;
+  margin-top: 16px;
 }
 
 /* Menu button + backdrop are hidden on desktop. */
@@ -235,9 +256,9 @@
     padding: 0 16px;
   }
 
-  /* Banner is in normal flow on mobile, so only a small gap is needed. */
+  /* Leave room for the floating menu button at the top-left. */
   .js-content-inner {
-    margin-top: 12px;
+    margin-top: 56px;
   }
 
   /* Sidebar slides in from the left instead of taking permanent space. */

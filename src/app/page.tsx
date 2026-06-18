@@ -275,17 +275,7 @@ export default function LandingPage() {
                 fontSize: '0.9rem',
               }}
             >
-              Maintained by Alex Shaw • Have suggestions? <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSf73dDuwy0mZUuApiG2kEGlcCp93pN-l1eOtFOTBA2BTf0Bqw/viewform?usp=sharing"
-                target="_blank"
-                className="slide-underline-link"
-                style={{
-                  color: '#00319b',
-                  fontWeight: 500
-                }}
-              >
-                Submit feedback
-              </a>
+              Maintained by Alex Shaw
             </Typography>
           </Box>
         </Container>
