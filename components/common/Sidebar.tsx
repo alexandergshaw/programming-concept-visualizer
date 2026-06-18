@@ -5,6 +5,7 @@ import '../../styles/javascript.css';
 import { TextField } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
+import TechIcon from './TechIcon';
 
 export interface SidebarItem {
   label: string;
@@ -111,6 +112,7 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [], acti
             }} 
           />
         )}
+        <TechIcon title={title} />
         <h2 className="js-sidebar-title" style={{ margin: 0 }}>{title}</h2>
       </div>
       {/* Back to the home page from any topic */}
