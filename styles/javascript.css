@@ -216,6 +216,13 @@
   color: var(--chrome-fg);
 }
 
+/* The hover/active highlight is bright green, so its text must be dark. */
+[data-theme="terminal"] .js-nav-item:hover,
+[data-theme="terminal"] .js-nav-subitem:hover,
+[data-theme="terminal"] .js-nav-subitem.active {
+  color: var(--paper);
+}
+
 [data-theme="terminal"] .js-sublist {
   border-left-color: var(--chrome-border);
 }

@@ -56,12 +56,12 @@ export default function StepThroughCodeAnimation({
         const isJsComment = processedLine.trim().startsWith('//');
 
         if (isPythonComment) {
-            processedLine = `<span style="color:#789;">${processedLine}</span>`;
+            processedLine = `<span style="color:var(--ink-soft);">${processedLine}</span>`;
         } else if (isJsComment) {
-            processedLine = `<span style="color:#789;">${processedLine}</span>`;
+            processedLine = `<span style="color:var(--ink-soft);">${processedLine}</span>`;
         } else {
             // Style code (non-comment)
-            processedLine = `<span style="color:#222;">${processedLine}</span>`;
+            processedLine = `<span style="color:var(--ink);">${processedLine}</span>`;
         }
 
         // Highlight logic
@@ -86,9 +86,9 @@ export default function StepThroughCodeAnimation({
             });
             if (matched) {
                 if (isPythonComment || isJsComment) {
-                    processedLine = `<span style="color:#789;">${lineToHighlight}</span>`;
+                    processedLine = `<span style="color:var(--ink-soft);">${lineToHighlight}</span>`;
                 } else {
-                    processedLine = `<span style="color:#222;">${lineToHighlight}</span>`;
+                    processedLine = `<span style="color:var(--ink);">${lineToHighlight}</span>`;
                 }
                 return processedLine;
             }
@@ -98,12 +98,12 @@ export default function StepThroughCodeAnimation({
                 // Highlight just the substring (preserve comment styling)
                 const highlighted = `<span style="background:${color}33;border-radius:4px;padding:1px 2px;">${highlight}</span>`;
                 if (isPythonComment || isJsComment) {
-                    processedLine = `<span style="color:#789;">${line.replace(
+                    processedLine = `<span style="color:var(--ink-soft);">${line.replace(
                         highlight,
                         highlighted
                     )}</span>`;
                 } else {
-                    processedLine = `<span style="color:#222;">${line.replace(
+                    processedLine = `<span style="color:var(--ink);">${line.replace(
                         highlight,
                         highlighted
                     )}</span>`;
@@ -124,16 +124,16 @@ export default function StepThroughCodeAnimation({
                 style={{
                     fontFamily: 'monospace',
                     fontSize: 16,
-                    color: '#333',
+                    color: 'var(--ink)',
                     marginBottom: 18,
-                    background: '#fff',
+                    background: 'var(--paper-raised)',
                     borderRadius: 8,
                     padding: '12px 10px',
                     lineHeight: 1.7,
                     overflowX: 'auto',
                     overflowY: 'auto',
                     maxHeight: '400px',
-                    border: '1.5px solid #e0e0e0',
+                    border: '1.5px solid var(--line)',
                     display: 'block'
                 }}
                 dangerouslySetInnerHTML={{ __html: highlightedCode }}
@@ -142,7 +142,7 @@ export default function StepThroughCodeAnimation({
                 minHeight: 32,
                 marginTop: 8,
                 fontSize: 15,
-                color: '#444',
+                color: 'var(--ink-soft)',
                 textAlign: 'center'
             }}>
                 <b style={{ color: stepColors[currentStep % stepColors.length] }}>{steps[currentStep].label}:</b>{' '}

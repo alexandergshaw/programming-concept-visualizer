@@ -107,12 +107,17 @@
   color: #d6ffe2;
 }
 
+/* Light-green scrollbars (override the academic `*` scrollbar-color too). */
+[data-theme="terminal"] * {
+  scrollbar-color: #39b86a transparent;
+}
+
 [data-theme="terminal"] ::-webkit-scrollbar-thumb {
-  background: #1c5c30;
+  background: #39b86a;
 }
 
 [data-theme="terminal"] ::-webkit-scrollbar-thumb:hover {
-  background: #2c8c4a;
+  background: #57e08a;
 }
 
 /* Landing-page topic cards: monochrome glowing-green icons in the terminal theme
