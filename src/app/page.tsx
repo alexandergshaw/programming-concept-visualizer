@@ -191,7 +191,7 @@ export default function LandingPage() {
         <Container maxWidth="lg">
           <Box>
             <Box sx={{ mb: 2 }}>
-              <CodeIcon sx={{ fontSize: 40, color: 'var(--accent)', mb: 2 }} />
+              <CodeIcon sx={{ fontSize: 40, color: 'var(--accent-strong)', mb: 2 }} />
             </Box>
 
             <Typography
@@ -206,7 +206,7 @@ export default function LandingPage() {
               }}
             >
               Concept
-              <Box component="span" sx={{ color: 'var(--accent)', display: 'block' }}>
+              <Box component="span" sx={{ color: 'var(--accent-strong)', display: 'block' }}>
                 Visuals
               </Box>
             </Typography>
