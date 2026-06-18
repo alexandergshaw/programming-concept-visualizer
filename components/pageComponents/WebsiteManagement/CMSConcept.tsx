@@ -10,11 +10,11 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 export default function CMSConcept() {
   return (
     <Box sx={{ p: 3, maxWidth: 1200, mx: 'auto' }}>
-      <Typography variant="h4" sx={{ mb: 2, fontWeight: 700, color: '#1e293b', textAlign: 'center' }}>
+      <Typography variant="h4" sx={{ mb: 2, fontWeight: 700, color: 'var(--ink)', textAlign: 'center' }}>
         How a CMS Simplifies Website Development
       </Typography>
       
-      <Typography variant="body1" sx={{ mb: 5, color: '#64748b', textAlign: 'center' }}>
+      <Typography variant="body1" sx={{ mb: 5, color: 'var(--ink-soft)', textAlign: 'center' }}>
         In a website management class with students from diverse majors, a CMS levels the playing field.
       </Typography>
 
@@ -29,18 +29,18 @@ export default function CMSConcept() {
             maxWidth: 500,
             p: 3,
             borderRadius: 2,
-            border: '3px solid #ef4444',
-            background: '#fef2f2',
+            border: '3px solid var(--danger)',
+            background: 'var(--danger-bg)',
             display: 'flex',
             flexDirection: 'column',
           }}
         >
           <Box sx={{ textAlign: 'center', mb: 3, minHeight: 120 }}>
-            <CodeIcon sx={{ fontSize: 60, color: '#ef4444', mb: 1 }} />
-            <Typography variant="h5" sx={{ fontWeight: 700, color: '#ef4444' }}>
+            <CodeIcon sx={{ fontSize: 60, color: 'var(--danger)', mb: 1 }} />
+            <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--danger)' }}>
               Without CMS
             </Typography>
-            <Typography variant="body2" sx={{ color: '#64748b', mt: 1 }}>
+            <Typography variant="body2" sx={{ color: 'var(--ink-soft)', mt: 1 }}>
               Traditional Website Development
             </Typography>
           </Box>
@@ -48,7 +48,7 @@ export default function CMSConcept() {
           {/* Code Editor Visualization */}
           <Paper 
             sx={{ 
-              background: '#1e293b',
+              background: 'var(--ink)',
               p: 2,
               borderRadius: 1,
               mb: 2,
@@ -57,44 +57,44 @@ export default function CMSConcept() {
               height: 240,
             }}
           >
-            <Box sx={{ color: '#94a3b8', mb: 1 }}>
-              <span style={{ color: '#f472b6' }}>&lt;html&gt;</span>
+            <Box sx={{ color: 'var(--ink-faint)', mb: 1 }}>
+              <span style={{ color: 'var(--feature)' }}>&lt;html&gt;</span>
             </Box>
-            <Box sx={{ color: '#94a3b8', mb: 1, pl: 2 }}>
-              <span style={{ color: '#f472b6' }}>&lt;head&gt;</span>
+            <Box sx={{ color: 'var(--ink-faint)', mb: 1, pl: 2 }}>
+              <span style={{ color: 'var(--feature)' }}>&lt;head&gt;</span>
             </Box>
-            <Box sx={{ color: '#94a3b8', mb: 1, pl: 4 }}>
-              <span style={{ color: '#f472b6' }}>&lt;title&gt;</span>
-              <span style={{ color: '#fbbf24' }}>My Page</span>
-              <span style={{ color: '#f472b6' }}>&lt;/title&gt;</span>
+            <Box sx={{ color: 'var(--ink-faint)', mb: 1, pl: 4 }}>
+              <span style={{ color: 'var(--feature)' }}>&lt;title&gt;</span>
+              <span style={{ color: 'var(--warning)' }}>My Page</span>
+              <span style={{ color: 'var(--feature)' }}>&lt;/title&gt;</span>
             </Box>
-            <Box sx={{ color: '#94a3b8', mb: 1, pl: 2 }}>
-              <span style={{ color: '#f472b6' }}>&lt;/head&gt;</span>
+            <Box sx={{ color: 'var(--ink-faint)', mb: 1, pl: 2 }}>
+              <span style={{ color: 'var(--feature)' }}>&lt;/head&gt;</span>
             </Box>
-            <Box sx={{ color: '#94a3b8', mb: 1, pl: 2 }}>
-              <span style={{ color: '#f472b6' }}>&lt;body&gt;</span>
+            <Box sx={{ color: 'var(--ink-faint)', mb: 1, pl: 2 }}>
+              <span style={{ color: 'var(--feature)' }}>&lt;body&gt;</span>
             </Box>
-            <Box sx={{ color: '#94a3b8', mb: 1, pl: 4 }}>
-              <span style={{ color: '#f472b6' }}>&lt;h1&gt;</span>
-              <span style={{ color: '#fbbf24' }}>Content...</span>
+            <Box sx={{ color: 'var(--ink-faint)', mb: 1, pl: 4 }}>
+              <span style={{ color: 'var(--feature)' }}>&lt;h1&gt;</span>
+              <span style={{ color: 'var(--warning)' }}>Content...</span>
             </Box>
-            <Box sx={{ color: '#94a3b8', pl: 4 }}>
+            <Box sx={{ color: 'var(--ink-faint)', pl: 4 }}>
               <span>...</span>
             </Box>
           </Paper>
 
           <Box>
-            <Typography variant="body2" sx={{ color: '#64748b', mb: 2, fontWeight: 600 }}>
+            <Typography variant="body2" sx={{ color: 'var(--ink-soft)', mb: 2, fontWeight: 600 }}>
               Requirements:
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, minHeight: 80 }}>
-              <Typography variant="body2" sx={{ color: '#64748b' }}>
+              <Typography variant="body2" sx={{ color: 'var(--ink-soft)' }}>
                 ❌ Learn HTML/CSS/JavaScript
               </Typography>
-              <Typography variant="body2" sx={{ color: '#64748b' }}>
+              <Typography variant="body2" sx={{ color: 'var(--ink-soft)' }}>
                 ❌ Write code for every page
               </Typography>
-              <Typography variant="body2" sx={{ color: '#64748b' }}>
+              <Typography variant="body2" sx={{ color: 'var(--ink-soft)' }}>
                 ❌ Technical knowledge required
               </Typography>
             </Box>
@@ -103,7 +103,7 @@ export default function CMSConcept() {
 
         {/* Arrow */}
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <ArrowForwardIcon sx={{ fontSize: 48, color: '#3b82f6' }} />
+          <ArrowForwardIcon sx={{ fontSize: 48, color: 'var(--info)' }} />
         </Box>
 
         {/* With CMS */}
@@ -114,18 +114,18 @@ export default function CMSConcept() {
             maxWidth: 500,
             p: 3,
             borderRadius: 2,
-            border: '3px solid #10b981',
-            background: '#f0fdf4',
+            border: '3px solid var(--success)',
+            background: 'var(--success-bg)',
             display: 'flex',
             flexDirection: 'column',
           }}
         >
           <Box sx={{ textAlign: 'center', mb: 3, minHeight: 120 }}>
-            <DashboardIcon sx={{ fontSize: 60, color: '#10b981', mb: 1 }} />
-            <Typography variant="h5" sx={{ fontWeight: 700, color: '#10b981' }}>
+            <DashboardIcon sx={{ fontSize: 60, color: 'var(--success)', mb: 1 }} />
+            <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--success)' }}>
               With CMS
             </Typography>
-            <Typography variant="body2" sx={{ color: '#64748b', mt: 1 }}>
+            <Typography variant="body2" sx={{ color: 'var(--ink-soft)', mt: 1 }}>
               User-Friendly Interface
             </Typography>
           </Box>
@@ -134,7 +134,7 @@ export default function CMSConcept() {
           <Paper 
             sx={{ 
               background: 'white',
-              border: '2px solid #e5e7eb',
+              border: '2px solid var(--line)',
               borderRadius: 1,
               overflow: 'hidden',
               mb: 2,
@@ -144,7 +144,7 @@ export default function CMSConcept() {
             }}
           >
             {/* Dashboard Header */}
-            <Box sx={{ background: '#3b82f6', p: 1.5, color: 'white' }}>
+            <Box sx={{ background: 'var(--info)', p: 1.5, color: 'white' }}>
               <Typography variant="body2" sx={{ fontWeight: 600 }}>
                 📝 Edit Page
               </Typography>
@@ -153,12 +153,12 @@ export default function CMSConcept() {
             {/* Dashboard Content */}
             <Box sx={{ p: 2, flex: 1 }}>
               <Box sx={{ mb: 2 }}>
-                <Typography variant="caption" sx={{ color: '#64748b', fontWeight: 600 }}>
+                <Typography variant="caption" sx={{ color: 'var(--ink-soft)', fontWeight: 600 }}>
                   Page Title:
                 </Typography>
                 <Box sx={{ 
-                  background: '#f9fafb', 
-                  border: '1px solid #e5e7eb',
+                  background: 'var(--paper-raised)', 
+                  border: '1px solid var(--line)',
                   p: 1,
                   borderRadius: 1,
                   mt: 0.5,
@@ -170,25 +170,25 @@ export default function CMSConcept() {
               </Box>
               
               <Box sx={{ mb: 2 }}>
-                <Typography variant="caption" sx={{ color: '#64748b', fontWeight: 600 }}>
+                <Typography variant="caption" sx={{ color: 'var(--ink-soft)', fontWeight: 600 }}>
                   Content:
                 </Typography>
                 <Box sx={{ 
-                  background: '#f9fafb', 
-                  border: '1px solid #e5e7eb',
+                  background: 'var(--paper-raised)', 
+                  border: '1px solid var(--line)',
                   p: 1,
                   borderRadius: 1,
                   mt: 0.5,
                   minHeight: 60,
                 }}>
-                  <Typography variant="body2" sx={{ fontSize: '0.8rem', color: '#9ca3af' }}>
+                  <Typography variant="body2" sx={{ fontSize: '0.8rem', color: 'var(--ink-faint)' }}>
                     Type your content here...
                   </Typography>
                 </Box>
               </Box>
               
               <Box sx={{ 
-                background: '#10b981', 
+                background: 'var(--success)', 
                 color: 'white',
                 textAlign: 'center',
                 py: 1,
@@ -203,25 +203,25 @@ export default function CMSConcept() {
           </Paper>
 
           <Box>
-            <Typography variant="body2" sx={{ color: '#64748b', mb: 2, fontWeight: 600 }}>
+            <Typography variant="body2" sx={{ color: 'var(--ink-soft)', mb: 2, fontWeight: 600 }}>
               Benefits:
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, minHeight: 80 }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <CheckCircleIcon sx={{ fontSize: 18, color: '#10b981' }} />
-                <Typography variant="body2" sx={{ color: '#64748b' }}>
+                <CheckCircleIcon sx={{ fontSize: 18, color: 'var(--success)' }} />
+                <Typography variant="body2" sx={{ color: 'var(--ink-soft)' }}>
                   Accessible to business, marketing, and design students
                 </Typography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <CheckCircleIcon sx={{ fontSize: 18, color: '#10b981' }} />
-                <Typography variant="body2" sx={{ color: '#64748b' }}>
+                <CheckCircleIcon sx={{ fontSize: 18, color: 'var(--success)' }} />
+                <Typography variant="body2" sx={{ color: 'var(--ink-soft)' }}>
                   Focus on content, design, and marketing instead of primarily on coding
                 </Typography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <CheckCircleIcon sx={{ fontSize: 18, color: '#10b981' }} />
-                <Typography variant="body2" sx={{ color: '#64748b' }}>
+                <CheckCircleIcon sx={{ fontSize: 18, color: 'var(--success)' }} />
+                <Typography variant="body2" sx={{ color: 'var(--ink-soft)' }}>
                   Build real projects quickly in class
                 </Typography>
               </Box>
@@ -236,14 +236,14 @@ export default function CMSConcept() {
       <Paper
         sx={{
           p: 3,
-          background: '#eff6ff',
+          background: 'var(--info-bg)',
           borderRadius: 2,
         }}
       >
         <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, textAlign: 'center' }}>
           Why Use a CMS in This Class?
         </Typography>
-        <Typography variant="body1" sx={{ lineHeight: 1.8, textAlign: 'center', color: '#475569' }}>
+        <Typography variant="body1" sx={{ lineHeight: 1.8, textAlign: 'center', color: 'var(--ink-soft)' }}>
           A CMS allows students from all majors—business, marketing, communications, and design—to 
           participate fully in website management. Instead of spending time learning to code, you can 
           focus on content strategy, user experience, and digital marketing skills that apply to any career. 

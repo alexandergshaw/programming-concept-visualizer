@@ -8,25 +8,25 @@ const FallthroughExample: React.FC = () => {
     {
       label: 'Switch Statement',
       part: 'switch (month)',
-      color: '#4caf50',
+      color: 'var(--success)',
       desc: 'Evaluates month'
     },
     {
       label: 'Winter Cases',
       part: 'case "december":\n    case "january":\n    case "february":\n      return "Winter";',
-      color: '#2196f3',
+      color: 'var(--info)',
       desc: 'Multiple cases fall through to same result'
     },
     {
       label: 'Summer Cases', 
       part: 'case "june":\n    case "july":\n      return "Summer";',
-      color: '#ff9800',
+      color: 'var(--warning)',
       desc: 'Summer months grouped together'
     },
     {
       label: 'Default Case',
       part: 'default:\n      return "Other season";',
-      color: '#f44336',
+      color: 'var(--danger)',
       desc: 'All other months'
     }
   ];

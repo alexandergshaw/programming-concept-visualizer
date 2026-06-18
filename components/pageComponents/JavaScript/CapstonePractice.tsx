@@ -90,11 +90,11 @@ export default function CapstonePractice({
                     fontFamily: 'Fira Mono, Menlo, monospace',
                     fontSize: 15,
                     borderRadius: 8,
-                    border: '1.5px solid #e0e4ea',
+                    border: '1.5px solid var(--paper-sunken)',
                     padding: '14px 16px',
                     marginBottom: 14,
-                    background: '#f8fafc',
-                    color: '#23272f',
+                    background: 'var(--paper-sunken)',
+                    color: 'var(--ink)',
                     outline: 'none',
                     resize: 'vertical',
                     transition: 'border 0.2s',
@@ -122,9 +122,9 @@ export default function CapstonePractice({
             </div>
             {output !== null && (
                 <div style={{ marginTop: 10 }}>
-                    <div style={{ fontWeight: 500, color: '#23272f', marginBottom: 4 }}>Your Output:</div>
+                    <div style={{ fontWeight: 500, color: 'var(--ink)', marginBottom: 4 }}>Your Output:</div>
                     <pre style={{
-                        background: '#f4f6fa',
+                        background: 'var(--paper-raised)',
                         border: 'none',
                         borderRadius: 8,
                         padding: '12px 16px',
@@ -132,7 +132,7 @@ export default function CapstonePractice({
                         fontSize: 15,
                         marginTop: 0,
                         whiteSpace: 'pre-wrap',
-                        color: '#23272f'
+                        color: 'var(--ink)'
                     }}>{output}</pre>
                 </div>
             )}

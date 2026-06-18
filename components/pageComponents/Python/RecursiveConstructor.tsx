@@ -185,7 +185,7 @@ const RecursiveConstructor: React.FC = () => {
                         <ArrowDownwardIcon />
                         <Paper sx={{ p: 1, width: '200px' }}>factorial(2) = 2 × factorial(1)</Paper>
                         <ArrowDownwardIcon />
-                        <Paper sx={{ p: 1, width: '200px', bgcolor: '#e3f2fd' }}>factorial(1) = 1 (base case)</Paper>
+                        <Paper sx={{ p: 1, width: '200px', bgcolor: 'var(--info-bg)' }}>factorial(1) = 1 (base case)</Paper>
                         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1, mt: 2 }}>
                             <Typography fontWeight={500}>Now we unwind and calculate:</Typography>
                             <Paper sx={{ p: 1, width: '200px' }}>factorial(2) = 2 × 1 = 2</Paper>
@@ -208,7 +208,7 @@ const RecursiveConstructor: React.FC = () => {
                         <ArrowDownwardIcon />
                         <Paper sx={{ p: 1, width: '200px' }}>sum_to_n(2) = 2 + sum_to_n(1)</Paper>
                         <ArrowDownwardIcon />
-                        <Paper sx={{ p: 1, width: '200px', bgcolor: '#e3f2fd' }}>sum_to_n(1) = 1 (base case)</Paper>
+                        <Paper sx={{ p: 1, width: '200px', bgcolor: 'var(--info-bg)' }}>sum_to_n(1) = 1 (base case)</Paper>
                         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1, mt: 2 }}>
                             <Typography fontWeight={500}>Now we unwind and calculate:</Typography>
                             <Paper sx={{ p: 1, width: '200px' }}>sum_to_n(2) = 2 + 1 = 3</Paper>
@@ -237,17 +237,17 @@ const RecursiveConstructor: React.FC = () => {
                                         <Box sx={{ display: 'flex', justifyContent: 'space-around', width: '100%' }}>
                                             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                                 <ArrowDownwardIcon />
-                                                <Paper sx={{ p: 1, bgcolor: '#e3f2fd' }}>fib(1) = 1</Paper>
+                                                <Paper sx={{ p: 1, bgcolor: 'var(--info-bg)' }}>fib(1) = 1</Paper>
                                             </Box>
                                             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                                 <ArrowDownwardIcon />
-                                                <Paper sx={{ p: 1, bgcolor: '#e3f2fd' }}>fib(0) = 0</Paper>
+                                                <Paper sx={{ p: 1, bgcolor: 'var(--info-bg)' }}>fib(0) = 0</Paper>
                                             </Box>
                                         </Box>
                                     </Box>
                                     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                         <ArrowDownwardIcon />
-                                        <Paper sx={{ p: 1, bgcolor: '#e3f2fd' }}>fib(1) = 1</Paper>
+                                        <Paper sx={{ p: 1, bgcolor: 'var(--info-bg)' }}>fib(1) = 1</Paper>
                                     </Box>
                                 </Box>
                             </Box>
@@ -257,11 +257,11 @@ const RecursiveConstructor: React.FC = () => {
                                 <Box sx={{ display: 'flex', justifyContent: 'space-around', width: '100%' }}>
                                     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                         <ArrowDownwardIcon />
-                                        <Paper sx={{ p: 1, bgcolor: '#e3f2fd' }}>fib(1) = 1</Paper>
+                                        <Paper sx={{ p: 1, bgcolor: 'var(--info-bg)' }}>fib(1) = 1</Paper>
                                     </Box>
                                     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                         <ArrowDownwardIcon />
-                                        <Paper sx={{ p: 1, bgcolor: '#e3f2fd' }}>fib(0) = 0</Paper>
+                                        <Paper sx={{ p: 1, bgcolor: 'var(--info-bg)' }}>fib(0) = 0</Paper>
                                     </Box>
                                 </Box>
                             </Box>
@@ -282,14 +282,14 @@ const RecursiveConstructor: React.FC = () => {
             </Typography>
 
             <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, mb: 3 }}>
-                <Paper sx={{ p: 2, flex: 1, bgcolor: '#e8f5e9' }}>
+                <Paper sx={{ p: 2, flex: 1, bgcolor: 'var(--success-bg)' }}>
                     <Typography variant="h6" fontWeight={600} gutterBottom>1. Base Case</Typography>
                     <Typography>
                         The simplest version of the problem that can be solved directly.
                         This is where the recursion stops.
                     </Typography>
                 </Paper>
-                <Paper sx={{ p: 2, flex: 1, bgcolor: '#e3f2fd' }}>
+                <Paper sx={{ p: 2, flex: 1, bgcolor: 'var(--info-bg)' }}>
                     <Typography variant="h6" fontWeight={600} gutterBottom>2. Recursive Case</Typography>
                     <Typography>
                         Breaking down the problem into a smaller version of itself,
@@ -304,7 +304,7 @@ const RecursiveConstructor: React.FC = () => {
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                     <Box>
                         <Typography fontWeight={600} sx={{ fontSize: 15, mb: 1 }}>Step 1: Identify the Base Case</Typography>
-                        <Typography sx={{ fontSize: 14, color: '#444' }}>
+                        <Typography sx={{ fontSize: 14, color: 'var(--ink)' }}>
                             Ask: &quot;What&apos;s the simplest version of this problem?&quot;
                             <br />
                             This is where your function will stop recursing and return a direct answer.
@@ -314,7 +314,7 @@ const RecursiveConstructor: React.FC = () => {
                     
                     <Box>
                         <Typography fontWeight={600} sx={{ fontSize: 15, mb: 1 }}>Step 2: Define the Recursive Relationship</Typography>
-                        <Typography sx={{ fontSize: 14, color: '#444' }}>
+                        <Typography sx={{ fontSize: 14, color: 'var(--ink)' }}>
                             Ask: &quot;How can I express the current problem in terms of a smaller version of itself?&quot;
                             <br />
                             For example, factorial(n) = n × factorial(n-1), or sum(n) = n + sum(n-1)
@@ -323,7 +323,7 @@ const RecursiveConstructor: React.FC = () => {
                     
                     <Box>
                         <Typography fontWeight={600} sx={{ fontSize: 15, mb: 1 }}>Step 3: Ensure Progress Toward Base Case</Typography>
-                        <Typography sx={{ fontSize: 14, color: '#444' }}>
+                        <Typography sx={{ fontSize: 14, color: 'var(--ink)' }}>
                             Each recursive call must move closer to the base case to avoid infinite recursion.
                             Usually this means working with a smaller input (n-1, n/2, etc).
                         </Typography>
@@ -331,7 +331,7 @@ const RecursiveConstructor: React.FC = () => {
                     
                     <Box>
                         <Typography fontWeight={600} sx={{ fontSize: 15, mb: 1 }}>Step 4: Combine the Parts</Typography>
-                        <Typography sx={{ fontSize: 14, color: '#444' }}>
+                        <Typography sx={{ fontSize: 14, color: 'var(--ink)' }}>
                             Write a complete function with:
                             <br />
                             • A condition to check for the base case
@@ -371,8 +371,8 @@ const RecursiveConstructor: React.FC = () => {
                             {showSolution ? "Hide Solution" : "View Solution"}
                         </Button>
                     </Box>
-                    <Typography paragraph style={{ fontSize: 15, color: '#333' }}>{currentProblem.description}</Typography>
-                    <Typography sx={{ fontFamily: 'monospace', bgcolor: '#f0f0f0', p: 1, borderRadius: 1, fontSize: 15 }}>
+                    <Typography paragraph style={{ fontSize: 15, color: 'var(--ink)' }}>{currentProblem.description}</Typography>
+                    <Typography sx={{ fontFamily: 'monospace', bgcolor: 'var(--paper-raised)', p: 1, borderRadius: 1, fontSize: 15 }}>
                         {currentProblem.example}
                     </Typography>
 

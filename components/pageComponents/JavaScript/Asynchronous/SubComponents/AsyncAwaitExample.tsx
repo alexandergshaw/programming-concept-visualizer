@@ -84,25 +84,25 @@ async function processOrder(orderId) {
     {
       label: 'Async Function',
       part: 'async function processOrder',
-      color: '#673ab7',
+      color: 'var(--feature)',
       desc: 'Declares function as asynchronous, enabling await usage'
     },
     {
       label: 'Await Keyword',
       part: 'await fetchOrder(orderId)',
-      color: '#2196f3',
+      color: 'var(--info)',
       desc: 'Pauses execution until Promise resolves, returns the value'
     },
     {
       label: 'Try-Catch Block',
       part: 'try { ... } catch (error) { ... }',
-      color: '#f44336',
+      color: 'var(--danger)',
       desc: 'Handles Promise rejections with familiar error handling'
     },
     {
       label: 'Error Recovery',
       part: 'await refundOrder(orderId)',
-      color: '#ff5722',
+      color: 'var(--warning)',
       desc: 'Perform cleanup operations when errors occur'
     }
   ];
@@ -146,13 +146,13 @@ async function loadDataParallel() {
             {
               label: 'Promise Chains',
               part: '.then(user => { return fetchUserPosts(user.id); })',
-              color: '#ff9800',
+              color: 'var(--warning)',
               desc: 'Traditional approach with nested .then() calls'
             },
             {
               label: 'Async/Await',
               part: 'const user = await fetchUser(userId);',
-              color: '#4caf50',
+              color: 'var(--success)',
               desc: 'Modern approach that looks like synchronous code'
             }
           ]}
@@ -179,13 +179,13 @@ async function loadDataParallel() {
             {
               label: 'Sequential Await',
               part: 'const user = await fetchUser(123);',
-              color: '#f44336',
+              color: 'var(--danger)',
               desc: 'Each operation waits for the previous one to complete'
             },
             {
               label: 'Parallel Promise.all',
               part: 'await Promise.all([fetchUser(123), fetchPosts()])',
-              color: '#4caf50',
+              color: 'var(--success)',
               desc: 'All operations start simultaneously for better performance'
             }
           ]}
@@ -193,11 +193,11 @@ async function loadDataParallel() {
       </Box>
 
       <CalloutBox title="Key Async/Await Concepts" type="key-concepts">
-        <Box component="ul" sx={{ margin: 0, paddingLeft: 3, '& li': { marginBottom: 1.5, color: '#475569' } }}>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>async function:</Typography> Always returns a Promise, enables await keyword usage</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>await keyword:</Typography> Pauses function execution until Promise resolves</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Error handling:</Typography> Use try/catch blocks instead of .catch() chains</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Parallel execution:</Typography> Use Promise.all() for concurrent operations</li>
+        <Box component="ul" sx={{ margin: 0, paddingLeft: 3, '& li': { marginBottom: 1.5, color: 'var(--ink-soft)' } }}>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>async function:</Typography> Always returns a Promise, enables await keyword usage</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>await keyword:</Typography> Pauses function execution until Promise resolves</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Error handling:</Typography> Use try/catch blocks instead of .catch() chains</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Parallel execution:</Typography> Use Promise.all() for concurrent operations</li>
         </Box>
       </CalloutBox>
     </div>

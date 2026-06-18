@@ -128,14 +128,14 @@ demonstrateComparison(${JSON.stringify(parsedValue1)}, ${JSON.stringify(parsedVa
       />
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginTop: 16 }}>
-        <div style={{ padding: 12, backgroundColor: '#ffebee', borderRadius: 8, border: '1px solid #e57373' }}>
-          <h5 style={{ color: '#c62828', margin: '0 0 8px 0' }}>❌ Loose (==) Surprises:</h5>
-          <code style={{ fontSize: 13, color: '#d32f2f' }}>0 == false → true<br/>&quot;&quot; == false → true</code>
+        <div style={{ padding: 12, backgroundColor: 'var(--danger-bg)', borderRadius: 8, border: '1px solid var(--danger)' }}>
+          <h5 style={{ color: 'var(--danger)', margin: '0 0 8px 0' }}>❌ Loose (==) Surprises:</h5>
+          <code style={{ fontSize: 13, color: 'var(--danger)' }}>0 == false → true<br/>&quot;&quot; == false → true</code>
         </div>
         
-        <div style={{ padding: 12, backgroundColor: '#e8f5e9', borderRadius: 8, border: '1px solid #81c784' }}>
-          <h5 style={{ color: '#2e7d32', margin: '0 0 8px 0' }}>✅ Strict (===) Clarity:</h5>
-          <code style={{ fontSize: 13, color: '#388e3c' }}>0 === false → false<br/>&quot;&quot; === false → false</code>
+        <div style={{ padding: 12, backgroundColor: 'var(--success-bg)', borderRadius: 8, border: '1px solid var(--success)' }}>
+          <h5 style={{ color: 'var(--success)', margin: '0 0 8px 0' }}>✅ Strict (===) Clarity:</h5>
+          <code style={{ fontSize: 13, color: 'var(--success)' }}>0 === false → false<br/>&quot;&quot; === false → false</code>
         </div>
       </div>
     </div>

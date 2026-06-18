@@ -162,7 +162,7 @@ export default function MapConcept({
           />
         )}
 
-        <Typography variant="body2" sx={{ mt: 2, mb: 1, color: '#444' }}>
+        <Typography variant="body2" sx={{ mt: 2, mb: 1, color: 'var(--ink)' }}>
           <strong>Operation Description:</strong> {getDescription(selectedOp)}
         </Typography>
 

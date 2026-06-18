@@ -148,19 +148,19 @@ class Dog(Animal):
               {
                 label: 'Parent class',
                 part: 'class Animal:',
-                color: '#9333ea',
+                color: 'var(--feature)',
                 desc: 'The base class that holds shared behavior'
               },
               {
                 label: 'Inheriting',
                 part: 'class Dog(Animal):',
-                color: '#059669',
+                color: 'var(--success)',
                 desc: 'Dog inherits everything from Animal by naming it in parentheses'
               },
               {
                 label: 'Overriding',
                 part: 'return "Woof!"',
-                color: '#dc2626',
+                color: 'var(--danger)',
                 desc: 'Dog replaces the inherited speak with its own version'
               }
             ]}

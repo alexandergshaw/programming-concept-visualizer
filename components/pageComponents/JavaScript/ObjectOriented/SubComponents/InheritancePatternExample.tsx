@@ -11,25 +11,25 @@ const InheritancePatternExample: React.FC = () => {
     {
       label: 'Base Class',
       part: 'class Animal {\n  constructor(name) {\n    this.name = name;\n  }\n  eat() {\n    return `${this.name} is eating`;\n  }\n}',
-      color: '#e91e63',
+      color: 'var(--feature)',
       desc: 'Define the common behavior that all animals share'
     },
     {
       label: 'Inheritance Chain',
       part: 'class Mammal extends Animal {\n  constructor(name, furColor) {\n    super(name);\n    this.furColor = furColor;\n  }\n  nurse() {\n    return `${this.name} is nursing babies`;\n  }\n}',
-      color: '#4caf50', 
+      color: 'var(--success)', 
       desc: 'Add mammal-specific properties and behaviors'
     },
     {
       label: 'Specialized Class',
       part: 'class Dog extends Mammal {\n  constructor(name, furColor, breed) {\n    super(name, furColor);\n    this.breed = breed;\n  }\n  bark() {\n    return `${this.name} barks: Woof!`;\n  }\n}',
-      color: '#2196f3',
+      color: 'var(--info)',
       desc: 'Create highly specialized behavior for dogs'
     },
     {
       label: 'Polymorphism',
       part: 'animals.forEach(animal => animal.eat())',
-      color: '#ff9800',
+      color: 'var(--warning)',
       desc: 'Treat all animals uniformly through shared interface'
     }
   ];
@@ -264,9 +264,9 @@ animals.forEach(animal => animal.eat()); // Works for all`}
       {/* Key Concepts */}
       <Box sx={{ 
         p: 2, 
-        bgcolor: '#f5f5f5', 
+        bgcolor: 'var(--paper-raised)', 
         borderRadius: 1, 
-        border: '1px solid #ddd',
+        border: '1px solid var(--line)',
         mt: 3 
       }}>
         <Typography variant="subtitle2" fontWeight={600} gutterBottom>

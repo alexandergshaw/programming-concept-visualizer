@@ -13,49 +13,49 @@ const TryBlockExample: React.FC = () => {
     {
       label: 'Function Declaration',
       part: 'function processText(input)',
-      color: '#e91e63',
+      color: 'var(--feature)',
       desc: 'Function that processes text input - might fail if input is not a string'
     },
     {
       label: 'Try Block',
       part: 'try',
-      color: '#4caf50',
+      color: 'var(--success)',
       desc: 'Try block contains risky code that might throw errors'
     },
     {
       label: 'Log Start',
       part: 'console.log("Processing:", input);',
-      color: '#2196f3',
+      color: 'var(--info)',
       desc: 'Log what we are trying to process'
     },
     {
       label: 'Text Processing',
       part: 'let result = input.toUpperCase().trim();',
-      color: '#ff9800',
+      color: 'var(--warning)',
       desc: 'Attempt to convert text to uppercase and trim whitespace - fails if input is not a string'
     },
     {
       label: 'Length Check',
       part: 'if (result.length === 0)',
-      color: '#9c27b0',
+      color: 'var(--feature)',
       desc: 'Check if the processed text is empty'
     },
     {
       label: 'Throw Custom Error',
       part: 'throw new Error("Empty text not allowed");',
-      color: '#795548',
+      color: 'var(--ink-soft)',
       desc: 'Manually throw an error for empty strings'
     },
     {
       label: 'Success Return',
       part: 'return "SUCCESS: " + result;',
-      color: '#607d8b',
+      color: 'var(--ink-soft)',
       desc: 'Return processed text if no errors occurred'
     },
     {
       label: 'Catch Block',
       part: 'catch (error)',
-      color: '#f44336',
+      color: 'var(--danger)',
       desc: 'Handles any errors thrown in the try block'
     }
   ];

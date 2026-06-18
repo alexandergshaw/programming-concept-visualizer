@@ -108,8 +108,8 @@ demonstrateCoercion(${value1}, ${value2});`];
         ]}
       />
 
-      <div style={{ padding: 10, backgroundColor: '#fff3e0', borderRadius: 8, border: '1px solid #ffb74d', marginTop: 12 }}>
-        <strong style={{ color: '#f57c00' }}>Coercion rules:</strong> Booleans → numbers (false=0), strings → numbers when possible
+      <div style={{ padding: 10, backgroundColor: 'var(--warning-bg)', borderRadius: 8, border: '1px solid var(--warning)', marginTop: 12 }}>
+        <strong style={{ color: 'var(--warning)' }}>Coercion rules:</strong> Booleans → numbers (false=0), strings → numbers when possible
       </div>
     </div>
   );

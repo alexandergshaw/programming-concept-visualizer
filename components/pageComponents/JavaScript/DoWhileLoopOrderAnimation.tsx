@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 
-const stepColors = ['#1976d2', '#43a047', '#fbc02d', '#e53935'];
+const stepColors = ['var(--info)', 'var(--success)', 'var(--warning)', 'var(--danger)'];
 
 const steps = [
     {
@@ -119,7 +119,7 @@ export default function DoWhileLoopOrderAnimation() {
 
     return (
         <div style={{
-            background: '#f8fafc',
+            background: 'var(--paper-sunken)',
             borderRadius: 12,
             padding: 24,
             margin: '32px 0',
@@ -129,14 +129,14 @@ export default function DoWhileLoopOrderAnimation() {
             <pre style={{
                 fontFamily: 'monospace',
                 fontSize: 16,
-                color: '#333',
+                color: 'var(--ink)',
                 marginBottom: 18,
-                background: '#f3f6fa',
+                background: 'var(--paper-raised)',
                 borderRadius: 8,
                 padding: '12px 10px',
                 lineHeight: 1.6,
                 overflowX: 'auto',
-                border: '1.5px solid #e0e0e0',
+                border: '1.5px solid var(--paper-sunken)',
                 display: 'block'
             }}>
                 <span style={currentStep === 0 ? highlightPart(0) : {}}>let i = 1;</span>
@@ -169,8 +169,8 @@ export default function DoWhileLoopOrderAnimation() {
                         <div key={step.label} style={{
                             flex: 1,
                             minWidth: 110,
-                            background: currentStep === idx ? stepColors[idx] + '22' : '#fff',
-                            border: `2px solid ${currentStep === idx ? stepColors[idx] : '#e0e0e0'}`,
+                            background: currentStep === idx ? stepColors[idx] + '22' : 'var(--paper-raised)',
+                            border: `2px solid ${currentStep === idx ? stepColors[idx] : 'var(--paper-sunken)'}`,
                             borderRadius: 8,
                             padding: '12px 8px',
                             margin: '0 2px',
@@ -186,7 +186,7 @@ export default function DoWhileLoopOrderAnimation() {
                             <div style={{
                                 fontFamily: 'monospace',
                                 fontSize: 15,
-                                color: '#333'
+                                color: 'var(--ink)'
                             }}>{step.code}</div>
                         </div>
                     ))}
@@ -195,11 +195,11 @@ export default function DoWhileLoopOrderAnimation() {
                     minHeight: 32,
                     marginTop: 8,
                     fontSize: 15,
-                    color: '#444',
+                    color: 'var(--ink)',
                     textAlign: 'center'
                 }}>
                     {done
-                        ? <span>Loop finished. <span style={{ color: '#43a047' }}>All done!</span></span>
+                        ? <span>Loop finished. <span style={{ color: 'var(--success)' }}>All done!</span></span>
                         : <span>
                             <b style={{ color: stepColors[currentStep] }}>{steps[currentStep].label}:</b> {steps[currentStep].desc}
                         </span>
@@ -213,13 +213,13 @@ export default function DoWhileLoopOrderAnimation() {
                     marginTop: 8
                 }}>
                     <div style={{
-                        background: '#fff',
-                        border: '1.5px solid #e0e0e0',
+                        background: 'var(--paper-raised)',
+                        border: '1.5px solid var(--paper-sunken)',
                         borderRadius: 8,
                         padding: '10px 18px',
                         fontFamily: 'monospace',
                         fontSize: 16,
-                        color: '#1976d2',
+                        color: 'var(--info)',
                         minWidth: 90,
                         textAlign: 'center'
                     }}>
@@ -236,12 +236,12 @@ export default function DoWhileLoopOrderAnimation() {
                 <button
                     onClick={reset}
                     style={{
-                        background: '#fff',
-                        border: '1.5px solid #bbb',
+                        background: 'var(--paper-raised)',
+                        border: '1.5px solid var(--line-strong)',
                         borderRadius: 6,
                         padding: '7px 18px',
                         fontWeight: 600,
-                        color: '#1976d2',
+                        color: 'var(--info)',
                         cursor: 'pointer'
                     }}
                 >
@@ -251,12 +251,12 @@ export default function DoWhileLoopOrderAnimation() {
                     onClick={nextStep}
                     disabled={done}
                     style={{
-                        background: done ? '#eee' : '#1976d2',
+                        background: done ? 'var(--paper-sunken)' : 'var(--info)',
                         border: 'none',
                         borderRadius: 6,
                         padding: '7px 18px',
                         fontWeight: 600,
-                        color: done ? '#aaa' : '#fff',
+                        color: done ? 'var(--ink-faint)' : 'var(--paper-raised)',
                         cursor: done ? 'not-allowed' : 'pointer'
                     }}
                 >
@@ -266,12 +266,12 @@ export default function DoWhileLoopOrderAnimation() {
                     onClick={playAnimation}
                     disabled={done}
                     style={{
-                        background: done ? '#eee' : '#43a047',
+                        background: done ? 'var(--paper-sunken)' : 'var(--success)',
                         border: 'none',
                         borderRadius: 6,
                         padding: '7px 18px',
                         fontWeight: 600,
-                        color: done ? '#aaa' : '#fff',
+                        color: done ? 'var(--ink-faint)' : 'var(--paper-raised)',
                         cursor: done ? 'not-allowed' : 'pointer'
                     }}
                 >

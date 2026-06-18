@@ -24,7 +24,7 @@ SELECT email FROM newsletter_signups;`}</pre>
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 8 }}>
         {result.map((e, i) => (
-          <span key={i} style={{ fontFamily: 'monospace', fontSize: 13, background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: 6, padding: '4px 10px', color: '#1e3a8a' }}>{e}</span>
+          <span key={i} style={{ fontFamily: 'monospace', fontSize: 13, background: 'var(--info-bg)', border: '1px solid var(--info-bg)', borderRadius: 6, padding: '4px 10px', color: 'var(--info)' }}>{e}</span>
         ))}
       </div>
       <p className="sql-pg-count">{result.length} rows — {all ? 'duplicates kept (ben@x.com appears twice)' : 'duplicates removed'}</p>

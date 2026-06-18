@@ -12,31 +12,31 @@ const ClassCreationExample: React.FC = () => {
     {
       label: 'Class Declaration',
       part: 'class Person',
-      color: '#e91e63',
+      color: 'var(--feature)',
       desc: 'Define a class as a blueprint for creating Person objects'
     },
     {
       label: 'Constructor Method',
       part: 'constructor(name, age)',
-      color: '#4caf50',
+      color: 'var(--success)',
       desc: 'Special method that runs when creating a new object instance'
     },
     {
       label: 'Property Assignment',
       part: 'this.name = name;\n    this.age = age;',
-      color: '#2196f3',
+      color: 'var(--info)',
       desc: 'Store the provided values as object properties using "this"'
     },
     {
       label: 'Instance Method',
       part: 'greet() {\n    return `Hello, I\'m ${this.name}`;',
-      color: '#ff9800',
+      color: 'var(--warning)',
       desc: 'Define a method that can be called on object instances'
     },
     {
       label: 'Object Creation',
       part: 'new Person("Alice", 30)',
-      color: '#9c27b0',
+      color: 'var(--feature)',
       desc: 'Use "new" keyword to create an object instance from the class'
     }
   ];

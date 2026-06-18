@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 
-const stepColors = ['#1976d2', '#43a047', '#e53935'];
+const stepColors = ['var(--info)', 'var(--success)', 'var(--danger)'];
 
 const steps = [
     {
@@ -80,14 +80,14 @@ export default function IfElseOrderAnimation() {
 
     return (
         <div style={{
-            background: '#f8fafc',
+            background: 'var(--paper-sunken)',
             borderRadius: 12,
             padding: 24,
             margin: '32px 0',
             boxShadow: '0 2px 12px #0001',
             maxWidth: 520
         }}>
-            <div style={{ marginBottom: 10, color: '#555', fontSize: 15 }}>
+            <div style={{ marginBottom: 10, color: 'var(--ink-soft)', fontSize: 15 }}>
                 <b>Note:</b> You can change the values of <b>a</b> and <b>b</b> below to see how the flow changes.
             </div>
             <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 18 }}>
@@ -109,26 +109,26 @@ export default function IfElseOrderAnimation() {
             <pre style={{
                 fontFamily: 'monospace',
                 fontSize: 16,
-                color: '#333',
+                color: 'var(--ink)',
                 marginBottom: 18,
-                background: '#f3f6fa',
+                background: 'var(--paper-raised)',
                 borderRadius: 8,
                 padding: '12px 10px',
                 lineHeight: 1.6,
                 overflowX: 'auto',
-                border: '1.5px solid #e0e0e0',
+                border: '1.5px solid var(--paper-sunken)',
                 display: 'block'
             }}>
                 <span>
-                    <span style={{ color: '#888' }}>{'// User input values'}</span>
+                    <span style={{ color: 'var(--ink-faint)' }}>{'// User input values'}</span>
                 </span>
                 <br />
                 <span>
-                    <span style={{ color: '#1976d2' }}>let</span> a = <span style={{ color: '#1976d2' }}>{a}</span>;
+                    <span style={{ color: 'var(--info)' }}>let</span> a = <span style={{ color: 'var(--info)' }}>{a}</span>;
                 </span>
                 <br />
                 <span>
-                    <span style={{ color: '#1976d2' }}>let</span> b = <span style={{ color: '#1976d2' }}>{b}</span>;
+                    <span style={{ color: 'var(--info)' }}>let</span> b = <span style={{ color: 'var(--info)' }}>{b}</span>;
                 </span>
                 <br />
                 <br />
@@ -169,8 +169,8 @@ export default function IfElseOrderAnimation() {
                         <div key={step.label} style={{
                             flex: 1,
                             minWidth: 110,
-                            background: currentStep === idx ? stepColors[idx] + '22' : '#fff',
-                            border: `2px solid ${currentStep === idx ? stepColors[idx] : '#e0e0e0'}`,
+                            background: currentStep === idx ? stepColors[idx] + '22' : 'var(--paper-raised)',
+                            border: `2px solid ${currentStep === idx ? stepColors[idx] : 'var(--paper-sunken)'}`,
                             borderRadius: 8,
                             padding: '12px 8px',
                             margin: '0 2px',
@@ -186,7 +186,7 @@ export default function IfElseOrderAnimation() {
                             <div style={{
                                 fontFamily: 'monospace',
                                 fontSize: 15,
-                                color: '#333'
+                                color: 'var(--ink)'
                             }}>{step.code}</div>
                         </div>
                     ))}
@@ -195,7 +195,7 @@ export default function IfElseOrderAnimation() {
                     minHeight: 32,
                     marginTop: 8,
                     fontSize: 15,
-                    color: '#444',
+                    color: 'var(--ink)',
                     textAlign: 'center'
                 }}>
                     {!done
@@ -217,12 +217,12 @@ export default function IfElseOrderAnimation() {
                 <button
                     onClick={reset}
                     style={{
-                        background: '#fff',
-                        border: '1.5px solid #bbb',
+                        background: 'var(--paper-raised)',
+                        border: '1.5px solid var(--line-strong)',
                         borderRadius: 6,
                         padding: '7px 18px',
                         fontWeight: 600,
-                        color: '#1976d2',
+                        color: 'var(--info)',
                         cursor: 'pointer'
                     }}
                 >
@@ -232,12 +232,12 @@ export default function IfElseOrderAnimation() {
                     onClick={nextStep}
                     disabled={done}
                     style={{
-                        background: done ? '#eee' : '#1976d2',
+                        background: done ? 'var(--paper-sunken)' : 'var(--info)',
                         border: 'none',
                         borderRadius: 6,
                         padding: '7px 18px',
                         fontWeight: 600,
-                        color: done ? '#aaa' : '#fff',
+                        color: done ? 'var(--ink-faint)' : 'var(--paper-raised)',
                         cursor: done ? 'not-allowed' : 'pointer'
                     }}
                 >
@@ -247,12 +247,12 @@ export default function IfElseOrderAnimation() {
                     onClick={playAnimation}
                     disabled={done}
                     style={{
-                        background: done ? '#eee' : '#43a047',
+                        background: done ? 'var(--paper-sunken)' : 'var(--success)',
                         border: 'none',
                         borderRadius: 6,
                         padding: '7px 18px',
                         fontWeight: 600,
-                        color: done ? '#aaa' : '#fff',
+                        color: done ? 'var(--ink-faint)' : 'var(--paper-raised)',
                         cursor: done ? 'not-allowed' : 'pointer'
                     }}
                 >

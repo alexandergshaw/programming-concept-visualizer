@@ -11,25 +11,25 @@ const RestSpreadExample: React.FC = () => {
     {
       label: 'Rest Parameters (...)',
       part: 'function sum(...numbers)',
-      color: '#e91e63',
+      color: 'var(--feature)',
       desc: 'Rest operator collects multiple arguments into a single array parameter'
     },
     {
       label: 'Spread Syntax (...)',
       part: 'Math.max(...scores)',
-      color: '#4caf50',
+      color: 'var(--success)',
       desc: 'Spread operator expands an array into individual arguments'
     },
     {
       label: 'Rest in Destructuring',
       part: 'const [first, ...rest] = array',
-      color: '#2196f3',
+      color: 'var(--info)',
       desc: 'Rest can collect remaining elements in destructuring'
     },
     {
       label: 'Spread in Arrays',
       part: '[...array1, ...array2]',
-      color: '#ff9800',
+      color: 'var(--warning)',
       desc: 'Spread can combine or copy arrays'
     }
   ];
@@ -319,20 +319,20 @@ const combined = [...scores, 95, 88];   // [85, 92, 78, 95, 88]`}
       {/* Key Concepts */}
       <Box sx={{ 
         p: 3, 
-        bgcolor: '#f8fafc', 
+        bgcolor: 'var(--paper-sunken)', 
         borderRadius: 2, 
-        border: '1px solid #e2e8f0',
+        border: '1px solid var(--line)',
         mt: 4,
         boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
       }}>
-        <Typography variant="h6" fontWeight={700} gutterBottom sx={{ color: '#1e293b', display: 'flex', alignItems: 'center', gap: 1 }}>
+        <Typography variant="h6" fontWeight={700} gutterBottom sx={{ color: 'var(--ink)', display: 'flex', alignItems: 'center', gap: 1 }}>
           🔑 Rest vs Spread Quick Reference
         </Typography>
-        <Box component="ul" sx={{ margin: 0, paddingLeft: 3, '& li': { marginBottom: 1.5, color: '#475569' } }}>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Rest (...args):</Typography> Collects multiple arguments INTO an array parameter</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Spread (...array):</Typography> Expands an array INTO individual arguments</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Rest in functions:</Typography> Must be the last parameter</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Spread anywhere:</Typography> Can be used in function calls, array literals, destructuring</li>
+        <Box component="ul" sx={{ margin: 0, paddingLeft: 3, '& li': { marginBottom: 1.5, color: 'var(--ink-soft)' } }}>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Rest (...args):</Typography> Collects multiple arguments INTO an array parameter</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Spread (...array):</Typography> Expands an array INTO individual arguments</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Rest in functions:</Typography> Must be the last parameter</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Spread anywhere:</Typography> Can be used in function calls, array literals, destructuring</li>
         </Box>
       </Box>
     </div>

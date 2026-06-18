@@ -66,25 +66,25 @@ searchInput.addEventListener('input', (e) => {
     {
       label: 'API Request',
       part: 'fetch(`/api/users/search?q=${encodeURIComponent(query)}`)',
-      color: '#e91e63',
+      color: 'var(--feature)',
       desc: 'Make HTTP request with search query parameter'
     },
     {
       label: 'Loading State',
       part: 'loadingSpinner.style.display = \'block\'',
-      color: '#4caf50',
+      color: 'var(--success)',
       desc: 'Show visual feedback while request is processing'
     },
     {
       label: 'DOM Updates',
       part: 'resultsContainer.innerHTML = userHTML',
-      color: '#ff9800',
+      color: 'var(--warning)',
       desc: 'Update page content without full reload'
     },
     {
       label: 'Error Handling',
       part: 'catch (error)',
-      color: '#f44336',
+      color: 'var(--danger)',
       desc: 'Handle network errors and show user-friendly messages'
     }
   ];
@@ -193,19 +193,19 @@ contactForm.addEventListener('submit', async (e) => {
             {
               label: 'Prevent Default',
               part: 'e.preventDefault()',
-              color: '#9c27b0',
+              color: 'var(--feature)',
               desc: 'Stop normal form submission to handle with Ajax'
             },
             {
               label: 'Form Data',
               part: 'new FormData(contactForm)',
-              color: '#2196f3',
+              color: 'var(--info)',
               desc: 'Collect all form fields into FormData object'
             },
             {
               label: 'User Feedback',
               part: 'submitButton.disabled = true',
-              color: '#ff5722',
+              color: 'var(--warning)',
               desc: 'Provide visual feedback during submission'
             }
           ]}
@@ -215,20 +215,20 @@ contactForm.addEventListener('submit', async (e) => {
       {/* Key Concepts */}
       <Box sx={{ 
         p: 3, 
-        bgcolor: '#f8fafc', 
+        bgcolor: 'var(--paper-sunken)', 
         borderRadius: 2, 
-        border: '1px solid #e2e8f0',
+        border: '1px solid var(--line)',
         mt: 4,
         boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
       }}>
-        <Typography variant="h6" fontWeight={700} gutterBottom sx={{ color: '#1e293b', display: 'flex', alignItems: 'center', gap: 1 }}>
+        <Typography variant="h6" fontWeight={700} gutterBottom sx={{ color: 'var(--ink)', display: 'flex', alignItems: 'center', gap: 1 }}>
           🔑 Ajax Best Practices
         </Typography>
-        <Box component="ul" sx={{ margin: 0, paddingLeft: 3, '& li': { marginBottom: 1.5, color: '#475569' } }}>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Loading states:</Typography> Always show feedback during requests (spinners, disabled buttons)</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Error handling:</Typography> Gracefully handle network errors and show user-friendly messages</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Progressive enhancement:</Typography> Ensure basic functionality works without JavaScript</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Debouncing:</Typography> For search, wait for user to stop typing before making requests</li>
+        <Box component="ul" sx={{ margin: 0, paddingLeft: 3, '& li': { marginBottom: 1.5, color: 'var(--ink-soft)' } }}>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Loading states:</Typography> Always show feedback during requests (spinners, disabled buttons)</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Error handling:</Typography> Gracefully handle network errors and show user-friendly messages</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Progressive enhancement:</Typography> Ensure basic functionality works without JavaScript</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Debouncing:</Typography> For search, wait for user to stop typing before making requests</li>
         </Box>
       </Box>
     </div>

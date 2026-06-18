@@ -19,40 +19,40 @@ export default function ScopeClosuresConcept() {
       <TableOfContents numbered>
         <Section title="Understanding JavaScript Scope">
           <ScopeBasics />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
-            <FontAwesomeIcon icon={faLayerGroup} style={{ fontSize: 20, color: '#1976d2' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+            <FontAwesomeIcon icon={faLayerGroup} style={{ fontSize: 20, color: 'var(--info)' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Let&apos;s explore the scope chain - how JavaScript searches for variables through nested scopes.
+              <strong style={{ color: 'var(--info)' }}>What&apos;s next:</strong> Let&apos;s explore the scope chain - how JavaScript searches for variables through nested scopes.
             </Typography>
           </Box>
         </Section>
 
         <Section title="The Scope Chain in Action">
           <ScopeChainExample />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
-            <FontAwesomeIcon icon={faLock} style={{ fontSize: 20, color: '#1976d2' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+            <FontAwesomeIcon icon={faLock} style={{ fontSize: 20, color: 'var(--info)' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Now discover closures - how functions can access variables from their outer scope even after that scope has finished.
+              <strong style={{ color: 'var(--info)' }}>What&apos;s next:</strong> Now discover closures - how functions can access variables from their outer scope even after that scope has finished.
             </Typography>
           </Box>
         </Section>
 
         <Section title="Closures: Functions with Memory">
           <ClosuresExample />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
-            <FontAwesomeIcon icon={faRocket} style={{ fontSize: 20, color: '#1976d2' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+            <FontAwesomeIcon icon={faRocket} style={{ fontSize: 20, color: 'var(--info)' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Learn about IIFE - Immediately Invoked Function Expressions that create instant, isolated scopes.
+              <strong style={{ color: 'var(--info)' }}>What&apos;s next:</strong> Learn about IIFE - Immediately Invoked Function Expressions that create instant, isolated scopes.
             </Typography>
           </Box>
         </Section>
 
         <Section title="IIFE: Immediate Function Execution">
           <IIFEExample />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e8f5e9', p: 2, borderRadius: 1, mt: 2 }}>
-            <FontAwesomeIcon icon={faCheckCircle} style={{ fontSize: 20, color: '#4caf50' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--success-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+            <FontAwesomeIcon icon={faCheckCircle} style={{ fontSize: 20, color: 'var(--success)' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#4caf50' }}>Excellent work!</strong> You understand scope, closures, and IIFE - the foundation for advanced JavaScript patterns and clean code organization.
+              <strong style={{ color: 'var(--success)' }}>Excellent work!</strong> You understand scope, closures, and IIFE - the foundation for advanced JavaScript patterns and clean code organization.
             </Typography>
           </Box>
         </Section>

@@ -20,50 +20,50 @@ export default function IdentityOperatorConcept() {
       <TableOfContents numbered>
         <Section title="Why Identity Operators Matter">
           <IdentityBasics />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
-            <FontAwesomeIcon icon={faBullseye} style={{ fontSize: 20, color: '#1976d2' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+            <FontAwesomeIcon icon={faBullseye} style={{ fontSize: 20, color: 'var(--info)' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Now let's see the strict equality operator (===) in action and learn how it prevents type coercion surprises.
+              <strong style={{ color: 'var(--info)' }}>What&apos;s next:</strong> Now let's see the strict equality operator (===) in action and learn how it prevents type coercion surprises.
             </Typography>
           </Box>
         </Section>
 
         <Section title="Strict Equality (===)">
           <StrictEqualityExample />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
-            <FontAwesomeIcon icon={faEquals} style={{ fontSize: 20, color: '#1976d2' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+            <FontAwesomeIcon icon={faEquals} style={{ fontSize: 20, color: 'var(--info)' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> The !== operator works similarly but returns true when values or types differ. Let&apos;s see it in validation scenarios.
+              <strong style={{ color: 'var(--info)' }}>What&apos;s next:</strong> The !== operator works similarly but returns true when values or types differ. Let&apos;s see it in validation scenarios.
             </Typography>
           </Box>
         </Section>
 
         <Section title="Strict Inequality (!==)">
           <StrictInequalityExample />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
-            <FontAwesomeIcon icon={faNotEqual} style={{ fontSize: 20, color: '#1976d2' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+            <FontAwesomeIcon icon={faNotEqual} style={{ fontSize: 20, color: 'var(--info)' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Let&apos;s compare strict operators with loose operators to see why strict comparison prevents bugs.
+              <strong style={{ color: 'var(--info)' }}>What&apos;s next:</strong> Let&apos;s compare strict operators with loose operators to see why strict comparison prevents bugs.
             </Typography>
           </Box>
         </Section>
 
         <Section title="Strict vs Loose Comparison">
           <TypeComparisonExample />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
-            <FontAwesomeIcon icon={faShieldHalved} style={{ fontSize: 20, color: '#1976d2' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+            <FontAwesomeIcon icon={faShieldHalved} style={{ fontSize: 20, color: 'var(--info)' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Time to see how identity operators prevent security vulnerabilities and data corruption in real applications.
+              <strong style={{ color: 'var(--info)' }}>What&apos;s next:</strong> Time to see how identity operators prevent security vulnerabilities and data corruption in real applications.
             </Typography>
           </Box>
         </Section>
 
         <Section title="Real-World Examples">
           <CompleteIdentityExample />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e8f5e9', p: 2, borderRadius: 1, mt: 2 }}>
-            <FontAwesomeIcon icon={faCheckCircle} style={{ fontSize: 20, color: '#4caf50' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--success-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+            <FontAwesomeIcon icon={faCheckCircle} style={{ fontSize: 20, color: 'var(--success)' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#4caf50' }}>Excellent work!</strong> You've mastered identity operators and can now write type-safe JavaScript that prevents common bugs and security issues.
+              <strong style={{ color: 'var(--success)' }}>Excellent work!</strong> You've mastered identity operators and can now write type-safe JavaScript that prevents common bugs and security issues.
             </Typography>
           </Box>
         </Section>

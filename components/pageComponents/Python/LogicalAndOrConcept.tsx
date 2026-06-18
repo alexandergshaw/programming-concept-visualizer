@@ -236,13 +236,13 @@ export default function LogicalAndOrConcept() {
                                 {
                                     label: 'First Comparison',
                                     part: '5 == 5',
-                                    color: '#4caf50',
+                                    color: 'var(--success)',
                                     desc: '<b>5 == 5</b> is <b>True</b> because 5 is equal to 5.',
                                 },
                                 {
                                     label: 'Second Comparison',
                                     part: '2 == 4',
-                                    color: '#f44336',
+                                    color: 'var(--danger)',
                                     desc: '<b>2 == 4</b> is <b>False</b> because 2 is not equal to 4.',
                                 },
                             ]}
@@ -255,13 +255,13 @@ export default function LogicalAndOrConcept() {
                                 {
                                     label: 'First Comparison',
                                     part: 'score == 12',
-                                    color: '#1976d2',
+                                    color: 'var(--info)',
                                     desc: '<b>score == 12</b> is <b>True</b> because score is 12.',
                                 },
                                 {
                                     label: 'Second Comparison',
                                     part: 'name == "Sam"',
-                                    color: '#ff9800',
+                                    color: 'var(--warning)',
                                     desc: '<b>name == "Sam"</b> is <b>False</b> because name is "Alex".',
                                 },
                             ]}

@@ -12,37 +12,37 @@ export default function FunctionConcept() {
         {
             label: 'Function Keyword',
             part: 'function',
-            color: '#1976d2',
+            color: 'var(--info)',
             desc: 'Tells JavaScript you are making a function.',
         },
         {
             label: 'Function Name',
             part: 'square',
-            color: '#43a047',
+            color: 'var(--success)',
             desc: 'What you call the function when you want to use it.',
         },
         {
             label: 'Parameters',
             part: '(x)',
-            color: '#fbc02d',
+            color: 'var(--warning)',
             desc: 'A placeholder for the value you give the function.',
         },
         {
             label: 'Body',
             part: '{',
-            color: '#e53935',
+            color: 'var(--danger)',
             desc: 'The instructions the function runs.',
         },
         {
             label: 'Return Statement',
             part: 'return x * x;',
-            color: '#8e24aa',
+            color: 'var(--feature)',
             desc: 'Sends the answer back to wherever the function was called.',
         },
         {
             label: 'Argument',
             part: `(5)`,
-            color: '#00bcd4',
+            color: 'var(--info)',
             desc: 'The actual value you give to the function when you use it.',
         },
     ];
@@ -52,25 +52,25 @@ export default function FunctionConcept() {
         {
             label: 'Arrow Function',
             part: 'const square =',
-            color: '#1976d2',
+            color: 'var(--info)',
             desc: 'Defines a constant variable and assigns it a function.',
         },
         {
             label: 'Parameter',
             part: 'x =>',
-            color: '#43a047',
+            color: 'var(--success)',
             desc: 'The parameter and the arrow that shows what comes next is the function body.',
         },
         {
             label: 'Function Body',
             part: 'x * x',
-            color: '#e53935',
+            color: 'var(--danger)',
             desc: 'The code that runs when you call the function.',
         },
         {
             label: 'Argument',
             part: `(5)`,
-            color: '#00bcd4',
+            color: 'var(--info)',
             desc: 'The actual value you give to the function when you use it.',
         },
     ];
@@ -497,19 +497,19 @@ export default function FunctionConcept() {
                                 {
                                     label: 'Arrow Function (Anonymous)',
                                     part: 'x =>',
-                                    color: '#e53935',
+                                    color: 'var(--danger)',
                                     desc: 'This is a quick, no-name (the reason we call it "anonymous") function.',
                                 },
                                 {
                                     label: 'Parameter',
                                     part: 'x =>',
-                                    color: '#fbc02d',
+                                    color: 'var(--warning)',
                                     desc: '<b>x</b> is the function input.',
                                 },
                                 {
                                     label: 'Function Body',
                                     part: 'console.log(x * x)',
-                                    color: '#8e24aa',
+                                    color: 'var(--feature)',
                                     desc: 'This is what the anonymous function does.',
                                 },
                             ]}

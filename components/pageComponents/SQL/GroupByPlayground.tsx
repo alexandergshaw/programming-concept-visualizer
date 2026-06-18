@@ -90,7 +90,7 @@ export default function GroupByPlayground({ having }: { having?: boolean }) {
         <div className="sql-pg-block">
           <span className="sql-pg-label">Filter groups (HAVING)</span>
           <div className="sql-pg-inline">
-            <span style={{ fontSize: 13, color: '#475569', fontFamily: 'monospace' }}>{agg}</span>
+            <span style={{ fontSize: 13, color: 'var(--ink-soft)', fontFamily: 'monospace' }}>{agg}</span>
             <select value={havingOp} onChange={(e) => setHavingOp(e.target.value)} aria-label="having operator">
               {['>', '<', '>=', '<=', '='].map((o) => <option key={o} value={o}>{o}</option>)}
             </select>

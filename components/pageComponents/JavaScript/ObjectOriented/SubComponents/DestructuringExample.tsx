@@ -13,25 +13,25 @@ const DestructuringExample: React.FC = () => {
     {
       label: 'Object Creation',
       part: 'const person = { name: "Alice", age: 30, city: "New York" }',
-      color: '#e91e63',
+      color: 'var(--feature)',
       desc: 'Create an object with multiple properties'
     },
     {
       label: 'Destructuring Assignment',
       part: 'const { name, age, city } = person',
-      color: '#4caf50',
+      color: 'var(--success)',
       desc: 'Extract multiple properties into individual variables in one line'
     },
     {
       label: 'Variable Renaming',
       part: 'const { name: fullName, age: years } = person',
-      color: '#2196f3',
+      color: 'var(--info)',
       desc: 'Rename variables during destructuring using colon syntax'
     },
     {
       label: 'Default Values',
       part: 'const { country = "USA" } = person',
-      color: '#ff9800',
+      color: 'var(--warning)',
       desc: 'Provide default values for properties that might not exist'
     }
   ];

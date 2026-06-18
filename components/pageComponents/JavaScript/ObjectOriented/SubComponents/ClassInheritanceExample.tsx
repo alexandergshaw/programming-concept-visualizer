@@ -13,25 +13,25 @@ const ClassInheritanceExample: React.FC = () => {
     {
       label: 'Parent Class',
       part: 'class Animal {\n  constructor(name) {\n    this.name = name;\n  }\n  speak() {\n    return `${this.name} makes a sound`;\n  }\n}',
-      color: '#e91e63',
+      color: 'var(--feature)',
       desc: 'Define the base class with common properties and methods'
     },
     {
       label: 'Child Class Declaration',
       part: 'class Dog extends Animal',
-      color: '#4caf50',
+      color: 'var(--success)',
       desc: 'Use extends keyword to create inheritance relationship'
     },
     {
       label: 'Super Constructor Call',
       part: 'super(name)',
-      color: '#2196f3',
+      color: 'var(--info)',
       desc: 'Call parent constructor to initialize inherited properties'
     },
     {
       label: 'Method Override',
       part: 'speak() {\n    return `${this.name} barks loudly!`;\n  }',
-      color: '#ff9800',
+      color: 'var(--warning)',
       desc: 'Override parent method to provide specialized behavior'
     }
   ];

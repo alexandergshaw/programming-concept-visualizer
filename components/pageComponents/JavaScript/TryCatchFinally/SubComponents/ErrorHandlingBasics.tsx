@@ -24,16 +24,16 @@ const ErrorHandlingBasics: React.FC = () => {
         </Typography>
         
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr 1fr' }, gap: 2 }}>
-          <Box sx={{ p: 2, bgcolor: '#e3f2fd', borderRadius: 1, textAlign: 'center' }}>
-            <Typography fontWeight={600} sx={{ color: '#1976d2', mb: 1 }}>1. TRY</Typography>
+          <Box sx={{ p: 2, bgcolor: 'var(--info-bg)', borderRadius: 1, textAlign: 'center' }}>
+            <Typography fontWeight={600} sx={{ color: 'var(--info)', mb: 1 }}>1. TRY</Typography>
             <Typography variant="body2">Execute risky code</Typography>
           </Box>
-          <Box sx={{ p: 2, bgcolor: '#ffebee', borderRadius: 1, textAlign: 'center' }}>
-            <Typography fontWeight={600} sx={{ color: '#d32f2f', mb: 1 }}>2. CATCH</Typography>
+          <Box sx={{ p: 2, bgcolor: 'var(--danger-bg)', borderRadius: 1, textAlign: 'center' }}>
+            <Typography fontWeight={600} sx={{ color: 'var(--danger)', mb: 1 }}>2. CATCH</Typography>
             <Typography variant="body2">Handle any errors</Typography>
           </Box>
-          <Box sx={{ p: 2, bgcolor: '#f3e5f5', borderRadius: 1, textAlign: 'center' }}>
-            <Typography fontWeight={600} sx={{ color: '#7b1fa2', mb: 1 }}>3. FINALLY</Typography>
+          <Box sx={{ p: 2, bgcolor: 'var(--feature-bg)', borderRadius: 1, textAlign: 'center' }}>
+            <Typography fontWeight={600} sx={{ color: 'var(--feature)', mb: 1 }}>3. FINALLY</Typography>
             <Typography variant="body2">Always cleanup</Typography>
           </Box>
         </Box>

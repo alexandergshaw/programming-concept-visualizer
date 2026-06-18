@@ -24,9 +24,9 @@ function Oval({ children, color }: { children: React.ReactNode, color?: string }
             justifyContent: 'center',
             width: 120,
             height: 48,
-            background: color || '#81c784',
+            background: color || 'var(--success)',
             borderRadius: '50% / 50%',
-            border: '2px solid #1976d2',
+            border: '2px solid var(--info)',
             fontWeight: 600,
             fontSize: 13, // Shrunk font
             mb: 0.5
@@ -40,9 +40,9 @@ function Parallelogram({ children, color }: { children: React.ReactNode, color?:
         <Box sx={{
             width: 120,
             height: 48,
-            background: color || '#ba68c8',
+            background: color || 'var(--feature)',
             transform: 'skew(-20deg)',
-            border: '2px solid #7c43bd',
+            border: '2px solid var(--feature)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -59,8 +59,8 @@ function Rectangle({ children, color }: { children: React.ReactNode, color?: str
         <Box sx={{
             width: 120,
             height: 48,
-            background: color || '#90caf9',
-            border: '2px solid #1976d2',
+            background: color || 'var(--info)',
+            border: '2px solid var(--info)',
             borderRadius: 2,
             display: 'flex',
             alignItems: 'center',
@@ -78,8 +78,8 @@ function Diamond({ children, color }: { children: React.ReactNode, color?: strin
         <Box sx={{
             width: 64,
             height: 64,
-            background: color || '#ffd54f',
-            border: '2px solid #fbc02d',
+            background: color || 'var(--warning)',
+            border: '2px solid var(--warning)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -98,13 +98,13 @@ function Arrow({ label }: { angle?: number; label?: string }) {
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', my: 0.5 }}>
             {label && (
-                <Typography sx={{ fontSize: 13, color: label === 'Yes' ? '#388e3c' : '#e57373', mb: 0.2 }}>
+                <Typography sx={{ fontSize: 13, color: label === 'Yes' ? 'var(--success)' : 'var(--danger)', mb: 0.2 }}>
                     {label}
                 </Typography>
             )}
             <svg width="32" height="32">
-                <line x1="16" y1="0" x2="16" y2="24" stroke="#bdbdbd" strokeWidth="3" />
-                <polygon points="10,18 16,24 22,18" fill="#bdbdbd" />
+                <line x1="16" y1="0" x2="16" y2="24" stroke="var(--line-strong)" strokeWidth="3" />
+                <polygon points="10,18 16,24 22,18" fill="var(--line-strong)" />
             </svg>
         </Box>
     );
@@ -116,7 +116,7 @@ function BranchArrow({ label, direction }: { label: string; direction: 'left' | 
     // Arrow starts at (center bottom of diamond) and curves outwards then down
     // For left: curve to (8,20) then down to (8,44)
     // For right: curve to (56,20) then down to (56,44)
-    const labelColor = direction === 'left' ? '#388e3c' : '#e57373';
+    const labelColor = direction === 'left' ? 'var(--success)' : 'var(--danger)';
     const startX = 32;
     const startY = 0;
     const midX = direction === 'left' ? 8 : 56;
@@ -136,14 +136,14 @@ function BranchArrow({ label, direction }: { label: string; direction: 'left' | 
             <svg width="64" height="48">
                 <path
                     d={`M${startX},${startY} Q${midX},${midY} ${endX},${endY - 4}`}
-                    stroke="#bdbdbd"
+                    stroke="var(--line-strong)"
                     strokeWidth="3"
                     fill="none"
                 />
                 {/* Arrowhead */}
                 <polygon
                     points={arrowHead}
-                    fill="#bdbdbd"
+                    fill="var(--line-strong)"
                 />
             </svg>
         </Box>
@@ -229,21 +229,21 @@ function renderSampleFlowchart() {
             {/* Start */}
             <Box sx={{ width: '100%' }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <Oval color="#81c784">Start</Oval>
+                    <Oval color="var(--success)">Start</Oval>
                 </Box>
                 <Arrow />
             </Box>
             {/* Input */}
             <Box sx={{ width: '100%' }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <Parallelogram color="#ba68c8">{sampleNodes[1].text}</Parallelogram>
+                    <Parallelogram color="var(--feature)">{sampleNodes[1].text}</Parallelogram>
                 </Box>
                 <Arrow />
             </Box>
             {/* Decision */}
             <Box sx={{ width: '100%' }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative' }}>
-                    <Diamond color="#ffd54f">{sampleNodes[2].text}</Diamond>
+                    <Diamond color="var(--warning)">{sampleNodes[2].text}</Diamond>
                     {/* Branch arrows */}
                     <Box sx={{
                         display: 'flex',
@@ -267,15 +267,15 @@ function renderSampleFlowchart() {
                 <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%', mt: 5 }}>
                     {/* Left branch */}
                     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mx: 2 }}>
-                        <Parallelogram color="#ba68c8">{sampleNodes[3].text}</Parallelogram>
+                        <Parallelogram color="var(--feature)">{sampleNodes[3].text}</Parallelogram>
                         <Arrow />
-                        <Oval color="#e57373">End</Oval>
+                        <Oval color="var(--danger)">End</Oval>
                     </Box>
                     {/* Right branch */}
                     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mx: 2 }}>
-                        <Parallelogram color="#ba68c8">{sampleNodes[4].text}</Parallelogram>
+                        <Parallelogram color="var(--feature)">{sampleNodes[4].text}</Parallelogram>
                         <Arrow />
-                        <Oval color="#e57373">End</Oval>
+                        <Oval color="var(--danger)">End</Oval>
                     </Box>
                 </Box>
             </Box>
@@ -288,13 +288,13 @@ function RejoinArrow({ from }: { from: 'left' | 'right' }) {
     // SVG: smooth, thick, colored, shadowed curve from branch to main flow
     // The arrow starts at the branch and curves to the center below both branches
     const isLeft = from === 'left';
-    const color = isLeft ? '#7e57c2' : '#42a5f5';
+    const color = isLeft ? 'var(--feature)' : 'var(--info)';
     return (
-        <svg width="140" height="60" style={{ marginTop: -8, marginBottom: -8, filter: 'drop-shadow(0 2px 4px #bbb)' }}>
+        <svg width="140" height="60" style={{ marginTop: -8, marginBottom: -8, filter: 'drop-shadow(0 2px 4px var(--line-strong))' }}>
             <defs>
                 <linearGradient id={`rejoin-gradient-${from}`} x1="0" y1="0" x2="1" y2="1">
                     <stop offset="0%" stopColor={color} />
-                    <stop offset="100%" stopColor="#bdbdbd" />
+                    <stop offset="100%" stopColor="var(--line-strong)" />
                 </linearGradient>
             </defs>
             <path
@@ -318,7 +318,7 @@ function RejoinArrow({ from }: { from: 'left' | 'right' }) {
                         : "24,44 30,54 36,44"
                 }
                 fill={color}
-                style={{ filter: 'drop-shadow(0 1px 2px #bbb)' }}
+                style={{ filter: 'drop-shadow(0 1px 2px var(--line-strong))' }}
             />
         </svg>
     );
@@ -391,17 +391,17 @@ export default function FlowchartDesigner() {
     const renderShape = (node: FlowNode) => {
         switch (node.type) {
             case 'start':
-                return <Oval color="#81c784">Start</Oval>;
+                return <Oval color="var(--success)">Start</Oval>;
             case 'end':
-                return <Oval color="#e57373">End</Oval>;
+                return <Oval color="var(--danger)">End</Oval>;
             case 'input':
-                return <Parallelogram color="#ba68c8">{node.text}</Parallelogram>;
+                return <Parallelogram color="var(--feature)">{node.text}</Parallelogram>;
             case 'output':
-                return <Parallelogram color="#ba68c8">{node.text}</Parallelogram>;
+                return <Parallelogram color="var(--feature)">{node.text}</Parallelogram>;
             case 'process':
-                return <Rectangle color="#90caf9">{node.text}</Rectangle>;
+                return <Rectangle color="var(--info)">{node.text}</Rectangle>;
             case 'decision':
-                return <Diamond color="#ffd54f">{node.text}</Diamond>;
+                return <Diamond color="var(--warning)">{node.text}</Diamond>;
             default:
                 return null;
         }
@@ -608,7 +608,7 @@ export default function FlowchartDesigner() {
                     title="2) Sample Problem"
                     subtitle="See how a flowchart helps you plan a program."
                 >
-                    <Paper sx={{ p: 2, mb: 2, bgcolor: '#fffde7', border: '2px solid #ffe082' }}>
+                    <Paper sx={{ p: 2, mb: 2, bgcolor: 'var(--warning-bg)', border: '2px solid var(--warning)' }}>
                         <Typography sx={{ mb: 1 }}>
                             <b>Problem:</b> Ask the user for a number. If the number is even, show &quot;Even&quot;. If it&apos;s odd, show &quot;Odd&quot;.
                         </Typography>

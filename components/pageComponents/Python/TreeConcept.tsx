@@ -186,7 +186,7 @@ export default function TreeConcept() {
             </div>
 
             <div className="ds-controls" style={{ marginBottom: 8 }}>
-              <Typography variant="body2" sx={{ fontWeight: 600, color: '#475569' }}>
+              <Typography variant="body2" sx={{ fontWeight: 600, color: 'var(--ink-soft)' }}>
                 Animate traversal:
               </Typography>
               <Button size="small" variant="outlined" onClick={() => startTraversal('in', 'In-order')}>In-order</Button>
@@ -199,7 +199,7 @@ export default function TreeConcept() {
 
             <div style={{ overflowX: 'auto' }}>
               {nodes.length === 0 ? (
-                <Typography variant="body2" sx={{ color: '#94a3b8', fontStyle: 'italic', py: 4 }}>
+                <Typography variant="body2" sx={{ color: 'var(--ink-faint)', fontStyle: 'italic', py: 4 }}>
                   The tree is empty — insert a number to create the root.
                 </Typography>
               ) : (
@@ -210,19 +210,19 @@ export default function TreeConcept() {
                   viewBox={`0 0 ${Math.max(width, 320)} ${height}`}
                 >
                   {edges.map((e, i) => (
-                    <line key={`e-${i}`} x1={e.x1} y1={e.y1} x2={e.x2} y2={e.y2} stroke="#cbd5e1" strokeWidth={2} />
+                    <line key={`e-${i}`} x1={e.x1} y1={e.y1} x2={e.x2} y2={e.y2} stroke="var(--line-strong)" strokeWidth={2} />
                   ))}
                   {nodes.map((n) => {
                     const isActive = activeValue === n.value;
                     const wasVisited = visited.includes(n.value) && !isActive;
-                    let fill = '#dbeafe';
-                    let stroke = '#2563eb';
-                    if (isActive) { fill = '#fde68a'; stroke = '#f59e0b'; }
-                    else if (wasVisited) { fill = '#bbf7d0'; stroke = '#22c55e'; }
+                    let fill = 'var(--info-bg)';
+                    let stroke = 'var(--info)';
+                    if (isActive) { fill = 'var(--warning-bg)'; stroke = 'var(--warning)'; }
+                    else if (wasVisited) { fill = 'var(--success-bg)'; stroke = 'var(--success)'; }
                     return (
                       <g key={`n-${n.value}`}>
                         <circle cx={n.x} cy={n.y} r={R} fill={fill} stroke={stroke} strokeWidth={2} />
-                        <text x={n.x} y={n.y} textAnchor="middle" dominantBaseline="central" fontSize={14} fontWeight={600} fill="#1e293b">
+                        <text x={n.x} y={n.y} textAnchor="middle" dominantBaseline="central" fontSize={14} fontWeight={600} fill="var(--ink)">
                           {n.value}
                         </text>
                       </g>
@@ -241,9 +241,9 @@ export default function TreeConcept() {
             {message && order.length === 0 && <p className="ds-output">{message}</p>}
 
             <div className="ds-legend">
-              <span className="ds-legend-item"><span className="ds-swatch" style={{ background: '#dbeafe', borderColor: '#2563eb' }} /> Node</span>
-              <span className="ds-legend-item"><span className="ds-swatch" style={{ background: '#fde68a', borderColor: '#f59e0b' }} /> Visiting now</span>
-              <span className="ds-legend-item"><span className="ds-swatch" style={{ background: '#bbf7d0', borderColor: '#22c55e' }} /> Already visited</span>
+              <span className="ds-legend-item"><span className="ds-swatch" style={{ background: 'var(--info-bg)', borderColor: 'var(--info)' }} /> Node</span>
+              <span className="ds-legend-item"><span className="ds-swatch" style={{ background: 'var(--warning-bg)', borderColor: 'var(--warning)' }} /> Visiting now</span>
+              <span className="ds-legend-item"><span className="ds-swatch" style={{ background: 'var(--success-bg)', borderColor: 'var(--success)' }} /> Already visited</span>
             </div>
           </div>
         </Section>

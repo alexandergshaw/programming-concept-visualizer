@@ -24,9 +24,9 @@ const ParameterBasics: React.FC = () => {
 
 greet(); // "Hello World!"
 greet("Alice"); // "Hello Alice!"`,
-              titleColor: '#1976d2',
-              backgroundColor: '#f0f7ff', 
-              codeBackgroundColor: '#f8fafc'
+              titleColor: 'var(--info)',
+              backgroundColor: 'var(--info-bg)', 
+              codeBackgroundColor: 'var(--paper-sunken)'
             },
             {
               title: '📦 Rest & Spread',
@@ -38,9 +38,9 @@ function sum(...numbers) {
 
 // Spread: expand array
 sum(...[1, 2, 3]); // same as sum(1, 2, 3)`,
-              titleColor: '#1976d2',
-              backgroundColor: '#fff7ed',
-              codeBackgroundColor: '#f8fafc'
+              titleColor: 'var(--info)',
+              backgroundColor: 'var(--warning-bg)',
+              codeBackgroundColor: 'var(--paper-sunken)'
             }
           ]}
         />

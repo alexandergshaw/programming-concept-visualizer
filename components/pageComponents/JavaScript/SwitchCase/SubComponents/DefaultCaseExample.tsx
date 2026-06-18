@@ -8,25 +8,25 @@ const DefaultCaseExample: React.FC = () => {
     {
       label: 'Switch Statement',
       part: 'switch (role)',
-      color: '#4caf50',
+      color: 'var(--success)',
       desc: 'Evaluates user role'
     },
     {
       label: 'Admin Case',
       part: 'case "admin":\n    return "Full access";',
-      color: '#2196f3',
+      color: 'var(--info)',
       desc: 'Admin gets full access'
     },
     {
       label: 'User Case',
       part: 'case "user":\n    return "Limited access";',
-      color: '#ff9800',
+      color: 'var(--warning)',
       desc: 'User gets limited access'
     },
     {
       label: 'Default Case',
       part: 'default:\n    return "No access";',
-      color: '#f44336',
+      color: 'var(--danger)',
       desc: 'Default handles unknown roles'
     }
   ];

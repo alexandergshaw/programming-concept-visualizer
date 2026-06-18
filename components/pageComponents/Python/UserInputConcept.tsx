@@ -421,10 +421,10 @@ export default function UserInputConcept() {
                                     code: line.code,
                                     comment: line.comment,
                                     style: shouldHighlight ? { 
-                                        backgroundColor: '#fff3e0', 
+                                        backgroundColor: 'var(--warning-bg)', 
                                         padding: '4px 8px', 
                                         borderRadius: '4px',
-                                        border: '2px solid #ff9800',
+                                        border: '2px solid var(--warning)',
                                         fontWeight: 'bold',
                                         marginBottom: '8px',
                                         display: 'block'
@@ -443,10 +443,10 @@ export default function UserInputConcept() {
                                 comment: line.comment,
                                 style: line.highlight
                                     ? {
-                                        backgroundColor: '#fff3e0',
+                                        backgroundColor: 'var(--warning-bg)',
                                         padding: '4px 8px',
                                         borderRadius: '4px',
-                                        border: '2px solid #ff9800',
+                                        border: '2px solid var(--warning)',
                                         fontWeight: 'bold',
                                         marginBottom: '8px',
                                         display: 'block'

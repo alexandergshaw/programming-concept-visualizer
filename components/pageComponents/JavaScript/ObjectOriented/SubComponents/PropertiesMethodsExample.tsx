@@ -13,25 +13,25 @@ const PropertiesMethodsExample: React.FC = () => {
     {
       label: 'Property Access',
       part: 'person.name',
-      color: '#e91e63',
+      color: 'var(--feature)',
       desc: 'Access object properties using dot notation'
     },
     {
       label: 'Property Modification',
       part: 'person.age = 31;',
-      color: '#4caf50',
+      color: 'var(--success)',
       desc: 'Change property values after object creation'
     },
     {
       label: 'Method Call',
       part: 'person.greet()',
-      color: '#2196f3',
+      color: 'var(--info)',
       desc: 'Execute methods on the object instance'
     },
     {
       label: 'Method with Parameters',
       part: 'person.setAge(32)',
-      color: '#ff9800',
+      color: 'var(--warning)',
       desc: 'Call methods that accept parameters to modify the object'
     }
   ];

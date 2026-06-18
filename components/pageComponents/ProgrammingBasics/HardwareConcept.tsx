@@ -18,21 +18,21 @@ const hardwareSteps = [
     label: 'Storage',
     icon: <StorageIcon color="warning" sx={{ fontSize: 54, mb: 1 }} />,
     desc: 'Programs and data are stored here long-term (SSD/HDD).',
-    highlight: { bgcolor: '#fffde7', border: '2px solid #ffe082' },
+    highlight: { bgcolor: 'var(--warning-bg)', border: '2px solid var(--warning)' },
   },
   {
     key: 'ram',
     label: 'RAM',
     icon: <MemoryIcon color="primary" sx={{ fontSize: 54, mb: 1 }} />,
     desc: 'Data and instructions are loaded into RAM for fast, temporary access.',
-    highlight: { bgcolor: '#e3f2fd', border: '2px solid #90caf9' },
+    highlight: { bgcolor: 'var(--info-bg)', border: '2px solid var(--info)' },
   },
   {
     key: 'cpu',
     label: 'CPU',
     icon: <DeveloperBoardIcon color="success" sx={{ fontSize: 54, mb: 1 }} />,
     desc: 'The CPU fetches instructions from RAM and executes them.',
-    highlight: { bgcolor: '#e8f5e9', border: '2px solid #81c784' },
+    highlight: { bgcolor: 'var(--success-bg)', border: '2px solid var(--success)' },
   },
 ];
 
@@ -121,7 +121,7 @@ export default function HardwareConcept() {
                   <ArrowForwardIcon
                     sx={{
                       fontSize: 40,
-                      color: '#bdbdbd',
+                      color: 'var(--line-strong)',
                       mx: isMd ? 0 : 2,
                       my: isMd ? 2 : 0,
                       transform: isMd ? 'rotate(90deg)' : 'none',

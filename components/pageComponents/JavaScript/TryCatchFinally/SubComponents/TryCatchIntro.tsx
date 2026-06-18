@@ -36,7 +36,7 @@ const TryCatchIntro: React.FC = () => {
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1, mb: { xs: 2, sm: 0 } }}>
               <FontAwesomeIcon 
                 icon={faExclamationTriangle} 
-                style={{ fontSize: 40, color: '#3f51b5' }}
+                style={{ fontSize: 40, color: 'var(--info)' }}
               />
               <Typography fontWeight={600} sx={{ mt: 1 }}>Try Block</Typography>
               <Typography variant="body2" sx={{ textAlign: 'center', px: 2 }}>
@@ -49,7 +49,7 @@ const TryCatchIntro: React.FC = () => {
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1, mb: { xs: 2, sm: 0 } }}>
               <FontAwesomeIcon 
                 icon={faShield} 
-                style={{ fontSize: 40, color: '#4caf50' }}
+                style={{ fontSize: 40, color: 'var(--success)' }}
               />
               <Typography fontWeight={600} sx={{ mt: 1 }}>Catch Block</Typography>
               <Typography variant="body2" sx={{ textAlign: 'center', px: 2 }}>
@@ -62,7 +62,7 @@ const TryCatchIntro: React.FC = () => {
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
               <FontAwesomeIcon 
                 icon={faBroom} 
-                style={{ fontSize: 40, color: '#ff9800' }}
+                style={{ fontSize: 40, color: 'var(--warning)' }}
               />
               <Typography fontWeight={600} sx={{ mt: 1 }}>Finally Block</Typography>
               <Typography variant="body2" sx={{ textAlign: 'center', px: 2 }}>
@@ -72,15 +72,15 @@ const TryCatchIntro: React.FC = () => {
           </Box>
         </Box>
 
-        <Box sx={{ mt: 3, p: 2, bgcolor: '#f5f5f5', borderRadius: 1, border: '1px dashed #ccc' }}>
+        <Box sx={{ mt: 3, p: 2, bgcolor: 'var(--paper-raised)', borderRadius: 1, border: '1px dashed var(--line)' }}>
           <Typography sx={{ fontFamily: 'monospace', fontSize: '0.9rem', whiteSpace: 'pre-wrap' }}>
-            <span style={{ color: '#777' }}>{/* The pattern is always: */}</span><br/>
-            <span style={{ color: '#0066cc' }}>try</span> {'{'}<br/>
-            &nbsp;&nbsp;<span style={{ color: '#777' }}>{/* Risky code that might fail */}</span><br/>
-            {'}'} <span style={{ color: '#0066cc' }}>catch</span> (error) {'{'}<br/>
-            &nbsp;&nbsp;<span style={{ color: '#777' }}>{/* Handle the error gracefully */}</span><br/>
-            {'}'} <span style={{ color: '#0066cc' }}>finally</span> {'{'}<br/>
-            &nbsp;&nbsp;<span style={{ color: '#777' }}>{/* Cleanup code (always runs) */}</span><br/>
+            <span style={{ color: 'var(--ink-soft)' }}>{/* The pattern is always: */}</span><br/>
+            <span style={{ color: 'var(--info)' }}>try</span> {'{'}<br/>
+            &nbsp;&nbsp;<span style={{ color: 'var(--ink-soft)' }}>{/* Risky code that might fail */}</span><br/>
+            {'}'} <span style={{ color: 'var(--info)' }}>catch</span> (error) {'{'}<br/>
+            &nbsp;&nbsp;<span style={{ color: 'var(--ink-soft)' }}>{/* Handle the error gracefully */}</span><br/>
+            {'}'} <span style={{ color: 'var(--info)' }}>finally</span> {'{'}<br/>
+            &nbsp;&nbsp;<span style={{ color: 'var(--ink-soft)' }}>{/* Cleanup code (always runs) */}</span><br/>
             {'}'}
           </Typography>
         </Box>
@@ -89,9 +89,9 @@ const TryCatchIntro: React.FC = () => {
       {/* Key concepts explanation */}
       <Section title="The Three Key Blocks">
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, mt: 2 }}>
-          <Paper sx={{ p: 2, bgcolor: '#f3f6ff', borderLeft: '4px solid #3f51b5', borderRadius: '4px' }}>
+          <Paper sx={{ p: 2, bgcolor: 'var(--paper-raised)', borderLeft: '4px solid var(--info)', borderRadius: '4px' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
-              <FontAwesomeIcon icon={faExclamationTriangle} style={{ fontSize: 20, color: '#3f51b5' }} />
+              <FontAwesomeIcon icon={faExclamationTriangle} style={{ fontSize: 20, color: 'var(--info)' }} />
               <Typography fontWeight={600} sx={{ fontSize: '1.1rem' }}>1. Try Block</Typography>
             </Box>
             <Typography>
@@ -105,22 +105,22 @@ const TryCatchIntro: React.FC = () => {
             </ul>
           </Paper>
           
-          <Paper sx={{ p: 2, bgcolor: '#f0f9f0', borderLeft: '4px solid #4caf50', borderRadius: '4px' }}>
+          <Paper sx={{ p: 2, bgcolor: 'var(--success-bg)', borderLeft: '4px solid var(--success)', borderRadius: '4px' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
-              <FontAwesomeIcon icon={faShield} style={{ fontSize: 20, color: '#4caf50' }} />
+              <FontAwesomeIcon icon={faShield} style={{ fontSize: 20, color: 'var(--success)' }} />
               <Typography fontWeight={600} sx={{ fontSize: '1.1rem' }}>2. Catch Block</Typography>
             </Box>
             <Typography>
               Runs only if an error occurs in the try block. Receives the error object with details about what went wrong.
             </Typography>
-            <Box sx={{ mt: 1, p: 1, bgcolor: '#e8f5e9', borderRadius: 1, fontFamily: 'monospace', fontSize: '0.9rem' }}>
+            <Box sx={{ mt: 1, p: 1, bgcolor: 'var(--success-bg)', borderRadius: 1, fontFamily: 'monospace', fontSize: '0.9rem' }}>
               catch (error) {'{ console.log(error.message); }'}
             </Box>
           </Paper>
           
-          <Paper sx={{ p: 2, bgcolor: '#fff8e6', borderLeft: '4px solid #ff9800', borderRadius: '4px' }}>
+          <Paper sx={{ p: 2, bgcolor: 'var(--warning-bg)', borderLeft: '4px solid var(--warning)', borderRadius: '4px' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
-              <FontAwesomeIcon icon={faBroom} style={{ fontSize: 20, color: '#ff9800' }} />
+              <FontAwesomeIcon icon={faBroom} style={{ fontSize: 20, color: 'var(--warning)' }} />
               <Typography fontWeight={600} sx={{ fontSize: '1.1rem' }}>3. Finally Block (Optional)</Typography>
             </Box>
             <Typography>

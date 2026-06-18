@@ -13,49 +13,49 @@ const FinallyBlockExample: React.FC = () => {
     {
       label: 'Function Declaration',
       part: 'function processData(inputData)',
-      color: '#e91e63',
+      color: 'var(--feature)',
       desc: 'Function that processes data and always cleans up resources'
     },
     {
       label: 'Try Block',
       part: 'try',
-      color: '#4caf50',
+      color: 'var(--success)',
       desc: 'Contains code that might throw an error'
     },
     {
       label: 'Data Processing',
       part: 'let processed = inputData.toUpperCase();',
-      color: '#2196f3',
+      color: 'var(--info)',
       desc: 'Process the input data - this might fail if input is not a string'
     },
     {
       label: 'Success Return',
       part: 'return processed;',
-      color: '#ff9800',
+      color: 'var(--warning)',
       desc: 'Return the processed result on success'
     },
     {
       label: 'Catch Block',
       part: 'catch (error)',
-      color: '#f44336',
+      color: 'var(--danger)',
       desc: 'Handles any errors that occur in the try block'
     },
     {
       label: 'Error Handling',
       part: 'return "Error: Invalid input";',
-      color: '#9c27b0',
+      color: 'var(--feature)',
       desc: 'Return an error message when processing fails'
     },
     {
       label: 'Finally Block',
       part: 'finally',
-      color: '#795548',
+      color: 'var(--ink-soft)',
       desc: 'Always executes - perfect for cleanup operations'
     },
     {
       label: 'Cleanup Code',
       part: 'console.log("Processing completed - resources cleaned up");',
-      color: '#607d8b',
+      color: 'var(--ink-soft)',
       desc: 'Cleanup code that runs regardless of success or failure'
     }
   ];

@@ -57,7 +57,7 @@ const ConstantsAndMultipleComplexitiesSection = () => {
             ...selectedMultipliers.map(m => ({
                 label: `${m}n`,
                 data: chartLabels.map(n => m * n),
-                borderColor: '#1976d2',
+                borderColor: 'var(--info)',
                 backgroundColor: 'rgba(25, 118, 210, 0.1)',
                 tension: 0.2,
                 borderWidth: 2,
@@ -66,7 +66,7 @@ const ConstantsAndMultipleComplexitiesSection = () => {
                 ? [{
                     label: 'n²',
                     data: chartLabels.map(n => n * n),
-                    borderColor: '#e53935',
+                    borderColor: 'var(--danger)',
                     backgroundColor: 'rgba(229, 57, 53, 0.1)',
                     tension: 0.2,
                     borderWidth: 2,
@@ -75,7 +75,7 @@ const ConstantsAndMultipleComplexitiesSection = () => {
                 ? [{
                     label: 'log n',
                     data: chartLabels.map(n => n > 0 ? Math.log2(n) : 0),
-                    borderColor: '#ff9800',
+                    borderColor: 'var(--warning)',
                     backgroundColor: 'rgba(255, 152, 0, 0.1)',
                     tension: 0.2,
                     borderWidth: 2,
@@ -90,7 +90,7 @@ const ConstantsAndMultipleComplexitiesSection = () => {
             </p>
             <div style={{ marginBottom: 32 }}>
                 <b>Dropping Constants</b>
-                <div style={{ margin: '10px 0 18px 0', color: '#444', fontSize: 15 }}>
+                <div style={{ margin: '10px 0 18px 0', color: 'var(--ink)', fontSize: 15 }}>
                     <b>What is a constant?</b> In Big O, a <b>constant</b> is any fixed amount of work that doesn&apos;t change as your input grows. For example, printing a message once, or doing a small number of extra steps before or after a loop, is a constant. Even if you do something 10 or 100 times, that&apos;s still a constant if it doesn&apos;t depend on the size of your input.
                 </div>
                 <StepThroughCodeAnimation
@@ -133,7 +133,7 @@ const ConstantsAndMultipleComplexitiesSection = () => {
                         },
                     ]}
                 />
-                <div style={{ marginTop: 12, color: '#444', fontSize: 15 }}>
+                <div style={{ marginTop: 12, color: 'var(--ink)', fontSize: 15 }}>
                     <b>Why?</b> Constants and constant multipliers don&apos;t change how fast your code grows as n gets huge. They only affect the exact number of steps, not the overall trend.
                 </div>
                 <div style={{ margin: '24px 0 0 0', maxWidth: 520 }}>
@@ -163,7 +163,7 @@ const ConstantsAndMultipleComplexitiesSection = () => {
                                 onChange={() => setShowQuadratic(v => !v)}
                                 style={{ marginRight: 6 }}
                             />
-                            <span style={{ color: '#e53935' }}>Quadratic (n²)</span>
+                            <span style={{ color: 'var(--danger)' }}>Quadratic (n²)</span>
                         </label>
                         <label style={{ fontSize: 14, cursor: 'pointer', marginRight: 8 }}>
                             <input
@@ -172,11 +172,11 @@ const ConstantsAndMultipleComplexitiesSection = () => {
                                 onChange={() => setShowLog(v => !v)}
                                 style={{ marginRight: 6 }}
                             />
-                            <span style={{ color: '#ff9800' }}>Logarithmic (log n)</span>
+                            <span style={{ color: 'var(--warning)' }}>Logarithmic (log n)</span>
                         </label>
                     </div>
                     <Line data={chartDataWithShapes} options={chartOptions} height={260} />
-                    <div style={{ color: '#444', fontSize: 14, marginTop: 8 }}>
+                    <div style={{ color: 'var(--ink)', fontSize: 14, marginTop: 8 }}>
                         <div>
                             <b>What do you notice?</b>
                         </div>
@@ -196,7 +196,7 @@ const ConstantsAndMultipleComplexitiesSection = () => {
             </div>
             <div style={{ marginBottom: 32 }}>
                 <b>Multiple Complexities</b>
-                <div style={{ margin: '10px 0 18px 0', color: '#444', fontSize: 15 }}>
+                <div style={{ margin: '10px 0 18px 0', color: 'var(--ink)', fontSize: 15 }}>
                     <b>What do we mean by multiple complexities?</b> Sometimes, your code has more than one part that grows at a different rate. For example, you might have a loop that runs <b>n</b> times and then a nested loop that runs <b>n²</b> times.
                 </div>
                 <StepThroughCodeAnimation
@@ -256,7 +256,7 @@ const ConstantsAndMultipleComplexitiesSection = () => {
                         },
                     ]}
                 />
-                <div style={{ marginTop: 12, color: '#444', fontSize: 15 }}>
+                <div style={{ marginTop: 12, color: 'var(--ink)', fontSize: 15 }}>
                     <b>Why?</b> When you have several parts with different complexities, the slowest-growing part becomes insignificant for large n. Only the fastest-growing term matters for Big O.
                 </div>
                 <div style={{ margin: '32px 0 0 0', maxWidth: 520 }}>
@@ -269,7 +269,7 @@ const ConstantsAndMultipleComplexitiesSection = () => {
                                 onChange={() => setShowLinear(v => !v)}
                                 style={{ marginRight: 6 }}
                             />
-                            <span style={{ color: '#1976d2' }}>Linear (n)</span>
+                            <span style={{ color: 'var(--info)' }}>Linear (n)</span>
                         </label>
                         <label style={{ fontSize: 14, cursor: 'pointer', marginRight: 8 }}>
                             <input
@@ -278,7 +278,7 @@ const ConstantsAndMultipleComplexitiesSection = () => {
                                 onChange={() => setShowQuadratic(v => !v)}
                                 style={{ marginRight: 6 }}
                             />
-                            <span style={{ color: '#e53935' }}>Quadratic (n²)</span>
+                            <span style={{ color: 'var(--danger)' }}>Quadratic (n²)</span>
                         </label>
                         <label style={{ fontSize: 14, cursor: 'pointer', marginRight: 8 }}>
                             <input
@@ -287,7 +287,7 @@ const ConstantsAndMultipleComplexitiesSection = () => {
                                 onChange={() => setShowCombined(v => !v)}
                                 style={{ marginRight: 6 }}
                             />
-                            <span style={{ color: '#43a047' }}>Total (n + n²)</span>
+                            <span style={{ color: 'var(--success)' }}>Total (n + n²)</span>
                         </label>
                     </div>
                     <Line
@@ -298,7 +298,7 @@ const ConstantsAndMultipleComplexitiesSection = () => {
                                     ? [{
                                         label: 'n',
                                         data: chartLabels,
-                                        borderColor: '#1976d2',
+                                        borderColor: 'var(--info)',
                                         backgroundColor: 'rgba(25, 118, 210, 0.1)',
                                         tension: 0.2,
                                     }] : []),
@@ -306,7 +306,7 @@ const ConstantsAndMultipleComplexitiesSection = () => {
                                     ? [{
                                         label: 'n²',
                                         data: chartLabels.map(n => n * n),
-                                        borderColor: '#e53935',
+                                        borderColor: 'var(--danger)',
                                         backgroundColor: 'rgba(229, 57, 53, 0.1)',
                                         tension: 0.2,
                                     }] : []),
@@ -314,7 +314,7 @@ const ConstantsAndMultipleComplexitiesSection = () => {
                                     ? [{
                                         label: 'n + n²',
                                         data: chartLabels.map(n => n + n * n),
-                                        borderColor: '#43a047',
+                                        borderColor: 'var(--success)',
                                         backgroundColor: 'rgba(67, 160, 71, 0.1)',
                                         borderDash: [8, 4],
                                         tension: 0.2,
@@ -337,7 +337,7 @@ const ConstantsAndMultipleComplexitiesSection = () => {
                         }}
                         height={260}
                     />
-                    <div style={{ color: '#444', fontSize: 14, marginTop: 8 }}>
+                    <div style={{ color: 'var(--ink)', fontSize: 14, marginTop: 8 }}>
                         <div>
                             <b>What do you notice?</b>
                         </div>

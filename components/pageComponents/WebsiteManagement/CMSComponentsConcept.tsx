@@ -10,7 +10,7 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 export default function CMSComponentsConcept() {
   return (
     <Box sx={{ p: 3, maxWidth: 1000, mx: 'auto' }}>
-      <Typography variant="h4" sx={{ mb: 2, fontWeight: 700, color: '#1e293b', textAlign: 'center' }}>
+      <Typography variant="h4" sx={{ mb: 2, fontWeight: 700, color: 'var(--ink)', textAlign: 'center' }}>
         3 Basic Components of a CMS
       </Typography>
       
@@ -24,14 +24,14 @@ export default function CMSComponentsConcept() {
             maxWidth: 700,
             p: 4,
             borderRadius: 2,
-            border: '3px solid #3b82f6',
-            background: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)',
+            border: '3px solid var(--info)',
+            background: 'linear-gradient(135deg, var(--info-bg) 0%, var(--info-bg) 100%)',
           }}
         >
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
             <Box
               sx={{
-                background: '#3b82f6',
+                background: 'var(--info)',
                 borderRadius: '50%',
                 width: 50,
                 height: 50,
@@ -45,14 +45,14 @@ export default function CMSComponentsConcept() {
               </Typography>
             </Box>
             <Box sx={{ flex: 1 }}>
-              <Typography variant="h5" sx={{ fontWeight: 700, color: '#1e293b' }}>
+              <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--ink)' }}>
                 The Editor
               </Typography>
-              <Typography variant="body2" sx={{ color: '#64748b', mt: 0.5 }}>
+              <Typography variant="body2" sx={{ color: 'var(--ink-soft)', mt: 0.5 }}>
                 Content Management Application - CMA
               </Typography>
             </Box>
-            <CreateIcon sx={{ fontSize: 60, color: '#3b82f6' }} />
+            <CreateIcon sx={{ fontSize: 60, color: 'var(--info)' }} />
           </Box>
 
           {/* More realistic CMS editor interface */}
@@ -60,39 +60,39 @@ export default function CMSComponentsConcept() {
             sx={{
               background: 'white',
               borderRadius: 1,
-              border: '2px solid #3b82f6',
+              border: '2px solid var(--info)',
               overflow: 'hidden',
             }}
           >
-            <Box sx={{ background: '#f8fafc', borderBottom: '1px solid #e2e8f0', p: 1.5, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <Typography variant="body2" sx={{ fontWeight: 600, color: '#334155' }}>
+            <Box sx={{ background: 'var(--paper-sunken)', borderBottom: '1px solid var(--line)', p: 1.5, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <Typography variant="body2" sx={{ fontWeight: 600, color: 'var(--ink)' }}>
                 CMS Dashboard • Edit Page
               </Typography>
-              <Box sx={{ width: 88, height: 28, borderRadius: 0.5, background: '#3b82f6' }} />
+              <Box sx={{ width: 88, height: 28, borderRadius: 0.5, background: 'var(--info)' }} />
             </Box>
 
             <Box sx={{ display: 'flex', minHeight: 220 }}>
-              <Box sx={{ width: 120, background: '#f1f5f9', borderRight: '1px solid #e2e8f0', p: 1 }}>
-                <Box sx={{ height: 24, background: '#3b82f6', borderRadius: 0.5, mb: 1 }} />
-                <Box sx={{ height: 20, background: '#cbd5e1', borderRadius: 0.5, mb: 1 }} />
-                <Box sx={{ height: 20, background: '#cbd5e1', borderRadius: 0.5, mb: 1 }} />
-                <Box sx={{ height: 20, background: '#cbd5e1', borderRadius: 0.5 }} />
+              <Box sx={{ width: 120, background: 'var(--paper-sunken)', borderRight: '1px solid var(--line)', p: 1 }}>
+                <Box sx={{ height: 24, background: 'var(--info)', borderRadius: 0.5, mb: 1 }} />
+                <Box sx={{ height: 20, background: 'var(--line-strong)', borderRadius: 0.5, mb: 1 }} />
+                <Box sx={{ height: 20, background: 'var(--line-strong)', borderRadius: 0.5, mb: 1 }} />
+                <Box sx={{ height: 20, background: 'var(--line-strong)', borderRadius: 0.5 }} />
               </Box>
 
               <Box sx={{ flex: 1, p: 2 }}>
-                <Box sx={{ height: 34, background: '#f8fafc', border: '1px solid #cbd5e1', borderRadius: 0.5, mb: 1.5 }} />
+                <Box sx={{ height: 34, background: 'var(--paper-sunken)', border: '1px solid var(--line-strong)', borderRadius: 0.5, mb: 1.5 }} />
                 <Box sx={{ display: 'flex', gap: 0.75, mb: 1.5 }}>
-                  <Box sx={{ width: 22, height: 22, background: '#e2e8f0', borderRadius: 0.5 }} />
-                  <Box sx={{ width: 22, height: 22, background: '#e2e8f0', borderRadius: 0.5 }} />
-                  <Box sx={{ width: 22, height: 22, background: '#e2e8f0', borderRadius: 0.5 }} />
-                  <Box sx={{ width: 22, height: 22, background: '#e2e8f0', borderRadius: 0.5 }} />
+                  <Box sx={{ width: 22, height: 22, background: 'var(--line)', borderRadius: 0.5 }} />
+                  <Box sx={{ width: 22, height: 22, background: 'var(--line)', borderRadius: 0.5 }} />
+                  <Box sx={{ width: 22, height: 22, background: 'var(--line)', borderRadius: 0.5 }} />
+                  <Box sx={{ width: 22, height: 22, background: 'var(--line)', borderRadius: 0.5 }} />
                 </Box>
-                <Box sx={{ height: 110, background: '#f8fafc', border: '1px solid #cbd5e1', borderRadius: 0.5, mb: 1.5 }} />
-                <Box sx={{ width: 110, height: 30, background: '#3b82f6', borderRadius: 0.5 }} />
+                <Box sx={{ height: 110, background: 'var(--paper-sunken)', border: '1px solid var(--line-strong)', borderRadius: 0.5, mb: 1.5 }} />
+                <Box sx={{ width: 110, height: 30, background: 'var(--info)', borderRadius: 0.5 }} />
               </Box>
             </Box>
 
-            <Typography variant="body2" sx={{ color: '#64748b', textAlign: 'center', fontStyle: 'italic', p: 2, borderTop: '1px solid #e2e8f0' }}>
+            <Typography variant="body2" sx={{ color: 'var(--ink-soft)', textAlign: 'center', fontStyle: 'italic', p: 2, borderTop: '1px solid var(--line)' }}>
               A typical CMS editor with menu, text tools, and publish controls
             </Typography>
           </Paper>
@@ -100,11 +100,11 @@ export default function CMSComponentsConcept() {
 
         {/* Arrow Down */}
         <Box sx={{ textAlign: 'center' }}>
-          <ArrowDownwardIcon sx={{ fontSize: 40, color: '#64748b' }} />
-          <Typography variant="body2" sx={{ color: '#64748b', fontWeight: 600 }}>
+          <ArrowDownwardIcon sx={{ fontSize: 40, color: 'var(--ink-soft)' }} />
+          <Typography variant="body2" sx={{ color: 'var(--ink-soft)', fontWeight: 600 }}>
             Stores content in
           </Typography>
-          <ArrowDownwardIcon sx={{ fontSize: 40, color: '#64748b' }} />
+          <ArrowDownwardIcon sx={{ fontSize: 40, color: 'var(--ink-soft)' }} />
         </Box>
 
         {/* 2. Database */}
@@ -115,14 +115,14 @@ export default function CMSComponentsConcept() {
             maxWidth: 700,
             p: 4,
             borderRadius: 2,
-            border: '3px solid #8b5cf6',
-            background: 'linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%)',
+            border: '3px solid var(--feature)',
+            background: 'linear-gradient(135deg, var(--feature-bg) 0%, var(--feature-bg) 100%)',
           }}
         >
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
             <Box
               sx={{
-                background: '#8b5cf6',
+                background: 'var(--feature)',
                 borderRadius: '50%',
                 width: 50,
                 height: 50,
@@ -136,14 +136,14 @@ export default function CMSComponentsConcept() {
               </Typography>
             </Box>
             <Box sx={{ flex: 1 }}>
-              <Typography variant="h5" sx={{ fontWeight: 700, color: '#1e293b' }}>
+              <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--ink)' }}>
                 Content Storage
               </Typography>
-              <Typography variant="body2" sx={{ color: '#64748b', mt: 0.5 }}>
+              <Typography variant="body2" sx={{ color: 'var(--ink-soft)', mt: 0.5 }}>
                 Database
               </Typography>
             </Box>
-            <StorageIcon sx={{ fontSize: 60, color: '#8b5cf6' }} />
+            <StorageIcon sx={{ fontSize: 60, color: 'var(--feature)' }} />
           </Box>
 
           {/* More realistic database/admin table view */}
@@ -151,36 +151,36 @@ export default function CMSComponentsConcept() {
             sx={{
               background: 'white',
               borderRadius: 1,
-              border: '2px solid #8b5cf6',
+              border: '2px solid var(--feature)',
               overflow: 'hidden',
             }}
           >
-            <Box sx={{ background: '#faf5ff', borderBottom: '1px solid #ddd6fe', p: 1.5, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <Typography variant="body2" sx={{ fontWeight: 600, color: '#5b21b6' }}>
+            <Box sx={{ background: 'var(--feature-bg)', borderBottom: '1px solid var(--feature-bg)', p: 1.5, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <Typography variant="body2" sx={{ fontWeight: 600, color: 'var(--feature)' }}>
                 content_posts table
               </Typography>
-              <Box sx={{ width: 80, height: 24, background: '#8b5cf6', borderRadius: 0.5 }} />
+              <Box sx={{ width: 80, height: 24, background: 'var(--feature)', borderRadius: 0.5 }} />
             </Box>
 
             <Box sx={{ p: 2 }}>
               <Box sx={{ display: 'grid', gridTemplateColumns: '60px 1.6fr 100px 120px', gap: 1, mb: 1 }}>
-                <Box sx={{ background: '#ede9fe', height: 26, borderRadius: 0.5 }} />
-                <Box sx={{ background: '#ede9fe', height: 26, borderRadius: 0.5 }} />
-                <Box sx={{ background: '#ede9fe', height: 26, borderRadius: 0.5 }} />
-                <Box sx={{ background: '#ede9fe', height: 26, borderRadius: 0.5 }} />
+                <Box sx={{ background: 'var(--feature-bg)', height: 26, borderRadius: 0.5 }} />
+                <Box sx={{ background: 'var(--feature-bg)', height: 26, borderRadius: 0.5 }} />
+                <Box sx={{ background: 'var(--feature-bg)', height: 26, borderRadius: 0.5 }} />
+                <Box sx={{ background: 'var(--feature-bg)', height: 26, borderRadius: 0.5 }} />
               </Box>
 
               {[1, 2, 3, 4].map((row) => (
                 <Box key={row} sx={{ display: 'grid', gridTemplateColumns: '60px 1.6fr 100px 120px', gap: 1, mb: 1 }}>
-                  <Box sx={{ background: '#f5f3ff', height: 24, borderRadius: 0.5 }} />
-                  <Box sx={{ background: '#f5f3ff', height: 24, borderRadius: 0.5 }} />
-                  <Box sx={{ background: row % 2 === 0 ? '#ddd6fe' : '#f5f3ff', height: 24, borderRadius: 0.5 }} />
-                  <Box sx={{ background: '#f5f3ff', height: 24, borderRadius: 0.5 }} />
+                  <Box sx={{ background: 'var(--feature-bg)', height: 24, borderRadius: 0.5 }} />
+                  <Box sx={{ background: 'var(--feature-bg)', height: 24, borderRadius: 0.5 }} />
+                  <Box sx={{ background: row % 2 === 0 ? 'var(--feature-bg)' : 'var(--feature-bg)', height: 24, borderRadius: 0.5 }} />
+                  <Box sx={{ background: 'var(--feature-bg)', height: 24, borderRadius: 0.5 }} />
                 </Box>
               ))}
             </Box>
 
-            <Typography variant="body2" sx={{ color: '#64748b', textAlign: 'center', fontStyle: 'italic', p: 2, borderTop: '1px solid #ede9fe' }}>
+            <Typography variant="body2" sx={{ color: 'var(--ink-soft)', textAlign: 'center', fontStyle: 'italic', p: 2, borderTop: '1px solid var(--feature-bg)' }}>
               A database view storing page titles, status, and publish dates
             </Typography>
           </Paper>
@@ -188,11 +188,11 @@ export default function CMSComponentsConcept() {
 
         {/* Arrow Down */}
         <Box sx={{ textAlign: 'center' }}>
-          <ArrowDownwardIcon sx={{ fontSize: 40, color: '#64748b' }} />
-          <Typography variant="body2" sx={{ color: '#64748b', fontWeight: 600 }}>
+          <ArrowDownwardIcon sx={{ fontSize: 40, color: 'var(--ink-soft)' }} />
+          <Typography variant="body2" sx={{ color: 'var(--ink-soft)', fontWeight: 600 }}>
             Delivers content via
           </Typography>
-          <ArrowDownwardIcon sx={{ fontSize: 40, color: '#64748b' }} />
+          <ArrowDownwardIcon sx={{ fontSize: 40, color: 'var(--ink-soft)' }} />
         </Box>
 
         {/* 3. Content Delivery Application (CDA) */}
@@ -203,14 +203,14 @@ export default function CMSComponentsConcept() {
             maxWidth: 700,
             p: 4,
             borderRadius: 2,
-            border: '3px solid #10b981',
-            background: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)',
+            border: '3px solid var(--success)',
+            background: 'linear-gradient(135deg, var(--success-bg) 0%, var(--success-bg) 100%)',
           }}
         >
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
             <Box
               sx={{
-                background: '#10b981',
+                background: 'var(--success)',
                 borderRadius: '50%',
                 width: 50,
                 height: 50,
@@ -224,14 +224,14 @@ export default function CMSComponentsConcept() {
               </Typography>
             </Box>
             <Box sx={{ flex: 1 }}>
-              <Typography variant="h5" sx={{ fontWeight: 700, color: '#1e293b' }}>
+              <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--ink)' }}>
                 Your Live Website
               </Typography>
-              <Typography variant="body2" sx={{ color: '#64748b', mt: 0.5 }}>
+              <Typography variant="body2" sx={{ color: 'var(--ink-soft)', mt: 0.5 }}>
                 Content Delivery Application - CDA
               </Typography>
             </Box>
-            <PublicIcon sx={{ fontSize: 60, color: '#10b981' }} />
+            <PublicIcon sx={{ fontSize: 60, color: 'var(--success)' }} />
           </Box>
 
           {/* More realistic browser + live website view */}
@@ -239,31 +239,31 @@ export default function CMSComponentsConcept() {
             sx={{
               background: 'white',
               borderRadius: 1,
-              border: '2px solid #10b981',
+              border: '2px solid var(--success)',
               overflow: 'hidden',
             }}
           >
-            <Box sx={{ background: '#ecfdf5', borderBottom: '1px solid #bbf7d0', p: 1.25 }}>
+            <Box sx={{ background: 'var(--success-bg)', borderBottom: '1px solid var(--success-bg)', p: 1.25 }}>
               <Box sx={{ display: 'flex', gap: 0.75, mb: 1 }}>
-                <Box sx={{ width: 10, height: 10, borderRadius: '50%', background: '#ef4444' }} />
-                <Box sx={{ width: 10, height: 10, borderRadius: '50%', background: '#f59e0b' }} />
-                <Box sx={{ width: 10, height: 10, borderRadius: '50%', background: '#10b981' }} />
+                <Box sx={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--danger)' }} />
+                <Box sx={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--warning)' }} />
+                <Box sx={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--success)' }} />
               </Box>
-              <Box sx={{ height: 28, background: 'white', border: '1px solid #86efac', borderRadius: 1 }} />
+              <Box sx={{ height: 28, background: 'white', border: '1px solid var(--success-bg)', borderRadius: 1 }} />
             </Box>
 
             <Box sx={{ p: 2 }}>
-              <Box sx={{ height: 44, background: '#10b981', borderRadius: 0.5, mb: 1.5 }} />
-              <Box sx={{ height: 92, background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: 0.5, mb: 1.5 }} />
+              <Box sx={{ height: 44, background: 'var(--success)', borderRadius: 0.5, mb: 1.5 }} />
+              <Box sx={{ height: 92, background: 'var(--success-bg)', border: '1px solid var(--success-bg)', borderRadius: 0.5, mb: 1.5 }} />
               <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1.25, mb: 1.5 }}>
-                <Box sx={{ height: 62, background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 0.5 }} />
-                <Box sx={{ height: 62, background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 0.5 }} />
-                <Box sx={{ height: 62, background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 0.5 }} />
+                <Box sx={{ height: 62, background: 'var(--paper-sunken)', border: '1px solid var(--line)', borderRadius: 0.5 }} />
+                <Box sx={{ height: 62, background: 'var(--paper-sunken)', border: '1px solid var(--line)', borderRadius: 0.5 }} />
+                <Box sx={{ height: 62, background: 'var(--paper-sunken)', border: '1px solid var(--line)', borderRadius: 0.5 }} />
               </Box>
-              <Box sx={{ height: 32, width: 120, background: '#10b981', borderRadius: 0.5 }} />
+              <Box sx={{ height: 32, width: 120, background: 'var(--success)', borderRadius: 0.5 }} />
             </Box>
 
-            <Typography variant="body2" sx={{ color: '#64748b', textAlign: 'center', fontStyle: 'italic', p: 2, borderTop: '1px solid #dcfce7' }}>
+            <Typography variant="body2" sx={{ color: 'var(--ink-soft)', textAlign: 'center', fontStyle: 'italic', p: 2, borderTop: '1px solid var(--success-bg)' }}>
               A live website as visitors see it in their browser
             </Typography>
           </Paper>

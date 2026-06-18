@@ -19,40 +19,40 @@ export default function TernaryOperatorConcept() {
       <TableOfContents numbered>
         <Section title="Understanding the Ternary Operator">
           <TernaryBasics />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
-            <FontAwesomeIcon icon={faLightbulb} style={{ fontSize: 20, color: '#1976d2' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+            <FontAwesomeIcon icon={faLightbulb} style={{ fontSize: 20, color: 'var(--info)' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Now that you understand the basic syntax, let's see the ternary operator in action with an interactive example.
+              <strong style={{ color: 'var(--info)' }}>What&apos;s next:</strong> Now that you understand the basic syntax, let's see the ternary operator in action with an interactive example.
             </Typography>
           </Box>
         </Section>
 
         <Section title="Basic Ternary Examples">
           <BasicTernaryExample />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
-            <FontAwesomeIcon icon={faChain} style={{ fontSize: 20, color: '#1976d2' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+            <FontAwesomeIcon icon={faChain} style={{ fontSize: 20, color: 'var(--info)' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Simple ternary operators are great, but what happens when you need to handle multiple conditions? Let&apos;s explore chaining ternary operators together.
+              <strong style={{ color: 'var(--info)' }}>What&apos;s next:</strong> Simple ternary operators are great, but what happens when you need to handle multiple conditions? Let&apos;s explore chaining ternary operators together.
             </Typography>
           </Box>
         </Section>
 
         <Section title="Nested Ternary Operators">
           <NestedTernaryExample />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
-            <FontAwesomeIcon icon={faRocket} style={{ fontSize: 20, color: '#1976d2' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+            <FontAwesomeIcon icon={faRocket} style={{ fontSize: 20, color: 'var(--info)' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> You've mastered the basics and chaining. Now let's see how ternary operators are used in real-world development scenarios.
+              <strong style={{ color: 'var(--info)' }}>What&apos;s next:</strong> You've mastered the basics and chaining. Now let's see how ternary operators are used in real-world development scenarios.
             </Typography>
           </Box>
         </Section>
 
         <Section title="Advanced Ternary Patterns">
           <CompleteTernaryExample />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e8f5e9', p: 2, borderRadius: 1, mt: 2 }}>
-            <FontAwesomeIcon icon={faCheckCircle} style={{ fontSize: 20, color: '#4caf50' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--success-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+            <FontAwesomeIcon icon={faCheckCircle} style={{ fontSize: 20, color: 'var(--success)' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#4caf50' }}>Excellent work!</strong> You've mastered the ternary operator and can now write concise, readable conditional expressions in JavaScript.
+              <strong style={{ color: 'var(--success)' }}>Excellent work!</strong> You've mastered the ternary operator and can now write concise, readable conditional expressions in JavaScript.
             </Typography>
           </Box>
         </Section>

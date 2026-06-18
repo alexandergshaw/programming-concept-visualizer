@@ -164,7 +164,7 @@ const apiResponse = {
         </Typography>
         
         <Box sx={{ mb: 3 }}>
-          <Typography variant="subtitle1" fontWeight={600} gutterBottom sx={{ color: '#1976d2' }}>
+          <Typography variant="subtitle1" fontWeight={600} gutterBottom sx={{ color: 'var(--info)' }}>
             📄 XML Version
           </Typography>
           <CodePartsExplanation 
@@ -173,19 +173,19 @@ const apiResponse = {
               {
                 label: 'Attributes',
                 part: 'id="1" isbn="978-1234567890"',
-                color: '#ff9800',
+                color: 'var(--warning)',
                 desc: 'Additional data stored as element attributes'
               },
               {
                 label: 'Nested Elements',
                 part: '<author>\n      <firstName>Douglas</firstName>',
-                color: '#4caf50',
+                color: 'var(--success)',
                 desc: 'Hierarchical structure with nested elements'
               },
               {
                 label: 'Mixed Attributes',
                 part: '<price currency="USD">29.99</price>',
-                color: '#f44336',
+                color: 'var(--danger)',
                 desc: 'Combining attributes with text content'
               }
             ]}
@@ -193,7 +193,7 @@ const apiResponse = {
         </Box>
 
         <Box sx={{ mb: 3 }}>
-          <Typography variant="subtitle1" fontWeight={600} gutterBottom sx={{ color: '#ff9800' }}>
+          <Typography variant="subtitle1" fontWeight={600} gutterBottom sx={{ color: 'var(--warning)' }}>
             📋 JSON Version
           </Typography>
           <CodePartsExplanation 
@@ -202,19 +202,19 @@ const apiResponse = {
               {
                 label: 'Object Properties',
                 part: '"id": "1", "isbn": "978-1234567890"',
-                color: '#ff9800',
+                color: 'var(--warning)',
                 desc: 'Data stored as key-value pairs in objects'
               },
               {
                 label: 'Nested Objects',
                 part: '"author": {\n        "firstName": "Douglas"',
-                color: '#4caf50',
+                color: 'var(--success)',
                 desc: 'Hierarchical structure with nested objects'
               },
               {
                 label: 'Arrays',
                 part: '"categories": [\n        "Programming"',
-                color: '#9c27b0',
+                color: 'var(--feature)',
                 desc: 'Lists represented as arrays with typed values'
               }
             ]}
@@ -228,7 +228,7 @@ const apiResponse = {
           Feature Comparison
         </Typography>
         <Box sx={{ 
-          border: '1px solid #e0e0e0',
+          border: '1px solid var(--paper-sunken)',
           borderRadius: 2,
           overflow: 'hidden'
         }}>
@@ -236,12 +236,12 @@ const apiResponse = {
           <Box sx={{ 
             display: 'grid',
             gridTemplateColumns: '1fr 2fr 2fr',
-            bgcolor: '#f5f5f5',
-            borderBottom: '1px solid #e0e0e0'
+            bgcolor: 'var(--paper-raised)',
+            borderBottom: '1px solid var(--paper-sunken)'
           }}>
             <Box sx={{ p: 2, fontWeight: 600 }}>Aspect</Box>
-            <Box sx={{ p: 2, fontWeight: 600, borderLeft: '1px solid #e0e0e0', color: '#1976d2' }}>XML</Box>
-            <Box sx={{ p: 2, fontWeight: 600, borderLeft: '1px solid #e0e0e0', color: '#ff9800' }}>JSON</Box>
+            <Box sx={{ p: 2, fontWeight: 600, borderLeft: '1px solid var(--paper-sunken)', color: 'var(--info)' }}>XML</Box>
+            <Box sx={{ p: 2, fontWeight: 600, borderLeft: '1px solid var(--paper-sunken)', color: 'var(--warning)' }}>JSON</Box>
           </Box>
           
           {/* Rows */}
@@ -249,29 +249,29 @@ const apiResponse = {
             <Box key={index} sx={{ 
               display: 'grid',
               gridTemplateColumns: '1fr 2fr 2fr',
-              borderBottom: index < comparisonTableData.length - 1 ? '1px solid #e0e0e0' : 'none',
-              '&:hover': { bgcolor: '#fafafa' }
+              borderBottom: index < comparisonTableData.length - 1 ? '1px solid var(--paper-sunken)' : 'none',
+              '&:hover': { bgcolor: 'var(--paper-raised)' }
             }}>
-              <Box sx={{ p: 2, fontWeight: 600, color: '#333' }}>
+              <Box sx={{ p: 2, fontWeight: 600, color: 'var(--ink)' }}>
                 {row.aspect}
               </Box>
               <Box sx={{ 
                 p: 2, 
-                borderLeft: '1px solid #e0e0e0',
-                bgcolor: row.winner === 'xml' ? '#e3f2fd' : 'transparent',
+                borderLeft: '1px solid var(--paper-sunken)',
+                bgcolor: row.winner === 'xml' ? 'var(--info-bg)' : 'transparent',
                 fontWeight: row.winner === 'xml' ? 600 : 400
               }}>
                 {row.xml}
-                {row.winner === 'xml' && <span style={{ color: '#4caf50', marginLeft: 8 }}>✅</span>}
+                {row.winner === 'xml' && <span style={{ color: 'var(--success)', marginLeft: 8 }}>✅</span>}
               </Box>
               <Box sx={{ 
                 p: 2, 
-                borderLeft: '1px solid #e0e0e0',
-                bgcolor: row.winner === 'json' ? '#fff3e0' : 'transparent',
+                borderLeft: '1px solid var(--paper-sunken)',
+                bgcolor: row.winner === 'json' ? 'var(--warning-bg)' : 'transparent',
                 fontWeight: row.winner === 'json' ? 600 : 400
               }}>
                 {row.json}
-                {row.winner === 'json' && <span style={{ color: '#4caf50', marginLeft: 8 }}>✅</span>}
+                {row.winner === 'json' && <span style={{ color: 'var(--success)', marginLeft: 8 }}>✅</span>}
               </Box>
             </Box>
           ))}
@@ -288,25 +288,25 @@ const apiResponse = {
             {
               label: 'XML Comments',
               part: '<!-- This report contains sensitive information -->',
-              color: '#9e9e9e',
+              color: 'var(--ink-faint)',
               desc: 'XML supports comments for documentation'
             },
             {
               label: 'XML Attributes',
               part: 'generatedBy="system" timestamp="2024-01-15T10:30:00Z"',
-              color: '#795548',
+              color: 'var(--ink-soft)',
               desc: 'Metadata can be stored as attributes'
             },
             {
               label: 'JSON Arrays',
               part: '"permissions": ["read", "write"]',
-              color: '#673ab7',
+              color: 'var(--feature)',
               desc: 'Native array support with proper data types'
             },
             {
               label: 'JSON Nesting',
               part: '"profile": {\n          "firstName"',
-              color: '#3f51b5',
+              color: 'var(--info)',
               desc: 'Clean nested object structure'
             }
           ]}
@@ -319,14 +319,14 @@ const apiResponse = {
           {
             title: "📄 Choose XML When:",
             description: "• Document-oriented data with complex structure\n• Need attributes to store metadata\n• Require comments for documentation\n• Schema validation is critical\n• Working with legacy systems\n• Need namespace support\n• Processing with XSLT transformations",
-            titleColor: "#1565c0",
-            backgroundColor: "#e3f2fd"
+            titleColor: "var(--info)",
+            backgroundColor: "var(--info-bg)"
           },
           {
             title: "📋 Choose JSON When:",
             description: "• Web APIs and AJAX responses\n• JavaScript applications\n• Need lightweight data transfer\n• Mobile applications\n• NoSQL database storage\n• Configuration files\n• Real-time data exchange",
-            titleColor: "#e65100",
-            backgroundColor: "#fff3e0"
+            titleColor: "var(--warning)",
+            backgroundColor: "var(--warning-bg)"
           }
         ]}
         gap={3}

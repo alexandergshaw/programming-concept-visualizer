@@ -21,37 +21,37 @@ export default function EventHandlersConcept() {
         {
             label: 'Selector',
             part: `document.getElementById('myBtn')`,
-            color: '#1976d2',
+            color: 'var(--info)',
             desc: 'Selects the element with id <b>myBtn</b> in the JavaScript.',
         },
         {
             label: 'Button Element',
             part: `id="myBtn"`,
-            color: '#1976d2',
+            color: 'var(--info)',
             desc: 'This is the HTML button with <b>id="myBtn"</b> that the selector finds.',
         },
         {
             label: 'addEventListener',
             part: 'addEventListener',
-            color: '#43a047',
+            color: 'var(--success)',
             desc: 'The JavaScript method for adding event listeners.',
         },
         {
             label: 'Event Name',
             part: `'click'`,
-            color: '#fbc02d',
+            color: 'var(--warning)',
             desc: 'The type of event to listen for (here, a mouse click).',
         },
         {
             label: 'Callback Function',
             part: '() => {',
-            color: '#e53935',
+            color: 'var(--danger)',
             desc: 'The code to run when the event happens.',
         },
         {
             label: 'Action',
             part: `alert('Event triggered!')`,
-            color: '#8e24aa',
+            color: 'var(--feature)',
             desc: 'What happens when the button is clicked.',
         },
     ];
@@ -65,7 +65,7 @@ export default function EventHandlersConcept() {
     ];
     const elementOptions = [
         { label: 'Button (myBtn)', value: 'myBtn', html: `<button id="myBtn">Click me!</button>` },
-        { label: 'Div (myDiv)', value: 'myDiv', html: `<div id="myDiv" style="padding:16px;border:1px solid #ccc;">Hover me!</div>` },
+        { label: 'Div (myDiv)', value: 'myDiv', html: `<div id="myDiv" style="padding:16px;border:1px solid var(--line);">Hover me!</div>` },
         { label: 'Input (myInput)', value: 'myInput', html: `<input id="myInput" placeholder="Type here..." />` }
     ];
 
@@ -111,10 +111,10 @@ export default function EventHandlersConcept() {
                     onDoubleClick={selectedEvent === 'dblclick' ? handleDemo : undefined}
                     sx={{
                         padding: 2,
-                        border: '1.5px solid #1976d2',
+                        border: '1.5px solid var(--info)',
                         borderRadius: 2,
-                        background: '#f3f6fa',
-                        color: '#222',
+                        background: 'var(--paper-raised)',
+                        color: 'var(--ink)',
                         display: 'inline-block',
                         minWidth: 120,
                         cursor: selectedEvent === 'click' ? 'pointer' : 'default',
@@ -137,10 +137,10 @@ export default function EventHandlersConcept() {
                     sx={{
                         fontSize: 16,
                         borderRadius: 2,
-                        border: '1.5px solid #1976d2',
+                        border: '1.5px solid var(--info)',
                         marginRight: 1,
                         padding: '8px 12px',
-                        background: '#fff'
+                        background: 'var(--paper-raised)'
                     }}
                     disableUnderline
                 />
@@ -158,7 +158,7 @@ export default function EventHandlersConcept() {
     <style>
       #output {
         margin-top: 16px;
-        color: #1565c0;
+        color: var(--info);
         font-weight: bold;
       }
     </style>
@@ -182,37 +182,37 @@ export default function EventHandlersConcept() {
         {
             label: 'Document Object Model (DOM)',
             part: `document.addEventListener`,
-            color: '#1976d2', // blue for DOM/document
+            color: 'var(--info)', // blue for DOM/document
             desc: 'The object representing the HTML. Here, we add an event listener on it to listen for events on the whole page.',
         },
         {
             label: 'Event Name',
             part: `'DOMContentLoaded'`,
-            color: '#d84315', // deep orange for event name
+            color: 'var(--warning)', // deep orange for event name
             desc: 'The event that fires when the HTML is fully loaded. This guarantees that all elements (buttons, divs, etc) are available to work with.',
         },
         {
             label: 'Get Button',
             part: `const btn = document.getElementById('showMsgBtn')`,
-            color: '#388e3c', // green for selecting elements
+            color: 'var(--success)', // green for selecting elements
             desc: 'We create a variable to hold the button, once we select it by its id. We have to do this inside the DOMContentLoaded event so our code waits until the page is loaded, and the button is guaranteed to exist.',
         },
         {
             label: 'Get Output Div',
             part: `const output = document.getElementById('output')`,
-            color: '#388e3c', // green for selecting elements
+            color: 'var(--success)', // green for selecting elements
             desc: 'Selects the output div by its id. We have to do this inside the DOMContentLoaded event so our code waits until the page is loaded, and the div is guaranteed to exist.',
         },
         {
             label: 'Button Click Listener',
             part: `btn.addEventListener('click', () => {`,
-            color: '#6a1b9a', // purple for event listeners
+            color: 'var(--feature)', // purple for event listeners
             desc: 'Adds a click event listener to the button.',
         },
         {
             label: 'Set Output Text',
             part: `output.textContent = 'The DOM is ready and you clicked the button!';`,
-            color: '#fbc02d', // yellow for output/action
+            color: 'var(--warning)', // yellow for output/action
             desc: 'Adds text to the output div when the button is clicked.',
         },
     ];
@@ -320,8 +320,8 @@ export default function EventHandlersConcept() {
                                 <b>Generated Code:</b>
                                 <pre
                                     style={{
-                                        background: '#f7f7f7',
-                                        border: '1px solid #e0e0e0',
+                                        background: 'var(--paper-raised)',
+                                        border: '1px solid var(--paper-sunken)',
                                         borderRadius: 6,
                                         padding: '12px 16px',
                                         fontFamily: 'monospace',
@@ -333,7 +333,7 @@ export default function EventHandlersConcept() {
                                     }}
                                 >
                                     {`<button id="myBtn">Click me!</button>
-<div id="myDiv" style="padding:16px;border:1px solid #ccc;">Hover me!</div>
+<div id="myDiv" style="padding:16px;border:1px solid var(--line);">Hover me!</div>
 <input id="myInput" placeholder="Type here..." />
 
 <script>

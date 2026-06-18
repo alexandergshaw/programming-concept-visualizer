@@ -11,25 +11,25 @@ const CompositionPatternExample: React.FC = () => {
     {
       label: 'Component Classes',
       part: 'class Engine {\n  start() {\n    return "Engine started";\n  }\n}\n\nclass GPS {\n  navigate(destination) {\n    return `Navigating to ${destination}`;\n  }\n}',
-      color: '#e91e63',
+      color: 'var(--feature)',
       desc: 'Create independent, reusable component classes'
     },
     {
       label: 'Composition Setup',
       part: 'constructor() {\n    this.engine = new Engine();\n    this.gps = new GPS();\n    this.radio = new Radio();\n  }',
-      color: '#4caf50',
+      color: 'var(--success)',
       desc: 'Compose object by including other objects as properties'
     },
     {
       label: 'Delegate Methods',
       part: 'start() {\n    return this.engine.start();\n  }\n  navigate(destination) {\n    return this.gps.navigate(destination);\n  }',
-      color: '#2196f3',
+      color: 'var(--info)',
       desc: 'Delegate functionality to composed components'
     },
     {
       label: 'Flexible Configuration',
       part: 'class ElectricCar {\n  constructor() {\n    this.motor = new Motor();\n    this.gps = new GPS();\n    // No radio - different composition\n  }\n}',
-      color: '#ff9800',
+      color: 'var(--warning)',
       desc: 'Different classes can have different combinations of components'
     }
   ];
@@ -354,9 +354,9 @@ class ElectricCar {
       {/* Key Concepts */}
       <Box sx={{ 
         p: 2, 
-        bgcolor: '#f5f5f5', 
+        bgcolor: 'var(--paper-raised)', 
         borderRadius: 1, 
-        border: '1px solid #ddd',
+        border: '1px solid var(--line)',
         mt: 3 
       }}>
         <Typography variant="subtitle2" fontWeight={600} gutterBottom>

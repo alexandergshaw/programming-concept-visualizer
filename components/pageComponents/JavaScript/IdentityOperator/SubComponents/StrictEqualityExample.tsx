@@ -83,8 +83,8 @@ checkEquality(${value1}, ${value2});`];
         ]}
       />
 
-      <div style={{ padding: 12, backgroundColor: '#e8f5e9', borderRadius: 8, border: '1px solid #4caf50', marginTop: 16 }}>
-        <strong style={{ color: '#2e7d32' }}>Key examples:</strong> <code>5 === 5</code> → true, <code>&quot;5&quot; === 5</code> → false
+      <div style={{ padding: 12, backgroundColor: 'var(--success-bg)', borderRadius: 8, border: '1px solid var(--success)', marginTop: 16 }}>
+        <strong style={{ color: 'var(--success)' }}>Key examples:</strong> <code>5 === 5</code> → true, <code>&quot;5&quot; === 5</code> → false
       </div>
     </div>
   );

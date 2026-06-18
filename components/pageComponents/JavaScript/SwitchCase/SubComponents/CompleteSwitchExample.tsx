@@ -8,37 +8,37 @@ const CompleteSwitchExample: React.FC = () => {
     {
       label: 'Switch Statement',
       part: 'switch (status)',
-      color: '#4caf50',
+      color: 'var(--success)',
       desc: 'Evaluates order status'
     },
     {
       label: 'Pending Case',
       part: 'case "pending":\n      return "Order received";',
-      color: '#2196f3',
+      color: 'var(--info)',
       desc: 'Handle pending orders'
     },
     {
       label: 'Processing Case',
       part: 'case "processing":\n      return "Being prepared";',
-      color: '#ff9800',
+      color: 'var(--warning)',
       desc: 'Handle processing orders'
     },
     {
       label: 'Shipped Case',
       part: 'case "shipped":\n      return "On the way";',
-      color: '#9c27b0',
+      color: 'var(--feature)',
       desc: 'Handle shipped orders'
     },
     {
       label: 'Delivered Case',
       part: 'case "delivered":\n      return "Delivered!";',
-      color: '#4caf50',
+      color: 'var(--success)',
       desc: 'Handle delivered orders'
     },
     {
       label: 'Default Case',
       part: 'default:\n      return "Unknown status";',
-      color: '#f44336',
+      color: 'var(--danger)',
       desc: 'Handle unknown statuses'
     }
   ];

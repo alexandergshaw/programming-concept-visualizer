@@ -114,8 +114,8 @@ filterValidData(${testValue});`];
         ]}
       />
 
-      <div style={{ padding: 12, backgroundColor: '#e3f2fd', borderRadius: 8, border: '1px solid #64b5f6', marginTop: 16 }}>
-        <strong style={{ color: '#1976d2' }}>Examples:</strong> <code>null !== undefined</code> → true, <code>0 !== false</code> → true
+      <div style={{ padding: 12, backgroundColor: 'var(--info-bg)', borderRadius: 8, border: '1px solid var(--info)', marginTop: 16 }}>
+        <strong style={{ color: 'var(--info)' }}>Examples:</strong> <code>null !== undefined</code> → true, <code>0 !== false</code> → true
       </div>
     </div>
   );

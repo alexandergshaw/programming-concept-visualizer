@@ -26,9 +26,9 @@ Characteristics:
 function test() {
   console.log(globalVar); // Works!
 }`,
-              titleColor: '#1976d2',
-              backgroundColor: '#fff3e0',
-              codeBackgroundColor: '#f5f5f5'
+              titleColor: 'var(--info)',
+              backgroundColor: 'var(--warning-bg)',
+              codeBackgroundColor: 'var(--paper-raised)'
             },
             {
               title: '🏠 Function Scope',
@@ -45,15 +45,15 @@ Characteristics:
   return localVar;
 }
 // console.log(localVar); // Error!`,
-              titleColor: '#1976d2',
-              backgroundColor: '#e8f5e9',
-              codeBackgroundColor: '#f5f5f5'
+              titleColor: 'var(--info)',
+              backgroundColor: 'var(--success-bg)',
+              codeBackgroundColor: 'var(--paper-raised)'
             }
           ]}
         />
 
         <div style={{ marginTop: 20 }}>
-          <h6 style={{ margin: '0 0 16px 0', color: '#1976d2' }}>🔗 Block Scope (let/const)</h6>
+          <h6 style={{ margin: '0 0 16px 0', color: 'var(--info)' }}>🔗 Block Scope (let/const)</h6>
           <FlexibleGrid 
             items={[
               {
@@ -64,9 +64,9 @@ Characteristics:
   const alsoBlock = "Me too!";
 }
 // console.log(blockVar); // Error!`,
-                titleColor: '#4caf50',
-                backgroundColor: '#e8f5e9',
-                codeBackgroundColor: '#f5f5f5'
+                titleColor: 'var(--success)',
+                backgroundColor: 'var(--success-bg)',
+                codeBackgroundColor: 'var(--paper-raised)'
               },
               {
                 title: '⚠️ Old var (function scope)',
@@ -75,16 +75,16 @@ Characteristics:
   var oldVar = "I'm function scoped";
 }
 console.log(oldVar); // Works (but confusing)`,
-                titleColor: '#ff9800',
-                backgroundColor: '#fff3e0',
-                codeBackgroundColor: '#f5f5f5'
+                titleColor: 'var(--warning)',
+                backgroundColor: 'var(--warning-bg)',
+                codeBackgroundColor: 'var(--paper-raised)'
               }
             ]}
           />
         </div>
 
-        <div style={{ marginTop: 20, padding: 16, background: '#f8f9fa', borderRadius: 4, border: '1px solid #dee2e6' }}>
-          <h5 style={{ margin: '0 0 12px 0', color: '#495057' }}>🤔 Quick Scope Rules</h5>
+        <div style={{ marginTop: 20, padding: 16, background: 'var(--paper-raised)', borderRadius: 4, border: '1px solid var(--paper-sunken)' }}>
+          <h5 style={{ margin: '0 0 12px 0', color: 'var(--ink-soft)' }}>🤔 Quick Scope Rules</h5>
           <div style={{ fontSize: 14, lineHeight: 1.6 }}>
             <strong>let/const:</strong> Block-scoped (preferred in modern JavaScript)<br/>
             <strong>var:</strong> Function-scoped (avoid in new code)<br/>

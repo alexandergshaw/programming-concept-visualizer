@@ -113,8 +113,8 @@ validateInput(${testValue});`];
         ]}
       />
 
-      <div style={{ padding: 10, backgroundColor: '#e3f2fd', borderRadius: 8, border: '1px solid #64b5f6', marginTop: 12 }}>
-        <strong style={{ color: '#1976d2' }}>Useful:</strong> <code>value != null</code> checks both null AND undefined
+      <div style={{ padding: 10, backgroundColor: 'var(--info-bg)', borderRadius: 8, border: '1px solid var(--info)', marginTop: 12 }}>
+        <strong style={{ color: 'var(--info)' }}>Useful:</strong> <code>value != null</code> checks both null AND undefined
       </div>
     </div>
   );

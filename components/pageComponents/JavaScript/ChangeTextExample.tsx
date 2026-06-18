@@ -48,14 +48,14 @@ const ChangeTextExample: React.FC = () => {
                 </Typography>
 
                 <Box sx={{
-                    border: '1px solid #e0e0e0',
+                    border: '1px solid var(--paper-sunken)',
                     borderRadius: 1,
                     p: 2,
                     mb: 2,
-                    bgcolor: '#fafafa',
+                    bgcolor: 'var(--paper-raised)',
                     position: 'relative'
                 }}>
-                    <Box sx={{ fontSize: 12, position: 'absolute', right: 8, top: 4, color: '#666' }}>
+                    <Box sx={{ fontSize: 12, position: 'absolute', right: 8, top: 4, color: 'var(--ink-soft)' }}>
                         Preview
                     </Box>
                     <Typography paragraph id="demoText" sx={{ mb: 2 }}>
@@ -64,7 +64,7 @@ const ChangeTextExample: React.FC = () => {
                     <button
                         style={{
                             padding: '8px 16px',
-                            backgroundColor: '#1976d2',
+                            backgroundColor: 'var(--info)',
                             color: 'white',
                             border: 'none',
                             borderRadius: '4px',
@@ -93,13 +93,13 @@ const ChangeTextExample: React.FC = () => {
                     How It Works: Step-by-Step
                 </Typography>
 
-                <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+                <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Step 1: Create your HTML</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
                         First, we need a paragraph of text and a button on our webpage:
                     </Typography>
                     <Box sx={{
-                        bgcolor: '#f5f5f5',
+                        bgcolor: 'var(--paper-raised)',
                         p: 2,
                         borderRadius: 1,
                         fontFamily: 'monospace',
@@ -110,19 +110,19 @@ const ChangeTextExample: React.FC = () => {
                         {`<p id="myText">This is some text that will change.</p>
 <button id="changeButton">Click to Change Text</button>`}
                     </Box>
-                    <Typography variant="body2" sx={{ color: '#555' }}>
+                    <Typography variant="body2" sx={{ color: 'var(--ink-soft)' }}>
                         The <code>id=&apos;myText&apos;</code> and <code>id=&apos;changeButton&apos;</code> are like name tags that help
                         JavaScript find these elements later.
                     </Typography>
                 </Paper>
 
-                <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+                <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Step 2: Wait for the page to load</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
                         Before we can access HTML elements, we need to make sure the page is fully loaded:
                     </Typography>
                     <Box sx={{
-                        bgcolor: '#f5f5f5',
+                        bgcolor: 'var(--paper-raised)',
                         p: 2,
                         borderRadius: 1,
                         fontFamily: 'monospace',
@@ -136,8 +136,8 @@ document.addEventListener("DOMContentLoaded", function() {
   console.log("Page is ready!");
 });`}
                     </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1 }}>
-                        <FontAwesomeIcon icon={faCodeBranch} style={{ fontSize: 20, color: '#1976d2' }} />
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1 }}>
+                        <FontAwesomeIcon icon={faCodeBranch} style={{ fontSize: 20, color: 'var(--info)' }} />
                         <Typography variant="body2">
                             <b>What&apos;s happening:</b> The <code>DOMContentLoaded</code> event ensures our code only runs after
                             the HTML has fully loaded. It&apos;s like waiting for all the furniture to be delivered before
@@ -146,13 +146,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     </Box>
                 </Paper>
 
-                <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+                <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Step 3: Get the elements with JavaScript</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
                         Now we need to connect JavaScript to these HTML elements:
                     </Typography>
                     <Box sx={{
-                        bgcolor: '#f5f5f5',
+                        bgcolor: 'var(--paper-raised)',
                         p: 2,
                         borderRadius: 1,
                         fontFamily: 'monospace',
@@ -168,8 +168,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const button = document.getElementById("changeButton");
 });`}
                     </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
-                        <FontAwesomeIcon icon={faHandPointer} style={{ fontSize: 20, color: '#1976d2' }} />
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+                        <FontAwesomeIcon icon={faHandPointer} style={{ fontSize: 20, color: 'var(--info)' }} />
                         <Typography variant="body2">
                             <b>What&apos;s happening:</b> We&apos;re finding our HTML elements using their IDs. We put this inside
                             the <code>DOMContentLoaded</code> event to make sure the elements exist before we try to find them.
@@ -177,13 +177,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     </Box>
                 </Paper>
 
-                <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+                <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Step 4: Add an Event Listener</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
                         Now we add a &quot;listener&quot; to the button that waits for clicks:
                     </Typography>
                     <Box sx={{
-                        bgcolor: '#f5f5f5',
+                        bgcolor: 'var(--paper-raised)',
                         p: 2,
                         borderRadius: 1,
                         fontFamily: 'monospace',
@@ -202,8 +202,8 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });`}
                     </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1 }}>
-                        <FontAwesomeIcon icon={faHandPointer} style={{ fontSize: 20, color: '#1976d2' }} />
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1 }}>
+                        <FontAwesomeIcon icon={faHandPointer} style={{ fontSize: 20, color: 'var(--info)' }} />
                         <Typography variant="body2">
                             <b>What&apos;s happening:</b> The <code>addEventListener</code> is like setting up a security camera
                             that&apos;s specifically watching for someone to click the button. Notice we&apos;re still inside the DOMContentLoaded event.
@@ -211,13 +211,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     </Box>
                 </Paper>
 
-                <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+                <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Step 5: Change the text when clicked</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
                         Finally, we add the code to change the text inside the event listener:
                     </Typography>
                     <Box sx={{
-                        bgcolor: '#f5f5f5',
+                        bgcolor: 'var(--paper-raised)',
                         p: 2,
                         borderRadius: 1,
                         fontFamily: 'monospace',
@@ -237,8 +237,8 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });`}
                     </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e8f5e9', p: 2, borderRadius: 1 }}>
-                        <FontAwesomeIcon icon={faEdit} style={{ fontSize: 20, color: '#4caf50' }} />
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--success-bg)', p: 2, borderRadius: 1 }}>
+                        <FontAwesomeIcon icon={faEdit} style={{ fontSize: 20, color: 'var(--success)' }} />
                         <Typography variant="body2">
                             <b>What&apos;s happening:</b> <code>textElement.textContent</code> is like an eraser and pencil -
                             it erases the old text and writes in new text. All of this happens when the button is clicked,
@@ -247,7 +247,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     </Box>
                 </Paper>
 
-                <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+                <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Complete Code</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
                         Here&apos;s the full JavaScript code:

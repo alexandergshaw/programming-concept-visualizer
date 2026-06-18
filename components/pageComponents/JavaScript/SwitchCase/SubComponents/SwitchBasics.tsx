@@ -6,7 +6,7 @@ const SwitchBasics: React.FC = () => {
       <p>Switch statements provide a cleaner alternative to long if-else chains when checking the same variable against multiple values.</p>
       
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', margin: '20px 0' }}>
-        <div style={{ padding: '15px', backgroundColor: '#fff8e1', borderRadius: '4px' }}>
+        <div style={{ padding: '15px', backgroundColor: 'var(--warning-bg)', borderRadius: '4px' }}>
           <h5>❌ If-Else Chain:</h5>
           <pre style={{ fontSize: '12px', margin: 0 }}>{`if (grade === 'A') {
   return 'Excellent';
@@ -19,7 +19,7 @@ const SwitchBasics: React.FC = () => {
 }`}</pre>
         </div>
         
-        <div style={{ padding: '15px', backgroundColor: '#e8f5e9', borderRadius: '4px' }}>
+        <div style={{ padding: '15px', backgroundColor: 'var(--success-bg)', borderRadius: '4px' }}>
           <h5>✅ Switch Statement:</h5>
           <pre style={{ fontSize: '12px', margin: 0 }}>{`switch (grade) {
   case 'A':

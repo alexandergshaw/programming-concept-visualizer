@@ -27,7 +27,7 @@ export default function TransactionPlayground() {
 
   const card = (title: string, value: string, bg: string, border: string, color: string) => (
     <div style={{ padding: '10px 16px', borderRadius: 8, background: bg, border: `1px solid ${border}` }}>
-      <div style={{ fontSize: 12, color: '#64748b' }}>{title}</div>
+      <div style={{ fontSize: 12, color: 'var(--ink-soft)' }}>{title}</div>
       <div style={{ fontSize: 20, fontWeight: 700, color }}>{value}</div>
     </div>
   );
@@ -42,9 +42,9 @@ export default function TransactionPlayground() {
       </div>
 
       <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 12 }}>
-        {card('Account 1 (working)', `$${a}`, '#f8fafc', '#e2e8f0', dirty ? '#b45309' : '#166534')}
-        {card('Account 2 (working)', `$${b}`, '#f8fafc', '#e2e8f0', dirty ? '#b45309' : '#166534')}
-        {card('Last committed', `$${savedA} / $${savedB}`, '#f0fdf4', '#86efac', '#166534')}
+        {card('Account 1 (working)', `$${a}`, 'var(--paper-sunken)', 'var(--line)', dirty ? 'var(--warning)' : 'var(--success)')}
+        {card('Account 2 (working)', `$${b}`, 'var(--paper-sunken)', 'var(--line)', dirty ? 'var(--warning)' : 'var(--success)')}
+        {card('Last committed', `$${savedA} / $${savedB}`, 'var(--success-bg)', 'var(--success-bg)', 'var(--success)')}
       </div>
 
       <pre className="sql-pg-code">{log.length ? log.join('\n') : '-- press BEGIN to start a transaction'}</pre>

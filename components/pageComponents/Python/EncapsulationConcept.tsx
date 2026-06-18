@@ -182,19 +182,19 @@ export default function EncapsulationConcept() {
               {
                 label: 'Private attribute',
                 part: 'self.__balance = balance',
-                color: '#dc2626',
+                color: 'var(--danger)',
                 desc: 'The leading __ hides this value from outside code'
               },
               {
                 label: 'Validation',
                 part: 'if amount > 0:',
-                color: '#9333ea',
+                color: 'var(--feature)',
                 desc: 'A guard that only allows sensible deposits'
               },
               {
                 label: 'Getter method',
                 part: 'def get_balance(self):',
-                color: '#059669',
+                color: 'var(--success)',
                 desc: 'The safe, read-only way to view the balance'
               }
             ]}
@@ -217,9 +217,9 @@ export default function EncapsulationConcept() {
           </Typography>
 
           <div className="ds-viz">
-            <Box sx={{ mb: 2, p: 2, borderRadius: 2, bgcolor: '#f0fdf4', border: '1px solid #86efac' }}>
-              <Typography variant="caption" sx={{ color: '#15803d', display: 'block' }}>account.get_balance()</Typography>
-              <Typography variant="h5" sx={{ fontWeight: 700, color: '#166534' }}>${balance}</Typography>
+            <Box sx={{ mb: 2, p: 2, borderRadius: 2, bgcolor: 'var(--success-bg)', border: '1px solid var(--success-bg)' }}>
+              <Typography variant="caption" sx={{ color: 'var(--success)', display: 'block' }}>account.get_balance()</Typography>
+              <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--success)' }}>${balance}</Typography>
             </Box>
 
             <div className="ds-controls">

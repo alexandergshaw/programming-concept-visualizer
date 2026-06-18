@@ -68,17 +68,17 @@ const kindClass: Record<Kind, string> = {
 // Nesting-dolls illustration: each call sits inside a bigger one
 function NestingDolls() {
   const rings = [
-    { w: 300, h: 190, x: 10, y: 15, fill: '#dbeafe', stroke: '#60a5fa', label: 'factorial(4)', ly: 34 },
-    { w: 224, h: 140, x: 48, y: 40, fill: '#bfdbfe', stroke: '#3b82f6', label: 'factorial(3)', ly: 59 },
-    { w: 148, h: 90, x: 86, y: 65, fill: '#c7d2fe', stroke: '#6366f1', label: 'factorial(2)', ly: 84 },
-    { w: 92, h: 48, x: 114, y: 86, fill: '#fee2e2', stroke: '#f87171', label: 'factorial(1) = 1', ly: 114 },
+    { w: 300, h: 190, x: 10, y: 15, fill: 'var(--info-bg)', stroke: 'var(--info)', label: 'factorial(4)', ly: 34 },
+    { w: 224, h: 140, x: 48, y: 40, fill: 'var(--info-bg)', stroke: 'var(--info)', label: 'factorial(3)', ly: 59 },
+    { w: 148, h: 90, x: 86, y: 65, fill: 'var(--feature-bg)', stroke: 'var(--feature)', label: 'factorial(2)', ly: 84 },
+    { w: 92, h: 48, x: 114, y: 86, fill: 'var(--danger-bg)', stroke: 'var(--danger)', label: 'factorial(1) = 1', ly: 114 },
   ];
   return (
     <svg viewBox="0 0 320 220" style={{ width: '100%', maxWidth: 360, display: 'block', margin: '0 auto' }}>
       {rings.map((r, i) => (
         <g key={i}>
           <rect x={r.x} y={r.y} width={r.w} height={r.h} rx={14} fill={r.fill} stroke={r.stroke} strokeWidth={2} />
-          <text x={160} y={r.ly} textAnchor="middle" fontSize={13} fontWeight={700} fill="#1e293b">{r.label}</text>
+          <text x={160} y={r.ly} textAnchor="middle" fontSize={13} fontWeight={700} fill="var(--ink)">{r.label}</text>
         </g>
       ))}
     </svg>
@@ -175,7 +175,7 @@ export default function RecursionVisualConcept() {
               <Button variant="contained" onClick={() => { setPlaying(false); setStep((s) => Math.min(snaps.length - 1, s + 1)); }} disabled={step >= snaps.length - 1}>Next</Button>
               <Button variant="outlined" onClick={() => setPlaying((p) => !p)} disabled={step >= snaps.length - 1}>{playing ? 'Pause' : 'Play'}</Button>
               <Button variant="text" color="secondary" onClick={() => { setPlaying(false); setStep(0); }}>Reset</Button>
-              <Typography variant="body2" sx={{ ml: 'auto', fontWeight: 600, color: '#475569' }}>{phase}</Typography>
+              <Typography variant="body2" sx={{ ml: 'auto', fontWeight: 600, color: 'var(--ink-soft)' }}>{phase}</Typography>
             </div>
 
             <div className="rec-frames">
@@ -189,9 +189,9 @@ export default function RecursionVisualConcept() {
             <p className="ds-output"><strong>Step {step + 1} / {snaps.length}:</strong> {snap.desc}</p>
 
             <div className="ds-legend">
-              <span className="ds-legend-item"><span className="ds-swatch" style={{ background: '#fef9c3', borderColor: '#facc15' }} /> Calling deeper</span>
-              <span className="ds-legend-item"><span className="ds-swatch" style={{ background: '#fee2e2', borderColor: '#f87171' }} /> Base case</span>
-              <span className="ds-legend-item"><span className="ds-swatch" style={{ background: '#dcfce7', borderColor: '#4ade80' }} /> Returning</span>
+              <span className="ds-legend-item"><span className="ds-swatch" style={{ background: 'var(--warning-bg)', borderColor: 'var(--warning)' }} /> Calling deeper</span>
+              <span className="ds-legend-item"><span className="ds-swatch" style={{ background: 'var(--danger-bg)', borderColor: 'var(--danger)' }} /> Base case</span>
+              <span className="ds-legend-item"><span className="ds-swatch" style={{ background: 'var(--success-bg)', borderColor: 'var(--success)' }} /> Returning</span>
             </div>
           </div>
         </Section>

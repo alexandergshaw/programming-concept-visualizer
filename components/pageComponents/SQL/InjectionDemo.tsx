@@ -15,7 +15,7 @@ export default function InjectionDemo() {
   return (
     <div className="sql-pg">
       <div className="sql-pg-inline" style={{ marginBottom: 10 }}>
-        <span style={{ fontSize: 13, color: '#475569' }}>username input</span>
+        <span style={{ fontSize: 13, color: 'var(--ink-soft)' }}>username input</span>
         <input value={input} onChange={(e) => setInput(e.target.value)} aria-label="username" style={{ width: 180 }} />
         <button type="button" className="sql-chip" onClick={() => setInput(MALICIOUS)}>use a malicious input</button>
       </div>
@@ -29,14 +29,14 @@ export default function InjectionDemo() {
         <>
           <pre className="sql-pg-code">{`SELECT * FROM users WHERE name = ?;
 -- parameter value: ${JSON.stringify(input)}`}</pre>
-          <p className="sql-pg-count" style={{ color: '#15803d' }}>
+          <p className="sql-pg-count" style={{ color: 'var(--success)' }}>
             The input travels separately as a parameter, so the database treats it as plain text — it can never become part of the SQL.
           </p>
         </>
       ) : (
         <>
           <pre className="sql-pg-code">{vulnerableQuery}</pre>
-          <p className="sql-pg-count" style={{ color: isAttack ? '#b91c1c' : '#475569', fontWeight: isAttack ? 600 : 400 }}>
+          <p className="sql-pg-count" style={{ color: isAttack ? 'var(--danger)' : 'var(--ink-soft)', fontWeight: isAttack ? 600 : 400 }}>
             {isAttack
               ? 'Danger: the quote breaks out of the string and the injected OR makes the WHERE always true — this query returns EVERY user.'
               : 'Looks fine for ordinary input — but the instant the input contains a quote, an attacker can rewrite the query. Try the malicious input.'}

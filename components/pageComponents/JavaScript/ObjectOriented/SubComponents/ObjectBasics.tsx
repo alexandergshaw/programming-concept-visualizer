@@ -20,20 +20,20 @@ const ObjectBasics: React.FC = () => {
             {
               title: '1. CLASSES',
               description: 'Blueprints for objects',
-              titleColor: '#1976d2',
-              backgroundColor: '#e3f2fd'
+              titleColor: 'var(--info)',
+              backgroundColor: 'var(--info-bg)'
             },
             {
               title: '2. PROPERTIES', 
               description: 'Store data values',
-              titleColor: '#f57c00',
-              backgroundColor: '#fff3e0'
+              titleColor: 'var(--warning)',
+              backgroundColor: 'var(--warning-bg)'
             },
             {
               title: '3. METHODS',
               description: 'Perform actions',
-              titleColor: '#4caf50',
-              backgroundColor: '#e8f5e9'
+              titleColor: 'var(--success)',
+              backgroundColor: 'var(--success-bg)'
             }
           ]}
         />

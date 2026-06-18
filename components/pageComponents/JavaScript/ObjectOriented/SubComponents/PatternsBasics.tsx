@@ -13,11 +13,11 @@ const PatternsBasics: React.FC = () => {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
           
           <div>
-            <h6 style={{ margin: '0 0 16px 0', color: '#1976d2' }}>🏗️ Inheritance Pattern</h6>
-            <p style={{ margin: '0 0 12px 0', fontWeight: 'bold', color: '#333' }}>When to use: "IS-A" relationships</p>
+            <h6 style={{ margin: '0 0 16px 0', color: 'var(--info)' }}>🏗️ Inheritance Pattern</h6>
+            <p style={{ margin: '0 0 12px 0', fontWeight: 'bold', color: 'var(--ink)' }}>When to use: "IS-A" relationships</p>
             
             <div style={{ marginBottom: 16 }}>
-              <h5 style={{ margin: '0 0 8px 0', color: '#666', fontSize: 14 }}>Best for:</h5>
+              <h5 style={{ margin: '0 0 8px 0', color: 'var(--ink-soft)', fontSize: 14 }}>Best for:</h5>
               <ul style={{ margin: 0, paddingLeft: 16, fontSize: 14 }}>
                 <li>Natural hierarchies (Animal → Dog)</li>
                 <li>Shared behavior across types</li>
@@ -26,8 +26,8 @@ const PatternsBasics: React.FC = () => {
             </div>
 
             <div style={{ marginBottom: 16 }}>
-              <h5 style={{ margin: '0 0 8px 0', color: '#666', fontSize: 14 }}>Example:</h5>
-              <code style={{ background: '#f5f5f5', padding: '8px', borderRadius: 4, fontSize: 12, display: 'block' }}>
+              <h5 style={{ margin: '0 0 8px 0', color: 'var(--ink-soft)', fontSize: 14 }}>Example:</h5>
+              <code style={{ background: 'var(--paper-raised)', padding: '8px', borderRadius: 4, fontSize: 12, display: 'block' }}>
                 {`class Animal { eat() {...} }
 class Dog extends Animal {
   bark() {...}
@@ -35,18 +35,18 @@ class Dog extends Animal {
               </code>
             </div>
 
-            <div style={{ background: '#e8f5e9', padding: 12, borderRadius: 4, border: '1px solid #4caf50' }}>
-              <div style={{ color: '#2e7d32', fontSize: 14, fontWeight: 'bold' }}>✅ Use when:</div>
-              <div style={{ fontSize: 13, color: '#388e3c' }}>You can clearly say "X IS-A Y"</div>
+            <div style={{ background: 'var(--success-bg)', padding: 12, borderRadius: 4, border: '1px solid var(--success)' }}>
+              <div style={{ color: 'var(--success)', fontSize: 14, fontWeight: 'bold' }}>✅ Use when:</div>
+              <div style={{ fontSize: 13, color: 'var(--success)' }}>You can clearly say "X IS-A Y"</div>
             </div>
           </div>
 
           <div>
-            <h6 style={{ margin: '0 0 16px 0', color: '#1976d2' }}>🔧 Composition Pattern</h6>
-            <p style={{ margin: '0 0 12px 0', fontWeight: 'bold', color: '#333' }}>When to use: "HAS-A" relationships</p>
+            <h6 style={{ margin: '0 0 16px 0', color: 'var(--info)' }}>🔧 Composition Pattern</h6>
+            <p style={{ margin: '0 0 12px 0', fontWeight: 'bold', color: 'var(--ink)' }}>When to use: "HAS-A" relationships</p>
             
             <div style={{ marginBottom: 16 }}>
-              <h5 style={{ margin: '0 0 8px 0', color: '#666', fontSize: 14 }}>Best for:</h5>
+              <h5 style={{ margin: '0 0 8px 0', color: 'var(--ink-soft)', fontSize: 14 }}>Best for:</h5>
               <ul style={{ margin: 0, paddingLeft: 16, fontSize: 14 }}>
                 <li>Flexible combinations</li>
                 <li>Reusable components</li>
@@ -55,8 +55,8 @@ class Dog extends Animal {
             </div>
 
             <div style={{ marginBottom: 16 }}>
-              <h5 style={{ margin: '0 0 8px 0', color: '#666', fontSize: 14 }}>Example:</h5>
-              <code style={{ background: '#f5f5f5', padding: '8px', borderRadius: 4, fontSize: 12, display: 'block' }}>
+              <h5 style={{ margin: '0 0 8px 0', color: 'var(--ink-soft)', fontSize: 14 }}>Example:</h5>
+              <code style={{ background: 'var(--paper-raised)', padding: '8px', borderRadius: 4, fontSize: 12, display: 'block' }}>
                 {`class Car {
   constructor() {
     this.engine = new Engine();
@@ -66,9 +66,9 @@ class Dog extends Animal {
               </code>
             </div>
 
-            <div style={{ background: '#fff3e0', padding: 12, borderRadius: 4, border: '1px solid #ff9800' }}>
-              <div style={{ color: '#f57c00', fontSize: 14, fontWeight: 'bold' }}>⚡ Use when:</div>
-              <div style={{ fontSize: 13, color: '#ef6c00' }}>You can say "X HAS-A Y"</div>
+            <div style={{ background: 'var(--warning-bg)', padding: 12, borderRadius: 4, border: '1px solid var(--warning)' }}>
+              <div style={{ color: 'var(--warning)', fontSize: 14, fontWeight: 'bold' }}>⚡ Use when:</div>
+              <div style={{ fontSize: 13, color: 'var(--warning)' }}>You can say "X HAS-A Y"</div>
             </div>
           </div>
         </div>

@@ -66,21 +66,21 @@ export default function PredicatePlayground({ kinds }: { kinds: PredicateKind[] 
 
       {kind === 'LIKE' && (
         <div className="sql-pg-inline" style={{ marginBottom: 10 }}>
-          <span style={{ fontSize: 13, color: '#475569' }}>name LIKE</span>
+          <span style={{ fontSize: 13, color: 'var(--ink-soft)' }}>name LIKE</span>
           <input value={text} onChange={(e) => setText(e.target.value)} aria-label="like pattern" />
         </div>
       )}
       {kind === 'IN' && (
         <div className="sql-pg-inline" style={{ marginBottom: 10 }}>
-          <span style={{ fontSize: 13, color: '#475569' }}>name IN</span>
+          <span style={{ fontSize: 13, color: 'var(--ink-soft)' }}>name IN</span>
           <input value={list} onChange={(e) => setList(e.target.value)} aria-label="in list" style={{ width: 170 }} />
         </div>
       )}
       {kind === 'BETWEEN' && (
         <div className="sql-pg-inline" style={{ marginBottom: 10 }}>
-          <span style={{ fontSize: 13, color: '#475569' }}>age BETWEEN</span>
+          <span style={{ fontSize: 13, color: 'var(--ink-soft)' }}>age BETWEEN</span>
           <input value={lo} onChange={(e) => setLo(e.target.value)} aria-label="between low" style={{ width: 64 }} />
-          <span style={{ fontSize: 13, color: '#475569' }}>and</span>
+          <span style={{ fontSize: 13, color: 'var(--ink-soft)' }}>and</span>
           <input value={hi} onChange={(e) => setHi(e.target.value)} aria-label="between high" style={{ width: 64 }} />
         </div>
       )}

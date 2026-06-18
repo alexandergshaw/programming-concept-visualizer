@@ -54,7 +54,7 @@ export default function WebsiteManagementPage() {
               "In this section, you'll learn the basic concepts of how web pages, servers, and browsers work together to deliver content on the internet.",
             ]}
             steps={[
-              { icon: <LanguageIcon sx={{ fontSize: 48, color: '#1976d2' }} />, label: 'Website Basics' },
+              { icon: <LanguageIcon sx={{ fontSize: 48, color: 'var(--info)' }} />, label: 'Website Basics' },
             ]}
             closing="Understanding these basic concepts will give you a solid foundation for web development. Let's explore how websites work!"
           />

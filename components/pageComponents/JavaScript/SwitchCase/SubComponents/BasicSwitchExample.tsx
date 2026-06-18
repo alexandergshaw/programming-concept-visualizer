@@ -8,25 +8,25 @@ const BasicSwitchExample: React.FC = () => {
     {
       label: 'Switch Statement',
       part: 'switch (score)',
-      color: '#4caf50',
+      color: 'var(--success)',
       desc: 'Evaluates score once'
     },
     {
       label: 'Case A',
       part: 'case 90:\n      return "A";',
-      color: '#2196f3',
+      color: 'var(--info)',
       desc: 'Score 90+ gets grade A'
     },
     {
       label: 'Case B', 
       part: 'case 80:\n      return "B";',
-      color: '#ff9800',
+      color: 'var(--warning)',
       desc: 'Score 80+ gets grade B'
     },
     {
       label: 'Default Case',
       part: 'default:\n      return "F";',
-      color: '#f44336',
+      color: 'var(--danger)',
       desc: 'All other scores get F'
     }
   ];

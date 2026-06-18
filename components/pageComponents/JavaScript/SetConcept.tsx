@@ -125,7 +125,7 @@ export default function SetConcept({
       />
 
       {duplicateWarning && (
-        <p style={{ color: '#d32f2f', fontSize: '0.875rem', marginTop: 0, marginBottom: '1rem' }}>
+        <p style={{ color: 'var(--danger)', fontSize: '0.875rem', marginTop: 0, marginBottom: '1rem' }}>
           {duplicateWarning}
         </p>
       )}
@@ -152,7 +152,7 @@ export default function SetConcept({
           />
         )}
 
-        <Typography variant="body2" sx={{ mt: 2, mb: 1, color: '#444' }}>
+        <Typography variant="body2" sx={{ mt: 2, mb: 1, color: 'var(--ink)' }}>
           <strong>Operation Description:</strong> {getDescription(operation)}
         </Typography>
 

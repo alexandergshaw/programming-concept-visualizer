@@ -13,7 +13,7 @@ export type Step = {
 };
 
 const defaultStepColors = [
-    '#1976d2', '#43a047', '#fbc02d', '#e53935', '#8e24aa', '#00bcd4', '#ff9800', '#7e57c2'
+    'var(--info)', 'var(--success)', 'var(--warning)', 'var(--danger)', 'var(--feature)', 'var(--info)', 'var(--warning)', 'var(--feature)'
 ];
 
 export default function StepThroughCodeAnimation({

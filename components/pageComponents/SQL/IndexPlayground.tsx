@@ -23,18 +23,18 @@ export default function IndexPlayground() {
 -- users has ${N.toLocaleString()} rows`}</pre>
 
       <div style={{ marginTop: 10 }}>
-        <div style={{ fontSize: 13, color: '#475569', marginBottom: 6 }}>Rows the database had to look at:</div>
-        <div style={{ background: '#f1f5f9', borderRadius: 6, overflow: 'hidden', height: 26 }}>
+        <div style={{ fontSize: 13, color: 'var(--ink-soft)', marginBottom: 6 }}>Rows the database had to look at:</div>
+        <div style={{ background: 'var(--paper-sunken)', borderRadius: 6, overflow: 'hidden', height: 26 }}>
           <div
             style={{
               height: '100%',
               width: indexed ? '2%' : '100%',
-              background: indexed ? '#22c55e' : '#ef4444',
+              background: indexed ? 'var(--success)' : 'var(--danger)',
               transition: 'width 0.3s ease',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'flex-end',
-              color: '#fff',
+              color: 'var(--paper-raised)',
               fontSize: 12,
               fontWeight: 700,
               paddingRight: 8,

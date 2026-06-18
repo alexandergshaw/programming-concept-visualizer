@@ -157,19 +157,19 @@ class RateLimiter {
             {
               label: 'Retry Loop',
               part: 'for (let attempt = 1; attempt <= maxRetries; attempt++)',
-              color: '#2196f3',
+              color: 'var(--info)',
               desc: 'Try the operation multiple times before giving up'
             },
             {
               label: 'Exponential Backoff',
               part: 'Math.pow(2, attempt) * 1000',
-              color: '#ff9800',
+              color: 'var(--warning)',
               desc: 'Increase delay between retries: 2s, 4s, 8s...'
             },
             {
               label: 'Final Failure',
               part: 'if (attempt === maxRetries)',
-              color: '#f44336',
+              color: 'var(--danger)',
               desc: 'Throw error after all retry attempts are exhausted'
             }
           ]}
@@ -186,13 +186,13 @@ class RateLimiter {
             {
               label: 'Promise.race',
               part: 'Promise.race([fetch(url), timeout])',
-              color: '#9c27b0',
+              color: 'var(--feature)',
               desc: 'First promise to resolve (success or timeout) wins'
             },
             {
               label: 'Timeout Promise',
               part: 'setTimeout(() => reject(new Error(\'Request timeout\')), timeoutMs)',
-              color: '#f44336',
+              color: 'var(--danger)',
               desc: 'Create a promise that rejects after specified time'
             }
           ]}
@@ -209,19 +209,19 @@ class RateLimiter {
             {
               label: 'Cache Check',
               part: 'if (this.cache.has(url))',
-              color: '#4caf50',
+              color: 'var(--success)',
               desc: 'Return cached data immediately if available'
             },
             {
               label: 'In-flight Check',
               part: 'if (this.promises.has(url))',
-              color: '#ff5722',
+              color: 'var(--warning)',
               desc: 'Avoid duplicate requests by sharing existing promises'
             },
             {
               label: 'Cache Storage',
               part: 'this.cache.set(url, data)',
-              color: '#673ab7',
+              color: 'var(--feature)',
               desc: 'Store successful responses for future use'
             }
           ]}
@@ -238,13 +238,13 @@ class RateLimiter {
             {
               label: 'Request Queue',
               part: 'this.queue.push({ requestFn, resolve, reject })',
-              color: '#795548',
+              color: 'var(--ink-soft)',
               desc: 'Queue requests to be processed at controlled rate'
             },
             {
               label: 'Timing Control',
               part: 'if (timeSinceLastRequest < this.interval)',
-              color: '#607d8b',
+              color: 'var(--ink-soft)',
               desc: 'Wait if not enough time has passed since last request'
             }
           ]}
@@ -254,20 +254,20 @@ class RateLimiter {
       {/* Key Concepts */}
       <Box sx={{ 
         p: 3, 
-        bgcolor: '#f8fafc', 
+        bgcolor: 'var(--paper-sunken)', 
         borderRadius: 2, 
-        border: '1px solid #e2e8f0',
+        border: '1px solid var(--line)',
         mt: 4,
         boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
       }}>
-        <Typography variant="h6" fontWeight={700} gutterBottom sx={{ color: '#1e293b', display: 'flex', alignItems: 'center', gap: 1 }}>
+        <Typography variant="h6" fontWeight={700} gutterBottom sx={{ color: 'var(--ink)', display: 'flex', alignItems: 'center', gap: 1 }}>
           🔑 Advanced Pattern Benefits
         </Typography>
-        <Box component="ul" sx={{ margin: 0, paddingLeft: 3, '& li': { marginBottom: 1.5, color: '#475569' } }}>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Retry patterns:</Typography> Handle temporary network failures gracefully</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Timeout patterns:</Typography> Prevent hanging requests from blocking user interface</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Caching patterns:</Typography> Improve performance and reduce server load</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Rate limiting:</Typography> Respect API limits and avoid overwhelming servers</li>
+        <Box component="ul" sx={{ margin: 0, paddingLeft: 3, '& li': { marginBottom: 1.5, color: 'var(--ink-soft)' } }}>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Retry patterns:</Typography> Handle temporary network failures gracefully</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Timeout patterns:</Typography> Prevent hanging requests from blocking user interface</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Caching patterns:</Typography> Improve performance and reduce server load</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Rate limiting:</Typography> Respect API limits and avoid overwhelming servers</li>
         </Box>
       </Box>
     </div>
