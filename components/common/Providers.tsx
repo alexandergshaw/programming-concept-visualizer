@@ -2,6 +2,7 @@
 
 import { ReactNode } from 'react';
 import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
+import Toolbar from './Toolbar';
 
 // Warm, welcoming "old textbook" palette: faint cream paper, warm ink, sienna.
 const theme = createTheme({
@@ -42,6 +43,7 @@ export default function Providers({ children }: { children: ReactNode }) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <Toolbar />
       {children}
     </ThemeProvider>
   );

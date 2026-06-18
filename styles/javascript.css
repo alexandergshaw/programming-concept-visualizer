@@ -1,6 +1,7 @@
 .js-layout {
   display: flex;
-  min-height: 100vh;
+  /* The 48px top toolbar (via a spacer) already occupies the top of the page. */
+  min-height: calc(100vh - 48px);
   font-family: sans-serif;
   background-color: var(--paper);
   overflow: hidden;
@@ -256,9 +257,9 @@
     padding: 0 16px;
   }
 
-  /* Leave room for the floating menu button at the top-left. */
+  /* The toolbar spacer already clears the top; just a small breathing gap. */
   .js-content-inner {
-    margin-top: 56px;
+    margin-top: 16px;
   }
 
   /* Sidebar slides in from the left instead of taking permanent space. */
@@ -272,25 +273,26 @@
     transform: translateX(0);
   }
 
-  /* Floating menu button. */
+  /* Floating menu button — top-right so it clears the toolbar's settings gear. */
   .js-sidebar-toggle {
     display: flex;
     align-items: center;
     justify-content: center;
     position: fixed;
-    top: 10px;
-    left: 10px;
-    width: 44px;
-    height: 44px;
+    top: 6px;
+    right: 10px;
+    left: auto;
+    width: 36px;
+    height: 36px;
     border: none;
     border-radius: 8px;
-    background: #3a2f22;
-    color: #ffffff;
-    font-size: 22px;
+    background: transparent;
+    color: #f3ece0;
+    font-size: 20px;
     line-height: 1;
     cursor: pointer;
-    z-index: 1200;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1201; /* above the toolbar (AppBar z-index 1100) */
+    box-shadow: none;
   }
 
   /* Dim the page behind the open drawer. */

@@ -6,6 +6,7 @@ import { TextField } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import TechIcon from './TechIcon';
+import { useRememberSections, loadOpenSections, saveOpenSections } from './settings';
 
 export interface SidebarItem {
   label: string;
@@ -23,12 +24,31 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ title, items, onSelect, defaultOpen = [], activeValue, headerImage }: SidebarProps) {
-  // Initialized once from defaultOpen; afterwards a section stays open until
-  // the user explicitly collapses it (navigation no longer resets it).
+  // Starts from defaultOpen, then (once mounted) is restored from localStorage
+  // so the user's expanded/collapsed sections persist across visits.
   const [open, setOpen] = useState<Set<string>>(() => new Set(defaultOpen));
+  const [hydrated, setHydrated] = useState(false); // becomes true after the restore pass
   const [searchQuery, setSearchQuery] = useState(''); // State for the search query
   const [filteredItems, setFilteredItems] = useState<SidebarItem[]>(items); // State for filtered items
   const [mobileOpen, setMobileOpen] = useState(false); // Off-canvas drawer state (mobile only)
+  const [rememberSections] = useRememberSections();
+
+  // Restore the saved open sections for this topic (keyed by title). Re-runs if
+  // the topic changes or the "remember" preference is toggled back on.
+  useEffect(() => {
+    if (rememberSections) {
+      const saved = loadOpenSections(title);
+      if (saved) setOpen(new Set(saved));
+    }
+    setHydrated(true);
+  }, [title, rememberSections]);
+
+  // Persist open sections whenever they change (after the initial restore pass,
+  // and only while the preference is enabled).
+  useEffect(() => {
+    if (!hydrated || !rememberSections) return;
+    saveOpenSections(title, Array.from(open));
+  }, [open, hydrated, rememberSections, title]);
 
   // Filter items based on the search query
   useEffect(() => {
@@ -85,10 +105,10 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [], acti
         className={`js-sidebar${mobileOpen ? ' open' : ''}`}
         style={{
           position: 'fixed', // Fix the sidebar in place
-          top: '0', // Stick to the top of the viewport
+          top: '48px', // Sit below the always-on top toolbar
           left: '0', // Align it to the left of the viewport
           width: '250px', // Set a fixed width for the sidebar
-          height: '100vh', // Make it span the full height of the viewport
+          height: 'calc(100vh - 48px)', // Fill the viewport below the toolbar
           zIndex: 1000, // Ensure it stays above other content
           background: 'linear-gradient(180deg, #3a2f22, #2a2118)', // Warm "book spine" tone
           color: '#f3ece0',
@@ -98,27 +118,34 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [], acti
           flexDirection: 'column',
         }}
       >
-      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
-        {headerImage && (
-          <Image 
-            src={headerImage} 
-            alt="Header Icon" 
-            width={32}
-            height={32}
-            style={{  
-              marginRight: '12px',
-              borderRadius: '4px',
-              objectFit: 'contain'
-            }} 
-          />
-        )}
-        <TechIcon title={title} />
-        <h2 className="js-sidebar-title" style={{ margin: 0 }}>{title}</h2>
-      </div>
-      {/* Back to the home page from any topic */}
+      {/* Back to the home page from any topic (sits above the icon) */}
       <Link href="/" className="js-home-link" onClick={() => setMobileOpen(false)}>
         &larr; Home
       </Link>
+      {/* A single topic icon stacked above its title: a custom image if one was
+          provided, otherwise the matching tech icon. */}
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          gap: '8px',
+          marginBottom: '16px',
+        }}
+      >
+        {headerImage ? (
+          <Image
+            src={headerImage}
+            alt="Header Icon"
+            width={32}
+            height={32}
+            style={{ borderRadius: '4px', objectFit: 'contain' }}
+          />
+        ) : (
+          <TechIcon title={title} />
+        )}
+        <h2 className="js-sidebar-title" style={{ margin: 0 }}>{title}</h2>
+      </div>
       {/* Search Box */}
       <TextField
         placeholder="Search concepts..."
