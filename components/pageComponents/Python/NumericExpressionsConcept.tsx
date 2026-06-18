@@ -105,7 +105,7 @@ export default function NumericExpressionsConcept() {
 
           <Alert severity="info" sx={{ mt: 3 }}>
             <Typography variant="body2">
-              Watch the difference between <code>/</code> and <code>//</code>: <code>7 / 2</code> gives{' '}
+              Watch the difference between <code>/</code> and <code>{'//'}</code>: <code>7 / 2</code> gives{' '}
               <code>3.5</code>, but <code>7 // 2</code> gives <code>3</code> (it throws away the remainder).
               The leftover from that division is exactly what <code>%</code> gives you: <code>7 % 2</code> is{' '}
               <code>1</code>.
