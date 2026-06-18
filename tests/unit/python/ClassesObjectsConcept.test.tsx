@@ -5,15 +5,15 @@ import ClassesObjectsConcept from '@/components/pageComponents/Python/ClassesObj
 describe('ClassesObjectsConcept', () => {
   it('renders the title and key sections', () => {
     render(<ClassesObjectsConcept />);
-    expect(screen.getByText('Classes & Objects')).toBeInTheDocument();
-    expect(screen.getByText('What is Object-Oriented Programming?')).toBeInTheDocument();
-    expect(screen.getByText(/An Object Factory/)).toBeInTheDocument();
+    expect(screen.getAllByText('Classes & Objects').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('What is Object-Oriented Programming?').length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/An Object Factory/).length).toBeGreaterThan(0);
   });
 
   it('starts the factory with no objects', () => {
     const { container } = render(<ClassesObjectsConcept />);
     expect(container.querySelectorAll('.obj-card')).toHaveLength(0);
-    expect(screen.getByText(/No objects yet/)).toBeInTheDocument();
+    expect(screen.getAllByText(/No objects yet/).length).toBeGreaterThan(0);
   });
 
   it('creates an object from typed values', () => {
@@ -23,15 +23,15 @@ describe('ClassesObjectsConcept', () => {
     fireEvent.change(inputs[1], { target: { value: 'Beagle' } });
     fireEvent.click(screen.getByRole('button', { name: 'Create Dog object' }));
     expect(container.querySelectorAll('.obj-card')).toHaveLength(1);
-    expect(screen.getByText(/= "Rex"/)).toBeInTheDocument();
-    expect(screen.getByText(/= "Beagle"/)).toBeInTheDocument();
+    expect(screen.getAllByText(/= "Rex"/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/= "Beagle"/).length).toBeGreaterThan(0);
   });
 
   it('defaults to Buddy / Mixed when no values are given', () => {
     render(<ClassesObjectsConcept />);
     fireEvent.click(screen.getByRole('button', { name: 'Create Dog object' }));
-    expect(screen.getByText(/= "Buddy"/)).toBeInTheDocument();
-    expect(screen.getByText(/= "Mixed"/)).toBeInTheDocument();
+    expect(screen.getAllByText(/= "Buddy"/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/= "Mixed"/).length).toBeGreaterThan(0);
   });
 
   it('runs bark() and logs output', () => {

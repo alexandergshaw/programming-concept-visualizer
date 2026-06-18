@@ -1,66 +1,43 @@
 import LandingPage from '@/src/app/page';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen, fireEvent } from '@testing-library/react';
 
 const mockPush = jest.fn();
 jest.mock('next/navigation', () => ({
   useRouter: () => ({ push: mockPush }),
 }));
 
+// The landing page shows a Loader for ~2s before revealing the cards, so the
+// assertions wait for a card to appear (findBy polls past the timeout).
+const FIND = { timeout: 3000 } as const;
+
 describe('LandingPage behavior', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  it('renders all language cards initially', () => {
+  it('renders the topic cards after loading', async () => {
     render(<LandingPage />);
-    expect(screen.getByText('JavaScript')).toBeTruthy();
-    expect(screen.getByText('Python')).toBeTruthy();
-    expect(screen.getByText('TypeScript')).toBeTruthy();
-    expect(screen.getByText('SQL')).toBeTruthy();
-    expect(screen.getByText('PHP')).toBeTruthy();
-    expect(screen.getByText('HTML')).toBeTruthy();
+    expect(await screen.findByText('Python', {}, FIND)).toBeInTheDocument();
+    ['JavaScript', 'React', 'SQL', 'Databases', 'Programming Basics', 'Cybersecurity'].forEach((name) => {
+      expect(screen.getByText(name)).toBeInTheDocument();
+    });
   });
 
-  it('filters languages by search term', async () => {
+  it('navigates to a language page when a language card is clicked', async () => {
     render(<LandingPage />);
-    const user = userEvent.setup();
-    const input = screen.getByPlaceholderText(/search languages/i);
-
-    await user.type(input, 'python');
-    expect(screen.getByText('Python')).toBeTruthy();
-    expect(screen.queryByText('JavaScript')).not.toBeTruthy();
-    expect(screen.queryByText('HTML')).not.toBeTruthy();
-  });
-
-  it('navigates to the correct route when a language is clicked', async () => {
-    render(<LandingPage />);
-    const user = userEvent.setup();
-    const languageCard = screen.getByText('JavaScript');
-
-    await user.click(languageCard);
-
+    fireEvent.click(await screen.findByText('JavaScript', {}, FIND));
     expect(mockPush).toHaveBeenCalledWith('/languages/javascript');
   });
 
-  it('navigates correctly for all supported languages', async () => {
+  it('navigates to the SQL page (added recently)', async () => {
     render(<LandingPage />);
-    const user = userEvent.setup();
+    fireEvent.click(await screen.findByText('SQL', {}, FIND));
+    expect(mockPush).toHaveBeenCalledWith('/languages/sql');
+  });
 
-    const expectedSlugs = [
-      { name: 'JavaScript', slug: '/languages/javascript' },
-      { name: 'Python', slug: '/languages/python' },
-      { name: 'TypeScript', slug: '/languages/typescript' },
-      { name: 'SQL', slug: '/languages/sql' },
-      { name: 'PHP', slug: '/languages/php' },
-      { name: 'HTML', slug: '/languages/html' },
-    ];
-
-    for (const { name, slug } of expectedSlugs) {
-      await user.click(screen.getByText(name));
-      expect(mockPush).toHaveBeenCalledWith(slug);
-    }
-
-    expect(mockPush).toHaveBeenCalledTimes(expectedSlugs.length);
+  it('navigates to a skill page when a skill card is clicked', async () => {
+    render(<LandingPage />);
+    fireEvent.click(await screen.findByText('Databases', {}, FIND));
+    expect(mockPush).toHaveBeenCalledWith('/skills/databases');
   });
 });

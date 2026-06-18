@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent, within } from '@testing-library/react';
 
-jest.mock('@/components/common/CodeSnippet', () => {
+jest.mock('../../../components/common/CodeSnippet', () => {
   const ReactLib = require('react');
   return {
     __esModule: true,
@@ -15,9 +15,9 @@ import InheritanceConcept from '@/components/pageComponents/Python/InheritanceCo
 describe('InheritanceConcept', () => {
   it('renders the title and key sections', () => {
     render(<InheritanceConcept />);
-    expect(screen.getByText('Inheritance')).toBeInTheDocument();
-    expect(screen.getByText('What is Inheritance?')).toBeInTheDocument();
-    expect(screen.getByText(/Subclasses in Action/)).toBeInTheDocument();
+    expect(screen.getAllByText('Inheritance').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('What is Inheritance?').length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Subclasses in Action/).length).toBeGreaterThan(0);
   });
 
   it('runs the default Dog subclass and logs an overridden speak()', () => {

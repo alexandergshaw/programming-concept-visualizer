@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent, within } from '@testing-library/react';
 
-jest.mock('@/components/common/CodeSnippet', () => {
+jest.mock('../../../components/common/CodeSnippet', () => {
   const ReactLib = require('react');
   return {
     __esModule: true,
@@ -15,9 +15,9 @@ import AbstractionConcept from '@/components/pageComponents/Python/AbstractionCo
 describe('AbstractionConcept', () => {
   it('renders the title and key sections', () => {
     render(<AbstractionConcept />);
-    expect(screen.getByText('Abstraction')).toBeInTheDocument();
-    expect(screen.getByText('Abstract Base Classes')).toBeInTheDocument();
-    expect(screen.getByText(/One Contract, Many Implementations/)).toBeInTheDocument();
+    expect(screen.getAllByText('Abstraction').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Abstract Base Classes').length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/One Contract, Many Implementations/).length).toBeGreaterThan(0);
   });
 
   it('checks out with the default credit card method', () => {

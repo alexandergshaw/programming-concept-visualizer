@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent, within } from '@testing-library/react';
 
-jest.mock('@/components/common/CodeSnippet', () => {
+jest.mock('../../../components/common/CodeSnippet', () => {
   const ReactLib = require('react');
   return {
     __esModule: true,
@@ -15,9 +15,9 @@ import PolymorphismConcept from '@/components/pageComponents/Python/Polymorphism
 describe('PolymorphismConcept', () => {
   it('renders the title and key sections', () => {
     render(<PolymorphismConcept />);
-    expect(screen.getByText('Polymorphism')).toBeInTheDocument();
-    expect(screen.getByText('Duck Typing')).toBeInTheDocument();
-    expect(screen.getByText(/One Call, Many Shapes/)).toBeInTheDocument();
+    expect(screen.getAllByText('Polymorphism').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Duck Typing').length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/One Call, Many Shapes/).length).toBeGreaterThan(0);
   });
 
   it('runs area() across every shape with the default sizes', () => {

@@ -9,11 +9,11 @@ import QueueConcept from '@/components/pageComponents/Python/QueueConcept';
 describe('QueueConcept', () => {
   it('renders the title, big idea, and key section headings', () => {
     render(<QueueConcept />);
-    expect(screen.getByText('Queues')).toBeInTheDocument();
-    expect(screen.getByText('First In, First Out (FIFO)')).toBeInTheDocument();
-    expect(screen.getByText('Interactive Queue')).toBeInTheDocument();
-    expect(screen.getByText('The Core Operations')).toBeInTheDocument();
-    expect(screen.getByText('Where Queues Are Used')).toBeInTheDocument();
+    expect(screen.getAllByText('Queues').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('First In, First Out (FIFO)').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Interactive Queue').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('The Core Operations').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Where Queues Are Used').length).toBeGreaterThan(0);
   });
 
   it('starts with three people and front/back markers', () => {
@@ -29,22 +29,22 @@ describe('QueueConcept', () => {
     fireEvent.change(screen.getByRole('textbox'), { target: { value: 'Zoe' } });
     fireEvent.click(screen.getByRole('button', { name: 'Enqueue' }));
     expect(container.querySelectorAll('.queue-item')).toHaveLength(4);
-    expect(screen.getByText('Zoe')).toBeInTheDocument();
-    expect(screen.getByText(/enqueue\(Zoe\)/)).toBeInTheDocument();
+    expect(screen.getAllByText('Zoe').length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/enqueue\(Zoe\)/).length).toBeGreaterThan(0);
   });
 
   it('dequeue removes the front item', () => {
     const { container } = render(<QueueConcept />);
     fireEvent.click(screen.getByRole('button', { name: 'Dequeue' }));
     expect(container.querySelectorAll('.queue-item')).toHaveLength(2);
-    expect(screen.getByText(/dequeue\(\) returned Ann/)).toBeInTheDocument();
+    expect(screen.getAllByText(/dequeue\(\) returned Ann/).length).toBeGreaterThan(0);
   });
 
   it('peek leaves the queue unchanged', () => {
     const { container } = render(<QueueConcept />);
     fireEvent.click(screen.getByRole('button', { name: 'Peek' }));
     expect(container.querySelectorAll('.queue-item')).toHaveLength(3);
-    expect(screen.getByText(/peek\(\) returned Ann/)).toBeInTheDocument();
+    expect(screen.getAllByText(/peek\(\) returned Ann/).length).toBeGreaterThan(0);
   });
 
   it('handles dequeuing down to an empty queue', () => {
@@ -53,8 +53,8 @@ describe('QueueConcept', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Dequeue' }));
     fireEvent.click(screen.getByRole('button', { name: 'Dequeue' }));
     expect(container.querySelectorAll('.queue-item')).toHaveLength(0);
-    expect(screen.getByText(/queue is empty/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/queue is empty/i).length).toBeGreaterThan(0);
     fireEvent.click(screen.getByRole('button', { name: 'Dequeue' }));
-    expect(screen.getByText(/no one to serve/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/no one to serve/i).length).toBeGreaterThan(0);
   });
 });

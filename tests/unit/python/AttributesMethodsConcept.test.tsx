@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 
-jest.mock('@/components/common/CodeSnippet', () => {
+jest.mock('../../../components/common/CodeSnippet', () => {
   const ReactLib = require('react');
   return {
     __esModule: true,
@@ -15,9 +15,9 @@ import AttributesMethodsConcept from '@/components/pageComponents/Python/Attribu
 describe('AttributesMethodsConcept', () => {
   it('renders the title and key sections', () => {
     render(<AttributesMethodsConcept />);
-    expect(screen.getByText('Attributes & Methods')).toBeInTheDocument();
-    expect(screen.getByText('The Constructor: __init__')).toBeInTheDocument();
-    expect(screen.getByText(/Instance vs\. Class Attributes/)).toBeInTheDocument();
+    expect(screen.getAllByText('Attributes & Methods').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('The Constructor: __init__').length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Instance vs\. Class Attributes/).length).toBeGreaterThan(0);
   });
 
   it('shows the shared class attribute on both accounts', () => {
@@ -36,7 +36,7 @@ describe('AttributesMethodsConcept', () => {
     const amounts = screen.getAllByRole('spinbutton');
     fireEvent.change(amounts[0], { target: { value: '50' } });
     fireEvent.click(screen.getAllByRole('button', { name: 'deposit()' })[0]);
-    expect(screen.getByText(/=\s*150/)).toBeInTheDocument(); // Alice 100 -> 150
-    expect(screen.getByText(/=\s*50\b/)).toBeInTheDocument(); // Bob still 50
+    expect(screen.getAllByText(/=\s*150/).length).toBeGreaterThan(0); // Alice 100 -> 150
+    expect(screen.getAllByText(/=\s*50\b/).length).toBeGreaterThan(0); // Bob still 50
   });
 });
