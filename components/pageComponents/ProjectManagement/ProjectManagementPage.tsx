@@ -7,6 +7,10 @@ import GenericIntroduction from '../../common/GenericIntroduction';
 import ProjectLifecycleConcept from './ProjectLifecycleConcept';
 import MethodologiesConcept from './MethodologiesConcept';
 import ScrumConcept from './ScrumConcept';
+import KanbanConcept from './KanbanConcept';
+import EstimationConcept from './EstimationConcept';
+import RiskManagementConcept from './RiskManagementConcept';
+import StakeholdersConcept from './StakeholdersConcept';
 import RouteIcon from '@mui/icons-material/Route';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import ViewKanbanIcon from '@mui/icons-material/ViewKanban';
@@ -26,6 +30,16 @@ const navItems = [
     children: [
       { label: 'Agile vs Waterfall', value: 'methodologies' },
       { label: 'Scrum & the Board', value: 'scrum' },
+      { label: 'Kanban', value: 'kanban' },
+    ],
+  },
+  {
+    label: 'Delivering the Work',
+    value: 'delivering-the-work',
+    children: [
+      { label: 'Estimation & Planning', value: 'estimation' },
+      { label: 'Risk Management', value: 'risk-management' },
+      { label: 'Stakeholder Management', value: 'stakeholders' },
     ],
   },
 ];
@@ -68,6 +82,14 @@ export default function ProjectManagementPage() {
         return <MethodologiesConcept />;
       case 'scrum':
         return <ScrumConcept />;
+      case 'kanban':
+        return <KanbanConcept />;
+      case 'estimation':
+        return <EstimationConcept />;
+      case 'risk-management':
+        return <RiskManagementConcept />;
+      case 'stakeholders':
+        return <StakeholdersConcept />;
       default:
         return null;
     }
@@ -82,7 +104,7 @@ export default function ProjectManagementPage() {
     <PageWrapper
       pageTitle="Project Management"
       navItems={navItems}
-      defaultOpen={['getting-started', 'ways-of-working']}
+      defaultOpen={['getting-started', 'ways-of-working', 'delivering-the-work']}
       handleSelect={handleSelect}
       activeValue={selectedConcept || undefined}
     >

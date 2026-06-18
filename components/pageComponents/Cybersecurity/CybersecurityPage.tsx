@@ -6,6 +6,10 @@ import PageWrapper from '../../common/PageWrapper';
 import GenericIntroduction from '../../common/GenericIntroduction';
 import EthicalHackingConcept from './EthicalHackingConcept';
 import HackingPhasesConcept from './HackingPhasesConcept';
+import FootprintingConcept from './FootprintingConcept';
+import ScanningConcept from './ScanningConcept';
+import SocialEngineeringConcept from './SocialEngineeringConcept';
+import WebAttacksConcept from './WebAttacksConcept';
 import SystemArchitectureConcept from './SystemArchitectureConcept';
 import MalwareConcept from './MalwareConcept';
 import WirelessSecurityConcept from './WirelessSecurityConcept';
@@ -24,6 +28,16 @@ const navItems = [
       { label: 'Introduction', value: 'introduction' },
       { label: 'What is Ethical Hacking?', value: 'ethical-hacking' },
       { label: 'Phases of a Hack', value: 'hacking-phases' },
+    ],
+  },
+  {
+    label: 'Attacks & Techniques',
+    value: 'attacks-and-techniques',
+    children: [
+      { label: 'Footprinting & Recon', value: 'footprinting' },
+      { label: 'Scanning & Enumeration', value: 'scanning' },
+      { label: 'Social Engineering', value: 'social-engineering' },
+      { label: 'Web App Attacks', value: 'web-attacks' },
     ],
   },
   {
@@ -80,6 +94,14 @@ export default function CybersecurityPage() {
         return <EthicalHackingConcept />;
       case 'hacking-phases':
         return <HackingPhasesConcept />;
+      case 'footprinting':
+        return <FootprintingConcept />;
+      case 'scanning':
+        return <ScanningConcept />;
+      case 'social-engineering':
+        return <SocialEngineeringConcept />;
+      case 'web-attacks':
+        return <WebAttacksConcept />;
       case 'system-architecture':
         return <SystemArchitectureConcept />;
       case 'malware':
@@ -102,7 +124,7 @@ export default function CybersecurityPage() {
     <PageWrapper
       pageTitle="Cybersecurity"
       navItems={navItems}
-      defaultOpen={['foundations', 'systems-and-threats', 'protecting-data']}
+      defaultOpen={['foundations', 'attacks-and-techniques', 'systems-and-threats', 'protecting-data']}
       handleSelect={handleSelect}
       activeValue={selectedConcept || undefined}
     >
