@@ -1,9 +1,10 @@
 .array-container {
   margin-top: 70px;
-  background: #ffffff;
+  background: var(--paper-raised);
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  border: 1px solid var(--line);
+  box-shadow: 0 1px 3px rgba(80, 60, 30, 0.06);
   max-width: 900px;
 }
 
@@ -50,8 +51,8 @@
 }
 
 .array-cell {
-  background-color: #f8fafc;
-  border: 1px solid #cbd5e1;
+  background-color: var(--paper-sunken);
+  border: 1px solid var(--line);
   border-radius: 8px;
   padding: 14px 18px;
   min-width: 70px;

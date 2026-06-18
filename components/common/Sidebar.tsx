@@ -91,7 +91,8 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [], acti
           width: '250px', // Set a fixed width for the sidebar
           height: '100vh', // Make it span the full height of the viewport
           zIndex: 1000, // Ensure it stays above other content
-          backgroundColor: '#333', // Optional: Ensure the background is visible
+          background: 'linear-gradient(180deg, #3a2f22, #2a2118)', // Warm "book spine" tone
+          color: '#f3ece0',
           overflowY: 'auto', // Allow scrolling if the content overflows
           padding: '16px', // Add some padding for better spacing
           display: 'flex',

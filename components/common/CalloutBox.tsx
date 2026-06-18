@@ -29,15 +29,15 @@ const CalloutBox: React.FC<CalloutBoxProps> = ({
       case 'guide':
         return {
           ...baseStyles,
-          bgcolor: '#f8fafc',
-          borderColor: '#e2e8f0',
+          bgcolor: 'var(--paper-sunken)',
+          borderColor: 'var(--line)',
         };
       case 'key-concepts':
         return {
           ...baseStyles,
           p: 2,
-          bgcolor: '#f5f5f5',
-          borderColor: '#ddd',
+          bgcolor: 'var(--accent-bg)',
+          borderColor: '#e3d3b6',
           borderRadius: 1,
         };
       case 'info':
@@ -64,8 +64,8 @@ const CalloutBox: React.FC<CalloutBoxProps> = ({
       default:
         return {
           ...baseStyles,
-          bgcolor: '#f8fafc',
-          borderColor: '#e2e8f0',
+          bgcolor: 'var(--paper-sunken)',
+          borderColor: 'var(--line)',
         };
     }
   };

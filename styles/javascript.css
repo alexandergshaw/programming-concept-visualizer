@@ -2,7 +2,7 @@
   display: flex;
   min-height: 100vh;
   font-family: sans-serif;
-  background-color: #f9fafb;
+  background-color: var(--paper);
   overflow: hidden;
 }
 
@@ -11,7 +11,7 @@
 }
 
 .link {
-  color: #00319b
+  color: var(--accent)
 }
 
 .link:hover {
@@ -22,8 +22,8 @@
   flex-shrink: 0;
   width: 240px;
   min-height: 100vh;
-  background: linear-gradient(180deg, #1f2937, #111827);
-  color: #f1f1f1;
+  background: linear-gradient(180deg, #3a2f22, #2a2118);
+  color: #f3ece0;
   padding: 30px 20px;
   z-index: 1;
 }
@@ -37,7 +37,7 @@
 .js-sidebar-title {
   font-size: 20px;
   font-weight: 600;
-  border-bottom: 1px solid #374151;
+  border-bottom: 1px solid #5a4a37;
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -88,14 +88,14 @@
 }
 
 .js-nav-subitem:hover {
-  background-color: #00319b;
+  background-color: var(--accent);
   color: #ffffff;
   transform: translateX(4px);
   border-radius: 3px;
 }
 
 .js-nav-subitem.active {
-  background-color: #00319b;
+  background-color: var(--accent);
   color: #ffffff;
   transform: translateX(4px);
   border-radius: 3px;
@@ -116,7 +116,7 @@
 }
 
 .js-home-button:hover {
-  background-color: #00319b;
+  background-color: var(--accent);
   color: #ffffff;
   transform: translateX(4px);
 }
@@ -159,7 +159,7 @@
 }
 
 .js-nav-item:hover {
-  background-color: #00319b;
+  background-color: var(--accent);
   color: #ffffff;
   transform: translateX(4px);
   border-radius: 3px;
@@ -183,7 +183,7 @@
   overflow: hidden;
   transition: max-height 0.25s ease;
   margin-left: 20px;
-  border-left: 2px solid #374151;
+  border-left: 2px solid #5a4a37;
 }
 
 .js-sublist.collapsed {
@@ -263,7 +263,7 @@
     height: 44px;
     border: none;
     border-radius: 8px;
-    background: #1f2937;
+    background: #3a2f22;
     color: #ffffff;
     font-size: 22px;
     line-height: 1;

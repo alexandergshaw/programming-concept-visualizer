@@ -5,8 +5,8 @@
    =========================================================================== */
 
 .ds-viz {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
   border-radius: 12px;
   padding: 24px;
   margin: 16px 0 24px;
@@ -187,7 +187,7 @@
   min-height: 64px;
   border-radius: 8px;
   border: 1px solid #cbd5e1;
-  background: #f8fafc;
+  background: var(--paper-sunken);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -276,8 +276,8 @@
 .rec-frame {
   padding: 12px 16px;
   border-radius: 8px;
-  border: 1px solid #e2e8f0;
-  background: #f8fafc;
+  border: 1px solid var(--line);
+  background: var(--paper-sunken);
   font-family: monospace;
   font-size: 15px;
   color: #334155;
@@ -383,7 +383,7 @@
   padding: 0 6px;
   border-radius: 8px;
   border: 1px solid #cbd5e1;
-  background: #f8fafc;
+  background: var(--paper-sunken);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -491,7 +491,7 @@
   height: 88px;
   border-radius: 10px;
   border: 2px solid #cbd5e1;
-  background: #ffffff;
+  background: var(--paper-raised);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -530,7 +530,7 @@
 .obj-card {
   border: 1px solid #cbd5e1;
   border-radius: 10px;
-  background: #f8fafc;
+  background: var(--paper-sunken);
   padding: 14px 16px;
   min-width: 190px;
 }
@@ -556,8 +556,8 @@
 
 /* Console-style output panel for method results */
 .output-panel {
-  background: #0f172a;
-  color: #e2e8f0;
+  background: #2b2620;
+  color: var(--line);
   border-radius: 8px;
   padding: 12px 14px;
   font-family: monospace;
@@ -594,9 +594,9 @@
 }
 
 .shape-card {
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--line);
   border-radius: 10px;
-  background: #f8fafc;
+  background: var(--paper-sunken);
   padding: 14px;
   text-align: center;
   min-width: 150px;
@@ -616,7 +616,7 @@
 
 .select-chip {
   border: 1.5px solid #cbd5e1;
-  background: #ffffff;
+  background: var(--paper-raised);
   border-radius: 999px;
   padding: 8px 18px;
   font-size: 14px;
@@ -631,9 +631,9 @@
 }
 
 .select-chip.selected {
-  border-color: #2563eb;
-  background: #eff6ff;
-  color: #1d4ed8;
+  border-color: var(--accent);
+  background: var(--accent-bg);
+  color: var(--accent-strong);
 }
 
 /* Neutral avatar used in the queue (replaces emoji) */
