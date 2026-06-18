@@ -13,7 +13,8 @@ export default function UnderConstruction() {
         padding: 4,
         borderRadius: 2,
         boxShadow: 3,
-        backgroundColor: '#f9f9f9',
+        backgroundColor: 'var(--paper-raised)',
+        color: 'var(--ink)',
       }}
     >
       <Typography variant="h4" gutterBottom>

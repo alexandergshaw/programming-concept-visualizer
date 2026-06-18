@@ -68,12 +68,13 @@ export default function CodePartsExplanation({
                     fontFamily: 'monospace',
                     fontSize: 15,
                     marginBottom: 10,
-                    background: '#fff',
+                    background: 'var(--paper-raised)',
+                    color: 'var(--ink)',
                     borderRadius: 6,
                     padding: '8px 10px',
                     lineHeight: 1.7,
                     overflowX: 'auto',
-                    border: '1px solid #e0e0e0',
+                    border: '1px solid var(--line)',
                     display: 'block'
                 }}
                 dangerouslySetInnerHTML={{ __html: highlightedCode }}

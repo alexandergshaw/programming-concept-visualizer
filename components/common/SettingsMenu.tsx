@@ -14,9 +14,9 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import CheckIcon from '@mui/icons-material/Check';
 import { useThemePreference, type ThemePreference } from './settings';
 
-const THEME_OPTIONS: { value: ThemePreference; label: string; note?: string }[] = [
-  { value: 'academic', label: 'Academic', note: 'Warm textbook' },
-  { value: 'terminal', label: 'Terminal', note: 'Retro CRT, glowing green' },
+const THEME_OPTIONS: { value: ThemePreference; label: string }[] = [
+  { value: 'academic', label: 'Academic' },
+  { value: 'terminal', label: 'Terminal' },
 ];
 
 /**
@@ -70,7 +70,7 @@ export default function SettingsMenu({
             <ListItemIcon>
               {themePreference === opt.value && <CheckIcon fontSize="small" />}
             </ListItemIcon>
-            <ListItemText primary={opt.label} secondary={opt.note} />
+            <ListItemText primary={opt.label} />
           </MenuItem>
         ))}
       </Menu>
