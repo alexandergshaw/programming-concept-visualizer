@@ -29,18 +29,24 @@ describe('PythonPage navigation', () => {
     expect(screen.getAllByText('Python').length).toBeGreaterThan(0);
   });
 
-  it('renders the new nav groups added today', () => {
+  it('renders the remaining nav groups', () => {
     render(<PythonPage />);
     expect(screen.getAllByText('Object-Oriented Programming').length).toBeGreaterThan(0);
-    expect(screen.getAllByText('Data Structures').length).toBeGreaterThan(0);
-    expect(screen.getAllByText('Algorithms').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Collections').length).toBeGreaterThan(0);
   });
 
-  it('renders the new sub-topics', () => {
+  it('renders the remaining sub-topics', () => {
     render(<PythonPage />);
-    ['Stacks', 'Queues', 'Trees', 'Searching', 'Sorting', 'Polymorphism', 'Abstraction'].forEach((label) => {
+    ['Polymorphism', 'Abstraction', 'Lists', 'Variables'].forEach((label) => {
       expect(screen.getAllByText(label).length).toBeGreaterThan(0);
     });
+  });
+
+  it('no longer shows the Data Structures / Algorithms sections (moved away)', () => {
+    render(<PythonPage />);
+    expect(screen.queryByText('Data Structures')).toBeNull();
+    expect(screen.queryByText('Algorithms')).toBeNull();
+    expect(screen.queryByText('Stacks')).toBeNull();
   });
 
   it('shows a prompt before any topic is selected', () => {
@@ -50,8 +56,8 @@ describe('PythonPage navigation', () => {
 
   it('navigates and renders content when a topic is chosen', () => {
     render(<PythonPage />);
-    fireEvent.click(screen.getByText('Stacks'));
-    expect(mockPush).toHaveBeenCalledWith('/languages/python?concept=stacks');
-    expect(screen.getAllByText('Interactive Stack').length).toBeGreaterThan(0);
+    fireEvent.click(screen.getByText('Polymorphism'));
+    expect(mockPush).toHaveBeenCalledWith('/languages/python?concept=polymorphism');
+    expect(screen.queryByText(/select a topic/i)).toBeNull();
   });
 });

@@ -15,6 +15,15 @@ import SubjectIcon from '@mui/icons-material/Subject';
 import AutoAwesomeMotionIcon from '@mui/icons-material/AutoAwesomeMotion'; 
 import FlowchartDesigner from './FlowchartDesigner';
 import BigOConcept from './BigOConcept';
+// Data Structures + Algorithms concepts (general CS topics that live in the
+// Python folder but are surfaced here on the intro-to-programming page).
+import StackConcept from '../Python/StackConcept';
+import QueueConcept from '../Python/QueueConcept';
+import TreeConcept from '../Python/TreeConcept';
+import AlgorithmAnalysisConcept from '../Python/AlgorithmAnalysisConcept';
+import RecursionVisualConcept from '../Python/RecursionVisualConcept';
+import SearchingConcept from '../Python/SearchingConcept';
+import SortingConcept from '../Python/SortingConcept';
 
 const navItems = [
     {
@@ -33,6 +42,25 @@ const navItems = [
         children: [
             // { label: 'Flow Charts', value: 'flow-charts'},
             { label: 'Big O Notation', value: 'big-o-notation' },
+        ],
+    },
+    {
+        label: 'Data Structures',
+        value: 'data-structures',
+        children: [
+            { label: 'Stacks', value: 'stacks' },
+            { label: 'Queues', value: 'queues' },
+            { label: 'Trees', value: 'trees' },
+        ],
+    },
+    {
+        label: 'Algorithms',
+        value: 'algorithms',
+        children: [
+            { label: 'Algorithm Analysis & Design', value: 'algorithm-analysis' },
+            { label: 'Recursion', value: 'recursion-viz' },
+            { label: 'Searching', value: 'searching' },
+            { label: 'Sorting', value: 'sorting' },
         ],
     },
 ];
@@ -103,6 +131,20 @@ export default function ProgrammingBasicsPage() {
 				return <FlowchartDesigner />;
 			case 'big-o-notation':
 				return <BigOConcept />;
+			case 'stacks':
+				return <StackConcept />;
+			case 'queues':
+				return <QueueConcept />;
+			case 'trees':
+				return <TreeConcept />;
+			case 'algorithm-analysis':
+				return <AlgorithmAnalysisConcept />;
+			case 'recursion-viz':
+				return <RecursionVisualConcept />;
+			case 'searching':
+				return <SearchingConcept />;
+			case 'sorting':
+				return <SortingConcept />;
 			default:
 				return null;
 		}

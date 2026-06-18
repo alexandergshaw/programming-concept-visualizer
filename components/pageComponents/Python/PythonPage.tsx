@@ -23,13 +23,6 @@ import InheritanceConcept from './InheritanceConcept';
 import EncapsulationConcept from './EncapsulationConcept';
 import PolymorphismConcept from './PolymorphismConcept';
 import AbstractionConcept from './AbstractionConcept';
-import StackConcept from './StackConcept';
-import QueueConcept from './QueueConcept';
-import TreeConcept from './TreeConcept';
-import AlgorithmAnalysisConcept from './AlgorithmAnalysisConcept';
-import RecursionVisualConcept from './RecursionVisualConcept';
-import SearchingConcept from './SearchingConcept';
-import SortingConcept from './SortingConcept';
 
 const navItems = [
 	{
@@ -38,8 +31,8 @@ const navItems = [
 		children: [
 			{ label: 'Variables', value: 'variables' },
 			{ label: 'User Input', value: 'user input' },
-            { label: 'String Manipulation', value: 'string manipulation' },
-        ],
+			{ label: 'String Manipulation', value: 'string manipulation' },
+		],
 	},
 	{
 		label: 'Control Flow',
@@ -67,14 +60,14 @@ const navItems = [
 		children: [
 			{ label: 'Function Basics', value: 'function-basics' },
 			{ label: 'Recursion', value: 'recursion' },
-		]
+		],
 	},
 	{
 		label: 'Code Organization',
 		value: 'code-organization',
 		children: [
 			{ label: 'Modules', value: 'modules' },
-		]
+		],
 	},
 	{
 		label: 'Object-Oriented Programming',
@@ -86,27 +79,8 @@ const navItems = [
 			{ label: 'Encapsulation', value: 'encapsulation' },
 			{ label: 'Polymorphism', value: 'polymorphism' },
 			{ label: 'Abstraction', value: 'abstraction' },
-		]
+		],
 	},
-	{
-		label: 'Data Structures',
-		value: 'data-structures',
-		children: [
-			{ label: 'Stacks', value: 'stacks' },
-			{ label: 'Queues', value: 'queues' },
-			{ label: 'Trees', value: 'trees' },
-		]
-	},
-	{
-		label: 'Algorithms',
-		value: 'algorithms',
-		children: [
-			{ label: 'Algorithm Analysis & Design', value: 'algorithm-analysis' },
-			{ label: 'Recursion', value: 'recursion-viz' },
-			{ label: 'Searching', value: 'searching' },
-			{ label: 'Sorting', value: 'sorting' },
-		]
-	}
 ];
 
 export default function PythonPage() {
@@ -123,61 +97,47 @@ export default function PythonPage() {
 
 	const renderContent = (concept: string | null) => {
 		switch (concept) {
-            case 'variables':
-                return <VariableConcept />;
-            case 'user input':
-                return <UserInputConcept />;
-            case 'string manipulation':
-                return <StringManipulationConcept />;
-            case 'lists':
-                return <ListConcept />;
-            case 'tuples':
-                return <TupleConcept />;
-            case 'sets':
-                return <SetConcept />;
-            case 'dicts':
-                return <DictConcept />;
-            case 'ifelse':
-                return <IfElseConcept />;
-            case 'logicalandor':
-                return <LogicalAndOrConcept />;
-            case 'whileloops':
-                return <WhileLoopConcept />;
-            case 'forloops':
-                return <ForLoopConcept />;
-            case 'recursion':
-                return <RecursionConcept />;
-            case 'function-basics':
-                return <FunctionBasicsConcept />;
-            case 'modules':
-                return <ModulesConcept />;
-            case 'classes-objects':
-                return <ClassesObjectsConcept />;
-            case 'attributes-methods':
-                return <AttributesMethodsConcept />;
-            case 'inheritance':
-                return <InheritanceConcept />;
-            case 'encapsulation':
-                return <EncapsulationConcept />;
-            case 'polymorphism':
-                return <PolymorphismConcept />;
-            case 'abstraction':
-                return <AbstractionConcept />;
-            case 'stacks':
-                return <StackConcept />;
-            case 'queues':
-                return <QueueConcept />;
-            case 'trees':
-                return <TreeConcept />;
-            case 'algorithm-analysis':
-                return <AlgorithmAnalysisConcept />;
-            case 'recursion-viz':
-                return <RecursionVisualConcept />;
-            case 'searching':
-                return <SearchingConcept />;
-            case 'sorting':
-                return <SortingConcept />;
-            default:
+			case 'variables':
+				return <VariableConcept />;
+			case 'user input':
+				return <UserInputConcept />;
+			case 'string manipulation':
+				return <StringManipulationConcept />;
+			case 'lists':
+				return <ListConcept />;
+			case 'tuples':
+				return <TupleConcept />;
+			case 'sets':
+				return <SetConcept />;
+			case 'dicts':
+				return <DictConcept />;
+			case 'ifelse':
+				return <IfElseConcept />;
+			case 'logicalandor':
+				return <LogicalAndOrConcept />;
+			case 'whileloops':
+				return <WhileLoopConcept />;
+			case 'forloops':
+				return <ForLoopConcept />;
+			case 'recursion':
+				return <RecursionConcept />;
+			case 'function-basics':
+				return <FunctionBasicsConcept />;
+			case 'modules':
+				return <ModulesConcept />;
+			case 'classes-objects':
+				return <ClassesObjectsConcept />;
+			case 'attributes-methods':
+				return <AttributesMethodsConcept />;
+			case 'inheritance':
+				return <InheritanceConcept />;
+			case 'encapsulation':
+				return <EncapsulationConcept />;
+			case 'polymorphism':
+				return <PolymorphismConcept />;
+			case 'abstraction':
+				return <AbstractionConcept />;
+			default:
 				return null;
 		}
 	};
