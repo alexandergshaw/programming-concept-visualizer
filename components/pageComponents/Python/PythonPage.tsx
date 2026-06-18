@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import PageWrapper from '../../common/PageWrapper';
 import VariableConcept from './VariableConcept';
+import NumericExpressionsConcept from './NumericExpressionsConcept';
 import UserInputConcept from './UserInputConcept';
 import StringManipulationConcept from './StringManipulationConcept';
 import ListConcept from './ListConcept';
@@ -15,8 +16,10 @@ import LogicalAndOrConcept from './LogicalAndOrConcept';
 import WhileLoopConcept from './WhileLoopConcept';
 import ForLoopConcept from './ForLoopConcept';
 import RecursionConcept from './RecursionConcept';
+import AccumulatorPatternConcept from './AccumulatorPatternConcept';
 import FunctionBasicsConcept from './FunctionBasicsConcept';
 import ModulesConcept from './ModulesConcept';
+import MathLibraryConcept from './MathLibraryConcept';
 import ClassesObjectsConcept from './ClassesObjectsConcept';
 import AttributesMethodsConcept from './AttributesMethodsConcept';
 import InheritanceConcept from './InheritanceConcept';
@@ -30,6 +33,7 @@ const navItems = [
 		value: 'storing data',
 		children: [
 			{ label: 'Variables', value: 'variables' },
+			{ label: 'Numeric Expressions', value: 'numeric-expressions' },
 			{ label: 'User Input', value: 'user input' },
 			{ label: 'String Manipulation', value: 'string manipulation' },
 		],
@@ -42,6 +46,7 @@ const navItems = [
 			{ label: 'Logical And / Or', value: 'logicalandor' },
 			{ label: 'For Loops', value: 'forloops' },
 			{ label: 'While Loops', value: 'whileloops' },
+			{ label: 'Accumulator Pattern', value: 'accumulator-pattern' },
 		],
 	},
 	{
@@ -67,6 +72,7 @@ const navItems = [
 		value: 'code-organization',
 		children: [
 			{ label: 'Modules', value: 'modules' },
+			{ label: 'The math Library', value: 'math-library' },
 		],
 	},
 	{
@@ -99,6 +105,8 @@ export default function PythonPage() {
 		switch (concept) {
 			case 'variables':
 				return <VariableConcept />;
+			case 'numeric-expressions':
+				return <NumericExpressionsConcept />;
 			case 'user input':
 				return <UserInputConcept />;
 			case 'string manipulation':
@@ -121,10 +129,14 @@ export default function PythonPage() {
 				return <ForLoopConcept />;
 			case 'recursion':
 				return <RecursionConcept />;
+			case 'accumulator-pattern':
+				return <AccumulatorPatternConcept />;
 			case 'function-basics':
 				return <FunctionBasicsConcept />;
 			case 'modules':
 				return <ModulesConcept />;
+			case 'math-library':
+				return <MathLibraryConcept />;
 			case 'classes-objects':
 				return <ClassesObjectsConcept />;
 			case 'attributes-methods':
