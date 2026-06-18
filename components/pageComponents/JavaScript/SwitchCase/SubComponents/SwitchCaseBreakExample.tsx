@@ -8,25 +8,25 @@ const SwitchCaseBreakExample: React.FC = () => {
     {
       label: 'Switch Statement',
       part: 'switch (drink)',
-      color: '#4caf50',
+      color: 'var(--success)',
       desc: 'Evaluates drink once'
     },
     {
       label: 'Case Coffee',
       part: 'case "coffee":\n      console.log("Hot beverage");\n      break;',
-      color: '#2196f3',
+      color: 'var(--info)',
       desc: 'Coffee case with break statement'
     },
     {
       label: 'Case Tea',
       part: 'case "tea":\n      console.log("Also hot");\n      // No break here!',
-      color: '#ff9800',
+      color: 'var(--warning)',
       desc: 'Tea case WITHOUT break - will fall through'
     },
     {
       label: 'Default Case',
       part: 'default:\n      console.log("Unknown drink");',
-      color: '#f44336',
+      color: 'var(--danger)',
       desc: 'Default case catches fall-through'
     }
   ];

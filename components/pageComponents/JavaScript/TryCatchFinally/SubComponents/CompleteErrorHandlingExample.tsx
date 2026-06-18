@@ -11,49 +11,49 @@ const CompleteErrorHandlingExample: React.FC = () => {
     {
       label: "Try Block",
       part: "try {",
-      color: "#1976d2",
+      color: "var(--info)",
       desc: "Attempts risky operations - converting strings to numbers and dividing"
     },
     {
       label: "Input Validation",
       part: "if (isNaN(a) || isNaN(b)) {\n    throw new Error('Invalid input');",
-      color: "#ff9800",
+      color: "var(--warning)",
       desc: "Checks if the inputs are valid numbers and throws an error if not"
     },
     {
       label: "Division Check",
       part: "if (b === 0) {\n    throw new Error('Cannot divide by zero');",
-      color: "#ff5722",
+      color: "var(--warning)",
       desc: "Prevents division by zero by throwing a specific error"
     },
     {
       label: "Success Operation",
       part: "return a / b;",
-      color: "#4caf50",
+      color: "var(--success)",
       desc: "If everything is valid, performs the division and returns result"
     },
     {
       label: "Catch Block",
       part: "} catch (error) {",
-      color: "#f44336",
+      color: "var(--danger)",
       desc: "Handles any errors that occurred in the try block"
     },
     {
       label: "Error Handling",
       part: "console.log('Error: ' + error.message);",
-      color: "#e91e63",
+      color: "var(--feature)",
       desc: "Logs the error message for debugging purposes"
     },
     {
       label: "Finally Block",
       part: "} finally {",
-      color: "#9c27b0",
+      color: "var(--feature)",
       desc: "Always runs, whether the operation succeeded or failed"
     },
     {
       label: "Cleanup",
       part: "console.log('Operation completed');",
-      color: "#673ab7",
+      color: "var(--feature)",
       desc: "Cleanup code that always executes"
     }
   ];
@@ -304,14 +304,14 @@ const CompleteErrorHandlingExample: React.FC = () => {
       </Box>
 
       {/* Simple Summary */}
-      <Box sx={{ mt: 4, p: 3, bgcolor: '#f0f7ff', borderRadius: 2, border: '2px solid #1976d2' }}>
-        <Typography variant="h6" fontWeight={600} gutterBottom sx={{ color: '#1976d2' }}>
+      <Box sx={{ mt: 4, p: 3, bgcolor: 'var(--info-bg)', borderRadius: 2, border: '2px solid var(--info)' }}>
+        <Typography variant="h6" fontWeight={600} gutterBottom sx={{ color: 'var(--info)' }}>
           🎯 Why This Pattern Works
         </Typography>
         
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr 1fr' }, gap: 3 }}>
           <Box>
-            <Typography variant="subtitle2" fontWeight={600} sx={{ color: '#1976d2', mb: 1 }}>
+            <Typography variant="subtitle2" fontWeight={600} sx={{ color: 'var(--info)', mb: 1 }}>
               Try Block
             </Typography>
             <Typography variant="body2" sx={{ fontSize: '0.9rem' }}>
@@ -320,7 +320,7 @@ const CompleteErrorHandlingExample: React.FC = () => {
           </Box>
           
           <Box>
-            <Typography variant="subtitle2" fontWeight={600} sx={{ color: '#f44336', mb: 1 }}>
+            <Typography variant="subtitle2" fontWeight={600} sx={{ color: 'var(--danger)', mb: 1 }}>
               Catch Block
             </Typography>
             <Typography variant="body2" sx={{ fontSize: '0.9rem' }}>
@@ -329,7 +329,7 @@ const CompleteErrorHandlingExample: React.FC = () => {
           </Box>
           
           <Box>
-            <Typography variant="subtitle2" fontWeight={600} sx={{ color: '#9c27b0', mb: 1 }}>
+            <Typography variant="subtitle2" fontWeight={600} sx={{ color: 'var(--feature)', mb: 1 }}>
               Finally Block
             </Typography>
             <Typography variant="body2" sx={{ fontSize: '0.9rem' }}>

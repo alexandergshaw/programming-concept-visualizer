@@ -13,25 +13,25 @@ const ClosuresExample: React.FC = () => {
     {
       label: 'Outer Function',
       part: 'function createCounter() {\n  let count = 0;',
-      color: '#e91e63',
+      color: 'var(--feature)',
       desc: 'Outer function creates private variable in its scope'
     },
     {
       label: 'Inner Function',
       part: 'return function() {\n    count++;\n    return count;\n  }',
-      color: '#4caf50',
+      color: 'var(--success)',
       desc: 'Inner function accesses outer variable (closure formed)'
     },
     {
       label: 'Closure Creation',
       part: 'const counter = createCounter()',
-      color: '#2196f3',
+      color: 'var(--info)',
       desc: 'Calling outer function returns inner function with closure'
     },
     {
       label: 'Persistent Access',
       part: 'counter(); // 1\ncounter(); // 2',
-      color: '#ff9800',
+      color: 'var(--warning)',
       desc: 'Inner function remembers outer variables even after outer function returns'
     }
   ];
@@ -365,11 +365,11 @@ counter2(); // 1 - separate from first counter`}
       </Box>
 
       <CalloutBox title="Key Closure Concepts" type="key-concepts">
-        <Box component="ul" sx={{ margin: 0, paddingLeft: 3, '& li': { marginBottom: 1.5, color: '#475569' } }}>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Lexical Scoping:</Typography> Inner functions have access to outer function variables</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Persistent Variables:</Typography> Outer variables stay alive as long as closure exists</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Private Data:</Typography> Variables in closures can&apos;t be accessed from outside</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Independent Instances:</Typography> Each closure maintains its own copy of variables</li>
+        <Box component="ul" sx={{ margin: 0, paddingLeft: 3, '& li': { marginBottom: 1.5, color: 'var(--ink-soft)' } }}>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Lexical Scoping:</Typography> Inner functions have access to outer function variables</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Persistent Variables:</Typography> Outer variables stay alive as long as closure exists</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Private Data:</Typography> Variables in closures can&apos;t be accessed from outside</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Independent Instances:</Typography> Each closure maintains its own copy of variables</li>
         </Box>
       </CalloutBox>
     </div>

@@ -23,7 +23,7 @@ const DomExplanation: React.FC = () => {
             <li style={{ marginBottom: 8 }}>If you change the color of a wall on the blueprint, the real wall changes color</li>
           </ul>
           
-          <Box sx={{ mt: 3, mb: 2, pl: 2, borderLeft: '3px solid #2196f3' }}>
+          <Box sx={{ mt: 3, mb: 2, pl: 2, borderLeft: '3px solid var(--info)' }}>
             <Typography fontWeight={500} gutterBottom>That&apos;s how JavaScript works with websites:</Typography>
             <p style={{ margin: '8px 0 0 0' }}>
               JavaScript can change the DOM (the blueprint), and the browser automatically updates what you see on screen.
@@ -33,16 +33,16 @@ const DomExplanation: React.FC = () => {
         
         <Box sx={{ 
           p: 2, 
-          bgcolor: '#f5f7fa', 
+          bgcolor: 'var(--paper-raised)', 
           borderRadius: 2, 
-          border: '1px dashed #ccc',
+          border: '1px dashed var(--line)',
           fontFamily: 'monospace',
           fontSize: '0.9rem',
           maxWidth: 270,
           mb: { xs: 2, md: 0 }
         }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-            <FontAwesomeIcon icon={faCubes} style={{ color: '#1976d2' }} />
+            <FontAwesomeIcon icon={faCubes} style={{ color: 'var(--info)' }} />
             <Typography fontWeight={600}>The DOM is like a family tree</Typography>
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -59,7 +59,7 @@ const DomExplanation: React.FC = () => {
         </Box>
       </Box>
       
-      <Box sx={{ bgcolor: '#f0f4fa', p: 2, borderRadius: 2, mt: 2 }}>
+      <Box sx={{ bgcolor: 'var(--paper-raised)', p: 2, borderRadius: 2, mt: 2 }}>
         <Typography fontWeight={600} gutterBottom>
           So in simple terms:
         </Typography>

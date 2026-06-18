@@ -22,30 +22,30 @@ export default function ObjectFundamentalsConcept() {
         <Section title="Creating Classes and Objects">
           <ObjectBasics />
           <ClassCreationExample />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
-            <FontAwesomeIcon icon={faWrench} style={{ fontSize: 20, color: '#1976d2' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+            <FontAwesomeIcon icon={faWrench} style={{ fontSize: 20, color: 'var(--info)' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Now let's explore how to access and use the properties and methods of the objects you create.
+              <strong style={{ color: 'var(--info)' }}>What&apos;s next:</strong> Now let's explore how to access and use the properties and methods of the objects you create.
             </Typography>
           </Box>
         </Section>
 
         <Section title="Using Object Properties and Methods">
           <PropertiesMethodsExample />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
-            <FontAwesomeIcon icon={faBoxOpen} style={{ fontSize: 20, color: '#1976d2' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+            <FontAwesomeIcon icon={faBoxOpen} style={{ fontSize: 20, color: 'var(--info)' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Learn destructuring - a powerful way to extract values from objects into individual variables.
+              <strong style={{ color: 'var(--info)' }}>What&apos;s next:</strong> Learn destructuring - a powerful way to extract values from objects into individual variables.
             </Typography>
           </Box>
         </Section>
 
         <Section title="Object Destructuring">
           <DestructuringExample />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e8f5e9', p: 2, borderRadius: 1, mt: 2 }}>
-            <FontAwesomeIcon icon={faCheckCircle} style={{ fontSize: 20, color: '#4caf50' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--success-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+            <FontAwesomeIcon icon={faCheckCircle} style={{ fontSize: 20, color: 'var(--success)' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#4caf50' }}>Excellent work!</strong> You've mastered object fundamentals and can now create and manipulate JavaScript objects effectively.
+              <strong style={{ color: 'var(--success)' }}>Excellent work!</strong> You've mastered object fundamentals and can now create and manipulate JavaScript objects effectively.
             </Typography>
           </Box>
         </Section>

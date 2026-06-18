@@ -12,25 +12,25 @@ const FetchAPIExample: React.FC = () => {
     {
       label: 'Fetch Function Call',
       part: 'fetch(url)',
-      color: '#e91e63',
+      color: 'var(--feature)',
       desc: 'Modern way to make HTTP requests, returns a Promise'
     },
     {
       label: 'Response Handling',
       part: '.then(response => response.json())',
-      color: '#4caf50',
+      color: 'var(--success)',
       desc: 'Convert response to JSON format for JavaScript use'
     },
     {
       label: 'Data Processing',
       part: '.then(data => { /* use data */ })',
-      color: '#ff9800',
+      color: 'var(--warning)',
       desc: 'Process the received data to update the page'
     },
     {
       label: 'Error Handling',
       part: '.catch(error => console.error(error))',
-      color: '#f44336',
+      color: 'var(--danger)',
       desc: 'Handle any errors that occur during the request'
     }
   ];
@@ -162,13 +162,13 @@ async function loadUserProfile(userId) {
             {
               label: 'Request Options',
               part: "method: 'POST'",
-              color: '#9c27b0',
+              color: 'var(--feature)',
               desc: 'Specify HTTP method and headers for the request'
             },
             {
               label: 'JSON Data',
               part: 'JSON.stringify(userData)',
-              color: '#2196f3',
+              color: 'var(--info)',
               desc: 'Convert JavaScript object to JSON string for sending'
             }
           ]}
@@ -185,19 +185,19 @@ async function loadUserProfile(userId) {
             {
               label: 'Async Function',
               part: 'async function loadUserProfile',
-              color: '#673ab7',
+              color: 'var(--feature)',
               desc: 'Use async/await for cleaner, more readable code'
             },
             {
               label: 'Error Handling',
               part: 'if (!response.ok)',
-              color: '#ff5722',
+              color: 'var(--warning)',
               desc: 'Check response status and handle HTTP errors'
             },
             {
               label: 'DOM Updates',
               part: 'document.getElementById',
-              color: '#4caf50',
+              color: 'var(--success)',
               desc: 'Update page elements with fetched data'
             }
           ]}
@@ -205,11 +205,11 @@ async function loadUserProfile(userId) {
       </Box>
 
       <CalloutBox title="Key Fetch API Concepts" type="key-concepts">
-        <Box component="ul" sx={{ margin: 0, paddingLeft: 3, '& li': { marginBottom: 1.5, color: '#475569' } }}>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Promise-based:</Typography> Returns a Promise, use .then() or async/await</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Response object:</Typography> Contains status, headers, and methods to extract data</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>JSON conversion:</Typography> Call response.json() to parse JSON data</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Error handling:</Typography> Always include .catch() or try/catch blocks</li>
+        <Box component="ul" sx={{ margin: 0, paddingLeft: 3, '& li': { marginBottom: 1.5, color: 'var(--ink-soft)' } }}>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Promise-based:</Typography> Returns a Promise, use .then() or async/await</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Response object:</Typography> Contains status, headers, and methods to extract data</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>JSON conversion:</Typography> Call response.json() to parse JSON data</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Error handling:</Typography> Always include .catch() or try/catch blocks</li>
         </Box>
       </CalloutBox>
     </div>

@@ -11,25 +11,25 @@ const AdvancedParametersExample: React.FC = () => {
     {
       label: 'Destructured Parameters',
       part: 'function createProject({ name, type = "web", ...options })',
-      color: '#e91e63',
+      color: 'var(--feature)',
       desc: 'Destructure object parameters with defaults and rest'
     },
     {
       label: 'Mixed Parameter Types',
       part: 'function processData(required, optional = "default", ...extras)',
-      color: '#4caf50',
+      color: 'var(--success)',
       desc: 'Combine required, default, and rest parameters'
     },
     {
       label: 'Spread in Calls',
       part: 'processData("value", ...arrayArgs)',
-      color: '#2196f3',
+      color: 'var(--info)',
       desc: 'Use spread to pass array elements as arguments'
     },
     {
       label: 'Dynamic Defaults',
       part: 'timestamp = new Date(), id = generateId()',
-      color: '#ff9800',
+      color: 'var(--warning)',
       desc: 'Default parameters can be function calls or expressions'
     }
   ];
@@ -399,20 +399,20 @@ const result = advancedFunction(
       {/* Key Concepts */}
       <Box sx={{ 
         p: 3, 
-        bgcolor: '#f8fafc', 
+        bgcolor: 'var(--paper-sunken)', 
         borderRadius: 2, 
-        border: '1px solid #e2e8f0',
+        border: '1px solid var(--line)',
         mt: 4,
         boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
       }}>
-        <Typography variant="h6" fontWeight={700} gutterBottom sx={{ color: '#1e293b', display: 'flex', alignItems: 'center', gap: 1 }}>
+        <Typography variant="h6" fontWeight={700} gutterBottom sx={{ color: 'var(--ink)', display: 'flex', alignItems: 'center', gap: 1 }}>
           🔑 Advanced Parameter Best Practices
         </Typography>
-        <Box component="ul" sx={{ margin: 0, paddingLeft: 3, '& li': { marginBottom: 1.5, color: '#475569' } }}>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Order matters:</Typography> required → defaults → destructured → rest</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Destructured objects:</Typography> Allow named parameters in any order</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Dynamic defaults:</Typography> Function calls executed only when needed</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Default to empty object:</Typography> {} allows optional destructured parameters</li>
+        <Box component="ul" sx={{ margin: 0, paddingLeft: 3, '& li': { marginBottom: 1.5, color: 'var(--ink-soft)' } }}>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Order matters:</Typography> required → defaults → destructured → rest</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Destructured objects:</Typography> Allow named parameters in any order</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Dynamic defaults:</Typography> Function calls executed only when needed</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Default to empty object:</Typography> {} allows optional destructured parameters</li>
         </Box>
       </Box>
     </div>

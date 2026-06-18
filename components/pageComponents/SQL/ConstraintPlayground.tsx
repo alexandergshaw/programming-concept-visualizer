@@ -41,7 +41,7 @@ export default function ConstraintPlayground() {
         <button type="button" className="sql-chip on" onClick={tryInsert}>INSERT</button>
       </div>
       {msg && (
-        <p className="sql-pg-count" style={{ color: msg.ok ? '#15803d' : '#b91c1c', fontWeight: 600 }}>
+        <p className="sql-pg-count" style={{ color: msg.ok ? 'var(--success)' : 'var(--danger)', fontWeight: 600 }}>
           {msg.ok ? '[accepted] ' : '[rejected] '}{msg.text}
         </p>
       )}

@@ -11,49 +11,49 @@ const CatchBlockExample: React.FC = () => {
     {
       label: 'Function Declaration',
       part: 'function safeMath(operation, a, b)',
-      color: '#e91e63',
+      color: 'var(--feature)',
       desc: 'Function that performs math operations with error handling'
     },
     {
       label: 'Try Block',
       part: 'try',
-      color: '#4caf50',
+      color: 'var(--success)',
       desc: 'Contains code that might throw an error'
     },
     {
       label: 'Division Check',
       part: 'if (operation === "divide" && b === 0)',
-      color: '#2196f3',
+      color: 'var(--info)',
       desc: 'Check for division by zero before performing operation'
     },
     {
       label: 'Throw Error',
       part: 'throw new Error("Cannot divide by zero");',
-      color: '#ff9800',
+      color: 'var(--warning)',
       desc: 'Manually throw an error when division by zero is detected'
     },
     {
       label: 'Perform Operation',
       part: 'return a / b;',
-      color: '#9c27b0',
+      color: 'var(--feature)',
       desc: 'Perform the math operation if no errors'
     },
     {
       label: 'Catch Block',
       part: 'catch (error)',
-      color: '#f44336',
+      color: 'var(--danger)',
       desc: 'Catches and handles any errors that occur in the try block'
     },
     {
       label: 'Error Message Log',
       part: 'console.log("Math error:", error.message);',
-      color: '#795548',
+      color: 'var(--ink-soft)',
       desc: 'Log the error message for debugging'
     },
     {
       label: 'Return Safe Value',
       part: 'return "Error: " + error.message;',
-      color: '#607d8b',
+      color: 'var(--ink-soft)',
       desc: 'Return a safe error message instead of crashing'
     }
   ];

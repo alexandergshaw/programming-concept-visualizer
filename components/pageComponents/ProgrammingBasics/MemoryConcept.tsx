@@ -29,7 +29,7 @@ export default function MemoryConcept() {
 								my: 3,
 							}}
 						>
-							<Paper sx={{ p: 2, minWidth: 120, textAlign: 'center', bgcolor: '#e3f2fd', border: '2px solid #90caf9' }}>
+							<Paper sx={{ p: 2, minWidth: 120, textAlign: 'center', bgcolor: 'var(--info-bg)', border: '2px solid var(--info)' }}>
 								<Typography fontWeight={700} sx={{ mb: 1 }}>Bit</Typography>
 								<Typography variant="h4" sx={{ fontFamily: 'monospace', mb: 1 }}>0</Typography>
 								<Typography variant="h4" sx={{ fontFamily: 'monospace', mb: 1 }}>1</Typography>
@@ -37,8 +37,8 @@ export default function MemoryConcept() {
 									A single binary digit (on or off)
 								</Typography>
 							</Paper>
-							<ArrowForwardIcon sx={{ color: '#bdbdbd', fontSize: 32, my: 1 }} />
-							<Paper sx={{ p: 2, minWidth: 120, textAlign: 'center', bgcolor: '#fffde7', border: '2px solid #ffe082' }}>
+							<ArrowForwardIcon sx={{ color: 'var(--line-strong)', fontSize: 32, my: 1 }} />
+							<Paper sx={{ p: 2, minWidth: 120, textAlign: 'center', bgcolor: 'var(--warning-bg)', border: '2px solid var(--warning)' }}>
 								<Typography fontWeight={700} sx={{ mb: 1 }}>Byte</Typography>
 								<Typography variant="h6" sx={{ fontFamily: 'monospace', mb: 1 }}>
 									01010101
@@ -47,8 +47,8 @@ export default function MemoryConcept() {
 									1 byte = 8 bits
 								</Typography>
 							</Paper>
-							<ArrowForwardIcon sx={{ color: '#bdbdbd', fontSize: 32, my: 1 }} />
-							<Paper sx={{ p: 2, minWidth: 120, textAlign: 'center', bgcolor: '#e8f5e9', border: '2px solid #81c784' }}>
+							<ArrowForwardIcon sx={{ color: 'var(--line-strong)', fontSize: 32, my: 1 }} />
+							<Paper sx={{ p: 2, minWidth: 120, textAlign: 'center', bgcolor: 'var(--success-bg)', border: '2px solid var(--success)' }}>
 								<Typography fontWeight={700} sx={{ mb: 1 }}>Kilobyte (KB)</Typography>
 								<Typography variant="h6" sx={{ fontFamily: 'monospace', mb: 1 }}>
 									1 KB = 1024 bytes
@@ -57,8 +57,8 @@ export default function MemoryConcept() {
 									(About 1,000 characters)
 								</Typography>
 							</Paper>
-							<ArrowForwardIcon sx={{ color: '#bdbdbd', fontSize: 32, my: 1 }} />
-							<Paper sx={{ p: 2, minWidth: 120, textAlign: 'center', bgcolor: '#f3e5f5', border: '2px solid #ce93d8' }}>
+							<ArrowForwardIcon sx={{ color: 'var(--line-strong)', fontSize: 32, my: 1 }} />
+							<Paper sx={{ p: 2, minWidth: 120, textAlign: 'center', bgcolor: 'var(--feature-bg)', border: '2px solid var(--feature-bg)' }}>
 								<Typography fontWeight={700} sx={{ mb: 1 }}>Megabyte (MB)</Typography>
 								<Typography variant="h6" sx={{ fontFamily: 'monospace', mb: 1 }}>
 									1 MB = 1024 KB
@@ -81,7 +81,7 @@ export default function MemoryConcept() {
 						<Typography sx={{ mb: 2 }}>
 							<b>Whole numbers</b> (like 42 or 2024) are stored as groups of bits. One byte (8 bits) can count from <b>0</b> to <b>255</b>. If you need to count higher, the computer just uses more bytes together (for example, 4 bytes - 32 bits - can count up to about 4 billion!).
 						</Typography>
-						<Paper sx={{ p: 2, mb: 2, textAlign: 'center', bgcolor: '#f8fafc' }}>
+						<Paper sx={{ p: 2, mb: 2, textAlign: 'center', bgcolor: 'var(--paper-sunken)' }}>
 							<Typography fontWeight={600} sx={{ mb: 1 }}>
 								Try it! Enter a whole number to see how it’s stored in binary (1, 2, or 4 bytes):
 							</Typography>
@@ -102,7 +102,7 @@ export default function MemoryConcept() {
 							</ul>
 							With 8 bits, you can store numbers from <b>-128</b> up to <b>127</b>.
 						</Typography>
-						<Paper sx={{ p: 2, mb: 2, textAlign: 'center', bgcolor: '#f8fafc' }}>
+						<Paper sx={{ p: 2, mb: 2, textAlign: 'center', bgcolor: 'var(--paper-sunken)' }}>
 							<Typography fontWeight={600} sx={{ mb: 1 }}>
 								Try it! Enter a negative or positive number to see its 8-bit two&apos;s complement binary:
 							</Typography>
@@ -123,7 +123,7 @@ export default function MemoryConcept() {
 								</Typography>
 							</li>
 						</ul>
-						<Paper sx={{ p: 2, mb: 2, textAlign: 'center', bgcolor: '#f8fafc' }}>
+						<Paper sx={{ p: 2, mb: 2, textAlign: 'center', bgcolor: 'var(--paper-sunken)' }}>
 							<Typography fontWeight={600} sx={{ mb: 1 }}>
 								Try it! Type a letter or emoji to see its binary code:
 							</Typography>
@@ -147,7 +147,7 @@ export default function MemoryConcept() {
 						<Typography sx={{ mb: 2 }}>
 							Another example: if we want to store the letter <b>A</b> (which is represented by <b>01000001</b> in binary), we would turn on the first and sixth transistors, leaving the others off.
 						</Typography>
-						<Paper sx={{ p: 2, bgcolor: '#f8fafc', border: '1px solid #e0e0e0', mt: 2, mb: 2 }}>
+						<Paper sx={{ p: 2, bgcolor: 'var(--paper-sunken)', border: '1px solid var(--paper-sunken)', mt: 2, mb: 2 }}>
 							<Typography fontWeight={600} sx={{ mb: 1 }}>
 								Visualize how a group of transistors and their corresponding bits can store numbers:
 							</Typography>
@@ -180,7 +180,7 @@ export default function MemoryConcept() {
 								1×8 + 1×4 + 0×2 + 1×1 = 8 + 4 + 0 + 1 = <b>13</b>
 							</span>.
 						</Typography>
-						<Paper sx={{ p: 2, mb: 2, textAlign: 'center', bgcolor: '#f8fafc' }}>
+						<Paper sx={{ p: 2, mb: 2, textAlign: 'center', bgcolor: 'var(--paper-sunken)' }}>
 							<Typography fontWeight={600} sx={{ mb: 1 }}>
 								Try it! Convert between decimal and binary:
 							</Typography>
@@ -213,18 +213,18 @@ function CharacterToBinaryDemo() {
 					fontSize: 20,
 					padding: '4px 8px',
 					borderRadius: 4,
-					border: '1px solid #bbb',
+					border: '1px solid var(--line-strong)',
 					marginBottom: 12,
 					width: 60,
 					textAlign: 'center'
 				}}
 			/>
-			<ArrowForwardIcon sx={{ color: '#2196f3', fontSize: 28, mx: 1, verticalAlign: 'middle' }} />
+			<ArrowForwardIcon sx={{ color: 'var(--info)', fontSize: 28, mx: 1, verticalAlign: 'middle' }} />
 			<span
 				style={{
 					fontFamily: 'monospace',
 					fontSize: 18,
-					background: '#f4f4f4',
+					background: 'var(--paper-raised)',
 					borderRadius: 4,
 					padding: '4px 12px',
 					display: 'inline-block',
@@ -269,7 +269,7 @@ function WholeNumberBinaryDemo() {
 						fontSize: 20,
 						padding: '4px 8px',
 						borderRadius: 4,
-						border: '1px solid #bbb',
+						border: '1px solid var(--line-strong)',
 						width: 120,
 						textAlign: 'center'
 					}}
@@ -290,12 +290,12 @@ function WholeNumberBinaryDemo() {
 					2 bytes
 				</Button>
 			</Box>
-			<ArrowForwardIcon sx={{ color: '#2196f3', fontSize: 28, mx: 1, verticalAlign: 'middle' }} />
+			<ArrowForwardIcon sx={{ color: 'var(--info)', fontSize: 28, mx: 1, verticalAlign: 'middle' }} />
 			<span
 				style={{
 					fontFamily: 'monospace',
 					fontSize: 18,
-					background: '#f4f4f4',
+					background: 'var(--paper-raised)',
 					borderRadius: 4,
 					padding: '4px 12px',
 					display: 'inline-block',
@@ -340,18 +340,18 @@ function NegativesTwosComplementDemo() {
 					fontSize: 20,
 					padding: '4px 8px',
 					borderRadius: 4,
-					border: '1px solid #bbb',
+					border: '1px solid var(--line-strong)',
 					marginBottom: 12,
 					width: 80,
 					textAlign: 'center'
 				}}
 			/>
-			<ArrowForwardIcon sx={{ color: '#2196f3', fontSize: 28, mx: 1, verticalAlign: 'middle' }} />
+			<ArrowForwardIcon sx={{ color: 'var(--info)', fontSize: 28, mx: 1, verticalAlign: 'middle' }} />
 			<span
 				style={{
 					fontFamily: 'monospace',
 					fontSize: 18,
-					background: '#f4f4f4',
+					background: 'var(--paper-raised)',
 					borderRadius: 4,
 					padding: '4px 12px',
 					display: 'inline-block',
@@ -406,7 +406,7 @@ function DecimalBinaryConverter() {
 						{getBinaryBreakdown(dec).map((b, i) =>
 							b.used
 								? <span key={i}>{b.bit}×{b.value}{i < 7 ? ' + ' : ''}</span>
-								: <span key={i} style={{ color: '#bbb' }}>{b.bit}×{b.value}{i < 7 ? ' + ' : ''}</span>
+								: <span key={i} style={{ color: 'var(--line-strong)' }}>{b.bit}×{b.value}{i < 7 ? ' + ' : ''}</span>
 						)}
 						{' = '}
 						{getBinaryBreakdown(dec).filter(b => b.used).map(b => b.value).join(' + ') || 0}
@@ -424,7 +424,7 @@ function DecimalBinaryConverter() {
 						{getDecimalBreakdown(binary).map((b, i) =>
 							b.used
 								? <span key={i}>{b.bit}×{b.value}{i < 7 ? ' + ' : ''}</span>
-								: <span key={i} style={{ color: '#bbb' }}>{b.bit}×{b.value}{i < 7 ? ' + ' : ''}</span>
+								: <span key={i} style={{ color: 'var(--line-strong)' }}>{b.bit}×{b.value}{i < 7 ? ' + ' : ''}</span>
 						)}
 						{' = '}
 						{getDecimalBreakdown(binary).filter(b => b.used).map(b => b.value).join(' + ') || 0}
@@ -474,13 +474,13 @@ function DecimalBinaryConverter() {
 							fontSize: 20,
 							padding: '4px 8px',
 							borderRadius: 4,
-							border: '1px solid #bbb',
+							border: '1px solid var(--line-strong)',
 							marginBottom: 12,
 							width: 80,
 							textAlign: 'center'
 						}}
 					/>
-					<ArrowForwardIcon sx={{ color: '#2196f3', fontSize: 28, mx: 1, verticalAlign: 'middle' }} />
+					<ArrowForwardIcon sx={{ color: 'var(--info)', fontSize: 28, mx: 1, verticalAlign: 'middle' }} />
 					<Typography fontWeight={600} sx={{ mb: 1 }}>
 						Binary:
 					</Typography>
@@ -488,7 +488,7 @@ function DecimalBinaryConverter() {
 						style={{
 							fontFamily: 'monospace',
 							fontSize: 20,
-							background: '#f4f4f4',
+							background: 'var(--paper-raised)',
 							borderRadius: 4,
 							padding: '4px 12px',
 							display: 'inline-block',
@@ -504,7 +504,7 @@ function DecimalBinaryConverter() {
 									sx={{
 										fontFamily: 'monospace',
 										fontSize: 18,
-										color: b.used ? '#1976d2' : '#aaa',
+										color: b.used ? 'var(--info)' : 'var(--ink-faint)',
 										fontWeight: b.used ? 700 : 400,
 									}}
 								>
@@ -536,13 +536,13 @@ function DecimalBinaryConverter() {
 							fontSize: 20,
 							padding: '4px 8px',
 							borderRadius: 4,
-							border: '1px solid #bbb',
+							border: '1px solid var(--line-strong)',
 							marginBottom: 12,
 							width: 110,
 							textAlign: 'center'
 						}}
 					/>
-					<ArrowForwardIcon sx={{ color: '#2196f3', fontSize: 28, mx: 1, verticalAlign: 'middle' }} />
+					<ArrowForwardIcon sx={{ color: 'var(--info)', fontSize: 28, mx: 1, verticalAlign: 'middle' }} />
 					<Typography fontWeight={600} sx={{ mb: 1 }}>
 						Decimal:
 					</Typography>
@@ -550,7 +550,7 @@ function DecimalBinaryConverter() {
 						style={{
 							fontFamily: 'monospace',
 							fontSize: 20,
-							background: '#f4f4f4',
+							background: 'var(--paper-raised)',
 							borderRadius: 4,
 							padding: '4px 12px',
 							display: 'inline-block',
@@ -566,7 +566,7 @@ function DecimalBinaryConverter() {
 									sx={{
 										fontFamily: 'monospace',
 										fontSize: 18,
-										color: b.used ? '#1976d2' : '#aaa',
+										color: b.used ? 'var(--info)' : 'var(--ink-faint)',
 										fontWeight: b.used ? 700 : 400,
 									}}
 								>
@@ -616,9 +616,9 @@ function BitPatternVisualizer() {
 							minHeight: 36,
 							fontFamily: 'monospace',
 							fontSize: 20,
-							bgcolor: bit === '1' ? '#1976d2' : '#e0e0e0',
-							color: bit === '1' ? '#fff' : '#333',
-							border: '1px solid #90caf9',
+							bgcolor: bit === '1' ? 'var(--info)' : 'var(--paper-sunken)',
+							color: bit === '1' ? 'var(--paper-raised)' : 'var(--ink)',
+							border: '1px solid var(--info)',
 							boxShadow: bit === '1' ? 2 : 0,
 							transition: 'all 0.2s',
 							p: 0,

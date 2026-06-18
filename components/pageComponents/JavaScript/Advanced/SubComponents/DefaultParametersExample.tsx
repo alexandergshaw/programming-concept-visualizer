@@ -13,25 +13,25 @@ const DefaultParametersExample: React.FC = () => {
     {
       label: 'Default Value Syntax',
       part: 'function createUser(name = "Anonymous", role = "user")',
-      color: '#e91e63',
+      color: 'var(--feature)',
       desc: 'Use = operator to assign default values to parameters'
     },
     {
       label: 'Parameter Check',
       part: 'if (name === undefined) { name = "Anonymous"; }',
-      color: '#4caf50',
+      color: 'var(--success)',
       desc: 'Default parameters automatically handle undefined arguments'
     },
     {
       label: 'Complex Defaults',
       part: 'timestamp = new Date().toISOString()',
-      color: '#2196f3',
+      color: 'var(--info)',
       desc: 'Default values can be expressions, function calls, or calculations'
     },
     {
       label: 'Partial Arguments',
       part: 'createUser("Alice")',
-      color: '#ff9800',
+      color: 'var(--warning)',
       desc: 'Omitted arguments use defaults, provided arguments override defaults'
     }
   ];
@@ -338,11 +338,11 @@ newWay("Carol", undefined, customDate); // Skip role parameter`}
       </Box>
 
       <CalloutBox title="Key Default Parameter Concepts" type="key-concepts">
-        <Box component="ul" sx={{ margin: 0, paddingLeft: 3, '& li': { marginBottom: 1.5, color: '#475569' } }}>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>= syntax:</Typography> Use equals sign to assign default values in parameter list</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>undefined triggers defaults:</Typography> Only undefined (not null or false) uses defaults</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Expression defaults:</Typography> Defaults can be function calls, calculations, or objects</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Skip with undefined:</Typography> Pass undefined to skip parameters and use defaults</li>
+        <Box component="ul" sx={{ margin: 0, paddingLeft: 3, '& li': { marginBottom: 1.5, color: 'var(--ink-soft)' } }}>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>= syntax:</Typography> Use equals sign to assign default values in parameter list</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>undefined triggers defaults:</Typography> Only undefined (not null or false) uses defaults</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Expression defaults:</Typography> Defaults can be function calls, calculations, or objects</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Skip with undefined:</Typography> Pass undefined to skip parameters and use defaults</li>
         </Box>
       </CalloutBox>
     </div>

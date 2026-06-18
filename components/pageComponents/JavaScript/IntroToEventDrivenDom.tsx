@@ -35,7 +35,7 @@ const EventDrivenIntro: React.FC = () => {
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1, mb: { xs: 2, sm: 0 } }}>
               <FontAwesomeIcon 
                 icon={faHandPointer} 
-                style={{ fontSize: 40, color: '#3f51b5' }}
+                style={{ fontSize: 40, color: 'var(--info)' }}
               />
               <Typography fontWeight={600} sx={{ mt: 1 }}>User Action</Typography>
               <Typography variant="body2" sx={{ textAlign: 'center', px: 2 }}>
@@ -48,7 +48,7 @@ const EventDrivenIntro: React.FC = () => {
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1, mb: { xs: 2, sm: 0 } }}>
               <FontAwesomeIcon 
                 icon={faEarListen} 
-                style={{ fontSize: 40, color: '#4caf50' }}
+                style={{ fontSize: 40, color: 'var(--success)' }}
               />
               <Typography fontWeight={600} sx={{ mt: 1 }}>Event Listener</Typography>
               <Typography variant="body2" sx={{ textAlign: 'center', px: 2 }}>
@@ -61,7 +61,7 @@ const EventDrivenIntro: React.FC = () => {
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
               <FontAwesomeIcon 
                 icon={faCode} 
-                style={{ fontSize: 40, color: '#ff9800' }}
+                style={{ fontSize: 40, color: 'var(--warning)' }}
               />
               <Typography fontWeight={600} sx={{ mt: 1 }}>DOM Changes</Typography>
               <Typography variant="body2" sx={{ textAlign: 'center', px: 2 }}>
@@ -71,11 +71,11 @@ const EventDrivenIntro: React.FC = () => {
           </Box>
         </Box>
 
-        <Box sx={{ mt: 3, p: 2, bgcolor: '#f5f5f5', borderRadius: 1, border: '1px dashed #ccc' }}>
+        <Box sx={{ mt: 3, p: 2, bgcolor: 'var(--paper-raised)', borderRadius: 1, border: '1px dashed var(--line)' }}>
           <Typography sx={{ fontFamily: 'monospace', fontSize: '0.9rem', whiteSpace: 'pre-wrap' }}>
-            <span style={{ color: '#777' }}>{/* The pattern is always: */}</span><br/>
-            element.<span style={{ color: '#0066cc' }}>addEventListener</span>(<span style={{ color: '#cc0000' }}>&quot;event&quot;</span>, function() {'{'}<br/>
-            &nbsp;&nbsp;<span style={{ color: '#777' }}>{/* Do something with the DOM */}</span><br/>
+            <span style={{ color: 'var(--ink-soft)' }}>{/* The pattern is always: */}</span><br/>
+            element.<span style={{ color: 'var(--info)' }}>addEventListener</span>(<span style={{ color: 'var(--danger)' }}>&quot;event&quot;</span>, function() {'{'}<br/>
+            &nbsp;&nbsp;<span style={{ color: 'var(--ink-soft)' }}>{/* Do something with the DOM */}</span><br/>
             {'}'});
           </Typography>
         </Box>
@@ -84,9 +84,9 @@ const EventDrivenIntro: React.FC = () => {
       {/* Key concepts explanation */}
       <Section title="The Three Key Pieces">
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, mt: 2 }}>
-          <Paper sx={{ p: 2, bgcolor: '#f3f6ff', borderLeft: '4px solid #3f51b5', borderRadius: '4px' }}>
+          <Paper sx={{ p: 2, bgcolor: 'var(--paper-raised)', borderLeft: '4px solid var(--info)', borderRadius: '4px' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
-              <FontAwesomeIcon icon={faHandPointer} style={{ fontSize: 20, color: '#3f51b5' }} />
+              <FontAwesomeIcon icon={faHandPointer} style={{ fontSize: 20, color: 'var(--info)' }} />
               <Typography fontWeight={600} sx={{ fontSize: '1.1rem' }}>1. Events</Typography>
             </Box>
             <Typography>
@@ -100,23 +100,23 @@ const EventDrivenIntro: React.FC = () => {
             </ul>
           </Paper>
           
-          <Paper sx={{ p: 2, bgcolor: '#f0f9f0', borderLeft: '4px solid #4caf50', borderRadius: '4px' }}>
+          <Paper sx={{ p: 2, bgcolor: 'var(--success-bg)', borderLeft: '4px solid var(--success)', borderRadius: '4px' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
-              <FontAwesomeIcon icon={faEarListen} style={{ fontSize: 20, color: '#4caf50' }} />
+              <FontAwesomeIcon icon={faEarListen} style={{ fontSize: 20, color: 'var(--success)' }} />
               <Typography fontWeight={600} sx={{ fontSize: '1.1rem' }}>2. Listeners</Typography>
             </Box>
             <Typography>
               JavaScript functions that wait for specific events and run when they occur. Like a security guard 
               watching for specific activities.
             </Typography>
-            <Box sx={{ mt: 1, p: 1, bgcolor: '#e8f5e9', borderRadius: 1, fontFamily: 'monospace', fontSize: '0.9rem' }}>
+            <Box sx={{ mt: 1, p: 1, bgcolor: 'var(--success-bg)', borderRadius: 1, fontFamily: 'monospace', fontSize: '0.9rem' }}>
               button.addEventListener(&quot;click&quot;, handleClick);
             </Box>
           </Paper>
           
-          <Paper sx={{ p: 2, bgcolor: '#fff8e6', borderLeft: '4px solid #ff9800', borderRadius: '4px' }}>
+          <Paper sx={{ p: 2, bgcolor: 'var(--warning-bg)', borderLeft: '4px solid var(--warning)', borderRadius: '4px' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
-              <FontAwesomeIcon icon={faCode} style={{ fontSize: 20, color: '#ff9800' }} />
+              <FontAwesomeIcon icon={faCode} style={{ fontSize: 20, color: 'var(--warning)' }} />
               <Typography fontWeight={600} sx={{ fontSize: '1.1rem' }}>3. DOM Manipulation</Typography>
             </Box>
             <Typography>

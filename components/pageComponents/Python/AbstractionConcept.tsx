@@ -132,19 +132,19 @@ class PaymentMethod(ABC):
               {
                 label: 'ABC base',
                 part: 'class PaymentMethod(ABC):',
-                color: '#9333ea',
+                color: 'var(--feature)',
                 desc: 'Inheriting from ABC marks this as an abstract class'
               },
               {
                 label: 'Abstract method',
                 part: '@abstractmethod',
-                color: '#dc2626',
+                color: 'var(--danger)',
                 desc: 'Every child class is forced to implement the method below'
               },
               {
                 label: 'No body needed',
                 part: 'pass',
-                color: '#059669',
+                color: 'var(--success)',
                 desc: 'The abstract class only declares the method, it doesn\'t define it'
               }
             ]}

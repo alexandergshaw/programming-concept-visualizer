@@ -15,7 +15,7 @@ type MathStepThroughProps = {
 };
 
 const stepColors = [
-    '#1976d2', '#43a047', '#fbc02d', '#e53935', '#8e24aa', '#00bcd4', '#ff9800', '#7e57c2'
+    'var(--info)', 'var(--success)', 'var(--warning)', 'var(--danger)', 'var(--feature)', 'var(--info)', 'var(--warning)', 'var(--feature)'
 ];
 
 const MathStepThrough: React.FC<MathStepThroughProps> = ({ steps, initialStep = 0, style }) => {
@@ -41,12 +41,12 @@ const MathStepThrough: React.FC<MathStepThroughProps> = ({ steps, initialStep = 
                                 fontFamily: 'monospace',
                                 fontSize: 20,
                                 color: stepColors[idx % stepColors.length],
-                                background: '#fff',
+                                background: 'var(--paper-raised)',
                                 borderRadius: 8,
                                 padding: '12px 10px',
                                 lineHeight: 1.7,
                                 overflowX: 'auto',
-                                border: '1.5px solid #e0e0e0',
+                                border: '1.5px solid var(--paper-sunken)',
                                 display: 'block',
                                 textAlign: 'left',
                                 marginBottom: 8,
@@ -59,7 +59,7 @@ const MathStepThrough: React.FC<MathStepThroughProps> = ({ steps, initialStep = 
                             <b style={{ color: stepColors[idx % stepColors.length], fontSize: 16 }}>
                                 {step.label}:
                             </b>{' '}
-                            <span style={{ color: '#444', fontSize: 15 }}>
+                            <span style={{ color: 'var(--ink)', fontSize: 15 }}>
                                 {step.explanation}
                             </span>
                         </div>

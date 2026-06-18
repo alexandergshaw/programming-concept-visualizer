@@ -13,25 +13,25 @@ const ObjectHierarchyExample: React.FC = () => {
     {
       label: 'Object.prototype',
       part: 'Object.prototype',
-      color: '#e91e63', 
+      color: 'var(--feature)', 
       desc: 'The root of all JavaScript objects - every object inherits from Object.prototype'
     },
     {
       label: 'Array Inheritance',
       part: 'Array.prototype.__proto__ === Object.prototype',
-      color: '#4caf50',
+      color: 'var(--success)',
       desc: 'Arrays inherit from Object.prototype through Array.prototype'
     },
     {
       label: 'Function Inheritance',
       part: 'Function.prototype.__proto__ === Object.prototype',
-      color: '#2196f3',
+      color: 'var(--info)',
       desc: 'Functions also inherit from Object.prototype through Function.prototype'
     },
     {
       label: 'Prototype Chain',
       part: 'myArray.__proto__.__proto__ === Object.prototype',
-      color: '#ff9800',
+      color: 'var(--warning)',
       desc: 'Objects inherit methods through the prototype chain'
     }
   ];
@@ -236,22 +236,22 @@ console.log(String.prototype.__proto__ === Object.prototype); // true`}
       {/* Hierarchy Visualization */}
       <Box sx={{ 
         p: 2, 
-        bgcolor: '#f8f9fa', 
+        bgcolor: 'var(--paper-raised)', 
         borderRadius: 1, 
-        border: '1px solid #dee2e6',
+        border: '1px solid var(--paper-sunken)',
         mb: 3 
       }}>
         <Typography variant="subtitle2" fontWeight={600} gutterBottom>
           📊 JavaScript Object Hierarchy:
         </Typography>
         <div style={{ fontFamily: 'monospace', fontSize: 14, lineHeight: 1.8 }}>
-          <div style={{ color: '#e91e63', fontWeight: 'bold' }}>Object.prototype</div>
-          <div style={{ marginLeft: 20 }}>├── Array.prototype → <span style={{ color: '#4caf50' }}>Arrays [1,2,3]</span></div>
-          <div style={{ marginLeft: 20 }}>├── String.prototype → <span style={{ color: '#4caf50' }}>Strings &quot;hello&quot;</span></div>
-          <div style={{ marginLeft: 20 }}>├── Number.prototype → <span style={{ color: '#4caf50' }}>Numbers 42</span></div>
-          <div style={{ marginLeft: 20 }}>├── Date.prototype → <span style={{ color: '#4caf50' }}>Dates new Date()</span></div>
-          <div style={{ marginLeft: 20 }}>├── Function.prototype → <span style={{ color: '#4caf50' }}>Functions function(){`{}`}</span></div>
-          <div style={{ marginLeft: 20 }}>└── Boolean.prototype → <span style={{ color: '#4caf50' }}>Booleans true/false</span></div>
+          <div style={{ color: 'var(--feature)', fontWeight: 'bold' }}>Object.prototype</div>
+          <div style={{ marginLeft: 20 }}>├── Array.prototype → <span style={{ color: 'var(--success)' }}>Arrays [1,2,3]</span></div>
+          <div style={{ marginLeft: 20 }}>├── String.prototype → <span style={{ color: 'var(--success)' }}>Strings &quot;hello&quot;</span></div>
+          <div style={{ marginLeft: 20 }}>├── Number.prototype → <span style={{ color: 'var(--success)' }}>Numbers 42</span></div>
+          <div style={{ marginLeft: 20 }}>├── Date.prototype → <span style={{ color: 'var(--success)' }}>Dates new Date()</span></div>
+          <div style={{ marginLeft: 20 }}>├── Function.prototype → <span style={{ color: 'var(--success)' }}>Functions function(){`{}`}</span></div>
+          <div style={{ marginLeft: 20 }}>└── Boolean.prototype → <span style={{ color: 'var(--success)' }}>Booleans true/false</span></div>
         </div>
       </Box>
 

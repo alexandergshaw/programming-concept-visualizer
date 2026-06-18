@@ -165,30 +165,30 @@ export default function StringManipulationConcept() {
         {
             key: 'inject_name',
             output: <span>
-                <span style={{ color: '#90caf9' }}>
-                    f&quot;Hi <span style={{ color: '#ffb300' }}>{name}</span>! You are {'{age}'} years old and your favorite color is {'{color}'}.&quot;
+                <span style={{ color: 'var(--info)' }}>
+                    f&quot;Hi <span style={{ color: 'var(--warning)' }}>{name}</span>! You are {'{age}'} years old and your favorite color is {'{color}'}.&quot;
                 </span>
             </span>,
         },
         {
             key: 'inject_age',
             output: <span>
-                <span style={{ color: '#90caf9' }}>
-                    f&quot;Hi <span style={{ color: '#ffb300' }}>{name}</span>! You are <span style={{ color: '#ffb300' }}>{age}</span> years old and your favorite color is {'{color}'}.&quot;
+                <span style={{ color: 'var(--info)' }}>
+                    f&quot;Hi <span style={{ color: 'var(--warning)' }}>{name}</span>! You are <span style={{ color: 'var(--warning)' }}>{age}</span> years old and your favorite color is {'{color}'}.&quot;
                 </span>
             </span>,
         },
         {
             key: 'inject_color',
             output: <span>
-                <span style={{ color: '#90caf9' }}>
-                    f&quot;Hi <span style={{ color: '#ffb300' }}>{name}</span>! You are <span style={{ color: '#ffb300' }}>{age}</span> years old and your favorite color is <span style={{ color: '#ffb300' }}>{color}</span>.&quot;
+                <span style={{ color: 'var(--info)' }}>
+                    f&quot;Hi <span style={{ color: 'var(--warning)' }}>{name}</span>! You are <span style={{ color: 'var(--warning)' }}>{age}</span> years old and your favorite color is <span style={{ color: 'var(--warning)' }}>{color}</span>.&quot;
                 </span>
             </span>,
         },
         {
             key: 'print',
-            output: <span style={{ color: '#4CAF50' }}>
+            output: <span style={{ color: 'var(--success)' }}>
                 Hi {name}! You are {age} years old and your favorite color is {color}.
             </span>,
             completed: true,
@@ -215,30 +215,30 @@ export default function StringManipulationConcept() {
         {
             key: 'inject_name',
             output: <span>
-                <span style={{ color: '#90caf9' }}>
-                    &quot;Hi &quot; + <span style={{ color: '#ffb300' }}>{name}</span> + &quot;! You are &quot; + age + &quot; years old and your favorite color is &quot; + color + &quot;.&quot;
+                <span style={{ color: 'var(--info)' }}>
+                    &quot;Hi &quot; + <span style={{ color: 'var(--warning)' }}>{name}</span> + &quot;! You are &quot; + age + &quot; years old and your favorite color is &quot; + color + &quot;.&quot;
                 </span>
             </span>,
         },
         {
             key: 'inject_age',
             output: <span>
-                <span style={{ color: '#90caf9' }}>
-                    &quot;Hi &quot; + <span style={{ color: '#ffb300' }}>{name}</span> + &quot;! You are &quot; + <span style={{ color: '#ffb300' }}>{age}</span> + &quot; years old and your favorite color is &quot; + color + &quot;.&quot;
+                <span style={{ color: 'var(--info)' }}>
+                    &quot;Hi &quot; + <span style={{ color: 'var(--warning)' }}>{name}</span> + &quot;! You are &quot; + <span style={{ color: 'var(--warning)' }}>{age}</span> + &quot; years old and your favorite color is &quot; + color + &quot;.&quot;
                 </span>
             </span>,
         },
         {
             key: 'inject_color',
             output: <span>
-                <span style={{ color: '#90caf9' }}>
-                    &quot;Hi &quot; + <span style={{ color: '#ffb300' }}>{name}</span> + &quot;! You are &quot; + <span style={{ color: '#ffb300' }}>{age}</span> + &quot; years old and your favorite color is &quot; + <span style={{ color: '#ffb300' }}>{color}</span> + &quot;.&quot;
+                <span style={{ color: 'var(--info)' }}>
+                    &quot;Hi &quot; + <span style={{ color: 'var(--warning)' }}>{name}</span> + &quot;! You are &quot; + <span style={{ color: 'var(--warning)' }}>{age}</span> + &quot; years old and your favorite color is &quot; + <span style={{ color: 'var(--warning)' }}>{color}</span> + &quot;.&quot;
                 </span>
             </span>,
         },
         {
             key: 'print',
-            output: <span style={{ color: '#4CAF50' }}>
+            output: <span style={{ color: 'var(--success)' }}>
                 Hi {name}! You are {age} years old and your favorite color is {color}.
             </span>,
             completed: true,
@@ -265,33 +265,33 @@ export default function StringManipulationConcept() {
         {
             key: 'inject_name',
             output: <span>
-                <span style={{ color: '#90caf9' }}>
-                    print(&quot;Hi <span style={{ color: '#ffb300' }}>{name}</span>! You are {'{}'} years old and your favorite color is {'{}'}.&quot;
-                    .format(<span style={{ color: '#ffb300' }}>{name}</span>, age, color))
+                <span style={{ color: 'var(--info)' }}>
+                    print(&quot;Hi <span style={{ color: 'var(--warning)' }}>{name}</span>! You are {'{}'} years old and your favorite color is {'{}'}.&quot;
+                    .format(<span style={{ color: 'var(--warning)' }}>{name}</span>, age, color))
                 </span>
             </span>,
         },
         {
             key: 'inject_age',
             output: <span>
-                <span style={{ color: '#90caf9' }}>
-                    print(&quot;Hi <span style={{ color: '#ffb300' }}>{name}</span>! You are <span style={{ color: '#ffb300' }}>{age}</span> years old and your favorite color is {'{}'}.&quot;
-                    .format(<span style={{ color: '#ffb300' }}>{name}</span>, <span style={{ color: '#ffb300' }}>{age}</span>, color))
+                <span style={{ color: 'var(--info)' }}>
+                    print(&quot;Hi <span style={{ color: 'var(--warning)' }}>{name}</span>! You are <span style={{ color: 'var(--warning)' }}>{age}</span> years old and your favorite color is {'{}'}.&quot;
+                    .format(<span style={{ color: 'var(--warning)' }}>{name}</span>, <span style={{ color: 'var(--warning)' }}>{age}</span>, color))
                 </span>
             </span>,
         },
         {
             key: 'inject_color',
             output: <span>
-                <span style={{ color: '#90caf9' }}>
-                    print(&quot;Hi <span style={{ color: '#ffb300' }}>{name}</span>! You are <span style={{ color: '#ffb300' }}>{age}</span> years old and your favorite color is <span style={{ color: '#ffb300' }}>{color}</span>.&quot;
-                    .format(<span style={{ color: '#ffb300' }}>{name}</span>, <span style={{ color: '#ffb300' }}>{age}</span>, <span style={{ color: '#ffb300' }}>{color}</span>))
+                <span style={{ color: 'var(--info)' }}>
+                    print(&quot;Hi <span style={{ color: 'var(--warning)' }}>{name}</span>! You are <span style={{ color: 'var(--warning)' }}>{age}</span> years old and your favorite color is <span style={{ color: 'var(--warning)' }}>{color}</span>.&quot;
+                    .format(<span style={{ color: 'var(--warning)' }}>{name}</span>, <span style={{ color: 'var(--warning)' }}>{age}</span>, <span style={{ color: 'var(--warning)' }}>{color}</span>))
                 </span>
             </span>,
         },
         {
             key: 'print',
-            output: <span style={{ color: '#4CAF50' }}>
+            output: <span style={{ color: 'var(--success)' }}>
                 Hi {name}! You are {age} years old and your favorite color is {color}.
             </span>,
             completed: true,
@@ -325,10 +325,10 @@ export default function StringManipulationConcept() {
                                 comment: line.comment,
                                 style: line.highlight
                                     ? {
-                                        backgroundColor: '#fff3e0',
+                                        backgroundColor: 'var(--warning-bg)',
                                         padding: '4px 8px',
                                         borderRadius: '4px',
-                                        border: '2px solid #ff9800',
+                                        border: '2px solid var(--warning)',
                                         fontWeight: 'bold',
                                         marginBottom: '8px',
                                         display: 'block'
@@ -384,10 +384,10 @@ export default function StringManipulationConcept() {
                                 comment: line.comment,
                                 style: line.highlight
                                     ? {
-                                        backgroundColor: '#fff3e0',
+                                        backgroundColor: 'var(--warning-bg)',
                                         padding: '4px 8px',
                                         borderRadius: '4px',
-                                        border: '2px solid #ff9800',
+                                        border: '2px solid var(--warning)',
                                         fontWeight: 'bold',
                                         marginBottom: '8px',
                                         display: 'block'
@@ -443,10 +443,10 @@ export default function StringManipulationConcept() {
                                 comment: line.comment,
                                 style: line.highlight
                                     ? {
-                                        backgroundColor: '#fff3e0',
+                                        backgroundColor: 'var(--warning-bg)',
                                         padding: '4px 8px',
                                         borderRadius: '4px',
-                                        border: '2px solid #ff9800',
+                                        border: '2px solid var(--warning)',
                                         fontWeight: 'bold',
                                         marginBottom: '8px',
                                         display: 'block'

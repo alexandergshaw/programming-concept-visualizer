@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import ConceptInfoCard from '@/components/common/ConceptInfoCard';
 
-const stepColors = ['#1976d2', '#43a047', '#fbc02d', '#e53935', '#8e24aa'];
+const stepColors = ['var(--info)', 'var(--success)', 'var(--warning)', 'var(--danger)', 'var(--feature)'];
 
 export default function NamedFunctionAnimation({ input = 5 }: { input: number }) {
     const [currentStep, setCurrentStep] = useState(0);
@@ -79,14 +79,14 @@ export default function NamedFunctionAnimation({ input = 5 }: { input: number })
                 style={{
                     fontFamily: 'monospace',
                     fontSize: 16,
-                    color: '#333',
+                    color: 'var(--ink)',
                     marginBottom: 18,
-                    background: '#fff', // White background for the code box
+                    background: 'var(--paper-raised)', // White background for the code box
                     borderRadius: 8,
                     padding: '12px 10px',
                     lineHeight: 1.7,
                     overflowX: 'auto',
-                    border: '1.5px solid #e0e0e0',
+                    border: '1.5px solid var(--paper-sunken)',
                     display: 'block'
                 }}
                 dangerouslySetInnerHTML={{ __html: highlightedCode }}
@@ -95,7 +95,7 @@ export default function NamedFunctionAnimation({ input = 5 }: { input: number })
                 minHeight: 32,
                 marginTop: 8,
                 fontSize: 15,
-                color: '#444',
+                color: 'var(--ink)',
                 textAlign: 'center'
             }}>
                 <b style={{ color: stepColors[currentStep] }}>{steps[currentStep].label}:</b>{' '}
@@ -110,12 +110,12 @@ export default function NamedFunctionAnimation({ input = 5 }: { input: number })
                 <button
                     onClick={() => setCurrentStep(0)}
                     style={{
-                        background: '#fff',
-                        border: '1.5px solid #bbb',
+                        background: 'var(--paper-raised)',
+                        border: '1.5px solid var(--line-strong)',
                         borderRadius: 6,
                         padding: '7px 18px',
                         fontWeight: 600,
-                        color: '#1976d2',
+                        color: 'var(--info)',
                         cursor: 'pointer'
                     }}
                 >
@@ -125,12 +125,12 @@ export default function NamedFunctionAnimation({ input = 5 }: { input: number })
                     onClick={() => setCurrentStep(s => Math.min(s + 1, steps.length - 1))}
                     disabled={currentStep >= steps.length - 1}
                     style={{
-                        background: currentStep >= steps.length - 1 ? '#eee' : '#1976d2',
+                        background: currentStep >= steps.length - 1 ? 'var(--paper-sunken)' : 'var(--info)',
                         border: 'none',
                         borderRadius: 6,
                         padding: '7px 18px',
                         fontWeight: 600,
-                        color: currentStep >= steps.length - 1 ? '#aaa' : '#fff',
+                        color: currentStep >= steps.length - 1 ? 'var(--ink-faint)' : 'var(--paper-raised)',
                         cursor: currentStep >= steps.length - 1 ? 'not-allowed' : 'pointer'
                     }}
                 >

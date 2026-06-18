@@ -201,15 +201,15 @@ export default function SearchingConcept() {
             </div>
 
             <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', mb: 2 }}>
-              <Box sx={{ flex: 1, minWidth: 150, p: 1.5, borderRadius: 2, border: '1px solid', borderColor: algorithm === 'linear' ? '#2563eb' : '#e2e8f0', bgcolor: '#f8fafc' }}>
-                <Typography variant="caption" sx={{ color: '#64748b', display: 'block' }}>Linear</Typography>
-                <Typography variant="h6" sx={{ color: '#3b82f6', fontWeight: 700 }}>
+              <Box sx={{ flex: 1, minWidth: 150, p: 1.5, borderRadius: 2, border: '1px solid', borderColor: algorithm === 'linear' ? 'var(--info)' : 'var(--line)', bgcolor: 'var(--paper-sunken)' }}>
+                <Typography variant="caption" sx={{ color: 'var(--ink-soft)', display: 'block' }}>Linear</Typography>
+                <Typography variant="h6" sx={{ color: 'var(--info)', fontWeight: 700 }}>
                   {linearResult.found ? `${linearResult.checks} checks` : `${linearResult.checks} (not found)`}
                 </Typography>
               </Box>
-              <Box sx={{ flex: 1, minWidth: 150, p: 1.5, borderRadius: 2, border: '1px solid', borderColor: algorithm === 'binary' ? '#2563eb' : '#e2e8f0', bgcolor: '#f8fafc' }}>
-                <Typography variant="caption" sx={{ color: '#64748b', display: 'block' }}>Binary</Typography>
-                <Typography variant="h6" sx={{ color: '#8b5cf6', fontWeight: 700 }}>
+              <Box sx={{ flex: 1, minWidth: 150, p: 1.5, borderRadius: 2, border: '1px solid', borderColor: algorithm === 'binary' ? 'var(--info)' : 'var(--line)', bgcolor: 'var(--paper-sunken)' }}>
+                <Typography variant="caption" sx={{ color: 'var(--ink-soft)', display: 'block' }}>Binary</Typography>
+                <Typography variant="h6" sx={{ color: 'var(--feature)', fontWeight: 700 }}>
                   {binaryResult.found ? `${binaryResult.checks} checks` : `${binaryResult.checks} (not found)`}
                 </Typography>
               </Box>
@@ -254,7 +254,7 @@ export default function SearchingConcept() {
               { left: 1, w: 6.25 },
             ].map((row, i) => (
               <div className="halve-row" key={i}>
-                <span style={{ width: 64, fontSize: 13, color: '#475569' }}>Check {i + 1}</span>
+                <span style={{ width: 64, fontSize: 13, color: 'var(--ink-soft)' }}>Check {i + 1}</span>
                 <span className="halve-bar" style={{ width: `${row.w}%` }}>{row.left} left</span>
               </div>
             ))}

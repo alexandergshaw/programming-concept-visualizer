@@ -22,7 +22,7 @@ export default function NormalizationToggle() {
             rows={[[101, 'Ana', 'Paris', 'Book'], [102, 'Ana', 'Paris', 'Pen'], [103, 'Ben', 'Rome', 'Lamp']]}
             highlight={[1, 2]}
           />
-          <p className="sql-pg-count" style={{ color: '#b91c1c' }}>
+          <p className="sql-pg-count" style={{ color: 'var(--danger)' }}>
             Ana&apos;s name and city repeat on every order. Move her to a new city and you must update several rows — and might miss one (an update anomaly).
           </p>
         </>
@@ -30,7 +30,7 @@ export default function NormalizationToggle() {
         <>
           <SqlTable name="customers" columns={['id', 'name', 'city']} rows={[[1, 'Ana', 'Paris'], [2, 'Ben', 'Rome']]} />
           <SqlTable name="orders" columns={['id', 'customer_id', 'product']} rows={[[101, 1, 'Book'], [102, 1, 'Pen'], [103, 2, 'Lamp']]} highlight={[1]} />
-          <p className="sql-pg-count" style={{ color: '#15803d' }}>
+          <p className="sql-pg-count" style={{ color: 'var(--success)' }}>
             Each fact is stored once. Ana&apos;s city lives in a single place, so the anomalies are gone.
           </p>
         </>

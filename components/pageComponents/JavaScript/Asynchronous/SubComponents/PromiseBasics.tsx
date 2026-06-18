@@ -23,9 +23,9 @@ const PromiseBasics: React.FC = () => {
     });
   });
 });`,
-              titleColor: "#d32f2f",
-              backgroundColor: "#fffbeb",
-              codeBackgroundColor: "#f1f5f9"
+              titleColor: "var(--danger)",
+              backgroundColor: "var(--warning-bg)",
+              codeBackgroundColor: "var(--paper-sunken)"
             },
             {
               title: "⚡ Promise Chain", 
@@ -37,9 +37,9 @@ const PromiseBasics: React.FC = () => {
     // Clean, flat structure
   })
   .catch(handleError);`,
-              titleColor: "#388e3c",
-              backgroundColor: "#f0fdf4", 
-              codeBackgroundColor: "#f1f5f9"
+              titleColor: "var(--success)",
+              backgroundColor: "var(--success-bg)", 
+              codeBackgroundColor: "var(--paper-sunken)"
             }
           ]}
           gap={3}
@@ -48,26 +48,26 @@ const PromiseBasics: React.FC = () => {
         <Box sx={{ 
           mt: 3, 
           p: 2.5, 
-          bgcolor: '#f8fafc', 
+          bgcolor: 'var(--paper-sunken)', 
           borderRadius: 2, 
-          border: '1px solid #e2e8f0',
+          border: '1px solid var(--line)',
           boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
         }}>
-          <Typography variant="h6" fontWeight={700} gutterBottom sx={{ color: '#1e293b', display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Typography variant="h6" fontWeight={700} gutterBottom sx={{ color: 'var(--ink)', display: 'flex', alignItems: 'center', gap: 1 }}>
             🎯 Creating and Using Promises
           </Typography>
-          <Box sx={{ fontSize: 14, lineHeight: 1.8, color: '#475569' }}>
+          <Box sx={{ fontSize: 14, lineHeight: 1.8, color: 'var(--ink-soft)' }}>
             <Typography component="div" sx={{ mb: 1 }}>
-              <Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Creating:</Typography> new Promise((resolve, reject) =&gt; {`{ /* async work */ }`})
+              <Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Creating:</Typography> new Promise((resolve, reject) =&gt; {`{ /* async work */ }`})
             </Typography>
             <Typography component="div" sx={{ mb: 1 }}>
-              <Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Success:</Typography> Call resolve(value) when operation succeeds
+              <Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Success:</Typography> Call resolve(value) when operation succeeds
             </Typography>
             <Typography component="div" sx={{ mb: 1 }}>
-              <Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Error:</Typography> Call reject(error) when operation fails
+              <Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Error:</Typography> Call reject(error) when operation fails
             </Typography>
             <Typography component="div">
-              <Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Consuming:</Typography> Use .then() for success, .catch() for errors
+              <Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Consuming:</Typography> Use .then() for success, .catch() for errors
             </Typography>
           </Box>
         </Box>

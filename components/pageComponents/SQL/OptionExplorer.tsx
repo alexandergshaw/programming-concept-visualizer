@@ -25,7 +25,7 @@ export default function OptionExplorer({ options }: { options: ExplorerOption[] 
       <div style={{ marginTop: 12 }}>
         <ul style={{ margin: 0, paddingLeft: 18 }}>
           {active.points.map((p, idx) => (
-            <li key={idx} style={{ fontSize: 14, color: '#334155', marginBottom: 6 }}>{p}</li>
+            <li key={idx} style={{ fontSize: 14, color: 'var(--ink)', marginBottom: 6 }}>{p}</li>
           ))}
         </ul>
         {active.code && <pre className="sql-pg-code">{active.code}</pre>}

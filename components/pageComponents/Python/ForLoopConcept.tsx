@@ -93,7 +93,7 @@ export default function ForLoopConcept() {
                             },
                             {
                                 label: 'First Iteration',
-                                desc: `On the first loop, <b>fruit</b> is <b style="color:#d14;">"${inputs.fruit1}"</b>.`,
+                                desc: `On the first loop, <b>fruit</b> is <b style="color:var(--danger);">"${inputs.fruit1}"</b>.`,
                                 highlight: [' fruit ', `"${inputs.fruit1}"`],
                             },
                             {

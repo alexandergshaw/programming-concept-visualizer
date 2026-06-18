@@ -18,30 +18,30 @@ export default function ObjectPatternsConcept() {
       <TableOfContents numbered>
         <Section title="Understanding Design Patterns">
           <PatternsBasics />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
-            <FontAwesomeIcon icon={faTree} style={{ fontSize: 20, color: '#1976d2' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+            <FontAwesomeIcon icon={faTree} style={{ fontSize: 20, color: 'var(--info)' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Let&apos;s see inheritance in action with a complete example showing IS-A relationships in practice.
+              <strong style={{ color: 'var(--info)' }}>What&apos;s next:</strong> Let&apos;s see inheritance in action with a complete example showing IS-A relationships in practice.
             </Typography>
           </Box>
         </Section>
 
         <Section title="Inheritance Pattern in Action">
           <InheritancePatternExample />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
-            <FontAwesomeIcon icon={faPuzzlePiece} style={{ fontSize: 20, color: '#1976d2' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+            <FontAwesomeIcon icon={faPuzzlePiece} style={{ fontSize: 20, color: 'var(--info)' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Now explore composition - a more flexible approach using HAS-A relationships to build complex objects.
+              <strong style={{ color: 'var(--info)' }}>What&apos;s next:</strong> Now explore composition - a more flexible approach using HAS-A relationships to build complex objects.
             </Typography>
           </Box>
         </Section>
 
         <Section title="Composition Pattern in Action">
           <CompositionPatternExample />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e8f5e9', p: 2, borderRadius: 1, mt: 2 }}>
-            <FontAwesomeIcon icon={faCheckCircle} style={{ fontSize: 20, color: '#4caf50' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--success-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+            <FontAwesomeIcon icon={faCheckCircle} style={{ fontSize: 20, color: 'var(--success)' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#4caf50' }}>Excellent work!</strong> You've mastered both inheritance and composition patterns and can now make informed design decisions in your JavaScript applications.
+              <strong style={{ color: 'var(--success)' }}>Excellent work!</strong> You've mastered both inheritance and composition patterns and can now make informed design decisions in your JavaScript applications.
             </Typography>
           </Box>
         </Section>

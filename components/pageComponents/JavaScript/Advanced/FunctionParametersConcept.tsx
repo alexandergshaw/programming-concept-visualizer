@@ -19,40 +19,40 @@ export default function FunctionParametersConcept() {
       <TableOfContents numbered>
         <Section title="Understanding Function Parameters">
           <ParameterBasics />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
-            <FontAwesomeIcon icon={faCog} style={{ fontSize: 20, color: '#1976d2' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+            <FontAwesomeIcon icon={faCog} style={{ fontSize: 20, color: 'var(--info)' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Let&apos;s explore default parameters - how to provide fallback values when arguments aren&apos;t provided.
+              <strong style={{ color: 'var(--info)' }}>What&apos;s next:</strong> Let&apos;s explore default parameters - how to provide fallback values when arguments aren&apos;t provided.
             </Typography>
           </Box>
         </Section>
 
         <Section title="Default Parameters in Action">
           <DefaultParametersExample />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
-            <FontAwesomeIcon icon={faEllipsisH} style={{ fontSize: 20, color: '#1976d2' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+            <FontAwesomeIcon icon={faEllipsisH} style={{ fontSize: 20, color: 'var(--info)' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Now discover rest and spread operators - powerful tools for handling variable numbers of arguments.
+              <strong style={{ color: 'var(--info)' }}>What&apos;s next:</strong> Now discover rest and spread operators - powerful tools for handling variable numbers of arguments.
             </Typography>
           </Box>
         </Section>
 
         <Section title="Rest & Spread Operators">
           <RestSpreadExample />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1, mt: 2 }}>
-            <FontAwesomeIcon icon={faPuzzlePiece} style={{ fontSize: 20, color: '#1976d2' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+            <FontAwesomeIcon icon={faPuzzlePiece} style={{ fontSize: 20, color: 'var(--info)' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#1976d2' }}>What&apos;s next:</strong> Time to combine all these techniques in advanced real-world function examples.
+              <strong style={{ color: 'var(--info)' }}>What&apos;s next:</strong> Time to combine all these techniques in advanced real-world function examples.
             </Typography>
           </Box>
         </Section>
 
         <Section title="Advanced Parameter Patterns">
           <AdvancedParametersExample />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e8f5e9', p: 2, borderRadius: 1, mt: 2 }}>
-            <FontAwesomeIcon icon={faCheckCircle} style={{ fontSize: 20, color: '#4caf50' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--success-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+            <FontAwesomeIcon icon={faCheckCircle} style={{ fontSize: 20, color: 'var(--success)' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#4caf50' }}>Excellent work!</strong> You've mastered function parameters and can now write flexible, robust functions that handle any number of arguments gracefully.
+              <strong style={{ color: 'var(--success)' }}>Excellent work!</strong> You've mastered function parameters and can now write flexible, robust functions that handle any number of arguments gracefully.
             </Typography>
           </Box>
         </Section>

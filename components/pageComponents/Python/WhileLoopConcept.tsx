@@ -63,7 +63,7 @@ export default function WhileLoopConcept() {
                     <p>
                         In many workplace scripts, you might need to <b>wait for a file</b> to appear before continuing. A <b>while loop</b> can check repeatedly until the file exists.
                     </p>
-                    <div style={{ background: '#f6ffed', border: '1px solid #b7eb8f', borderRadius: 6, padding: '10px 14px', margin: '12px 0' }}>
+                    <div style={{ background: 'var(--success-bg)', border: '1px solid var(--success-bg)', borderRadius: 6, padding: '10px 14px', margin: '12px 0' }}>
                         <b>Scenario:</b> Your script should process a report as soon as it arrives in a folder.
                     </div>
                     <StepThroughCodeAnimation
@@ -111,7 +111,7 @@ export default function WhileLoopConcept() {
                     <p>
                         When a loop continues forever because the condition never becomes false, we call this an <b>infinite loop</b>. This usually occurs when the loop condition never becomes <b>false</b> because a variable isn’t updated correctly.
                     </p>
-                    <div style={{ background: '#fff1f0', border: '1px solid #ffa39e', borderRadius: 6, padding: '10px 14px', margin: '12px 0' }}>
+                    <div style={{ background: 'var(--danger-bg)', border: '1px solid var(--danger-bg)', borderRadius: 6, padding: '10px 14px', margin: '12px 0' }}>
                         <b>Example:</b> The variable <code>count</code> is never changed, so the loop never ends.
                     </div>
 

@@ -46,7 +46,7 @@ export default function CompilersInterpretersConcept() {
               sx={{
                 width: '100%',
                 borderCollapse: 'collapse',
-                background: '#f8fafc',
+                background: 'var(--paper-sunken)',
                 borderRadius: 2,
                 overflow: 'hidden',
                 mb: 2,
@@ -54,52 +54,52 @@ export default function CompilersInterpretersConcept() {
               }}
             >
               <thead>
-                <tr style={{ background: '#e3f2fd' }}>
-                  <th style={{ padding: '12px', fontWeight: 700, fontSize: 16, borderRight: '1px solid #bbdefb' }}></th>
-                  <th style={{ padding: '12px', fontWeight: 700, fontSize: 16, borderRight: '1px solid #bbdefb' }}>Interpreter</th>
+                <tr style={{ background: 'var(--info-bg)' }}>
+                  <th style={{ padding: '12px', fontWeight: 700, fontSize: 16, borderRight: '1px solid var(--info-bg)' }}></th>
+                  <th style={{ padding: '12px', fontWeight: 700, fontSize: 16, borderRight: '1px solid var(--info-bg)' }}>Interpreter</th>
                   <th style={{ padding: '12px', fontWeight: 700, fontSize: 16 }}>Compiler</th>
                 </tr>
               </thead>
               <tbody>
-                <tr style={{ background: '#f8fafc' }}>
-                  <td style={{ padding: '10px', fontWeight: 600, borderRight: '1px solid #e3f2fd' }}>How it works</td>
-                  <td style={{ padding: '10px', borderRight: '1px solid #e3f2fd' }}>
+                <tr style={{ background: 'var(--paper-sunken)' }}>
+                  <td style={{ padding: '10px', fontWeight: 600, borderRight: '1px solid var(--info-bg)' }}>How it works</td>
+                  <td style={{ padding: '10px', borderRight: '1px solid var(--info-bg)' }}>
                     Translates and runs your code <b>line by line</b>, as the program runs.
                   </td>
                   <td style={{ padding: '10px' }}>
                     Translates the <b>entire program</b> into machine code <b>before</b> running it.
                   </td>
                 </tr>
-                <tr style={{ background: '#f8fafc' }}>
-                  <td style={{ padding: '10px', fontWeight: 600, borderRight: '1px solid #e3f2fd' }}>Speed</td>
-                  <td style={{ padding: '10px', borderRight: '1px solid #e3f2fd' }}>
+                <tr style={{ background: 'var(--paper-sunken)' }}>
+                  <td style={{ padding: '10px', fontWeight: 600, borderRight: '1px solid var(--info-bg)' }}>Speed</td>
+                  <td style={{ padding: '10px', borderRight: '1px solid var(--info-bg)' }}>
                     Slower (runs each line as it goes)
                   </td>
                   <td style={{ padding: '10px' }}>
                     Faster (runs pre-translated machine code)
                   </td>
                 </tr>
-                <tr style={{ background: '#f8fafc' }}>
-                  <td style={{ padding: '10px', fontWeight: 600, borderRight: '1px solid #e3f2fd' }}>Error reporting</td>
-                  <td style={{ padding: '10px', borderRight: '1px solid #e3f2fd' }}>
+                <tr style={{ background: 'var(--paper-sunken)' }}>
+                  <td style={{ padding: '10px', fontWeight: 600, borderRight: '1px solid var(--info-bg)' }}>Error reporting</td>
+                  <td style={{ padding: '10px', borderRight: '1px solid var(--info-bg)' }}>
                     Stops at the first error it finds while running.
                   </td>
                   <td style={{ padding: '10px' }}>
                     Finds many errors before running the program.
                   </td>
                 </tr>
-                <tr style={{ background: '#f8fafc' }}>
-                  <td style={{ padding: '10px', fontWeight: 600, borderRight: '1px solid #e3f2fd' }}>Examples</td>
-                  <td style={{ padding: '10px', borderRight: '1px solid #e3f2fd' }}>
+                <tr style={{ background: 'var(--paper-sunken)' }}>
+                  <td style={{ padding: '10px', fontWeight: 600, borderRight: '1px solid var(--info-bg)' }}>Examples</td>
+                  <td style={{ padding: '10px', borderRight: '1px solid var(--info-bg)' }}>
                     Python, JavaScript, Ruby, PHP
                   </td>
                   <td style={{ padding: '10px' }}>
                     C, C++, Rust, Go, Swift
                   </td>
                 </tr>
-                <tr style={{ background: '#f8fafc' }}>
-                  <td style={{ padding: '10px', fontWeight: 600, borderRight: '1px solid #e3f2fd' }}>When to use</td>
-                  <td style={{ padding: '10px', borderRight: '1px solid #e3f2fd' }}>
+                <tr style={{ background: 'var(--paper-sunken)' }}>
+                  <td style={{ padding: '10px', fontWeight: 600, borderRight: '1px solid var(--info-bg)' }}>When to use</td>
+                  <td style={{ padding: '10px', borderRight: '1px solid var(--info-bg)' }}>
                     Great for learning, scripting, and quick changes.
                   </td>
                   <td style={{ padding: '10px' }}>
@@ -171,14 +171,14 @@ function InteractiveInterpreterDemo() {
               width: '100%',
               maxWidth: 340,
               fontFamily: 'monospace',
-              bgcolor: '#f4f4f4',
+              bgcolor: 'var(--paper-raised)',
               borderRadius: 1,
             }}
             inputProps={{
               style: {
                 fontFamily: 'monospace',
                 fontSize: 16,
-                background: '#f4f4f4',
+                background: 'var(--paper-raised)',
                 borderRadius: 4,
                 padding: '8px 12px',
               }
@@ -209,8 +209,8 @@ function InteractiveInterpreterDemo() {
                   p: 1.2,
                   mb: 0.5,
                   minWidth: 220,
-                  bgcolor: isActive ? '#e3fcec' : '#f4f4f4',
-                  border: isActive ? '2px solid #219653' : '1px solid #ddd',
+                  bgcolor: isActive ? 'var(--success-bg)' : 'var(--paper-raised)',
+                  border: isActive ? '2px solid var(--success)' : '1px solid var(--line)',
                   transition: 'all 0.2s',
                   display: 'flex',
                   flexDirection: 'column',
@@ -232,8 +232,8 @@ function InteractiveInterpreterDemo() {
                           px: 1.2,
                           py: 0.5,
                           borderRadius: 1,
-                          bgcolor: isStepActive ? '#219653' : '#e0e0e0',
-                          color: isStepActive ? '#fff' : '#333',
+                          bgcolor: isStepActive ? 'var(--success)' : 'var(--paper-sunken)',
+                          color: isStepActive ? 'var(--paper-raised)' : 'var(--ink)',
                           fontWeight: 700,
                           fontFamily: 'monospace',
                           fontSize: 15,
@@ -266,11 +266,11 @@ function InteractiveInterpreterDemo() {
             sx={{
               mt: 2,
               p: 1.5,
-              bgcolor: '#f4f4f4',
+              bgcolor: 'var(--paper-raised)',
               borderRadius: 1,
               fontFamily: 'monospace',
               fontSize: 16,
-              color: '#333',
+              color: 'var(--ink)',
               minWidth: 220,
               maxWidth: 340,
               overflow: 'auto',
@@ -286,7 +286,7 @@ function InteractiveInterpreterDemo() {
   return (
     <Box
       sx={{
-        bgcolor: '#f8fafc',
+        bgcolor: 'var(--paper-sunken)',
         borderRadius: 3,
         p: 3,
         my: 3,
@@ -304,9 +304,9 @@ function InteractiveInterpreterDemo() {
               width: 16,
               height: 16,
               borderRadius: '50%',
-              bgcolor: step === i ? '#219653' : '#e0e0e0',
+              bgcolor: step === i ? 'var(--success)' : 'var(--paper-sunken)',
               cursor: 'pointer',
-              border: step === i ? '2px solid #219653' : '1px solid #bbb',
+              border: step === i ? '2px solid var(--success)' : '1px solid var(--line-strong)',
               transition: 'all 0.2s',
             }}
             onClick={() => setStep(i)}
@@ -319,8 +319,8 @@ function InteractiveInterpreterDemo() {
         sx={{
           p: 2,
           mb: 2,
-          bgcolor: step === 1 ? '#e3fcec' : step === 2 ? '#e3fcec' : '#fff',
-          border: step === 1 || step === 2 ? '2px solid #219653' : '1px solid #ddd',
+          bgcolor: step === 1 ? 'var(--success-bg)' : step === 2 ? 'var(--success-bg)' : 'var(--paper-raised)',
+          border: step === 1 || step === 2 ? '2px solid var(--success)' : '1px solid var(--line)',
           transition: 'all 0.2s',
         }}
       >
@@ -343,8 +343,8 @@ function InteractiveInterpreterDemo() {
               padding: '6px 16px',
               borderRadius: 4,
               border: 'none',
-              background: step === 0 ? '#eee' : '#219653',
-              color: step === 0 ? '#888' : '#fff',
+              background: step === 0 ? 'var(--paper-sunken)' : 'var(--success)',
+              color: step === 0 ? 'var(--ink-faint)' : 'var(--paper-raised)',
               cursor: step === 0 ? 'not-allowed' : 'pointer',
               marginRight: 8,
               fontWeight: 600,
@@ -359,8 +359,8 @@ function InteractiveInterpreterDemo() {
               padding: '6px 16px',
               borderRadius: 4,
               border: 'none',
-              background: step === steps.length - 1 ? '#eee' : '#219653',
-              color: step === steps.length - 1 ? '#888' : '#fff',
+              background: step === steps.length - 1 ? 'var(--paper-sunken)' : 'var(--success)',
+              color: step === steps.length - 1 ? 'var(--ink-faint)' : 'var(--paper-raised)',
               cursor: step === steps.length - 1 ? 'not-allowed' : 'pointer',
               fontWeight: 600,
             }}
@@ -466,14 +466,14 @@ function InteractiveCompilerDemo() {
               width: '100%',
               maxWidth: 340,
               fontFamily: 'monospace',
-              bgcolor: '#f4f4f4',
+              bgcolor: 'var(--paper-raised)',
               borderRadius: 1,
             }}
             inputProps={{
               style: {
                 fontFamily: 'monospace',
                 fontSize: 16,
-                background: '#f4f4f4',
+                background: 'var(--paper-raised)',
                 borderRadius: 4,
                 padding: '8px 12px',
               }
@@ -486,7 +486,7 @@ function InteractiveCompilerDemo() {
     {
       label: 'Compiler (Front End)',
       code: (
-        <Box sx={{ fontFamily: 'monospace', bgcolor: '#f4f4f4', borderRadius: 1, p: 1.5, fontSize: 16, color: '#333', minWidth: 220, maxWidth: 340, overflow: 'auto' }}>
+        <Box sx={{ fontFamily: 'monospace', bgcolor: 'var(--paper-raised)', borderRadius: 1, p: 1.5, fontSize: 16, color: 'var(--ink)', minWidth: 220, maxWidth: 340, overflow: 'auto' }}>
           {userCode}
         </Box>
       ),
@@ -500,8 +500,8 @@ function InteractiveCompilerDemo() {
             <span
               key={i}
               style={{
-                background: i <= highlightedIndex ? '#219653' : '#e0e0e0',
-                color: i <= highlightedIndex ? '#fff' : '#333',
+                background: i <= highlightedIndex ? 'var(--success)' : 'var(--paper-sunken)',
+                color: i <= highlightedIndex ? 'var(--paper-raised)' : 'var(--ink)',
                 borderRadius: 4,
                 padding: '2px 8px',
                 fontWeight: 700,
@@ -527,8 +527,8 @@ function InteractiveCompilerDemo() {
             <Box key={i} sx={{ display: 'flex', alignItems: 'center', mb: 0.5 }}>
               <span
                 style={{
-                  background: i <= highlightedIndex ? '#219653' : '#e0e0e0',
-                  color: i <= highlightedIndex ? '#fff' : '#333',
+                  background: i <= highlightedIndex ? 'var(--success)' : 'var(--paper-sunken)',
+                  color: i <= highlightedIndex ? 'var(--paper-raised)' : 'var(--ink)',
                   borderRadius: 4,
                   padding: '2px 8px',
                   fontWeight: 700,
@@ -542,11 +542,11 @@ function InteractiveCompilerDemo() {
               >
                 {asm}
               </span>
-              <ArrowForwardIcon sx={{ color: '#219653', mx: 1, fontSize: 22 }} />
+              <ArrowForwardIcon sx={{ color: 'var(--success)', mx: 1, fontSize: 22 }} />
               <span
                 style={{
-                  background: i <= highlightedIndex ? '#219653' : '#e0e0e0',
-                  color: i <= highlightedIndex ? '#fff' : '#333',
+                  background: i <= highlightedIndex ? 'var(--success)' : 'var(--paper-sunken)',
+                  color: i <= highlightedIndex ? 'var(--paper-raised)' : 'var(--ink)',
                   borderRadius: 4,
                   padding: '2px 8px',
                   fontWeight: 700,
@@ -581,8 +581,8 @@ function InteractiveCompilerDemo() {
                   p: 1.2,
                   mb: 0.5,
                   minWidth: 220,
-                  bgcolor: isActive ? '#e3fcec' : '#f4f4f4',
-                  border: isActive ? '2px solid #219653' : '1px solid #ddd',
+                  bgcolor: isActive ? 'var(--success-bg)' : 'var(--paper-raised)',
+                  border: isActive ? '2px solid var(--success)' : '1px solid var(--line)',
                   transition: 'all 0.2s',
                   display: 'flex',
                   flexDirection: 'column',
@@ -604,8 +604,8 @@ function InteractiveCompilerDemo() {
                           px: 1.2,
                           py: 0.5,
                           borderRadius: 1,
-                          bgcolor: isStepActive ? '#219653' : '#e0e0e0',
-                          color: isStepActive ? '#fff' : '#333',
+                          bgcolor: isStepActive ? 'var(--success)' : 'var(--paper-sunken)',
+                          color: isStepActive ? 'var(--paper-raised)' : 'var(--ink)',
                           fontWeight: 700,
                           fontFamily: 'monospace',
                           fontSize: 15,
@@ -638,11 +638,11 @@ function InteractiveCompilerDemo() {
             sx={{
               mt: 2,
               p: 1.5,
-              bgcolor: '#f4f4f4',
+              bgcolor: 'var(--paper-raised)',
               borderRadius: 1,
               fontFamily: 'monospace',
               fontSize: 16,
-              color: '#333',
+              color: 'var(--ink)',
               minWidth: 220,
               maxWidth: 340,
               overflow: 'auto',
@@ -658,7 +658,7 @@ function InteractiveCompilerDemo() {
   return (
     <Box
       sx={{
-        bgcolor: '#f8fafc',
+        bgcolor: 'var(--paper-sunken)',
         borderRadius: 3,
         p: 3,
         my: 3,
@@ -676,9 +676,9 @@ function InteractiveCompilerDemo() {
               width: 16,
               height: 16,
               borderRadius: '50%',
-              bgcolor: step === i ? '#219653' : '#e0e0e0',
+              bgcolor: step === i ? 'var(--success)' : 'var(--paper-sunken)',
               cursor: 'pointer',
-              border: step === i ? '2px solid #219653' : '1px solid #bbb',
+              border: step === i ? '2px solid var(--success)' : '1px solid var(--line-strong)',
               transition: 'all 0.2s',
             }}
             onClick={() => setStep(i)}
@@ -691,8 +691,8 @@ function InteractiveCompilerDemo() {
         sx={{
           p: 2,
           mb: 2,
-          bgcolor: step === 2 ? '#e3fcec' : step === 3 ? '#e3fcec' : step === 4 ? '#e3f7fc' : step === 5 ? '#e3fcec' : '#fff',
-          border: step === 2 || step === 3 || step === 4 || step === 5 ? '2px solid #219653' : '1px solid #ddd',
+          bgcolor: step === 2 ? 'var(--success-bg)' : step === 3 ? 'var(--success-bg)' : step === 4 ? 'var(--info-bg)' : step === 5 ? 'var(--success-bg)' : 'var(--paper-raised)',
+          border: step === 2 || step === 3 || step === 4 || step === 5 ? '2px solid var(--success)' : '1px solid var(--line)',
           transition: 'all 0.2s',
         }}
       >
@@ -719,8 +719,8 @@ function InteractiveCompilerDemo() {
               padding: '6px 16px',
               borderRadius: 4,
               border: 'none',
-              background: step === 0 ? '#eee' : '#219653',
-              color: step === 0 ? '#888' : '#fff',
+              background: step === 0 ? 'var(--paper-sunken)' : 'var(--success)',
+              color: step === 0 ? 'var(--ink-faint)' : 'var(--paper-raised)',
               cursor: step === 0 ? 'not-allowed' : 'pointer',
               marginRight: 8,
               fontWeight: 600,
@@ -735,8 +735,8 @@ function InteractiveCompilerDemo() {
               padding: '6px 16px',
               borderRadius: 4,
               border: 'none',
-              background: step === codeSteps.length - 1 ? '#eee' : '#219653',
-              color: step === codeSteps.length - 1 ? '#888' : '#fff',
+              background: step === codeSteps.length - 1 ? 'var(--paper-sunken)' : 'var(--success)',
+              color: step === codeSteps.length - 1 ? 'var(--ink-faint)' : 'var(--paper-raised)',
               cursor: step === codeSteps.length - 1 ? 'not-allowed' : 'pointer',
               fontWeight: 600,
             }}

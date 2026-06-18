@@ -146,25 +146,25 @@ p = Person("Sam", 30)`}
               {
                 label: '__init__',
                 part: '__init__',
-                color: '#9333ea',
+                color: 'var(--feature)',
                 desc: 'The constructor — runs automatically when the object is created'
               },
               {
                 label: 'Parameters',
                 part: 'self, name, age=0',
-                color: '#dc2626',
+                color: 'var(--danger)',
                 desc: 'Values the constructor receives. age has a default of 0'
               },
               {
                 label: 'Assigning attributes',
                 part: 'self.name = name',
-                color: '#059669',
+                color: 'var(--success)',
                 desc: 'Copies the incoming value onto the object so it persists'
               },
               {
                 label: 'Creating the object',
                 part: 'p = Person("Sam", 30)',
-                color: '#2563eb',
+                color: 'var(--info)',
                 desc: 'These arguments are passed straight into __init__'
               }
             ]}

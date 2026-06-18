@@ -68,10 +68,10 @@ export default function DataFlowVisualizer() {
             py: 2, 
             fontSize: '1.1rem',
             borderRadius: 3,
-            background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)',
+            background: 'linear-gradient(135deg, var(--info) 0%, var(--info) 100%)',
             boxShadow: '0 3px 15px rgba(30, 64, 175, 0.25)',
             '&:hover': {
-              background: 'linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%)',
+              background: 'linear-gradient(135deg, var(--info) 0%, var(--info) 100%)',
               transform: 'translateY(-2px)',
               boxShadow: '0 5px 20px rgba(30, 64, 175, 0.35)',
             },
@@ -91,12 +91,12 @@ export default function DataFlowVisualizer() {
               py: 2,
               borderRadius: 3,
               borderWidth: 2,
-              borderColor: '#475569',
-              color: '#475569',
+              borderColor: 'var(--ink-soft)',
+              color: 'var(--ink-soft)',
               '&:hover': {
                 borderWidth: 2,
-                borderColor: '#1e293b',
-                backgroundColor: '#f8fafc',
+                borderColor: 'var(--ink)',
+                backgroundColor: 'var(--paper-sunken)',
                 transform: 'translateY(-2px)',
               }
             }}
@@ -126,12 +126,12 @@ export default function DataFlowVisualizer() {
             width: '80%',
             height: '4px',
             background: `linear-gradient(to right, 
-              ${step >= 2 ? '#0f766e' : '#e5e7eb'} 0%, 
-              ${step >= 2 ? '#0f766e' : '#e5e7eb'} 33%,
-              ${step >= 3 ? '#1e40af' : '#e5e7eb'} 33%,
-              ${step >= 3 ? '#1e40af' : '#e5e7eb'} 66%,
-              ${step >= 4 ? '#6366f1' : '#e5e7eb'} 66%,
-              ${step >= 4 ? '#6366f1' : '#e5e7eb'} 100%
+              ${step >= 2 ? 'var(--success)' : 'var(--line)'} 0%, 
+              ${step >= 2 ? 'var(--success)' : 'var(--line)'} 33%,
+              ${step >= 3 ? 'var(--info)' : 'var(--line)'} 33%,
+              ${step >= 3 ? 'var(--info)' : 'var(--line)'} 66%,
+              ${step >= 4 ? 'var(--feature)' : 'var(--line)'} 66%,
+              ${step >= 4 ? 'var(--feature)' : 'var(--line)'} 100%
             )`,
             zIndex: 0,
             borderRadius: 2,
@@ -145,9 +145,9 @@ export default function DataFlowVisualizer() {
               width: '200px',
               p: 3,
               borderRadius: 4,
-              background: step >= 1 ? 'linear-gradient(135deg, #0f766e 0%, #14b8a6 100%)' : 'white',
-              border: step >= 1 ? 'none' : '3px dashed #cbd5e1',
-              color: step >= 1 ? 'white' : '#64748b',
+              background: step >= 1 ? 'linear-gradient(135deg, var(--success) 0%, var(--success) 100%)' : 'white',
+              border: step >= 1 ? 'none' : '3px dashed var(--line-strong)',
+              color: step >= 1 ? 'white' : 'var(--ink-soft)',
               transition: 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
               transform: step >= 1 ? 'scale(1.05) translateY(-10px)' : 'scale(1)',
               boxShadow: step >= 1 ? '0 20px 40px rgba(15, 118, 110, 0.3)' : 'none',
@@ -163,7 +163,7 @@ export default function DataFlowVisualizer() {
               height: 70, 
               margin: '0 auto 16px',
               borderRadius: '50%',
-              background: step >= 1 ? 'rgba(255,255,255,0.2)' : '#f1f5f9',
+              background: step >= 1 ? 'rgba(255,255,255,0.2)' : 'var(--paper-sunken)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -236,9 +236,9 @@ export default function DataFlowVisualizer() {
               width: '200px',
               p: 3,
               borderRadius: 4,
-              background: step >= 3 ? 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)' : 'white',
-              border: step >= 3 ? 'none' : '3px dashed #cbd5e1',
-              color: step >= 3 ? 'white' : '#64748b',
+              background: step >= 3 ? 'linear-gradient(135deg, var(--info) 0%, var(--info) 100%)' : 'white',
+              border: step >= 3 ? 'none' : '3px dashed var(--line-strong)',
+              color: step >= 3 ? 'white' : 'var(--ink-soft)',
               transition: 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
               transform: step >= 3 ? 'scale(1.05) translateY(-10px)' : 'scale(1)',
               boxShadow: step >= 3 ? '0 20px 40px rgba(30, 64, 175, 0.3)' : 'none',
@@ -254,7 +254,7 @@ export default function DataFlowVisualizer() {
               height: 70, 
               margin: '0 auto 16px',
               borderRadius: '50%',
-              background: step >= 3 ? 'rgba(255,255,255,0.2)' : '#f1f5f9',
+              background: step >= 3 ? 'rgba(255,255,255,0.2)' : 'var(--paper-sunken)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -323,9 +323,9 @@ export default function DataFlowVisualizer() {
               width: '200px',
               p: 3,
               borderRadius: 4,
-              background: step >= 4 ? 'linear-gradient(135deg, #4f46e5 0%, #6366f1 100%)' : 'white',
-              border: step >= 4 ? 'none' : '3px dashed #cbd5e1',
-              color: step >= 4 ? 'white' : '#64748b',
+              background: step >= 4 ? 'linear-gradient(135deg, var(--info) 0%, var(--feature) 100%)' : 'white',
+              border: step >= 4 ? 'none' : '3px dashed var(--line-strong)',
+              color: step >= 4 ? 'white' : 'var(--ink-soft)',
               transition: 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
               transform: step >= 4 ? 'scale(1.05) translateY(-10px)' : 'scale(1)',
               boxShadow: step >= 4 ? '0 20px 40px rgba(79, 70, 229, 0.3)' : 'none',
@@ -341,7 +341,7 @@ export default function DataFlowVisualizer() {
               height: 70, 
               margin: '0 auto 16px',
               borderRadius: '50%',
-              background: step >= 4 ? 'rgba(255,255,255,0.2)' : '#f1f5f9',
+              background: step >= 4 ? 'rgba(255,255,255,0.2)' : 'var(--paper-sunken)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -419,8 +419,8 @@ export default function DataFlowVisualizer() {
               sx={{
                 p: 3,
                 borderRadius: 3,
-                background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
-                border: '2px solid #e2e8f0',
+                background: 'linear-gradient(135deg, var(--paper-raised) 0%, var(--paper-sunken) 100%)',
+                border: '2px solid var(--line)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: 2.5,
@@ -432,7 +432,7 @@ export default function DataFlowVisualizer() {
                 '&:hover': {
                   transform: 'translateY(-8px) scale(1.02)',
                   boxShadow: '0 12px 30px rgba(30, 64, 175, 0.25)',
-                  borderColor: '#3b82f6',
+                  borderColor: 'var(--info)',
                 }
               }}
             >
@@ -440,7 +440,7 @@ export default function DataFlowVisualizer() {
                 width: 60, 
                 height: 60, 
                 borderRadius: '16px',
-                background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)',
+                background: 'linear-gradient(135deg, var(--info) 0%, var(--info) 100%)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -450,17 +450,17 @@ export default function DataFlowVisualizer() {
                 <AccountCircleIcon sx={{ fontSize: 35, color: 'white' }} />
               </Box>
               <Box sx={{ flex: 1, minWidth: 0 }}>
-                <Typography variant="h6" sx={{ fontWeight: 700, color: '#1e293b', mb: 0.5 }}>
+                <Typography variant="h6" sx={{ fontWeight: 700, color: 'var(--ink)', mb: 0.5 }}>
                   {user.name}
                 </Typography>
-                <Typography variant="body2" sx={{ color: '#64748b' }}>
+                <Typography variant="body2" sx={{ color: 'var(--ink-soft)' }}>
                   {user.email}
                 </Typography>
               </Box>
               <Chip 
                 label={`#${user.id}`}
                 sx={{
-                  background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)',
+                  background: 'linear-gradient(135deg, var(--info) 0%, var(--info) 100%)',
                   color: 'white',
                   fontWeight: 700,
                   fontSize: '0.9rem',

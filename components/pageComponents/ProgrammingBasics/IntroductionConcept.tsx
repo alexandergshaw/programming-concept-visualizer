@@ -7,7 +7,7 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 export default function IntroductionConcept() {
   return (
     <Box sx={{ maxWidth: 700, mx: 'auto', my: 4 }}>
-      <Paper sx={{ p: 3, bgcolor: '#e3f2fd', border: '2px solid #90caf9' }}>
+      <Paper sx={{ p: 3, bgcolor: 'var(--info-bg)', border: '2px solid var(--info)' }}>
         <Typography variant="h4" fontWeight={700} sx={{ mb: 2 }}>
           Welcome!
         </Typography>
@@ -19,13 +19,13 @@ export default function IntroductionConcept() {
         </Typography>
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', my: 4 }}>
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
-            <CodeIcon sx={{ fontSize: 48, color: '#1976d2' }} />
+            <CodeIcon sx={{ fontSize: 48, color: 'var(--info)' }} />
             <Typography fontWeight={600}>Your Code</Typography>
-            <ArrowDownwardIcon sx={{ fontSize: 32, color: '#90caf9' }} />
-            <ComputerIcon sx={{ fontSize: 48, color: '#388e3c' }} />
+            <ArrowDownwardIcon sx={{ fontSize: 32, color: 'var(--info)' }} />
+            <ComputerIcon sx={{ fontSize: 48, color: 'var(--success)' }} />
             <Typography fontWeight={600}>Hardware</Typography>
-            <ArrowDownwardIcon sx={{ fontSize: 32, color: '#90caf9' }} />
-            <MemoryIcon sx={{ fontSize: 48, color: '#fbc02d' }} />
+            <ArrowDownwardIcon sx={{ fontSize: 32, color: 'var(--info)' }} />
+            <MemoryIcon sx={{ fontSize: 48, color: 'var(--warning)' }} />
             <Typography fontWeight={600}>Memory</Typography>
           </Box>
         </Box>

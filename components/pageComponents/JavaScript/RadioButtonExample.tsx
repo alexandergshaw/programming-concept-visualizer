@@ -69,14 +69,14 @@ const RadioButtonExample: React.FC = () => {
                 </Typography>
 
                 <Box sx={{
-                    border: '1px solid #e0e0e0',
+                    border: '1px solid var(--paper-sunken)',
                     borderRadius: 1,
                     p: 2,
                     mb: 2,
-                    bgcolor: '#fafafa',
+                    bgcolor: 'var(--paper-raised)',
                     position: 'relative'
                 }}>
-                    <Box sx={{ fontSize: 12, position: 'absolute', right: 8, top: 4, color: '#666' }}>
+                    <Box sx={{ fontSize: 12, position: 'absolute', right: 8, top: 4, color: 'var(--ink-soft)' }}>
                         Preview
                     </Box>
 
@@ -104,13 +104,13 @@ const RadioButtonExample: React.FC = () => {
                         {message && (
                             <Box sx={{
                                 p: 1,
-                                bgcolor: '#e3f2fd',
-                                border: '1px solid #90caf9',
+                                bgcolor: 'var(--info-bg)',
+                                border: '1px solid var(--info)',
                                 borderRadius: 1,
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: 1,
-                                color: '#0d47a1'
+                                color: 'var(--info)'
                             }}>
                                 <FontAwesomeIcon icon={faCheck} />
                                 <Typography>{message}</Typography>
@@ -126,13 +126,13 @@ const RadioButtonExample: React.FC = () => {
                     How It Works: Step-by-Step
                 </Typography>
 
-                <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+                <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Step 1: Create your HTML</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
                         First, we need to create a group of radio buttons and a button to check the selection:
                     </Typography>
                     <Box sx={{
-                        bgcolor: '#f5f5f5',
+                        bgcolor: 'var(--paper-raised)',
                         p: 2,
                         borderRadius: 1,
                         fontFamily: 'monospace',
@@ -167,19 +167,19 @@ const RadioButtonExample: React.FC = () => {
 <!-- This div will show the result -->
 <div id="result"></div>`}
                     </Box>
-                    <Typography variant="body2" sx={{ color: '#555' }}>
+                    <Typography variant="body2" sx={{ color: 'var(--ink-soft)' }}>
                         Note how all radio buttons share the same <code>name=&quot;pet&quot;</code> attribute. This creates a group
                         where only one option can be selected at a time.
                     </Typography>
                 </Paper>
 
-                <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+                <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Step 2: Wait for the DOM to be ready</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
                         Before we can access HTML elements, we need to make sure the page is fully loaded:
                     </Typography>
                     <Box sx={{
-                        bgcolor: '#f5f5f5',
+                        bgcolor: 'var(--paper-raised)',
                         p: 2,
                         borderRadius: 1,
                         fontFamily: 'monospace',
@@ -193,8 +193,8 @@ document.addEventListener("DOMContentLoaded", function() {
   console.log("DOM is ready!");
 });`}
                     </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1 }}>
-                        <FontAwesomeIcon icon={faCodeBranch} style={{ fontSize: 20, color: '#1976d2' }} />
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1 }}>
+                        <FontAwesomeIcon icon={faCodeBranch} style={{ fontSize: 20, color: 'var(--info)' }} />
                         <Typography variant="body2">
                             <b>What&apos;s happening:</b> We&apos;re ensuring our JavaScript only runs after all HTML elements have
                             been loaded and are ready to be accessed.
@@ -202,13 +202,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     </Box>
                 </Paper>
 
-                <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+                <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Step 3: Get the elements with JavaScript</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
                         Inside our DOMContentLoaded event, we get references to our HTML elements:
                     </Typography>
                     <Box sx={{
-                        bgcolor: '#f5f5f5',
+                        bgcolor: 'var(--paper-raised)',
                         p: 2,
                         borderRadius: 1,
                         fontFamily: 'monospace',
@@ -227,8 +227,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const resultDiv = document.getElementById("result");
 });`}
                     </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1 }}>
-                        <FontAwesomeIcon icon={faRadio} style={{ fontSize: 20, color: '#1976d2' }} />
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1 }}>
+                        <FontAwesomeIcon icon={faRadio} style={{ fontSize: 20, color: 'var(--info)' }} />
                         <Typography variant="body2">
                             <b>What&apos;s happening:</b> We&apos;re using <code>document.querySelectorAll()</code> to get all radio buttons
                             with the name &quot;pet&quot;. This returns a collection of elements rather than a single element.
@@ -236,13 +236,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     </Box>
                 </Paper>
 
-                <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+                <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Step 4: Add an Event Listener to the Button</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
                         Next, we add a click event listener to the button to check which radio button is selected:
                     </Typography>
                     <Box sx={{
-                        bgcolor: '#f5f5f5',
+                        bgcolor: 'var(--paper-raised)',
                         p: 2,
                         borderRadius: 1,
                         fontFamily: 'monospace',
@@ -266,8 +266,8 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });`}
                     </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1 }}>
-                        <FontAwesomeIcon icon={faHandPointer} style={{ fontSize: 20, color: '#1976d2' }} />
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1 }}>
+                        <FontAwesomeIcon icon={faHandPointer} style={{ fontSize: 20, color: 'var(--info)' }} />
                         <Typography variant="body2">
                             <b>What&apos;s happening:</b> We&apos;re setting up an event listener that will run our code
                             whenever the button is clicked.
@@ -275,13 +275,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     </Box>
                 </Paper>
 
-                <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+                <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Step 5: Find the Selected Radio Button</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
                         Now let&apos;s write the code that finds which radio button is checked:
                     </Typography>
                     <Box sx={{
-                        bgcolor: '#f5f5f5',
+                        bgcolor: 'var(--paper-raised)',
                         p: 2,
                         borderRadius: 1,
                         fontFamily: 'monospace',
@@ -323,8 +323,8 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });`}
                     </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#fff8e1', p: 2, borderRadius: 1 }}>
-                        <FontAwesomeIcon icon={faDotCircle} style={{ fontSize: 20, color: '#ff9800' }} />
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--warning-bg)', p: 2, borderRadius: 1 }}>
+                        <FontAwesomeIcon icon={faDotCircle} style={{ fontSize: 20, color: 'var(--warning)' }} />
                         <Typography variant="body2">
                             <b>What&apos;s happening:</b> We loop through all the radio buttons using a <code>for...of</code> loop,
                             checking each one to see if its <code>checked</code> property is true. When we find the checked radio button,
@@ -333,13 +333,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     </Box>
                 </Paper>
 
-                <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+                <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Step 6: Display the Selected Value</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
                         Finally, let&apos;s update the page to show which option was selected:
                     </Typography>
                     <Box sx={{
-                        bgcolor: '#f5f5f5',
+                        bgcolor: 'var(--paper-raised)',
                         p: 2,
                         borderRadius: 1,
                         fontFamily: 'monospace',
@@ -380,11 +380,11 @@ document.addEventListener("DOMContentLoaded", function() {
     // Display appropriate message based on selection
     if (selectedValue) {
       message.textContent = "You selected: " + selectedValue;
-      message.style.color = "#2196f3";
+      message.style.color = "var(--info)";
       message.style.fontWeight = "bold";
     } else {
       message.textContent = "Please select an option first";
-      message.style.color = "#f44336";
+      message.style.color = "var(--danger)";
     }
     
     // Add the message to the page
@@ -392,8 +392,8 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });`}
                     </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e8f5e9', p: 2, borderRadius: 1 }}>
-                        <FontAwesomeIcon icon={faCheck} style={{ fontSize: 20, color: '#4caf50' }} />
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--success-bg)', p: 2, borderRadius: 1 }}>
+                        <FontAwesomeIcon icon={faCheck} style={{ fontSize: 20, color: 'var(--success)' }} />
                         <Typography variant="body2">
                             <b>What&apos;s happening:</b> We create a new paragraph element to display our message, style it
                             according to whether an option was selected, and add it to the page. We also clear any previous
@@ -402,7 +402,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     </Box>
                 </Paper>
 
-                <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+                <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Complete Code</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
                         Here&apos;s the full JavaScript code:
@@ -443,11 +443,11 @@ document.addEventListener("DOMContentLoaded", function() {
                             '    // Display appropriate message based on selection',
                             '    if (selectedValue) {',
                             '      message.textContent = "You selected: " + selectedValue;',
-                            '      message.style.color = "#2196f3";',
+                            '      message.style.color = "var(--info)";',
                             '      message.style.fontWeight = "bold";',
                             '    } else {',
                             '      message.textContent = "Please select an option first";',
-                            '      message.style.color = "#f44336";',
+                            '      message.style.color = "var(--danger)";',
                             '    }',
                             '    ',
                             '    // Add the message to the page',

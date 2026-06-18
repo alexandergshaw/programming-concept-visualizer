@@ -43,25 +43,25 @@ fetchUserData(123)
     {
       label: 'Pending State',
       part: "console.log('Promise State: PENDING')",
-      color: '#ff9800',
+      color: 'var(--warning)',
       desc: 'Initial state - operation has started but not yet completed'
     },
     {
       label: 'Fulfilled State',
       part: "resolve({ id: userId, name: 'John Doe' })",
-      color: '#4caf50',
+      color: 'var(--success)',
       desc: 'Success state - operation completed successfully with a value'
     },
     {
       label: 'Rejected State',
       part: "reject(new Error('Failed to fetch'))",
-      color: '#f44336',
+      color: 'var(--danger)',
       desc: 'Error state - operation failed with an error reason'
     },
     {
       label: 'Finally Block',
       part: '.finally(() => { /* cleanup */ })',
-      color: '#9c27b0',
+      color: 'var(--feature)',
       desc: 'Runs regardless of success or failure, useful for cleanup'
     }
   ];
@@ -157,13 +157,13 @@ Promise.race([promise1, promise2, promise3])
             {
               label: 'Promise.all',
               part: 'Promise.all([promise1, promise2, promise3])',
-              color: '#2196f3',
+              color: 'var(--info)',
               desc: 'Waits for ALL promises to complete successfully'
             },
             {
               label: 'Promise.race',
               part: 'Promise.race([promise1, promise2, promise3])',
-              color: '#ff5722',
+              color: 'var(--warning)',
               desc: 'Returns the first promise to complete (success or failure)'
             }
           ]}
@@ -173,13 +173,13 @@ Promise.race([promise1, promise2, promise3])
       {/* Promise States Visual Guide */}
       <Box sx={{ 
         p: 3, 
-        bgcolor: '#f8fafc', 
+        bgcolor: 'var(--paper-sunken)', 
         borderRadius: 2, 
-        border: '1px solid #e2e8f0',
+        border: '1px solid var(--line)',
         mt: 4,
         boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
       }}>
-        <Typography variant="h6" fontWeight={700} gutterBottom sx={{ color: '#1e293b', display: 'flex', alignItems: 'center', gap: 1 }}>
+        <Typography variant="h6" fontWeight={700} gutterBottom sx={{ color: 'var(--ink)', display: 'flex', alignItems: 'center', gap: 1 }}>
           📊 Promise States Reference
         </Typography>
         <FlexibleGrid 
@@ -187,25 +187,25 @@ Promise.race([promise1, promise2, promise3])
             {
               title: "�� PENDING",
               description: "Initial state. The operation has started but hasn&apos;t completed yet.",
-              titleColor: "#92400e",
-              backgroundColor: "#fffbeb"
+              titleColor: "var(--warning)",
+              backgroundColor: "var(--warning-bg)"
             },
             {
               title: "🟢 FULFILLED",
               description: "Success! The operation completed and returned a value.",
-              titleColor: "#047857",
-              backgroundColor: "#ecfdf5"
+              titleColor: "var(--success)",
+              backgroundColor: "var(--success-bg)"
             },
             {
               title: "🔴 REJECTED",
               description: "Error! The operation failed and returned an error reason.",
-              titleColor: "#dc2626",
-              backgroundColor: "#fef2f2"
+              titleColor: "var(--danger)",
+              backgroundColor: "var(--danger-bg)"
             }
           ]}
           gap={2}
         />
-            <Typography variant="body2" sx={{ fontSize: 13, color: '#991b1b' }}>
+            <Typography variant="body2" sx={{ fontSize: 13, color: 'var(--danger)' }}>
               Error! The operation failed and returned an error reason.
             </Typography>
       </Box>

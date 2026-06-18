@@ -226,31 +226,31 @@ class DataProcessor {
             {
               label: 'Fetch XML',
               part: 'const response = await fetch(url);\n    const xmlText = await response.text();',
-              color: '#2196f3',
+              color: 'var(--info)',
               desc: 'Fetch XML data as text (not JSON)'
             },
             {
               label: 'Parse XML',
               part: 'const parser = new DOMParser();\n    const xmlDoc = parser.parseFromString(xmlText, "text/xml");',
-              color: '#ff9800',
+              color: 'var(--warning)',
               desc: 'Use DOMParser to convert XML string to DOM document'
             },
             {
               label: 'Error Check',
               part: 'const parseError = xmlDoc.querySelector("parsererror");',
-              color: '#f44336',
+              color: 'var(--danger)',
               desc: 'Check for XML parsing errors in the parsed document'
             },
             {
               label: 'Query Elements',
               part: 'xmlDoc.querySelectorAll("book")',
-              color: '#4caf50',
+              color: 'var(--success)',
               desc: 'Use CSS selectors to find elements in XML document'
             },
             {
               label: 'Extract Attributes',
               part: 'book.getAttribute("id")',
-              color: '#9c27b0',
+              color: 'var(--feature)',
               desc: 'Get attribute values from XML elements'
             }
           ]}
@@ -267,31 +267,31 @@ class DataProcessor {
             {
               label: 'HTTP Check',
               part: 'if (!response.ok)',
-              color: '#e91e63',
+              color: 'var(--feature)',
               desc: 'Verify HTTP response status before parsing'
             },
             {
               label: 'Parse JSON',
               part: 'const data = await response.json();',
-              color: '#3f51b5',
+              color: 'var(--info)',
               desc: 'Use built-in JSON parsing method'
             },
             {
               label: 'Structure Validation',
               part: 'if (!data.books || !Array.isArray(data.books))',
-              color: '#ff5722',
+              color: 'var(--warning)',
               desc: 'Validate expected data structure exists'
             },
             {
               label: 'Data Processing',
               part: 'data.books.map((book, index) => {',
-              color: '#009688',
+              color: 'var(--success)',
               desc: 'Process and validate each data item'
             },
             {
               label: 'Type Coercion',
               part: 'typeof book.price === \'number\' ? book.price : 0',
-              color: '#795548',
+              color: 'var(--ink-soft)',
               desc: 'Ensure correct data types with fallback values'
             }
           ]}
@@ -308,25 +308,25 @@ class DataProcessor {
             {
               label: 'Error Types',
               part: 'return this.createError("XML_PARSE_ERROR", errorNode.textContent);',
-              color: '#d32f2f',
+              color: 'var(--danger)',
               desc: 'Categorize errors with specific types for better handling'
             },
             {
               label: 'Syntax Error Check',
               part: 'if (error instanceof SyntaxError)',
-              color: '#f57c00',
+              color: 'var(--warning)',
               desc: 'Handle JSON syntax errors specifically'
             },
             {
               label: 'Consistent Response',
               part: 'createSuccess(data)',
-              color: '#388e3c',
+              color: 'var(--success)',
               desc: 'Return consistent response format for success and errors'
             },
             {
               label: 'Data Validation',
               part: 'validateJSONStructure(data)',
-              color: '#7b1fa2',
+              color: 'var(--feature)',
               desc: 'Validate data structure before processing'
             }
           ]}
@@ -336,43 +336,43 @@ class DataProcessor {
       {/* Best Practices */}
       <Box sx={{ 
         p: 3, 
-        bgcolor: '#f3e5f5', 
+        bgcolor: 'var(--feature-bg)', 
         borderRadius: 2, 
-        border: '1px solid #9c27b0',
+        border: '1px solid var(--feature)',
         mt: 4,
         boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
       }}>
-        <Typography variant="h6" fontWeight={700} gutterBottom sx={{ color: '#6a1b9a', display: 'flex', alignItems: 'center', gap: 1 }}>
+        <Typography variant="h6" fontWeight={700} gutterBottom sx={{ color: 'var(--feature)', display: 'flex', alignItems: 'center', gap: 1 }}>
           🚀 Parsing Best Practices
         </Typography>
-        <Box component="ul" sx={{ margin: 0, paddingLeft: 3, '& li': { marginBottom: 1.5, color: '#424242' } }}>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#7b1fa2' }}>Always validate:</Typography> Check data structure and required fields exist</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#7b1fa2' }}>Handle errors gracefully:</Typography> Provide meaningful error messages to users</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#7b1fa2' }}>Use try-catch blocks:</Typography> Wrap parsing code in error handling</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#7b1fa2' }}>Provide fallback values:</Typography> Set defaults for optional or missing data</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#7b1fa2' }}>Log errors properly:</Typography> Include context for debugging</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#7b1fa2' }}>Validate HTTP responses:</Typography> Check status codes before parsing</li>
+        <Box component="ul" sx={{ margin: 0, paddingLeft: 3, '& li': { marginBottom: 1.5, color: 'var(--ink)' } }}>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--feature)' }}>Always validate:</Typography> Check data structure and required fields exist</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--feature)' }}>Handle errors gracefully:</Typography> Provide meaningful error messages to users</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--feature)' }}>Use try-catch blocks:</Typography> Wrap parsing code in error handling</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--feature)' }}>Provide fallback values:</Typography> Set defaults for optional or missing data</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--feature)' }}>Log errors properly:</Typography> Include context for debugging</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--feature)' }}>Validate HTTP responses:</Typography> Check status codes before parsing</li>
         </Box>
       </Box>
 
       {/* Common Pitfalls */}
       <Box sx={{ 
         p: 3, 
-        bgcolor: '#fff3e0', 
+        bgcolor: 'var(--warning-bg)', 
         borderRadius: 2, 
-        border: '1px solid #ff9800',
+        border: '1px solid var(--warning)',
         mt: 3,
         boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
       }}>
-        <Typography variant="h6" fontWeight={700} gutterBottom sx={{ color: '#e65100', display: 'flex', alignItems: 'center', gap: 1 }}>
+        <Typography variant="h6" fontWeight={700} gutterBottom sx={{ color: 'var(--warning)', display: 'flex', alignItems: 'center', gap: 1 }}>
           ⚠️ Common Pitfalls to Avoid
         </Typography>
-        <Box component="ul" sx={{ margin: 0, paddingLeft: 3, '& li': { marginBottom: 1.5, color: '#424242' } }}>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#f57c00' }}>Assuming data exists:</Typography> Always check if elements/properties exist before accessing</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#f57c00' }}>Ignoring data types:</Typography> JSON preserves types, XML treats everything as strings</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#f57c00' }}>Not handling empty responses:</Typography> Check for null, undefined, or empty data</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#f57c00' }}>Poor error messages:</Typography> Give users actionable feedback, not technical errors</li>
-          <li><Typography component="span" fontWeight={600} sx={{ color: '#f57c00' }}>Memory leaks:</Typography> Clean up large parsed documents when done</li>
+        <Box component="ul" sx={{ margin: 0, paddingLeft: 3, '& li': { marginBottom: 1.5, color: 'var(--ink)' } }}>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--warning)' }}>Assuming data exists:</Typography> Always check if elements/properties exist before accessing</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--warning)' }}>Ignoring data types:</Typography> JSON preserves types, XML treats everything as strings</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--warning)' }}>Not handling empty responses:</Typography> Check for null, undefined, or empty data</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--warning)' }}>Poor error messages:</Typography> Give users actionable feedback, not technical errors</li>
+          <li><Typography component="span" fontWeight={600} sx={{ color: 'var(--warning)' }}>Memory leaks:</Typography> Clean up large parsed documents when done</li>
         </Box>
       </Box>
     </div>

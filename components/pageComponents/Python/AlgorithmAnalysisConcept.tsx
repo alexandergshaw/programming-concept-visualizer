@@ -19,11 +19,11 @@ type Complexity = {
 };
 
 const COMPLEXITIES: Complexity[] = [
-  { label: 'O(1)', plain: 'Constant', color: '#22c55e', steps: () => 1, analogy: 'Grabbing the first item — instant.' },
-  { label: 'O(log n)', plain: 'Logarithmic', color: '#14b8a6', steps: (n) => Math.max(1, Math.ceil(Math.log2(n))), analogy: 'Halving a sorted list (binary search).' },
-  { label: 'O(n)', plain: 'Linear', color: '#3b82f6', steps: (n) => n, analogy: 'Reading every page once.' },
-  { label: 'O(n log n)', plain: 'Linearithmic', color: '#f59e0b', steps: (n) => Math.max(1, Math.round(n * Math.log2(Math.max(2, n)))), analogy: 'The good sorting algorithms.' },
-  { label: 'O(n²)', plain: 'Quadratic', color: '#ef4444', steps: (n) => n * n, analogy: 'Everyone shaking hands with everyone.' },
+  { label: 'O(1)', plain: 'Constant', color: 'var(--success)', steps: () => 1, analogy: 'Grabbing the first item — instant.' },
+  { label: 'O(log n)', plain: 'Logarithmic', color: 'var(--success)', steps: (n) => Math.max(1, Math.ceil(Math.log2(n))), analogy: 'Halving a sorted list (binary search).' },
+  { label: 'O(n)', plain: 'Linear', color: 'var(--info)', steps: (n) => n, analogy: 'Reading every page once.' },
+  { label: 'O(n log n)', plain: 'Linearithmic', color: 'var(--warning)', steps: (n) => Math.max(1, Math.round(n * Math.log2(Math.max(2, n)))), analogy: 'The good sorting algorithms.' },
+  { label: 'O(n²)', plain: 'Quadratic', color: 'var(--danger)', steps: (n) => n * n, analogy: 'Everyone shaking hands with everyone.' },
 ];
 
 const SCALE_PRESETS = [
@@ -126,7 +126,7 @@ export default function AlgorithmAnalysisConcept() {
 
             {COMPLEXITIES.map((c) => (
               <Box key={c.label} sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
-                <span style={{ flexShrink: 0, background: c.color, color: '#fff', fontFamily: 'monospace', fontWeight: 700, fontSize: 13, padding: '4px 10px', borderRadius: 6, minWidth: 92, textAlign: 'center' }}>
+                <span style={{ flexShrink: 0, background: c.color, color: 'var(--paper-raised)', fontFamily: 'monospace', fontWeight: 700, fontSize: 13, padding: '4px 10px', borderRadius: 6, minWidth: 92, textAlign: 'center' }}>
                   {c.label}
                 </span>
                 <Typography variant="body2" sx={{ fontFamily: 'monospace' }}>{fmt(c.steps(scaleN))} steps</Typography>
@@ -146,7 +146,7 @@ export default function AlgorithmAnalysisConcept() {
           <div className="ds-viz">
             {COMPLEXITIES.map((c) => (
               <Box key={c.label} sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1.25 }}>
-                <span style={{ flexShrink: 0, background: c.color, color: '#fff', fontFamily: 'monospace', fontWeight: 700, fontSize: 13, padding: '4px 10px', borderRadius: 6, minWidth: 92, textAlign: 'center' }}>
+                <span style={{ flexShrink: 0, background: c.color, color: 'var(--paper-raised)', fontFamily: 'monospace', fontWeight: 700, fontSize: 13, padding: '4px 10px', borderRadius: 6, minWidth: 92, textAlign: 'center' }}>
                   {c.label}
                 </span>
                 <Typography variant="body2"><strong>{c.plain}.</strong> {c.analogy}</Typography>

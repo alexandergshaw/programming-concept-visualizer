@@ -18,7 +18,7 @@ export default function CodePreview({ title, code }: { title?: string; code: str
       sx={{
         whiteSpace: 'pre',
         fontFamily: 'monospace',
-        backgroundColor: '#f9f9f9',
+        backgroundColor: 'var(--paper-raised)',
         borderRadius: 2,
         p: 2,
         position: 'relative',
@@ -40,7 +40,7 @@ export default function CodePreview({ title, code }: { title?: string; code: str
         line.includes('//') ? (
           <Box key={idx}>
             <Box component="span"><code>{line.split('//')[0]}</code></Box>
-            <Box component="span" sx={{ color: '#999' }}>
+            <Box component="span" sx={{ color: 'var(--ink-faint)' }}>
               <code>{'//' + line.split('//')[1]}</code>
             </Box>
           </Box>

@@ -95,9 +95,9 @@ export default function ProgrammingBasicsPage() {
 							"As you progress, we'll peel back the layers and take you further and further \"behind the scenes\" to show you how a computer actually runs your code.",
 						]}
 						steps={[
-							{ icon: <CodeIcon sx={{ fontSize: 48, color: '#1976d2' }} />, label: 'Your Code' },
-							{ icon: <ComputerIcon sx={{ fontSize: 48, color: '#388e3c' }} />, label: 'Hardware' },
-							{ icon: <MemoryIcon sx={{ fontSize: 48, color: '#fbc02d' }} />, label: 'Memory' },
+							{ icon: <CodeIcon sx={{ fontSize: 48, color: 'var(--info)' }} />, label: 'Your Code' },
+							{ icon: <ComputerIcon sx={{ fontSize: 48, color: 'var(--success)' }} />, label: 'Hardware' },
+							{ icon: <MemoryIcon sx={{ fontSize: 48, color: 'var(--warning)' }} />, label: 'Memory' },
 						]}
 						closing="You'll see how your code is translated, how the computer's hardware and memory work together, and how everything comes together to make your programs run. Let's begin our journey from the code you write, all the way down to the circuits inside your computer!"
 					/>
@@ -112,15 +112,15 @@ export default function ProgrammingBasicsPage() {
 						]}
 						steps={[
 							{
-								icon: <AutoAwesomeMotionIcon sx={{ fontSize: 48, color: '#1976d2' }} />,
+								icon: <AutoAwesomeMotionIcon sx={{ fontSize: 48, color: 'var(--info)' }} />,
 								label: 'Algorithm (Step-by-step plan)'
 							},
 							{
-								icon: <AccountTreeIcon sx={{ fontSize: 48, color: '#388e3c' }} />,
+								icon: <AccountTreeIcon sx={{ fontSize: 48, color: 'var(--success)' }} />,
 								label: 'Flow Chart (Visual diagram)'
 							},
 							{
-								icon: <SubjectIcon sx={{ fontSize: 48, color: '#fbc02d' }} />,
+								icon: <SubjectIcon sx={{ fontSize: 48, color: 'var(--warning)' }} />,
 								label: 'Pseudo Code (Structured outline)'
 							}
 						]}

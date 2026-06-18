@@ -162,19 +162,19 @@ print(result)    # Prints: 8`}
                   {
                     label: 'Return Statement',
                     part: 'return',
-                    color: '#9333ea',
+                    color: 'var(--feature)',
                     desc: 'This gives back an answer to whoever asked for it'
                   },
                   {
                     label: 'Catch the answer',
                     part: 'result = add_numbers(5, 3)',
-                    color: '#059669',
+                    color: 'var(--success)',
                     desc: 'Put the answer in a variable so you can use it'
                   },
                   {
                     label: 'Multiple parameters',
                     part: 'a, b',
-                    color: '#dc2626',
+                    color: 'var(--danger)',
                     desc: 'You can give your function multiple pieces of information'
                   }
                 ]}
@@ -273,19 +273,19 @@ describe_pet(animal_type="fish", name="Bubbles")  # Output: I have a fish named 
                   {
                     label: 'Default parameter',
                     part: 'animal_type="dog"',
-                    color: '#9333ea',
+                    color: 'var(--feature)',
                     desc: 'A default value is used if no argument is provided for this parameter'
                   },
                   {
                     label: 'Named arguments',
                     part: 'animal_type="fish", name="Bubbles"',
-                    color: '#059669',
+                    color: 'var(--success)',
                     desc: 'You can specify which parameter gets which value by using names'
                   },
                   {
                     label: 'Positional arguments',
                     part: '"Whiskers", "cat"',
-                    color: '#dc2626',
+                    color: 'var(--danger)',
                     desc: 'Arguments passed in order without specifying parameter names'
                   }
                 ]}
@@ -356,25 +356,25 @@ print(area)                   # Should print: 24`}
                   {
                     label: 'Function definition',
                     part: 'def calculate_area(length, width):',
-                    color: '#9333ea',
+                    color: 'var(--feature)',
                     desc: 'Define a function that takes length and width parameters'
                   },
                   {
                     label: 'Return calculation',
                     part: 'return length * width',
-                    color: '#dc2626',
+                    color: 'var(--danger)',
                     desc: 'Calculate and return the area (length × width)'
                   },
                   {
                     label: 'Direct function call',
                     part: 'print(calculate_area(5, 3))',
-                    color: '#059669',
+                    color: 'var(--success)',
                     desc: 'Call the function directly inside print()'
                   },
                   {
                     label: 'Named arguments',
                     part: 'calculate_area(width=4, length=6)',
-                    color: '#2563eb',
+                    color: 'var(--info)',
                     desc: 'Use parameter names to make the code more readable'
                   }
                 ]}

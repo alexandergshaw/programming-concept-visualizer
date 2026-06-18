@@ -2,14 +2,14 @@
     padding: 1rem;
     max-width: 600px;
     margin: auto;
-    background: #f9f9fb;
+    background: var(--info-bg);
     border-radius: 1rem;
     box-shadow: 0 0 10px rgba(0,0,0,0.05);
   }
   
   .object-display {
-    background: #1e1e1e;
-    color: #d4d4d4;
+    background: var(--code-bg);
+    color: var(--paper-sunken);
     padding: 1rem;
     margin-top: 1rem;
     border-radius: 0.5rem;
@@ -31,7 +31,7 @@
   
   .input-area input {
     padding: 0.5rem;
-    border: 1px solid #ccc;
+    border: 1px solid var(--line);
     border-radius: 6px;
     font-size: 1rem;
     flex: 1;
@@ -39,7 +39,7 @@
   }
   
   .input-area button {
-    background-color: #4b82f2;
+    background-color: var(--info);
     color: white;
     border: none;
     padding: 0.6rem 1rem;
@@ -61,7 +61,7 @@
   }
   
   .object-key {
-    background: #e0eaff;
+    background: var(--info-bg);
     padding: 0.5rem 0.75rem;
     border-radius: 6px;
     font-weight: bold;
@@ -71,11 +71,11 @@
   
   .object-arrow {
     font-size: 1.2rem;
-    color: #555;
+    color: var(--ink-soft);
   }
   
   .object-value {
-    background: #f4f4f4;
+    background: var(--paper-raised);
     padding: 0.5rem 0.75rem;
     border-radius: 6px;
     min-width: 80px;

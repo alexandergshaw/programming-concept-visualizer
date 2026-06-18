@@ -121,8 +121,8 @@ console.log('Search result:', result);`];
         ]}
       />
 
-      <div style={{ padding: 10, backgroundColor: '#e8f5e9', borderRadius: 8, border: '1px solid #4caf50', marginTop: 12 }}>
-        <strong style={{ color: '#2e7d32' }}>Best practice:</strong> Use <code>value != null</code> for null/undefined checks, otherwise prefer strict operators (=== and !==)
+      <div style={{ padding: 10, backgroundColor: 'var(--success-bg)', borderRadius: 8, border: '1px solid var(--success)', marginTop: 12 }}>
+        <strong style={{ color: 'var(--success)' }}>Best practice:</strong> Use <code>value != null</code> for null/undefined checks, otherwise prefer strict operators (=== and !==)
       </div>
     </div>
   );

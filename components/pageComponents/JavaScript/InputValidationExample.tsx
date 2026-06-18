@@ -74,14 +74,14 @@ const InputValidationExample: React.FC = () => {
                 </Typography>
 
                 <Box sx={{
-                    border: '1px solid #e0e0e0',
+                    border: '1px solid var(--paper-sunken)',
                     borderRadius: 1,
                     p: 2,
                     mb: 2,
-                    bgcolor: '#fafafa',
+                    bgcolor: 'var(--paper-raised)',
                     position: 'relative'
                 }}>
-                    <Box sx={{ fontSize: 12, position: 'absolute', right: 8, top: 4, color: '#666' }}>
+                    <Box sx={{ fontSize: 12, position: 'absolute', right: 8, top: 4, color: 'var(--ink-soft)' }}>
                         Preview
                     </Box>
 
@@ -107,13 +107,13 @@ const InputValidationExample: React.FC = () => {
                         {message && (
                             <Box sx={{
                                 p: 1,
-                                bgcolor: isError ? '#ffebee' : '#e8f5e9',
-                                border: `1px solid ${isError ? '#f44336' : '#4caf50'}`,
+                                bgcolor: isError ? 'var(--danger-bg)' : 'var(--success-bg)',
+                                border: `1px solid ${isError ? 'var(--danger)' : 'var(--success)'}`,
                                 borderRadius: 1,
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: 1,
-                                color: isError ? '#c62828' : '#2e7d32'
+                                color: isError ? 'var(--danger)' : 'var(--success)'
                             }}>
                                 <FontAwesomeIcon icon={isError ? faTimes : faCheck} />
                                 <Typography>{message}</Typography>
@@ -129,13 +129,13 @@ const InputValidationExample: React.FC = () => {
                     How It Works: Step-by-Step
                 </Typography>
 
-                <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+                <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Step 1: Create your HTML</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
                         First, we need an input field, a button, and a container for our message:
                     </Typography>
                     <Box sx={{
-                        bgcolor: '#f5f5f5',
+                        bgcolor: 'var(--paper-raised)',
                         p: 2,
                         borderRadius: 1,
                         fontFamily: 'monospace',
@@ -149,18 +149,18 @@ const InputValidationExample: React.FC = () => {
 <!-- This div will hold our messages -->
 <div id="messageContainer"></div>`}
                     </Box>
-                    <Typography variant="body2" sx={{ color: '#555' }}>
+                    <Typography variant="body2" sx={{ color: 'var(--ink-soft)' }}>
                         We&apos;ve given each element an ID so we can easily reference it with JavaScript.
                     </Typography>
                 </Paper>
 
-                <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+                <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Step 2: Wait for the DOM to be ready</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
                         Before we can access HTML elements, we need to make sure the page is fully loaded:
                     </Typography>
                     <Box sx={{
-                        bgcolor: '#f5f5f5',
+                        bgcolor: 'var(--paper-raised)',
                         p: 2,
                         borderRadius: 1,
                         fontFamily: 'monospace',
@@ -174,8 +174,8 @@ document.addEventListener("DOMContentLoaded", function() {
   console.log("DOM is ready!");
 });`}
                     </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1 }}>
-                        <FontAwesomeIcon icon={faCodeBranch} style={{ fontSize: 20, color: '#1976d2' }} />
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1 }}>
+                        <FontAwesomeIcon icon={faCodeBranch} style={{ fontSize: 20, color: 'var(--info)' }} />
                         <Typography variant="body2">
                             <b>What&apos;s happening:</b> We&apos;re telling JavaScript to wait until the webpage is
                             fully loaded before trying to interact with it. This ensures all elements are available.
@@ -183,13 +183,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     </Box>
                 </Paper>
 
-                <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+                <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Step 3: Get the elements with JavaScript</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
                         Inside our DOMContentLoaded listener, we get references to our HTML elements:
                     </Typography>
                     <Box sx={{
-                        bgcolor: '#f5f5f5',
+                        bgcolor: 'var(--paper-raised)',
                         p: 2,
                         borderRadius: 1,
                         fontFamily: 'monospace',
@@ -208,8 +208,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const messageContainer = document.getElementById("messageContainer");
 });`}
                     </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1 }}>
-                        <FontAwesomeIcon icon={faHandPointer} style={{ fontSize: 20, color: '#1976d2' }} />
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1 }}>
+                        <FontAwesomeIcon icon={faHandPointer} style={{ fontSize: 20, color: 'var(--info)' }} />
                         <Typography variant="body2">
                             <b>What&apos;s happening:</b> We&apos;re using <code>document.getElementById()</code> to find each element on the page
                             by its unique ID.
@@ -217,13 +217,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     </Box>
                 </Paper>
 
-                <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+                <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Step 4: Add an Event Listener to the Button</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
                         Still inside our DOMContentLoaded event, we add a click event listener to the button:
                     </Typography>
                     <Box sx={{
-                        bgcolor: '#f5f5f5',
+                        bgcolor: 'var(--paper-raised)',
                         p: 2,
                         borderRadius: 1,
                         fontFamily: 'monospace',
@@ -243,8 +243,8 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });`}
                     </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1 }}>
-                        <FontAwesomeIcon icon={faHandPointer} style={{ fontSize: 20, color: '#1976d2' }} />
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1 }}>
+                        <FontAwesomeIcon icon={faHandPointer} style={{ fontSize: 20, color: 'var(--info)' }} />
                         <Typography variant="body2">
                             <b>What&apos;s happening:</b> We&apos;re telling JavaScript to watch for clicks on the button and
                             run some code when that happens.
@@ -252,13 +252,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     </Box>
                 </Paper>
 
-                <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+                <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Step 5: Get the Input Value</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
                         Inside the click event listener, we get the value from the input field:
                     </Typography>
                     <Box sx={{
-                        bgcolor: '#f5f5f5',
+                        bgcolor: 'var(--paper-raised)',
                         p: 2,
                         borderRadius: 1,
                         fontFamily: 'monospace',
@@ -282,8 +282,8 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });`}
                     </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e3f2fd', p: 2, borderRadius: 1 }}>
-                        <FontAwesomeIcon icon={faUserCheck} style={{ fontSize: 20, color: '#1976d2' }} />
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--info-bg)', p: 2, borderRadius: 1 }}>
+                        <FontAwesomeIcon icon={faUserCheck} style={{ fontSize: 20, color: 'var(--info)' }} />
                         <Typography variant="body2">
                             <b>What&apos;s happening:</b> <code>input.value</code> gives us the text the user typed.
                             Remember that this is always a string, even if the user typed numbers.
@@ -291,13 +291,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     </Box>
                 </Paper>
 
-                <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+                <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Step 6: Validate if the Input is a Number</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
                         Now we check if the input can be converted to a valid number:
                     </Typography>
                     <Box sx={{
-                        bgcolor: '#f5f5f5',
+                        bgcolor: 'var(--paper-raised)',
                         p: 2,
                         borderRadius: 1,
                         fontFamily: 'monospace',
@@ -327,8 +327,8 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });`}
                     </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#fff8e1', p: 2, borderRadius: 1 }}>
-                        <FontAwesomeIcon icon={faCalculator} style={{ fontSize: 20, color: '#ff9800' }} />
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--warning-bg)', p: 2, borderRadius: 1 }}>
+                        <FontAwesomeIcon icon={faCalculator} style={{ fontSize: 20, color: 'var(--warning)' }} />
                         <Typography variant="body2">
                             <b>What&apos;s happening:</b> We&apos;re using two checks here:
                             <ul style={{ margin: '8px 0 0 0', paddingLeft: 20 }}>
@@ -340,13 +340,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     </Box>
                 </Paper>
 
-                <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+                <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Step 7: Create and Display a Message</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
                         Finally, we create and display either an error or success message:
                     </Typography>
                     <Box sx={{
-                        bgcolor: '#f5f5f5',
+                        bgcolor: 'var(--paper-raised)',
                         p: 2,
                         borderRadius: 1,
                         fontFamily: 'monospace',
@@ -391,8 +391,8 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });`}
                     </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e8f5e9', p: 2, borderRadius: 1 }}>
-                        <FontAwesomeIcon icon={faCheck} style={{ fontSize: 20, color: '#4caf50' }} />
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--success-bg)', p: 2, borderRadius: 1 }}>
+                        <FontAwesomeIcon icon={faCheck} style={{ fontSize: 20, color: 'var(--success)' }} />
                         <Typography variant="body2">
                             <b>What&apos;s happening:</b> Based on our validation, we create and style a message element.
                             If it&apos;s a valid number, we convert the string to a number with <code>Number(value)</code> and
@@ -401,7 +401,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     </Box>
                 </Paper>
 
-                <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+                <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
                     <Typography fontWeight={600} gutterBottom>Complete Code</Typography>
                     <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
                         Here&apos;s the full JavaScript code:

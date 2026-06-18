@@ -37,7 +37,7 @@
 .js-sidebar-title {
   font-size: 20px;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--paper-raised);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -46,12 +46,12 @@
   font-size: 32px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #1e293b;
+  color: var(--ink);
 }
 
 .js-page-subtitle {
   font-size: 16px;
-  color: #64748b;
+  color: var(--ink-soft);
   margin-bottom: 30px;
 }
 
@@ -60,7 +60,7 @@
   max-width: 400px;
   padding: 12px 16px;
   font-size: 16px;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--line-strong);
   border-radius: 8px;
   margin-bottom: 30px;
   background: white;
@@ -75,7 +75,7 @@
 .js-nav-item,
 .js-nav-subitem {
   padding: 8px 0;
-  color: #e2e8f0;
+  color: var(--line);
   font-size: 15px;
   transition: all 0.2s ease;
 }
@@ -88,14 +88,14 @@
 
 .js-nav-subitem:hover {
   background-color: var(--accent);
-  color: #ffffff;
+  color: var(--paper-raised);
   transform: translateX(4px);
   border-radius: 3px;
 }
 
 .js-nav-subitem.active {
   background-color: var(--accent);
-  color: #ffffff;
+  color: var(--paper-raised);
   transform: translateX(4px);
   border-radius: 3px;
 }
@@ -108,7 +108,7 @@
   font: inherit;
   text-align: left;
   cursor: pointer;
-  color: #e2e8f0;
+  color: var(--line);
   font-size: 15px;
   transition: all 0.2s ease;
   border-radius: 3px;
@@ -116,7 +116,7 @@
 
 .js-home-button:hover {
   background-color: var(--accent);
-  color: #ffffff;
+  color: var(--paper-raised);
   transform: translateX(4px);
 }
 
@@ -128,12 +128,12 @@
 .js-code-preview {
   margin-top: 20px;
   padding: 20px;
-  background-color: #f1f5f9;
-  border: 1px solid #cbd5e1;
+  background-color: var(--paper-sunken);
+  border: 1px solid var(--line-strong);
   border-radius: 8px;
   font-size: 14px;
   font-family: 'Courier New', monospace;
-  color: #1e293b;
+  color: var(--ink);
 }
 
 .code-preview-header {
@@ -159,7 +159,7 @@
 
 .js-nav-item:hover {
   background-color: var(--accent);
-  color: #ffffff;
+  color: var(--paper-raised);
   transform: translateX(4px);
   border-radius: 3px;
 }
@@ -205,7 +205,7 @@
 
 .empty-page-prompt {
   font-size: '1.25rem';
-  color: '#555';
+  color: 'var(--ink-soft)';
 }
 
 /* Terminal theme: green chrome text, themed dividers, dark code blocks. */
@@ -296,7 +296,7 @@
     border: none;
     border-radius: 8px;
     background: transparent;
-    color: #f3ece0;
+    color: var(--chrome-fg);
     font-size: 20px;
     line-height: 1;
     cursor: pointer;

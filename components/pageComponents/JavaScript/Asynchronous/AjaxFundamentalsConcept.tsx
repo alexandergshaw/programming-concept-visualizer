@@ -47,10 +47,10 @@ export default function AjaxFundamentalsConcept() {
 
         <Section title="Building Dynamic Web Pages">
           <AjaxPracticalExample />
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: '#e8f5e9', p: 2, borderRadius: 1, mt: 2 }}>
-            <FontAwesomeIcon icon={faCheckCircle} style={{ fontSize: 20, color: '#4caf50' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, bgcolor: 'var(--success-bg)', p: 2, borderRadius: 1, mt: 2 }}>
+            <FontAwesomeIcon icon={faCheckCircle} style={{ fontSize: 20, color: 'var(--success)' }} />
             <Typography variant="body2">
-              <strong style={{ color: '#4caf50' }}>Excellent work!</strong> You've mastered Ajax fundamentals and can now create dynamic, responsive web applications that provide seamless user experiences.
+              <strong style={{ color: 'var(--success)' }}>Excellent work!</strong> You've mastered Ajax fundamentals and can now create dynamic, responsive web applications that provide seamless user experiences.
             </Typography>
           </Box>
         </Section>

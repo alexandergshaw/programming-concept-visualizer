@@ -18,8 +18,8 @@ const ExpectedVsUnexpectedErrors: React.FC = () => {
         </Typography>
         
         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 2, mt: 2 }}>
-          <Box sx={{ flex: 1, p: 2, bgcolor: '#e3f2fd', borderRadius: 1 }}>
-            <Typography fontWeight={600} sx={{ color: '#1976d2', mb: 1 }}>
+          <Box sx={{ flex: 1, p: 2, bgcolor: 'var(--info-bg)', borderRadius: 1 }}>
+            <Typography fontWeight={600} sx={{ color: 'var(--info)', mb: 1 }}>
               Expected Errors
             </Typography>
             <Typography variant="body2" sx={{ mb: 1 }}>
@@ -36,8 +36,8 @@ const ExpectedVsUnexpectedErrors: React.FC = () => {
             </Typography>
           </Box>
 
-          <Box sx={{ flex: 1, p: 2, bgcolor: '#fff3e0', borderRadius: 1 }}>
-            <Typography fontWeight={600} sx={{ color: '#f57c00', mb: 1 }}>
+          <Box sx={{ flex: 1, p: 2, bgcolor: 'var(--warning-bg)', borderRadius: 1 }}>
+            <Typography fontWeight={600} sx={{ color: 'var(--warning)', mb: 1 }}>
               Unexpected Errors
             </Typography>
             <Typography variant="body2" sx={{ mb: 1 }}>
@@ -62,13 +62,13 @@ const ExpectedVsUnexpectedErrors: React.FC = () => {
           Understanding Each Type
         </Typography>
 
-        <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+        <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
           <Typography fontWeight={600} gutterBottom>Identify Expected Errors</Typography>
           <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
             These are situations where something might go wrong, but it's not your fault as a programmer:
           </Typography>
           <Box sx={{
-            bgcolor: '#f5f5f5',
+            bgcolor: 'var(--paper-raised)',
             p: 2,
             borderRadius: 1,
             fontFamily: 'monospace',
@@ -91,13 +91,13 @@ const data = JSON.parse(userInput);
           </Box>
         </Paper>
 
-        <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+        <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
           <Typography fontWeight={600} gutterBottom>Step 2: Understanding Expected Error Scenarios</Typography>
           <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
             These are common situations where errors naturally occur in web applications:
           </Typography>
           <Box sx={{
-            bgcolor: '#f5f5f5',
+            bgcolor: 'var(--paper-raised)',
             p: 2,
             borderRadius: 1,
             fontFamily: 'monospace',
@@ -119,13 +119,13 @@ const settings = JSON.parse(userSettings);
           </Box>
         </Paper>
 
-        <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+        <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
           <Typography fontWeight={600} gutterBottom>Step 3: Identifying Unexpected Errors</Typography>
           <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
             These are bugs in your code that should be fixed during development:
           </Typography>
           <Box sx={{
-            bgcolor: '#f5f5f5',
+            bgcolor: 'var(--paper-raised)',
             p: 2,
             borderRadius: 1,
             fontFamily: 'monospace',
@@ -150,15 +150,15 @@ for (let i = 0; i <= array.length; i++) {
           </Box>
         </Paper>
 
-        <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+        <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
           <Typography fontWeight={600} gutterBottom>Step 4: Decision Framework</Typography>
           <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
             Ask yourself these questions to decide how to handle an error:
           </Typography>
           
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <Box sx={{ p: 2, bgcolor: '#e3f2fd', borderRadius: 1, borderLeft: '4px solid #1976d2' }}>
-              <Typography fontWeight={600} sx={{ color: '#1976d2', mb: 1 }}>Questions to Ask:</Typography>
+            <Box sx={{ p: 2, bgcolor: 'var(--info-bg)', borderRadius: 1, borderLeft: '4px solid var(--info)' }}>
+              <Typography fontWeight={600} sx={{ color: 'var(--info)', mb: 1 }}>Questions to Ask:</Typography>
               <ul style={{ margin: 0, paddingLeft: 20, fontSize: '0.9rem' }}>
                 <li>Is this error caused by external factors I can&apos;t control?</li>
                 <li>Could this happen even in a perfectly written program?</li>
@@ -169,8 +169,8 @@ for (let i = 0; i <= array.length; i++) {
               </Typography>
             </Box>
             
-            <Box sx={{ p: 2, bgcolor: '#fff3e0', borderRadius: 1, borderLeft: '4px solid #f57c00' }}>
-              <Typography fontWeight={600} sx={{ color: '#f57c00', mb: 1 }}>If the Error Is:</Typography>
+            <Box sx={{ p: 2, bgcolor: 'var(--warning-bg)', borderRadius: 1, borderLeft: '4px solid var(--warning)' }}>
+              <Typography fontWeight={600} sx={{ color: 'var(--warning)', mb: 1 }}>If the Error Is:</Typography>
               <ul style={{ margin: 0, paddingLeft: 20, fontSize: '0.9rem' }}>
                 <li>A typo or mistake in your code</li>
                 <li>A logic error you can prevent</li>

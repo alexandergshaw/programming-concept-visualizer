@@ -163,25 +163,25 @@ print(buddy.name)`}
               {
                 label: 'class keyword',
                 part: 'class Dog:',
-                color: '#9333ea',
+                color: 'var(--feature)',
                 desc: 'Declares a new class (blueprint) named Dog'
               },
               {
                 label: 'Constructor',
                 part: 'def __init__(self, name, breed):',
-                color: '#dc2626',
+                color: 'var(--danger)',
                 desc: 'A special method that runs when a new object is created'
               },
               {
                 label: 'self',
                 part: 'self',
-                color: '#2563eb',
+                color: 'var(--info)',
                 desc: 'Refers to the specific object being created or used'
               },
               {
                 label: 'Creating an object',
                 part: 'buddy = Dog("Buddy", "Golden Retriever")',
-                color: '#059669',
+                color: 'var(--success)',
                 desc: 'Builds a real Dog object and stores it in the variable buddy'
               }
             ]}
@@ -226,7 +226,7 @@ print(buddy.name)`}
             </div>
 
             {dogs.length === 0 ? (
-              <Typography variant="body2" sx={{ color: '#94a3b8', fontStyle: 'italic' }}>
+              <Typography variant="body2" sx={{ color: 'var(--ink-faint)', fontStyle: 'italic' }}>
                 No objects yet. Create one from the Dog blueprint above.
               </Typography>
             ) : (

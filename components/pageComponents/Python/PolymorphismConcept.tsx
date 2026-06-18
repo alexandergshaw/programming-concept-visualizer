@@ -126,13 +126,13 @@ export default function PolymorphismConcept() {
               {
                 label: 'Mixed list',
                 part: '[Dog(), Cat(), Cow()]',
-                color: '#9333ea',
+                color: 'var(--feature)',
                 desc: 'Objects of three different types in one list'
               },
               {
                 label: 'Uniform call',
                 part: 'animal.speak()',
-                color: '#059669',
+                color: 'var(--success)',
                 desc: 'The same call works on every object, no type checks needed'
               }
             ]}
@@ -157,17 +157,17 @@ export default function PolymorphismConcept() {
           <div className="ds-viz">
             <div className="shape-row" style={{ marginBottom: 16 }}>
               <div className="shape-card">
-                <svg width="60" height="60"><circle cx="30" cy="30" r="24" fill="#dbeafe" stroke="#2563eb" strokeWidth="2" /></svg>
+                <svg width="60" height="60"><circle cx="30" cy="30" r="24" fill="var(--info-bg)" stroke="var(--info)" strokeWidth="2" /></svg>
                 <Typography variant="body2" sx={{ fontWeight: 600, mb: 1 }}>Circle</Typography>
                 <TextField label="radius" type="number" size="small" value={radius} onChange={(e) => setRadius(Number(e.target.value) || 0)} sx={{ width: 110 }} />
               </div>
               <div className="shape-card">
-                <svg width="60" height="60"><rect x="8" y="8" width="44" height="44" rx="4" fill="#dcfce7" stroke="#16a34a" strokeWidth="2" /></svg>
+                <svg width="60" height="60"><rect x="8" y="8" width="44" height="44" rx="4" fill="var(--success-bg)" stroke="var(--success)" strokeWidth="2" /></svg>
                 <Typography variant="body2" sx={{ fontWeight: 600, mb: 1 }}>Square</Typography>
                 <TextField label="side" type="number" size="small" value={side} onChange={(e) => setSide(Number(e.target.value) || 0)} sx={{ width: 110 }} />
               </div>
               <div className="shape-card">
-                <svg width="60" height="60"><polygon points="30,8 52,52 8,52" fill="#fef9c3" stroke="#ca8a04" strokeWidth="2" /></svg>
+                <svg width="60" height="60"><polygon points="30,8 52,52 8,52" fill="var(--warning-bg)" stroke="var(--warning)" strokeWidth="2" /></svg>
                 <Typography variant="body2" sx={{ fontWeight: 600, mb: 1 }}>Triangle</Typography>
                 <Box sx={{ display: 'flex', gap: 1 }}>
                   <TextField label="base" type="number" size="small" value={base} onChange={(e) => setBase(Number(e.target.value) || 0)} sx={{ width: 80 }} />

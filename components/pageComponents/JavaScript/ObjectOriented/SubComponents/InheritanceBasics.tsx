@@ -11,36 +11,36 @@ const InheritanceBasics: React.FC = () => {
       </p>
 
       <ConceptInfoCard>
-        <h6 style={{ margin: '0 0 16px 0', color: '#333' }}>Understanding Inheritance</h6>
+        <h6 style={{ margin: '0 0 16px 0', color: 'var(--ink)' }}>Understanding Inheritance</h6>
         
         <div style={{ marginBottom: 16 }}>
-          <h5 style={{ margin: '0 0 8px 0', color: '#1976d2' }}>Parent Class (Superclass)</h5>
+          <h5 style={{ margin: '0 0 8px 0', color: 'var(--info)' }}>Parent Class (Superclass)</h5>
           <p style={{ margin: '0 0 8px 0', lineHeight: 1.5 }}>The base class that defines common properties and methods that child classes inherit</p>
-          <code style={{ background: '#f5f5f5', padding: '4px 8px', borderRadius: 4, fontSize: 14 }}>
+          <code style={{ background: 'var(--paper-raised)', padding: '4px 8px', borderRadius: 4, fontSize: 14 }}>
             class Animal {`{ constructor(name) { this.name = name; } speak() { return 'makes a sound'; } }`}
           </code>
         </div>
 
         <div style={{ marginBottom: 16 }}>
-          <h5 style={{ margin: '0 0 8px 0', color: '#1976d2' }}>Child Class (Subclass)</h5>
+          <h5 style={{ margin: '0 0 8px 0', color: 'var(--info)' }}>Child Class (Subclass)</h5>
           <p style={{ margin: '0 0 8px 0', lineHeight: 1.5 }}>A class that extends a parent class, inheriting its features and adding its own</p>
-          <code style={{ background: '#f5f5f5', padding: '4px 8px', borderRadius: 4, fontSize: 14 }}>
+          <code style={{ background: 'var(--paper-raised)', padding: '4px 8px', borderRadius: 4, fontSize: 14 }}>
             class Dog extends Animal {`{ constructor(name, breed) { super(name); this.breed = breed; } }`}
           </code>
         </div>
 
         <div style={{ marginBottom: 16 }}>
-          <h5 style={{ margin: '0 0 8px 0', color: '#1976d2' }}>super() Method</h5>
+          <h5 style={{ margin: '0 0 8px 0', color: 'var(--info)' }}>super() Method</h5>
           <p style={{ margin: '0 0 8px 0', lineHeight: 1.5 }}>Used to call the parent class constructor and access parent class methods</p>
-          <code style={{ background: '#f5f5f5', padding: '4px 8px', borderRadius: 4, fontSize: 14 }}>
+          <code style={{ background: 'var(--paper-raised)', padding: '4px 8px', borderRadius: 4, fontSize: 14 }}>
             super(name); // calls parent constructor with name parameter
           </code>
         </div>
 
         <div>
-          <h5 style={{ margin: '0 0 8px 0', color: '#1976d2' }}>Method Override</h5>
+          <h5 style={{ margin: '0 0 8px 0', color: 'var(--info)' }}>Method Override</h5>
           <p style={{ margin: '0 0 8px 0', lineHeight: 1.5 }}>Child classes can override parent methods to provide specialized behavior</p>
-          <code style={{ background: '#f5f5f5', padding: '4px 8px', borderRadius: 4, fontSize: 14 }}>
+          <code style={{ background: 'var(--paper-raised)', padding: '4px 8px', borderRadius: 4, fontSize: 14 }}>
             {`speak() { return \`\${this.name} barks!\`; } // overrides parent speak() method`}
           </code>
         </div>

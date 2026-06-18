@@ -13,13 +13,13 @@ const UnhandledErrorsImpact: React.FC = () => {
 
       {/* Step-by-step explanation */}
       <Box sx={{ mt: 3 }}>
-        <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+        <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
           <Typography fontWeight={600} gutterBottom>Without Error Handling - Code Stops</Typography>
           <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
             When an error occurs without proper handling, your entire script stops running:
           </Typography>
           <Box sx={{
-            bgcolor: '#f5f5f5',
+            bgcolor: 'var(--paper-raised)',
             p: 2,
             borderRadius: 1,
             fontFamily: 'monospace',
@@ -37,15 +37,15 @@ console.log("Step 3: Neither does this");
           </Box>
         </Paper>
 
-        <Paper elevation={0} sx={{ p: 2, border: '1px solid #e0e0e0', mb: 3 }}>
+        <Paper elevation={0} sx={{ p: 2, border: '1px solid var(--paper-sunken)', mb: 3 }}>
           <Typography fontWeight={600} gutterBottom>User Experience Impact</Typography>
           <Typography paragraph sx={{ mb: 2, fontSize: 15 }}>
             The difference in user experience is dramatic:
           </Typography>
           
           <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 2 }}>
-            <Box sx={{ flex: 1, p: 2, bgcolor: '#ffebee', borderRadius: 1 }}>
-              <Typography fontWeight={600} sx={{ color: '#d32f2f', mb: 1 }}>❌ Unhandled Error:</Typography>
+            <Box sx={{ flex: 1, p: 2, bgcolor: 'var(--danger-bg)', borderRadius: 1 }}>
+              <Typography fontWeight={600} sx={{ color: 'var(--danger)', mb: 1 }}>❌ Unhandled Error:</Typography>
               <Typography variant="body2">
                 • Page stops working<br/>
                 • User sees blank content<br/>
@@ -55,8 +55,8 @@ console.log("Step 3: Neither does this");
               </Typography>
             </Box>
             
-            <Box sx={{ flex: 1, p: 2, bgcolor: '#e8f5e9', borderRadius: 1 }}>
-              <Typography fontWeight={600} sx={{ color: '#2e7d32', mb: 1 }}>✅ Handled Error:</Typography>
+            <Box sx={{ flex: 1, p: 2, bgcolor: 'var(--success-bg)', borderRadius: 1 }}>
+              <Typography fontWeight={600} sx={{ color: 'var(--success)', mb: 1 }}>✅ Handled Error:</Typography>
               <Typography variant="body2">
                 • Page continues working<br/>
                 • User sees helpful message<br/>

@@ -114,13 +114,13 @@ export default function SortingConcept() {
 
           <div className="ds-viz">
             <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', mb: 2 }}>
-              <Box sx={{ p: 1.25, px: 2, borderRadius: 2, bgcolor: '#fffbeb', border: '1px solid #fcd34d' }}>
-                <Typography variant="caption" sx={{ color: '#92400e', display: 'block' }}>Comparisons</Typography>
-                <Typography variant="h6" sx={{ fontWeight: 700, color: '#b45309' }}>{comparisons}</Typography>
+              <Box sx={{ p: 1.25, px: 2, borderRadius: 2, bgcolor: 'var(--warning-bg)', border: '1px solid var(--warning)' }}>
+                <Typography variant="caption" sx={{ color: 'var(--warning)', display: 'block' }}>Comparisons</Typography>
+                <Typography variant="h6" sx={{ fontWeight: 700, color: 'var(--warning)' }}>{comparisons}</Typography>
               </Box>
-              <Box sx={{ p: 1.25, px: 2, borderRadius: 2, bgcolor: '#fef2f2', border: '1px solid #fca5a5' }}>
-                <Typography variant="caption" sx={{ color: '#991b1b', display: 'block' }}>Swaps</Typography>
-                <Typography variant="h6" sx={{ fontWeight: 700, color: '#b91c1c' }}>{swaps}</Typography>
+              <Box sx={{ p: 1.25, px: 2, borderRadius: 2, bgcolor: 'var(--danger-bg)', border: '1px solid var(--danger-bg)' }}>
+                <Typography variant="caption" sx={{ color: 'var(--danger)', display: 'block' }}>Swaps</Typography>
+                <Typography variant="h6" sx={{ fontWeight: 700, color: 'var(--danger)' }}>{swaps}</Typography>
               </Box>
             </Box>
 

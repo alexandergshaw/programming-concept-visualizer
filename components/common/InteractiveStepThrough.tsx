@@ -40,7 +40,7 @@ export default function InteractiveStepThrough({
   const steps = stepsTemplate(inputs);
 
   return (
-    <Box sx={{ ...style, p: 2, borderRadius: 2, bgcolor: '#f8fafc', mb: 3 }}>
+    <Box sx={{ ...style, p: 2, borderRadius: 2, bgcolor: 'var(--paper-sunken)', mb: 3 }}>
       <Box sx={{ display: 'flex', gap: 3, mb: 2, flexWrap: 'wrap' }}>
         {inputConfigs.map(cfg => (
           <FormControl key={cfg.name} size="small" sx={{ minWidth: 160 }}>

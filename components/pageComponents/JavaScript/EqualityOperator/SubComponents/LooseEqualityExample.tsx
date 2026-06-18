@@ -89,8 +89,8 @@ checkLooseEquality(${value1}, ${value2});`];
         ]}
       />
 
-      <div style={{ padding: 10, backgroundColor: '#fff3e0', borderRadius: 8, border: '1px solid #ffb74d', marginTop: 12 }}>
-        <strong style={{ color: '#f57c00' }}>Surprise:</strong> <code>0 == false</code> → true, <code>&quot;&quot; == false</code> → true
+      <div style={{ padding: 10, backgroundColor: 'var(--warning-bg)', borderRadius: 8, border: '1px solid var(--warning)', marginTop: 12 }}>
+        <strong style={{ color: 'var(--warning)' }}>Surprise:</strong> <code>0 == false</code> → true, <code>&quot;&quot; == false</code> → true
       </div>
     </div>
   );

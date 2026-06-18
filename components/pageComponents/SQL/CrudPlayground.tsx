@@ -57,9 +57,9 @@ export default function CrudPlayground({ only }: { only?: 'insert' | 'update' | 
         <div className="sql-pg-block">
           <span className="sql-pg-label">Update (UPDATE)</span>
           <div className="sql-pg-inline">
-            <span style={{ fontSize: 13, color: '#475569' }}>where id =</span>
+            <span style={{ fontSize: 13, color: 'var(--ink-soft)' }}>where id =</span>
             <input value={targetId} onChange={(e) => setTargetId(e.target.value)} aria-label="update id" style={{ width: 64 }} />
-            <span style={{ fontSize: 13, color: '#475569' }}>set country =</span>
+            <span style={{ fontSize: 13, color: 'var(--ink-soft)' }}>set country =</span>
             <input value={newCountry} onChange={(e) => setNewCountry(e.target.value)} aria-label="new country" style={{ width: 110 }} />
             <button type="button" className="sql-chip on" onClick={doUpdate}>UPDATE</button>
           </div>
@@ -69,7 +69,7 @@ export default function CrudPlayground({ only }: { only?: 'insert' | 'update' | 
         <div className="sql-pg-block">
           <span className="sql-pg-label">Delete (DELETE)</span>
           <div className="sql-pg-inline">
-            <span style={{ fontSize: 13, color: '#475569' }}>where id =</span>
+            <span style={{ fontSize: 13, color: 'var(--ink-soft)' }}>where id =</span>
             <input value={targetId} onChange={(e) => setTargetId(e.target.value)} aria-label="delete id" style={{ width: 64 }} />
             <button type="button" className="sql-chip" onClick={doDelete}>DELETE</button>
           </div>

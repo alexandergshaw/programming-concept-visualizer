@@ -16,7 +16,7 @@ export default function ReactArchitectureConcept() {
       label: 'App',
       x: 400,
       y: 100,
-      color: '#00319b',
+      color: 'var(--info)',
       description: 'Root component that orchestrates the entire application',
       children: ['header', 'main', 'footer'],
     },
@@ -25,7 +25,7 @@ export default function ReactArchitectureConcept() {
       label: 'Header',
       x: 200,
       y: 250,
-      color: '#61DAFB',
+      color: 'var(--info)',
       description: 'Header component with logo and navigation',
       children: ['logo', 'nav'],
     },
@@ -34,7 +34,7 @@ export default function ReactArchitectureConcept() {
       label: 'Main',
       x: 400,
       y: 250,
-      color: '#61DAFB',
+      color: 'var(--info)',
       description: 'Main content area of the application',
       children: ['sidebar', 'content'],
     },
@@ -43,7 +43,7 @@ export default function ReactArchitectureConcept() {
       label: 'Footer',
       x: 600,
       y: 250,
-      color: '#61DAFB',
+      color: 'var(--info)',
       description: 'Footer component with links and copyright',
     },
     {
@@ -51,7 +51,7 @@ export default function ReactArchitectureConcept() {
       label: 'Logo',
       x: 100,
       y: 400,
-      color: '#10b981',
+      color: 'var(--success)',
       description: 'Logo image component',
     },
     {
@@ -59,7 +59,7 @@ export default function ReactArchitectureConcept() {
       label: 'Navigation',
       x: 300,
       y: 400,
-      color: '#10b981',
+      color: 'var(--success)',
       description: 'Navigation menu with links',
     },
     {
@@ -67,7 +67,7 @@ export default function ReactArchitectureConcept() {
       label: 'Sidebar',
       x: 300,
       y: 400,
-      color: '#10b981',
+      color: 'var(--success)',
       description: 'Sidebar with widgets and filters',
     },
     {
@@ -75,7 +75,7 @@ export default function ReactArchitectureConcept() {
       label: 'Content',
       x: 500,
       y: 400,
-      color: '#10b981',
+      color: 'var(--success)',
       description: 'Main content display area',
     },
   ];
@@ -115,13 +115,13 @@ export default function ReactArchitectureConcept() {
         my: 6, 
         p: 4, 
         borderRadius: 3, 
-        background: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%)',
-        border: '2px solid #cbd5e1'
+        background: 'linear-gradient(135deg, var(--paper-sunken) 0%, var(--paper-sunken) 100%)',
+        border: '2px solid var(--line-strong)'
       }}>
-        <Typography variant="h4" sx={{ fontWeight: 700, color: '#334155', mb: 2 }}>
+        <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--ink)', mb: 2 }}>
           Part 1: Aesthetics & UI Structure
         </Typography>
-        <Typography variant="body1" sx={{ color: '#64748b', mb: 4 }}>
+        <Typography variant="body1" sx={{ color: 'var(--ink-soft)', mb: 4 }}>
           How React components are organized, reused, and styled to create consistent, maintainable user interfaces.
         </Typography>
 
@@ -149,13 +149,13 @@ export default function ReactArchitectureConcept() {
         my: 6, 
         p: 4, 
         borderRadius: 3, 
-        background: 'linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%)',
-        border: '2px solid #d4d4d4'
+        background: 'linear-gradient(135deg, var(--paper-raised) 0%, var(--paper-raised) 100%)',
+        border: '2px solid var(--paper-sunken)'
       }}>
-        <Typography variant="h4" sx={{ fontWeight: 700, color: '#404040', mb: 2 }}>
+        <Typography variant="h4" sx={{ fontWeight: 700, color: 'var(--ink)', mb: 2 }}>
           Part 2: Data Flow & State Management
         </Typography>
-        <Typography variant="body1" sx={{ color: '#64748b', mb: 4 }}>
+        <Typography variant="body1" sx={{ color: 'var(--ink-soft)', mb: 4 }}>
           How information moves through your React application: from backend APIs to state management to UI rendering, 
           and how user interactions trigger updates that flow back through the system.
         </Typography>

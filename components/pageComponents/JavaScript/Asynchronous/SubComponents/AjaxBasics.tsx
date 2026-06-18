@@ -13,19 +13,19 @@ const AjaxBasics: React.FC = () => {
       <ConceptInfoCard>
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 3 }}>
           
-          <Box sx={{ p: 2, border: '1px solid #e3f2fd', borderRadius: 2, bgcolor: '#fafbff' }}>
-            <Typography variant="h6" fontWeight={700} gutterBottom sx={{ color: '#1976d2', display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Box sx={{ p: 2, border: '1px solid var(--info-bg)', borderRadius: 2, bgcolor: 'var(--paper-raised)' }}>
+            <Typography variant="h6" fontWeight={700} gutterBottom sx={{ color: 'var(--info)', display: 'flex', alignItems: 'center', gap: 1 }}>
               🔄 Traditional Web Requests
             </Typography>
-            <Typography variant="body2" fontWeight={600} gutterBottom sx={{ color: '#374151' }}>
+            <Typography variant="body2" fontWeight={600} gutterBottom sx={{ color: 'var(--ink)' }}>
               Full page reload approach
             </Typography>
             
             <Box sx={{ mb: 2 }}>
-              <Typography variant="subtitle2" fontWeight={600} gutterBottom sx={{ color: '#6b7280', fontSize: 14 }}>
+              <Typography variant="subtitle2" fontWeight={600} gutterBottom sx={{ color: 'var(--ink-soft)', fontSize: 14 }}>
                 How it works:
               </Typography>
-              <Box component="ul" sx={{ margin: 0, paddingLeft: 2, fontSize: 14, color: '#475569', '& li': { marginBottom: 0.5 } }}>
+              <Box component="ul" sx={{ margin: 0, paddingLeft: 2, fontSize: 14, color: 'var(--ink-soft)', '& li': { marginBottom: 0.5 } }}>
                 <li>User clicks a link or submits a form</li>
                 <li>Browser sends request to server</li>
                 <li>Server processes and returns full HTML page</li>
@@ -34,33 +34,33 @@ const AjaxBasics: React.FC = () => {
             </Box>
 
             <Box sx={{ 
-              bgcolor: '#fef2f2', 
+              bgcolor: 'var(--danger-bg)', 
               p: 1.5, 
               borderRadius: 1, 
-              border: '1px solid #fecaca' 
+              border: '1px solid var(--danger-bg)' 
             }}>
-              <Typography variant="body2" fontWeight={700} sx={{ color: '#dc2626', mb: 0.5 }}>
+              <Typography variant="body2" fontWeight={700} sx={{ color: 'var(--danger)', mb: 0.5 }}>
                 ⚠️ Drawbacks:
               </Typography>
-              <Typography variant="body2" sx={{ fontSize: 13, color: '#b91c1c' }}>
+              <Typography variant="body2" sx={{ fontSize: 13, color: 'var(--danger)' }}>
                 Page flicker, slower navigation, lost scroll position
               </Typography>
             </Box>
           </Box>
 
-          <Box sx={{ p: 2, border: '1px solid #dcfce7', borderRadius: 2, bgcolor: '#f0fdf4' }}>
-            <Typography variant="h6" fontWeight={700} gutterBottom sx={{ color: '#1976d2', display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Box sx={{ p: 2, border: '1px solid var(--success-bg)', borderRadius: 2, bgcolor: 'var(--success-bg)' }}>
+            <Typography variant="h6" fontWeight={700} gutterBottom sx={{ color: 'var(--info)', display: 'flex', alignItems: 'center', gap: 1 }}>
               ⚡ Ajax Requests
             </Typography>
-            <Typography variant="body2" fontWeight={600} gutterBottom sx={{ color: '#374151' }}>
+            <Typography variant="body2" fontWeight={600} gutterBottom sx={{ color: 'var(--ink)' }}>
               Dynamic content updates
             </Typography>
             
             <Box sx={{ mb: 2 }}>
-              <Typography variant="subtitle2" fontWeight={600} gutterBottom sx={{ color: '#6b7280', fontSize: 14 }}>
+              <Typography variant="subtitle2" fontWeight={600} gutterBottom sx={{ color: 'var(--ink-soft)', fontSize: 14 }}>
                 How it works:
               </Typography>
-              <Box component="ul" sx={{ margin: 0, paddingLeft: 2, fontSize: 14, color: '#475569', '& li': { marginBottom: 0.5 } }}>
+              <Box component="ul" sx={{ margin: 0, paddingLeft: 2, fontSize: 14, color: 'var(--ink-soft)', '& li': { marginBottom: 0.5 } }}>
                 <li>JavaScript makes request in background</li>
                 <li>Server returns just the needed data</li>
                 <li>JavaScript updates specific page elements</li>
@@ -69,15 +69,15 @@ const AjaxBasics: React.FC = () => {
             </Box>
 
             <Box sx={{ 
-              bgcolor: '#f0f9ff', 
+              bgcolor: 'var(--info-bg)', 
               p: 1.5, 
               borderRadius: 1, 
-              border: '1px solid #0ea5e9' 
+              border: '1px solid var(--info)' 
             }}>
-              <Typography variant="body2" fontWeight={700} sx={{ color: '#0369a1', mb: 0.5 }}>
+              <Typography variant="body2" fontWeight={700} sx={{ color: 'var(--info)', mb: 0.5 }}>
                 ✅ Benefits:
               </Typography>
-              <Typography variant="body2" sx={{ fontSize: 13, color: '#0284c7' }}>
+              <Typography variant="body2" sx={{ fontSize: 13, color: 'var(--info)' }}>
                 Faster, smoother, more responsive user experience
               </Typography>
             </Box>
@@ -87,26 +87,26 @@ const AjaxBasics: React.FC = () => {
         <Box sx={{ 
           mt: 3, 
           p: 2.5, 
-          bgcolor: '#f8fafc', 
+          bgcolor: 'var(--paper-sunken)', 
           borderRadius: 2, 
-          border: '1px solid #e2e8f0',
+          border: '1px solid var(--line)',
           boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
         }}>
-          <Typography variant="h6" fontWeight={700} gutterBottom sx={{ color: '#1e293b', display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Typography variant="h6" fontWeight={700} gutterBottom sx={{ color: 'var(--ink)', display: 'flex', alignItems: 'center', gap: 1 }}>
             🎯 Common Ajax Use Cases
           </Typography>
-          <Box sx={{ fontSize: 14, lineHeight: 1.8, color: '#475569' }}>
+          <Box sx={{ fontSize: 14, lineHeight: 1.8, color: 'var(--ink-soft)' }}>
             <Typography component="div" sx={{ mb: 1 }}>
-              <Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Form Submissions:</Typography> Submit forms without page reload and show validation messages
+              <Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Form Submissions:</Typography> Submit forms without page reload and show validation messages
             </Typography>
             <Typography component="div" sx={{ mb: 1 }}>
-              <Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Live Search:</Typography> Search and display results as user types
+              <Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Live Search:</Typography> Search and display results as user types
             </Typography>
             <Typography component="div" sx={{ mb: 1 }}>
-              <Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Content Loading:</Typography> Load more content when scrolling (infinite scroll)
+              <Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Content Loading:</Typography> Load more content when scrolling (infinite scroll)
             </Typography>
             <Typography component="div">
-              <Typography component="span" fontWeight={600} sx={{ color: '#1976d2' }}>Real-time Updates:</Typography> Chat messages, notifications, live data feeds
+              <Typography component="span" fontWeight={600} sx={{ color: 'var(--info)' }}>Real-time Updates:</Typography> Chat messages, notifications, live data feeds
             </Typography>
           </Box>
         </Box>

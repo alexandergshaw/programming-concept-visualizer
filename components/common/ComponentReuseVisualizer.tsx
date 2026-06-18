@@ -31,7 +31,7 @@ export default function ComponentReuseVisualizer({
   return (
     <Box sx={{ my: 3 }}>
       <Box sx={{ mb: 2, display: 'flex', gap: 1, flexWrap: 'wrap' }}>
-        <Typography variant="body2" sx={{ mr: 1, alignSelf: 'center', color: '#666' }}>
+        <Typography variant="body2" sx={{ mr: 1, alignSelf: 'center', color: 'var(--ink-soft)' }}>
           Click to highlight:
         </Typography>
         {componentTypes.map(type => {
@@ -49,9 +49,9 @@ export default function ComponentReuseVisualizer({
       </Box>
 
       {/* Simple App Layout */}
-      <Box sx={{ border: '2px solid #ddd', borderRadius: 2, overflow: 'hidden', background: 'white' }}>
+      <Box sx={{ border: '2px solid var(--line)', borderRadius: 2, overflow: 'hidden', background: 'white' }}>
         {/* Header */}
-        <Box sx={{ p: 2, background: '#f5f5f5', borderBottom: '1px solid #ddd', display: 'flex', gap: 2, alignItems: 'center' }}>
+        <Box sx={{ p: 2, background: 'var(--paper-raised)', borderBottom: '1px solid var(--line)', display: 'flex', gap: 2, alignItems: 'center' }}>
           <Typography variant="h6" sx={{ fontWeight: 'bold', flex: 1 }}>My App</Typography>
           {instances.filter(i => i.type === 'Button' && i.label && i.label.includes('Login')).map(instance => (
             <Box
@@ -60,10 +60,10 @@ export default function ComponentReuseVisualizer({
                 px: 2,
                 py: 0.5,
                 border: '2px solid',
-                borderColor: selectedType === instance.type ? '#FFA500' : '#007bff',
+                borderColor: selectedType === instance.type ? 'var(--warning)' : 'var(--info)',
                 borderRadius: 1,
-                background: selectedType === instance.type ? '#FFD700' : '#007bff',
-                color: selectedType === instance.type ? '#000' : 'white',
+                background: selectedType === instance.type ? 'var(--warning)' : 'var(--info)',
+                color: selectedType === instance.type ? 'var(--code-bg)' : 'white',
                 opacity: isHighlighted(instance) ? 1 : 0.3,
                 fontWeight: selectedType === instance.type ? 'bold' : 'normal',
               }}
@@ -91,9 +91,9 @@ export default function ComponentReuseVisualizer({
                   flex: 1,
                   p: 2,
                   border: '2px solid',
-                  borderColor: selectedType === instance.type ? '#FFA500' : '#ddd',
+                  borderColor: selectedType === instance.type ? 'var(--warning)' : 'var(--line)',
                   borderRadius: 2,
-                  background: selectedType === instance.type ? '#FFD700' : 'white',
+                  background: selectedType === instance.type ? 'var(--warning)' : 'white',
                   opacity: isHighlighted(instance) ? 1 : 0.3,
                   fontWeight: selectedType === instance.type ? 'bold' : 'normal',
                   minHeight: '100px',
@@ -104,7 +104,7 @@ export default function ComponentReuseVisualizer({
               >
                 <Typography variant="body2" sx={{ mb: 1 }}>{instance.label}</Typography>
                 {selectedType === instance.type && (
-                  <Typography variant="caption" sx={{ fontSize: '0.7rem', color: '#666', fontFamily: 'monospace' }}>
+                  <Typography variant="caption" sx={{ fontSize: '0.7rem', color: 'var(--ink-soft)', fontFamily: 'monospace' }}>
                     &lt;{instance.type} /&gt;
                   </Typography>
                 )}
@@ -123,16 +123,16 @@ export default function ComponentReuseVisualizer({
                   mb: 2,
                   p: 1.5,
                   border: '2px solid',
-                  borderColor: selectedType === instance.type ? '#FFA500' : '#ccc',
+                  borderColor: selectedType === instance.type ? 'var(--warning)' : 'var(--line)',
                   borderRadius: 1,
-                  background: selectedType === instance.type ? '#FFD700' : '#f9f9f9',
+                  background: selectedType === instance.type ? 'var(--warning)' : 'var(--paper-raised)',
                   opacity: isHighlighted(instance) ? 1 : 0.3,
                   fontWeight: selectedType === instance.type ? 'bold' : 'normal',
                 }}
               >
-                <Typography variant="body2" sx={{ color: '#666' }}>{instance.label}</Typography>
+                <Typography variant="body2" sx={{ color: 'var(--ink-soft)' }}>{instance.label}</Typography>
                 {selectedType === instance.type && (
-                  <Typography variant="caption" sx={{ fontSize: '0.7rem', color: '#888', fontFamily: 'monospace', mt: 0.5, display: 'block' }}>
+                  <Typography variant="caption" sx={{ fontSize: '0.7rem', color: 'var(--ink-faint)', fontFamily: 'monospace', mt: 0.5, display: 'block' }}>
                     &lt;{instance.type} placeholder=&quot;{instance.label}&quot; /&gt;
                   </Typography>
                 )}
@@ -149,10 +149,10 @@ export default function ComponentReuseVisualizer({
                   px: 3,
                   py: 1,
                   border: '2px solid',
-                  borderColor: selectedType === instance.type ? '#FFA500' : '#28a745',
+                  borderColor: selectedType === instance.type ? 'var(--warning)' : 'var(--success)',
                   borderRadius: 1,
-                  background: selectedType === instance.type ? '#FFD700' : '#28a745',
-                  color: selectedType === instance.type ? '#000' : 'white',
+                  background: selectedType === instance.type ? 'var(--warning)' : 'var(--success)',
+                  color: selectedType === instance.type ? 'var(--code-bg)' : 'white',
                   opacity: isHighlighted(instance) ? 1 : 0.3,
                   fontWeight: selectedType === instance.type ? 'bold' : 'normal',
                 }}
@@ -170,11 +170,11 @@ export default function ComponentReuseVisualizer({
       </Box>
 
       {selectedType && (
-        <Box sx={{ mt: 2, p: 2, background: '#fffbeb', borderRadius: 1, border: '1px solid #FFA500' }}>
+        <Box sx={{ mt: 2, p: 2, background: 'var(--warning-bg)', borderRadius: 1, border: '1px solid var(--warning)' }}>
           <Typography variant="body2" sx={{ mb: 1 }}>
             <strong>{selectedType}</strong> component is reused {instances.filter(i => i.type === selectedType).length} times in this app
           </Typography>
-          <Typography variant="caption" sx={{ color: '#666', display: 'block', fontFamily: 'monospace', mt: 1 }}>
+          <Typography variant="caption" sx={{ color: 'var(--ink-soft)', display: 'block', fontFamily: 'monospace', mt: 1 }}>
             Example: &lt;{selectedType} ... /&gt;
           </Typography>
         </Box>

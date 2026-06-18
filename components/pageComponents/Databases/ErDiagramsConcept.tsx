@@ -10,11 +10,11 @@ import Box from '@mui/material/Box';
 
 function EntityBox({ title, fields }: { title: string; fields: string[] }) {
   return (
-    <Box sx={{ border: '1px solid #cbd5e1', borderRadius: 2, overflow: 'hidden', minWidth: 150, bgcolor: '#fff' }}>
-      <Box sx={{ bgcolor: '#1e293b', color: '#fff', px: 1.5, py: 0.75, fontWeight: 700, fontFamily: 'monospace', fontSize: 14 }}>{title}</Box>
+    <Box sx={{ border: '1px solid var(--line-strong)', borderRadius: 2, overflow: 'hidden', minWidth: 150, bgcolor: 'var(--paper-raised)' }}>
+      <Box sx={{ bgcolor: 'var(--ink)', color: 'var(--paper-raised)', px: 1.5, py: 0.75, fontWeight: 700, fontFamily: 'monospace', fontSize: 14 }}>{title}</Box>
       <Box sx={{ p: 1.5 }}>
         {fields.map((f) => (
-          <Typography key={f} variant="body2" sx={{ fontFamily: 'monospace', fontSize: 13, color: '#475569' }}>{f}</Typography>
+          <Typography key={f} variant="body2" sx={{ fontFamily: 'monospace', fontSize: 13, color: 'var(--ink-soft)' }}>{f}</Typography>
         ))}
       </Box>
     </Box>
@@ -36,7 +36,7 @@ export default function ErDiagramsConcept() {
         <Section title="A Simple Diagram">
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, flexWrap: 'wrap', my: 2 }}>
             <EntityBox title="customers" fields={['id (PK)', 'name', 'email']} />
-            <Box sx={{ textAlign: 'center', color: '#64748b', fontFamily: 'monospace' }}>
+            <Box sx={{ textAlign: 'center', color: 'var(--ink-soft)', fontFamily: 'monospace' }}>
               <Box sx={{ fontSize: 22 }}>1 ──&lt; many</Box>
               <Box sx={{ fontSize: 12 }}>places</Box>
             </Box>

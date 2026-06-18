@@ -226,9 +226,9 @@ console.log('\\nProcessing result:', result);`
         ]}
       />
 
-      <div style={{ padding: 12, backgroundColor: '#e8f5e9', borderRadius: 8, border: '1px solid #4caf50', marginTop: 16 }}>
-        <strong style={{ color: '#2e7d32' }}>Best Practices:</strong>
-        <ul style={{ margin: '8px 0 0 0', color: '#388e3c', fontSize: 14 }}>
+      <div style={{ padding: 12, backgroundColor: 'var(--success-bg)', borderRadius: 8, border: '1px solid var(--success)', marginTop: 16 }}>
+        <strong style={{ color: 'var(--success)' }}>Best Practices:</strong>
+        <ul style={{ margin: '8px 0 0 0', color: 'var(--success)', fontSize: 14 }}>
           <li>Use === for password comparison (prevents bypasses)</li>
           <li>Use === for API status codes (ensures exact types)</li>
           <li>Use !== for null/undefined checks (type safety)</li>
