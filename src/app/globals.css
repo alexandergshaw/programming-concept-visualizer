@@ -7,22 +7,22 @@
    Each theme has a matching MUI theme in components/common/Providers.tsx.
    =========================================================================== */
 :root {
-  --paper: #faf8f4;          /* page background: warm, barely off-white */
-  --paper-raised: #fffdf8;   /* cards / panels: warm white */
-  --paper-sunken: #f0ebe3;   /* insets / subtle fills */
-  --ink: #242730;            /* warm dark slate text */
-  --ink-soft: #66615a;       /* muted warm-gray text */
-  --line: #e6e0d5;           /* warm hairline borders */
+  --paper: #f7f8fa;          /* page background: neutral, barely off-white */
+  --paper-raised: #ffffff;   /* cards / panels: crisp white */
+  --paper-sunken: #ecedf0;   /* insets / subtle fills */
+  --ink: #232733;            /* dark slate text */
+  --ink-soft: #5f636b;       /* muted slate text */
+  --line: #e2e5ea;           /* cool hairline borders */
   --accent: #1e2b48;         /* deep, dark navy (warm) */
   --accent-strong: #141d33;
-  --accent-bg: #e9e3da;      /* warm highlight */
+  --accent-bg: #e6e9ef;      /* light highlight */
 
   /* Sidebar + top bar ("chrome"). */
   --chrome-bg: linear-gradient(180deg, #1e2b48, #141d33); /* deep warm navy */
   --chrome-fg: #f5f1ea;
   --chrome-border: #3a4264;
 
-  --scrollbar-thumb: #c7bfb2;
+  --scrollbar-thumb: #c2c6cd;
 
   --background: var(--paper);
   --foreground: var(--ink);
