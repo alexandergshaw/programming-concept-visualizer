@@ -250,15 +250,15 @@
     transform: translateX(0);
   }
 
-  /* Floating menu button — top-right so it clears the toolbar's settings gear. */
+  /* Floating menu button — top-left so it clears the toolbar's settings gear. */
   .js-sidebar-toggle {
     display: flex;
     align-items: center;
     justify-content: center;
     position: fixed;
     top: 6px;
-    right: 10px;
-    left: auto;
+    left: 10px;
+    right: auto;
     width: 36px;
     height: 36px;
     border: none;

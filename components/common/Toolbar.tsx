@@ -9,12 +9,10 @@ import {
   MenuItem,
   ListItemText,
   Switch,
-  Typography,
   Tooltip,
   Box,
 } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
-import Link from 'next/link';
 import { useRememberSections } from './settings';
 
 // Height of the bar; the spacer below keeps page content clear of the fixed bar.
@@ -46,10 +44,11 @@ export default function Toolbar() {
           width: { xs: '100%', md: 'calc(100% - 250px)' },
         }}
       >
-        <MuiToolbar variant="dense" sx={{ minHeight: TOOLBAR_HEIGHT, gap: 1 }}>
+        <MuiToolbar variant="dense" sx={{ minHeight: TOOLBAR_HEIGHT }}>
+          <Box sx={{ flexGrow: 1 }} />
           <Tooltip title="Settings">
             <IconButton
-              edge="start"
+              edge="end"
               aria-label="Settings"
               aria-haspopup="true"
               aria-expanded={menuOpen}
@@ -59,23 +58,6 @@ export default function Toolbar() {
               <SettingsIcon />
             </IconButton>
           </Tooltip>
-
-          <Typography
-            component={Link}
-            href="/"
-            sx={{
-              fontFamily: 'var(--font-serif), Georgia, serif',
-              fontWeight: 600,
-              fontSize: '1.05rem',
-              color: '#fffdf8',
-              textDecoration: 'none',
-              letterSpacing: '0.02em',
-            }}
-          >
-            Concept Visuals
-          </Typography>
-
-          <Box sx={{ flexGrow: 1 }} />
         </MuiToolbar>
       </AppBar>
 
@@ -86,8 +68,8 @@ export default function Toolbar() {
         anchorEl={anchorEl}
         open={menuOpen}
         onClose={() => setAnchorEl(null)}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       >
         <MenuItem onClick={() => setRememberSections(!rememberSections)} sx={{ gap: 2 }}>
           <ListItemText
