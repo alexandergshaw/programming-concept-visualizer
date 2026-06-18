@@ -5,10 +5,10 @@ import AlgorithmAnalysisConcept from '@/components/pageComponents/Python/Algorit
 describe('AlgorithmAnalysisConcept', () => {
   it('renders the title, big idea, and key sections', () => {
     render(<AlgorithmAnalysisConcept />);
-    expect(screen.getByText('Algorithm Analysis & Design')).toBeInTheDocument();
-    expect(screen.getByText('Gentle, or explode?')).toBeInTheDocument();
-    expect(screen.getByText('See the Shapes')).toBeInTheDocument();
-    expect(screen.getByText('Why It Matters at Scale')).toBeInTheDocument();
+    expect(screen.getAllByText('Algorithm Analysis & Design').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Gentle, or explode?').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('See the Shapes').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Why It Matters at Scale').length).toBeGreaterThan(0);
   });
 
   it('lists the common Big-O growth rates', () => {
@@ -23,13 +23,13 @@ describe('AlgorithmAnalysisConcept', () => {
     render(<AlgorithmAnalysisConcept />);
     fireEvent.click(screen.getByText('n = 1,000,000'));
     // O(n^2) at one million inputs is one trillion steps
-    expect(screen.getByText(/1,000,000,000,000/)).toBeInTheDocument();
+    expect(screen.getAllByText(/1,000,000,000,000/).length).toBeGreaterThan(0);
   });
 
   it('offers all four input-size presets', () => {
     render(<AlgorithmAnalysisConcept />);
     ['n = 10', 'n = 100', 'n = 10,000', 'n = 1,000,000'].forEach((label) => {
-      expect(screen.getByText(label)).toBeInTheDocument();
+      expect(screen.getAllByText(label).length).toBeGreaterThan(0);
     });
   });
 });

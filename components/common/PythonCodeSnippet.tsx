@@ -178,7 +178,7 @@ ${codeToExecute.split('\n').map(line => `        ${line}`).join('\n')}
 
     return (
         <div>
-            <div style={{ backgroundColor: '#f5f5f5', borderRadius: '8px', padding: '10px' }}>
+            <div style={{ backgroundColor: 'var(--paper-sunken)', borderRadius: '8px', padding: '10px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                         {enableRun && !pyodideReady && <CircularProgress size={16} />}
@@ -225,14 +225,14 @@ ${codeToExecute.split('\n').map(line => `        ${line}`).join('\n')}
                         sx={{ marginBottom: '16px', fontFamily: 'monospace', whiteSpace: 'pre-wrap' }}
                     />
                 ) : (
-                    <pre style={{ margin: 0, whiteSpace: 'pre-wrap', wordBreak: 'break-word', fontFamily: 'monospace', color: '#333' }}>
+                    <pre style={{ margin: 0, whiteSpace: 'pre-wrap', wordBreak: 'break-word', fontFamily: 'monospace', color: 'var(--ink)' }}>
                         {processedLines.map((line, index) => (
                             <div key={index} style={{ ...line.style }}>
                                 <span style={{ fontFamily: 'monospace' }}>
                                     {line.code}
                                 </span>
                                 {line.comment && (
-                                    <span style={{ color: '#888' }}>{`  # ${line.comment}`}</span>
+                                    <span style={{ color: 'var(--ink-soft)' }}>{`  # ${line.comment}`}</span>
                                 )}
                             </div>
                         ))}
@@ -244,7 +244,8 @@ ${codeToExecute.split('\n').map(line => `        ${line}`).join('\n')}
                 <Box
                     sx={{
                         padding: '8px',
-                        backgroundColor: '#e0e0e0',
+                        backgroundColor: 'var(--paper-sunken)',
+                        color: 'var(--ink)',
                         borderRadius: '4px',
                         minHeight: '50px',
                         whiteSpace: 'pre-wrap',
@@ -252,7 +253,7 @@ ${codeToExecute.split('\n').map(line => `        ${line}`).join('\n')}
                         fontFamily: 'monospace',
                     }}
                 >
-                    <div style={{ fontWeight: 'bold', marginBottom: '4px', color: '#444' }}>Output</div>
+                    <div style={{ fontWeight: 'bold', marginBottom: '4px', color: 'var(--ink-soft)' }}>Output</div>
                     {output}
                 </Box>
             )}

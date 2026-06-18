@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import '../../styles/javascript.css';
 import { TextField } from '@mui/material';
 import Image from 'next/image';
+import TechIcon from './TechIcon';
+import { loadOpenSections, saveOpenSections } from './settings';
 
 export interface SidebarItem {
   label: string;
@@ -21,15 +23,26 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ title, items, onSelect, defaultOpen = [], activeValue, headerImage }: SidebarProps) {
-  const [open, setOpen] = useState<Set<string>>(new Set());
+  // Starts from defaultOpen, then (once mounted) is restored from localStorage
+  // so the user's expanded/collapsed sections persist across visits.
+  const [open, setOpen] = useState<Set<string>>(() => new Set(defaultOpen));
+  const [hydrated, setHydrated] = useState(false); // becomes true after the restore pass
   const [searchQuery, setSearchQuery] = useState(''); // State for the search query
   const [filteredItems, setFilteredItems] = useState<SidebarItem[]>(items); // State for filtered items
   const [mobileOpen, setMobileOpen] = useState(false); // Off-canvas drawer state (mobile only)
 
-  // Initialize open state from defaultOpen prop
+  // Restore the saved open sections for this topic (keyed by title).
   useEffect(() => {
-    setOpen(new Set(defaultOpen));
-  }, [defaultOpen]);
+    const saved = loadOpenSections(title);
+    if (saved) setOpen(new Set(saved));
+    setHydrated(true);
+  }, [title]);
+
+  // Persist open sections whenever they change (after the initial restore pass).
+  useEffect(() => {
+    if (!hydrated) return;
+    saveOpenSections(title, Array.from(open));
+  }, [open, hydrated, title]);
 
   // Filter items based on the search query
   useEffect(() => {
@@ -86,31 +99,41 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [], acti
         className={`js-sidebar${mobileOpen ? ' open' : ''}`}
         style={{
           position: 'fixed', // Fix the sidebar in place
-          top: '0', // Stick to the top of the viewport
+          top: '0', // Full-height left rail, starting at the very top
           left: '0', // Align it to the left of the viewport
           width: '250px', // Set a fixed width for the sidebar
-          height: '100vh', // Make it span the full height of the viewport
-          zIndex: 1000, // Ensure it stays above other content
-          backgroundColor: '#333', // Optional: Ensure the background is visible
+          height: '100vh', // Span the full height of the viewport
+          zIndex: 1200, // Sit on top of the header bar (AppBar z-index 1100)
+          background: 'var(--chrome-bg)', // Themed "book spine" / terminal rail
+          color: 'var(--chrome-fg)',
           overflowY: 'auto', // Allow scrolling if the content overflows
           padding: '16px', // Add some padding for better spacing
           display: 'flex',
           flexDirection: 'column',
         }}
       >
-      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
-        {headerImage && (
-          <Image 
-            src={headerImage} 
-            alt="Header Icon" 
-            width={32}
-            height={32}
-            style={{  
-              marginRight: '12px',
-              borderRadius: '4px',
-              objectFit: 'contain'
-            }} 
+      {/* Topic icon to the left of its title, with one underline beneath both.
+          A custom image if provided, otherwise the matching tech icon. */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '10px',
+          marginBottom: '16px',
+          paddingBottom: '8px',
+          borderBottom: '1px solid var(--chrome-border)',
+        }}
+      >
+        {headerImage ? (
+          <Image
+            src={headerImage}
+            alt=""
+            width={20}
+            height={20}
+            style={{ borderRadius: '4px', objectFit: 'contain', flexShrink: 0 }}
           />
+        ) : (
+          <TechIcon title={title} />
         )}
         <h2 className="js-sidebar-title" style={{ margin: 0 }}>{title}</h2>
       </div>
@@ -123,24 +146,24 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [], acti
         sx={{
           marginBottom: '16px',
           backgroundColor: 'transparent',
-          color: 'white',
+          color: 'var(--chrome-fg)',
           borderRadius: '4px',
           '& .MuiOutlinedInput-root': {
             '& fieldset': {
-              borderColor: 'white',
+              borderColor: 'var(--chrome-border)',
             },
             '&:hover fieldset': {
-              borderColor: 'white',
+              borderColor: 'var(--chrome-fg)',
             },
             '&.Mui-focused fieldset': {
-              borderColor: 'white',
+              borderColor: 'var(--chrome-fg)',
             },
           },
           '& .MuiInputBase-input': {
-            color: 'white',
+            color: 'var(--chrome-fg)',
           },
           '& .MuiInputLabel-root': {
-            color: 'white',
+            color: 'var(--chrome-fg)',
           },
         }}
       />

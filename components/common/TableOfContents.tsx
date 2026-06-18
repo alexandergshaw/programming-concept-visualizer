@@ -64,7 +64,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
                 <li key={id} style={{ marginBottom: 8 }}>
                     <a
                         href={`#${id}`}
-                        style={{ textDecoration: 'none', color: '#007bff' }}
+                        style={{ textDecoration: 'none', color: 'var(--accent)' }}
                         onClick={handleLinkClick(id)}
                     >
                         {title}

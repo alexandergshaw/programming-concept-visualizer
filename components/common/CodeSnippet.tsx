@@ -89,7 +89,7 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({
     };
 
     return (
-        <div style={{ backgroundColor: '#f5f5f5', borderRadius: '8px', padding: '10px' }}>
+        <div style={{ backgroundColor: 'var(--paper-sunken)', borderRadius: '8px', padding: '10px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
                 <div style={{ display: 'flex', gap: '8px' }}>
                     {editable && (
@@ -134,17 +134,17 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({
                     }}
                 />
             ) : (
-                <pre style={{ 
-                    margin: 0, 
-                    whiteSpace: 'pre-wrap', 
-                    wordBreak: 'break-word', 
-                    fontFamily: 'monospace', 
-                    color: '#333',
+                <pre style={{
+                    margin: 0,
+                    whiteSpace: 'pre-wrap',
+                    wordBreak: 'break-word',
+                    fontFamily: 'monospace',
+                    color: 'var(--ink)',
                     maxHeight: '400px',
                     overflowY: 'auto',
                     padding: '8px',
-                    backgroundColor: '#f8f8f8',
-                    border: '1px solid #eaeaea',
+                    backgroundColor: 'var(--paper-raised)',
+                    border: '1px solid var(--line)',
                     borderRadius: '4px'
                 }}>
                     {viewLines.split('\n').map((line, index) => (
@@ -158,7 +158,8 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({
                 <Box
                     sx={{
                         padding: '8px',
-                        backgroundColor: '#e0e0e0',
+                        backgroundColor: 'var(--paper-sunken)',
+                        color: 'var(--ink)',
                         borderRadius: '4px',
                         minHeight: '50px',
                         whiteSpace: 'pre-wrap',
@@ -166,7 +167,7 @@ const CodeSnippet: React.FC<CodeSnippetProps> = ({
                         fontFamily: 'monospace',
                     }}
                 >
-                    <div style={{ fontWeight: 'bold', marginBottom: '4px', color: '#444' }}>Output</div>
+                    <div style={{ fontWeight: 'bold', marginBottom: '4px', color: 'var(--ink-soft)' }}>Output</div>
                     {output}
                 </Box>
             )}

@@ -15,21 +15,22 @@ import { faGraduationCap, faBug, faCode, faGlobe, faDatabase, faShieldHalved, fa
 import CodeIcon from '@mui/icons-material/Code';
 import React, { useState, useEffect } from "react";
 import Loader from '@/components/common/Loader';
+import SettingsMenu from '@/components/common/SettingsMenu';
 
 // Minimal styled components
 const HeroSection = styled(Box)(() => ({
   minHeight: '100vh',
   display: 'flex',
   alignItems: 'flex-start',
-  background: '#fafafa',
+  background: 'var(--paper)',
   position: 'relative',
   paddingTop: '2rem',
   paddingBottom: '2rem',
 }));
 
 const MinimalCard = styled(Card)(() => ({
-  background: 'white',
-  border: '1px solid #f0f0f0',
+  background: 'var(--paper-raised)',
+  border: '1px solid var(--line)',
   borderRadius: '12px',
   boxShadow: 'none',
   transition: 'all 0.2s ease',
@@ -42,8 +43,8 @@ const MinimalCard = styled(Card)(() => ({
   minWidth: 0,
   width: '100%',
   '&:hover': {
-    borderColor: '#00319b',
-    boxShadow: '0 4px 12px rgba(0, 49, 155, 0.1)',
+    borderColor: 'var(--accent)',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.12)',
     transform: 'translateY(-2px)',
   },
 }));
@@ -180,13 +181,17 @@ export default function LandingPage() {
   }
 
   return (
-    <Box sx={{ minHeight: '100vh', background: '#fafafa' }}>
+    <Box sx={{ minHeight: '100vh', background: 'var(--paper)' }}>
+      {/* Floating settings gear (no header bar on the landing page). */}
+      <Box sx={{ position: 'fixed', top: 12, right: 12, zIndex: 1200 }}>
+        <SettingsMenu color="var(--ink)" />
+      </Box>
       {/* Hero Section */}
       <HeroSection>
         <Container maxWidth="lg">
           <Box>
             <Box sx={{ mb: 2 }}>
-              <CodeIcon sx={{ fontSize: 40, color: '#00319b', mb: 2 }} />
+              <CodeIcon sx={{ fontSize: 40, color: 'var(--accent-strong)', mb: 2 }} />
             </Box>
 
             <Typography
@@ -194,14 +199,14 @@ export default function LandingPage() {
               component="h1"
               sx={{
                 fontWeight: 700,
-                color: '#1e293b',
+                color: 'var(--ink)',
                 mb: 3,
                 fontSize: { xs: '2.5rem', md: '3.5rem' },
                 lineHeight: 1.1,
               }}
             >
               Concept
-              <Box component="span" sx={{ color: '#00319b', display: 'block' }}>
+              <Box component="span" sx={{ color: 'var(--accent-strong)', display: 'block' }}>
                 Visuals
               </Box>
             </Typography>
@@ -209,7 +214,7 @@ export default function LandingPage() {
             <Typography
               variant="h6"
               sx={{
-                color: '#64748b',
+                color: 'var(--ink-soft)',
                 mb: 4,
                 fontWeight: 400,
                 fontSize: '1.25rem',
@@ -234,7 +239,7 @@ export default function LandingPage() {
                     flex: { xs: '0 0 calc(50% - 12px)', sm: '0 0 calc(50% - 12px)', md: '0 0 calc(25% - 18px)' }
                   }}
                 >
-                  <MinimalCard onClick={() => handleClick(lang.name)}>
+                  <MinimalCard className="topic-card" onClick={() => handleClick(lang.name)}>
                     <CardContent sx={{ p: 2.5, textAlign: 'center' }}>
                       {getLanguageIcon(lang.name)}
                       <Typography
@@ -242,7 +247,7 @@ export default function LandingPage() {
                         sx={{
                           fontWeight: 600,
                           mb: 1,
-                          color: '#1e293b',
+                          color: 'var(--ink)',
                           fontSize: '1.1rem',
                         }}
                       >
@@ -251,7 +256,7 @@ export default function LandingPage() {
                       <Typography
                         variant="body2"
                         sx={{
-                          color: '#64748b',
+                          color: 'var(--ink-soft)',
                           mb: 2,
                           fontSize: '0.9rem',
                         }}
@@ -266,26 +271,16 @@ export default function LandingPage() {
           </Box>
 
           {/* Footer */}
-          <Box sx={{ mt: 8, pt: 4, borderTop: '1px solid #e2e8f0' }}>
+          <Box sx={{ mt: 8, pt: 4, borderTop: '1px solid var(--line)' }}>
             <Typography
               variant="body2"
               sx={{
-                color: '#64748b',
+                color: 'var(--ink-soft)',
                 textAlign: 'center',
                 fontSize: '0.9rem',
               }}
             >
-              Maintained by Alex Shaw • Have suggestions? <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSf73dDuwy0mZUuApiG2kEGlcCp93pN-l1eOtFOTBA2BTf0Bqw/viewform?usp=sharing"
-                target="_blank"
-                className="slide-underline-link"
-                style={{
-                  color: '#00319b',
-                  fontWeight: 500
-                }}
-              >
-                Submit feedback
-              </a>
+              Maintained by Alex Shaw
             </Typography>
           </Box>
         </Container>

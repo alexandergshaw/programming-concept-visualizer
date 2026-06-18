@@ -30,7 +30,7 @@
 }
 
 .sql-table th {
-  background: #1e293b;
+  background: #3a322a;
   color: #ffffff;
   text-align: left;
   padding: 8px 12px;
@@ -41,13 +41,13 @@
 
 .sql-table td {
   padding: 8px 12px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--line);
   color: #1e293b;
   white-space: nowrap;
 }
 
 .sql-table tbody tr:nth-child(even) {
-  background: #f8fafc;
+  background: var(--paper-sunken);
 }
 
 .sql-table .sql-null {
@@ -93,9 +93,9 @@
    Interactive query playgrounds
    =========================================================================== */
 .sql-pg {
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--line);
   border-radius: 12px;
-  background: #ffffff;
+  background: var(--paper-raised);
   padding: 18px;
   margin: 16px 0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
@@ -125,7 +125,7 @@
   font-family: 'Geist Mono', ui-monospace, monospace;
   font-size: 13px;
   padding: 6px 8px;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--line);
   border-radius: 6px;
   background: #fff;
   color: #1e293b;
@@ -143,7 +143,7 @@
 
 .sql-chip {
   border: 1.5px solid #cbd5e1;
-  background: #ffffff;
+  background: var(--paper-raised);
   color: #334155;
   border-radius: 999px;
   padding: 5px 14px;
@@ -158,13 +158,13 @@
 }
 
 .sql-chip.on {
-  border-color: #2563eb;
-  background: #eff6ff;
-  color: #1d4ed8;
+  border-color: var(--accent);
+  background: var(--accent-bg);
+  color: var(--accent-strong);
 }
 
 .sql-pg-code {
-  background: #0f172a;
+  background: #2b2620;
   color: #e2e8f0;
   border-radius: 8px;
   padding: 12px 14px;

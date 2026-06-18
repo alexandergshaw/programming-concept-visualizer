@@ -1,23 +1,155 @@
 @import "tailwindcss";
 
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ===========================================================================
+   Theme variables. The DEFAULT theme is Light (deep navy on barely-off-white).
+   Academic, Dark, and Terminal override these via data-theme="..." on <html>,
+   set by the theme switcher (Providers) and the server (src/app/layout.tsx).
+   Each theme has a matching MUI theme in components/common/Providers.tsx.
+   =========================================================================== */
+:root {
+  --paper: #f7f8fa;          /* page background: neutral, barely off-white */
+  --paper-raised: #ffffff;   /* cards / panels: crisp white */
+  --paper-sunken: #ecedf0;   /* insets / subtle fills */
+  --ink: #232733;            /* dark slate text */
+  --ink-soft: #5f636b;       /* muted slate text */
+  --line: #e2e5ea;           /* cool hairline borders */
+  --accent: #1e2b48;         /* deep, dark navy (warm) */
+  --accent-strong: #141d33;
+  --accent-bg: #e6e9ef;      /* light highlight */
+
+  /* Sidebar + top bar ("chrome"). */
+  --chrome-bg: linear-gradient(180deg, #1e2b48, #141d33); /* deep warm navy */
+  --chrome-fg: #f5f1ea;
+  --chrome-border: #3a4264;
+
+  --scrollbar-thumb: #c2c6cd;
+
+  --background: var(--paper);
+  --foreground: var(--ink);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Academic: warm "old textbook" — cream paper, warm ink, sienna accent. */
+[data-theme="academic"] {
+  --paper: #faf6ee;
+  --paper-raised: #fffdf8;
+  --paper-sunken: #f4eee2;
+  --ink: #322e27;
+  --ink-soft: #6f6657;
+  --line: #e7dfd0;
+  --accent: #8a5a2b;
+  --accent-strong: #6e461f;
+  --accent-bg: #f1e7d6;
+  --chrome-bg: linear-gradient(180deg, #3a2f22, #2a2118);
+  --chrome-fg: #f3ece0;
+  --chrome-border: #5a4a37;
+  --scrollbar-thumb: #d8cdb8;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
+/* Dark: neutral charcoal with a cool blue accent. */
+[data-theme="dark"] {
+  --paper: #121212;
+  --paper-raised: #1e1e1e;
+  --paper-sunken: #0a0a0a;
+  --ink: #e6e6e6;
+  --ink-soft: #a0a0a0;
+  --line: #2e2e2e;
+  --accent: #5b9dff;
+  --accent-strong: #8fbcff;
+  --accent-bg: #1a2740;
+  --chrome-bg: linear-gradient(180deg, #1c1c1f, #141416);
+  --chrome-fg: #e6e6e6;
+  --chrome-border: #333333;
+  --scrollbar-thumb: #3a3a3a;
+}
+
+/* ===========================================================================
+   Terminal theme: retro CRT phosphor — glowing green on near-black.
+   Activated by data-theme="terminal" on <html>, set by the theme switcher
+   (Providers) and a no-flash inline script (src/app/layout.tsx).
+   =========================================================================== */
+[data-theme="terminal"] {
+  --paper: #0a0f0a;
+  --paper-raised: #0e160e;
+  --paper-sunken: #060a06;
+  --ink: #39ff66;
+  --ink-soft: #1faa55;
+  --line: #1c5c30;
+  --accent: #39ff14;
+  --accent-strong: #7dffa0;
+  --accent-bg: #0f2a16;
+
+  --chrome-bg: linear-gradient(180deg, #0c130c, #050805);
+  --chrome-fg: #39ff66;
+  --chrome-border: #1c5c30;
+  --scrollbar-thumb: #39b86a;
+}
+
+/* Monospace + phosphor glow for the whole page. */
+[data-theme="terminal"] body {
+  font-family: var(--font-geist-mono), 'Courier New', monospace;
+  text-shadow: 0 0 1px rgba(57, 255, 102, 0.5), 0 0 5px rgba(57, 255, 102, 0.22);
+}
+
+[data-theme="terminal"] h1,
+[data-theme="terminal"] h2,
+[data-theme="terminal"] h3,
+[data-theme="terminal"] h4,
+[data-theme="terminal"] h5,
+[data-theme="terminal"] h6 {
+  font-family: var(--font-geist-mono), 'Courier New', monospace;
+  text-shadow: 0 0 2px rgba(57, 255, 102, 0.6), 0 0 10px rgba(57, 255, 102, 0.35);
+}
+
+/* Scanlines + a slow flicker, drawn over everything (clicks pass through). */
+[data-theme="terminal"] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.28),
+    rgba(0, 0, 0, 0.28) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  animation: crt-flicker 4s infinite steps(30);
+}
+
+/* Vignette to fake the curved-glass falloff at the edges. */
+[data-theme="terminal"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+@keyframes crt-flicker {
+  0%   { opacity: 0.92; }
+  25%  { opacity: 0.99; }
+  50%  { opacity: 0.94; }
+  75%  { opacity: 0.98; }
+  100% { opacity: 0.93; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-theme="terminal"] body::after { animation: none; }
+}
+
+[data-theme="terminal"] ::selection {
+  background: rgba(57, 255, 102, 0.3);
+  color: #d6ffe2;
+}
+
+/* Landing-page topic cards: monochrome glowing-green icons in the terminal theme
+   (other themes keep the brand colors). */
+[data-theme="terminal"] .topic-card svg {
+  color: var(--accent);
+  filter: drop-shadow(0 0 4px currentColor);
+}
 
 * {
   box-sizing: border-box;
@@ -29,12 +161,26 @@ html {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+}
+
+/* Clean sans headings by default; Academic restores the serif "textbook" feel. */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-geist-sans), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+[data-theme="academic"] h1,
+[data-theme="academic"] h2,
+[data-theme="academic"] h3,
+[data-theme="academic"] h4,
+[data-theme="academic"] h5,
+[data-theme="academic"] h6 {
+  font-family: var(--font-serif), Georgia, 'Times New Roman', serif;
 }
 
 /* Smooth animations for better UX */
@@ -53,7 +199,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d1d5db;
+  background: var(--scrollbar-thumb);
   border-radius: 4px;
   border: 2px solid transparent;
   background-clip: padding-box;
@@ -61,13 +207,13 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #b0b8c1;
+  background: var(--accent);
 }
 
 /* For Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #d1d5db transparent;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
 }
 
 /* Ensure text is readable in glass morphism */
@@ -77,7 +223,7 @@ body {
 
 .slide-underline-link {
   position: relative;
-  color: #00319b;
+  color: var(--accent);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s;
@@ -90,7 +236,7 @@ body {
   bottom: -2px;
   width: 100%;
   height: 2px;
-  background: #00319b;
+  background: var(--accent);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);

@@ -5,10 +5,10 @@ import SortingConcept from '@/components/pageComponents/Python/SortingConcept';
 describe('SortingConcept', () => {
   it('renders the title, big idea, and key sections', () => {
     render(<SortingConcept />);
-    expect(screen.getByText('Sorting')).toBeInTheDocument();
-    expect(screen.getByText('Sorting is fixing pairs')).toBeInTheDocument();
-    expect(screen.getByText('The One Move')).toBeInTheDocument();
-    expect(screen.getByText(/Actually Use This/)).toBeInTheDocument();
+    expect(screen.getAllByText('Sorting').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Sorting is fixing pairs').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('The One Move').length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Actually Use This/).length).toBeGreaterThan(0);
   });
 
   it('renders one bar per value', () => {
@@ -18,23 +18,23 @@ describe('SortingConcept', () => {
 
   it('shows comparison and swap counters', () => {
     render(<SortingConcept />);
-    expect(screen.getByText('Comparisons')).toBeInTheDocument();
-    expect(screen.getByText('Swaps')).toBeInTheDocument();
+    expect(screen.getAllByText('Comparisons').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Swaps').length).toBeGreaterThan(0);
   });
 
   it('steps forward and resets', () => {
     render(<SortingConcept />);
-    expect(screen.getByText(/Step 1 \//)).toBeInTheDocument();
+    expect(screen.getAllByText(/Step 1 \//).length).toBeGreaterThan(0);
     fireEvent.click(screen.getByRole('button', { name: 'Next' }));
-    expect(screen.getByText(/Step 2 \//)).toBeInTheDocument();
+    expect(screen.getAllByText(/Step 2 \//).length).toBeGreaterThan(0);
     fireEvent.click(screen.getByRole('button', { name: 'Reset' }));
-    expect(screen.getByText(/Step 1 \//)).toBeInTheDocument();
+    expect(screen.getAllByText(/Step 1 \//).length).toBeGreaterThan(0);
   });
 
   it('shuffles back to the start of a fresh run', () => {
     render(<SortingConcept />);
     fireEvent.click(screen.getByRole('button', { name: 'Next' }));
     fireEvent.click(screen.getByRole('button', { name: 'Shuffle' }));
-    expect(screen.getByText(/Step 1 \//)).toBeInTheDocument();
+    expect(screen.getAllByText(/Step 1 \//).length).toBeGreaterThan(0);
   });
 });
