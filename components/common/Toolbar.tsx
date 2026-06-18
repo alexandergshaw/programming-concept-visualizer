@@ -8,24 +8,33 @@ import {
   Menu,
   MenuItem,
   ListItemText,
-  Switch,
+  ListItemIcon,
+  ListSubheader,
   Tooltip,
   Box,
 } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { useRememberSections } from './settings';
+import CheckIcon from '@mui/icons-material/Check';
+import { useThemePreference, type ThemePreference } from './settings';
 
 // Height of the bar; the spacer below keeps page content clear of the fixed bar.
 const TOOLBAR_HEIGHT = 48;
 
+// Available color themes shown in the settings menu. "Terminal" is listed now;
+// its styling will be implemented later.
+const THEME_OPTIONS: { value: ThemePreference; label: string; note?: string }[] = [
+  { value: 'academic', label: 'Academic' },
+  { value: 'terminal', label: 'Terminal', note: 'Coming soon' },
+];
+
 /**
- * Always-on top toolbar rendered globally (see Providers). A settings gear sits
- * at the far left and opens a small preferences menu.
+ * Top toolbar shown on topic pages (see PageWrapper). A settings gear sits at
+ * the far right and opens a small preferences menu (theme selection).
  */
 export default function Toolbar() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const menuOpen = Boolean(anchorEl);
-  const [rememberSections, setRememberSections] = useRememberSections();
+  const [themePreference, setThemePreference] = useThemePreference();
 
   return (
     <>
@@ -70,14 +79,26 @@ export default function Toolbar() {
         onClose={() => setAnchorEl(null)}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        slotProps={{ paper: { sx: { minWidth: 200 } } }}
       >
-        <MenuItem onClick={() => setRememberSections(!rememberSections)} sx={{ gap: 2 }}>
-          <ListItemText
-            primary="Remember open sections"
-            secondary="Keep sidebar groups expanded between visits"
-          />
-          <Switch edge="end" checked={rememberSections} tabIndex={-1} />
-        </MenuItem>
+        <ListSubheader sx={{ bgcolor: 'transparent', lineHeight: '36px' }}>
+          Theme
+        </ListSubheader>
+        {THEME_OPTIONS.map((opt) => (
+          <MenuItem
+            key={opt.value}
+            selected={themePreference === opt.value}
+            onClick={() => {
+              setThemePreference(opt.value);
+              setAnchorEl(null);
+            }}
+          >
+            <ListItemIcon>
+              {themePreference === opt.value && <CheckIcon fontSize="small" />}
+            </ListItemIcon>
+            <ListItemText primary={opt.label} secondary={opt.note} />
+          </MenuItem>
+        ))}
       </Menu>
     </>
   );

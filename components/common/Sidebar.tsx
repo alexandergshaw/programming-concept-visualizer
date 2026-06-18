@@ -5,7 +5,7 @@ import '../../styles/javascript.css';
 import { TextField } from '@mui/material';
 import Image from 'next/image';
 import TechIcon from './TechIcon';
-import { useRememberSections, loadOpenSections, saveOpenSections } from './settings';
+import { loadOpenSections, saveOpenSections } from './settings';
 
 export interface SidebarItem {
   label: string;
@@ -30,24 +30,19 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [], acti
   const [searchQuery, setSearchQuery] = useState(''); // State for the search query
   const [filteredItems, setFilteredItems] = useState<SidebarItem[]>(items); // State for filtered items
   const [mobileOpen, setMobileOpen] = useState(false); // Off-canvas drawer state (mobile only)
-  const [rememberSections] = useRememberSections();
 
-  // Restore the saved open sections for this topic (keyed by title). Re-runs if
-  // the topic changes or the "remember" preference is toggled back on.
+  // Restore the saved open sections for this topic (keyed by title).
   useEffect(() => {
-    if (rememberSections) {
-      const saved = loadOpenSections(title);
-      if (saved) setOpen(new Set(saved));
-    }
+    const saved = loadOpenSections(title);
+    if (saved) setOpen(new Set(saved));
     setHydrated(true);
-  }, [title, rememberSections]);
+  }, [title]);
 
-  // Persist open sections whenever they change (after the initial restore pass,
-  // and only while the preference is enabled).
+  // Persist open sections whenever they change (after the initial restore pass).
   useEffect(() => {
-    if (!hydrated || !rememberSections) return;
+    if (!hydrated) return;
     saveOpenSections(title, Array.from(open));
-  }, [open, hydrated, rememberSections, title]);
+  }, [open, hydrated, title]);
 
   // Filter items based on the search query
   useEffect(() => {

@@ -5,38 +5,41 @@ import { useEffect, useState } from 'react';
 /**
  * Lightweight, client-only user preferences persisted to localStorage.
  *
- * The toolbar settings menu and the sidebar both read/write the same values
- * here. A custom window event keeps every subscriber in sync without a reload
- * (and the native `storage` event keeps other tabs in sync too).
+ * A custom window event keeps every subscriber in sync without a reload (and the
+ * native `storage` event keeps other tabs in sync too).
  */
 
-const REMEMBER_SECTIONS_KEY = 'pcv:rememberSections';
 const SETTINGS_EVENT = 'pcv:settingschange';
 
-/** Whether expanded/collapsed sidebar sections are remembered between visits. */
-export function getRememberSections(): boolean {
-  if (typeof window === 'undefined') return true; // SSR default: on
-  // Default to on unless the user has explicitly turned it off.
-  return window.localStorage.getItem(REMEMBER_SECTIONS_KEY) !== 'false';
+// --- Theme preference -------------------------------------------------------
+
+export type ThemePreference = 'academic' | 'terminal';
+
+const THEME_KEY = 'pcv:theme';
+
+/** The selected color theme. "academic" is the current/default look. */
+export function getThemePreference(): ThemePreference {
+  if (typeof window === 'undefined') return 'academic';
+  return window.localStorage.getItem(THEME_KEY) === 'terminal' ? 'terminal' : 'academic';
 }
 
-export function setRememberSections(value: boolean): void {
+export function setThemePreference(value: ThemePreference): void {
   if (typeof window === 'undefined') return;
-  window.localStorage.setItem(REMEMBER_SECTIONS_KEY, String(value));
+  window.localStorage.setItem(THEME_KEY, value);
   window.dispatchEvent(new Event(SETTINGS_EVENT));
 }
 
 /**
- * Subscribe to the "remember open sidebar sections" preference. Returns the
- * current value and a setter; a change made anywhere updates every subscriber.
+ * Subscribe to the theme preference. Returns the current value and a setter; a
+ * change made anywhere updates every subscriber.
  */
-export function useRememberSections(): [boolean, (value: boolean) => void] {
-  // Start with the SSR default so the server and first client render match,
-  // then correct from localStorage after mount.
-  const [value, setValue] = useState(true);
+export function useThemePreference(): [ThemePreference, (value: ThemePreference) => void] {
+  // Start with the default so server and first client render match, then correct
+  // from localStorage after mount.
+  const [value, setValue] = useState<ThemePreference>('academic');
 
   useEffect(() => {
-    const sync = () => setValue(getRememberSections());
+    const sync = () => setValue(getThemePreference());
     sync();
     window.addEventListener(SETTINGS_EVENT, sync);
     window.addEventListener('storage', sync);
@@ -46,7 +49,7 @@ export function useRememberSections(): [boolean, (value: boolean) => void] {
     };
   }, []);
 
-  return [value, setRememberSections];
+  return [value, setThemePreference];
 }
 
 // --- Per-topic open/closed section state ------------------------------------
