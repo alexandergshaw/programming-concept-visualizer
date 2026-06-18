@@ -21,7 +21,6 @@ import WebSecurityConcept from './WebSecurityConcept';
 import SecurityIcon from '@mui/icons-material/Security';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import CoronavirusIcon from '@mui/icons-material/Coronavirus';
-import WifiIcon from '@mui/icons-material/Wifi';
 import EnhancedEncryptionIcon from '@mui/icons-material/EnhancedEncryption';
 
 const navItems = [
@@ -85,17 +84,18 @@ export default function CybersecurityPage() {
       case 'introduction':
         return (
           <GenericIntroduction
-            title="Welcome to Ethical Hacking"
+            title="Welcome to Cybersecurity"
             paragraphs={[
-              "Ethical hacking is the practice of breaking into systems with permission, so that their weaknesses can be found and fixed before a real attacker exploits them. To defend a system well, you first have to understand how it can be attacked.",
-              "In this course you'll learn the ethics and ground rules of hacking, the way attacks unfold, and the major areas an attacker probes — malware, system architecture, wireless networks, and cryptography. The goal throughout is to turn that knowledge into a stronger defense for a company.",
+              "Cybersecurity is the practice of protecting computers, networks, and data from digital attacks. As more of life and business moves online, understanding how systems can be attacked — and how to defend them — has become an essential skill.",
+              "This course builds from the ground up: how systems and networks are put together, the ways attackers gather information and exploit weaknesses, the threats to watch for like malware and weak authentication, and the defenses — from cryptography to secure design — that keep data safe. You'll learn to think like an attacker so you can protect like a professional.",
             ]}
             steps={[
-              { icon: <SecurityIcon sx={{ fontSize: 48, color: 'var(--info)' }} />, label: 'Ethics & Fundamentals' },
-              { icon: <AccountTreeIcon sx={{ fontSize: 48, color: 'var(--warning)' }} />, label: 'Systems & Threats' },
+              { icon: <SecurityIcon sx={{ fontSize: 48, color: 'var(--info)' }} />, label: 'Foundations & Ethics' },
+              { icon: <AccountTreeIcon sx={{ fontSize: 48, color: 'var(--warning)' }} />, label: 'Systems & Networks' },
+              { icon: <CoronavirusIcon sx={{ fontSize: 48, color: 'var(--danger)' }} />, label: 'Threats & Attacks' },
               { icon: <EnhancedEncryptionIcon sx={{ fontSize: 48, color: 'var(--success)' }} />, label: 'Protecting Data' },
             ]}
-            closing="Used responsibly, these skills make systems safer for everyone. Let's get started!"
+            closing="Whether you want to defend systems or simply understand the risks, these fundamentals are where every security professional begins. Let's get started!"
           />
         );
       case 'ethical-hacking':
