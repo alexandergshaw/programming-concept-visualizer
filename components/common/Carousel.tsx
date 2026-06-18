@@ -89,7 +89,7 @@ export default function Carousel({
         position: 'relative',
         p: 4,
         borderRadius: 2,
-        backgroundColor: theme.palette.mode === 'light' ? '#f5f5f5' : '#1e1e1e',
+        backgroundColor: theme.palette.mode === 'light' ? 'var(--paper-raised)' : 'var(--code-bg)',
         height: height,
         textAlign: 'center',
         display: 'flex',

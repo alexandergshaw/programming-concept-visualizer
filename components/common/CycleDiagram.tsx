@@ -123,7 +123,7 @@ export default function CycleDiagram({
                   transition: 'box-shadow 0.2s, border-color 0.2s, background 0.2s, transform 0.2s',
                   transform: hovered === i ? `scale(${hoverScale})` : 'scale(1)',
                   borderColor: hovered === i ? (color || theme.palette.primary.main) : (color || theme.palette.primary.main),
-                  background: '#fff', // Use solid color when hovered
+                  background: 'var(--paper-raised)', // Use solid color when hovered
                   boxShadow: hovered === i ? theme.shadows[6] : theme.shadows[1],
                   cursor: 'pointer',
                   display: 'flex',
@@ -176,7 +176,7 @@ export default function CycleDiagram({
             >
               <span>{step.label}</span>
               {step.description && (
-                <span style={{ color: hovered === i ? (color || theme.palette.primary.main) : '#555', marginLeft: 8, fontWeight: 400, fontSize: 14 }}>
+                <span style={{ color: hovered === i ? (color || theme.palette.primary.main) : 'var(--ink-soft)', marginLeft: 8, fontWeight: 400, fontSize: 14 }}>
                   {step.description}
                 </span>
               )}
@@ -206,9 +206,9 @@ function StepBox({
       sx={{
         px: 2,
         py: 1,
-        bgcolor: hovered ? '#e8f5e9' : '#fff',
+        bgcolor: hovered ? 'var(--success-bg)' : 'var(--paper-raised)',
         border: '2px solid',
-        borderColor: hovered ? '#219653' : '#219653',
+        borderColor: hovered ? 'var(--success)' : 'var(--success)',
         borderRadius: 2,
         fontWeight: 700,
         fontSize: 16,

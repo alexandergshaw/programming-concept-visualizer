@@ -7,7 +7,21 @@
 import { readFileSync, writeFileSync, readdirSync, statSync } from 'fs';
 import { join } from 'path';
 
-const ROOT = join(process.cwd(), 'components', 'pageComponents');
+// Directories to migrate. pageComponents is already clean (idempotent re-run);
+// this pass also covers shared common components and the standalone stylesheets.
+const ROOTS = ['components/pageComponents', 'components/common', 'styles'].map((p) =>
+  join(process.cwd(), p),
+);
+// Intentional, theme-independent colors handled elsewhere or by design:
+//  - Providers: defines the MUI palettes (the token source of truth)
+//  - TechIcon: deliberate brand tints (already special-cases the terminal theme)
+//  - PythonConsole*: a simulated dark terminal, themed by hand with code-bg/fg
+const EXCLUDE = new Set([
+  'Providers.tsx',
+  'TechIcon.tsx',
+  'PythonConsoleStatic.tsx',
+  'PythonConsoleAnimation.tsx',
+]);
 const APPLY = process.argv.includes('--apply');
 
 // Explicit map for neutrals/grays/slates (which a hue classifier would wrongly
@@ -85,6 +99,12 @@ const OVERRIDES = {
   '#f5f3ff': 'feature-bg', '#ede9fe': 'feature-bg', '#ddd6fe': 'feature-bg',
   '#f3e5f5': 'feature-bg', '#faf5ff': 'feature-bg', '#f3e8ff': 'feature-bg',
   '#e9d5ff': 'feature-bg', '#c7d2fe': 'feature-bg', '#ce93d8': 'feature-bg',
+  // --- second pass (styles + common): hue-classifier misses -----------------
+  '#0f766e': 'success', // teal, partners with #14b8a6
+  '#5d4037': 'warning', '#efebe9': 'warning-bg', '#d7ccc8': 'warning-bg', // FlexibleGrid warm card palette
+  '#2b2620': 'code-bg', '#3a322a': 'code-bg', // dark warm panel backgrounds
+  '#e3d3b6': 'line-strong', // CalloutBox key-concepts border (sits on --accent-bg)
+  '#f3ece0': 'chrome-fg', // sidebar home button, lives on the dark chrome
 };
 
 // HSL fallback for any hex not in OVERRIDES.
@@ -131,7 +151,8 @@ function classify(hex) {
   return bg ? fam + '-bg' : fam;
 }
 
-// Walk .tsx/.ts files, skipping the already-compliant ProjectManagement topic.
+// Walk .tsx/.ts/.css files, skipping the already-compliant ProjectManagement
+// topic and the intentional-color files listed in EXCLUDE.
 function walk(dir) {
   const out = [];
   for (const name of readdirSync(dir)) {
@@ -140,7 +161,7 @@ function walk(dir) {
     if (st.isDirectory()) {
       if (name === 'ProjectManagement') continue;
       out.push(...walk(p));
-    } else if (/\.(tsx|ts)$/.test(name)) {
+    } else if (/\.(tsx|ts|css)$/.test(name) && !EXCLUDE.has(name)) {
       out.push(p);
     }
   }
@@ -148,7 +169,7 @@ function walk(dir) {
 }
 
 const HEX = /#(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b/g;
-const files = walk(ROOT);
+const files = ROOTS.flatMap(walk);
 const tokenTally = {};
 const seen = {};
 let totalReplaced = 0;

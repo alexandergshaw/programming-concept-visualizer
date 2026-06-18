@@ -1,6 +1,6 @@
 .landing-wrapper {
     min-height: 100vh;
-    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+    background: linear-gradient(135deg, var(--paper-sunken), var(--line));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,13 +17,13 @@
   .landing-title {
     font-size: 42px;
     font-weight: 700;
-    color: #1e293b;
+    color: var(--ink);
     margin-bottom: 12px;
   }
   
   .landing-subtitle {
     font-size: 18px;
-    color: #475569;
+    color: var(--ink-soft);
     margin-bottom: 32px;
   }
   
@@ -32,7 +32,7 @@
     max-width: 400px;
     padding: 14px 20px;
     font-size: 16px;
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--line-strong);
     border-radius: 10px;
     margin-bottom: 40px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.08);
@@ -41,7 +41,7 @@
   
   .landing-search:focus {
     outline: none;
-    border-color: #3b82f6;
+    border-color: var(--info);
   }
   
   .language-grid {
@@ -53,12 +53,12 @@
   
   .language-card {
     background: white;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--line);
     border-radius: 12px;
     padding: 20px 30px;
     font-size: 18px;
     font-weight: 500;
-    color: #1e293b;
+    color: var(--ink);
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0,0,0,0.04);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -67,7 +67,7 @@
   .language-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    border-color: #3b82f6;
-    color: #3b82f6;
+    border-color: var(--info);
+    color: var(--info);
   }
   

@@ -8,16 +8,20 @@ import { join, relative } from 'path';
  * from a theme token (e.g. `var(--ink)`) so the four themes (Light / Dark /
  * Academic / Terminal) all render correctly. See docs/THEMING.md.
  *
- * The entire components/pageComponents tree is scanned, so any NEW page is
- * covered automatically. A few shared common components that pages rely on are
- * checked explicitly too.
+ * The entire components/pageComponents tree and the standalone stylesheets are
+ * scanned, so any NEW page or style is covered automatically. A few shared
+ * common components that pages rely on are checked explicitly too.
+ *
+ * Not scanned (intentional, theme-independent colors): components/common
+ * Providers.tsx (defines the palettes), TechIcon.tsx (brand tints), and the
+ * PythonConsole* terminal mocks (fixed window-control colors).
  */
 const EXPLICIT_FILES = [
   'components/common/GenericIntroduction.tsx',
   'components/common/ScrumBoard.tsx',
 ];
 
-const SCAN_DIRS = ['components/pageComponents'];
+const SCAN_DIRS = ['components/pageComponents', 'styles'];
 
 // Matches #rgb / #rrggbb color literals. rgba()/hsl() (used for shadows and
 // overlays that layer over any theme) are intentionally allowed.
@@ -30,7 +34,7 @@ function walk(dir: string): string[] {
   for (const name of readdirSync(dir)) {
     const p = join(dir, name);
     if (statSync(p).isDirectory()) out.push(...walk(p));
-    else if (/\.(tsx|ts)$/.test(name)) out.push(p);
+    else if (/\.(tsx|ts|css)$/.test(name)) out.push(p);
   }
   return out;
 }

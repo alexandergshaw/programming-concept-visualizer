@@ -34,8 +34,8 @@ const PythonConsoleAnimation: React.FC<PythonConsoleAnimationProps> = ({
             <Box sx={{
                 mt: 3,
                 p: 2,
-                backgroundColor: '#1e1e1e',
-                color: '#ffffff',
+                backgroundColor: 'var(--code-bg)',
+                color: 'var(--code-fg)',
                 borderRadius: 2,
                 fontFamily: 'monospace',
                 minHeight: '120px',
@@ -45,7 +45,7 @@ const PythonConsoleAnimation: React.FC<PythonConsoleAnimationProps> = ({
                     display: 'flex',
                     alignItems: 'center',
                     mb: 1,
-                    borderBottom: '1px solid #333',
+                    borderBottom: '1px solid rgba(255, 255, 255, 0.12)',
                     pb: 1
                 }}>
                     <Box sx={{

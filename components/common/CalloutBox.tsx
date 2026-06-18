@@ -37,28 +37,28 @@ const CalloutBox: React.FC<CalloutBoxProps> = ({
           ...baseStyles,
           p: 2,
           bgcolor: 'var(--accent-bg)',
-          borderColor: '#e3d3b6',
+          borderColor: 'var(--line-strong)',
           borderRadius: 1,
         };
       case 'info':
         return {
           ...baseStyles,
-          bgcolor: '#e3f2fd',
-          borderColor: '#2196f3',
+          bgcolor: 'var(--info-bg)',
+          borderColor: 'var(--info)',
           boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
         };
       case 'warning':
         return {
           ...baseStyles,
-          bgcolor: '#fff3e0',
-          borderColor: '#ff9800',
+          bgcolor: 'var(--warning-bg)',
+          borderColor: 'var(--warning)',
           boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
         };
       case 'success':
         return {
           ...baseStyles,
-          bgcolor: '#e8f5e8',
-          borderColor: '#4caf50',
+          bgcolor: 'var(--success-bg)',
+          borderColor: 'var(--success)',
           boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
         };
       default:
@@ -83,26 +83,26 @@ const CalloutBox: React.FC<CalloutBoxProps> = ({
           variant: 'h6' as const,
           fontWeight: 700,
           gutterBottom: true,
-          sx: { color: '#1565c0', display: 'flex', alignItems: 'center', gap: 1 },
+          sx: { color: 'var(--info)', display: 'flex', alignItems: 'center', gap: 1 },
         };
       case 'warning':
         return {
           variant: 'h6' as const,
           fontWeight: 700,
           gutterBottom: true,
-          sx: { color: '#e65100', display: 'flex', alignItems: 'center', gap: 1 },
+          sx: { color: 'var(--warning)', display: 'flex', alignItems: 'center', gap: 1 },
         };
       case 'success':
         return {
           variant: 'h6' as const,
           fontWeight: 700,
           gutterBottom: true,
-          sx: { color: '#2e7d32', display: 'flex', alignItems: 'center', gap: 1 },
+          sx: { color: 'var(--success)', display: 'flex', alignItems: 'center', gap: 1 },
         };
       default:
         return {
           variant: 'h4' as const,
-          sx: { margin: '0 0 12px 0', color: '#495057' },
+          sx: { margin: '0 0 12px 0', color: 'var(--ink-soft)' },
         };
     }
   };

@@ -99,13 +99,13 @@ export default function Timeline({ steps }: TimelineProps) {
                         position: 'relative',
                         marginBottom: '60px',
                         borderRadius: '10px',
-                        background: theme.palette.mode === 'light' ? '#fff' : theme.palette.background.paper,
+                        background: theme.palette.mode === 'light' ? 'var(--paper-raised)' : theme.palette.background.paper,
                         padding: '16px',
                         cursor: 'pointer',
                         borderLeft: step.status === 'fail'
-                            ? '6px solid #e53935'
+                            ? '6px solid var(--danger)'
                             : step.status === 'pass'
-                                ? '6px solid #43a047'
+                                ? '6px solid var(--success)'
                                 : '',
                     }}
                 >
@@ -122,7 +122,7 @@ export default function Timeline({ steps }: TimelineProps) {
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            color: '#fff',
+                            color: 'var(--paper-raised)',
                             zIndex: 1,
                             fontSize: '16px',
                         }}

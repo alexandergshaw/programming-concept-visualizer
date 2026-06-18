@@ -47,7 +47,7 @@ export default function InteractiveDiagram({
         y1={from.y}
         x2={to.x}
         y2={to.y}
-        stroke={isActive ? '#00319b' : '#cbd5e1'}
+        stroke={isActive ? 'var(--info)' : 'var(--line-strong)'}
         strokeWidth={isActive ? 2 : 1}
         strokeDasharray={isActive ? '0' : '4,4'}
         style={{ transition: 'all 0.3s ease' }}
@@ -66,8 +66,8 @@ export default function InteractiveDiagram({
           cx={node.x}
           cy={node.y}
           r={isActive ? 50 : 45}
-          fill={node.color || '#61DAFB'}
-          stroke={isActive ? '#00319b' : '#1e293b'}
+          fill={node.color || 'var(--info)'}
+          stroke={isActive ? 'var(--info)' : 'var(--ink)'}
           strokeWidth={isActive ? 3 : 2}
           style={{
             cursor: 'pointer',
@@ -113,7 +113,7 @@ export default function InteractiveDiagram({
         sx={{
           p: 3,
           borderRadius: 2,
-          background: '#fafafa',
+          background: 'var(--paper-raised)',
         }}
       >
         <svg width={width} height={height} style={{ display: 'block', margin: '0 auto' }}>
@@ -135,13 +135,13 @@ export default function InteractiveDiagram({
               p: 2,
               background: 'white',
               borderRadius: 2,
-              border: '2px solid #00319b',
+              border: '2px solid var(--info)',
             }}
           >
-            <Typography variant="subtitle1" sx={{ fontWeight: 600, color: '#00319b', mb: 1 }}>
+            <Typography variant="subtitle1" sx={{ fontWeight: 600, color: 'var(--info)', mb: 1 }}>
               {selectedNodeData.label}
             </Typography>
-            <Typography variant="body2" sx={{ color: '#64748b' }}>
+            <Typography variant="body2" sx={{ color: 'var(--ink-soft)' }}>
               {selectedNodeData.description}
             </Typography>
           </Box>
@@ -153,7 +153,7 @@ export default function InteractiveDiagram({
             display: 'block',
             textAlign: 'center',
             mt: 2,
-            color: '#64748b',
+            color: 'var(--ink-soft)',
           }}
         >
           Click on nodes to see details • Hover to highlight connections

@@ -33,7 +33,7 @@ export default function ConceptWeb({
     // links,
     // title = 'Concept Web',
     // height = 600,
-    // backgroundColor = '#111',
+    // backgroundColor = 'var(--code-bg)',
 }: ConceptWebProps) {
     // const fgRef = useRef<ForceGraphMethods>();
 
@@ -66,7 +66,7 @@ export default function ConceptWeb({
         //         nodeCanvasObject={(node, ctx, globalScale) => {
         //             const label = node.id as string;
         //             const fontSize = 12 / globalScale;
-        //             ctx.fillStyle = node.color || '#00f';
+        //             ctx.fillStyle = node.color || 'var(--info)';
         //             ctx.beginPath();
         //             ctx.arc(node.x!, node.y!, 8, 0, 2 * Math.PI, false);
         //             ctx.fill();

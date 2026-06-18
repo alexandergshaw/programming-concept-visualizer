@@ -12,7 +12,7 @@ interface ButtonStyle {
 
 export default function ComponentLibraryUpdater() {
   const [buttonStyle, setButtonStyle] = useState<ButtonStyle>({
-    background: '#007bff',
+    background: 'var(--info)',
     color: 'white',
     borderRadius: '4px',
     padding: '8px 16px',
@@ -37,14 +37,14 @@ export default function ComponentLibraryUpdater() {
         <Box sx={{ 
           width: '300px', 
           p: 3, 
-          border: '2px solid #007bff', 
+          border: '2px solid var(--info)', 
           borderRadius: 2, 
-          background: '#f0f8ff' 
+          background: 'var(--info-bg)' 
         }}>
-          <Typography variant="subtitle1" sx={{ mb: 2, fontWeight: 600, color: '#007bff' }}>
+          <Typography variant="subtitle1" sx={{ mb: 2, fontWeight: 600, color: 'var(--info)' }}>
             📚 Component Library
           </Typography>
-          <Typography variant="body2" sx={{ mb: 2, color: '#666' }}>
+          <Typography variant="body2" sx={{ mb: 2, color: 'var(--ink-soft)' }}>
             Update the Button component:
           </Typography>
 
@@ -56,11 +56,11 @@ export default function ComponentLibraryUpdater() {
               onChange={(e) => updateColor(e.target.value)}
               size="small"
             >
-              <MenuItem value="#007bff">Blue</MenuItem>
-              <MenuItem value="#28a745">Green</MenuItem>
-              <MenuItem value="#dc3545">Red</MenuItem>
-              <MenuItem value="#6f42c1">Purple</MenuItem>
-              <MenuItem value="#fd7e14">Orange</MenuItem>
+              <MenuItem value="var(--info)">Blue</MenuItem>
+              <MenuItem value="var(--success)">Green</MenuItem>
+              <MenuItem value="var(--danger)">Red</MenuItem>
+              <MenuItem value="var(--feature)">Purple</MenuItem>
+              <MenuItem value="var(--warning)">Orange</MenuItem>
             </Select>
           </FormControl>
 
@@ -83,9 +83,9 @@ export default function ComponentLibraryUpdater() {
             p: 2, 
             background: 'white', 
             borderRadius: 1, 
-            border: '1px solid #ddd' 
+            border: '1px solid var(--line)' 
           }}>
-            <Typography variant="caption" sx={{ display: 'block', mb: 1, color: '#666' }}>
+            <Typography variant="caption" sx={{ display: 'block', mb: 1, color: 'var(--ink-soft)' }}>
               Button Component Code:
             </Typography>
             <Typography 
@@ -95,7 +95,7 @@ export default function ComponentLibraryUpdater() {
                 fontSize: '0.75rem',
                 display: 'block',
                 whiteSpace: 'pre-wrap',
-                color: '#333',
+                color: 'var(--ink)',
               }}
             >
               {`<Button
@@ -112,9 +112,9 @@ export default function ComponentLibraryUpdater() {
             🖥️ Your App (All instances update automatically)
           </Typography>
 
-          <Box sx={{ border: '2px solid #ddd', borderRadius: 2, background: 'white', overflow: 'hidden' }}>
+          <Box sx={{ border: '2px solid var(--line)', borderRadius: 2, background: 'white', overflow: 'hidden' }}>
             {/* Header */}
-            <Box sx={{ p: 2, background: '#f5f5f5', borderBottom: '1px solid #ddd', display: 'flex', gap: 2, alignItems: 'center' }}>
+            <Box sx={{ p: 2, background: 'var(--paper-raised)', borderBottom: '1px solid var(--line)', display: 'flex', gap: 2, alignItems: 'center' }}>
               <Typography variant="h6" sx={{ fontWeight: 'bold', flex: 1 }}>My Application</Typography>
               <Box
                 sx={{
@@ -135,7 +135,7 @@ export default function ComponentLibraryUpdater() {
             {/* Sidebar + Main Content */}
             <Box sx={{ display: 'flex' }}>
               {/* Sidebar */}
-              <Box sx={{ width: '200px', background: '#f8f9fa', borderRight: '1px solid #ddd', p: 2 }}>
+              <Box sx={{ width: '200px', background: 'var(--paper-raised)', borderRight: '1px solid var(--line)', p: 2 }}>
                 <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 600 }}>
                   Navigation
                 </Typography>
@@ -165,16 +165,16 @@ export default function ComponentLibraryUpdater() {
                 </Typography>
                 
                 <Box sx={{ mb: 2 }}>
-                  <Typography variant="body2" sx={{ mb: 1, color: '#666' }}>Name</Typography>
-                  <Box sx={{ p: 1.5, border: '1px solid #ccc', borderRadius: 1, background: '#f9f9f9' }}>
-                    <Typography variant="body2" sx={{ color: '#999' }}>Enter your name</Typography>
+                  <Typography variant="body2" sx={{ mb: 1, color: 'var(--ink-soft)' }}>Name</Typography>
+                  <Box sx={{ p: 1.5, border: '1px solid var(--line)', borderRadius: 1, background: 'var(--paper-raised)' }}>
+                    <Typography variant="body2" sx={{ color: 'var(--ink-faint)' }}>Enter your name</Typography>
                   </Box>
                 </Box>
 
                 <Box sx={{ mb: 2 }}>
-                  <Typography variant="body2" sx={{ mb: 1, color: '#666' }}>Email</Typography>
-                  <Box sx={{ p: 1.5, border: '1px solid #ccc', borderRadius: 1, background: '#f9f9f9' }}>
-                    <Typography variant="body2" sx={{ color: '#999' }}>Enter your email</Typography>
+                  <Typography variant="body2" sx={{ mb: 1, color: 'var(--ink-soft)' }}>Email</Typography>
+                  <Box sx={{ p: 1.5, border: '1px solid var(--line)', borderRadius: 1, background: 'var(--paper-raised)' }}>
+                    <Typography variant="body2" sx={{ color: 'var(--ink-faint)' }}>Enter your email</Typography>
                   </Box>
                 </Box>
 
@@ -193,7 +193,7 @@ export default function ComponentLibraryUpdater() {
                   </Box>
                   <Box
                     sx={{
-                      background: '#6c757d',
+                      background: 'var(--ink-soft)',
                       color: 'white',
                       borderRadius: buttonStyle.borderRadius,
                       padding: buttonStyle.padding,
@@ -207,7 +207,7 @@ export default function ComponentLibraryUpdater() {
             </Box>
 
             {/* Footer */}
-            <Box sx={{ p: 2, background: '#f5f5f5', borderTop: '1px solid #ddd', display: 'flex', gap: 2, justifyContent: 'center' }}>
+            <Box sx={{ p: 2, background: 'var(--paper-raised)', borderTop: '1px solid var(--line)', display: 'flex', gap: 2, justifyContent: 'center' }}>
               {['Help', 'Contact', 'About'].map((label) => (
                 <Box
                   key={label}
@@ -227,11 +227,11 @@ export default function ComponentLibraryUpdater() {
         </Box>
       </Box>
 
-      <Box sx={{ mt: 3, p: 2, background: '#e7f3ff', borderRadius: 1, border: '1px solid #007bff' }}>
+      <Box sx={{ mt: 3, p: 2, background: 'var(--info-bg)', borderRadius: 1, border: '1px solid var(--info)' }}>
         <Typography variant="body2" sx={{ fontWeight: 600, mb: 1 }}>
           💡 Key Concept: Single Source of Truth
         </Typography>
-        <Typography variant="body2" sx={{ color: '#495057' }}>
+        <Typography variant="body2" sx={{ color: 'var(--ink-soft)' }}>
           When you update the Button component in your library (left panel), <strong>all 10 buttons</strong> across 
           your app update instantly. No need to manually change each button! This ensures consistency and makes 
           updates easy.

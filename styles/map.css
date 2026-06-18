@@ -1,6 +1,6 @@
 .map-container {
     margin-top: 40px;
-    background: #ffffff;
+    background: var(--paper-raised);
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
@@ -11,12 +11,12 @@
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #1e293b;
+    color: var(--ink);
   }
   
   .map-description {
     font-size: 16px;
-    color: #475569;
+    color: var(--ink-soft);
     margin-bottom: 20px;
   }
   
@@ -39,33 +39,33 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #f8fafc;
-    border: 1px solid #cbd5e1;
+    background-color: var(--paper-sunken);
+    border: 1px solid var(--line-strong);
     border-radius: 8px;
     padding: 14px 18px;
     font-size: 16px;
-    color: #1e3a8a;
+    color: var(--info);
   }
   
   .map-key {
     font-weight: 600;
-    color: #1e293b;
+    color: var(--ink);
   }
   
   .map-value {
-    color: #0f172a;
+    color: var(--code-bg);
     font-weight: 500;
   }
   
   .map-output {
     font-size: 16px;
     font-weight: 500;
-    color: #334155;
+    color: var(--ink);
   }
   
   .map-description-secondary {
     font-size: 15px;
-    color: #64748b;
+    color: var(--ink-soft);
     margin-top: -12px;
     margin-bottom: 20px;
     font-style: italic;

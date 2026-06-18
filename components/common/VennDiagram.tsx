@@ -16,8 +16,8 @@ export default function VennDiagram({
   leftLabel,
   rightLabel,
   overlapLabel,
-  leftColor = '#90caf9',
-  rightColor = '#a5d6a7',
+  leftColor = 'var(--info)',
+  rightColor = 'var(--success)',
   width = 3000,
   height = 3000,
   fontSize = 22,
@@ -44,7 +44,7 @@ export default function VennDiagram({
           textAlign: 'center',
           fontWeight: 600,
           fontSize,
-          color: '#222',
+          color: 'var(--code-bg)',
           pointerEvents: 'none',
         }}
       >
@@ -60,7 +60,7 @@ export default function VennDiagram({
           textAlign: 'center',
           fontWeight: 600,
           fontSize,
-          color: '#222',
+          color: 'var(--code-bg)',
           pointerEvents: 'none',
         }}
       >
@@ -77,7 +77,7 @@ export default function VennDiagram({
             textAlign: 'center',
             fontWeight: 600,
             fontSize: fontSize * 0.95,
-            color: '#333',
+            color: 'var(--ink)',
             pointerEvents: 'none',
           }}
         >

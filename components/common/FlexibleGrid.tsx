@@ -43,44 +43,44 @@ const FlexibleGrid: React.FC<FlexibleGridProps> = ({
 
   const defaultColors = [
     { 
-      titleColor: '#d32f2f', 
-      backgroundColor: '#ffebee', 
-      codeBackgroundColor: '#fce4ec' 
+      titleColor: 'var(--danger)', 
+      backgroundColor: 'var(--danger-bg)', 
+      codeBackgroundColor: 'var(--feature-bg)' 
     },
     { 
-      titleColor: '#f57c00', 
-      backgroundColor: '#fff3e0', 
-      codeBackgroundColor: '#fff8e1' 
+      titleColor: 'var(--warning)', 
+      backgroundColor: 'var(--warning-bg)', 
+      codeBackgroundColor: 'var(--warning-bg)' 
     },
     { 
-      titleColor: '#7b1fa2', 
-      backgroundColor: '#f3e5f5', 
-      codeBackgroundColor: '#fce4ec' 
+      titleColor: 'var(--feature)', 
+      backgroundColor: 'var(--feature-bg)', 
+      codeBackgroundColor: 'var(--feature-bg)' 
     },
     { 
-      titleColor: '#388e3c', 
-      backgroundColor: '#e8f5e9', 
-      codeBackgroundColor: '#f1f8e9' 
+      titleColor: 'var(--success)', 
+      backgroundColor: 'var(--success-bg)', 
+      codeBackgroundColor: 'var(--success-bg)' 
     },
     { 
-      titleColor: '#1976d2', 
-      backgroundColor: '#e3f2fd', 
-      codeBackgroundColor: '#bbdefb' 
+      titleColor: 'var(--info)', 
+      backgroundColor: 'var(--info-bg)', 
+      codeBackgroundColor: 'var(--info-bg)' 
     },
     { 
-      titleColor: '#d32f2f', 
-      backgroundColor: '#ffcdd2', 
-      codeBackgroundColor: '#ffebee' 
+      titleColor: 'var(--danger)', 
+      backgroundColor: 'var(--danger-bg)', 
+      codeBackgroundColor: 'var(--danger-bg)' 
     },
     { 
-      titleColor: '#689f38', 
-      backgroundColor: '#dcedc1', 
-      codeBackgroundColor: '#f1f8e9' 
+      titleColor: 'var(--success)', 
+      backgroundColor: 'var(--success)', 
+      codeBackgroundColor: 'var(--success-bg)' 
     },
     { 
-      titleColor: '#5d4037', 
-      backgroundColor: '#efebe9', 
-      codeBackgroundColor: '#d7ccc8' 
+      titleColor: 'var(--warning)', 
+      backgroundColor: 'var(--warning-bg)', 
+      codeBackgroundColor: 'var(--warning-bg)' 
     }
   ];
 
