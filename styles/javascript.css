@@ -22,8 +22,8 @@
   flex-shrink: 0;
   width: 240px;
   min-height: 100vh;
-  background: linear-gradient(180deg, #3a2f22, #2a2118);
-  color: #f3ece0;
+  background: var(--chrome-bg);
+  color: var(--chrome-fg);
   padding: 30px 20px;
   z-index: 1;
 }
@@ -205,6 +205,25 @@
 .empty-page-prompt {
   font-size: '1.25rem';
   color: '#555';
+}
+
+/* Terminal theme: green chrome text, themed dividers, dark code blocks. */
+[data-theme="terminal"] .js-sidebar-title,
+[data-theme="terminal"] .js-nav-item,
+[data-theme="terminal"] .js-nav-subitem,
+[data-theme="terminal"] .js-home-button,
+[data-theme="terminal"] .js-sidebar-toggle {
+  color: var(--chrome-fg);
+}
+
+[data-theme="terminal"] .js-sublist {
+  border-left-color: var(--chrome-border);
+}
+
+[data-theme="terminal"] .js-code-preview {
+  background-color: var(--paper-sunken);
+  border-color: var(--chrome-border);
+  color: var(--ink);
 }
 
 /* ===========================================================================

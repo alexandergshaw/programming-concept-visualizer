@@ -32,16 +32,21 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
+// Set the saved theme on <html> before first paint so there's no flash of the
+// wrong theme on load. Mirrors getThemePreference() in components/common/settings.ts.
+const THEME_INIT = `(function(){try{var t=localStorage.getItem('pcv:theme');document.documentElement.dataset.theme=(t==='terminal')?'terminal':'academic';}catch(e){document.documentElement.dataset.theme='academic';}})();`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${lora.variable} antialiased`}
       >
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
         <Providers>{children}</Providers>
         <Analytics />
       </body>

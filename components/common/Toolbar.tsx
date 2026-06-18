@@ -42,10 +42,10 @@ export default function Toolbar() {
         position="fixed"
         elevation={0}
         sx={{
-          // Warm "book spine" tone matching the sidebar.
-          background: 'linear-gradient(180deg, #3a2f22, #2a2118)',
-          color: '#f3ece0',
-          borderBottom: '1px solid #5a4a37',
+          // Matches the sidebar chrome; themed via CSS variables.
+          background: 'var(--chrome-bg)',
+          color: 'var(--chrome-fg)',
+          borderBottom: '1px solid var(--chrome-border)',
           // The full-height sidebar owns the left rail and sits on top of this
           // bar, so on desktop the bar only spans the content area to its right.
           // Full width on mobile, where the sidebar is an off-canvas drawer.
@@ -62,7 +62,7 @@ export default function Toolbar() {
               aria-haspopup="true"
               aria-expanded={menuOpen}
               onClick={(e) => setAnchorEl(e.currentTarget)}
-              sx={{ color: '#f3ece0' }}
+              sx={{ color: 'var(--chrome-fg)' }}
             >
               <SettingsIcon />
             </IconButton>

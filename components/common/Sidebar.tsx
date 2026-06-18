@@ -104,8 +104,8 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [], acti
           width: '250px', // Set a fixed width for the sidebar
           height: '100vh', // Span the full height of the viewport
           zIndex: 1200, // Sit on top of the header bar (AppBar z-index 1100)
-          background: 'linear-gradient(180deg, #3a2f22, #2a2118)', // Warm "book spine" tone
-          color: '#f3ece0',
+          background: 'var(--chrome-bg)', // Themed "book spine" / terminal rail
+          color: 'var(--chrome-fg)',
           overflowY: 'auto', // Allow scrolling if the content overflows
           padding: '16px', // Add some padding for better spacing
           display: 'flex',
@@ -121,7 +121,7 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [], acti
           gap: '10px',
           marginBottom: '16px',
           paddingBottom: '8px',
-          borderBottom: '1px solid #5a4a37',
+          borderBottom: '1px solid var(--chrome-border)',
         }}
       >
         {headerImage ? (
@@ -146,24 +146,24 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [], acti
         sx={{
           marginBottom: '16px',
           backgroundColor: 'transparent',
-          color: 'white',
+          color: 'var(--chrome-fg)',
           borderRadius: '4px',
           '& .MuiOutlinedInput-root': {
             '& fieldset': {
-              borderColor: 'white',
+              borderColor: 'var(--chrome-border)',
             },
             '&:hover fieldset': {
-              borderColor: 'white',
+              borderColor: 'var(--chrome-fg)',
             },
             '&.Mui-focused fieldset': {
-              borderColor: 'white',
+              borderColor: 'var(--chrome-fg)',
             },
           },
           '& .MuiInputBase-input': {
-            color: 'white',
+            color: 'var(--chrome-fg)',
           },
           '& .MuiInputLabel-root': {
-            color: 'white',
+            color: 'var(--chrome-fg)',
           },
         }}
       />

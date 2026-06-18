@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPython, faJs, faReact } from '@fortawesome/free-brands-svg-icons';
 import { faDatabase, faGraduationCap, faBug, faSitemap } from '@fortawesome/free-solid-svg-icons';
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { useThemePreference } from './settings';
 
 interface Entry {
   icon: IconDefinition;
@@ -26,13 +27,23 @@ function resolve(title: string): Entry | null {
 }
 
 export default function TechIcon({ title }: { title: string }) {
+  const [theme] = useThemePreference();
   const entry = resolve(title);
   if (!entry) return null;
+  // In the terminal theme everything is monochrome phosphor green (with glow);
+  // otherwise use the tech's brand tint.
+  const terminal = theme === 'terminal';
   return (
     <FontAwesomeIcon
       icon={entry.icon}
       // Match the title's font-size so the icon is only as tall as the text.
-      style={{ color: entry.color, fontSize: 20, height: '1em', flexShrink: 0 }}
+      style={{
+        color: terminal ? 'var(--chrome-fg)' : entry.color,
+        fontSize: 20,
+        height: '1em',
+        flexShrink: 0,
+        filter: terminal ? 'drop-shadow(0 0 3px currentColor)' : undefined,
+      }}
     />
   );
 }
