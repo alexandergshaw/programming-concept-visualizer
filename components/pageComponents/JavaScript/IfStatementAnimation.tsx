@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import { withAlpha } from '@/components/common/colorUtils';
 
 const stepColors = ['var(--info)', 'var(--success)', 'var(--danger)'];
 
@@ -71,7 +72,7 @@ export default function IfElseOrderAnimation() {
 
     function highlightPart(part: number) {
         return {
-            background: stepColors[part] + '33',
+            background: withAlpha(stepColors[part], 20),
             borderRadius: '4px',
             padding: '1px 2px',
             transition: 'background 0.2s'
@@ -169,7 +170,7 @@ export default function IfElseOrderAnimation() {
                         <div key={step.label} style={{
                             flex: 1,
                             minWidth: 110,
-                            background: currentStep === idx ? stepColors[idx] + '22' : 'var(--paper-raised)',
+                            background: currentStep === idx ? withAlpha(stepColors[idx], 13) : 'var(--paper-raised)',
                             border: `2px solid ${currentStep === idx ? stepColors[idx] : 'var(--paper-sunken)'}`,
                             borderRadius: 8,
                             padding: '12px 8px',

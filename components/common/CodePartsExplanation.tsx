@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import ConceptInfoCard from '@/components/common/ConceptInfoCard';
+import { withAlpha } from '@/components/common/colorUtils';
 
 export type CodePart = {
     label: string;
@@ -41,7 +42,7 @@ export default function CodePartsExplanation({
         const escapedPartForRegex = part.part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         highlightedCode = highlightedCode.replace(
             new RegExp(escapedPartForRegex, 'g'),
-            `<span style="background:${part.color}33;border-radius:4px;padding:1px 2px;transition:outline 0.18s cubic-bezier(.4,2,.6,1),background 0.18s cubic-bezier(.4,2,.6,1);${hovered === part.label ? `outline:2px solid ${part.color};background:${part.color}44;` : ''}" data-label="${part.label}">${escapeHtml(part.part)}</span>`
+            `<span style="background:${withAlpha(part.color, 20)};border-radius:4px;padding:1px 2px;transition:outline 0.18s cubic-bezier(.4,2,.6,1),background 0.18s cubic-bezier(.4,2,.6,1);${hovered === part.label ? `outline:2px solid ${part.color};background:${withAlpha(part.color, 27)};` : ''}" data-label="${part.label}">${escapeHtml(part.part)}</span>`
         );
     });
     // Escape the rest of the code (outside of spans)
@@ -87,12 +88,12 @@ export default function CodePartsExplanation({
                         key={part.label}
                         style={{
                             marginBottom: 4,
-                            background: hovered === part.label ? part.color + '22' : undefined,
+                            background: hovered === part.label ? withAlpha(part.color, 13) : undefined,
                             borderRadius: 4,
                             cursor: 'pointer',
                             transition: 'background 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.18s cubic-bezier(.4,2,.6,1)',
                             boxShadow: hovered === part.label
-                                ? `0 2px 8px 0 ${part.color}22`
+                                ? `0 2px 8px 0 ${withAlpha(part.color, 13)}`
                                 : undefined,
                         }}
                         onMouseOver={() => setHovered(part.label)}
@@ -102,13 +103,13 @@ export default function CodePartsExplanation({
                             display: 'inline-block',
                             width: 14,
                             height: 14,
-                            background: part.color + '33',
+                            background: withAlpha(part.color, 20),
                             borderRadius: 3,
                             marginRight: 8,
                             verticalAlign: 'middle',
                             transition: 'background 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.18s cubic-bezier(.4,2,.6,1)',
                             boxShadow: hovered === part.label
-                                ? `0 1px 4px 0 ${part.color}44`
+                                ? `0 1px 4px 0 ${withAlpha(part.color, 27)}`
                                 : undefined,
                         }} />
                         <b>{part.label}:</b> <span dangerouslySetInnerHTML={{ __html: part.desc }} />
