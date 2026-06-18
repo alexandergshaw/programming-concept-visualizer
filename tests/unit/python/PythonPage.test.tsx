@@ -26,7 +26,7 @@ describe('PythonPage navigation', () => {
 
   it('renders the page title', () => {
     render(<PythonPage />);
-    expect(screen.getAllByText('Python Visualizer').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Python').length).toBeGreaterThan(0);
   });
 
   it('renders the new nav groups added today', () => {

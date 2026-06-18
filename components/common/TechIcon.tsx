@@ -10,7 +10,7 @@ interface Entry {
   color: string;
 }
 
-// Match the sidebar title (e.g. "Python Visualizer") to the official-ish icon.
+// Match the sidebar title (e.g. "Python") to the official-ish icon.
 // Tints are chosen to read well on the dark sidebar.
 function resolve(title: string): Entry | null {
   const t = title.toLowerCase();
@@ -31,7 +31,8 @@ export default function TechIcon({ title }: { title: string }) {
   return (
     <FontAwesomeIcon
       icon={entry.icon}
-      style={{ color: entry.color, fontSize: 22, marginRight: 10, flexShrink: 0 }}
+      // Match the title's font-size so the icon is only as tall as the text.
+      style={{ color: entry.color, fontSize: 20, height: '1em', flexShrink: 0 }}
     />
   );
 }

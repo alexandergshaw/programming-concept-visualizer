@@ -198,7 +198,7 @@ export default function SqlPage() {
 
   return (
     <PageWrapper
-      pageTitle={'SQL Visualizer'}
+      pageTitle={'SQL'}
       navItems={navItems}
       defaultOpen={[]}
       handleSelect={handleSelect}

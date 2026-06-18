@@ -189,7 +189,7 @@ export default function PythonPage() {
 
 	return (
 		<PageWrapper
-			pageTitle={'Python Visualizer'}
+			pageTitle={'Python'}
 			navItems={navItems}
 			defaultOpen={[]}
 			handleSelect={handleSelect}

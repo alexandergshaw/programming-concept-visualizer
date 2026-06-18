@@ -37,31 +37,9 @@
 .js-sidebar-title {
   font-size: 20px;
   font-weight: 600;
-  border-bottom: 1px solid #5a4a37;
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-}
-
-/* "Back to home" link shown at the top of every topic sidebar. */
-.js-home-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  width: fit-content;
-  margin-bottom: 16px;
-  padding: 6px 10px;
-  border-radius: 6px;
-  color: #e7ddc9;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.js-home-link:hover {
-  background-color: var(--accent);
-  color: #ffffff;
 }
 
 .js-page-title {

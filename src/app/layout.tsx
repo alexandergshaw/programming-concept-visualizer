@@ -22,7 +22,7 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "Visualizer",
+  title: "Concept Visuals",
 };
 
 export const viewport: Viewport = {

@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import '../../styles/javascript.css';
 import { TextField } from '@mui/material';
 import Image from 'next/image';
-import Link from 'next/link';
 import TechIcon from './TechIcon';
 import { useRememberSections, loadOpenSections, saveOpenSections } from './settings';
 
@@ -118,28 +117,25 @@ export default function Sidebar({ title, items, onSelect, defaultOpen = [], acti
           flexDirection: 'column',
         }}
       >
-      {/* Back to the home page from any topic (sits above the icon) */}
-      <Link href="/" className="js-home-link" onClick={() => setMobileOpen(false)}>
-        &larr; Home
-      </Link>
-      {/* A single topic icon stacked above its title: a custom image if one was
-          provided, otherwise the matching tech icon. */}
+      {/* Topic icon to the left of its title, with one underline beneath both.
+          A custom image if provided, otherwise the matching tech icon. */}
       <div
         style={{
           display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'flex-start',
-          gap: '8px',
+          alignItems: 'center',
+          gap: '10px',
           marginBottom: '16px',
+          paddingBottom: '8px',
+          borderBottom: '1px solid #5a4a37',
         }}
       >
         {headerImage ? (
           <Image
             src={headerImage}
-            alt="Header Icon"
-            width={32}
-            height={32}
-            style={{ borderRadius: '4px', objectFit: 'contain' }}
+            alt=""
+            width={20}
+            height={20}
+            style={{ borderRadius: '4px', objectFit: 'contain', flexShrink: 0 }}
           />
         ) : (
           <TechIcon title={title} />
