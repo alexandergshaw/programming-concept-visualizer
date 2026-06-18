@@ -7,22 +7,22 @@
    Each theme has a matching MUI theme in components/common/Providers.tsx.
    =========================================================================== */
 :root {
-  --paper: #f8fafc;          /* page background: crisp, barely off-white */
-  --paper-raised: #ffffff;   /* cards / panels: crisp white */
-  --paper-sunken: #eef2f7;   /* insets / subtle fills */
-  --ink: #1e293b;            /* dark slate text */
-  --ink-soft: #56657a;       /* muted slate text */
-  --line: #d8e0ea;           /* cool hairline borders */
-  --accent: #102a4c;         /* deep, dark navy */
-  --accent-strong: #0a1c35;
-  --accent-bg: #e3e9f2;      /* light navy-tinted highlight */
+  --paper: #faf8f4;          /* page background: warm, barely off-white */
+  --paper-raised: #fffdf8;   /* cards / panels: warm white */
+  --paper-sunken: #f0ebe3;   /* insets / subtle fills */
+  --ink: #242730;            /* warm dark slate text */
+  --ink-soft: #66615a;       /* muted warm-gray text */
+  --line: #e6e0d5;           /* warm hairline borders */
+  --accent: #1e2b48;         /* deep, dark navy (warm) */
+  --accent-strong: #141d33;
+  --accent-bg: #e9e3da;      /* warm highlight */
 
   /* Sidebar + top bar ("chrome"). */
-  --chrome-bg: linear-gradient(180deg, #102a4c, #0a1c35); /* deep navy */
-  --chrome-fg: #f0f4fa;
-  --chrome-border: #244168;
+  --chrome-bg: linear-gradient(180deg, #1e2b48, #141d33); /* deep warm navy */
+  --chrome-fg: #f5f1ea;
+  --chrome-border: #3a4264;
 
-  --scrollbar-thumb: #b3c2d6;
+  --scrollbar-thumb: #c7bfb2;
 
   --background: var(--paper);
   --foreground: var(--ink);

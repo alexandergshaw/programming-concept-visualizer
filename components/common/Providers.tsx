@@ -17,15 +17,15 @@ const sharedComponents = {
 
 const SANS = 'var(--font-geist-sans), Inter, system-ui, sans-serif';
 
-// Light (default): deep navy on barely-off-white, clean sans throughout.
+// Light (default): deep warm navy on warm barely-off-white, clean sans.
 const corporateTheme = createTheme({
   palette: {
     mode: 'light',
-    primary: { main: '#102a4c', dark: '#0a1c35', light: '#244168', contrastText: '#ffffff' },
-    secondary: { main: '#334e68', contrastText: '#ffffff' },
-    background: { default: '#f8fafc', paper: '#ffffff' },
-    text: { primary: '#1e293b', secondary: '#56657a' },
-    divider: '#d8e0ea',
+    primary: { main: '#1e2b48', dark: '#141d33', light: '#3a4264', contrastText: '#f5f1ea' },
+    secondary: { main: '#45495a', contrastText: '#f5f1ea' },
+    background: { default: '#faf8f4', paper: '#fffdf8' },
+    text: { primary: '#242730', secondary: '#66615a' },
+    divider: '#e6e0d5',
     info: { main: '#2563eb' },
     success: { main: '#15803d' },
     warning: { main: '#b45309' },
