@@ -26,8 +26,22 @@ import InheritanceConcept from './InheritanceConcept';
 import EncapsulationConcept from './EncapsulationConcept';
 import PolymorphismConcept from './PolymorphismConcept';
 import AbstractionConcept from './AbstractionConcept';
+import TurtleIntroConcept from './TurtleIntroConcept';
+import TurtleMovingConcept from './TurtleMovingConcept';
+import TurtlePenConcept from './TurtlePenConcept';
+import TurtleShapesConcept from './TurtleShapesConcept';
 
 const navItems = [
+	{
+		label: 'Turtle Graphics',
+		value: 'turtle-graphics',
+		children: [
+			{ label: 'Meet the Turtle', value: 'turtle-intro' },
+			{ label: 'Moving & Turning', value: 'turtle-moving' },
+			{ label: 'The Pen', value: 'turtle-pen' },
+			{ label: 'Drawing Shapes with Loops', value: 'turtle-shapes' },
+		],
+	},
 	{
 		label: 'Storing Data',
 		value: 'storing data',
@@ -103,6 +117,14 @@ export default function PythonPage() {
 
 	const renderContent = (concept: string | null) => {
 		switch (concept) {
+			case 'turtle-intro':
+				return <TurtleIntroConcept />;
+			case 'turtle-moving':
+				return <TurtleMovingConcept />;
+			case 'turtle-pen':
+				return <TurtlePenConcept />;
+			case 'turtle-shapes':
+				return <TurtleShapesConcept />;
 			case 'variables':
 				return <VariableConcept />;
 			case 'numeric-expressions':

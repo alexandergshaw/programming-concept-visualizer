@@ -163,3 +163,28 @@ describe('theme token references', () => {
     expect([...new Set(undefinedRefs)]).toEqual([]);
   });
 });
+
+describe('academic highlighter selection', () => {
+  const m = GLOBALS.match(/\[data-theme="academic"\]\s*::selection\s*\{([^}]*)\}/);
+
+  it('defines a ::selection rule for the academic theme', () => {
+    expect(m).not.toBeNull();
+  });
+
+  it('uses a yellow-highlighter background', () => {
+    const body = m ? m[1] : '';
+    const hex = body.match(/background(?:-color)?:\s*(#[0-9a-fA-F]{6})/)?.[1] ?? '';
+    expect(hex).toMatch(/^#[0-9a-fA-F]{6}$/);
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    // Yellow = red and green high, blue low.
+    expect(r).toBeGreaterThan(200);
+    expect(g).toBeGreaterThan(180);
+    expect(b).toBeLessThan(140);
+  });
+
+  it('keeps the text readable via the ink token', () => {
+    expect((m ? m[1] : '')).toContain('var(--ink)');
+  });
+});

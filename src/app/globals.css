@@ -187,6 +187,17 @@
   color: #d6ffe2;
 }
 
+/* Academic theme: selecting text looks like a swipe of a yellow highlighter
+   over the page — vivid marker yellow with the warm ink kept readable. */
+[data-theme="academic"] ::selection {
+  background: #ffe14d;
+  color: var(--ink);
+}
+[data-theme="academic"] ::-moz-selection {
+  background: #ffe14d;
+  color: var(--ink);
+}
+
 /* Landing-page topic cards: monochrome glowing-green icons in the terminal theme
    (other themes keep the brand colors). */
 [data-theme="terminal"] .topic-card svg {
