@@ -7,6 +7,30 @@ import TableOfContents from '@/components/common/TableOfContents';
 import PythonCodeSnippet from '@/components/common/PythonCodeSnippet';
 import ConceptInfoCard from '@/components/common/ConceptInfoCard';
 import TurtlePlayground from './TurtlePlayground';
+import TurtleAnimation from './TurtleAnimation';
+import { TurtleCommand, TurtleState } from './turtleEngine';
+
+// The square from the worked example, as commands the animation can replay.
+// Start offset so the finished square sits centred on (0, 0).
+const SQUARE_START: TurtleState = {
+  x: -50,
+  y: -50,
+  heading: 0,
+  penDown: true,
+  color: 'var(--accent)',
+  colorName: 'black',
+  width: 4,
+};
+
+const SQUARE_COMMANDS: TurtleCommand[] = [
+  { type: 'forward', value: 100 },
+  { type: 'left', value: 90 },
+  { type: 'forward', value: 100 },
+  { type: 'left', value: 90 },
+  { type: 'forward', value: 100 },
+  { type: 'left', value: 90 },
+  { type: 'forward', value: 100 },
+];
 
 const commands = [
   {
@@ -75,24 +99,34 @@ export default function TurtleMovingConcept() {
 
         <Section
           title="Worked Example: A Square"
-          subtitle="A square is just 'forward, turn 90°' done four times. Read it as instructions to the turtle: walk a side, turn the corner, repeat."
+          subtitle="A square is just 'forward, turn 90°' done four times. Press Play to watch the turtle walk each side and turn each corner, and follow along in the code beside it."
         >
-          <PythonCodeSnippet
-            lines={[
-              { code: 'import turtle' },
-              { code: 't = turtle.Turtle()' },
-              { code: '' },
-              { code: 't.forward(100)', comment: 'bottom side' },
-              { code: 't.left(90)', comment: 'turn to face up' },
-              { code: 't.forward(100)', comment: 'right side' },
-              { code: 't.left(90)' },
-              { code: 't.forward(100)', comment: 'top side' },
-              { code: 't.left(90)' },
-              { code: 't.forward(100)', comment: 'left side — back to start' },
-              { code: '' },
-              { code: 'turtle.done()' },
-            ]}
-          />
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
+              gap: 3,
+              alignItems: 'start',
+            }}
+          >
+            <TurtleAnimation commands={SQUARE_COMMANDS} start={SQUARE_START} showCaption />
+            <PythonCodeSnippet
+              lines={[
+                { code: 'import turtle' },
+                { code: 't = turtle.Turtle()' },
+                { code: '' },
+                { code: 't.forward(100)', comment: 'bottom side' },
+                { code: 't.left(90)', comment: 'turn to face up' },
+                { code: 't.forward(100)', comment: 'right side' },
+                { code: 't.left(90)' },
+                { code: 't.forward(100)', comment: 'top side' },
+                { code: 't.left(90)' },
+                { code: 't.forward(100)', comment: 'left side — back to start' },
+                { code: '' },
+                { code: 'turtle.done()' },
+              ]}
+            />
+          </Box>
           <Alert severity="success" sx={{ mt: 2 }}>
             <Typography variant="body2">
               Spot the repetition — <code>forward(100)</code> then <code>left(90)</code>, four times over.

@@ -1,16 +1,14 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
-import { Box, Button, Slider, Stack, Typography, Alert } from '@mui/material';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import { useMemo, useState } from 'react';
+import { Box, Slider, Stack, Typography, Alert } from '@mui/material';
 import ConceptWrapper from '../../common/ConceptWrapper';
 import Section from '@/components/common/Section';
 import TableOfContents from '@/components/common/TableOfContents';
 import PythonCodeSnippet from '@/components/common/PythonCodeSnippet';
 import ConceptInfoCard from '@/components/common/ConceptInfoCard';
-import TurtleStage from './TurtleStage';
-import { simulate, TurtleCommand, TurtleState } from './turtleEngine';
+import TurtleAnimation from './TurtleAnimation';
+import { TurtleCommand, TurtleState } from './turtleEngine';
 
 const SHAPE_NAMES: Record<number, string> = {
   3: 'triangle',
@@ -27,8 +25,6 @@ function shapeName(n: number): string {
 
 export default function TurtleShapesConcept() {
   const [sides, setSides] = useState(5);
-  const [step, setStep] = useState(0);
-  const [playing, setPlaying] = useState(false);
 
   // Keep a roughly constant perimeter so every shape fits the canvas nicely.
   const { commands, sideLen, start } = useMemo(() => {
@@ -53,35 +49,6 @@ export default function TurtleShapesConcept() {
     return { commands: cmds, sideLen: len, start: startState };
   }, [sides]);
 
-  const frames = useMemo(() => simulate(commands, start), [commands, start]);
-
-  // When the shape changes, show the finished drawing and stop any animation.
-  useEffect(() => {
-    setStep(frames.length - 1);
-    setPlaying(false);
-  }, [frames]);
-
-  // Advance one frame at a time while playing.
-  useEffect(() => {
-    if (!playing) return;
-    if (step >= frames.length - 1) {
-      setPlaying(false);
-      return;
-    }
-    const id = setTimeout(() => setStep((s) => s + 1), 320);
-    return () => clearTimeout(id);
-  }, [playing, step, frames.length]);
-
-  const play = () => {
-    setStep(0);
-    setPlaying(true);
-  };
-  const showAll = () => {
-    setPlaying(false);
-    setStep(frames.length - 1);
-  };
-
-  const current = frames[Math.min(step, frames.length - 1)];
   const turnAngle = Number((360 / sides).toFixed(1));
 
   return (
@@ -127,15 +94,7 @@ export default function TurtleShapesConcept() {
             }}
           >
             <Box>
-              <TurtleStage segments={current.segments} turtle={current.state} animate={playing} />
-              <Stack direction="row" spacing={1} sx={{ mt: 1.5 }}>
-                <Button variant="contained" size="small" startIcon={<PlayArrowIcon />} onClick={play}>
-                  Play
-                </Button>
-                <Button variant="outlined" size="small" startIcon={<RestartAltIcon />} onClick={showAll}>
-                  Show finished
-                </Button>
-              </Stack>
+              <TurtleAnimation commands={commands} start={start} intervalMs={320} />
             </Box>
 
             <Stack spacing={2}>

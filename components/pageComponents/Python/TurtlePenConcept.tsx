@@ -8,13 +8,33 @@ import PythonCodeSnippet from '@/components/common/PythonCodeSnippet';
 import ConceptInfoCard from '@/components/common/ConceptInfoCard';
 import TurtleStage from './TurtleStage';
 import TurtlePlayground from './TurtlePlayground';
-import { DEFAULT_STATE, Segment } from './turtleEngine';
+import TurtleAnimation from './TurtleAnimation';
+import { DEFAULT_STATE, Segment, TurtleCommand, TurtleState } from './turtleEngine';
 
 // A small pre-baked drawing for the fill demo: a filled triangle.
 const fillSegments: Segment[] = [
   { x1: -70, y1: -50, x2: 70, y2: -50, color: 'crimson', width: 3 },
   { x1: 70, y1: -50, x2: 0, y2: 70, color: 'crimson', width: 3 },
   { x1: 0, y1: 70, x2: -70, y2: -50, color: 'crimson', width: 3 },
+];
+
+// The pen up / pen down example, replayable: a line, a gap, then a line again.
+const PEN_DEMO_START: TurtleState = {
+  x: -75,
+  y: 0,
+  heading: 0,
+  penDown: true,
+  color: 'var(--accent)',
+  colorName: 'black',
+  width: 4,
+};
+
+const PEN_DEMO_COMMANDS: TurtleCommand[] = [
+  { type: 'forward', value: 50 },
+  { type: 'penup' },
+  { type: 'forward', value: 50 },
+  { type: 'pendown' },
+  { type: 'forward', value: 50 },
 ];
 
 export default function TurtlePenConcept() {
@@ -28,16 +48,26 @@ export default function TurtlePenConcept() {
           title="Pen Up, Pen Down"
           subtitle="This is the single most useful pen idea: lift the pen to reposition the turtle without leaving a trail, then put it back down to draw again. It's how you make gaps — dashed lines, separate shapes, dotted patterns."
         >
-          <PythonCodeSnippet
-            lines={[
-              { code: 't.forward(50)', comment: 'draws a line' },
-              { code: 't.penup()', comment: 'lift the pen off the paper' },
-              { code: 't.forward(50)', comment: 'moves, but draws NOTHING (a gap)' },
-              { code: 't.pendown()', comment: 'pen back on the paper' },
-              { code: 't.forward(50)', comment: 'draws again' },
-            ]}
-            allowCopy={false}
-          />
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
+              gap: 3,
+              alignItems: 'start',
+            }}
+          >
+            <TurtleAnimation commands={PEN_DEMO_COMMANDS} start={PEN_DEMO_START} showCaption />
+            <PythonCodeSnippet
+              lines={[
+                { code: 't.forward(50)', comment: 'draws a line' },
+                { code: 't.penup()', comment: 'lift the pen off the paper' },
+                { code: 't.forward(50)', comment: 'moves, but draws NOTHING (a gap)' },
+                { code: 't.pendown()', comment: 'pen back on the paper' },
+                { code: 't.forward(50)', comment: 'draws again' },
+              ]}
+              allowCopy={false}
+            />
+          </Box>
           <Alert severity="info" sx={{ mt: 2 }}>
             <Typography variant="body2">
               The turtle still <em>moves</em> while the pen is up — it just doesn't draw. People forget to
