@@ -9,25 +9,7 @@ import CMSConcept from './CMSConcept';
 import CMSComponentsConcept from './CMSComponentsConcept';
 import LanguageIcon from '@mui/icons-material/Language';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-
-const navItems = [
-  {
-    label: 'Getting Started',
-    value: 'getting-started',
-    children: [
-      { label: 'Introduction', value: 'introduction' },
-      { label: 'Website Basics', value: 'website-basics' },
-    ],
-  },
-  {
-    label: 'Content Management',
-    value: 'content-management',
-    children: [
-      { label: 'What is a CMS?', value: 'cms-components' },
-      { label: 'Advantages of a CMS', value: 'cms-intro' },
-    ],
-  },
-];
+import { websiteManagementNavItems as navItems } from '../navItems';
 
 export default function WebsiteManagementPage() {
   const router = useRouter();

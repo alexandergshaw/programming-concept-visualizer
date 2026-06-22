@@ -14,35 +14,7 @@ import StakeholdersConcept from './StakeholdersConcept';
 import RouteIcon from '@mui/icons-material/Route';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import ViewKanbanIcon from '@mui/icons-material/ViewKanban';
-
-const navItems = [
-  {
-    label: 'Getting Started',
-    value: 'getting-started',
-    children: [
-      { label: 'Introduction', value: 'introduction' },
-      { label: 'Project Lifecycle', value: 'project-lifecycle' },
-    ],
-  },
-  {
-    label: 'Ways of Working',
-    value: 'ways-of-working',
-    children: [
-      { label: 'Agile vs Waterfall', value: 'methodologies' },
-      { label: 'Scrum & the Board', value: 'scrum' },
-      { label: 'Kanban', value: 'kanban' },
-    ],
-  },
-  {
-    label: 'Delivering the Work',
-    value: 'delivering-the-work',
-    children: [
-      { label: 'Estimation & Planning', value: 'estimation' },
-      { label: 'Risk Management', value: 'risk-management' },
-      { label: 'Stakeholder Management', value: 'stakeholders' },
-    ],
-  },
-];
+import { projectManagementNavItems as navItems } from '../navItems';
 
 export default function ProjectManagementPage() {
   const router = useRouter();

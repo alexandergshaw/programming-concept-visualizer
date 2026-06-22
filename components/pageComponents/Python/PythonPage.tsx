@@ -30,78 +30,7 @@ import TurtleIntroConcept from './TurtleIntroConcept';
 import TurtleMovingConcept from './TurtleMovingConcept';
 import TurtlePenConcept from './TurtlePenConcept';
 import TurtleShapesConcept from './TurtleShapesConcept';
-
-const navItems = [
-	{
-		label: 'Turtle Graphics',
-		value: 'turtle-graphics',
-		children: [
-			{ label: 'Meet the Turtle', value: 'turtle-intro' },
-			{ label: 'Moving & Turning', value: 'turtle-moving' },
-			{ label: 'The Pen', value: 'turtle-pen' },
-			{ label: 'Drawing Shapes with Loops', value: 'turtle-shapes' },
-		],
-	},
-	{
-		label: 'Storing Data',
-		value: 'storing data',
-		children: [
-			{ label: 'Variables', value: 'variables' },
-			{ label: 'Numeric Expressions', value: 'numeric-expressions' },
-			{ label: 'User Input', value: 'user input' },
-			{ label: 'String Manipulation', value: 'string manipulation' },
-		],
-	},
-	{
-		label: 'Control Flow',
-		value: 'control flow',
-		children: [
-			{ label: 'If / Else', value: 'ifelse' },
-			{ label: 'Logical And / Or', value: 'logicalandor' },
-			{ label: 'For Loops', value: 'forloops' },
-			{ label: 'While Loops', value: 'whileloops' },
-			{ label: 'Accumulator Pattern', value: 'accumulator-pattern' },
-		],
-	},
-	{
-		label: 'Collections',
-		value: 'collections',
-		children: [
-			{ label: 'Lists', value: 'lists' },
-			{ label: 'Tuples', value: 'tuples' },
-			{ label: 'Sets', value: 'sets' },
-			{ label: 'Dictionaries', value: 'dicts' },
-		],
-	},
-	{
-		label: 'Functions',
-		value: 'functions',
-		children: [
-			{ label: 'Function Basics', value: 'function-basics' },
-			{ label: 'Recursion', value: 'recursion' },
-		],
-	},
-	{
-		label: 'Code Organization',
-		value: 'code-organization',
-		children: [
-			{ label: 'Modules', value: 'modules' },
-			{ label: 'The math Library', value: 'math-library' },
-		],
-	},
-	{
-		label: 'Object-Oriented Programming',
-		value: 'oop',
-		children: [
-			{ label: 'Classes & Objects', value: 'classes-objects' },
-			{ label: 'Attributes & Methods', value: 'attributes-methods' },
-			{ label: 'Inheritance', value: 'inheritance' },
-			{ label: 'Encapsulation', value: 'encapsulation' },
-			{ label: 'Polymorphism', value: 'polymorphism' },
-			{ label: 'Abstraction', value: 'abstraction' },
-		],
-	},
-];
+import { pythonNavItems as navItems } from '../navItems';
 
 export default function PythonPage() {
 	const router = useRouter();

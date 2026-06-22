@@ -24,46 +24,7 @@ import AlgorithmAnalysisConcept from '../Python/AlgorithmAnalysisConcept';
 import RecursionVisualConcept from '../Python/RecursionVisualConcept';
 import SearchingConcept from '../Python/SearchingConcept';
 import SortingConcept from '../Python/SortingConcept';
-
-const navItems = [
-    {
-        label: 'How Computers Run Programs',
-        value: 'how-computers-run-programs',
-        children: [
-            { label: 'Introduction', value: 'introduction-computers-run-programs' },
-            { label: 'Interpreters & Compilers', value: 'compilers-interpreters' },
-            { label: 'Hardware', value: 'hardware' },
-            { label: 'Data', value: 'memory' },
-        ],
-    },
-    {
-        label: 'How We Design Programs',
-        value: 'how-we-design-programs',
-        children: [
-            // { label: 'Flow Charts', value: 'flow-charts'},
-            { label: 'Big O Notation', value: 'big-o-notation' },
-        ],
-    },
-    {
-        label: 'Data Structures',
-        value: 'data-structures',
-        children: [
-            { label: 'Stacks', value: 'stacks' },
-            { label: 'Queues', value: 'queues' },
-            { label: 'Trees', value: 'trees' },
-        ],
-    },
-    {
-        label: 'Algorithms',
-        value: 'algorithms',
-        children: [
-            { label: 'Algorithm Analysis & Design', value: 'algorithm-analysis' },
-            { label: 'Recursion', value: 'recursion-viz' },
-            { label: 'Searching', value: 'searching' },
-            { label: 'Sorting', value: 'sorting' },
-        ],
-    },
-];
+import { programmingBasicsNavItems as navItems } from '../navItems';
 
 export default function ProgrammingBasicsPage() {
 	const router = useRouter();

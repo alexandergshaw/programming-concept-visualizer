@@ -5,17 +5,7 @@ import { useEffect, useState } from 'react';
 import PageWrapper from '../../common/PageWrapper';
 import UserAcceptanceTestingConcept from './userAcceptanceTesting/UserAcceptanceTestingConcept';
 import OperationTestingConcept from './operationTesting/OperationTestingConcept';
-
-const navItems = [
-  {
-    label: 'Types of Testing',
-    value: 'types of testing',
-    children: [
-      { label: 'User Acceptance Testing', value: 'user-acceptance-testing' },
-      { label: 'Operation Testing', value: 'operation-testing' },
-    ],
-  },
-];
+import { softwareTestingNavItems as navItems } from '../navItems';
 
 export default function SoftwareTestingPage() {
   const router = useRouter();
