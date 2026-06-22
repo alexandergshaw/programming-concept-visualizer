@@ -1,194 +1,180 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import {
-  Box,
-  Typography,
-  Container,
-  Card,
-  CardContent,
-} from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { Box, Typography, Container, InputBase, IconButton, Chip } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faJs, faPython, faGithub, faReact } from '@fortawesome/free-brands-svg-icons';
-import { faGraduationCap, faBug, faCode, faGlobe, faDatabase, faShieldHalved, faSitemap, faClipboardList } from '@fortawesome/free-solid-svg-icons';
+import { faJs, faPython, faReact } from '@fortawesome/free-brands-svg-icons';
+import {
+  faGraduationCap,
+  faBug,
+  faDatabase,
+  faShieldHalved,
+  faSitemap,
+  faClipboardList,
+} from '@fortawesome/free-solid-svg-icons';
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import CodeIcon from '@mui/icons-material/Code';
-import React, { useState, useEffect } from "react";
+import SearchIcon from '@mui/icons-material/Search';
+import CloseIcon from '@mui/icons-material/Close';
+import React, { useState, useEffect, useRef } from 'react';
 import Loader from '@/components/common/Loader';
 import SettingsMenu from '@/components/common/SettingsMenu';
+import {
+  topicNodes,
+  tokenForCategory,
+  categoryOrder,
+  categoryLabel,
+} from '@/components/landing/topics';
+import type { TopicCategory, TopicNode } from '@/components/landing/topics';
+import { searchConcepts } from '@/components/landing/conceptIndex';
 
-// Minimal styled components
-const HeroSection = styled(Box)(() => ({
-  minHeight: '100vh',
-  display: 'flex',
-  alignItems: 'flex-start',
-  background: 'var(--paper)',
-  position: 'relative',
-  paddingTop: '2rem',
-  paddingBottom: '2rem',
-}));
-
-const MinimalCard = styled(Card)(() => ({
-  background: 'var(--paper-raised)',
-  border: '1px solid var(--line)',
-  borderRadius: '12px',
-  boxShadow: 'none',
-  transition: 'all 0.2s ease',
-  cursor: 'pointer',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-  height: '180px', // Ensures all cards have the same height
-  minWidth: 0,
-  width: '100%',
-  '&:hover': {
-    borderColor: 'var(--accent)',
-    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.12)',
-    transform: 'translateY(-2px)',
-  },
-}));
-
-const languages = [
-  { name: 'Programming Basics', type: 'Fundamentals' },
-  { name: 'Python', type: 'Programming Language' },
-  { name: 'React', type: 'Library' },
-  { name: 'Software Testing', type: 'Topic' },
-  { name: 'Databases', type: 'Topic' },
-  { name: 'Cybersecurity', type: 'Topic' },
-  { name: 'JavaScript', type: 'Programming Language' },
-  { name: 'SQL', type: 'Query Language' },
-  { name: 'Website Management', type: 'Topic' },
-  { name: 'Project Management', type: 'Topic' },
-  // { name: 'GitHub', type: 'Tutorial' },
-  // { name: 'Deploying a Website', type: 'Tutorial' },
-
-];
-
-// Function to get language icon
-const getLanguageIcon = (language: string) => {
-  switch (language.toLowerCase()) {
-    case 'javascript':
-      return (
-        <Box sx={{ fontSize: 32, mb: 1, color: '#F7DF1E' }}>
-          <FontAwesomeIcon icon={faJs} />
-        </Box>
-      );
-    case 'python':
-      return (
-        <Box sx={{ fontSize: 32, mb: 1, color: '#3776AB' }}>
-          <FontAwesomeIcon icon={faPython} />
-        </Box>
-      );
-    case 'react':
-      return (
-        <Box sx={{ fontSize: 32, mb: 1, color: '#61DAFB' }}>
-          <FontAwesomeIcon icon={faReact} />
-        </Box>
-      );
-    case 'programming basics':
-      return (
-        <Box sx={{ fontSize: 32, mb: 1, color: '#10b981' }}>
-          <FontAwesomeIcon icon={faGraduationCap} />
-        </Box>
-      );
-    case 'software testing':
-      return (
-        <Box sx={{ fontSize: 32, mb: 1, color: '#f59e0b' }}>
-          <FontAwesomeIcon icon={faBug} />
-        </Box>
-      );
-    case 'github':
-      return (
-        <Box sx={{ fontSize: 32, mb: 1, color: '#24292e' }}>
-          <FontAwesomeIcon icon={faGithub} />
-        </Box>
-      );
-    case 'deploying a website':
-      return (
-        <Box sx={{ fontSize: 32, mb: 1, color: '#0ea5e9' }}>
-          <FontAwesomeIcon icon={faGlobe} />
-        </Box>
-      );
-    case 'databases':
-      return (
-        <Box sx={{ fontSize: 32, mb: 1, color: '#6366f1' }}>
-          <FontAwesomeIcon icon={faDatabase} />
-        </Box>
-      );
-    case 'cybersecurity':
-      return (
-        <Box sx={{ fontSize: 32, mb: 1, color: '#16a34a' }}>
-          <FontAwesomeIcon icon={faShieldHalved} />
-        </Box>
-      );
-    case 'website management':
-      return (
-        <Box sx={{ fontSize: 32, mb: 1, color: '#8b5cf6' }}>
-          <FontAwesomeIcon icon={faSitemap} />
-        </Box>
-      );
-    case 'project management':
-      return (
-        <Box sx={{ fontSize: 32, mb: 1, color: '#0d9488' }}>
-          <FontAwesomeIcon icon={faClipboardList} />
-        </Box>
-      );
-    case 'sql':
-      return (
-        <Box sx={{ fontSize: 32, mb: 1, color: '#00758f' }}>
-          <FontAwesomeIcon icon={faDatabase} />
-        </Box>
-      );
-    default:
-      return <FontAwesomeIcon icon={faCode} style={{ fontSize: 32, color: '#00319b' }} />;
-  }
+// Each topic's icon, keyed by the topic id from the shared data module.
+const iconById: Record<string, IconDefinition> = {
+  'programming-basics': faGraduationCap,
+  python: faPython,
+  javascript: faJs,
+  react: faReact,
+  sql: faDatabase,
+  databases: faDatabase,
+  cybersecurity: faShieldHalved,
+  'software-testing': faBug,
+  'website-management': faSitemap,
+  'project-management': faClipboardList,
 };
+
+type Filter = TopicCategory | 'all';
+
+// Wrap the first case-insensitive match of `q` in `text` so search hits stand out.
+function highlight(text: string, q: string): React.ReactNode {
+  if (!q) return text;
+  const i = text.toLowerCase().indexOf(q.toLowerCase());
+  if (i < 0) return text;
+  return (
+    <>
+      {text.slice(0, i)}
+      <Box component="mark" sx={{ bgcolor: 'var(--accent-bg)', color: 'inherit', px: '2px', borderRadius: '3px' }}>
+        {text.slice(i, i + q.length)}
+      </Box>
+      {text.slice(i + q.length)}
+    </>
+  );
+}
 
 export default function LandingPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
+  const [query, setQuery] = useState('');
+  const [filter, setFilter] = useState<Filter>('all');
+  const searchRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    // Simulate loading time (e.g., fetching data)
-    const timer = setTimeout(() => setLoading(false), 2000);
+    const timer = setTimeout(() => setLoading(false), 800);
     return () => clearTimeout(timer);
   }, []);
 
-  const handleClick = (language: string) => {
-    switch (language.toLowerCase()) {
-      case 'programming basics':
-        router.push('/skills/programming-basics');
-        break;
-      case 'software testing':
-        router.push('/skills/software-testing');
-        break;
-      case 'github':
-        router.push('/skills/github');
-        break;
-      case 'deploying a website':
-        router.push('/skills/deploying-a-website');
-        break;
-      case 'databases':
-        router.push('/skills/databases');
-        break;
-      case 'cybersecurity':
-        router.push('/skills/cybersecurity');
-        break;
-      case 'website management':
-        router.push('/skills/website-management');
-        break;
-      case 'project management':
-        router.push('/skills/project-management');
-        break;
-      default:
-        router.push(`/languages/${language.toLowerCase()}`);
-    }
-  };
+  // ⌘K / Ctrl-K focuses search; Esc clears it while focused.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        searchRef.current?.focus();
+      } else if (e.key === 'Escape' && document.activeElement === searchRef.current) {
+        setQuery('');
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+
+  const go = (route: string) => router.push(route);
 
   if (loading) {
     return <Loader />;
   }
+
+  const q = query.trim().toLowerCase();
+  const inFilter = (cat: TopicCategory) => filter === 'all' || cat === filter;
+
+  const visibleTopics = topicNodes.filter(
+    (t) =>
+      inFilter(t.category) &&
+      (!q || t.label.toLowerCase().includes(q) || t.type.toLowerCase().includes(q)),
+  );
+  const conceptResults = q ? searchConcepts(query).filter((c) => inFilter(c.category)) : [];
+
+  const renderTile = (node: TopicNode) => {
+    const tileColor = `var(${tokenForCategory[node.category]})`;
+    return (
+      <Box
+        key={node.id}
+        role="button"
+        tabIndex={0}
+        onClick={() => go(node.route)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            go(node.route);
+          }
+        }}
+        sx={{
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 1.2,
+          p: 1.2,
+          borderRadius: 2,
+          border: '1px solid var(--line)',
+          background: 'var(--paper-raised)',
+          transition: 'border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease',
+          outline: 'none',
+          '&:hover, &:focus-visible': {
+            borderColor: tileColor,
+            boxShadow: `0 0 0 1px ${tileColor}, 0 6px 16px -6px ${tileColor}`,
+            transform: 'translateY(-1px)',
+          },
+        }}
+      >
+        <Box sx={{ color: tileColor, fontSize: 20, width: 24, flexShrink: 0, textAlign: 'center' }}>
+          <FontAwesomeIcon icon={iconById[node.id]} />
+        </Box>
+        <Box sx={{ minWidth: 0 }}>
+          <Typography
+            sx={{
+              fontWeight: 600,
+              color: 'var(--ink)',
+              fontSize: '0.9rem',
+              lineHeight: 1.15,
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+            }}
+          >
+            {q ? highlight(node.label, q) : node.label}
+          </Typography>
+          <Typography sx={{ color: 'var(--ink-soft)', fontSize: '0.72rem', lineHeight: 1.2 }}>
+            {node.type}
+          </Typography>
+        </Box>
+      </Box>
+    );
+  };
+
+  const tileGridSx = {
+    display: 'grid',
+    gridTemplateColumns: { xs: 'repeat(2, 1fr)', sm: 'repeat(3, 1fr)', md: 'repeat(4, 1fr)' },
+    gap: 1.5,
+  } as const;
+
+  const SectionHeader = ({ label, count, dot }: { label: string; count: number; dot?: string }) => (
+    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 3, mb: 1 }}>
+      {dot && <Box sx={{ width: 9, height: 9, borderRadius: '50%', background: dot, flexShrink: 0 }} />}
+      <Typography sx={{ fontWeight: 600, fontSize: '0.82rem', color: 'var(--ink-soft)' }}>
+        {label}
+      </Typography>
+      <Typography sx={{ fontSize: '0.72rem', color: 'var(--ink-faint)' }}>{count}</Typography>
+      <Box sx={{ flex: 1, height: '1px', background: 'var(--line)' }} />
+    </Box>
+  );
 
   return (
     <Box sx={{ minHeight: '100vh', background: 'var(--paper)' }}>
@@ -196,105 +182,203 @@ export default function LandingPage() {
       <Box sx={{ position: 'fixed', top: 12, right: 12, zIndex: 1200 }}>
         <SettingsMenu color="var(--ink)" />
       </Box>
-      {/* Hero Section */}
-      <HeroSection>
-        <Container maxWidth="lg">
-          <Box>
-            <Box sx={{ mb: 2 }}>
-              <CodeIcon sx={{ fontSize: 40, color: 'var(--accent-strong)', mb: 2 }} />
+
+      <Container maxWidth="lg" sx={{ pt: 4, pb: 4 }}>
+        {/* Hero */}
+        <Box sx={{ mb: 3 }}>
+          <CodeIcon sx={{ fontSize: 34, color: 'var(--accent-strong)', mb: 1 }} />
+          <Typography
+            variant="h3"
+            component="h1"
+            sx={{
+              fontWeight: 700,
+              color: 'var(--ink)',
+              mb: 1,
+              fontSize: { xs: '2rem', md: '2.6rem' },
+              lineHeight: 1.1,
+            }}
+          >
+            Concept{' '}
+            <Box component="span" sx={{ color: 'var(--accent-strong)' }}>
+              Visuals
             </Box>
+          </Typography>
+          <Typography variant="h6" sx={{ color: 'var(--ink-soft)', fontWeight: 400, fontSize: '1.05rem' }}>
+            Learn programming concepts with visual examples and interactive tutorials
+          </Typography>
+        </Box>
 
-            <Typography
-              variant="h2"
-              component="h1"
-              sx={{
-                fontWeight: 700,
-                color: 'var(--ink)',
-                mb: 3,
-                fontSize: { xs: '2.5rem', md: '3.5rem' },
-                lineHeight: 1.1,
-              }}
-            >
-              Concept
-              <Box component="span" sx={{ color: 'var(--accent-strong)', display: 'block' }}>
-                Visuals
-              </Box>
-            </Typography>
-
-            <Typography
-              variant="h6"
-              sx={{
-                color: 'var(--ink-soft)',
-                mb: 4,
-                fontWeight: 400,
-                fontSize: '1.25rem',
-                lineHeight: 1.6,
-              }}
-            >
-              Learn programming concepts with visual examples and interactive tutorials
-            </Typography>
-
+        {/* Search */}
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1,
+            px: 1.5,
+            height: 46,
+            borderRadius: 2,
+            border: '1px solid var(--line-strong)',
+            background: 'var(--paper-raised)',
+            transition: 'border-color 0.15s ease',
+            '&:focus-within': { borderColor: 'var(--accent)' },
+          }}
+        >
+          <SearchIcon sx={{ color: 'var(--ink-faint)', fontSize: 20 }} />
+          <InputBase
+            inputRef={searchRef}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search topics and concepts…"
+            inputProps={{ 'aria-label': 'Search topics and concepts' }}
+            sx={{ flex: 1, color: 'var(--ink)', fontSize: '0.95rem' }}
+          />
+          {query ? (
+            <IconButton size="small" aria-label="Clear search" onClick={() => setQuery('')}>
+              <CloseIcon sx={{ fontSize: 18, color: 'var(--ink-soft)' }} />
+            </IconButton>
+          ) : (
             <Box
+              component="kbd"
               sx={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: 3,
-                mt: 2
+                fontSize: '0.72rem',
+                color: 'var(--ink-faint)',
+                border: '1px solid var(--line)',
+                borderRadius: '5px',
+                px: 0.6,
+                py: 0.1,
+                fontFamily: 'inherit',
               }}
             >
-              {languages.map((lang) => (
-                <Box
-                  key={lang.name}
-                  sx={{
-                    flex: { xs: '0 0 calc(50% - 12px)', sm: '0 0 calc(50% - 12px)', md: '0 0 calc(25% - 18px)' }
-                  }}
-                >
-                  <MinimalCard className="topic-card" onClick={() => handleClick(lang.name)}>
-                    <CardContent sx={{ p: 2.5, textAlign: 'center' }}>
-                      {getLanguageIcon(lang.name)}
-                      <Typography
-                        variant="h6"
-                        sx={{
-                          fontWeight: 600,
-                          mb: 1,
-                          color: 'var(--ink)',
-                          fontSize: '1.1rem',
-                        }}
-                      >
-                        {lang.name}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          color: 'var(--ink-soft)',
-                          mb: 2,
-                          fontSize: '0.9rem',
-                        }}
-                      >
-                        {lang.type}
-                      </Typography>
-                    </CardContent>
-                  </MinimalCard>
-                </Box>
-              ))}
+              ⌘K
             </Box>
-          </Box>
+          )}
+        </Box>
 
-          {/* Footer */}
-          <Box sx={{ mt: 8, pt: 4, borderTop: '1px solid var(--line)' }}>
-            <Typography
-              variant="body2"
-              sx={{
-                color: 'var(--ink-soft)',
-                textAlign: 'center',
-                fontSize: '0.9rem',
-              }}
-            >
-              Maintained by Alex Shaw
-            </Typography>
-          </Box>
-        </Container>
-      </HeroSection>
+        {/* Category filter chips */}
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 1.5 }}>
+          <Chip
+            label="All topics"
+            size="small"
+            onClick={() => setFilter('all')}
+            variant={filter === 'all' ? 'filled' : 'outlined'}
+            color={filter === 'all' ? 'primary' : 'default'}
+          />
+          {categoryOrder.map((cat) => (
+            <Chip
+              key={cat}
+              label={categoryLabel[cat]}
+              size="small"
+              onClick={() => setFilter(cat)}
+              variant={filter === cat ? 'filled' : 'outlined'}
+              color={filter === cat ? 'primary' : 'default'}
+              icon={
+                <Box
+                  sx={{
+                    width: 8,
+                    height: 8,
+                    borderRadius: '50%',
+                    background: `var(${tokenForCategory[cat]})`,
+                    ml: 1,
+                  }}
+                />
+              }
+            />
+          ))}
+        </Box>
+
+        {/* Results */}
+        {q ? (
+          <>
+            {visibleTopics.length > 0 && (
+              <Box>
+                <SectionHeader label="Topics" count={visibleTopics.length} />
+                <Box sx={tileGridSx}>{visibleTopics.map(renderTile)}</Box>
+              </Box>
+            )}
+            {conceptResults.length > 0 && (
+              <Box>
+                <SectionHeader label="Concepts" count={conceptResults.length} />
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+                  {conceptResults.map((c) => (
+                    <Box
+                      key={`${c.topicId}-${c.value}`}
+                      role="button"
+                      tabIndex={0}
+                      onClick={() => go(c.url)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          go(c.url);
+                        }
+                      }}
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 1.2,
+                        p: 1.2,
+                        borderRadius: 1.5,
+                        border: '1px solid var(--line)',
+                        background: 'var(--paper-raised)',
+                        cursor: 'pointer',
+                        outline: 'none',
+                        '&:hover, &:focus-visible': {
+                          borderColor: 'var(--line-strong)',
+                          background: 'var(--paper-sunken)',
+                        },
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          width: 8,
+                          height: 8,
+                          borderRadius: '50%',
+                          background: `var(${tokenForCategory[c.category]})`,
+                          flexShrink: 0,
+                        }}
+                      />
+                      <Typography sx={{ color: 'var(--ink)', fontSize: '0.9rem', fontWeight: 500 }}>
+                        {highlight(c.label, q)}
+                      </Typography>
+                      <Typography sx={{ ml: 'auto', color: 'var(--ink-soft)', fontSize: '0.78rem' }}>
+                        in {c.topicLabel}
+                      </Typography>
+                    </Box>
+                  ))}
+                </Box>
+              </Box>
+            )}
+            {visibleTopics.length === 0 && conceptResults.length === 0 && (
+              <Box sx={{ textAlign: 'center', py: 6, color: 'var(--ink-soft)' }}>
+                <Typography sx={{ fontSize: '0.95rem' }}>
+                  No topics or concepts match “{query}”.
+                </Typography>
+              </Box>
+            )}
+          </>
+        ) : (
+          categoryOrder.map((cat) => {
+            const items = visibleTopics.filter((t) => t.category === cat);
+            if (!items.length) return null;
+            return (
+              <Box key={cat}>
+                <SectionHeader
+                  label={categoryLabel[cat]}
+                  count={items.length}
+                  dot={`var(${tokenForCategory[cat]})`}
+                />
+                <Box sx={tileGridSx}>{items.map(renderTile)}</Box>
+              </Box>
+            );
+          })
+        )}
+
+        {/* Footer */}
+        <Box sx={{ mt: 5, pt: 3, borderTop: '1px solid var(--line)' }}>
+          <Typography variant="body2" sx={{ color: 'var(--ink-soft)', textAlign: 'center', fontSize: '0.9rem' }}>
+            Maintained by Alex Shaw
+          </Typography>
+        </Box>
+      </Container>
     </Box>
   );
 }

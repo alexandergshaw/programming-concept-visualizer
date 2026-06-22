@@ -4,45 +4,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import PageWrapper from '../../common/PageWrapper';
 import ReactArchitectureConcept from './ReactArchitectureConcept';
-
-const navItems = [
-	{
-		label: 'Getting Started',
-		value: 'getting started',
-		children: [
-			{ label: 'React App Architecture', value: 'react-architecture' },
-			{ label: 'Components Basics', value: 'component-basics' },
-			{ label: 'JSX Syntax', value: 'jsx-syntax' },
-		],
-	},
-	{
-		label: 'Core Concepts',
-		value: 'core concepts',
-		children: [
-			{ label: 'Props', value: 'props' },
-			{ label: 'State', value: 'state' },
-			{ label: 'Event Handling', value: 'event-handling' },
-		],
-	},
-	{
-		label: 'React Hooks',
-		value: 'react hooks',
-		children: [
-			{ label: 'useState & useEffect', value: 'hooks-basics' },
-			{ label: 'useContext', value: 'use-context' },
-			{ label: 'Custom Hooks', value: 'custom-hooks' },
-		],
-	},
-	{
-		label: 'Advanced Topics',
-		value: 'advanced topics',
-		children: [
-			{ label: 'Conditional Rendering', value: 'conditional-rendering' },
-			{ label: 'Lists & Keys', value: 'lists-keys' },
-			{ label: 'Forms', value: 'forms' },
-		],
-	},
-];
+import { reactNavItems as navItems } from '../navItems';
 
 export default function ReactPage() {
 	const router = useRouter();

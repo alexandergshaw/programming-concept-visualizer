@@ -22,48 +22,7 @@ import SecurityIcon from '@mui/icons-material/Security';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import CoronavirusIcon from '@mui/icons-material/Coronavirus';
 import EnhancedEncryptionIcon from '@mui/icons-material/EnhancedEncryption';
-
-const navItems = [
-  {
-    label: 'Foundations',
-    value: 'foundations',
-    children: [
-      { label: 'Introduction', value: 'introduction' },
-      { label: 'What is Ethical Hacking?', value: 'ethical-hacking' },
-      { label: 'Phases of a Hack', value: 'hacking-phases' },
-    ],
-  },
-  {
-    label: 'Attacks & Techniques',
-    value: 'attacks-and-techniques',
-    children: [
-      { label: 'Footprinting & Recon', value: 'footprinting' },
-      { label: 'Scanning & Enumeration', value: 'scanning' },
-      { label: 'Vulnerability Assessment', value: 'vulnerability-assessment' },
-      { label: 'Social Engineering', value: 'social-engineering' },
-      { label: 'Web App Attacks', value: 'web-attacks' },
-      { label: 'Authentication Security', value: 'authentication-security' },
-    ],
-  },
-  {
-    label: 'Systems & Threats',
-    value: 'systems-and-threats',
-    children: [
-      { label: 'Networks & Communication', value: 'networks' },
-      { label: 'System Architecture', value: 'system-architecture' },
-      { label: 'Malware', value: 'malware' },
-      { label: 'Wireless Security', value: 'wireless-security' },
-    ],
-  },
-  {
-    label: 'Protecting Data',
-    value: 'protecting-data',
-    children: [
-      { label: 'Cryptography', value: 'cryptography' },
-      { label: 'Cryptography on the Web', value: 'web-security' },
-    ],
-  },
-];
+import { cybersecurityNavItems as navItems } from '../navItems';
 
 export default function CybersecurityPage() {
   const router = useRouter();
