@@ -21,6 +21,7 @@ import {
   softwareTestingNavItems,
   websiteManagementNavItems,
   projectManagementNavItems,
+  versionControlNavItems,
 } from '@/components/pageComponents/navItems';
 
 export interface ConceptEntry {
@@ -49,6 +50,7 @@ const navByTopic: Record<string, SidebarItem[]> = {
   'software-testing': softwareTestingNavItems,
   'website-management': websiteManagementNavItems,
   'project-management': projectManagementNavItems,
+  'version-control': versionControlNavItems,
 };
 
 /** Collect the leaf nodes (actual concept pages) from a nav tree. */

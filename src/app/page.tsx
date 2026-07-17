@@ -11,6 +11,7 @@ import {
   faShieldHalved,
   faSitemap,
   faClipboardList,
+  faCodeBranch,
 } from '@fortawesome/free-solid-svg-icons';
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import CodeIcon from '@mui/icons-material/Code';
@@ -40,6 +41,7 @@ const iconById: Record<string, IconDefinition> = {
   'software-testing': faBug,
   'website-management': faSitemap,
   'project-management': faClipboardList,
+  'version-control': faCodeBranch,
 };
 
 type Filter = TopicCategory | 'all';

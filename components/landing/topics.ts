@@ -42,6 +42,7 @@ export const topicNodes: TopicNode[] = [
   { id: 'software-testing', label: 'Software Testing', type: 'Topic', route: '/skills/software-testing', category: 'process' },
   { id: 'website-management', label: 'Website Management', type: 'Topic', route: '/skills/website-management', category: 'web' },
   { id: 'project-management', label: 'Project Management', type: 'Topic', route: '/skills/project-management', category: 'process' },
+  { id: 'version-control', label: 'Version Control', type: 'Topic', route: '/skills/version-control', category: 'process' },
 ];
 
 export const topicLinks: TopicLink[] = [
@@ -60,6 +61,9 @@ export const topicLinks: TopicLink[] = [
   { source: 'project-management', target: 'website-management' },
   { source: 'project-management', target: 'software-testing' },
   { source: 'project-management', target: 'python' },
+  { source: 'version-control', target: 'project-management' },
+  { source: 'version-control', target: 'software-testing' },
+  { source: 'version-control', target: 'website-management' },
 ];
 
 /**
