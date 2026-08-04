@@ -11,6 +11,26 @@ import KanbanConcept from './KanbanConcept';
 import EstimationConcept from './EstimationConcept';
 import RiskManagementConcept from './RiskManagementConcept';
 import StakeholdersConcept from './StakeholdersConcept';
+import ProjectsVsOperationsConcept from './ProjectsVsOperationsConcept';
+import ProjectManagerRoleConcept from './ProjectManagerRoleConcept';
+import OrgStructuresConcept from './OrgStructuresConcept';
+import KeyStakeholdersConcept from './KeyStakeholdersConcept';
+import ProjectConstraintsConcept from './ProjectConstraintsConcept';
+import StrategicPlanningConcept from './StrategicPlanningConcept';
+import AligningProjectsConcept from './AligningProjectsConcept';
+import ScreeningModelsConcept from './ScreeningModelsConcept';
+import QualitativeCriteriaConcept from './QualitativeCriteriaConcept';
+import FinancialModelsConcept from './FinancialModelsConcept';
+import FunctionalOrgConcept from './FunctionalOrgConcept';
+import ProjectizedOrgConcept from './ProjectizedOrgConcept';
+import MatrixOrgConcept from './MatrixOrgConcept';
+import OrgStructureImpactsConcept from './OrgStructureImpactsConcept';
+import PMAuthorityLevelsConcept from './PMAuthorityLevelsConcept';
+import DefiningProjectScopeConcept from './DefiningProjectScopeConcept';
+import IdentifyingStakeholdersConcept from './IdentifyingStakeholdersConcept';
+import SettingObjectivesConcept from './SettingObjectivesConcept';
+import SMARTGoalsConcept from './SMARTGoalsConcept';
+import ProjectDeliverablesConcept from './ProjectDeliverablesConcept';
 import RouteIcon from '@mui/icons-material/Route';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import ViewKanbanIcon from '@mui/icons-material/ViewKanban';
@@ -62,6 +82,50 @@ export default function ProjectManagementPage() {
         return <RiskManagementConcept />;
       case 'stakeholders':
         return <StakeholdersConcept />;
+      // Week 1
+      case 'projects-vs-operations':
+        return <ProjectsVsOperationsConcept />;
+      case 'project-manager-role':
+        return <ProjectManagerRoleConcept />;
+      case 'org-structures':
+        return <OrgStructuresConcept />;
+      case 'key-stakeholders':
+        return <KeyStakeholdersConcept />;
+      case 'project-constraints':
+        return <ProjectConstraintsConcept />;
+      // Week 2
+      case 'strategic-planning':
+        return <StrategicPlanningConcept />;
+      case 'aligning-projects':
+        return <AligningProjectsConcept />;
+      case 'screening-models':
+        return <ScreeningModelsConcept />;
+      case 'qualitative-criteria':
+        return <QualitativeCriteriaConcept />;
+      case 'financial-models':
+        return <FinancialModelsConcept />;
+      // Week 3
+      case 'functional-org':
+        return <FunctionalOrgConcept />;
+      case 'projectized-org':
+        return <ProjectizedOrgConcept />;
+      case 'matrix-org':
+        return <MatrixOrgConcept />;
+      case 'org-structure-impacts':
+        return <OrgStructureImpactsConcept />;
+      case 'pm-authority-levels':
+        return <PMAuthorityLevelsConcept />;
+      // Week 4
+      case 'defining-scope':
+        return <DefiningProjectScopeConcept />;
+      case 'identifying-stakeholders':
+        return <IdentifyingStakeholdersConcept />;
+      case 'setting-objectives':
+        return <SettingObjectivesConcept />;
+      case 'smart-goals':
+        return <SMARTGoalsConcept />;
+      case 'project-deliverables':
+        return <ProjectDeliverablesConcept />;
       default:
         return null;
     }
@@ -76,7 +140,7 @@ export default function ProjectManagementPage() {
     <PageWrapper
       pageTitle="Project Management"
       navItems={navItems}
-      defaultOpen={['getting-started', 'ways-of-working', 'delivering-the-work']}
+      defaultOpen={['getting-started', 'week1-intro', 'week2-strategy', 'week3-org-structures', 'week4-scope', 'ways-of-working', 'delivering-the-work']}
       handleSelect={handleSelect}
       activeValue={selectedConcept || undefined}
     >
@@ -92,3 +156,4 @@ export default function ProjectManagementPage() {
     </PageWrapper>
   );
 }
+
