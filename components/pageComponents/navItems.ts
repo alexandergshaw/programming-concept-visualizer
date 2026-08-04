@@ -501,6 +501,50 @@ export const projectManagementNavItems: SidebarItem[] = [
     ],
   },
   {
+    label: 'Week 1: Introduction to PM',
+    value: 'week1-intro',
+    children: [
+      { label: 'Projects vs Ongoing Operations', value: 'projects-vs-operations' },
+      { label: 'The Project Manager Role', value: 'project-manager-role' },
+      { label: 'PM Organisational Structures', value: 'org-structures' },
+      { label: 'Key Project Stakeholders', value: 'key-stakeholders' },
+      { label: 'Core Project Constraints', value: 'project-constraints' },
+    ],
+  },
+  {
+    label: 'Week 2: Strategy & Selection',
+    value: 'week2-strategy',
+    children: [
+      { label: 'Strategic Planning & Selection', value: 'strategic-planning' },
+      { label: 'Aligning Projects with Goals', value: 'aligning-projects' },
+      { label: 'Project Screening Models', value: 'screening-models' },
+      { label: 'Qualitative Selection Criteria', value: 'qualitative-criteria' },
+      { label: 'Financial Evaluation Models', value: 'financial-models' },
+    ],
+  },
+  {
+    label: 'Week 3: Organisation Structures',
+    value: 'week3-org-structures',
+    children: [
+      { label: 'Functional Structure', value: 'functional-org' },
+      { label: 'Projectized Structure', value: 'projectized-org' },
+      { label: 'Matrix Structure', value: 'matrix-org' },
+      { label: 'Impacts of Structures', value: 'org-structure-impacts' },
+      { label: 'PM Authority Levels', value: 'pm-authority-levels' },
+    ],
+  },
+  {
+    label: 'Week 4: Defining the Scope',
+    value: 'week4-scope',
+    children: [
+      { label: 'Defining Project Scope', value: 'defining-scope' },
+      { label: 'Identifying Stakeholders', value: 'identifying-stakeholders' },
+      { label: 'Setting Project Objectives', value: 'setting-objectives' },
+      { label: 'Writing SMART Goals', value: 'smart-goals' },
+      { label: 'Defining Project Deliverables', value: 'project-deliverables' },
+    ],
+  },
+  {
     label: 'Ways of Working',
     value: 'ways-of-working',
     children: [
