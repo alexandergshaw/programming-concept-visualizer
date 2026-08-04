@@ -4,9 +4,27 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import PageWrapper from '../../common/PageWrapper';
 import GenericIntroduction from '../../common/GenericIntroduction';
+import CoreEthicalHackingConcept from './CoreEthicalHackingConcept';
+import HackerTypesConcept from './HackerTypesConcept';
+import SecurityMindsetConcept from './SecurityMindsetConcept';
+import ProfessionalEthicsConcept from './ProfessionalEthicsConcept';
+import LegalFrameworksConcept from './LegalFrameworksConcept';
 import EthicalHackingConcept from './EthicalHackingConcept';
 import HackingPhasesConcept from './HackingPhasesConcept';
+import KernelUserSpaceConcept from './KernelUserSpaceConcept';
+import SystemCallsConcept from './SystemCallsConcept';
+import InterruptHandlingConcept from './InterruptHandlingConcept';
+import ProcessSchedulingConcept from './ProcessSchedulingConcept';
 import FootprintingConcept from './FootprintingConcept';
+import OSINTConcept from './OSINTConcept';
+import PassiveReconConcept from './PassiveReconConcept';
+import SocialEngineeringReconConcept from './SocialEngineeringReconConcept';
+import ActiveReconConcept from './ActiveReconConcept';
+import NetworkScanningIntroConcept from './NetworkScanningIntroConcept';
+import ARPScanningConcept from './ARPScanningConcept';
+import ICMPScanningConcept from './ICMPScanningConcept';
+import LiveHostsConcept from './LiveHostsConcept';
+import OpenServicesConcept from './OpenServicesConcept';
 import ScanningConcept from './ScanningConcept';
 import VulnerabilityAssessmentConcept from './VulnerabilityAssessmentConcept';
 import SocialEngineeringConcept from './SocialEngineeringConcept';
@@ -57,12 +75,50 @@ export default function CybersecurityPage() {
             closing="Whether you want to defend systems or simply understand the risks, these fundamentals are where every security professional begins. Let's get started!"
           />
         );
+      case 'core-ethical-hacking':
+        return <CoreEthicalHackingConcept />;
+      case 'hacker-types':
+        return <HackerTypesConcept />;
+      case 'security-mindset':
+        return <SecurityMindsetConcept />;
+      case 'professional-ethics':
+        return <ProfessionalEthicsConcept />;
+      case 'legal-frameworks':
+        return <LegalFrameworksConcept />;
       case 'ethical-hacking':
         return <EthicalHackingConcept />;
       case 'hacking-phases':
         return <HackingPhasesConcept />;
+      case 'system-architecture':
+        return <SystemArchitectureConcept />;
+      case 'kernel-user-space':
+        return <KernelUserSpaceConcept />;
+      case 'system-calls':
+        return <SystemCallsConcept />;
+      case 'interrupt-handling':
+        return <InterruptHandlingConcept />;
+      case 'process-scheduling':
+        return <ProcessSchedulingConcept />;
       case 'footprinting':
         return <FootprintingConcept />;
+      case 'osint':
+        return <OSINTConcept />;
+      case 'passive-recon':
+        return <PassiveReconConcept />;
+      case 'social-engineering-recon':
+        return <SocialEngineeringReconConcept />;
+      case 'active-recon':
+        return <ActiveReconConcept />;
+      case 'network-scanning-intro':
+        return <NetworkScanningIntroConcept />;
+      case 'arp-scanning':
+        return <ARPScanningConcept />;
+      case 'icmp-scanning':
+        return <ICMPScanningConcept />;
+      case 'live-hosts':
+        return <LiveHostsConcept />;
+      case 'open-services':
+        return <OpenServicesConcept />;
       case 'scanning':
         return <ScanningConcept />;
       case 'vulnerability-assessment':
@@ -75,8 +131,6 @@ export default function CybersecurityPage() {
         return <AuthenticationSecurityConcept />;
       case 'networks':
         return <NetworksConcept />;
-      case 'system-architecture':
-        return <SystemArchitectureConcept />;
       case 'malware':
         return <MalwareConcept />;
       case 'wireless-security':
@@ -99,7 +153,15 @@ export default function CybersecurityPage() {
     <PageWrapper
       pageTitle="Cybersecurity"
       navItems={navItems}
-      defaultOpen={['foundations', 'attacks-and-techniques', 'systems-and-threats', 'protecting-data']}
+      defaultOpen={[
+        'intro-ethical-hacking',
+        'system-architecture-os',
+        'recon-footprinting',
+        'network-scanning',
+        'attacks-and-techniques',
+        'systems-and-threats',
+        'protecting-data',
+      ]}
       handleSelect={handleSelect}
       activeValue={selectedConcept || undefined}
     >
@@ -115,3 +177,4 @@ export default function CybersecurityPage() {
     </PageWrapper>
   );
 }
+
