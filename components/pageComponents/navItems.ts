@@ -385,20 +385,57 @@ export const databasesNavItems: SidebarItem[] = [
 
 export const cybersecurityNavItems: SidebarItem[] = [
   {
-    label: 'Foundations',
-    value: 'foundations',
+    label: 'Introduction to Ethical Hacking',
+    value: 'intro-ethical-hacking',
     children: [
       { label: 'Introduction', value: 'introduction' },
+      { label: 'Core Concepts', value: 'core-ethical-hacking' },
+      { label: 'Types of Hackers', value: 'hacker-types' },
+      { label: 'Security Professional Mindset', value: 'security-mindset' },
+      { label: 'Professional Ethics', value: 'professional-ethics' },
+      { label: 'Legal Frameworks', value: 'legal-frameworks' },
       { label: 'What is Ethical Hacking?', value: 'ethical-hacking' },
       { label: 'Phases of a Hack', value: 'hacking-phases' },
+    ],
+  },
+  {
+    label: 'System Architecture & OS Internals',
+    value: 'system-architecture-os',
+    children: [
+      { label: 'System Architecture', value: 'system-architecture' },
+      { label: 'Kernel Mode & User Space', value: 'kernel-user-space' },
+      { label: 'System Call Interface', value: 'system-calls' },
+      { label: 'Interrupt Handling & Exceptions', value: 'interrupt-handling' },
+      { label: 'Process Scheduling & Management', value: 'process-scheduling' },
+    ],
+  },
+  {
+    label: 'Reconnaissance & Footprinting',
+    value: 'recon-footprinting',
+    children: [
+      { label: 'Footprinting & Recon Overview', value: 'footprinting' },
+      { label: 'Open Source Intelligence (OSINT)', value: 'osint' },
+      { label: 'Passive Reconnaissance', value: 'passive-recon' },
+      { label: 'Social Engineering Recon', value: 'social-engineering-recon' },
+      { label: 'Active Reconnaissance Tools', value: 'active-recon' },
+    ],
+  },
+  {
+    label: 'Network Scanning & Enumeration',
+    value: 'network-scanning',
+    children: [
+      { label: 'Introduction to Network Scanning', value: 'network-scanning-intro' },
+      { label: 'ARP Scanning', value: 'arp-scanning' },
+      { label: 'ICMP Echo Request Scanning', value: 'icmp-scanning' },
+      { label: 'Identifying Live Hosts', value: 'live-hosts' },
+      { label: 'Identifying Open Services', value: 'open-services' },
+      { label: 'Scanning & Enumeration', value: 'scanning' },
     ],
   },
   {
     label: 'Attacks & Techniques',
     value: 'attacks-and-techniques',
     children: [
-      { label: 'Footprinting & Recon', value: 'footprinting' },
-      { label: 'Scanning & Enumeration', value: 'scanning' },
       { label: 'Vulnerability Assessment', value: 'vulnerability-assessment' },
       { label: 'Social Engineering', value: 'social-engineering' },
       { label: 'Web App Attacks', value: 'web-attacks' },
@@ -410,7 +447,6 @@ export const cybersecurityNavItems: SidebarItem[] = [
     value: 'systems-and-threats',
     children: [
       { label: 'Networks & Communication', value: 'networks' },
-      { label: 'System Architecture', value: 'system-architecture' },
       { label: 'Malware', value: 'malware' },
       { label: 'Wireless Security', value: 'wireless-security' },
     ],
