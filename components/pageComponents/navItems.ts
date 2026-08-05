@@ -546,7 +546,7 @@ export const projectManagementNavItems: SidebarItem[] = [
   },
   {
     label: 'Week 1: Foundations of Agile',
-    value: 'week5-agile-foundations',
+    value: 'week1-agile-foundations',
     children: [
       { label: 'History of Agile Development', value: 'history-of-agile-development' },
       { label: 'Shift from Traditional Management', value: 'shift-from-traditional-management' },
@@ -557,7 +557,7 @@ export const projectManagementNavItems: SidebarItem[] = [
   },
   {
     label: 'Week 2: Scrum Framework',
-    value: 'week6-scrum-framework',
+    value: 'week2-scrum-framework',
     children: [
       { label: 'Scrum core team roles', value: 'scrum-core-team-roles' },
       { label: 'Product Owner responsibilities', value: 'product-owner-responsibilities' },
@@ -568,7 +568,7 @@ export const projectManagementNavItems: SidebarItem[] = [
   },
   {
     label: 'Week 3: Kanban and Flow',
-    value: 'week7-kanban-flow',
+    value: 'week3-kanban-flow',
     children: [
       { label: 'Exploring Kanban systems', value: 'exploring-kanban-systems' },
       { label: 'Core Kanban principles', value: 'core-kanban-principles' },
@@ -579,7 +579,7 @@ export const projectManagementNavItems: SidebarItem[] = [
   },
   {
     label: 'Week 4: Agile Roles and Leadership',
-    value: 'week8-agile-roles',
+    value: 'week4-agile-roles',
     children: [
       { label: 'Agile servant leadership principles', value: 'agile-servant-leadership-principles' },
       { label: 'Cross functional team collaboration', value: 'cross-functional-team-collaboration' },
@@ -589,7 +589,7 @@ export const projectManagementNavItems: SidebarItem[] = [
   },
   {
     label: 'Week 5: Agile Ceremonies',
-    value: 'week9-agile-ceremonies',
+    value: 'week5-agile-ceremonies',
     children: [
       { label: 'Defining sprint goals clearly', value: 'defining-sprint-goals-clearly' },
     ],
