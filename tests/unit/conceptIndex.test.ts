@@ -29,6 +29,29 @@ describe('concept search index', () => {
     expect(turtle.some((c) => c.topicId === 'python' && c.value === 'turtle-intro')).toBe(true);
   });
 
+  it('indexes the new agile methodologies concepts for project management', () => {
+    const hits = searchConcepts('agile');
+    expect(
+      hits.some(
+        (c) => c.topicId === 'project-management' && c.value === 'history-of-agile-development',
+      ),
+    ).toBe(true);
+
+    const scrumMaster = searchConcepts('scrum master responsibilities');
+    expect(
+      scrumMaster.some(
+        (c) => c.topicId === 'project-management' && c.url === '/skills/project-management?concept=scrum-master-responsibilities',
+      ),
+    ).toBe(true);
+
+    const kanban = searchConcepts('limiting work in progress');
+    expect(
+      kanban.some(
+        (c) => c.topicId === 'project-management' && c.value === 'limiting-work-in-progress',
+      ),
+    ).toBe(true);
+  });
+
   it('returns nothing for an empty query', () => {
     expect(searchConcepts('')).toEqual([]);
     expect(searchConcepts('   ')).toEqual([]);
