@@ -190,17 +190,8 @@ export default function ProgrammingBasicsPage() {
 
 	const renderContent = (concept: string | null) => {
 		if (!concept) return null;
-		const dataStructureConcept = dataStructuresConceptContent[concept.toLowerCase()];
-		if (dataStructureConcept) {
-			return (
-				<GenericIntroduction
-					title={dataStructureConcept.title}
-					paragraphs={dataStructureConcept.paragraphs}
-					closing={dataStructureConcept.closing}
-				/>
-			);
-		}
-		switch (concept.toLowerCase()) {
+		const normalizedConcept = concept.toLowerCase();
+		switch (normalizedConcept) {
 			case 'memory':
 				return <MemoryConcept />;
 			case 'compilers-interpreters':
@@ -266,8 +257,19 @@ export default function ProgrammingBasicsPage() {
 				return <SearchingConcept />;
 			case 'sorting':
 				return <SortingConcept />;
-			default:
+			default: {
+				const dataStructureConcept = dataStructuresConceptContent[normalizedConcept];
+				if (dataStructureConcept) {
+					return (
+						<GenericIntroduction
+							title={dataStructureConcept.title}
+							paragraphs={dataStructureConcept.paragraphs}
+							closing={dataStructureConcept.closing}
+						/>
+					);
+				}
 				return null;
+			}
 		}
 	};
 
