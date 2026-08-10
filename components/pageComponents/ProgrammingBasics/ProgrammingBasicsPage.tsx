@@ -15,6 +15,8 @@ import SubjectIcon from '@mui/icons-material/Subject';
 import AutoAwesomeMotionIcon from '@mui/icons-material/AutoAwesomeMotion'; 
 import FlowchartDesigner from './FlowchartDesigner';
 import BigOConcept from './BigOConcept';
+import membershipoperatorsConcept from "./membershipoperatorsConcept";
+
 // Data Structures + Algorithms concepts (general CS topics that live in the
 // Python folder but are surfaced here on the intro-to-programming page).
 import StackConcept from '../Python/StackConcept';
@@ -105,7 +107,9 @@ export default function ProgrammingBasicsPage() {
 			case 'searching':
 				return <SearchingConcept />;
 			case 'sorting':
-				return <SortingConcept />;
+				return <SortingConcept />;    case "membership-operators":
+      return <membershipoperatorsConcept />;
+
 			default:
 				return null;
 		}
