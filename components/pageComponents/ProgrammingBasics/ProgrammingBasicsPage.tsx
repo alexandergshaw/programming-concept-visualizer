@@ -18,6 +18,8 @@ import BigOConcept from './BigOConcept';
 import membershipoperatorsConcept from "./membershipoperatorsConcept";
 import booleanlogicConcept from "./booleanlogicConcept";
 import nonetypeConcept from "./nonetypeConcept";
+import stringmethodsConcept from "./stringmethodsConcept";
+
 
 
 
@@ -114,7 +116,9 @@ export default function ProgrammingBasicsPage() {
 				return <SortingConcept />;    case "membership-operators":
       return <membershipoperatorsConcept />;    case "boolean-logic":
       return <booleanlogicConcept />;    case "none-type":
-      return <nonetypeConcept />;
+      return <nonetypeConcept />;    case "string-methods":
+      return <stringmethodsConcept />;
+
 
 
 
