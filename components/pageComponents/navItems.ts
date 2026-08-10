@@ -126,6 +126,8 @@ export const pythonNavItems: SidebarItem[] = [
       { label: 'Abstraction', value: 'abstraction' },
     ],
   },
+,
+  { label: "len function", value: "len-function" }
 ];
 
 export const javascriptNavItems: SidebarItem[] = [
