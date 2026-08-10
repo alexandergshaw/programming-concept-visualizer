@@ -46,6 +46,8 @@ export const programmingBasicsNavItems: SidebarItem[] = [
       { label: 'Sorting', value: 'sorting' },
     ],
   },
+,
+  { label: "membership operators", value: "membership-operators" }
 ];
 
 export const pythonNavItems: SidebarItem[] = [
