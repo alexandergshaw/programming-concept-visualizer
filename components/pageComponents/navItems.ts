@@ -50,6 +50,8 @@ export const programmingBasicsNavItems: SidebarItem[] = [
   { label: "membership operators", value: "membership-operators" }
 ,
   { label: "boolean logic", value: "boolean-logic" }
+,
+  { label: "none type", value: "none-type" }
 ];
 
 export const pythonNavItems: SidebarItem[] = [
