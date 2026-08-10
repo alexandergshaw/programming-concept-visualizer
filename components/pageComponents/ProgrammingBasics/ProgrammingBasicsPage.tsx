@@ -17,6 +17,8 @@ import FlowchartDesigner from './FlowchartDesigner';
 import BigOConcept from './BigOConcept';
 import membershipoperatorsConcept from "./membershipoperatorsConcept";
 import booleanlogicConcept from "./booleanlogicConcept";
+import nonetypeConcept from "./nonetypeConcept";
+
 
 
 // Data Structures + Algorithms concepts (general CS topics that live in the
@@ -111,7 +113,9 @@ export default function ProgrammingBasicsPage() {
 			case 'sorting':
 				return <SortingConcept />;    case "membership-operators":
       return <membershipoperatorsConcept />;    case "boolean-logic":
-      return <booleanlogicConcept />;
+      return <booleanlogicConcept />;    case "none-type":
+      return <nonetypeConcept />;
+
 
 
 			default:
