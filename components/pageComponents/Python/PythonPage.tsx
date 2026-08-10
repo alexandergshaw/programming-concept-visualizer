@@ -31,6 +31,8 @@ import TurtleMovingConcept from './TurtleMovingConcept';
 import TurtlePenConcept from './TurtlePenConcept';
 import TurtleShapesConcept from './TurtleShapesConcept';
 import { pythonNavItems as navItems } from '../navItems';
+import lenfunctionConcept from "./lenfunctionConcept";
+
 
 export default function PythonPage() {
 	const router = useRouter();
@@ -99,7 +101,9 @@ export default function PythonPage() {
 			case 'polymorphism':
 				return <PolymorphismConcept />;
 			case 'abstraction':
-				return <AbstractionConcept />;
+				return <AbstractionConcept />;    case "len-function":
+      return <lenfunctionConcept />;
+
 			default:
 				return null;
 		}
