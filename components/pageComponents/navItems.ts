@@ -52,6 +52,8 @@ export const programmingBasicsNavItems: SidebarItem[] = [
   { label: "boolean logic", value: "boolean-logic" }
 ,
   { label: "none type", value: "none-type" }
+,
+  { label: "string methods", value: "string-methods" }
 ];
 
 export const pythonNavItems: SidebarItem[] = [
