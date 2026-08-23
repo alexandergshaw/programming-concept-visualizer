@@ -31,6 +31,24 @@ export const programmingBasicsNavItems: SidebarItem[] = [
     label: 'Data Structures',
     value: 'data-structures',
     children: [
+      { label: 'Introduction to Algorithm Analysis', value: 'intro-algorithm-analysis' },
+      { label: 'Object-Oriented Foundations', value: 'object-oriented-foundations' },
+      { label: 'Dynamic Lists', value: 'dynamic-lists' },
+      { label: 'Linked Lists', value: 'linked-lists' },
+      { label: 'Recursion Foundations', value: 'recursion-foundations' },
+      { label: 'Backtracking', value: 'backtracking' },
+      { label: 'Advanced Recursion', value: 'advanced-recursion' },
+      { label: 'Searching Algorithms', value: 'searching-algorithms' },
+      { label: 'Elementary Sorting', value: 'elementary-sorting' },
+      { label: 'Advanced Sorting', value: 'advanced-sorting' },
+      { label: 'Binary Trees', value: 'binary-trees' },
+      { label: 'Binary Search Trees', value: 'binary-search-trees' },
+      { label: 'Heaps', value: 'heaps' },
+      { label: 'Priority Queues', value: 'priority-queues' },
+      { label: 'Hashing', value: 'hashing' },
+      { label: 'Hash Tables', value: 'hash-tables' },
+      { label: 'Graph Fundamentals', value: 'graph-fundamentals' },
+      { label: 'Advanced Algorithm Design Patterns', value: 'advanced-algorithm-design-patterns' },
       { label: 'Stacks', value: 'stacks' },
       { label: 'Queues', value: 'queues' },
       { label: 'Trees', value: 'trees' },
@@ -46,18 +64,12 @@ export const programmingBasicsNavItems: SidebarItem[] = [
       { label: 'Sorting', value: 'sorting' },
     ],
   },
-,
-  { label: "membership operators", value: "membership-operators" }
-,
-  { label: "boolean logic", value: "boolean-logic" }
-,
-  { label: "none type", value: "none-type" }
-,
-  { label: "string methods", value: "string-methods" }
-,
-  { label: "linked lists", value: "linked-lists" }
-,
-  { label: "searching algorithms", value: "searching-algorithms" }
+  { label: 'Membership Operators', value: 'membership-operators' },
+  { label: 'Boolean Logic', value: 'boolean-logic' },
+  { label: 'None Type', value: 'none-type' },
+  { label: 'String Methods', value: 'string-methods' },
+  { label: 'Linked Lists', value: 'linked-lists' },
+  { label: 'Searching Algorithms', value: 'searching-algorithms' },
 ];
 
 export const pythonNavItems: SidebarItem[] = [
@@ -130,8 +142,8 @@ export const pythonNavItems: SidebarItem[] = [
       { label: 'Abstraction', value: 'abstraction' },
     ],
   },
-,
-  { label: "len function", value: "len-function" }
+
+  { label: 'Len Function', value: 'len-function' }
 ];
 
 export const javascriptNavItems: SidebarItem[] = [
@@ -334,8 +346,8 @@ export const sqlNavItems: SidebarItem[] = [
       { label: 'Views', value: 'views' },
     ],
   },
-,
-  { label: "conditional filtering", value: "conditional-filtering" }
+
+  { label: 'Conditional Filtering', value: 'conditional-filtering' }
 ];
 
 export const databasesNavItems: SidebarItem[] = [
@@ -397,8 +409,8 @@ export const databasesNavItems: SidebarItem[] = [
       { label: 'Scaling', value: 'scaling' },
     ],
   },
-,
-  { label: "database tables", value: "database-tables" }
+
+  { label: 'Database Tables', value: 'database-tables' }
 ];
 
 export const cybersecurityNavItems: SidebarItem[] = [

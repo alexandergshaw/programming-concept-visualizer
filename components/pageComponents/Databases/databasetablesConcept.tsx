@@ -1,13 +1,11 @@
 import React from 'react';
-import { 
-  ConceptWrapper, 
-  TableOfContents, 
-  Section, 
-  CalloutBox, 
-  CodeSnippet 
-} from 'components/common';
+import ConceptWrapper from '../../common/ConceptWrapper';
+import TableOfContents from '../../common/TableOfContents';
+import Section from '../../common/Section';
+import CalloutBox from '../../common/CalloutBox';
+import CodeSnippet from '../../common/CodeSnippet';
 
-export default function DatabasetablesConcept() {
+export default function DatabaseTablesConcept() {
   const codeExample = `// A database table schema definition
 const UsersTable = {
   tableName: "users",
@@ -29,7 +27,7 @@ const UsersTable = {
     >
       <TableOfContents>
         <Section title="The Big Idea">
-          <CalloutBox variant="info">
+          <CalloutBox title="Table Structure" type="info">
             Think of a database table as a digital spreadsheet. It is the fundamental structure used to store related information in a relational database. Each table acts as a collection of records that share the same attributes.
           </CalloutBox>
           <p style={{ color: 'var(--ink)' }}>

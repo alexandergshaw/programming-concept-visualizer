@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import PageWrapper from '../common/PageWrapper';
-import conditionalfilteringConcept from "./SQL/conditionalfilteringConcept";
+import ConditionalFilteringConcept from './SQL/conditionalfilteringConcept';
 
 
 import WhatIsSqlConcept from './SQL/WhatIsSqlConcept';
@@ -108,8 +108,9 @@ export default function SqlPage() {
       case 'indexes':
         return <IndexesConcept />;
       case 'views':
-        return <ViewsConcept />;    case "conditional-filtering":
-      return <conditionalfilteringConcept />;
+        return <ViewsConcept />;
+      case 'conditional-filtering':
+        return <ConditionalFilteringConcept />;
 
       default:
         return null;

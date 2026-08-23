@@ -1,5 +1,9 @@
 import React from 'react';
-import { ConceptWrapper, TableOfContents, Section, CalloutBox, CodeSnippet } from 'components/common';
+import ConceptWrapper from '../../common/ConceptWrapper';
+import TableOfContents from '../../common/TableOfContents';
+import Section from '../../common/Section';
+import CalloutBox from '../../common/CalloutBox';
+import CodeSnippet from '../../common/CodeSnippet';
 
 export default function SearchingAlgorithmsConcept() {
   const sections = [
@@ -17,7 +21,7 @@ export default function SearchingAlgorithmsConcept() {
       <TableOfContents sections={sections} />
 
       <Section id="big-idea" title="The Big Idea">
-        <CalloutBox type="info">
+        <CalloutBox title="Core Idea" type="info">
           Searching is the process of retrieving information stored within some data structure. 
           The efficiency of your search depends heavily on the structure: linear structures 
           like arrays often require linear time, while sorted structures or trees 

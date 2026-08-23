@@ -1,13 +1,11 @@
 import React from 'react';
-import { 
-  ConceptWrapper, 
-  TableOfContents, 
-  Section, 
-  CalloutBox, 
-  CodeSnippet 
-} from 'components/common';
+import ConceptWrapper from '../../common/ConceptWrapper';
+import TableOfContents from '../../common/TableOfContents';
+import Section from '../../common/Section';
+import CalloutBox from '../../common/CalloutBox';
+import CodeSnippet from '../../common/CodeSnippet';
 
-export default function stringmethodsConcept() {
+export default function StringMethodsConcept() {
   const codeExample = `const url = "https://example.com";
 
 // Using the .startsWith() method

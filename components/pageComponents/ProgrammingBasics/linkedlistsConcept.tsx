@@ -1,13 +1,11 @@
 import React from 'react';
-import { 
-  ConceptWrapper, 
-  TableOfContents, 
-  Section, 
-  CalloutBox, 
-  CodeSnippet 
-} from 'components/common';
+import ConceptWrapper from '../../common/ConceptWrapper';
+import TableOfContents from '../../common/TableOfContents';
+import Section from '../../common/Section';
+import CalloutBox from '../../common/CalloutBox';
+import CodeSnippet from '../../common/CodeSnippet';
 
-export default function LinkedlistsConcept() {
+export default function LinkedListsConcept() {
   const sections = [
     { id: 'big-idea', title: 'The Big Idea' },
     { id: 'code-walkthrough', title: 'Code Walkthrough' },
@@ -22,7 +20,7 @@ export default function LinkedlistsConcept() {
       <TableOfContents sections={sections} />
 
       <Section id="big-idea" title="The Big Idea">
-        <CalloutBox variant="info">
+        <CalloutBox title="Why Linked Lists Matter" type="info">
           Unlike arrays that store elements in contiguous memory, linked lists consist of nodes where each element points to the next. 
           This structure is the backbone for implementing complex data structures like stacks, queues, and tree traversal algorithms.
         </CalloutBox>
@@ -36,7 +34,7 @@ export default function LinkedlistsConcept() {
         <p style={{ color: 'var(--ink)' }}>
           Below is a simple implementation of a Singly Linked List node and a basic insertion method in TypeScript:
         </p>
-        <CodeSnippet code={`
+        <CodeSnippet language="typescript" code={`
 class Node<T> {
   value: T;
   next: Node<T> | null = null;
