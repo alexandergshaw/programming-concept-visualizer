@@ -20,6 +20,8 @@ import booleanlogicConcept from "./booleanlogicConcept";
 import nonetypeConcept from "./nonetypeConcept";
 import stringmethodsConcept from "./stringmethodsConcept";
 import linkedlistsConcept from "./linkedlistsConcept";
+import searchingalgorithmsConcept from "./searchingalgorithmsConcept";
+
 
 
 
@@ -120,7 +122,9 @@ export default function ProgrammingBasicsPage() {
       return <booleanlogicConcept />;    case "none-type":
       return <nonetypeConcept />;    case "string-methods":
       return <stringmethodsConcept />;    case "linked-lists":
-      return <linkedlistsConcept />;
+      return <linkedlistsConcept />;    case "searching-algorithms":
+      return <searchingalgorithmsConcept />;
+
 
 
 
