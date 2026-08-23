@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import PageWrapper from '../../common/PageWrapper';
-import databasetablesConcept from "./databasetablesConcept";
+import DatabaseTablesConcept from './databasetablesConcept';
 
 
 import WhatIsADatabaseConcept from './WhatIsADatabaseConcept';
@@ -87,8 +87,9 @@ export default function DatabasesPage() {
       case 'security':
         return <SecurityConcept />;
       case 'scaling':
-        return <ScalingConcept />;    case "database-tables":
-      return <databasetablesConcept />;
+        return <ScalingConcept />;
+      case 'database-tables':
+        return <DatabaseTablesConcept />;
 
       default:
         return null;

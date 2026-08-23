@@ -64,18 +64,12 @@ export const programmingBasicsNavItems: SidebarItem[] = [
       { label: 'Sorting', value: 'sorting' },
     ],
   },
-,
-  { label: "membership operators", value: "membership-operators" }
-,
-  { label: "boolean logic", value: "boolean-logic" }
-,
-  { label: "none type", value: "none-type" }
-,
-  { label: "string methods", value: "string-methods" }
-,
-  { label: "linked lists", value: "linked-lists" }
-,
-  { label: "searching algorithms", value: "searching-algorithms" }
+  { label: 'membership operators', value: 'membership-operators' },
+  { label: 'boolean logic', value: 'boolean-logic' },
+  { label: 'none type', value: 'none-type' },
+  { label: 'string methods', value: 'string-methods' },
+  { label: 'linked lists', value: 'linked-lists' },
+  { label: 'searching algorithms', value: 'searching-algorithms' },
 ];
 
 export const pythonNavItems: SidebarItem[] = [
