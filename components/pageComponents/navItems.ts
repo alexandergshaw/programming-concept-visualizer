@@ -54,6 +54,8 @@ export const programmingBasicsNavItems: SidebarItem[] = [
   { label: "none type", value: "none-type" }
 ,
   { label: "string methods", value: "string-methods" }
+,
+  { label: "linked lists", value: "linked-lists" }
 ];
 
 export const pythonNavItems: SidebarItem[] = [
