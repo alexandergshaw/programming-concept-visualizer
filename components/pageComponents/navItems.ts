@@ -395,6 +395,8 @@ export const databasesNavItems: SidebarItem[] = [
       { label: 'Scaling', value: 'scaling' },
     ],
   },
+,
+  { label: "database tables", value: "database-tables" }
 ];
 
 export const cybersecurityNavItems: SidebarItem[] = [
