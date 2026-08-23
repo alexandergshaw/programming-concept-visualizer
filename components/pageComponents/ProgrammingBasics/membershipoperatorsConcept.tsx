@@ -5,7 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 
-export default function membershipoperatorsConcept() {
+export default function MembershipOperatorsConcept() {
   const codeExample = `interface User {
   id: number;
   username: string;

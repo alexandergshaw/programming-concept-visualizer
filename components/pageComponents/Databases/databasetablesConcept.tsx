@@ -5,7 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 
-export default function DatabasetablesConcept() {
+export default function DatabaseTablesConcept() {
   const codeExample = `// A database table schema definition
 const UsersTable = {
   tableName: "users",

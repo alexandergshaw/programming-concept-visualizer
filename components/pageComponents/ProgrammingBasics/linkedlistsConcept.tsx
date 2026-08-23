@@ -5,7 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 
-export default function LinkedlistsConcept() {
+export default function LinkedListsConcept() {
   const sections = [
     { id: 'big-idea', title: 'The Big Idea' },
     { id: 'code-walkthrough', title: 'Code Walkthrough' },

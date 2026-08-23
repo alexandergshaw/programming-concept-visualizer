@@ -5,7 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 
-export default function lenfunctionConcept() {
+export default function LenFunctionConcept() {
   return (
     <ConceptWrapper
       title="The len() Function in Dictionaries"

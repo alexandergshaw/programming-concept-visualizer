@@ -5,7 +5,7 @@ import Section from '../../common/Section';
 import CalloutBox from '../../common/CalloutBox';
 import CodeSnippet from '../../common/CodeSnippet';
 
-export default function stringmethodsConcept() {
+export default function StringMethodsConcept() {
   const codeExample = `const url = "https://example.com";
 
 // Using the .startsWith() method

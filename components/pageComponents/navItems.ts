@@ -142,7 +142,7 @@ export const pythonNavItems: SidebarItem[] = [
       { label: 'Abstraction', value: 'abstraction' },
     ],
   },
-,
+
   { label: "len function", value: "len-function" }
 ];
 
@@ -346,7 +346,7 @@ export const sqlNavItems: SidebarItem[] = [
       { label: 'Views', value: 'views' },
     ],
   },
-,
+
   { label: "conditional filtering", value: "conditional-filtering" }
 ];
 
@@ -409,7 +409,7 @@ export const databasesNavItems: SidebarItem[] = [
       { label: 'Scaling', value: 'scaling' },
     ],
   },
-,
+
   { label: "database tables", value: "database-tables" }
 ];
 
