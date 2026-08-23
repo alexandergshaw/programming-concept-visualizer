@@ -334,6 +334,8 @@ export const sqlNavItems: SidebarItem[] = [
       { label: 'Views', value: 'views' },
     ],
   },
+,
+  { label: "conditional filtering", value: "conditional-filtering" }
 ];
 
 export const databasesNavItems: SidebarItem[] = [
