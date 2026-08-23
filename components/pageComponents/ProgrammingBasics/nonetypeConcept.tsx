@@ -27,7 +27,7 @@ print(get_website_display(website_url))
     <ConceptWrapper title={title} description={description}>
       <TableOfContents>
         <Section title="Big Idea">
-          <CalloutBox type="info">
+          <CalloutBox title="Core Idea" type="info">
             In programming, <strong>None</strong> is a special object used to signify the absence of a value. 
             When a URL is missing for a user account, we don't use an empty string or a placeholder; 
             we use <strong>None</strong> to explicitly represent that "nothing exists here."

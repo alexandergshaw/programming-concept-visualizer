@@ -64,12 +64,12 @@ export const programmingBasicsNavItems: SidebarItem[] = [
       { label: 'Sorting', value: 'sorting' },
     ],
   },
-  { label: 'membership operators', value: 'membership-operators' },
-  { label: 'boolean logic', value: 'boolean-logic' },
-  { label: 'none type', value: 'none-type' },
-  { label: 'string methods', value: 'string-methods' },
-  { label: 'linked lists', value: 'linked-lists' },
-  { label: 'searching algorithms', value: 'searching-algorithms' },
+  { label: 'Membership Operators', value: 'membership-operators' },
+  { label: 'Boolean Logic', value: 'boolean-logic' },
+  { label: 'None Type', value: 'none-type' },
+  { label: 'String Methods', value: 'string-methods' },
+  { label: 'Linked Lists', value: 'linked-lists' },
+  { label: 'Searching Algorithms', value: 'searching-algorithms' },
 ];
 
 export const pythonNavItems: SidebarItem[] = [
@@ -143,7 +143,7 @@ export const pythonNavItems: SidebarItem[] = [
     ],
   },
 
-  { label: "len function", value: "len-function" }
+  { label: 'Len Function', value: 'len-function' }
 ];
 
 export const javascriptNavItems: SidebarItem[] = [
@@ -347,7 +347,7 @@ export const sqlNavItems: SidebarItem[] = [
     ],
   },
 
-  { label: "conditional filtering", value: "conditional-filtering" }
+  { label: 'Conditional Filtering', value: 'conditional-filtering' }
 ];
 
 export const databasesNavItems: SidebarItem[] = [
@@ -410,7 +410,7 @@ export const databasesNavItems: SidebarItem[] = [
     ],
   },
 
-  { label: "database tables", value: "database-tables" }
+  { label: 'Database Tables', value: 'database-tables' }
 ];
 
 export const cybersecurityNavItems: SidebarItem[] = [

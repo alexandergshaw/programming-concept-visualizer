@@ -32,7 +32,7 @@ const filterProducts = (items, category, minPrice) => {
       <TableOfContents />
 
       <Section title="The Big Idea">
-        <CalloutBox type="info">
+        <CalloutBox title="Core Idea" type="info">
           Conditional filtering allows your application to handle complex user queries by evaluating multiple boolean conditions against a dataset. Instead of writing multiple unique filter functions, you compose a single filter logic that returns a subset of data only when all active constraints are satisfied.
         </CalloutBox>
       </Section>

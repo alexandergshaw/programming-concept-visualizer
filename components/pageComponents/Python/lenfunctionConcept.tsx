@@ -18,7 +18,7 @@ export default function LenFunctionConcept() {
           In Computer Science, knowing whether a data structure contains information is a fundamental task. 
           The <code>len()</code> function returns the number of key-value pairs present in a dictionary.
         </p>
-        <CalloutBox variant="info">
+        <CalloutBox title="Key Principle" type="info">
           <strong>Key Principle:</strong> If <code>len(my_dict)</code> returns 0, the dictionary is empty. 
           This is a common and efficient way to check if a collection contains any data before attempting to access its keys.
         </CalloutBox>

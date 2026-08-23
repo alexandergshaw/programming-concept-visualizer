@@ -27,7 +27,7 @@ const UsersTable = {
     >
       <TableOfContents>
         <Section title="The Big Idea">
-          <CalloutBox variant="info">
+          <CalloutBox title="Table Structure" type="info">
             Think of a database table as a digital spreadsheet. It is the fundamental structure used to store related information in a relational database. Each table acts as a collection of records that share the same attributes.
           </CalloutBox>
           <p style={{ color: 'var(--ink)' }}>
