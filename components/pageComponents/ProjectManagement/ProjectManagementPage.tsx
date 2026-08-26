@@ -31,6 +31,26 @@ import IdentifyingStakeholdersConcept from './IdentifyingStakeholdersConcept';
 import SettingObjectivesConcept from './SettingObjectivesConcept';
 import SMARTGoalsConcept from './SMARTGoalsConcept';
 import ProjectDeliverablesConcept from './ProjectDeliverablesConcept';
+import HistoryOfAgileDevelopmentConcept from './HistoryOfAgileDevelopmentConcept';
+import ShiftFromTraditionalManagementConcept from './ShiftFromTraditionalManagementConcept';
+import WaterfallVersusAgileMethodologyConcept from './WaterfallVersusAgileMethodologyConcept';
+import TheAgileMindsetShiftConcept from './TheAgileMindsetShiftConcept';
+import IntroductionToAgileManifestoConcept from './IntroductionToAgileManifestoConcept';
+import ScrumCoreTeamRolesConcept from './ScrumCoreTeamRolesConcept';
+import ProductOwnerResponsibilitiesConcept from './ProductOwnerResponsibilitiesConcept';
+import ScrumMasterServantLeadershipConcept from './ScrumMasterServantLeadershipConcept';
+import DevelopmentTeamCrossFunctionalityConcept from './DevelopmentTeamCrossFunctionalityConcept';
+import UnderstandingAllScrumArtifactsConcept from './UnderstandingAllScrumArtifactsConcept';
+import ExploringKanbanSystemsConcept from './ExploringKanbanSystemsConcept';
+import CoreKanbanPrinciplesConcept from './CoreKanbanPrinciplesConcept';
+import VisualManagementTechniquesConcept from './VisualManagementTechniquesConcept';
+import VisualizingWorkWithBoardsConcept from './VisualizingWorkWithBoardsConcept';
+import LimitingWorkInProgressConcept from './LimitingWorkInProgressConcept';
+import AgileServantLeadershipPrinciplesConcept from './AgileServantLeadershipPrinciplesConcept';
+import CrossFunctionalTeamCollaborationConcept from './CrossFunctionalTeamCollaborationConcept';
+import ProductBacklogManagementTechniquesConcept from './ProductBacklogManagementTechniquesConcept';
+import ScrumMasterResponsibilitiesConcept from './ScrumMasterResponsibilitiesConcept';
+import DefiningSprintGoalsClearlyConcept from './DefiningSprintGoalsClearlyConcept';
 import RouteIcon from '@mui/icons-material/Route';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import ViewKanbanIcon from '@mui/icons-material/ViewKanban';
@@ -126,6 +146,47 @@ export default function ProjectManagementPage() {
         return <SMARTGoalsConcept />;
       case 'project-deliverables':
         return <ProjectDeliverablesConcept />;
+      // Agile methodologies
+      case 'history-of-agile-development':
+        return <HistoryOfAgileDevelopmentConcept />;
+      case 'shift-from-traditional-management':
+        return <ShiftFromTraditionalManagementConcept />;
+      case 'waterfall-versus-agile-methodology':
+        return <WaterfallVersusAgileMethodologyConcept />;
+      case 'the-agile-mindset-shift':
+        return <TheAgileMindsetShiftConcept />;
+      case 'introduction-to-agile-manifesto':
+        return <IntroductionToAgileManifestoConcept />;
+      case 'scrum-core-team-roles':
+        return <ScrumCoreTeamRolesConcept />;
+      case 'product-owner-responsibilities':
+        return <ProductOwnerResponsibilitiesConcept />;
+      case 'scrum-master-servant-leadership':
+        return <ScrumMasterServantLeadershipConcept />;
+      case 'development-team-cross-functionality':
+        return <DevelopmentTeamCrossFunctionalityConcept />;
+      case 'understanding-all-scrum-artifacts':
+        return <UnderstandingAllScrumArtifactsConcept />;
+      case 'exploring-kanban-systems':
+        return <ExploringKanbanSystemsConcept />;
+      case 'core-kanban-principles':
+        return <CoreKanbanPrinciplesConcept />;
+      case 'visual-management-techniques':
+        return <VisualManagementTechniquesConcept />;
+      case 'visualizing-work-with-boards':
+        return <VisualizingWorkWithBoardsConcept />;
+      case 'limiting-work-in-progress':
+        return <LimitingWorkInProgressConcept />;
+      case 'agile-servant-leadership-principles':
+        return <AgileServantLeadershipPrinciplesConcept />;
+      case 'cross-functional-team-collaboration':
+        return <CrossFunctionalTeamCollaborationConcept />;
+      case 'product-backlog-management-techniques':
+        return <ProductBacklogManagementTechniquesConcept />;
+      case 'scrum-master-responsibilities':
+        return <ScrumMasterResponsibilitiesConcept />;
+      case 'defining-sprint-goals-clearly':
+        return <DefiningSprintGoalsClearlyConcept />;
       default:
         return null;
     }

@@ -563,6 +563,56 @@ export const projectManagementNavItems: SidebarItem[] = [
     ],
   },
   {
+    label: 'Week 1: Foundations of Agile',
+    value: 'week1-agile-foundations',
+    children: [
+      { label: 'History of Agile Development', value: 'history-of-agile-development' },
+      { label: 'Shift from Traditional Management', value: 'shift-from-traditional-management' },
+      { label: 'Waterfall versus Agile Methodology', value: 'waterfall-versus-agile-methodology' },
+      { label: 'The Agile Mindset Shift', value: 'the-agile-mindset-shift' },
+      { label: 'Introduction to Agile Manifesto', value: 'introduction-to-agile-manifesto' },
+    ],
+  },
+  {
+    label: 'Week 2: Scrum Framework',
+    value: 'week2-scrum-framework',
+    children: [
+      { label: 'Scrum core team roles', value: 'scrum-core-team-roles' },
+      { label: 'Product Owner responsibilities', value: 'product-owner-responsibilities' },
+      { label: 'Scrum Master servant leadership', value: 'scrum-master-servant-leadership' },
+      { label: 'Development team cross functionality', value: 'development-team-cross-functionality' },
+      { label: 'Understanding all Scrum artifacts', value: 'understanding-all-scrum-artifacts' },
+    ],
+  },
+  {
+    label: 'Week 3: Kanban and Flow',
+    value: 'week3-kanban-flow',
+    children: [
+      { label: 'Exploring Kanban systems', value: 'exploring-kanban-systems' },
+      { label: 'Core Kanban principles', value: 'core-kanban-principles' },
+      { label: 'Visual management techniques', value: 'visual-management-techniques' },
+      { label: 'Visualizing work with boards', value: 'visualizing-work-with-boards' },
+      { label: 'Limiting work in progress', value: 'limiting-work-in-progress' },
+    ],
+  },
+  {
+    label: 'Week 4: Agile Roles and Leadership',
+    value: 'week4-agile-roles',
+    children: [
+      { label: 'Agile servant leadership principles', value: 'agile-servant-leadership-principles' },
+      { label: 'Cross functional team collaboration', value: 'cross-functional-team-collaboration' },
+      { label: 'Product backlog management techniques', value: 'product-backlog-management-techniques' },
+      { label: 'Scrum Master responsibilities', value: 'scrum-master-responsibilities' },
+    ],
+  },
+  {
+    label: 'Week 5: Agile Ceremonies',
+    value: 'week5-agile-ceremonies',
+    children: [
+      { label: 'Defining sprint goals clearly', value: 'defining-sprint-goals-clearly' },
+    ],
+  },
+  {
     label: 'Ways of Working',
     value: 'ways-of-working',
     children: [
