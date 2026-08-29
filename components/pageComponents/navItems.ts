@@ -581,3 +581,22 @@ export const projectManagementNavItems: SidebarItem[] = [
     ],
   },
 ];
+
+export const versionControlNavItems: SidebarItem[] = [
+  {
+    label: 'Getting Started',
+    value: 'getting-started',
+    children: [
+      { label: 'Introduction', value: 'introduction' },
+    ],
+  },
+  {
+    label: 'Core Git Workflow',
+    value: 'core-git-workflow',
+    children: [
+      { label: 'Committing Changes', value: 'committing' },
+      { label: 'Branching', value: 'branching' },
+      { label: 'Pushing to a Remote', value: 'pushing' },
+    ],
+  },
+];
